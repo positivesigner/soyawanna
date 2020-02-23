@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Usage — Design notes</title>
+<title>Android Apps — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -155,13 +155,7 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/control-panel</li>
 
-<li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
-
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler</li>
-
-<li>$:/config/ShortcutInfo/save-all-changes</li>
-
-<li>$:/config/shortcuts/save-all-changes</li>
 
 <li>$:/config/TextEditor/EnableToolbar</li>
 
@@ -183,8 +177,6 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
-<li>$:/state/dropdown/keyboardshortcut/save-all-changes-286565879</li>
-
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
@@ -203,59 +195,23 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/search</li>
-
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>Articles on how to use Tiddly Wiki</li>
+<li>Apps on Android O/S</li>
 
-<li>Compare WikiFiles</li>
-
-<li>Create new WikiFile from template</li>
-
-<li>ext Root doc</li>
-
-<li>ext TiddlyWiki Home Button</li>
-
-<li>ext TiddlyWiki Save Button</li>
-
-<li>ext TiddlyWiki TopBar Menu</li>
-
-<li>Global Tiddler Footer</li>
+<li>Chrome Browser</li>
 
 <li>HideHeader</li>
 
 <li>INDEX</li>
 
-<li>keyboard action SaveAllChanges</li>
-
-<li>Keyboard Shortcut</li>
-
-<li>Linking to External Files</li>
-
-<li>Linking to Tiddler Tags</li>
-
-<li>Linking to Tiddler Tags p1</li>
-
-<li>Linking to Tiddler Tags p2</li>
-
-<li>Recent entries</li>
-
-<li>snip Back to Index</li>
-
-<li>snip Back to UrTag</li>
-
-<li>snip Page List</li>
-
-<li>Standard Text Formatting</li>
-
-<li>template Home Button</li>
-
-<li>TiddlyWiki Blank Template</li>
+<li>MGit</li>
 
 <li>TiddlyWiki Startup Options</li>
+
+<li>Total Commander</li>
 
 <li>What is this Wiki Stuff?</li>
 
@@ -320,20 +276,11 @@ exports.startup = function() {
 <div created="20190925051433967" modified="20190925051433967" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/control-panel">
 <pre>hide</pre>
 </div>
-<div created="20200115060429106" modified="20200115060429106" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home">
-<pre>show</pre>
-</div>
 <div created="20190925051431806" modified="20190925051431807" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
 <pre>hide</pre>
 </div>
-<div created="20200223015739189" modified="20200223015753128" tags="META" title="$:/config/ShortcutInfo/save-all-changes">
-<pre></pre>
-</div>
-<div created="20200223015922764" modified="20200223015922764" title="$:/config/shortcuts/save-all-changes">
-<pre>alt-S</pre>
-</div>
-<div created="20190925061557600" modified="20200223015831880" title="$:/config/TextEditor/EnableToolbar">
-<pre>no</pre>
+<div created="20190925061557600" modified="20190925062040148" title="$:/config/TextEditor/EnableToolbar">
+<pre>yes</pre>
 </div>
 <div created="20190925061819062" modified="20190925061910011" title="$:/config/Toolbar/Icons">
 <pre>yes</pre>
@@ -9537,10 +9484,15 @@ exports.startup = function() {
 <div created="20190925014431388" modified="20190925051250712" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[Standard Text]]</pre>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;&lt;span style=\&quot;color: rgb(192, 192, 192); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 12.6px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\&quot;&gt;24th September 2019 at 10:44pm&lt;/span&gt;&quot;
+        }
+    }
+}</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9551,34 +9503,31 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200115080611161" title="$:/SiteTitle">
-<pre>TiddlyWiki Usage</pre>
-</div>
-<div created="20200223015917869" modified="20200223020604955" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
-<pre>open</pre>
+<div created="20190925014404111" modified="20200111072646458" title="$:/SiteTitle">
+<pre>Android Apps</pre>
 </div>
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200223060708308" title="$:/state/sidebar">
-<pre>no</pre>
+<div created="20190925044925672" modified="20200111092859084" title="$:/state/sidebar">
+<pre>yes</pre>
 </div>
-<div created="20200111074213994" modified="20200116064921508" title="$:/state/tab--1498284803">
+<div created="20200111081959603" modified="20200111081959603" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
 <div created="20190925052229880" modified="20190925052234369" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20190925051414187" modified="20200223021650298" title="$:/state/tab-1749438307">
+<div created="20190925051414187" modified="20200111053052887" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200223021652514" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200111082011200" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div created="20200223060909782" list="[[Articles on how to use Tiddly Wiki]] [[Create new WikiFile from template]]" modified="20200223060909782" title="$:/StoryList">
+<div created="20200111092647076" list="[[Apps on Android O/S]]" modified="20200111092809122" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200111074215259" modified="20200116064946379" title="$:/temp/advancedsearch">
+<div created="20200111082000898" modified="20200111082005839" title="$:/temp/advancedsearch">
 <pre>[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -9594,7 +9543,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/journal/TiddlyWiki/TiddlyWiki%20Template%20Setup.html&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/aslsj/Android/AndroidApps.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9614,7 +9563,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/journal/TiddlyWiki/TiddlyWiki%20Template%20Setup.html&quot;
+            &quot;text&quot;: &quot;/C:/BBK/aslsj/Android/AndroidApps.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9638,9 +9587,6 @@ exports.startup = function() {
         }
     }
 }</pre>
-</div>
-<div created="20200116063154687" modified="20200116063156230" title="$:/temp/search">
-<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9751,651 +9697,107 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20190925014523514" modified="20200116062106833" tags="INDEX" test="true" title="Articles on how to use Tiddly Wiki">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;</pre>
+<div created="20190925014523514" modified="20200111072722877" tags="INDEX" title="Apps on Android O/S">
+<pre>&lt;&lt;list-links filter:&quot;[tag[ANDROID]sort[title]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200223060808199" modified="20200223060824666" tags="DOC" title="Compare WikiFiles">
-<pre>You can export all the tiddler data in a TiddlyWiki to a JSON file. This way you can compare the data entered in two different TiddlyWiki files without having to look past the source code or configuration data.
+<div created="20200111072724091" modified="20200111083431466" tags="ANDROID" title="Chrome Browser">
+<pre>The Chome Browser has several useful features.
 
-# In the Sidebar Tools menu, select the Advanced Search button
-#* This brings up the $:/AdvancedSearch tiddler
-# On the Filter tab, enter the following text
-#* [all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]
-#* Note: The Filter tab will show you a list of all tiddler titles in the TiddlyWiki file, starting with the INDEX tagged tiddler.
-# Click the Export Tiddlers button (Up-arrow icon)
-#* Note: This shows a list of export file types.
-# Click the &quot;JSON file&quot; option.
-#* Note: The web browser creates a &quot;tiddlers.json&quot; file in your downloads folder.
-# Use Windows Explorer to rename the &quot;tiddlers.json&quot; file so you can remember what data it holds
-# Make some changes in some tiddler's content
-# Create another JSON export file
-# Compare the two JSON export files to see the changes that were made</pre>
+!File Browser
+
+The Chrome Browser can view files stored on the tablet.
+
+file:///sdcard
+
+This will show you a web page listing all the directories in the root of the tablet. Select the Download folder to see the list of downloaded files. Click on an HTML file to open it.
+
+Note: If you change an HTML file opened from the Downloads directory and then download the changes, Chrome will choose a different name for the newly downloaded file.
+
+* UrDownload.html
+
+Would become:
+
+* UrDownload (1).html
+
+And that would become:
+
+* UrDownload (2).html
+
+
+!Home Screen Shortcut to Website
+
+Note: You cannot create a website shortcut from an Incognito tab or a local file URL
+
+# Navigate to a website
+# Click the upper-right menu (three vertical-dots)
+#* Note: This opens the window menu
+# Click the option &quot;Add to Home screen&quot;
+#* Note: This opens a dialog box
+# Click the Add button
+# Note: This closes the dialog box and briefly shows a notification message
+# Note: The new icon is on your Home Screen</pre>
 </div>
-<div created="20200223060839725" modified="20200223061111490" tags="DOC" title="Create new WikiFile from template">
-<pre>To create a new TW File
-
-# Copy the [ext[TW_Template.html]] as a new file name
-# Open the file in a browser
-# Open the Sidebar
-# On the Tools menu, select the Control Panel button
-# On the $:/ControlPanel tiddler, change the Title and Subtitle
-#*Note: The Sidebar title and subtitle shows your new text.
-# Close the ControlPanel tiddler
-# Edit the INDEX tagged tiddler
-# Change the tiddler title
-# In the tiddler content, change the tag[META] filter to a new tag name, like tag[DOC]
-#* tag[UrTagName]
-# Save the INDEX tiddler
-# Press Alt-N to create a new tiddler
-# Enter a tiddler title
-# Where you select a tag name, type in your new tag name, like DOC, and press enter
-#* UrTagName
-# Enter the tiddler content
-# Save the tiddler
-#* Note: The INDEX tiddler now shows your new tiddler title in the alphabetical list of links.
-# In the Sidebar, click the red circle with a checkmark to save the updated TiddlyWiki file to your Downloads directory, as specified by your web browser.
-# You can use Windows Explorer to move the updated TiddlyWiki file to the original file's directory, overwriting the previous file version.</pre>
-</div>
-<div created="20200113202131446" modified="20200223023321159" tags="EXTLINK" title="ext Root doc">
-<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
-</div>
-<div created="20200116063613535" modified="20200116063645054" tags="EXTLINK" title="ext TiddlyWiki Home Button">
-<pre>[ext[Tiddly Wiki Home Button source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid]]</pre>
-</div>
-<div created="20200127215452684" modified="20200127215540144" tags="EXTLINK" title="ext TiddlyWiki Save Button">
-<pre>[ext[TiddlyWiki Save Button source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid]]</pre>
-</div>
-<div created="20200116063944589" modified="20200116064010558" tags="EXTLINK" title="ext TiddlyWiki TopBar Menu">
-<pre>[ext[TiddlyWiki TopBar Menu|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid]]</pre>
-</div>
-<div created="20200115095144969" modified="20200130192728879" tags="DOC" title="Global Tiddler Footer">
-<pre>All tiddlers show:
-
-* The typed in WikiText
-* and then the Transcluded text of tiddler with the tag &quot;$:/tags/ViewTemplate&quot;
-
-!Example Footer Text
-
-Create a new tiddler
-
-&lt;&lt;&lt;
-template Global Footer
-&lt;&lt;&lt;
-
-```
-Any Text Here
-```
-
-Add the tag:
-
-* $:/tags/ViewTemplate
-
-And then every tiddler will show the words &quot;Any Text Here&quot; at the bottom of the tiddler.
-
-!Example Footer Home Button
-
-Create a new tiddler
-
-&lt;&lt;&lt;
-template Home Button
-&lt;&lt;&lt;
-
-```
-&lt;div style=&quot;float:right&quot;&gt;{{$:/core/ui/Buttons/home}}&lt;/div&gt;
-```
-
-Add the tag:
-
-* $:/tags/ViewTemplate
-
-And then every tiddler will show the &quot;Home&quot; icon at the bottom-right of the tiddler.
-
-!Example Footer Button Action
-
-The source code for the TiddlyWiki Home button is in this GitHub file.
-
-{{ext TiddlyWiki Home Button}}
-
-And the Save button
-
-{{ext TiddlyWiki Save Button}}
-
-And the source code for the TiddlyWiki TopBar Menu is in this GitHub file.
-
-{{ext TiddlyWiki TopBar Menu}}
-
-* Created a tiddler with Home Button's source code
-* Instead of the code `$button message=&quot;tm-home&quot;`, I copied in the TopBar code `$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot;`
-* Around the two `$list filter= ` entries, I added as `span class=&quot;tc-dirty-indicator&quot; ` to change the home button icon to red when the form needs saved or refreshed
-* Before the `/$button` tag, I placed an `$action-sendmessage` command to send the message that the Home button normally sends
-* A second button &quot;&gt;&gt;&quot; just closes the side bar.
-
-```
-&lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
-&gt;&gt;
-&lt;/$button&gt;&lt;/div&gt;
-
-&lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
-&lt;span class=&quot;tc-dirty-indicator&quot;&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
-{{$:/core/images/home-button}}
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
-&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text={{$:/language/Buttons/Home/Caption}}/&gt;&lt;/span&gt;
-&lt;/$list&gt;
-&lt;/span&gt;
-&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
-&lt;/$button&gt;&lt;/div&gt;
-```
-
-When you click the button, it closes all the tiddlers, open the default &quot;Home&quot; tiddler list, and closes the SideBar.</pre>
-</div>
-<div created="20190925053827947" modified="20200111081344048" tags="EXTLINK" title="HideHeader">
+<div created="20190925053827947" modified="20200111081930401" tags="EXTLINK" title="HideHeader">
 <pre>[ext[Hiding The Sidebar On Startup|TiddlyWiki Plugin Hiding The Sidebar On Startup.html]]</pre>
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20190925051931336" title="INDEX">
 <pre></pre>
 </div>
-<div created="20200223015754444" key="((save-all-changes))" modified="20200223015854007" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
-<pre>&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-</pre>
+<div created="20200111091825361" modified="20200111092855011" tags="ANDROID" title="MGit">
+<pre>The MGit app can download repositories from a git server.
+
+# Open MGit
+# Select the top-right menu (three vertical dots) Settings option
+#* Note: This opens a dialog box
+# Change the &quot;Root storage location for repos
+#* Choose the local Download folder
+# Select the top-right menu (three vertical dots) Clone option
+#* Note: This opens a dialog box
+# Enter the Remote URL
+# Click button CLONE
+#* Note: This closes the dialog box
+# Note: Your repository is now in a folder under the local Download folder
+# Select the Repository name
+#* Note: This opens a dialog box
+# Select the top-right menu Toggle Drawer option
+#* Note: This opens a menu
+# Select the Pull option
+#* Note: This closes the menu and opens a dialog box
+# Select the &quot;Origin&quot; option
+# Note: The files under the local Download folder were updated to match the git server's files
+# Use the [[Chrome Browser]] to browse to file:///sdcard/Download/UrRepository to see the downloaded files
+# Use [[Total Commander]] to create a Home Screen shortcut to a specific HTML file under the Downloads directory</pre>
 </div>
-<div created="20200223020201942" modified="20200223024638281" tags="DOC" title="Keyboard Shortcut">
-<pre>You can create a keyboard shortcut to run an action.
-
-* Create a new tiddler with the prefix &quot;$:/config/ShortcutInfo/&quot;
-
-&lt;&lt;&lt;
-$:/config/ShortcutInfo/save-all-changes
-&lt;&lt;&lt;
-
-* In the Control Panel's Keyboard Shortcuts tab, you will find your new entry
-
-&lt;&lt;&lt;
-`&gt;` save-all-changes
-&lt;&lt;&lt;
-
-* Click the `&gt;` arrow to see the row list of shortcut keys
-
-** The first row is for &quot;All platforms&quot;
-
-** Click the Pencil icon on the row to show a dialog box
-
-*** Type a keyboard key combination, like `ctrl-S`
-
-*** Click the Add Shortcut button to close the dialog box
-
-* Create another tiddler to hold the action commands
-
-&lt;&lt;&lt;
-keyboard action SaveAllChanges
-&lt;&lt;&lt;
-
-* Add a new tag `$:/tags/KeyboardShortcut`
-
-* Enter your action commands in the text field
-
-```
-&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-```
-
-* Below the text field, leave the Content Type textbox empty
-
-* Below the Content Type field, enter the word `key` in the &quot;field name&quot; textbox, `((save-all-changes))` in the &quot;field value&quot; textbox, and click the Add button
-
-* Now the two textboxes are cleared and you see a row above them `key: ((save-all-changes))`
-
-* Save the tiddler
-
-* Press Ctrl-S to download a copy of the TiddlyWiki file</pre>
-</div>
-<div created="20200111074534709" modified="20200116054555929" tags="DOC" title="Linking to External Files">
-<pre>There are different kinds of file links you can create in tiddler content.
-
-!Tiddler Link
-
-```
-[[Create new|Create new TW File]]
-```
-
-[[Create new|Create new TW File]]
-
-When you enclose text within doubled square-brackets, it creates a Tiddler link. If you separate the text with a vertical bar ( | ), the first part is the link text and the second part is the tiddler title.
-
-!External Link
-
-```
-[ext[TW_Init.html]]
-```
-
-[ext[TW_Init.html]]
-
-When you put &quot;ext&quot; between the openeing doubled square-brackets of a Tiddler link, the browser will open the external linke in a new tab, looking for the specified file name in the same directory as the current document.
-
-!URL Link
-
-```
-https://tiddlywiki.com/
-```
-
-https://tiddlywiki.com/
-
-When you type an &quot;http'''':/''''/&quot; or &quot;https'''':/''''/&quot; URL, it automatically appears as an external link.
-
-!HTML Link
-
-```
-&lt;a href={{TW Init Template}}  rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;HTML Link&lt;/a&gt;
-```
-
-&lt;a href={{TW Init Template}}  rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;HTML Link&lt;/a&gt;
-
-I prefer to create the &quot;[ext[&quot; External link title and relative path in an EXTLINK tagged tiddler and transclude the tiddler's content.
-
-{{TW Init Template2}}
-</pre>
-</div>
-<div created="20200115054424658" modified="20200203150103464" tags="DOC" title="Linking to Tiddler Tags">
-<pre>!Basic list
-
-```
-&lt;$list filter=&quot;[tag[INDEX]]&quot;&gt;
-Back to &lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=title/&gt;&lt;/$link&gt;
-&lt;/$list&gt;
-```
-
-This creates a link list with the prefix &quot;Back to&quot; on each line.
-
-!Macro list for specific tag
-
-To create a link list with the prefix &quot;Back to&quot; on each line for each tiddler with a specific tag:
-
-* Create the following tiddler:
-
-&lt;&lt;&lt;
-Back to UrTag
-&lt;&lt;&lt;
-
-```
-\define thisList()
-&lt;$list filter=&quot;[tag[$(UrParentTag)$]]&quot; &gt;
-&lt;div align=&quot;right&quot;&gt;Back to &lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;/div&gt;
-&lt;/$list&gt;
-\end
-
-&lt;$set name=UrParentTag value=&lt;&lt;parent_tag&gt;&gt; &gt;
-&lt;&lt;thisList&gt;&gt;
-&lt;/$set&gt;
-```
-
-* In your tiddler, add the following code:
-
-```
-&lt;$vars parent_tag=&quot;INDEX&quot;&gt;{{snip Back to UrTag}}&lt;/$vars&gt;
-```
-
-&lt;$vars parent_tag=&quot;INDEX&quot;&gt;{{snip Back to UrTag}}&lt;/$vars&gt;
-
-```
-&lt;$vars parent_tag=&quot;DOC&quot;&gt;{{snip Back to UrTag}}&lt;/$vars&gt;
-```
-
-&lt;$vars parent_tag=&quot;DOC&quot;&gt;{{snip Back to UrTag}}&lt;/$vars&gt;
-
-!Macro list for tag like tiddler name
-
-To show all links with a tag like the current tiddler's title,
-
-* Create the following tiddler:
-
-&lt;&lt;&lt;
-snip Page List
-&lt;&lt;&lt;
-
-```
-\define thisList()
-&lt;&lt;list-links filter:&quot;[tag[$(UrParentTag)$ page]sort[title]]&quot;&gt;&gt;
-\end
-
-&lt;$set name=UrParentTag value=&lt;&lt;parent_tag&gt;&gt; &gt;
-&lt;&lt;thisList&gt;&gt;
-&lt;/$set&gt;
-```
-
-* In your tiddler, add the following line:
-
-```
-&lt;$vars parent_tag={{!!title}}&gt;{{snip Page List}}&lt;/$vars&gt;
-```
-
-You will see all entries that start with the current tiddler title and end with the string &quot; page&quot;.
-
-&lt;$vars parent_tag={{!!title}}&gt;{{snip Page List}}&lt;/$vars&gt;
-
-
-! Macro list for recent tiddlers modified
-
-```
-&lt;&lt;timeline limit:5 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;
-```
-
-The macro `timeline` shows a list of tiddlers sorted by modified date in reverse order.
-
-&lt;&lt;&lt;
-&lt;&lt;timeline limit:5 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;
-&lt;&lt;&lt;
-</pre>
-</div>
-<div created="20200116004747751" modified="20200116054720298" tags="[[Linking to Tiddler Tags page]]" title="Linking to Tiddler Tags p1">
-<pre>Here is a page for the Linking to Tiddlers doc</pre>
-</div>
-<div created="20200116004924785" modified="20200116054709250" tags="[[Linking to Tiddler Tags page]]" title="Linking to Tiddler Tags p2">
-<pre>Here is another page for the Linking to Tiddlers doc</pre>
-</div>
-<div created="20200203145901151" modified="20200203145909624" tags="META" title="Recent entries">
-<pre>&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;
-</pre>
-</div>
-<div created="20200115055659915" modified="20200115080657092" tags="META" title="snip Back to Index">
-<pre>&lt;$vars parent_tag=&quot;INDEX&quot;&gt;{{snip Back to UrTag}}&lt;/$vars&gt;</pre>
-</div>
-<div created="20200115070752592" modified="20200115070832656" tags="META" title="snip Back to UrTag">
-<pre>\define thisList()
-&lt;$list filter=&quot;[tag[$(UrParentTag)$]]&quot; &gt;
-&lt;div align=&quot;right&quot;&gt;Back to &lt;$link to=&lt;&lt;currentTiddler&gt;&gt;&gt;&lt;$view field=title/&gt;&lt;/$link&gt;&lt;/div&gt;
-&lt;/$list&gt;
-\end
-
-&lt;$set name=UrParentTag value=&lt;&lt;parent_tag&gt;&gt; &gt;
-&lt;&lt;thisList&gt;&gt;
-&lt;/$set&gt;
-</pre>
-</div>
-<div created="20200116004731541" modified="20200116004901633" tags="META" title="snip Page List">
-<pre>\define thisList()
-&lt;&lt;list-links filter:&quot;[tag[$(UrParentTag)$ page]sort[title]]&quot;&gt;&gt;
-\end
-
-&lt;$set name=UrParentTag value=&lt;&lt;parent_tag&gt;&gt; &gt;
-&lt;&lt;thisList&gt;&gt;
-&lt;/$set&gt;
-</pre>
-</div>
-<div created="20200111053354295" modified="20200116054753993" tags="DOC" title="Standard Text Formatting" type="">
-<pre>You can type most standard text without problems. Leading, repeated, or paired special characters may need escaped.
-
-!Vertical Spacing
-
-```
-Pressing enter at the end of a line does not start a new paragraph.
-Both of these lines are one paragraph.
-
-You must leave a blank line between text lines to get a paragraph.
-Press enter twice.
-```
-
-For example, see how the above two paragraphs are shown below:
-
-Pressing enter at the end of a line does not start a new paragraph.
-Both of these lines are one paragraph.
-
-You must leave a blank line between text lines to get a paragraph.
-Press enter twice.
-
-
-!Leading Special Characters
-
-!!Bulleted List Entry
-
-```
-*Bulleted List Entry
-```
-
-*Bulleted List Entry
-
-Leading with an asterisk creates a bulleted list entry. To escape, prefix with four single-quotes.
-
-```
-''''*Bulleted List Entry
-```
-
-''''*Bulleted List Entry
-
-!!Heading Line
-
-```
-!Heading Line
-```
-
-Starting a new paragraph line with an exclamation mark (!) results in a heading line.
-
-```
-!Heading Line
-```
-
-The above heading markup starts with an exclamation mark. To escape, prefix with four single-quotes.
-
-```
-''''!Heading Line
-```
-
-''''!Heading Line
-
-!!Mono-spaced Text Block
-
-```
- ```
- Mono-spaced Text Block
- ```
-```
-
-```
-Mono-spaced Text Block
-```
-
-Leading with a triple back-tick creates a mono-space text block. To escape, surround the triple back-tick with doubled square-brackets.
-
-```
-[[''']] Regular typeface
-```
-
-[[```]] Regular typeface
-
-!!Numbered List Entry
-
-```
-#Numbered List Entry
-```
-
-#Numbered List Entry
-
-Leading with a pound-sign creates a numbered list entry. To escape, prefix with four single-quotes.
-
-```
-''''#Numbered List Entry
-```
-
-''''#Numbered List Entry
-
-!!Quoted text block
-```
-&lt;&lt;&lt;
-Quoted text block
-&lt;&lt;&lt;
-```
-
-&lt;&lt;&lt;
-Quoted text block
-&lt;&lt;&lt;
-
-Leading with a triple less-than creates a quoted text block. To escape, surround the 
-
-```
-''''&lt;&lt;&lt; Unquoted text
-```
-
-''''&lt;&lt;&lt; Unquoted text
-
-!!URL Links
-
-```
-https://tiddlywiki.com/
-```
-
-https://tiddlywiki.com/
-
-Start text with an &quot;http'''':/''''/&quot; &quot;http'''':/''''/&quot; will create a URL link. To escape, place four single-quotes before the colon and between the double forward-slashes.
-
-```
-https'''':/''''/tiddlywiki.com/
-```
-
-https'''':/''''/tiddlywiki.com/
-
-
-!Repeated Special Characters
-
-```
-''Bold Text'' //Italic Text// ~~Strike-through Text~~ __Underlined Text__ ^^Raised-Small Text^^ ,,Lowered-Small Text,, `Mono-spaced Text`
-```
-
-''Bold Text'' //Italic Text// ~~Strike-through Text~~ __Underlined Text__ ^^Raised-Small Text^^ ,,Lowered-Small Text,, `Mono-spaced Text`
-
-A number of repeated special characters are used as Wiki Markup to format text. To escape, place four single-quotes between the doubled characters or surround the doubled characters with doubled square-braces.
-
-```
-[['']]Bold Text[['']] /''''/Italic Text/''''/ ~''''~Strike-through Text~''''~ _''''_Underlined Text_''''_ ^''''^Raised-Small Text^''''^ ,'''',Lowered-Small Text,'''', [[`]]Mono-spaced Text[[`]]
-```
-
-[['']]Bold Text[['']] /''''/Italic Text/''''/ ~''''~Strike-through Text~''''~ _''''_Underlined Text_''''_ ^''''^Raised-Small Text^''''^ ,'''',Lowered-Small Text,'''', [[`]]Mono-spaced Text[[`]]
-
-!Paired Special Characters
-
-!!Literal Text
-
-```
-[[Literal Text]]
-```
-
-[[Literal Text]]
-
-Surrounding text with doubled square-brackets shows the literal surrounded text without applying formatting. To escape, place four single-quotes between the first doubled square-brackets.
-
-```
-[''''[Literal Text]]
-```
-
-[''''[Literal Text]]
-
-!!Transcluded Text
-
-```
-{{Other Tiddler Title}}
-
-Note: The other tidder's content is &quot;Other Tiddler Transcluded Text&quot;.
-```
-
-{{Other Tiddler Title}}
-
-Surrounding text with doubled curly-braces shows the full content of another tiddler. To escape, place four single-quotes between the first doubled curly-braces.
-
-```
-{''''{Other Tiddler Title}}
-```
-
-{''''{Other Tiddler Title}}
-
-!!HTML Markup
-
-```
-&lt;b&gt;HTML Markup&lt;/b&gt;
-```
-
-&lt;b&gt;HTML Markup&lt;/b&gt;
-
-Surrounding text with angled-brackets uses HTML formatting. To escape, rename the first angle-bracket to &amp;lt'''';
-
-```
-&amp;lt;b&gt;HTML Markup&lt;/b&gt;
-```
-
-&amp;lt;b&gt;HTML Markup&lt;/b&gt;
-
-!!HTML Literals
-
-```
-&amp;lt;
-
-Note: &amp;lt; represents a left angle-bracket, or the less-than symbol (&lt;).
-```
-
-&amp;lt;
-
-Surrounding text with an ampersand (&amp;) and a semi-colon translate to an HTML literal. To escape, place four single-quotes after the ampersand.
-
-```
-&amp;lt;
-```
-
-&amp;''''lt;
-</pre>
-</div>
-<div created="20200115095609017" modified="20200130192605518" tags="META $:/tags/ViewTemplate" title="template Home Button">
-<pre>&lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
-&gt;&gt;
-&lt;/$button&gt;&lt;/div&gt;
-
-&lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
-&lt;span class=&quot;tc-dirty-indicator&quot;&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
-{{$:/core/images/home-button}}
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
-&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text={{$:/language/Buttons/Home/Caption}}/&gt;&lt;/span&gt;
-&lt;/$list&gt;
-&lt;/span&gt;
-&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
-&lt;/$button&gt;&lt;/div&gt;
-</pre>
-</div>
-<div created="20200115100001717" modified="20200223023032063" tags="DOC" title="TiddlyWiki Blank Template">
-<pre>All the TiddlyWiki documents have the same basic features. These are in the [ext[TiddlyWiki Blank Template|TW_Template.html]] that I use to create all new wiki documents.
-
-* The SideBar menu is [[hidden on start-up|TiddlyWiki Startup Options]]
-
-* The SideBar title is set from the $:/ControlPanel tiddler Info tab Basic sub-tab's Title and Subtitle fields
-
-* The &quot;Show editor toolbar&quot; option is cleared from the $:/ControlPanel tiddler Settings tab's Editor Toolbar section
-
-* The &quot;Navigation from outside the story river&quot; option is set to &quot;Open at the bottom of the story river&quot; from the $:/ControlPanel tiddler Settings tab's Tiddler Opening Behaviour section
-
-* The SideBar menu only has Home and Save icon buttons at the top. (The SideBar menu Tools tab's checkboxes determine which icon buttons show at the SideBar top.)
-
-* There is a &quot;Home&quot; button in the [[footer of every tiddler|Global Tiddler Footer]]
-
-* A [[Keyboard Shortcut]] saves the TiddlyWiki file when you press the Alt-S key combination
-
-* The META tagged tiddlers hold &quot;how to&quot; information about TiddlyWiki, and a [[Recent entries]] list
-
-* The EXTLINK tagged tiddlers hold relative or absolute URL references to the other documents
-
-* There should be only one INDEX tagged tiddler showing a Table of Contents list of the first-level tiddlers
-
-* The INDEX tag is light-purple, set using the SideBar menu More tab' Tag Manager app
-</pre>
-</div>
-<div created="20190925054126842" modified="20200115101241122" tags="DOC" title="TiddlyWiki Startup Options">
+<div created="20190925054126842" modified="20200111081943675" tags="META" title="TiddlyWiki Startup Options">
 <pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
 
 There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
 
 {{HideHeader}}</pre>
 </div>
-<div created="20190925051442835" modified="20200115101255691" tags="DOC" title="What is this Wiki Stuff?">
+<div created="20200111082241121" modified="20200111082927445" tags="ANDROID" title="Total Commander">
+<pre>The Total Commander program has many features that are not obvious.
+
+!Desktop URL shortcut
+https://android.stackexchange.com/questions/191330/create-add-to-home-screen-shortcut-for-local-offline-html-page
+
+# Find an HTML file in a local directory
+# Hold-click on the HTML file
+#* Note: This shows the right-click menu
+# Select the option &quot;Create link on desktop&quot;
+#* Note: This opens a dialog box
+# Note: The dialog box has three fields: Icon text, Command, and Icon
+# At the end of the Commend field, click the &gt;&gt; button.
+#* Note: This opens a dialog box
+# Select the top &quot;Choose app *&quot; option
+# Select the Chrome app
+#* Note: This closes the dialog box
+# Click the OK / Apply button
+#* Note: This closes the dialog box
+#* Note: The new icon is on your Home Screen
+</pre>
+</div>
+<div created="20190925051442835" modified="20200103151335611" tags="META" title="What is this Wiki Stuff?">
 <pre>Here is some notes on [[How to use markup in Tiddly Wiki|Articles on how to use Tiddly Wiki]].
 
 To open every Tiddler :
