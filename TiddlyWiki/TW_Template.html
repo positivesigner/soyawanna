@@ -147,6 +147,12 @@ Error message and password prompt
 
 <li>$:/config/HideSidebarOnStartup</li>
 
+<li>$:/config/Manager/Filter</li>
+
+<li>$:/config/Manager/RecentTags</li>
+
+<li>$:/config/Manager/System</li>
+
 <li>$:/config/MissingLinks</li>
 
 <li>$:/config/Navigation/openLinkFromOutsideRiver</li>
@@ -179,6 +185,8 @@ Error message and password prompt
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
 
+<li>$:/plugins/danielo515/searchNreplace</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -207,11 +215,15 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
+<li>$:/temp/NewTagName</li>
+
+<li>$:/temp/search</li>
+
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>ext Root doc</li>
+<li>ext Parent Return</li>
 
 <li>HideHeader</li>
 
@@ -277,6 +289,15 @@ exports.startup = function() {
 </div>
 <div bag="default" created="20151007165524815" creator="Tobias Beer" modified="20190925044957682" revision="0" tags="" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki">
 <pre>yes</pre>
+</div>
+<div created="20200302210534350" modified="20200302210611374" title="$:/config/Manager/Filter">
+<pre></pre>
+</div>
+<div created="20200302210551832" list="META" modified="20200302210556377" title="$:/config/Manager/RecentTags">
+<pre></pre>
+</div>
+<div created="20200302210537880" modified="20200302210613096" title="$:/config/Manager/System">
+<pre>system</pre>
 </div>
 <div created="20190925061735308" modified="20190925061735308" title="$:/config/MissingLinks">
 <pre>no</pre>
@@ -9507,21 +9528,58 @@ exports.startup = function() {
 <div created="20190925014431388" modified="20190925051250712" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled&quot;: {
-            &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;&lt;span style=\&quot;color: rgb(192, 192, 192); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 12.6px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\&quot;&gt;24th September 2019 at 10:44pm&lt;/span&gt;&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Untitled]]
+# [[$:/plugins/danielo515/searchNreplace]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
 <div created="20190925052027956" modified="20190925052030401" title="$:/language/DefaultNewTiddlerTitle">
 <pre>New Entry</pre>
+</div>
+<div author="Danielo Rodriguez Rivero" bag="default" core-version="&gt;=5.1.4" created="20200302210551832" dependents="" description="searchNreplace for TiddlyWiki" list="readme" modified="20200302210556377" plugin-type="plugin" revision="0" tags="META" title="$:/plugins/danielo515/searchNreplace" type="application/json" version="1.2">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/danielo515/modules/startup/replace.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW &gt;= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Export name and synchronous status\r\nexports.name = \&quot;password\&quot;;\r\nexports.platforms = [\&quot;browser\&quot;];\r\nexports.after = [\&quot;startup\&quot;];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\&quot;tm-replace\&quot;,function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getTiddlerText(event.paramObject.source) || \&quot;\&quot;,\r\n      doGlobal = event.paramObject.global || \&quot;yes\&quot;, // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \&quot;no\&quot; ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \&quot;yes\&quot;,\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Tiddler to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\&quot;text\&quot;,null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();&quot;,
+            &quot;title&quot;: &quot;$:/danielo515/modules/startup/replace.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;startup&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/readme&quot;,
+            &quot;text&quot;: &quot;This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default tiddler's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/ui/controls&quot;: {
+            &quot;created&quot;: &quot;20150409175313556&quot;,
+            &quot;list-after&quot;: &quot;$:/core/ui/EditTemplate/tags&quot;,
+            &quot;modified&quot;: &quot;20150409182902159&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditTemplate&quot;,
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/ui/controls&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;div class=\&quot;tc-edit-controls\&quot;&gt;\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/EditControls]]\&quot; variable=\&quot;control\&quot;&gt;\n&lt;$transclude tiddler=&lt;&lt;control&gt;&gt;&gt;\n&lt;/$list&gt;\n&lt;/div&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/ui/controls/replace&quot;: {
+            &quot;created&quot;: &quot;20150409182035279&quot;,
+            &quot;modified&quot;: &quot;20150409182544663&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditControls&quot;,
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/ui/controls/replace&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$edit-text tiddler=\&quot;$:/state/searchNreplace/search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;search\&quot;/&gt; &lt;$edit-text tiddler=\&quot;$:/state/searchNreplace/replace\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;replace\&quot;/&gt; &lt;$button class=\&quot;button button-tiny button-primary\&quot;&gt;Replace\r\n&lt;$action-sendmessage $message=\&quot;tm-replace\&quot; source=&lt;&lt;currentTiddler&gt;&gt; search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/&gt;\r\n&lt;/$button&gt;\r\n&lt;$checkbox default=\&quot;yes\&quot; unchecked=\&quot;no\&quot; checked=\&quot;yes\&quot; field=\&quot;text\&quot; tiddler=\&quot;$:/state/searchNreplace/global\&quot;&gt;Global&lt;/$checkbox&gt;\r\n&lt;$checkbox default=\&quot;no\&quot; unchecked=\&quot;no\&quot; checked=\&quot;yes\&quot; field=\&quot;text\&quot; tiddler=\&quot;$:/state/searchNreplace/regex\&quot;&gt;Use regex&lt;/$checkbox&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/styles&quot;: {
+            &quot;created&quot;: &quot;20150409181359332&quot;,
+            &quot;modified&quot;: &quot;20150409182956438&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/styles&quot;,
+            &quot;type&quot;: &quot;text/css&quot;,
+            &quot;text&quot;: &quot;  .tc-edit-controls {\n  border: 1px solid #cccccc;\n  border-top: 0px;\n  padding: 4px 8px 4px 8px;\n}&quot;
+        }
+    }
+}</pre>
 </div>
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
@@ -9535,7 +9593,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200223043738034" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200302210433903" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9550,13 +9608,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200223043750307" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200223043754245" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200302210601608" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200223043746744" list="[[WikiFile Title]]" modified="20200223043746744" title="$:/StoryList">
+<div created="20200302210531034" list="[[WikiFile Title]]" modified="20200302210531034" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
@@ -9575,7 +9633,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/journal/TiddlyWiki/TW_Template.html&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/TiddlyWiki/TW_Template.html&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9595,7 +9653,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/journal/TiddlyWiki/TW_Template.html&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/TiddlyWiki/TW_Template.html&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9619,6 +9677,12 @@ exports.startup = function() {
         }
     }
 }</pre>
+</div>
+<div created="20200302210556378" modified="20200302210556378" title="$:/temp/NewTagName">
+<pre></pre>
+</div>
+<div created="20200302210517854" modified="20200302210519836" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9729,7 +9793,7 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200223043825137" modified="20200223043838783" tags="EXTLINK" title="ext Root doc">
+<div created="20200223043825137" modified="20200302205925892" tags="EXTLINK" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
 </div>
 <div created="20190925053827947" modified="20200111081344048" tags="EXTLINK" title="HideHeader">

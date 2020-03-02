@@ -45,7 +45,7 @@ Namespace Mx
 
             Dim strFIRST_FOLDER = objPATH_IO.GetDirectoryName(Mx.Class1.SourcePath)
             Me.lstFOLDER.d(strFIRST_FOLDER)
-            Me.txtOUTPUT.Text = Strapd().dLine("Listening:").dS(strFIRST_FOLDER)
+            Call Me.Display_FolderList()
 
             Me.tmrFIVE_SEC = New System.Windows.Forms.Timer()
             Me.tmrFIVE_SEC.Interval = 50
@@ -65,8 +65,17 @@ Namespace Mx
             Initialize_Form = ret_output
             ret_output = Mx.sub_main.FormInit(ret_output, strvLIT_USER_PROFILE_DOWNLOADS, New Mx.glbl.gDiagnostics, New Mx.glbl.gDirIo, New Mx.glbl.gEnvironment, New Mx.glbl.gFileIo, New Mx.glbl.gPathIo, New Mx.glbl.gThread)
         End Function 'Initialize_Form
+		
+		Sub Display_FolderList()
+			If HasText(Me.txtOUTPUT.Text) = False Then
+				For Each strENTRY In Me.lstFOLDER
+					Me.txtOUTPUT.Text = Strapd().dLine("Listening:").dS(strENTRY).dLine().d(Me.txtOUTPUT.Text)
+				Next strENTRY
+			End If
+		End Sub 'Display_FolderList
 
         Sub Look_For_Files()
+			Call Me.Display_FolderList()
             Dim retOUTPUT = New Mx.sub_main.CombineTextOutput(Mx.Strapd(), New Mx.glbl.gFileIo, Me.lstFOLDER)
             'retOUTPUT = Mx.sub_main.Proc_Exec(retOUTPUT, My.Application.Info.DirectoryPath.Replace("\bin\Debug", ""), New Mx.glbl.gDirIo, New Mx.glbl.gPathIo, New Mx.glbl.gThread)
             retOUTPUT = Mx.sub_main.Proc_Exec(retOUTPUT, strvLIT_USER_PROFILE_DOWNLOADS, New Mx.glbl.gDirIo, New Mx.glbl.gEnvironment, New Mx.glbl.gFileIo, New Mx.glbl.gPathIo, New Mx.glbl.gThread)

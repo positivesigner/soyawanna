@@ -1,0 +1,14 @@
+\define t1(ur_p1,ur_p2)
+<$set name="tag_count" filter="[tag[$ur_p1$]tag[$ur_p2$]count[]]">
+<$set name="ent_count" filter="[[$ur_p1$-$ur_p2$]is[missing]count[]]">
+<$list filter="[<tag_count>!match[0]]"><$list filter="[<ent_count>!match[0]]">$ur_p1$-$ur_p2$ missing<br></$list></$list>
+</$set></$set>
+\end
+
+<$list filter="3 4">
+<$set name="h1" value=<<currentTiddler>> >
+<$list filter="B C">
+<$macrocall $name="t1" ur_p1=<<h1>> ur_p2=<<currentTiddler>> >>
+</$list>
+</$set>
+</$list>
