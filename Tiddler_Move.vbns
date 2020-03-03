@@ -22,13 +22,13 @@ Namespace Mx
         Public tmrFIVE_SEC As System.Windows.Forms.Timer
         Public lstFOLDER As Mx.Sdata
         Public txtOUTPUT As System.Windows.Forms.TextBox
-		Public intSHOW_FORM As Integer
+        Public intSHOW_FORM As Integer
 
         Const strvLIT_USER_PROFILE_DOWNLOADS = "%USERPROFILE%\downloads"
 
         Public Sub New()
             Dim objPATH_IO = New Mx.glbl.gPathIo
-			Me.intSHOW_FORM = 1
+            Me.intSHOW_FORM = 1
             Me.lstFOLDER = New Mx.Sdata
 
             Me.Name = "Tiddler_Move"
@@ -72,36 +72,36 @@ Namespace Mx
             retOUTPUT = Mx.sub_main.Proc_Exec(retOUTPUT, strvLIT_USER_PROFILE_DOWNLOADS, New Mx.glbl.gDirIo, New Mx.glbl.gEnvironment, New Mx.glbl.gFileIo, New Mx.glbl.gPathIo, New Mx.glbl.gThread)
             If retOUTPUT.gText.HasText Then
                 Me.txtOUTPUT.Text = retOUTPUT.gText.ToString & vbCrLf & Me.txtOUTPUT.Text
-				Me.intSHOW_FORM = 1
+                Me.intSHOW_FORM = 1
             End If
         End Sub 'Look_For_Files
-		
-		Sub Show_Saved()
-		    If Me.intSHOW_FORM = 1 Then
-				Me.WindowState = System.Windows.Forms.FormWindowState.Normal
-				Call AppActivate(sub_main.strLIT_TIDDLER_MOVE_5_SEC)
-				Me.tmrFIVE_SEC.Interval = 800
-				Me.intSHOW_FORM = 2
-			
-			ElseIf Me.intSHOW_FORM = 2 Then
-				Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
-				Me.intSHOW_FORM = 0
-				
-			ElseIf Me.intSHOW_FORM = 0 Then
-				If Me.WindowState <> System.Windows.Forms.FormWindowState.Minimized Then
-					Me.intSHOW_FORM = 6
-				End If
-			
-			Else
-				Me.intSHOW_FORM -= 1
-		    End If
-		End Sub 'Show_Saved
+
+        Sub Show_Saved()
+            If Me.intSHOW_FORM = 1 Then
+                Me.WindowState = System.Windows.Forms.FormWindowState.Normal
+                Call AppActivate(sub_main.strLIT_TIDDLER_MOVE_5_SEC)
+                Me.tmrFIVE_SEC.Interval = 800
+                Me.intSHOW_FORM = 2
+
+            ElseIf Me.intSHOW_FORM = 2 Then
+                Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
+                Me.intSHOW_FORM = 0
+
+            ElseIf Me.intSHOW_FORM = 0 Then
+                If Me.WindowState <> System.Windows.Forms.FormWindowState.Minimized Then
+                    Me.intSHOW_FORM = 6
+                End If
+
+            Else
+                Me.intSHOW_FORM -= 1
+            End If
+        End Sub 'Show_Saved
 
         Sub Timer1_Tick(sender As Object, e As System.EventArgs)
             Me.tmrFIVE_SEC.Stop()
             Me.tmrFIVE_SEC.Interval = 5000
             Call Look_For_Files()
-			Call Show_Saved()
+            Call Show_Saved()
             Me.tmrFIVE_SEC.Start()
         End Sub
     End Class 'UIForm
@@ -223,8 +223,19 @@ Namespace Mx
                 Move_Files = ret_file_io
                 For Each trwFILE In ur_files
                     ret_file_io.Move(trwFILE.v(enmFCol.new_data_path), trwFILE.v(enmFCol.new_data_path) & ".TDLY")
-                    ret_file_io.Delete(trwFILE.v(enmFCol.existing_path))
-                    ret_file_io.Move(trwFILE.v(enmFCol.new_data_path) & ".TDLY", trwFILE.v(enmFCol.existing_path))
+                    If EndingWithText(trwFILE.v(enmFCol.existing_path), "htm") AndAlso
+                      prv.Found_TWFile(trwFILE.v(enmFCol.existing_path)) AndAlso
+                      prv.Found_TWFile(trwFILE.v(enmFCol.new_data_path) & ".TDLY") = False Then
+						
+						trwFILE.v(enmFCol.existing_path) &= "l"
+						trwFILE.v(enmFCol.new_data_path) &= ".TDLY"
+                        Call prv.Overwrite_TWExport(trwFILE.v(enmFCol.new_data_path), trwFILE.v(enmFCol.existing_path))
+                        ret_file_io.Delete(trwFILE.v(enmFCol.new_data_path))
+
+                    Else
+                        ret_file_io.Delete(trwFILE.v(enmFCol.existing_path))
+                        ret_file_io.Move(trwFILE.v(enmFCol.new_data_path) & ".TDLY", trwFILE.v(enmFCol.existing_path))
+                    End If
                 Next trwFILE
             End Function 'Move_Files
 
@@ -239,6 +250,95 @@ Namespace Mx
                 Public Shared Sub Wait_FiveSeconds(ur_thread As glbl.gThread)
                     ur_thread.Sleep(2000)
                 End Sub 'Wait_FiveSeconds
+
+                Public Shared Function Found_TWFile(ur_file_path As String) As Boolean
+                    Found_TWFile = False
+                    Using stmREADER As New System.IO.StreamReader(ur_file_path, Mx.gUTF8_FileEncoding)
+                        Dim chraBLOCK(0 To 100) As Char
+                        Call stmREADER.ReadBlock(chraBLOCK, 0, 100)
+                        Dim line = New String(chraBLOCK)
+                        Found_TWFile = ContainingText(line, "MOTW comment")
+                    End Using 'stmREADER
+                End Function 'Found_TWFile
+
+                Public Shared Sub Overwrite_TWExport(ur_new_filepath As String, ur_exisitng_filepath As String)
+                    Using stmOUTPUT As New System.IO.StreamWriter(ur_exisitng_filepath, False, Mx.gUTF8_FileEncoding)
+						Using stmREADER As New System.IO.StreamReader(ur_new_filepath, gUTF8_FileEncoding)
+							While stmREADER.EndOfStream = False
+								stmOUTPUT.WriteLine(prv.Fix_Line_Href(stmREADER.ReadLine))
+							End While
+						End Using 'stmREADER
+                    End Using 'stmOUTPUT
+                End Sub 'Overwrite_TWExport
+
+                Const chrQMARK = "?"
+                Const lit_href_qs = " href="""
+                Const lit_a_name_qs = "<a name="""
+                Const lit_hex_qmark = "%3F" '"%" & Conversion.Hex(Asc("?"))
+                Const lit_hex_space = "%20" '"%" & Conversion.Hex(Asc(s))
+
+                Public Shared Function Fix_Line_Href(ur_line As String) As String
+                    Dim strRET = ur_line
+                    Dim strREM_SEARCH = strRET
+
+                    Dim intFOUND_INDEX = 0
+                    Dim intPREV_INDEX = 1
+                    While True
+                        intFOUND_INDEX = InStr(intPREV_INDEX, strRET, lit_href_qs)
+                        If intFOUND_INDEX > 0 Then
+                            intFOUND_INDEX += lit_href_qs.Length
+                            strREM_SEARCH = Mid(strRET, intFOUND_INDEX)
+                            strREM_SEARCH = prv.Fix_Loc_Href(strREM_SEARCH)
+                            strRET = Mid(strRET, 1, intFOUND_INDEX - 1) & strREM_SEARCH
+                            If strRET.Length > ur_line.Length Then
+                                Exit While
+                            End If
+                            intPREV_INDEX = intFOUND_INDEX
+                        End If
+
+                        If intFOUND_INDEX = 0 Then
+                            intFOUND_INDEX = InStr(intPREV_INDEX, strRET, lit_a_name_qs)
+                            If intFOUND_INDEX > 0 Then
+                                intFOUND_INDEX += lit_a_name_qs.Length
+                                strREM_SEARCH = Mid(strRET, intFOUND_INDEX)
+                                strREM_SEARCH = prv.Fix_Loc_AName(strREM_SEARCH)
+                                strRET = Mid(strRET, 1, intFOUND_INDEX - 1) & strREM_SEARCH
+                                If strRET.Length > ur_line.Length Then
+                                    Exit While
+                                End If
+                                intPREV_INDEX = intFOUND_INDEX
+                            End If
+                        End If
+
+                        If intFOUND_INDEX = 0 Then
+                            Exit While
+                        End If
+                    End While 'intFOUND_INDEX
+
+                    Fix_Line_Href = strRET.Replace("<button aria-label=""show sidebar""", "<a href=""#""><button aria-label=""show sidebar""").Replace("</svg></button>", "</svg></button></a>")
+                End Function 'Fix_Line_Href
+
+                Public Shared Function Fix_Loc_AName(ur_line As String) As String
+                    Dim strRET = ur_line
+                    Dim intFOUND_START_QS = 1
+                    Dim intFOUND_END_QS = InStr(intFOUND_START_QS, strRET, qs)
+                    Dim intLINK_LENGTH = intFOUND_END_QS - intFOUND_START_QS
+                    Dim strHLINK = Mid(strRET, intFOUND_START_QS, intLINK_LENGTH)
+                    strHLINK = strHLINK.Replace(s, mt).Replace(chrQMARK, mt)
+                    strRET = Mid(strRET, 1, intFOUND_START_QS - 1) & strHLINK & Mid(strRET, intFOUND_END_QS)
+                    Fix_Loc_AName = strRET
+                End Function 'Fix_Loc_AName
+
+                Public Shared Function Fix_Loc_Href(ur_line As String) As String
+                    Dim strRET = ur_line
+                    Dim intFOUND_START_QS = 1
+                    Dim intFOUND_END_QS = InStr(intFOUND_START_QS, strRET, qs)
+                    Dim intLINK_LENGTH = intFOUND_END_QS - intFOUND_START_QS
+                    Dim strHLINK = Mid(strRET, intFOUND_START_QS, intLINK_LENGTH)
+                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt).Replace(".htm", ".html")
+                    strRET = Mid(strRET, 1, intFOUND_START_QS - 1) & strHLINK & Mid(strRET, intFOUND_END_QS)
+                    Fix_Loc_Href = strRET
+                End Function 'Fix_Loc_Href
             End Class 'prv
         End Class 'CreateOutputCompile
 

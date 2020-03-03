@@ -28,6 +28,7 @@ Point the alt-h command to this macro
 Change Tiddler_Move to read the first 100 bytes of the file
 If the text "MOTW Comment" is there, use FileIO_TW_HrefRename.wHtml_Code_Text to create/overwrite the ".html" file next to the found ".htm"
 
+The !is[tag] filter needs removed when a tag has content
 
 
 $:/config/ShortcutInfo/save-html-converted
