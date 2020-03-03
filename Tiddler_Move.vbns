@@ -182,7 +182,7 @@ Namespace Mx
 
 
     Public Class sln
-        Const strLIT_STAR_DOT_HTML = "*.html"
+        Const strLIT_STAR_DOT_HTML = "*.htm"
         Const strLIT_TIDDLER_MOVE_FOLDER_REF_TXT = "tiddler_move_folder.ref.txt"
 
         Public Enum enmPCol

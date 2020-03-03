@@ -26,4 +26,18 @@ Create new tiddler shortcut for alt-h
 Point the alt-h command to this macro
 
 Change Tiddler_Move to read the first 100 bytes of the file
-If the text "MOTW Comment" is there, use FileIO_TW_HrefRename.wHtml_Code_Text to create/overwrite the ".htm" file next to the found ".html"
+If the text "MOTW Comment" is there, use FileIO_TW_HrefRename.wHtml_Code_Text to create/overwrite the ".html" file next to the found ".htm"
+
+
+
+$:/config/ShortcutInfo/save-html-converted
+
+keyboard action SaveHtmlConverted
+
+ $:/tags/KeyboardShortcut
+
+<$action-sendmessage $message="tm-download-file"
+$param="$:/core/templates/exporters/StaticRiver"
+exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+
+key: ((save-html-converted))

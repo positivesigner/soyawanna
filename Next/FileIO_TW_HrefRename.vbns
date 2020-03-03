@@ -16,7 +16,7 @@ Namespace Mx
             Dim objERR_LIST = New ErrListBase : Try
                 'List what resources to find
                 'No command line; hard-coded paths
-                Dim strOUTPUT_FILE_SUFFIX = ".htm"
+                Dim strOUTPUT_FILE_SUFFIX = ".html"
                 Dim trwPARMS = New sln.ParmsRow()
                 Dim objHTML_COMBINE = New Sdata
                 Dim stpOUTPUT_TEXT = Strapd()
@@ -97,7 +97,7 @@ Namespace Mx
 
             Public Shared Function wParm_OutputFile_Path(ret_parms_row As ParmsRow, ur_outputfile_suffix As String) As ParmsRow
                 wParm_OutputFile_Path = ret_parms_row
-                Dim strNEW_PATH = (ret_parms_row.v(enmPCol.inputfile_path) & ur_outputfile_suffix).Replace(".html.htm", ".htm")
+                Dim strNEW_PATH = (ret_parms_row.v(enmPCol.inputfile_path) & ur_outputfile_suffix).Replace(".htm.html", ".html")
                 ret_parms_row.v(enmPCol.outputfile_path) = strNEW_PATH
             End Function 'wParm_OutputFile_Path
 
@@ -106,7 +106,9 @@ Namespace Mx
                 Dim strFILE_TEXT = mt
                 Dim strINPUT_FILE_PATH = ur_parms_row.v(enmPCol.inputfile_path)
                 If ur_file_io.Exists(strINPUT_FILE_PATH) Then
-                    For Each strLINE In ur_file_io.ReadAllText(strINPUT_FILE_PATH).Replace(vbCr, mt).Split(vbLf(0))
+                    For Each strLINE In ur_file_io.ReadAllText(strINPUT_FILE_PATH).Replace(vbCr, mt).Replace("<div style=""float:right""><button class=""tc-btn-invisible"">" & vbLf &
+"&gt;&gt;", "<div style=""float:right""><a href=""#""><button class=""tc-btn-invisible"">" & vbLf &
+"&lt;&lt;").Split(vbLf(0))
                         ret_html_combine.d(prv.Fix_Line_Href(strLINE))
                     Next
                 End If 'ur_file_io
@@ -177,7 +179,7 @@ Namespace Mx
                     Dim intFOUND_END_QS = InStr(intFOUND_START_QS, strRET, qs)
                     Dim intLINK_LENGTH = intFOUND_END_QS - intFOUND_START_QS
                     Dim strHLINK = Mid(strRET, intFOUND_START_QS, intLINK_LENGTH)
-                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt).Replace(".html", ".htm")
+                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt).Replace(".htm", ".html")
                     strRET = Mid(strRET, 1, intFOUND_START_QS - 1) & strHLINK & Mid(strRET, intFOUND_END_QS)
                     Fix_Loc_Href = strRET
                 End Function 'Fix_Loc_Href
