@@ -215,8 +215,6 @@ Error message and password prompt
 
 <li>$:/temp/info-plugin</li>
 
-<li>$:/temp/NewTagName</li>
-
 <li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
@@ -9593,7 +9591,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200302210433903" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200302225102788" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9614,7 +9612,7 @@ exports.startup = function() {
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200302210531034" list="[[WikiFile Title]]" modified="20200302210531034" title="$:/StoryList">
+<div created="20200302225108417" list="[[WikiFile Title]]" modified="20200302225108417" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
@@ -9677,9 +9675,6 @@ exports.startup = function() {
         }
     }
 }</pre>
-</div>
-<div created="20200302210556378" modified="20200302210556378" title="$:/temp/NewTagName">
-<pre></pre>
 </div>
 <div created="20200302210517854" modified="20200302210519836" title="$:/temp/search">
 <pre></pre>
@@ -9810,10 +9805,8 @@ exports.startup = function() {
 <div created="20200203145715457" modified="20200203145738704" tags="META" title="Recent entries">
 <pre>&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20200115085810255" modified="20200130192534318" tags="META $:/tags/ViewTemplate" title="template Home Button">
-<pre>&lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
-&gt;&gt;
-&lt;/$button&gt;&lt;/div&gt;
+<div created="20200115085810255" modified="20200302225117825" tags="META $:/tags/ViewTemplate" title="template Home Button">
+<pre>&lt;div style=&quot;float:right&quot;&gt;{{$:/core/ui/TopBar/menu}}&lt;/div&gt;
 
 &lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
 &lt;span class=&quot;tc-dirty-indicator&quot;&gt;
