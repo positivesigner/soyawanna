@@ -290,7 +290,7 @@ Namespace Mx
                             strREM_SEARCH = Mid(strRET, intFOUND_INDEX)
                             strREM_SEARCH = prv.Fix_Loc_Href(strREM_SEARCH)
                             strRET = Mid(strRET, 1, intFOUND_INDEX - 1) & strREM_SEARCH
-                            If strRET.Length > ur_line.Length Then
+                            If strRET.Length > ur_line.Length + 10000 Then
                                 Exit While
                             End If
                             intPREV_INDEX = intFOUND_INDEX
@@ -303,7 +303,7 @@ Namespace Mx
                                 strREM_SEARCH = Mid(strRET, intFOUND_INDEX)
                                 strREM_SEARCH = prv.Fix_Loc_AName(strREM_SEARCH)
                                 strRET = Mid(strRET, 1, intFOUND_INDEX - 1) & strREM_SEARCH
-                                If strRET.Length > ur_line.Length Then
+                                If strRET.Length > ur_line.Length + 10000 Then
                                     Exit While
                                 End If
                                 intPREV_INDEX = intFOUND_INDEX
