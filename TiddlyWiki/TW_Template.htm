@@ -165,9 +165,13 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler</li>
 
+<li>$:/config/ShortcutInfo/home-tiddlers</li>
+
 <li>$:/config/ShortcutInfo/save-all-changes</li>
 
 <li>$:/config/ShortcutInfo/save-html-converted</li>
+
+<li>$:/config/shortcuts/home-tiddlers</li>
 
 <li>$:/config/shortcuts/save-all-changes</li>
 
@@ -194,6 +198,8 @@ Error message and password prompt
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
+
+<li>$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879</li>
 
 <li>$:/state/dropdown/keyboardshortcut/save-all-changes-286565879</li>
 
@@ -230,6 +236,8 @@ Error message and password prompt
 <li>ext Parent Return</li>
 
 <li>HideHeader</li>
+
+<li>HomeTiddlers</li>
 
 <li>INDEX</li>
 
@@ -323,17 +331,23 @@ exports.startup = function() {
 <div created="20190925051431806" modified="20190925051431807" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
 <pre>hide</pre>
 </div>
+<div created="20200314145912234" modified="20200314145935323" tags="META" title="$:/config/ShortcutInfo/home-tiddlers">
+<pre></pre>
+</div>
 <div created="20200223012716802" modified="20200223013001664" tags="META" title="$:/config/ShortcutInfo/save-all-changes">
 <pre></pre>
 </div>
 <div created="20200303061746900" modified="20200303061752887" tags="META" title="$:/config/ShortcutInfo/save-html-converted">
 <pre></pre>
 </div>
+<div created="20200314150022726" modified="20200314150022726" title="$:/config/shortcuts/home-tiddlers">
+<pre>alt-H</pre>
+</div>
 <div created="20200223012858820" modified="20200223012858820" title="$:/config/shortcuts/save-all-changes">
 <pre>alt-S</pre>
 </div>
-<div created="20200303061810279" modified="20200303061810279" title="$:/config/shortcuts/save-html-converted">
-<pre>alt-H</pre>
+<div created="20200303061810279" modified="20200314150009687" title="$:/config/shortcuts/save-html-converted">
+<pre>ctrl-shift-alt-H</pre>
 </div>
 <div created="20190925061557600" modified="20200116064526517" title="$:/config/TextEditor/EnableToolbar">
 <pre>no</pre>
@@ -9599,17 +9613,20 @@ exports.startup = function() {
 <div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
 <pre>TiddlyWiki Template</pre>
 </div>
+<div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
+<pre>close</pre>
+</div>
 <div created="20200223012850920" modified="20200303061803910" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
 <pre>close</pre>
 </div>
-<div created="20200303061805552" modified="20200303061813876" title="$:/state/dropdown/keyboardshortcut/save-html-converted-286565879">
+<div created="20200303061805552" modified="20200314150016898" title="$:/state/dropdown/keyboardshortcut/save-html-converted-286565879">
 <pre>close</pre>
 </div>
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200303061754504" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20190925044925672" modified="20200314150226873" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9620,16 +9637,16 @@ exports.startup = function() {
 <div created="20190925052229880" modified="20200115080408562" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20190925051414187" modified="20200303061817646" title="$:/state/tab-1749438307">
+<div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200303061820997" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200314150046665" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200303061758209" list="[[WikiFile Title]] $:/config/ShortcutInfo/save-html-converted [[keyboard action SaveHtmlConverted]]" modified="20200303061758209" title="$:/StoryList">
+<div list="[[WikiFile Title]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
@@ -9810,6 +9827,10 @@ exports.startup = function() {
 </div>
 <div created="20190925053827947" modified="20200111081344048" tags="EXTLINK" title="HideHeader">
 <pre>[ext[Hiding The Sidebar On Startup|TiddlyWiki Plugin Hiding The Sidebar On Startup.html]]</pre>
+</div>
+<div created="20200314150100178" key="((home-tiddlers))" modified="20200314150209448" tags="$:/tags/KeyboardShortcut META" title="HomeTiddlers">
+<pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20190925051931336" title="INDEX">
 <pre></pre>
