@@ -229,6 +229,8 @@ Error message and password prompt
 
 <li>Button Actions</li>
 
+<li>Character Entities</li>
+
 <li>Compare WikiFiles</li>
 
 <li>Create new WikiFile from template</li>
@@ -9659,7 +9661,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200319110739282" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200319170109791" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200116064921508" title="$:/state/tab--1498284803">
@@ -9674,7 +9676,7 @@ exports.startup = function() {
 <div created="20190925014513912" modified="20200319091711461" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div created="20200319110754543" list="[[Articles on how to use Tiddly Wiki]] [[Linking to External Files]]" modified="20200319110754543" title="$:/StoryList">
+<div list="[[Articles on how to use Tiddly Wiki]] [[Character Entities]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200116064946379" title="$:/temp/advancedsearch">
@@ -9885,6 +9887,19 @@ Big Font
 Normal Font
 &lt;/$button&gt;
 ```
+</pre>
+</div>
+<div created="20200319170115604" modified="20200319170152241" tags="DOC" title="Character Entities">
+<pre>\define CharRef(UrCode)
+$UrCode$ - &amp;#$UrCode$;
+\end
+[ext[ |avascript:alert(parseInt(&quot;FF&quot;,16).toString(10));]]
+
+|&lt;&lt;CharRef 48&gt;&gt;|&lt;&lt;CharRef 65&gt;&gt;|&lt;&lt;CharRef 97&gt;&gt;|&lt;&lt;CharRef 122&gt;&gt;|
+
+[ext[ |http://www.amp-what.com/unicode/search/check%20mark]]
+
+|&lt;&lt;CharRef 9989&gt;&gt;|&lt;&lt;CharRef 10003&gt;&gt;|&lt;&lt;CharRef 10004&gt;&gt;|&lt;&lt;CharRef 128504&gt;&gt;|&lt;&lt;CharRef 9745&gt;&gt;|
 </pre>
 </div>
 <div created="20200223060808199" modified="20200223060824666" tags="DOC" title="Compare WikiFiles">
@@ -10137,7 +10152,7 @@ keyboard action SaveAllChanges
 
 * Press Ctrl-S to download a copy of the TiddlyWiki file</pre>
 </div>
-<div created="20200111074534709" modified="20200319111427717" tags="DOC" title="Linking to External Files">
+<div created="20200111074534709" modified="20200319132530114" tags="DOC" title="Linking to External Files">
 <pre>There are different kinds of file links you can create in tiddler content.
 
 !Tiddler Link
@@ -10217,7 +10232,7 @@ Hover your mouse over the hyperlink to see the destination URL at the bottom of 
 
 !Video Link
 
-Create a global macro for linking videos
+Create a global macro for linking video files
 
 * Title = &quot;mcr OneVid&quot;
 * Tag = `$:/tags/Macro`
@@ -10243,6 +10258,22 @@ Call the macro
 &lt;&lt;OneVid &quot;MyVideosSubFolder&quot; &quot;MyVideoFile&quot; &quot;00:01:00&quot;&gt;&gt;
 ```
 
+!Audio Link
+
+Create a global macro for linking audio files
+
+* Title &quot;mcr OneAud&quot;
+* Tag = `$:/tags/Macro`
+
+```
+\define OneAud(UrFolder,UrAudio,UrTime)
+&lt;audio controls preload=&quot;none&quot;&gt;
+&lt;source src=&quot;C:\Users\Dad\Downloads\$UrFolder$\$UrAudio$.mp3#t=$UrTime$&quot; type=
+&quot;audio/mp3&quot;&gt;
+Your browser does not support the HTML 5 audio tag.
+&lt;/audio&gt;
+\end
+```
 </pre>
 </div>
 <div created="20200115054424658" modified="20200203150103464" tags="DOC" title="Linking to Tiddler Tags">
