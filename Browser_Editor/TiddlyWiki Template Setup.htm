@@ -187,6 +187,8 @@ Error message and password prompt
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
 
+<li>$:/plugins/danielo515/searchNreplace</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -225,6 +227,8 @@ Error message and password prompt
 
 <li>Articles on how to use Tiddly Wiki</li>
 
+<li>Button Actions</li>
+
 <li>Compare WikiFiles</li>
 
 <li>Create new WikiFile from template</li>
@@ -233,21 +237,19 @@ Error message and password prompt
 
 <li>ext Root doc</li>
 
-<li>ext TiddlyWiki Home Button</li>
-
-<li>ext TiddlyWiki Save Button</li>
-
-<li>ext TiddlyWiki Sidebar Shelf</li>
-
-<li>ext TiddlyWiki TopBar Menu</li>
+<li>Font Size</li>
 
 <li>Global Tiddler Footer</li>
 
-<li>HideHeader</li>
+<li>Hiding The Sidebar On Startup</li>
 
-<li>HomeTiddlers</li>
+<li>img Browser Hyperlink</li>
+
+<li>img Text Replace bar</li>
 
 <li>INDEX</li>
+
+<li>keyboard action HomeTiddlers</li>
 
 <li>keyboard action SaveAllChanges</li>
 
@@ -263,7 +265,11 @@ Error message and password prompt
 
 <li>Linking to Tiddler Tags p2</li>
 
+<li>mcr OneLink</li>
+
 <li>Recent entries</li>
+
+<li>Sidebar Shelf Button source code</li>
 
 <li>snip Back to Index</li>
 
@@ -275,11 +281,21 @@ Error message and password prompt
 
 <li>template Home Button</li>
 
-<li>TextReplace</li>
+<li>Text Replace bar</li>
+
+<li>Tiddly Wiki Home Button source code</li>
 
 <li>TiddlyWiki Blank Template</li>
 
+<li>TiddlyWiki Blank Template setup</li>
+
+<li>TiddlyWiki Home Page</li>
+
+<li>TiddlyWiki Save Button source code</li>
+
 <li>TiddlyWiki Startup Options</li>
+
+<li>TiddlyWiki TopBar Menu</li>
 
 <li>What is this Wiki Stuff?</li>
 
@@ -9576,13 +9592,54 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Standard Text]]</pre>
+# [[image.png]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
 <div created="20190925052027956" modified="20190925052030401" title="$:/language/DefaultNewTiddlerTitle">
 <pre>New Entry</pre>
+</div>
+<div author="Danielo Rodriguez Rivero" bag="default" core-version="&gt;=5.1.4" dependents="" description="searchNreplace for TiddlyWiki" list="readme" plugin-type="plugin" revision="0" title="$:/plugins/danielo515/searchNreplace" type="application/json" version="1.2">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;$:/danielo515/modules/startup/replace.js&quot;: {
+            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW &gt;= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Export name and synchronous status\r\nexports.name = \&quot;password\&quot;;\r\nexports.platforms = [\&quot;browser\&quot;];\r\nexports.after = [\&quot;startup\&quot;];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\&quot;tm-replace\&quot;,function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getTiddlerText(event.paramObject.source) || \&quot;\&quot;,\r\n      doGlobal = event.paramObject.global || \&quot;yes\&quot;, // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \&quot;no\&quot; ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \&quot;yes\&quot;,\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Tiddler to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\&quot;text\&quot;,null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();&quot;,
+            &quot;title&quot;: &quot;$:/danielo515/modules/startup/replace.js&quot;,
+            &quot;type&quot;: &quot;application/javascript&quot;,
+            &quot;module-type&quot;: &quot;startup&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/readme&quot;: {
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/readme&quot;,
+            &quot;text&quot;: &quot;This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default tiddler's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/ui/controls&quot;: {
+            &quot;created&quot;: &quot;20150409175313556&quot;,
+            &quot;list-after&quot;: &quot;$:/core/ui/EditTemplate/tags&quot;,
+            &quot;modified&quot;: &quot;20150409182902159&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditTemplate&quot;,
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/ui/controls&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;div class=\&quot;tc-edit-controls\&quot;&gt;\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/EditControls]]\&quot; variable=\&quot;control\&quot;&gt;\n&lt;$transclude tiddler=&lt;&lt;control&gt;&gt;&gt;\n&lt;/$list&gt;\n&lt;/div&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/ui/controls/replace&quot;: {
+            &quot;created&quot;: &quot;20150409182035279&quot;,
+            &quot;modified&quot;: &quot;20150409182544663&quot;,
+            &quot;tags&quot;: &quot;$:/tags/EditControls&quot;,
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/ui/controls/replace&quot;,
+            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
+            &quot;text&quot;: &quot;&lt;$edit-text tiddler=\&quot;$:/state/searchNreplace/search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;search\&quot;/&gt; &lt;$edit-text tiddler=\&quot;$:/state/searchNreplace/replace\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;replace\&quot;/&gt; &lt;$button class=\&quot;button button-tiny button-primary\&quot;&gt;Replace\r\n&lt;$action-sendmessage $message=\&quot;tm-replace\&quot; source=&lt;&lt;currentTiddler&gt;&gt; search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/&gt;\r\n&lt;/$button&gt;\r\n&lt;$checkbox default=\&quot;yes\&quot; unchecked=\&quot;no\&quot; checked=\&quot;yes\&quot; field=\&quot;text\&quot; tiddler=\&quot;$:/state/searchNreplace/global\&quot;&gt;Global&lt;/$checkbox&gt;\r\n&lt;$checkbox default=\&quot;no\&quot; unchecked=\&quot;no\&quot; checked=\&quot;yes\&quot; field=\&quot;text\&quot; tiddler=\&quot;$:/state/searchNreplace/regex\&quot;&gt;Use regex&lt;/$checkbox&gt;&quot;
+        },
+        &quot;$:/plugins/danielo515/searchNreplace/styles&quot;: {
+            &quot;created&quot;: &quot;20150409181359332&quot;,
+            &quot;modified&quot;: &quot;20150409182956438&quot;,
+            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
+            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/styles&quot;,
+            &quot;type&quot;: &quot;text/css&quot;,
+            &quot;text&quot;: &quot;  .tc-edit-controls {\n  border: 1px solid #cccccc;\n  border-top: 0px;\n  padding: 4px 8px 4px 8px;\n}&quot;
+        }
+    }
+}</pre>
 </div>
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
@@ -9602,8 +9659,8 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200314145631012" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20190925044925672" modified="20200319103421180" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200116064921508" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9614,10 +9671,10 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200314145639202" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200314145633228" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20190925014513912" modified="20200319091711461" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div created="20200314145636223" list="[[Articles on how to use Tiddly Wiki]]" modified="20200314145636223" title="$:/StoryList">
+<div created="20200319103838451" list="[[Articles on how to use Tiddly Wiki]] [[TiddlyWiki Startup Options]]" modified="20200319103922695" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200116064946379" title="$:/temp/advancedsearch">
@@ -9636,7 +9693,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/TiddlyWiki/TiddlyWiki%20Template%20Setup.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TiddlyWiki%20Template%20Setup.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9656,7 +9713,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/TiddlyWiki/TiddlyWiki%20Template%20Setup.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TiddlyWiki%20Template%20Setup.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9806,6 +9863,30 @@ exports.startup = function() {
 
 [[___|Recent entries]]</pre>
 </div>
+<div created="20200319092810237" modified="20200319094420998" tags="DOC" title="Button Actions">
+<pre>You can create buttons to change tiddler content. The Control Panel uses a list of tiddlers whose content are variables used in formatting the page layout.
+
+This creates two buttons that change the default Vanilla theme's font sizes.
+
+```
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;30px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;25px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;34px&quot;/&gt;
+Big Font
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;14px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;20px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;15px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;24px&quot;/&gt;
+Normal Font
+&lt;/$button&gt;
+```
+</pre>
+</div>
 <div created="20200223060808199" modified="20200223060824666" tags="DOC" title="Compare WikiFiles">
 <pre>You can export all the tiddler data in a TiddlyWiki to a JSON file. This way you can compare the data entered in two different TiddlyWiki files without having to look past the source code or configuration data.
 
@@ -9849,8 +9930,7 @@ exports.startup = function() {
 # You can use Windows Explorer to move the updated TiddlyWiki file to the original file's directory, overwriting the previous file version.</pre>
 </div>
 <div created="20200303060536653" modified="20200303061322465" tags="DOC" title="Export HTML">
-<pre>
-!! Keyboard Shortcut
+<pre>!! Keyboard Shortcut
 
 You can create a [[Keyboard Shortcut]] to export the HTML flat file.
 
@@ -9882,20 +9962,25 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 <div created="20200113202131446" modified="20200223023321159" tags="EXTLINK" title="ext Root doc">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
 </div>
-<div created="20200116063613535" modified="20200116063645054" tags="EXTLINK" title="ext TiddlyWiki Home Button">
-<pre>[ext[Tiddly Wiki Home Button source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid]]</pre>
+<div created="20200319093101841" modified="20200319093109393" tags="META" title="Font Size">
+<pre>&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;30px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;25px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;34px&quot;/&gt;
+Big Font
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;14px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;20px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;15px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;24px&quot;/&gt;
+Normal Font
+&lt;/$button&gt;
+</pre>
 </div>
-<div created="20200127215452684" modified="20200127215540144" tags="EXTLINK" title="ext TiddlyWiki Save Button">
-<pre>[ext[TiddlyWiki Save Button source code|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid]]</pre>
-</div>
-<div created="20200302224648387" modified="20200302224805633" tags="EXTLINK" title="ext TiddlyWiki Sidebar Shelf">
-<pre>[ext[Sidebar Shelf Button source code
-|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid]]</pre>
-</div>
-<div created="20200116063944589" modified="20200116064010558" tags="EXTLINK" title="ext TiddlyWiki TopBar Menu">
-<pre>[ext[TiddlyWiki TopBar Menu|https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid]]</pre>
-</div>
-<div created="20200115095144969" modified="20200302225024611" tags="DOC" title="Global Tiddler Footer">
+<div created="20200115095144969" modified="20200319101744644" tags="DOC" title="Global Tiddler Footer">
 <pre>All tiddlers show:
 
 * The typed in WikiText
@@ -9941,13 +10026,13 @@ And then every tiddler will show the &quot;Home&quot; icon at the bottom-right o
 
 The source code for the TiddlyWiki Home button is in this GitHub file.
 
-{{ext TiddlyWiki Home Button}}
+&lt;&lt;OneLink &quot;Tiddly Wiki Home Button source code&quot;&gt;&gt;
 
-{{ext TiddlyWiki Save Button}}
+&lt;&lt;OneLink &quot;TiddlyWiki Save Button source code&quot;&gt;&gt;
 
-{{ext TiddlyWiki TopBar Menu}}
+&lt;&lt;OneLink &quot;TiddlyWiki TopBar Menu&quot;&gt;&gt;
 
-{{ext TiddlyWiki Sidebar Shelf}}
+&lt;&lt;OneLink &quot;Sidebar Shelf Button source code&quot;&gt;&gt;
 
 * Created a tiddler with Home Button's source code
 * Instead of the code `$button message=&quot;tm-home&quot;`, I copied in the TopBar code `$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot;`
@@ -9973,16 +10058,21 @@ The source code for the TiddlyWiki Home button is in this GitHub file.
 
 When you click the button, it closes all the tiddlers, open the default &quot;Home&quot; tiddler list, and closes the SideBar.</pre>
 </div>
-<div created="20190925053827947" modified="20200302210808572" tags="EXTLINK" title="HideHeader">
-<pre>[ext[Hiding The Sidebar On Startup
-|TiddlyWiki Plugin Hiding The Sidebar On Startup.html]]</pre>
+<div created="20190925053827947" modified="20200319101839896" tags="EXTLINK" title="Hiding The Sidebar On Startup">
+<pre>TiddlyWiki Plugin Hiding The Sidebar On Startup.html</pre>
 </div>
-<div created="20200314144206927" key="((home-tiddlers))" modified="20200314144641537" tags="META $:/tags/KeyboardShortcut" title="HomeTiddlers">
-<pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
+<div created="20200319092439807" modified="20200319092458172" tags="META" title="img Browser Hyperlink" type="image/png">
+<pre>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</pre>
+</div>
+<div created="20200319103845571" modified="20200319103915869" tags="META" title="img Text Replace bar" type="image/png">
+<pre>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</pre>
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20190925051931336" title="INDEX">
 <pre></pre>
+</div>
+<div created="20200314144206927" key="((home-tiddlers))" modified="20200319102448959" tags="META $:/tags/KeyboardShortcut" title="keyboard action HomeTiddlers">
+<pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
 </div>
 <div created="20200223015754444" key="((save-all-changes))" modified="20200223015854007" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
 <pre>&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;/&gt;
@@ -9994,7 +10084,7 @@ When you click the button, it closes all the tiddlers, open the default &quot;Ho
 $param=&quot;$:/core/templates/exporters/StaticRiver&quot;
 exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;</pre>
 </div>
-<div created="20200223020201942" modified="20200223024638281" tags="DOC" title="Keyboard Shortcut">
+<div created="20200223020201942" modified="20200319093715650" tags="DOC" title="Keyboard Shortcut">
 <pre>You can create a keyboard shortcut to run an action.
 
 * Create a new tiddler with the prefix &quot;$:/config/ShortcutInfo/&quot;
@@ -10028,6 +10118,9 @@ keyboard action SaveAllChanges
 * Add a new tag `$:/tags/KeyboardShortcut`
 
 * Enter your action commands in the text field
+** In this case, sent the &quot;tm-save-wiki&quot; message and set the Sidebar's visibilty variable to &quot;no&quot;
+** Another potential message is &quot;tm-home&quot;, which closes all tiddlers and re-opens the default tiddlers as when you first opened the TiddlyWiki file
+** The &quot;tm-download-file&quot; action can export an [[HTML converted file |Export HTML]] of a tiddler list
 
 ```
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;/&gt;
@@ -10044,7 +10137,7 @@ keyboard action SaveAllChanges
 
 * Press Ctrl-S to download a copy of the TiddlyWiki file</pre>
 </div>
-<div created="20200111074534709" modified="20200116054555929" tags="DOC" title="Linking to External Files">
+<div created="20200111074534709" modified="20200319092627578" tags="DOC" title="Linking to External Files">
 <pre>There are different kinds of file links you can create in tiddler content.
 
 !Tiddler Link
@@ -10088,7 +10181,39 @@ When you type an &quot;http'''':/''''/&quot; or &quot;https'''':/''''/&quot; URL
 I prefer to create the &quot;[ext[&quot; External link title and relative path in an EXTLINK tagged tiddler and transclude the tiddler's content.
 
 {{TW Init Template2}}
-</pre>
+
+!Tiddler Content as Link Text
+
+Create a new tiddler to hold a global macro
+
+* Title = mcr OneLink
+* tag = `$:/tags/Macro`
+
+```
+\define OneLink(UrParentTag)
+&lt;a target=_blank href={{$UrParentTag$}}
+&gt;$UrParentTag$&lt;/a&gt;
+\end
+```
+
+Create a second tiddler to hold an external link title and url
+
+* Title = TiddlyWiki Home Page
+* Content = https://tiddlywiki.com/
+
+In any tiddler, call the macro and pass the title of the external link
+
+```
+&lt;&lt;OneLink &quot;TiddlyWiki Home Page&quot; &gt;&gt;
+```
+
+Hover your mouse over the hyperlink to see the destination URL at the bottom of the browser window
+
+&lt;&lt;&lt;
+&lt;&lt;OneLink &quot;TiddlyWiki Home Page&quot; &gt;&gt;
+
+{{img Browser Hyperlink}}
+&lt;&lt;&lt;</pre>
 </div>
 <div created="20200115054424658" modified="20200203150103464" tags="DOC" title="Linking to Tiddler Tags">
 <pre>!Basic list
@@ -10187,9 +10312,19 @@ The macro `timeline` shows a list of tiddlers sorted by modified date in reverse
 <div created="20200116004924785" modified="20200116054709250" tags="[[Linking to Tiddler Tags page]]" title="Linking to Tiddler Tags p2">
 <pre>Here is another page for the Linking to Tiddlers doc</pre>
 </div>
+<div created="20200319092542069" modified="20200319100924449" tags="META $:/tags/Macro" title="mcr OneLink">
+<pre>\define OneLink(UrParentTag)
+&lt;a href={{$UrParentTag$}}
+target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;$UrParentTag$&lt;/a&gt;
+\end
+</pre>
+</div>
 <div created="20200203145901151" modified="20200203145909624" tags="META" title="Recent entries">
 <pre>&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;
 </pre>
+</div>
+<div created="20200302224648387" modified="20200319101720620" tags="EXTLINK" title="Sidebar Shelf Button source code">
+<pre>https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid</pre>
 </div>
 <div created="20200115055659915" modified="20200115080657092" tags="META" title="snip Back to Index">
 <pre>&lt;$vars parent_tag=&quot;INDEX&quot;&gt;{{snip Back to UrTag}}&lt;/$vars&gt;</pre>
@@ -10453,47 +10588,76 @@ Surrounding text with an ampersand (&amp;) and a semi-colon translate to an HTML
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20200302210740425" modified="20200302210755667" tags="EXTLINK" title="TextReplace">
-<pre>[ext[Text Replace bar
-|TiddlyWiki Plugin Text Replace Bar.html]]</pre>
+<div created="20200302210740425" modified="20200319101917984" tags="EXTLINK" title="Text Replace bar">
+<pre>TiddlyWiki Plugin Text Replace Bar.html</pre>
 </div>
-<div created="20200115100001717" modified="20200225003705503" tags="DOC" title="TiddlyWiki Blank Template">
-<pre>All the TiddlyWiki documents have the same basic features. These are in the [ext[TiddlyWiki Blank Template|TW_Template.html]] that I use to create all new wiki documents.
+<div created="20200116063613535" modified="20200319094919704" tags="EXTLINK" title="Tiddly Wiki Home Button source code">
+<pre>https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid</pre>
+</div>
+<div created="20200319094510169" modified="20200319094728006" tags="EXTLINK" title="TiddlyWiki Blank Template">
+<pre>TW_Template.htm</pre>
+</div>
+<div created="20200115100001717" modified="20200319103004195" tags="DOC" title="TiddlyWiki Blank Template setup">
+<pre>All the TiddlyWiki documents have the same basic features. These are in the &lt;&lt;OneLink &quot;TiddlyWiki Blank Template&quot;&gt;&gt; that I use to create all new wiki documents.
 
-* The SideBar menu is [[hidden on start-up|TiddlyWiki Startup Options]]
+* SideBar customizations
+** The SideBar menu is [[hidden on start-up|TiddlyWiki Startup Options]]
 
-* The SideBar title is set from the $:/ControlPanel tiddler Info tab Basic sub-tab's Title and Subtitle fields
+** The SideBar title is set from the $:/ControlPanel tiddler Info tab Basic sub-tab's Title and Subtitle fields
 
-* The &quot;Show editor toolbar&quot; option is cleared from the $:/ControlPanel tiddler Settings tab's Editor Toolbar section
+** The SideBar menu only has Home and Save icon buttons at the top. (The SideBar menu Tools tab's checkboxes determine which icon buttons show at the SideBar top.)
 
-* The &quot;Navigation from outside the story river&quot; option is set to &quot;Open at the bottom of the story river&quot; from the $:/ControlPanel tiddler Settings tab's Tiddler Opening Behaviour section
+* Tiddler editing customizations
+** The &quot;Show editor toolbar&quot; option is cleared from the $:/ControlPanel tiddler Settings tab's Editor Toolbar section
 
-* The SideBar menu only has Home and Save icon buttons at the top. (The SideBar menu Tools tab's checkboxes determine which icon buttons show at the SideBar top.)
+** Add the &lt;&lt;OneLink &quot;Text Replace bar&quot;&gt;&gt;
+
+* Tiddler view customizations
+** The &quot;Navigation from outside the story river&quot; option is set to &quot;Open at the bottom of the story river&quot; from the $:/ControlPanel tiddler Settings tab's Tiddler Opening Behaviour section
 
 * There is a &quot;Home&quot; button in the [[footer of every tiddler|Global Tiddler Footer]]
 
-* A [[Keyboard Shortcut]] saves the TiddlyWiki file when you press the Alt-S key combination
+* Data entry customizations
+** A [[Keyboard Shortcut]] saves the TiddlyWiki file when you press the Alt-S key combination
 
-* The META tagged tiddlers hold &quot;how to&quot; information about TiddlyWiki, and a [[Recent entries]] list
+* Internal documentation notes
+** The META tagged tiddlers hold &quot;how to&quot; information about TiddlyWiki
 
-* The EXTLINK tagged tiddlers hold relative or absolute URL references to the other documents
+** Include a [[Recent entries]] list
 
-* There should be only one INDEX tagged tiddler showing a Table of Contents list of the first-level tiddlers
+** Include [[Font Size]] buttons
 
-* The INDEX tag is light-purple, set using the SideBar menu More tab' Tag Manager app
+** The EXTLINK tagged tiddlers hold relative or absolute URL references to the other documents
 
-* If desired, you can [[Add a Favicon|Adding a Webpage Favicon]]</pre>
+* Default tiddler
+** There should be only one INDEX tagged tiddler showing a Table of Contents list of the first-level tiddlers
+
+** The INDEX tag is light-purple, set using the SideBar menu More tab' Tag Manager app
+
+* Browser formatting
+** If desired, you can [[Add a Favicon|Adding a Webpage Favicon]]</pre>
 </div>
-<div created="20190925054126842" modified="20200302210842835" tags="DOC" title="TiddlyWiki Startup Options">
+<div created="20200319092205465" modified="20200319092218190" tags="EXTLINK" title="TiddlyWiki Home Page">
+<pre>https://tiddlywiki.com/</pre>
+</div>
+<div created="20200127215452684" modified="20200319101544748" tags="EXTLINK" title="TiddlyWiki Save Button source code">
+<pre>https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid</pre>
+</div>
+<div created="20190925054126842" modified="20200319104052306" tags="DOC" title="TiddlyWiki Startup Options">
 <pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
 
 There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
 
-{{HideHeader}}
+&lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;
 
 The tiddler text entry box does uses the standard web browser text Find feature. The below Tiddly describes a plugin that adds a text Replace bar above the text entry box.
 
-{{TextReplace}}</pre>
+&lt;&lt;OneLink &quot;Text Replace bar&quot;&gt;&gt;
+
+[img width=400px [img Text Replace bar]]</pre>
+</div>
+<div created="20200116063944589" modified="20200319101645641" tags="EXTLINK" title="TiddlyWiki TopBar Menu">
+<pre>https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid</pre>
 </div>
 <div created="20190925051442835" modified="20200115101255691" tags="DOC" title="What is this Wiki Stuff?">
 <pre>Here is some notes on [[How to use markup in Tiddly Wiki|Articles on how to use Tiddly Wiki]].
