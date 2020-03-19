@@ -9659,7 +9659,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200319103421180" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200319110739282" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200116064921508" title="$:/state/tab--1498284803">
@@ -9674,7 +9674,7 @@ exports.startup = function() {
 <div created="20190925014513912" modified="20200319091711461" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
-<div created="20200319103838451" list="[[Articles on how to use Tiddly Wiki]] [[TiddlyWiki Startup Options]]" modified="20200319103922695" title="$:/StoryList">
+<div created="20200319110754543" list="[[Articles on how to use Tiddly Wiki]] [[Linking to External Files]]" modified="20200319110754543" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200116064946379" title="$:/temp/advancedsearch">
@@ -10137,7 +10137,7 @@ keyboard action SaveAllChanges
 
 * Press Ctrl-S to download a copy of the TiddlyWiki file</pre>
 </div>
-<div created="20200111074534709" modified="20200319092627578" tags="DOC" title="Linking to External Files">
+<div created="20200111074534709" modified="20200319111427717" tags="DOC" title="Linking to External Files">
 <pre>There are different kinds of file links you can create in tiddler content.
 
 !Tiddler Link
@@ -10213,7 +10213,37 @@ Hover your mouse over the hyperlink to see the destination URL at the bottom of 
 &lt;&lt;OneLink &quot;TiddlyWiki Home Page&quot; &gt;&gt;
 
 {{img Browser Hyperlink}}
-&lt;&lt;&lt;</pre>
+&lt;&lt;&lt;
+
+!Video Link
+
+Create a global macro for linking videos
+
+* Title = &quot;mcr OneVid&quot;
+* Tag = `$:/tags/Macro`
+
+```
+\define OneVid(UrFolder,UrVideo,UrTime)
+&lt;video width=&quot;320&quot; height=&quot;180&quot;
+controls preload=&quot;none&quot;&gt;
+&lt;source src=&quot;vid/$UrFolder$/$UrVideo$.mp4#t=$UrTime$&quot; type=
+&quot;video/mp4&quot;&gt;
+Your browser does not support the HTML 5 video tag.
+&lt;/video&gt;
+\end
+```
+
+Call the macro
+
+* Specify the sub-folder
+* Specify the MP4 file in the sub-folder
+* Specify the start time
+
+```
+&lt;&lt;OneVid &quot;MyVideosSubFolder&quot; &quot;MyVideoFile&quot; &quot;00:01:00&quot;&gt;&gt;
+```
+
+</pre>
 </div>
 <div created="20200115054424658" modified="20200203150103464" tags="DOC" title="Linking to Tiddler Tags">
 <pre>!Basic list
