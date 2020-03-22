@@ -8,6 +8,7 @@
   
 [TiddlyWiki Blank Template]
 - Mention the new Alt-H and Ctrl-Alt-Shft-H shortcuts
+- link to local empty.html
 
 [On Save action]
 - Set Control Panel tiddler Info tab as the default when saving
@@ -16,3 +17,4 @@
 [usage examples]
 - Now macro
 <<now YYYYd0MMm0DD>> <<now DDD>>
+

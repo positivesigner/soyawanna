@@ -335,7 +335,7 @@ Namespace Mx
                     Dim intFOUND_END_QS = InStr(intFOUND_START_QS, strRET, qs)
                     Dim intLINK_LENGTH = intFOUND_END_QS - intFOUND_START_QS
                     Dim strHLINK = Mid(strRET, intFOUND_START_QS, intLINK_LENGTH)
-                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt).Replace(".htm", ".html")
+                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt).Replace(".htm", ".html").Replace("./index.html", "./index.htm")
                     strRET = Mid(strRET, 1, intFOUND_START_QS - 1) & strHLINK & Mid(strRET, intFOUND_END_QS)
                     Fix_Loc_Href = strRET
                 End Function 'Fix_Loc_Href
