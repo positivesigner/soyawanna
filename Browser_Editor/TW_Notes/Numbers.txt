@@ -1,0 +1,11 @@
+[any new tiddler]
+
+```
+<$text text={{{[tag[BILLS]get[text]sum[]match[303]add[-303]]}}}/>
+```
+
+<$text text={{{[tag[BILLS]get[text]sum[]match[3030]add[-303]]}}}/>
+
+= 2727
+
+{{{ [tag[BILLS]] }}}
