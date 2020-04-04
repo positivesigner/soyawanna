@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>PositiveSigner Journal — Topics of interest</title>
+<title>TiddlyWiki Template — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -147,6 +147,12 @@ Error message and password prompt
 
 <li>$:/config/HideSidebarOnStartup</li>
 
+<li>$:/config/Manager/Filter</li>
+
+<li>$:/config/Manager/RecentTags</li>
+
+<li>$:/config/Manager/System</li>
+
 <li>$:/config/MissingLinks</li>
 
 <li>$:/config/Navigation/openLinkFromOutsideRiver</li>
@@ -219,35 +225,31 @@ Error message and password prompt
 
 <li>$:/temp/advancedsearch</li>
 
-<li>$:/temp/HidePluginWarning</li>
-
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>Browser - Editor</li>
+<li>Command Line options</li>
 
-<li>Browser - Extension</li>
+<li>Create disk drive</li>
 
-<li>Browser - Install</li>
-
-<li>Browser - Javascript</li>
-
-<li>Browser - Local File</li>
-
-<li>Disk - Ram drive</li>
-
-<li>Disk - Shortcut</li>
-
-<li>ext Root doc</li>
+<li>ext Parent Return</li>
 
 <li>Font Size</li>
 
-<li>Git - Install</li>
+<li>Full Command-Line help</li>
 
-<li>HideHeader</li>
+<li>Hiding The Sidebar On Startup</li>
+
+<li>ImDisk .NET DLL component</li>
+
+<li>ImDisk install package version 2.0.10</li>
+
+<li>ImDisk Virtual Disk Driver</li>
 
 <li>INDEX</li>
 
@@ -257,13 +259,11 @@ Error message and password prompt
 
 <li>keyboard action SaveHtmlConverted</li>
 
+<li>LTR.IO.ImDisk API</li>
+
 <li>mcr OneLink</li>
 
-<li>Play Store web page for Chrome Extension Export extension</li>
-
-<li>Play Story web page for Clear Downloads Bar extension</li>
-
-<li>PositiveSigner Journal topics</li>
+<li>Ram Disk</li>
 
 <li>Recent entries</li>
 
@@ -271,27 +271,9 @@ Error message and password prompt
 
 <li>template Home Button</li>
 
-<li>TiddlerMove Scheduler</li>
-
-<li>TiddlyWiki Home Page</li>
-
 <li>TiddlyWiki Startup Options</li>
 
-<li>TiddlyWiki Template Setup</li>
-
-<li>VB.Net - Compiler</li>
-
-<li>VB.Net - Scheduler</li>
-
-<li>VBNetScript.exe</li>
-
-<li>Website - Hosting</li>
-
 <li>What is this Wiki Stuff?</li>
-
-<li>ZIP file of Chrome Extension Export extension</li>
-
-<li>ZIP File of Clear Downloads Bar extension</li>
 
 </ul>
 </p>
@@ -303,7 +285,7 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div bag="default" created="20151010151732122" creator="Tobias Beer" modified="20200322120859860" module-type="startup" revision="0" tags="META" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript">
+<div bag="default" created="20151010151732122" creator="Tobias Beer" modified="20200322104155292" module-type="startup" revision="0" tags="META" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript">
 <pre>/*\
 title: $:/.tb/modules/startup/hide-sidebar.js
 type: application/javascript
@@ -339,10 +321,19 @@ exports.startup = function() {
 <div created="20190925052308177" modified="20190925052323703" title="$:/config/DefaultSidebarTab">
 <pre>$:/core/ui/SideBar/Open</pre>
 </div>
-<div bag="default" created="20151007165524815" creator="Tobias Beer" modified="20200322120847846" revision="0" tags="META" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki">
+<div bag="default" created="20151007165524815" creator="Tobias Beer" modified="20200322104205653" revision="0" tags="META" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki">
 <pre>yes</pre>
 </div>
-<div created="20190925061735308" modified="20200322120836325" tags="META" title="$:/config/MissingLinks">
+<div created="20200302210534350" modified="20200302210611374" title="$:/config/Manager/Filter">
+<pre></pre>
+</div>
+<div created="20200302210551832" list="META" modified="20200302210556377" title="$:/config/Manager/RecentTags">
+<pre></pre>
+</div>
+<div created="20200302210537880" modified="20200302210613096" title="$:/config/Manager/System">
+<pre>system</pre>
+</div>
+<div created="20190925061735308" modified="20200322103952041" tags="META" title="$:/config/MissingLinks">
 <pre>no</pre>
 </div>
 <div created="20200111053033740" modified="20200111053033740" title="$:/config/Navigation/openLinkFromOutsideRiver">
@@ -360,28 +351,28 @@ exports.startup = function() {
 <div created="20190925051431806" modified="20190925051431807" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
 <pre>hide</pre>
 </div>
-<div created="20200319044759484" modified="20200319044808499" tags="META" title="$:/config/ShortcutInfo/home-tiddlers">
+<div created="20200314145912234" modified="20200314145935323" tags="META" title="$:/config/ShortcutInfo/home-tiddlers">
 <pre></pre>
 </div>
-<div created="20200223015218466" modified="20200223015239162" tags="META" title="$:/config/ShortcutInfo/save-all-changes">
+<div created="20200223012716802" modified="20200223013001664" tags="META" title="$:/config/ShortcutInfo/save-all-changes">
 <pre></pre>
 </div>
-<div created="20200303035402492" modified="20200303035428926" tags="META" title="$:/config/ShortcutInfo/save-html-converted">
+<div created="20200303061746900" modified="20200303061752887" tags="META" title="$:/config/ShortcutInfo/save-html-converted">
 <pre></pre>
 </div>
-<div created="20200319044948188" modified="20200322120824390" tags="META" title="$:/config/shortcuts/home-tiddlers">
+<div created="20200314150022726" modified="20200322104217954" tags="META" title="$:/config/shortcuts/home-tiddlers">
 <pre>alt-H</pre>
 </div>
-<div created="20200223015346470" modified="20200322120812721" tags="META" title="$:/config/shortcuts/save-all-changes">
+<div created="20200223012858820" modified="20200322104227854" tags="META" title="$:/config/shortcuts/save-all-changes">
 <pre>alt-S</pre>
 </div>
-<div created="20200303035452668" modified="20200322120749838" tags="META" title="$:/config/shortcuts/save-html-converted">
+<div created="20200303061810279" modified="20200322104242073" tags="META" title="$:/config/shortcuts/save-html-converted">
 <pre>ctrl-shift-alt-H</pre>
 </div>
-<div created="20190925061557600" modified="20200322120734143" tags="META" title="$:/config/TextEditor/EnableToolbar">
+<div created="20190925061557600" modified="20200322104016703" tags="META" title="$:/config/TextEditor/EnableToolbar">
 <pre>no</pre>
 </div>
-<div created="20190925061819062" modified="20200322120720059" tags="META" title="$:/config/Toolbar/Icons">
+<div created="20190925061819062" modified="20200322104004518" tags="META" title="$:/config/Toolbar/Icons">
 <pre>yes</pre>
 </div>
 <div created="20190925061714843" modified="20190925061714843" title="$:/config/WikiParserRules/Inline/wikilink">
@@ -9586,7 +9577,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[TiddlyWiki Startup Options]]</pre>
+# [[template Home Button]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9635,25 +9626,25 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20190925014420922" modified="20200222231730154" title="$:/SiteSubtitle">
-<pre>Topics of interest</pre>
+<div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
+<pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200222231720244" title="$:/SiteTitle">
-<pre>PositiveSigner Journal</pre>
+<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
+<pre>TiddlyWiki Template</pre>
 </div>
-<div created="20200319044943341" modified="20200319044951564" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
+<div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
 </div>
-<div created="20200223015341294" modified="20200223015351520" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
+<div created="20200223012850920" modified="20200303061803910" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
 <pre>close</pre>
 </div>
-<div created="20200303035445220" modified="20200319044941573" title="$:/state/dropdown/keyboardshortcut/save-html-converted-286565879">
+<div created="20200303061805552" modified="20200314150016898" title="$:/state/dropdown/keyboardshortcut/save-html-converted-286565879">
 <pre>close</pre>
 </div>
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200404064952561" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200404072153499" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9665,23 +9656,20 @@ exports.startup = function() {
 <div created="20190925052229880" modified="20200115080408562" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20190925051414187" modified="20200319044954208" title="$:/state/tab-1749438307">
+<div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200322120456186" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200322111831633" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200404065047712" list="[[PositiveSigner Journal topics]] [[Browser - Install]]" modified="20200404065052304" title="$:/StoryList">
+<div created="20200404071242820" list="[[Ram Disk]] [[Command Line options]]" modified="20200404071242820" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
+<div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
 <pre>[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]</pre>
-</div>
-<div created="20200322121153247" modified="20200322121153247" title="$:/temp/HidePluginWarning">
-<pre>yes</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9696,7 +9684,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/index.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Hardware_Sound/ImDisk%20RamDisk.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9716,7 +9704,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/index.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Hardware_Sound/ImDisk%20RamDisk.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9740,6 +9728,9 @@ exports.startup = function() {
         }
     }
 }</pre>
+</div>
+<div created="20200302210517854" modified="20200302210519836" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9850,108 +9841,247 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200222231808212" modified="20200319042855484" tags="DOC" title="Browser - Editor">
-<pre>I like how TiddlyWiki allows me to use my web browser as a notepad and website.
+<div created="20200404053639980" modified="20200404072437480" tags="DOC" title="Command Line options">
+<pre>The imdisk command is available after installing the program.
 
-&lt;&lt;OneLink &quot;TiddlyWiki Home Page&quot; &gt;&gt;
+* C:\Windows\System32\imdisk.exe
+* `imdisk` (without any parameters) gives you command-line help
+*&gt; See the [[Full Command-Line help]] document
 
-I have a specific template that I use.
-
-&lt;&lt;OneLink &quot;TiddlyWiki Template Setup&quot;&gt;&gt;</pre>
-</div>
-<div created="20200222232421384" modified="20200319044653768" tags="DOC" title="Browser - Extension">
-<pre>Chrome has custom functionality that you can download from the Chrome Webstore
-
-!! Downloads bar 
-
-When using TiddlyWiki, I find the Chrome Downloads bar irritating. I can keep it hidden by using an extension.
-
-&lt;&lt;&lt;
-Always Clear Downloads in Chrome
-Offered by: Tab Manager Plus
-
-Visit &lt;&lt;OneLink &quot;Play Story web page for Clear Downloads Bar extension&quot;&gt;&gt;
-
-Download &lt;&lt;OneLink &quot;ZIP File of Clear Downloads Bar extension&quot;&gt;&gt;
-
-In the Chrome Extensions page, you can see the extension's Details to change its settings. I prefer to check the option &quot;Allow in incognito.&quot;
-
-On the details page, there is an &quot;Extension Options&quot; link. Here I prefer to check the option &quot;Only disable download shelf.&quot;
-&lt;&lt;&lt;
-
-!! Extension Intsall
-
-I am able to download the extension's install file from its Chrome Webstore page.
-
-&lt;&lt;&lt;
-Get CRX
-Offered by: Adam Carbonell
-
-Visit &lt;&lt;OneLink &quot;Play Store web page for Chrome Extension Export extension&quot;&gt;&gt;
-
-Download &lt;&lt;OneLink &quot;ZIP file of Chrome Extension Export extension&quot;&gt;&gt;
-
-In the Chrome Extensions page, select an extension's Details to change its settings. There is a link to &quot;View in Chrome Web Store&quot;. From that page, this extension adds a right-click menu option to download the extension as a .CRX file.
-
-When trying to install an extension using the .CRX file, on the Chrome Extensions page you need to turn on the Developer Mode and re-fresh the page. When you drag-drop a file onto the Chrome Extensions page, the entire page fades out and states &quot;Drop to Install.&quot;
-&lt;&lt;&lt;</pre>
-</div>
-<div created="20200222231926017" modified="20200404071030505" tags="DOC" title="Browser - Install">
-<pre>I use the portable version of Google Chrome with my thumb drive.
-
-[ext[Google Chrome PortableApp
-|https://portableapps.com/apps/internet/google_chrome_portable]]
-
-You can create a shortcut to the program and add command-line parameters.
-
-*  --incognito
-*&gt; Starts with an open Incognito window
-
-* --user-data-dir=&quot;UrPath&quot;
-
-* --disk-cache-dir=&quot;UrPath&quot;
-*&gt; This defaults to below the user cache at `C:\Users\[UrUser]\AppData\Local\Google\Chrome\User Data\Default\Cache`
-
-* --disk-cache-size=UrSize
-*&gt; This is in bytes
-
-* -- &quot;%1&quot;
-*&gt; Make sure you keep this if you are trying to update the Registry key that specifies the path for the default web browser
-</pre>
-</div>
-<div created="20200319000731171" modified="20200319000809328" tags="DOC" title="Browser - Javascript">
-<pre>Bookmarklets</pre>
-</div>
-<div created="20200319120413043" modified="20200319120551406" tags="DOC" title="Browser - Local File">
-<pre>The Chrome Browser can view files stored on the tablet.
-
-file:///sdcard
-
-This will show you a web page listing all the directories in the root of the tablet.</pre>
-</div>
-<div created="20200404064313585" modified="20200404064638353" tags="DOC" title="Disk - Ram drive">
-<pre>Use the [ext[ImDisk Ram Disk
-|Hardware_Sound/ImDisk%20RamDisk.htm]] utility to assign drive letters to virtual disk drives.
+!!List existing ram disk mount points
 
 ```
-runas /user:administrator &quot;imdisk -a -m D: -s 50M -p \&quot;/fs:ntfs /q /y\&quot;&quot;
+imdisk -l [-u unit | -m mountpoint]
 ```
-* Note: The RunAs command needs the program name and parameters enclosed entirely within quotes, so you need to escape any quoted parameters using a backslash</pre>
+
+-l to     List configured devices. If given with -u or -m, display details about
+        that particular device.
+
+-m mountpoint to         Specify a drive letter or mount point for the new virtual disk, the
+        virtual disk to query or the virtual disk to remove. When creating a
+        new virtual disk you can specify #: as mountpoint in which case the
+        first unused drive letter is automatically used.
+
+-u unit
+        Along with -a, request a specific unit number for the ImDisk device
+        instead of automatic allocation. Along with -d or -l specifies the
+        unit number of the virtual disk to remove or query.
+
+```
+imdisk -l -u 0
+
+imdisk -l -m D:
+```
+
+''ADMIN PRIVILEGES REQUIRED'''
+
+* You can start the Administrative Command Line program by right-clicking on the Windows Start button, or Windows Key-X then type A
+* Or you can type &quot;cmd&quot; in the Windows Start menu and click the option to &quot;Run as Administrator&quot;, or simply type Ctrl-Shift-Enter
+* Or you use Windows Key-R to show the Run dialog, and enter `runas /user:Administrator cmd`
+* On Windows 10 you can use Windows Key-R, type `cmd` and Ctrl-Shift-Enter
+* From an existing command line, you can type ` runas /user:administrator &quot;imdisk -d -m D:&quot; ` but change the parameters as desired
+
+
+```
+runas /user:administrator &quot;cmd /c imdisk -a -m D: -s 50M -p \&quot;/fs:ntfs /q /y\&quot; &amp; pause&quot;
+```
+* Note: The RunAs command needs the program name and parameters enclosed entirely within quotes, so you need to escape any quoted parameters using a backslash
+* The RunAs command automatically closes the shell window when complete unless you use cmd /k first
+* The RunAs command cannot run multiple commands (with the &amp; separator) unless you use cmd /c or cmd /k first
+
+
+
+!!Remove existing ram disk
+```
+imdisk -d|-D [-u unit | -m mountpoint] [-P]
+```
+Detach a virtual disk from the system and release all resources.
+Use -D to force removal even if the device is in use.
+
+-R for Emergency removal of hung virtual disks. Should only be used as a last resort when a virtual disk has some kind of problem that makes it impossible to detach it in a safe way.
+
+!!Resize existing ram disk
+```
+imdisk -e [-s size] [-o opt1[,opt2 ...]] [-u unit | -m mountpoint]
+```
+
+-e to     Edit an existing virtual disk.
+
+        Along with the -s parameter extends the size of an existing virtual
+        disk. Note that even if the disk can be extended successfully, the
+        existing filesystem on it can only be extended to fill the new size
+        without re-formatting if you are running Windows 2000 or later and the
+        current filesystem is NTFS.
+
+        Along with the -o parameter changes media characteristics for an
+        existing virtual disk. Options that can be changed on existing virtual
+        disks are those specifying wether or not the media of the virtual disk
+        should be writable and/or removable.
+
+!!Create a new ram disk
+ ```
+imdisk -a -t type -m mountpoint [-n] [-o opt1[,opt2 ...]] [-f|-F file]
+       [-s size] [-b offset] [-v partition] [-S sectorsize] [-u unit]
+       [-x sectors/track] [-y tracks/cylinder] [-p &quot;format-parameters&quot;] [-P]
+```
+
+*-a  
+&lt;&lt;&lt;
+Attach a virtual disk. This will configure and attach a virtual disk
+        with the parameters specified and attach it to the system.
+&lt;&lt;&lt;
+
+* -t type
+&lt;&lt;&lt;
+        Select the backingstore for the virtual disk.
+
+* vm
+* file
+* proxy
+&lt;&lt;&lt;
+
+
+* -s size
+&lt;&lt;&lt;
+Lowercase &quot;s&quot;
+
+        Size of the virtual disk. Size is number of bytes unless suffixed with:
+
+* b = 514-byte blocks
+* k = thousand bytes
+* m = million bytes
+* g = billion bytes
+* t = trillion bytes
+* K = kilobytes
+* M = megabytes
+* G = gigabytes
+* T = terabytes
+
+The suffix
+        can also be % to indicate percentage of free physical memory which
+        could be useful when creating vm type virtual disks.
+
+        The size can be a negative value to indicate the size of free physical
+        memory minus this size.
+&lt;&lt;&lt;
+
+* -S sectorsize
+&lt;&lt;&lt;
+Capital &quot;S&quot;
+
+        Sectorsize to use for the virtual disk device. Default value is 512
+        bytes except for CD-ROM/DVD-ROM style devices where 2048 bytes is used
+        by default.
+&lt;&lt;&lt;
+
+* -p &quot;format-parameters&quot;
+&lt;&lt;&lt;
+        If -p is specified the 'format' command is invoked to create a
+        filesystem when the new virtual disk has been created.
+
+        &quot;format-parameters&quot; must be a parameter string enclosed within
+        double-quotes. The string is added to the command line that starts
+        'format'. You usually specify something like &quot;/fs:ntfs /q /y&quot;, that
+        is, create an NTFS filesystem with quick formatting and without user
+        interaction.
+&lt;&lt;&lt;
+
+* -o option
+&lt;&lt;&lt;
+        Set or reset options.
+
+* ro
+* rw
+* sparse
+* rem
+* fix
+* saved
+* cd
+* fd
+* hd
+* raw
+* ip
+* comm
+* shm
+* awe
+* bswap
+* shared
+* par
+&lt;&lt;&lt;
+
+* -o fix     
+&lt;&lt;&lt;
+Specifies that the media characteristics of the virtual disk should be
+        fixed media, as opposed to removable media specified with the rem
+        option. Fixed media is the default setting.
+&lt;&lt;&lt;
+
+```
+imdisk -a -m D: -s 50M -p &quot;/fs:ntfs /q /y&quot;
+```</pre>
 </div>
-<div created="20200319120553262" modified="20200319121005452" tags="DOC" title="Disk - Shortcut">
-<pre>Android can create a Home Screen Shortcut to Website
+<div created="20200404030049493" modified="20200404042922704" tags="DOC" title="Create disk drive">
+<pre>&lt;&lt;OneLink &quot;ImDisk Virtual Disk Driver&quot;&gt;&gt;
 
-* Note: You cannot create a website shortcut from an Incognito tab or a local file URL
-* Click the upper-right menu (three vertical-dots) and select &quot;Add to Home screen&quot;
+&lt;&lt;OneLink &quot;ImDisk install package version 2.0.10&quot;&gt;&gt;
 
-Total Commander can create a Desktop URL shortcut to a local HTML file
+The install package installs a console-mode control program called imdisk.exe and a Control Panel applet. After install is finished, type imdisk without parameters for syntax help or double click the ImDisk icon in the Control Panel. It also adds a menu item in Windows Explorer so that you can right-click on a file to mount it as a virtual disk drive. The driver, service and control program can be uninstalled using the Add/Remove programs applet in the Control Panel.
 
-* Hold-click on the HTML file and select &quot;Create link on desktop&quot;
-* At the end of the Commend field, click the &gt;&gt; button and select &quot;Choose app *&quot;
-* Select the Chrome app and click the OK / Apply button</pre>
+!!Setup
+
+Run the program imdiskinst.exe
+
+* works on both 32-bit and 64-bit versions of Windows.
+* //''Security Notice:''// Always download setup packages to a new empty directory. To run a setup package from a directory with other unrelated files could be ``dangerous!``
+* No reboot is required after installing or uninstalling.
+* The install package now automatically starts the driver at end of setup
+* There is a &lt;&lt;OneLink &quot;ImDisk .NET DLL component&quot;&gt;&gt; exposing the &lt;&lt;OneLink &quot;LTR.IO.ImDisk API&quot;&gt;&gt;
+
+!!Usage
+
+Open the Control Panel
+
+* Search for ImDisk
+* Click the ImDisk Virtual Disk Driver link -&gt; Opens form
+
+On form ImDisk Virtual Disk Driver
+
+* [File menu]
+* Click option Mount New Virtual Disk -&gt; Opens dialog
+* [dialog Mount New Virtual Disk]
+* Size of Virtual Disk = 50
+* Megabytes = set
+* Device Type = Auto
+* [options Image file access]
+* Leave all options = clear
+* Removable media = clear
+* Read-only media = clear
+* Click button OK -&gt; Closes dialog
+* [list Current Modified Virtual Disks]
+* Note: There is a new Drive letter with Size = 50 MB and File System = N/A
+
+Open the Windows Explorer
+
+* [Navigate to This PC]
+* Right-click the new Drive letter, click option Format -&gt; Opens window
+
+On window Format Local Disk
+
+* Make sure the window title shows the new Drive letter
+* Make sure the Capacity matches the new Drive size
+* File system = NTFS
+* Allocation unit size = 512 bytes
+*&gt; Larger allocation units means smaller files tak e up more space, but there is more drive space available for files
+* Volume label = RamDisk
+* [Format options]
+* Qucik Format = set
+* Click button Start
+* Close the window when done
+
+You may now copy files to the new Drive letter until the allocated space is full.</pre>
 </div>
-<div created="20200223043343881" modified="20200223043440516" tags="EXTLINK" title="ext Root doc">
-<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
+<div created="20200223043825137" modified="20200404064925428" tags="EXTLINK" title="ext Parent Return">
+<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.htm]]&lt;/div&gt;</pre>
 </div>
 <div created="20200319102534436" modified="20200319102543033" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
@@ -9971,30 +10101,295 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
-<div created="20200319120242810" modified="20200319120344086" tags="DOC" title="Git - Install">
-<pre>Android has the MGit app</pre>
+<div created="20200404055147191" modified="20200404055224340" tags="REF" title="Full Command-Line help">
+<pre>```
+Control program for the ImDisk Virtual Disk Driver.
+For copyrights and credits, type imdisk --version
+
+Syntax:
+imdisk -a -t type -m mountpoint [-n] [-o opt1[,opt2 ...]] [-f|-F file]
+       [-s size] [-b offset] [-v partition] [-S sectorsize] [-u unit]
+       [-x sectors/track] [-y tracks/cylinder] [-p &quot;format-parameters&quot;] [-P]
+imdisk -d|-D [-u unit | -m mountpoint] [-P]
+imdisk -R -u unit
+imdisk -l [-u unit | -m mountpoint]
+imdisk -e [-s size] [-o opt1[,opt2 ...]] [-u unit | -m mountpoint]
+
+-a      Attach a virtual disk. This will configure and attach a virtual disk
+        with the parameters specified and attach it to the system.
+
+-d      Detach a virtual disk from the system and release all resources.
+        Use -D to force removal even if the device is in use.
+
+-R      Emergency removal of hung virtual disks. Should only be used as a last
+        resort when a virtual disk has some kind of problem that makes it
+        impossible to detach it in a safe way. This could happen for example
+        for proxy-type virtual disks sometimes when proxy communication fails.
+        Note that this does not attempt to dismount filesystem or lock the
+        volume in any way so there is a potential risk of data loss. Use with
+        caution!
+
+-e      Edit an existing virtual disk.
+
+        Along with the -s parameter extends the size of an existing virtual
+        disk. Note that even if the disk can be extended successfully, the
+        existing filesystem on it can only be extended to fill the new size
+        without re-formatting if you are running Windows 2000 or later and the
+        current filesystem is NTFS.
+
+        Along with the -o parameter changes media characteristics for an
+        existing virtual disk. Options that can be changed on existing virtual
+        disks are those specifying wether or not the media of the virtual disk
+        should be writable and/or removable.
+
+-t type
+        Select the backingstore for the virtual disk.
+
+vm      Storage for this type of virtual disk is allocated from virtual memory
+        in the system process. If a file is specified with -f that file is
+        is loaded into the memory allocated for the disk image.
+
+file    A file specified with -f file becomes the backingstore for this
+        virtual disk.
+
+proxy   The actual backingstore for this type of virtual disk is controlled by
+        an ImDisk storage server accessed by the driver on this machine by
+        sending storage I/O request through a named pipe specified with -f.
+
+-f file or -F file
+        Filename to use as backingstore for the file type virtual disk, to
+        initialize a vm type virtual disk or name of a named pipe for I/O
+        client/server communication for proxy type virtual disks. For proxy
+        type virtual disks &quot;file&quot; may be a COM port or a remote server
+        address if the -o options includes &quot;ip&quot; or &quot;comm&quot;.
+
+        Instead of using -f to specify 'DOS-style' paths, such as
+        C:\dir\image.bin or \\server\share\image.bin, you can use -F to
+        specify 'NT-style' native paths, such as
+        \Device\Harddisk0\Partition1\image.bin. This makes it possible to
+        specify files on disks or communication devices that currently have no
+        drive letters assigned.
+
+-l      List configured devices. If given with -u or -m, display details about
+        that particular device.
+
+-n      When printing ImDisk device names, print only the unit number without
+        the \Device\ImDisk prefix.
+
+-s size
+        Size of the virtual disk. Size is number of bytes unless suffixed with
+        a b, k, m, g, t, K, M, G or T which denotes number of 512-byte blocks,
+        thousand bytes, million bytes, billion bytes, trillion bytes,
+        kilobytes, megabytes, gigabytes and terabytes respectively. The suffix
+        can also be % to indicate percentage of free physical memory which
+        could be useful when creating vm type virtual disks. It is optional to
+        specify a size unless the file to use for a file type virtual disk does
+        not already exist or when a vm type virtual disk is created without
+        specifying an initialization image file using the -f or -F. If size is
+        specified when creating a file type virtual disk, the size of the file
+        used as backingstore for the virtual disk is adjusted to the new size
+        specified with this size option.
+
+        The size can be a negative value to indicate the size of free physical
+        memory minus this size. If you e.g. type -400M the size of the virtual
+        disk will be the amount of free physical memory minus 400 MB.
+
+-b offset
+        Specifies an offset in an image file where the virtual disk begins. All
+        offsets of I/O operations on the virtual disk will be relative to this
+        offset. This parameter is particularily useful when mounting a specific
+        partition in an image file that contains an image of a complete hard
+        disk, not just one partition. This parameter has no effect when
+        creating a blank vm type virtual disk. When creating a vm type virtual
+        disk with a pre-load image file specified with -f or -F parameters, the
+        -b parameter specifies an offset in the image file where the image to
+        be loaded into the vm type virtual disk begins.
+
+        Specify auto as offset to automatically select offset for a few known
+        non-raw disk image file formats. Currently auto-selection is supported
+        for Nero .nrg and Microsoft .sdi image files.
+
+-v partition
+        Specifies which partition to mount when mounting a raw hard disk image
+        file containing a master boot record and partitions.
+
+        Specify number 1-4 to mount a partition from the primary partition
+        table and 5-8 to mount a partition from an extended partition table.
+
+-S sectorsize
+        Sectorsize to use for the virtual disk device. Default value is 512
+        bytes except for CD-ROM/DVD-ROM style devices where 2048 bytes is used
+        by default.
+
+-x sectors/track
+        See the description of the -y option below.
+
+-y tracks/cylinder
+        The -x and -y options can be used to specify a synthetic geometry.
+        This is useful for constructing bootable images for later download to
+        physical devices. Default values depend on the device-type specified
+        with the -o option. If the 'fd' option is specified the default values
+        are based on the virtual disk size, e.g. a 1440K image gets 2
+        tracks/cylinder and 18 sectors/track.
+
+-p &quot;format-parameters&quot;
+        If -p is specified the 'format' command is invoked to create a
+        filesystem when the new virtual disk has been created.
+        &quot;format-parameters&quot; must be a parameter string enclosed within
+        double-quotes. The string is added to the command line that starts
+        'format'. You usually specify something like &quot;/fs:ntfs /q /y&quot;, that
+        is, create an NTFS filesystem with quick formatting and without user
+        interaction.
+
+-o option
+        Set or reset options.
+
+ro      Creates a read-only virtual disk. For vm type virtual disks, this
+        option can only be used if the -f option is also specified.
+
+rw      Specifies that the virtual disk should be read/writable. This is the
+        default setting. It can be used with the -e parameter to set an
+        existing read-only virtual disk writable.
+
+sparse  Sets NTFS sparse attribute on image file. This has no effect on proxy
+        or vm type virtual disks.
+
+rem     Specifies that the device should be created with removable media
+        characteristics. This changes the device properties returned by the
+        driver to the system. For example, this changes how some filesystems
+        cache write operations.
+
+fix     Specifies that the media characteristics of the virtual disk should be
+        fixed media, as opposed to removable media specified with the rem
+        option. Fixed media is the default setting. The fix option can be used
+        with the -e parameter to set an existing removable virtual disk as
+        fixed.
+
+saved   Clears the 'image modified' flag from an existing virtual disk. This
+        flag is set by the driver when an image is modified and is displayed
+        in the -l output for a virtual disk. The 'saved' option is only valid
+        with the -e parameter.
+
+        Note that virtual floppy or CD/DVD-ROM drives are always read-only and
+        removable devices and that cannot be changed.
+
+cd      Creates a virtual CD-ROM/DVD-ROM. This is the default if the file
+        name specified with the -f option ends with either .iso, .nrg or .bin
+        extensions.
+
+fd      Creates a virtual floppy disk. This is the default if the size of the
+        virtual disk is any of 160K, 180K, 320K, 360K, 640K, 720K, 820K, 1200K,
+        1440K, 1680K, 1722K, 2880K, 123264K or 234752K.
+
+hd      Creates a virtual fixed disk partition. This is the default unless
+        file extension or size match the criterias for defaulting to the cd or
+        fd options.
+
+raw     Creates a device object with &quot;unknown&quot; device type. The system will not
+        attempt to do anything by its own with such devices, but it could be
+        useful in combination with third-party drivers that can provide further
+        device objects using this virtual disk device as a backing store.
+
+ip      Can only be used with proxy-type virtual disks. With this option, the
+        user-mode service component is initialized to connect to an ImDisk
+        storage server using TCP/IP. With this option, the -f switch specifies
+        the remote host optionally followed by a colon and a port number to
+        connect to.
+
+comm    Can only be used with proxy-type virtual disks. With this option, the
+        user-mode service component is initialized to connect to an ImDisk
+        storage server through a COM port. With this option, the -f switch
+        specifies the COM port to connect to, optionally followed by a colon,
+        a space, and then a device settings string with the same syntax as the
+        MODE command.
+
+shm     Can only be used with proxy-type virtual disks. With this option, the
+        driver communicates with a storage server on the same computer using
+        shared memory block to transfer I/O data.
+
+awe     Can only be used with file-type virtual disks. With this option, the
+        driver copies contents of image file to physical memory. No changes are
+        written to image file. If this option is used in combination with  no
+        image file name, a physical memory block will be used without loading
+        an image file onto it. In that case, -s parameter is needed to specify
+        size of memory block. This option requires awealloc driver, which
+        requires Windows 2000 or later.
+
+bswap   Instructs driver to swap each pair of bytes read from or written to
+        image file. Useful when examining images from some embedded systems
+        and similar where data is stored in reverse byte order.
+
+shared  Instructs driver to open image file in shared write mode even when
+        image is opened for writing. This can be useful to mount each partition
+        of a multi-partition image as separate virtual disks with different
+        image file offsets and sizes. It could potentially corrupt filesystems
+        if used with incorrect offset and size parameters so use with caution!
+
+par     Parallel I/O. Valid for file-type virtual disks. With this flag set,
+        driver sends read and write requests for the virtual disk directly down
+        to the filesystem driver that handles the image file, within the same
+        thread context as the original request was made. In some scenarios this
+        flag can increase performance, particularly when you use several layers
+        of virtual disks backed by image files stored on other virtual disks,
+        network file shares or similar storage.
+
+        This flag is not supported in all scenarios depending on other drivers
+        that need to complete requests to the image file. It could also degrade
+        performance or cause reads and writes to fail if underlying drivers
+        cannot handle I/O requests simultaneously.
+
+-u unit
+        Along with -a, request a specific unit number for the ImDisk device
+        instead of automatic allocation. Along with -d or -l specifies the
+        unit number of the virtual disk to remove or query.
+
+-m mountpoint
+        Specifies a drive letter or mount point for the new virtual disk, the
+        virtual disk to query or the virtual disk to remove. When creating a
+        new virtual disk you can specify #: as mountpoint in which case the
+        first unused drive letter is automatically used.
+
+-P      Persistent. Along with -a, saves registry settings for re-creating the
+        same virtual disk automatically when driver is loaded, which usually
+        occurs during system startup. Along with -d or -D, existing such
+        settings for the removed virtual disk are also removed from registry.
+        There are some limitations to what settings could be saved in this way.
+        Only features directly implemented in the kernel level driver are
+        saved, so for example the -p switch to format a virtual disk will not
+        be saved.
+```</pre>
 </div>
-<div created="20190925053827947" modified="20200111081344048" tags="EXTLINK" title="HideHeader">
-<pre>[ext[Hiding The Sidebar On Startup|TiddlyWiki Plugin Hiding The Sidebar On Startup.html]]</pre>
+<div created="20190925053827947" modified="20200319102244278" tags="EXTLINK" title="Hiding The Sidebar On Startup">
+<pre>TiddlyWiki Plugin Hiding The Sidebar On Startup.html</pre>
 </div>
-<div color="#8080c0" created="20190925051857974" modified="20200322120702481" tags="META" title="INDEX">
+<div created="20200404033341975" modified="20200404033410409" tags="EXTLINK" title="ImDisk .NET DLL component">
+<pre>http://www.ltr-data.se/files/ImDiskNet.dll</pre>
+</div>
+<div created="20200404030805355" modified="20200404030917875" tags="EXTLINK" title="ImDisk install package version 2.0.10">
+<pre>http://www.ltr-data.se/files/imdiskinst.exe</pre>
+</div>
+<div created="20200404030236796" modified="20200404030255022" tags="EXTLINK" title="ImDisk Virtual Disk Driver">
+<pre>http://www.ltr-data.se/opencode.html/#ImDisk</pre>
+</div>
+<div color="#8080c0" created="20190925051857974" modified="20200322103803201" tags="META" title="INDEX">
 <pre></pre>
 </div>
-<div created="20200319044821036" key="((home-tiddlers))" modified="20200319044904761" tags="META $:/tags/KeyboardShortcut" title="keyboard action HomeTiddlers">
+<div created="20200314150100178" key="((home-tiddlers))" modified="20200319102429815" tags="$:/tags/KeyboardShortcut META" title="keyboard action HomeTiddlers">
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-</pre>
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
 </div>
-<div created="20200223015240479" key="((save-all-changes))" modified="20200223015517172" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
+<div created="20200223012728498" key="((save-all-changes))" modified="20200223013015060" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
 <pre>&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 </pre>
 </div>
-<div created="20200303035514626" key="((save-html-converted))" modified="20200303035827453" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveHtmlConverted">
+<div created="20200303061828713" key="((save-html-converted))" modified="20200303061908908" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
 <pre>&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
 $param=&quot;$:/core/templates/exporters/StaticRiver&quot;
-exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
-</pre>
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;</pre>
+</div>
+<div created="20200404033145426" modified="20200404033215112" tags="EXTLINK" title="LTR.IO.ImDisk API">
+<pre>http://www.ltr-data.se/library/ImDiskNet/html/b33f1e89-3d92-fc08-248d-14c5c2efd549.htm</pre>
 </div>
 <div created="20200319092542069" modified="20200319100924449" tags="META $:/tags/Macro" title="mcr OneLink">
 <pre>\define OneLink(UrParentTag)
@@ -10003,23 +10398,15 @@ target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;$UrParentTag$&l
 \end
 </pre>
 </div>
-<div created="20200319044341752" modified="20200319044458717" tags="EXTLINK" title="Play Store web page for Chrome Extension Export extension">
-<pre>https://chrome.google.com/webstore/detail/get-crx/dijpllakibenlejkbajahncialkbdkjc</pre>
-</div>
-<div created="20200319044552860" modified="20200319044621795" tags="EXTLINK" title="Play Story web page for Clear Downloads Bar extension">
-<pre>https://chrome.google.com/webstore/detail/always-clear-downloads-in/efoelbbfbknfhpmgclpcdbkoieedkkai</pre>
-</div>
-<div created="20190925014523514" modified="20200322114726249" tags="INDEX" title="PositiveSigner Journal topics">
-<pre>&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+<div created="20190925014523514" modified="20200404064829726" tags="INDEX" title="Ram Disk">
+<pre>{{ext Parent Return}}
 
-[[___|Recent Entries]]
-
-&lt;a href=&quot;./index.htm&quot;&gt;TiddlyWiki view of website&lt;a&gt;</pre>
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200203145715457" modified="20200322121344789" tags="META" title="Recent entries">
+<div created="20200203145715457" modified="20200203145738704" tags="META" title="Recent entries">
 <pre>&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20200322103721813" modified="20200322120951462" tags="META" title="rpt Missing Tag">
+<div created="20200322103721813" modified="20200322121437932" tags="META" title="rpt Missing Tag">
 <pre>\define MissingTags(UrPK)
 &lt;$list filter=&quot;[[$UrPK$]tags[]count[]match[0]]&quot;&gt;
 User tiddler missing any tags - &lt;$link to=&quot;$UrPK$&quot;/&gt;&lt;br&gt;
@@ -10093,54 +10480,12 @@ All user tiddlers, export non-meta to HTML
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20200303060156638" modified="20200319044053625" tags="EXTLINK" title="TiddlerMove Scheduler">
-<pre>VBNet_Scheduler/TiddlerMove.htm</pre>
-</div>
-<div created="20200303055901722" modified="20200319001332579" tags="EXTLINK" title="TiddlyWiki Home Page">
-<pre>https://tiddlywiki.com/</pre>
-</div>
 <div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
 <pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
 
 There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
-</div>
-<div created="20200303055923536" modified="20200319043024228" tags="EXTLINK" title="TiddlyWiki Template Setup">
-<pre>Browser_Editor/TiddlyWiki Template Setup.htm</pre>
-</div>
-<div created="20200223033447853" modified="20200319043944437" tags="DOC" title="VB.Net - Compiler">
-<pre>I created a generic Visual Basic Scripting program. I can write small Visual Basic .NET programs in Notepad++ and run them from the command line.
-
-&lt;&lt;OneLink &quot;VBNetScript.exe&quot;&gt;&gt;</pre>
-</div>
-<div created="20200319043546345" modified="20200319044106684" tags="DOC" title="VB.Net - Scheduler">
-<pre>I use [[Visual Basic .NET|VB.Net - Compiler]] to create a program that moves a downloaded TiddlyWiki file overwriting its original file.
-
-&lt;&lt;OneLink &quot;TiddlerMove Scheduler&quot;&gt;&gt;
-</pre>
-</div>
-<div created="20200303060223422" modified="20200319043930957" tags="EXTLINK" title="VBNetScript.exe">
-<pre>VBNet_Compiler/VBNetScript.htm</pre>
-</div>
-<div created="20200223032237138" modified="20200319043206435" tags="DOC" title="Website - Hosting">
-<pre>GitHub repository files can be publicly browsable.
-
-!! Setup GitHub Pages
-
-* Create an index.html file in the root of the repository
-
-* On a repository's settings, there is a GitHub Pages section
-
-* Change the Source option to &quot;master branch&quot;
-
-* Navigate to your user name's github.io sub-domain, and the repository's folder to see the index.html content
-
-&lt;&lt;&lt;
-https://positivesigner.github.io/journal/
-&lt;&lt;&lt;
-
-* A few minutes after you commit changes to the branch, browsing to the site will show the updated content</pre>
 </div>
 <div created="20190925051442835" modified="20200322113443852" tags="META" title="What is this Wiki Stuff?">
 <pre>Here is some notes on [[How to use markup in Tiddly Wiki|Articles on how to use Tiddly Wiki]].
@@ -10201,12 +10546,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20200303055809043" modified="20200319044244008" tags="EXTLINK" title="ZIP file of Chrome Extension Export extension">
-<pre>Browser_Extension/Get CRX v1d31.zip</pre>
-</div>
-<div created="20200303055634922" modified="20200319044529402" tags="EXTLINK" title="ZIP File of Clear Downloads Bar extension">
-<pre>chrome/Always Clear Downloads in Chrome v2d0.zip</pre>
 </div>
 
 </div>
