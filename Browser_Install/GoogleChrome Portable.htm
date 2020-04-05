@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Template — Design notes</title>
+<title>Google Chrome Portable — Usage notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -233,13 +233,21 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>Change settings</li>
+
 <li>ext Parent Return</li>
 
 <li>Font Size</li>
 
+<li>Google Chrome Portable application</li>
+
+<li>Google Chrome PortableApp</li>
+
 <li>Hiding The Sidebar On Startup</li>
 
 <li>INDEX</li>
+
+<li>Install application</li>
 
 <li>keyboard action HomeTiddlers</li>
 
@@ -260,8 +268,6 @@ Error message and password prompt
 <li>View All Pages</li>
 
 <li>What is this Wiki Stuff?</li>
-
-<li>WikiFile Title</li>
 
 </ul>
 </p>
@@ -9565,7 +9571,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr OneLink]]</pre>
+# [[Browser - Install]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9614,11 +9620,11 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
-<pre>Design notes</pre>
+<div created="20190925014420922" modified="20200405184834193" title="$:/SiteSubtitle">
+<pre>Usage notes</pre>
 </div>
-<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
-<pre>TiddlyWiki Template</pre>
+<div created="20190925014404111" modified="20200405184827154" title="$:/SiteTitle">
+<pre>Google Chrome Portable</pre>
 </div>
 <div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
@@ -9632,8 +9638,8 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200405183947895" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20190925044925672" modified="20200405184928574" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9647,13 +9653,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200405183950740" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200405184840331" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200405183959326" list="[[WikiFile Title]] [[ext Parent Return]]" modified="20200405183959326" title="$:/StoryList">
+<div created="20200405184819398" list="$:/Import [[Install application]] [[Google Chrome Portable application]] [[Change settings]]" modified="20200405184945505" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9672,7 +9678,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Install/GoogleChrome%20Portable.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9692,7 +9698,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Install/GoogleChrome%20Portable.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9829,6 +9835,34 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div created="20200405185746874" modified="20200405185758359" tags="DOC" title="Change settings">
+<pre>You can create a shortcut to the program and add command-line parameters.
+
+*  --incognito
+*&gt; Starts with an open Incognito window
+
+!!User Data
+
+Google Chrome Portable has these parameters automatically included when calling the Chrome.exe program.
+
+* --user-data-dir=&quot;%TEMP%&quot;
+
+* --disk-cache-dir=&quot;%TEMP%\GoogleChromePortable\Cache&quot;
+
+To override the user data and all the cache directories:
+
+* Find the file
+*&gt;GoogleChromePortable\Other\Source\GoogleChromePortable.ini
+
+* Copy it to the program directory
+*&gt;GoogleChromePortable\GoogleChromePortable.ini
+
+* Edit the file to change the CacheInTemp line be `false`
+*&gt;CacheInTemp=false
+
+* When you restart Google Chrome Portable, cached files will be stored under the program's folder
+*&gt;C:\TJBF\zPortableInstalls\Chrome\Data\profile\Default\*Cache\</pre>
+</div>
 <div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
 </div>
@@ -9850,11 +9884,29 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
+<div created="20190925014523514" modified="20200405184923064" tags="INDEX" title="Google Chrome Portable application">
+<pre>{{ext Parent Return}}
+
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
+</div>
+<div created="20200405185002643" modified="20200405185016950" tags="EXTLINK" title="Google Chrome PortableApp">
+<pre>https://portableapps.com/apps/internet/google_chrome_portable</pre>
+</div>
 <div created="20190925053827947" modified="20200319102244278" tags="EXTLINK" title="Hiding The Sidebar On Startup">
 <pre>TiddlyWiki Plugin Hiding The Sidebar On Startup.html</pre>
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20200322103803201" tags="META" title="INDEX">
 <pre></pre>
+</div>
+<div created="20200222231926017" modified="20200405185806336" tags="DOC" title="Install application">
+<pre>I use the portable version of Google Chrome with my thumb drive.
+
+&lt;&lt;OneLink &quot;Google Chrome PortableApp&quot;&gt;&gt;
+</pre>
 </div>
 <div created="20200314150100178" key="((home-tiddlers))" modified="20200319102429815" tags="$:/tags/KeyboardShortcut META" title="keyboard action HomeTiddlers">
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
@@ -10031,15 +10083,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20190925014523514" modified="20200405135143829" tags="INDEX" title="WikiFile Title">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[META]sort[title]]&quot;&gt;&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]</pre>
 </div>
 
 </div>

@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Template — Design notes</title>
+<title>DownloadBar Manager — Install notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -233,6 +233,10 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>Change settings</li>
+
+<li>DownloadBar Manager notes</li>
+
 <li>ext Parent Return</li>
 
 <li>Font Size</li>
@@ -240,6 +244,8 @@ Error message and password prompt
 <li>Hiding The Sidebar On Startup</li>
 
 <li>INDEX</li>
+
+<li>Install Chrome Extension</li>
 
 <li>keyboard action HomeTiddlers</li>
 
@@ -251,6 +257,8 @@ Error message and password prompt
 
 <li>Missing Tags Report</li>
 
+<li>Play Story web page for Clear Downloads Bar extension</li>
+
 <li>Recent entries</li>
 
 <li>template Home Button</li>
@@ -261,7 +269,7 @@ Error message and password prompt
 
 <li>What is this Wiki Stuff?</li>
 
-<li>WikiFile Title</li>
+<li>ZIP File of Clear Downloads Bar extension</li>
 
 </ul>
 </p>
@@ -9565,7 +9573,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr OneLink]]</pre>
+# [[ZIP File of Clear Downloads Bar extension]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9614,11 +9622,11 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
-<pre>Design notes</pre>
+<div created="20190925014420922" modified="20200405182124288" title="$:/SiteSubtitle">
+<pre>Install notes</pre>
 </div>
-<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
-<pre>TiddlyWiki Template</pre>
+<div created="20190925014404111" modified="20200405182111169" title="$:/SiteTitle">
+<pre>DownloadBar Manager</pre>
 </div>
 <div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
@@ -9632,8 +9640,8 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200405183947895" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20190925044925672" modified="20200405182711131" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9647,13 +9655,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200405183950740" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200405182141059" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200405183959326" list="[[WikiFile Title]] [[ext Parent Return]]" modified="20200405183959326" title="$:/StoryList">
+<div created="20200405182713614" list="[[DownloadBar Manager notes]] [[Install Chrome Extension]] [[Change settings]]" modified="20200405182713614" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9672,7 +9680,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Extension/DownloadBar%20Manager.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9692,7 +9700,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Extension/DownloadBar%20Manager.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9829,7 +9837,36 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
+<div created="20200405182808625" modified="20200405183810357" tags="DOC" title="Change settings">
+<pre>When using TiddlyWiki, I find the Chrome Downloads bar irritating. I can keep it hidden by using the Always Clear Downloads in Chrome extension. See [[Install Chrome Extension]].
+
+On the Chrome Settings page, there is a sidebar link to the Extensions page. There you can see each installed extension has Details button, which shows the Extension Settings page. 
+
+* I prefer to check the option &quot;Allow in incognito.&quot;
+
+On the bottom of the Extensions Settings page there is a link to the Extension Options page.
+
+* [Enable Extension]
+* I prefer to clear the option &quot;Clear downloads every few seconds&quot;
+* This way I can still see previous files I've downloaded
+''''
+
+* [Only Disable Download Shelf]
+* I prefer to check the option &quot;Disable download shelf&quot;
+* This way the Downlaod Shelf does not stay at the bottom of the Chrome window, but I can still use the Chrome menu's Downloads link to see any current download progress
+* I can also see the Chrome icon in the Windows Task Bar shows the download percentage complete as a transparent green overlay
+</pre>
+</div>
+<div created="20190925014523514" modified="20200405182721325" tags="INDEX" title="DownloadBar Manager notes">
+<pre>{{ext Parent Return}}
+
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
+</div>
+<div created="20200223043825137" modified="20200405182235390" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
 </div>
 <div created="20200319102534436" modified="20200319102543033" tags="META" title="Font Size">
@@ -9855,6 +9892,39 @@ Normal Font
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20200322103803201" tags="META" title="INDEX">
 <pre></pre>
+</div>
+<div created="20200222232421384" modified="20200405183912376" tags="DOC" title="Install Chrome Extension">
+<pre>Chrome has custom functionality that you can download from the Chrome Webstore
+
+!! Downloads bar 
+
+When using TiddlyWiki, I find the Chrome Downloads bar irritating. I can keep it hidden by using an extension.
+
+&lt;&lt;&lt;
+Always Clear Downloads in Chrome
+Offered by: Tab Manager Plus
+
+Visit &lt;&lt;OneLink &quot;Play Story web page for Clear Downloads Bar extension&quot;&gt;&gt;
+
+Download &lt;&lt;OneLink &quot;ZIP File of Clear Downloads Bar extension&quot;&gt;&gt;
+&lt;&lt;&lt;
+
+!! Extension Intsall
+
+I am able to download the extension's install file from its Chrome Webstore page.
+
+&lt;&lt;&lt;
+Get CRX
+Offered by: Adam Carbonell
+
+Visit &lt;&lt;OneLink &quot;Play Store web page for Chrome Extension Export extension&quot;&gt;&gt;
+
+Download &lt;&lt;OneLink &quot;ZIP file of Chrome Extension Export extension&quot;&gt;&gt;
+
+In the Chrome Extensions page, select an extension's Details to change its settings. There is a link to &quot;View in Chrome Web Store&quot;. From that page, this extension adds a right-click menu option to download the extension as a .CRX file.
+
+When trying to install an extension using the .CRX file, on the Chrome Extensions page you need to turn on the Developer Mode and re-fresh the page. When you drag-drop a file onto the Chrome Extensions page, the entire page fades out and states &quot;Drop to Install.&quot;
+&lt;&lt;&lt;</pre>
 </div>
 <div created="20200314150100178" key="((home-tiddlers))" modified="20200319102429815" tags="$:/tags/KeyboardShortcut META" title="keyboard action HomeTiddlers">
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
@@ -9933,6 +10003,9 @@ All user tiddlers, export non-meta to HTML
 [all[tiddlers]tag[INDEX]sort[title]]
 [all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]sort[title]]
 ```</pre>
+</div>
+<div created="20200319044552860" modified="20200319044621795" tags="EXTLINK" title="Play Story web page for Clear Downloads Bar extension">
+<pre>https://chrome.google.com/webstore/detail/always-clear-downloads-in/efoelbbfbknfhpmgclpcdbkoieedkkai</pre>
 </div>
 <div created="20200203145715457" modified="20200405135008598" tags="META" title="Recent entries">
 <pre>[[Missing Tags Report]]
@@ -10032,14 +10105,8 @@ Test your Tiddler filter using a drop-down list:
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
 </div>
-<div created="20190925014523514" modified="20200405135143829" tags="INDEX" title="WikiFile Title">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[META]sort[title]]&quot;&gt;&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]</pre>
+<div created="20200303055634922" modified="20200319044529402" tags="EXTLINK" title="ZIP File of Clear Downloads Bar extension">
+<pre>chrome/Always Clear Downloads in Chrome v2d0.zip</pre>
 </div>
 
 </div>
