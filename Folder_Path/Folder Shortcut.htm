@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Template — Design notes</title>
+<title>Folder Shortcut — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -233,7 +233,11 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>Chrome create shortcut</li>
+
 <li>ext Parent Return</li>
+
+<li>Folder Shortcut create</li>
 
 <li>Font Size</li>
 
@@ -257,11 +261,11 @@ Error message and password prompt
 
 <li>TiddlyWiki Startup Options</li>
 
+<li>Total Commander create shortcut</li>
+
 <li>View All Pages</li>
 
 <li>What is this Wiki Stuff?</li>
-
-<li>WikiFile Title</li>
 
 </ul>
 </p>
@@ -9617,8 +9621,8 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
-<pre>TiddlyWiki Template</pre>
+<div created="20190925014404111" modified="20200405232745105" title="$:/SiteTitle">
+<pre>Folder Shortcut</pre>
 </div>
 <div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
@@ -9632,7 +9636,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200405183947895" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200405232732242" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9647,13 +9651,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200405183950740" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200405232749474" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200405183959326" list="[[WikiFile Title]] [[ext Parent Return]]" modified="20200405183959326" title="$:/StoryList">
+<div created="20200405232737461" list="[[Folder Shortcut create]] [[Chrome create shortcut]] [[Total Commander create shortcut]]" modified="20200405232737461" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9672,7 +9676,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Folder_Path/Folder%20Shortcut.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9692,7 +9696,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Folder_Path/Folder%20Shortcut.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9829,8 +9833,24 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div created="20200405232811980" modified="20200405232905523" tags="DOC" title="Chrome create shortcut">
+<pre>Android can create a Home Screen Shortcut to Website
+
+* Note: You cannot create a website shortcut from an Incognito tab or a local file URL
+* Click the upper-right menu (three vertical-dots) and select &quot;Add to Home screen&quot;
+</pre>
+</div>
 <div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
+</div>
+<div created="20190925014523514" modified="20200405232811123" tags="INDEX" title="Folder Shortcut create">
+<pre>{{ext Parent Return}}
+
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
 </div>
 <div created="20200319102534436" modified="20200319102543033" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
@@ -9964,6 +9984,13 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
 </div>
+<div created="20200405232849039" modified="20200405232900494" tags="DOC" title="Total Commander create shortcut">
+<pre>Total Commander can create a Desktop URL shortcut to a local HTML file
+
+* Hold-click on the HTML file and select &quot;Create link on desktop&quot;
+* At the end of the Commend field, click the &gt;&gt; button and select &quot;Choose app *&quot;
+* Select the Chrome app and click the OK / Apply button</pre>
+</div>
 <div created="20200405112008513" modified="20200405112242998" tags="META" title="View All Pages">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
 &lt;hr&gt;
@@ -10031,15 +10058,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20190925014523514" modified="20200405135143829" tags="INDEX" title="WikiFile Title">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[META]sort[title]]&quot;&gt;&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]</pre>
 </div>
 
 </div>

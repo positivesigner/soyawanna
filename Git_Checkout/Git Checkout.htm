@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Git App — Design notes</title>
+<title>Git Checkout — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -165,11 +165,19 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler</li>
 
+<li>$:/config/ShortcutInfo/font-large</li>
+
+<li>$:/config/ShortcutInfo/font-normal</li>
+
 <li>$:/config/ShortcutInfo/home-tiddlers</li>
 
 <li>$:/config/ShortcutInfo/save-all-changes</li>
 
 <li>$:/config/ShortcutInfo/save-html-converted</li>
+
+<li>$:/config/shortcuts/font-large</li>
+
+<li>$:/config/shortcuts/font-normal</li>
 
 <li>$:/config/shortcuts/home-tiddlers</li>
 
@@ -233,17 +241,27 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>Android MGit Install</li>
+<li>$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize</li>
+
+<li>$:/themes/tiddlywiki/vanilla/metrics/bodylineheight</li>
+
+<li>$:/themes/tiddlywiki/vanilla/metrics/fontsize</li>
+
+<li>$:/themes/tiddlywiki/vanilla/metrics/lineheight</li>
 
 <li>ext Parent Return</li>
 
 <li>Font Size</li>
 
-<li>Git App install</li>
+<li>Git Checkout</li>
 
 <li>Hiding The Sidebar On Startup</li>
 
 <li>INDEX</li>
+
+<li>keyboard action FontLarge</li>
+
+<li>keyboard action FontNormal</li>
 
 <li>keyboard action HomeTiddlers</li>
 
@@ -254,6 +272,8 @@ Error message and password prompt
 <li>mcr OneLink</li>
 
 <li>Missing Tags Report</li>
+
+<li>Program location</li>
 
 <li>Recent entries</li>
 
@@ -341,6 +361,12 @@ exports.startup = function() {
 <div created="20190925051431806" modified="20190925051431807" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
 <pre>hide</pre>
 </div>
+<div created="20200411063056939" modified="20200411063122203" tags="META" title="$:/config/ShortcutInfo/font-large">
+<pre></pre>
+</div>
+<div created="20200411063158865" modified="20200411063203734" tags="META" title="$:/config/ShortcutInfo/font-normal">
+<pre></pre>
+</div>
 <div created="20200314145912234" modified="20200314145935323" tags="META" title="$:/config/ShortcutInfo/home-tiddlers">
 <pre></pre>
 </div>
@@ -349,6 +375,12 @@ exports.startup = function() {
 </div>
 <div created="20200303061746900" modified="20200303061752887" tags="META" title="$:/config/ShortcutInfo/save-html-converted">
 <pre></pre>
+</div>
+<div created="20200411063126026" modified="20200411063510429" tags="META" title="$:/config/shortcuts/font-large">
+<pre>ctrl-shift-Quote</pre>
+</div>
+<div created="20200411063207876" modified="20200411063524773" tags="META" title="$:/config/shortcuts/font-normal">
+<pre>ctrl-shift-Comma</pre>
 </div>
 <div created="20200314150022726" modified="20200322104217954" tags="META" title="$:/config/shortcuts/home-tiddlers">
 <pre>alt-H</pre>
@@ -9567,7 +9599,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr OneLink]]</pre>
+# [[keyboard action FontNormal]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9619,8 +9651,8 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200405233204243" title="$:/SiteTitle">
-<pre>Git App</pre>
+<div created="20190925014404111" modified="20200411062215929" title="$:/SiteTitle">
+<pre>Git Checkout</pre>
 </div>
 <div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
@@ -9634,7 +9666,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200405233210241" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200411062800737" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9649,13 +9681,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200405233207840" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200411062222518" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="[[Git App install]] [[Android MGit Install]]" title="$:/StoryList">
+<div created="20200411062207862" list="[[Git Checkout]] [[Program location]]" modified="20200411062753709" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9674,7 +9706,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Git_Install/Git%20App.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Git_Checkout/Git%20Checkout.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9694,7 +9726,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Git_Install/Git%20App.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Git_Checkout/Git%20Checkout.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9706,11 +9738,11 @@ exports.startup = function() {
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1366&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;768&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9831,8 +9863,17 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200405233237345" modified="20200405233603935" tags="DOC" title="Android MGit Install">
-<pre></pre>
+<div created="20200411062756249" modified="20200411063809597" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
+<pre>15px</pre>
+</div>
+<div created="20200411062756249" modified="20200411063809597" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
+<pre>24px</pre>
+</div>
+<div created="20200411062756249" modified="20200411063809596" title="$:/themes/tiddlywiki/vanilla/metrics/fontsize">
+<pre>14px</pre>
+</div>
+<div created="20200411062756249" modified="20200411063809597" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
+<pre>20px</pre>
 </div>
 <div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
@@ -9855,7 +9896,7 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
-<div created="20190925014523514" modified="20200405233233787" tags="INDEX" title="Git App install">
+<div created="20190925014523514" modified="20200411062244677" tags="INDEX" title="Git Checkout">
 <pre>{{ext Parent Return}}
 
 &lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
@@ -9869,6 +9910,20 @@ Normal Font
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20200322103803201" tags="META" title="INDEX">
 <pre></pre>
+</div>
+<div created="20200411063250301" key="((font-large))" modified="20200411063336938" tags="META $:/tags/KeyboardShortcut" title="keyboard action FontLarge">
+<pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;30px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;25px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;34px&quot;/&gt;
+</pre>
+</div>
+<div created="20200411063342013" key="((font-normal))" modified="20200411063436464" tags="META $:/tags/KeyboardShortcut" title="keyboard action FontNormal">
+<pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;14px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;20px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;15px&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;24px&quot;/&gt;
+</pre>
 </div>
 <div created="20200314150100178" key="((home-tiddlers))" modified="20200319102429815" tags="$:/tags/KeyboardShortcut META" title="keyboard action HomeTiddlers">
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
@@ -9947,6 +10002,18 @@ All user tiddlers, export non-meta to HTML
 [all[tiddlers]tag[INDEX]sort[title]]
 [all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]sort[title]]
 ```</pre>
+</div>
+<div created="20200411062404730" modified="20200411062959352" tags="DOC" title="Program location">
+<pre>When GitHub Desktop is installed, the Git.exe program is placed in the %APPDATA% folder. There is one sub-directory for each version of Git that has been downloaded. Look for the latest version-numbered folder.
+
+&gt;C:\Users\UrUser\AppData\Local\GitHubDesktop\app-*
+
+Under the app-* folder, find the Git.exe program
+
+&gt;app-*\resources\app\git\cmd\git.exe
+
+
+</pre>
 </div>
 <div created="20200203145715457" modified="20200405135008598" tags="META" title="Recent entries">
 <pre>[[Missing Tags Report]]

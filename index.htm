@@ -227,17 +227,17 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
+<li>BoomJacket Speaker</li>
+
 <li>BROWSER</li>
 
-<li>Browser - Javascript</li>
-
-<li>Browser - Local File</li>
+<li>Browser Local File access</li>
 
 <li>Chrome Extension download</li>
 
-<li>Disk - Ram drive</li>
+<li>CODE</li>
 
-<li>Disk - Shortcut</li>
+<li>DISK</li>
 
 <li>DOC</li>
 
@@ -251,17 +251,33 @@ Error message and password prompt
 
 <li>EXTLINK</li>
 
+<li>FOLDER</li>
+
+<li>Folder Path</li>
+
 <li>Font Size</li>
 
-<li>Git - Install</li>
+<li>GIT</li>
+
+<li>Git App</li>
+
+<li>Git Checkout</li>
 
 <li>Google Chrome Portable app</li>
 
+<li>HARDWARE</li>
+
 <li>HideHeader</li>
+
+<li>ImDisk Ramdisk</li>
 
 <li>INDEX</li>
 
 <li>INSTALL</li>
+
+<li>JAVASCRIPT</li>
+
+<li>Javascript Bookmarklets</li>
 
 <li>keyboard action HomeTiddlers</li>
 
@@ -269,15 +285,21 @@ Error message and password prompt
 
 <li>keyboard action SaveHtmlConverted</li>
 
+<li>LOCAL FILE</li>
+
 <li>mcr OneLink</li>
 
 <li>Missing Tags Report</li>
+
+<li>PATH</li>
 
 <li>Play Store web page for Chrome Extension Export extension</li>
 
 <li>Play Story web page for Clear Downloads Bar extension</li>
 
 <li>Recent entries</li>
+
+<li>SOUND</li>
 
 <li>Soyawanna Dev topics</li>
 
@@ -291,13 +313,15 @@ Error message and password prompt
 
 <li>TiddlyWiki Template Setup</li>
 
-<li>VB.Net - Compiler</li>
+<li>VB.Net</li>
 
-<li>VB.Net - Scheduler</li>
+<li>VBNetScript Compiler</li>
 
 <li>VBNetScript.exe</li>
 
 <li>View All Pages</li>
+
+<li>WEBSITE</li>
 
 <li>Website - Hosting</li>
 
@@ -9667,7 +9691,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200405184657786" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200411064206056" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9688,7 +9712,7 @@ exports.startup = function() {
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200405181838161" list="[[Soyawanna Dev topics]]" modified="20200405185855741" title="$:/StoryList">
+<div list="[[Soyawanna Dev topics]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
@@ -9742,11 +9766,11 @@ exports.startup = function() {
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1366&quot;
+            &quot;text&quot;: &quot;1920&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;768&quot;
+            &quot;text&quot;: &quot;1080&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -9864,47 +9888,28 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div created="20200405232223110" modified="20200405232254232" tags="HARDWARE SOUND" title="BoomJacket Speaker">
+<pre>Hardware_Sound/BoomJacket%20Speaker.htm</pre>
+</div>
 <div created="20200405164325361" modified="20200405164326949" tags="DOC" title="BROWSER">
 <pre></pre>
 </div>
-<div created="20200319000731171" modified="20200319000809328" tags="DOC" title="Browser - Javascript">
-<pre>Bookmarklets</pre>
+<div created="20200405223237370" modified="20200405223311593" tags="BROWSER [[LOCAL FILE]]" title="Browser Local File access">
+<pre>Browser_LocalFile/Browser%20LocalFile.htm</pre>
 </div>
-<div created="20200319120413043" modified="20200319120551406" tags="DOC" title="Browser - Local File">
-<pre>The Chrome Browser can view files stored on the tablet.
-
-file:///sdcard
-
-This will show you a web page listing all the directories in the root of the tablet.</pre>
-</div>
-<div created="20200405184357283" modified="20200405184557131" tags="EXTLINK BROWSER EXTENSION" title="Chrome Extension download">
+<div created="20200405184357283" modified="20200405225557162" tags="BROWSER EXTENSION" title="Chrome Extension download">
 <pre>Browser_Extension/ChromeExtension%20Download.htm</pre>
 </div>
-<div created="20200404064313585" modified="20200404064638353" tags="DOC" title="Disk - Ram drive">
-<pre>Use the [ext[ImDisk Ram Disk
-|Hardware_Sound/ImDisk%20RamDisk.htm]] utility to assign drive letters to virtual disk drives.
-
-```
-runas /user:administrator &quot;imdisk -a -m D: -s 50M -p \&quot;/fs:ntfs /q /y\&quot;&quot;
-```
-* Note: The RunAs command needs the program name and parameters enclosed entirely within quotes, so you need to escape any quoted parameters using a backslash</pre>
+<div created="20200405221439259" modified="20200405221441441" tags="DOC" title="CODE">
+<pre></pre>
 </div>
-<div created="20200319120553262" modified="20200319121005452" tags="DOC" title="Disk - Shortcut">
-<pre>Android can create a Home Screen Shortcut to Website
-
-* Note: You cannot create a website shortcut from an Incognito tab or a local file URL
-* Click the upper-right menu (three vertical-dots) and select &quot;Add to Home screen&quot;
-
-Total Commander can create a Desktop URL shortcut to a local HTML file
-
-* Hold-click on the HTML file and select &quot;Create link on desktop&quot;
-* At the end of the Commend field, click the &gt;&gt; button and select &quot;Choose app *&quot;
-* Select the Chrome app and click the OK / Apply button</pre>
+<div created="20200405223551538" modified="20200405223553137" tags="DOC" title="DISK">
+<pre></pre>
 </div>
 <div created="20200405162602552" modified="20200405164337185" tags="META" title="DOC">
 <pre></pre>
 </div>
-<div created="20200405184622787" modified="20200405184640141" tags="EXTENSION BROWSER" title="DownloadBar manager">
+<div created="20200405184622787" modified="20200405225616883" tags="EXTENSION BROWSER" title="DownloadBar manager">
 <pre>Browser_Extension/DownloadBar%20Manager.htm</pre>
 </div>
 <div created="20200405165041827" modified="20200405165049183" tags="DOC" title="EDITOR">
@@ -9918,6 +9923,12 @@ Total Commander can create a Desktop URL shortcut to a local HTML file
 </div>
 <div created="20200405164402303" modified="20200405164404013" tags="META" title="EXTLINK">
 <pre></pre>
+</div>
+<div created="20200405232943229" modified="20200405232944715" tags="DOC" title="FOLDER">
+<pre></pre>
+</div>
+<div created="20200319120553262" modified="20200405232931372" tags="FOLDER PATH" title="Folder Path">
+<pre>Folder_Path/Folder%20Shortcut.htm</pre>
 </div>
 <div created="20200319102534436" modified="20200319102543033" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
@@ -9937,20 +9948,38 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
-<div created="20200319120242810" modified="20200319120344086" tags="DOC" title="Git - Install">
-<pre>Android has the MGit app</pre>
+<div created="20200405233646335" modified="20200405233648067" tags="DOC" title="GIT">
+<pre></pre>
 </div>
-<div created="20200222231926017" modified="20200405185851636" tags="EXTLINK BROWSER INSTALL" title="Google Chrome Portable app">
+<div created="20200319120242810" modified="20200405233634410" tags="INSTALL GIT" title="Git App">
+<pre>Git_Install/Git%20App.htm</pre>
+</div>
+<div created="20200411064220921" modified="20200411064250864" tags="GIT CODE" title="Git Checkout">
+<pre>Git_Checkout/Git%20Checkout.htm</pre>
+</div>
+<div created="20200222231926017" modified="20200405231839156" tags="BROWSER INSTALL" title="Google Chrome Portable app">
 <pre>Browser_Install/GoogleChrome%20Portable.htm</pre>
+</div>
+<div created="20200405223605285" modified="20200405223606792" tags="DOC" title="HARDWARE">
+<pre></pre>
 </div>
 <div created="20190925053827947" modified="20200111081344048" tags="EXTLINK" title="HideHeader">
 <pre>[ext[Hiding The Sidebar On Startup|TiddlyWiki Plugin Hiding The Sidebar On Startup.html]]</pre>
+</div>
+<div created="20200404064313585" modified="20200405223541380" tags="HARDWARE DISK" title="ImDisk Ramdisk">
+<pre>Hardware_Disk/ImDisk%20RamDisk.htm</pre>
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20200322120702481" tags="META" title="INDEX">
 <pre></pre>
 </div>
 <div created="20200405185900770" modified="20200405185902085" tags="DOC" title="INSTALL">
 <pre></pre>
+</div>
+<div created="20200405221421730" modified="20200405221424227" tags="DOC" title="JAVASCRIPT">
+<pre></pre>
+</div>
+<div created="20200319000731171" modified="20200405225658811" tags="JAVASCRIPT CODE" title="Javascript Bookmarklets">
+<pre>Browser_Javascript/Javascript%20Bookmarklets.htm</pre>
 </div>
 <div created="20200319044821036" key="((home-tiddlers))" modified="20200319044904761" tags="META $:/tags/KeyboardShortcut" title="keyboard action HomeTiddlers">
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
@@ -9968,6 +9997,9 @@ $param=&quot;$:/core/templates/exporters/StaticRiver&quot;
 exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
 </pre>
 </div>
+<div created="20200405223336846" modified="20200405223338590" tags="DOC" title="LOCAL FILE">
+<pre></pre>
+</div>
 <div created="20200319092542069" modified="20200405135527913" tags="META $:/tags/Macro" title="mcr OneLink">
 <pre>\define OneLink(UrParentTag)
 &lt;a href={{$UrParentTag$}}
@@ -9976,7 +10008,7 @@ target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;$UrParentTag$&l
 \end
 </pre>
 </div>
-<div created="20200322103721813" modified="20200405172152489" tags="META" title="Missing Tags Report">
+<div created="20200322103721813" modified="20200405231819889" tags="META" title="Missing Tags Report">
 <pre>\define NoticeTagUndefined(UrTitle)
 Tag is undefined - &lt;$list filter=&quot;[[$UrTitle$]]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;&lt;br&gt;
 \end
@@ -9984,15 +10016,16 @@ Tag is undefined - &lt;$list filter=&quot;[[$UrTitle$]]&quot; template=&quot;$:/
 Tag is missing any tags - &lt;$list filter=&quot;[[$UrTitle$]]&quot; template=&quot;$:/core/ui/TagTemplate&quot;/&gt;&lt;br&gt;
 \end
 
-\define MissingCombinedList(UrTitle1 UrTitle2)
-&lt;$list filter=&quot;[[$UrTitle2$]tag[$UrTitle1$]tag[EXTLINK]tags[]![EXTLINK]![$UrTitle1$]count[]match[0]]&quot; &gt;
-Page with only one DOC tag: &lt;$link to=&quot;$UrTitle2$&quot;/&gt;
+
+\define NoticeTwoTags(UrTitle)
+&lt;$list filter=&quot;[[$UrTitle$]tags[]count[]!match[2]]&quot;&gt;
+Pages need two DOC tags, not &lt;&lt;currentTiddler&gt;&gt;: &lt;$link to=&quot;$UrTitle$&quot; /&gt;&lt;br&gt;
 &lt;/$list&gt;
 \end
 
-\define SecondTiddler(UrTitle)
-&lt;$list filter=&quot;[tag[$UrTitle$]tag[EXTLINK]] -$UrTitle$&quot;&gt;
-&lt;$macrocall $name=&quot;MissingCombinedList&quot; UrTitle1=&quot;$UrTitle$&quot; UrTitle2=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+\define NoticeDocTags(UrTitle)
+&lt;$list filter=&quot;[tag&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$macrocall $name=NoticeTwoTags UrTitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
 
@@ -10020,9 +10053,8 @@ System tiddler missing META tag- &lt;$link to=&lt;&lt;currentTiddler&gt;&gt;/&gt
 User tiddler missing any tags - &lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;br&gt;
 &lt;/$list&gt;
 
-
-&lt;$list filter=&quot;[is[tag]tag[DOC]]&quot;&gt;
-&lt;$macrocall $name=SecondTiddler UrTitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;$list filter=&quot;[tag[DOC]is[tag]]&quot;&gt;
+&lt;$macrocall $name=NoticeDocTags UrTitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 
 ---
@@ -10060,6 +10092,9 @@ All user tiddlers, export non-meta to HTML
 [all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]sort[title]]
 ```</pre>
 </div>
+<div created="20200405232959452" modified="20200405233001015" tags="DOC" title="PATH">
+<pre></pre>
+</div>
 <div created="20200319044341752" modified="20200319044458717" tags="EXTLINK" title="Play Store web page for Chrome Extension Export extension">
 <pre>https://chrome.google.com/webstore/detail/get-crx/dijpllakibenlejkbajahncialkbdkjc</pre>
 </div>
@@ -10071,10 +10106,13 @@ All user tiddlers, export non-meta to HTML
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20190925014523514" modified="20200405171259842" tags="INDEX" title="Soyawanna Dev topics">
+<div created="20200405232310294" modified="20200405232313084" tags="DOC" title="SOUND">
+<pre></pre>
+</div>
+<div created="20190925014523514" modified="20200405232123534" tags="INDEX" title="Soyawanna Dev topics">
 <pre>\define CombinedList(UrTitle1 UrTitle2)
 &lt;ul&gt;
-&lt;$list filter=&quot;[tag[$UrTitle1$]tag[$UrTitle2$]tag[EXTLINK]]&quot; &gt;
+&lt;$list filter=&quot;[tag[$UrTitle1$]tag[$UrTitle2$]]&quot; &gt;
 &lt;li&gt;
 &lt;$macrocall $name=OneLink UrParentTag=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/li&gt;
@@ -10083,7 +10121,7 @@ All user tiddlers, export non-meta to HTML
 \end
 
 \define SecondTiddler(UrTitle)
-&lt;$list filter=&quot;[tag[$UrTitle$]tags[]tag[DOC]] -$UrTitle$&quot;&gt;
+&lt;$list filter=&quot;[tag[$UrTitle$]tags[]tag[DOC]] -[[$UrTitle$]]&quot;&gt;
 $UrTitle$ - &lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
 &lt;$macrocall $name=CombinedList UrTitle1=&lt;&lt;currentTiddler&gt;&gt; UrTitle2=&quot;$UrTitle$&quot; /&gt;&lt;br&gt;
 &lt;/$list&gt;
@@ -10093,7 +10131,7 @@ $UrTitle$ - &lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
 &lt;$macrocall $name=SecondTiddler UrTitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 
-&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+&lt;&lt;list-links filter:&quot;[tag[DOC]!is[tag]sort[title]]&quot;&gt;&gt;
 
 [[___|Recent entries]]
 
@@ -10119,10 +10157,10 @@ $UrTitle$ - &lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20200303060156638" modified="20200319044053625" tags="EXTLINK" title="TiddlerMove Scheduler">
-<pre>VBNet_Scheduler/TiddlerMove.htm</pre>
+<div created="20200319043546345" modified="20200405234027945" tags="CODE VB.Net" title="TiddlerMove Scheduler">
+<pre>VBNet_Code/TiddlerMove.htm</pre>
 </div>
-<div created="20200303055901722" modified="20200405170121982" tags="EDITOR BROWSER EXTLINK" title="TiddlyWiki Home Page">
+<div created="20200303055901722" modified="20200405225637348" tags="EDITOR BROWSER" title="TiddlyWiki Home Page">
 <pre>https://tiddlywiki.com/</pre>
 </div>
 <div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
@@ -10132,19 +10170,14 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
 </div>
-<div created="20200303055923536" modified="20200405172141038" tags="EDITOR BROWSER EXTLINK" title="TiddlyWiki Template Setup">
+<div created="20200303055923536" modified="20200405225647618" tags="EDITOR BROWSER" title="TiddlyWiki Template Setup">
 <pre>Browser_Editor/TiddlyWiki Template Setup.htm</pre>
 </div>
-<div created="20200223033447853" modified="20200319043944437" tags="DOC" title="VB.Net - Compiler">
-<pre>I created a generic Visual Basic Scripting program. I can write small Visual Basic .NET programs in Notepad++ and run them from the command line.
-
-&lt;&lt;OneLink &quot;VBNetScript.exe&quot;&gt;&gt;</pre>
+<div created="20200405233840685" modified="20200405233842509" tags="DOC" title="VB.Net">
+<pre></pre>
 </div>
-<div created="20200319043546345" modified="20200319044106684" tags="DOC" title="VB.Net - Scheduler">
-<pre>I use [[Visual Basic .NET|VB.Net - Compiler]] to create a program that moves a downloaded TiddlyWiki file overwriting its original file.
-
-&lt;&lt;OneLink &quot;TiddlerMove Scheduler&quot;&gt;&gt;
-</pre>
+<div created="20200223033447853" modified="20200405233827187" tags="INSTALL VB.Net" title="VBNetScript Compiler">
+<pre>VBNet_Compiler/VBNetScript.htm</pre>
 </div>
 <div created="20200303060223422" modified="20200319043930957" tags="EXTLINK" title="VBNetScript.exe">
 <pre>VBNet_Compiler/VBNetScript.htm</pre>
@@ -10157,24 +10190,11 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200223032237138" modified="20200319043206435" tags="DOC" title="Website - Hosting">
-<pre>GitHub repository files can be publicly browsable.
-
-!! Setup GitHub Pages
-
-* Create an index.html file in the root of the repository
-
-* On a repository's settings, there is a GitHub Pages section
-
-* Change the Source option to &quot;master branch&quot;
-
-* Navigate to your user name's github.io sub-domain, and the repository's folder to see the index.html content
-
-&lt;&lt;&lt;
-https://positivesigner.github.io/journal/
-&lt;&lt;&lt;
-
-* A few minutes after you commit changes to the branch, browsing to the site will show the updated content</pre>
+<div created="20200405234336676" modified="20200405234338398" tags="DOC" title="WEBSITE">
+<pre></pre>
+</div>
+<div created="20200223032237138" modified="20200405234326264" tags="INSTALL WEBSITE" title="Website - Hosting">
+<pre>Website_Hosting/Website%20Setup.htm</pre>
 </div>
 <div created="20190925051442835" modified="20200322113443852" tags="META" title="What is this Wiki Stuff?">
 <pre>Here is some notes on [[How to use markup in Tiddly Wiki|Articles on how to use Tiddly Wiki]].

@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Template — Design notes</title>
+<title>Website Setup — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -237,6 +237,8 @@ Error message and password prompt
 
 <li>Font Size</li>
 
+<li>GitHub Pages setup</li>
+
 <li>Hiding The Sidebar On Startup</li>
 
 <li>INDEX</li>
@@ -259,9 +261,9 @@ Error message and password prompt
 
 <li>View All Pages</li>
 
-<li>What is this Wiki Stuff?</li>
+<li>Website Setup</li>
 
-<li>WikiFile Title</li>
+<li>What is this Wiki Stuff?</li>
 
 </ul>
 </p>
@@ -9565,7 +9567,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr OneLink]]</pre>
+# [[Website - Hosting]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9617,8 +9619,8 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
-<pre>TiddlyWiki Template</pre>
+<div created="20190925014404111" modified="20200405234159451" title="$:/SiteTitle">
+<pre>Website Setup</pre>
 </div>
 <div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
@@ -9632,8 +9634,8 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200405183947895" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20190925044925672" modified="20200405234204695" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9647,13 +9649,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200314150041771" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200405183950740" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200405234202355" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200405183959326" list="[[WikiFile Title]] [[ext Parent Return]]" modified="20200405183959326" title="$:/StoryList">
+<div created="20200405234152650" list="[[Website Setup]]" modified="20200405234246085" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9672,7 +9674,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Website_Hosting/Website%20Setup.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9692,7 +9694,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Website_Hosting/Website%20Setup.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9850,6 +9852,25 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
+<div created="20200223032237138" modified="20200405234255540" tags="DOC" title="GitHub Pages setup">
+<pre>GitHub repository files can be publicly browsable.
+
+!! Setup GitHub Pages
+
+* Create an index.html file in the root of the repository
+
+* On a repository's settings, there is a GitHub Pages section
+
+* Change the Source option to &quot;master branch&quot;
+
+* Navigate to your user name's github.io sub-domain, and the repository's folder to see the index.html content
+
+&lt;&lt;&lt;
+https://positivesigner.github.io/journal/
+&lt;&lt;&lt;
+
+* A few minutes after you commit changes to the branch, browsing to the site will show the updated content</pre>
+</div>
 <div created="20190925053827947" modified="20200319102244278" tags="EXTLINK" title="Hiding The Sidebar On Startup">
 <pre>TiddlyWiki Plugin Hiding The Sidebar On Startup.html</pre>
 </div>
@@ -9972,6 +9993,15 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
 </div>
+<div created="20190925014523514" modified="20200405234227034" tags="INDEX" title="Website Setup">
+<pre>{{ext Parent Return}}
+
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
+</div>
 <div created="20190925051442835" modified="20200322113443852" tags="META" title="What is this Wiki Stuff?">
 <pre>Here is some notes on [[How to use markup in Tiddly Wiki|Articles on how to use Tiddly Wiki]].
 
@@ -10031,15 +10061,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20190925014523514" modified="20200405135143829" tags="INDEX" title="WikiFile Title">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[META]sort[title]]&quot;&gt;&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]</pre>
 </div>
 
 </div>
