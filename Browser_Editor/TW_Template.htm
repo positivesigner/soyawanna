@@ -253,6 +253,12 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/metrics/lineheight</li>
 
+<li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
+
+<li>DivPop btn</li>
+
+<li>DivPop glbl</li>
+
 <li>ext Parent Return</li>
 
 <li>Font Size</li>
@@ -9601,7 +9607,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr OneLink]]</pre>
+# [[DivPop btn]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9674,7 +9680,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200411063550074" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200418112013995" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9686,16 +9692,16 @@ exports.startup = function() {
 <div created="20190925052229880" modified="20200115080408562" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20190925051414187" modified="20200411063450606" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
+<div created="20190925051414187" modified="20200418112041443" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200411063552099" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/More</pre>
+<div created="20190925014513912" modified="20200418112015883" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200411063610910" list="[[WikiFile Title]]" modified="20200411063617951" title="$:/StoryList">
+<div created="20200418112018439" list="[[WikiFile Title]]" modified="20200418112018439" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9882,6 +9888,46 @@ exports.startup = function() {
 </div>
 <div created="20200411063358304" modified="20200411063540436" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
 <pre>20px</pre>
+</div>
+<div created="20200418112031521" modified="20200418112031522" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
+<pre>fluid-fixed</pre>
+</div>
+<div created="20200418064445680" modified="20200418111935867" tags="META $:/tags/ViewToolbar" title="DivPop btn">
+<pre>\define divpop_current(ur_ref)
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
+popup
+&lt;/$button&gt;
+\end
+
+&lt;$list filter=&quot;[all[current]]&quot;&gt;
+&lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
+&lt;/$list&gt;</pre>
+</div>
+<div created="20200418110049404" modified="20200418111927478" tags="$:/tags/BelowStory META" title="DivPop glbl">
+<pre>&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
+&lt;div style=&quot;
+position: fixed;
+top: 0px;
+right: 0px;
+width: 300px;
+border: 3px solid;
+background: white;
+bottom: 0%;
+&quot;&gt;
+&lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+close
+&lt;/$button&gt;
+&lt;$tiddler tiddler=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$transclude mode=&quot;block&quot; /&gt;
+&lt;/$tiddler&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>

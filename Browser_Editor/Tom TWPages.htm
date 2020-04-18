@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/metrics/lineheight</li>
 
+<li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
+
 <li>Application</li>
 
 <li>Application Test Run - Download from Website</li>
@@ -276,6 +278,10 @@ Error message and password prompt
 <li>Content Test Run - List all Journal Tiddlers</li>
 
 <li>Design</li>
+
+<li>DivPop btn</li>
+
+<li>DivPop glbl</li>
 
 <li>ext Parent Return</li>
 
@@ -9695,15 +9701,13 @@ exports.startup = function() {
 <div created="20190925014431388" modified="20190925051250712" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
-<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;Untitled&quot;: {
-            &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;span style=\&quot;color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\&quot;&gt;Use Windows Explorer to open your new TiddlyWiki application&lt;/span&gt;&lt;blockquote style=\&quot;box-sizing: border-box; border-left: 5px solid rgb(187, 187, 187); margin-left: 25px; padding-left: 10px; quotes: &amp;quot;“&amp;quot; &amp;quot;”&amp;quot; &amp;quot;‘&amp;quot; &amp;quot;’&amp;quot;; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;&quot;
-        }
-    }
-}</pre>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[Untitled]]
+# [[mcr div_pop]]
+# [[btn viewmenu popup]]
+# [[glbl DivPopTiddler]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9776,7 +9780,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200415060931805" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200418112205514" title="$:/state/sidebar">
 <pre>yes</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9788,20 +9792,20 @@ exports.startup = function() {
 <div created="20190925052229880" modified="20200115080408562" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20190925051414187" modified="20200411102015428" title="$:/state/tab-1749438307">
+<div created="20190925051414187" modified="20200418112224978" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200411102028972" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/More</pre>
+<div created="20190925014513912" modified="20200418112207573" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200415060847505" list="[[Tom TW Pages]] [[Test Run]] [[keyboard action SaveHtmlConverted]]" modified="20200415061001057" title="$:/StoryList">
+<div created="20200418111447006" list="[[DivPop glbl]] [[DivPop btn]] [[Tom TW Pages]]" modified="20200418112210961" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
-<pre>[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]</pre>
+<div created="20200111074215259" modified="20200418112159431" title="$:/temp/advancedsearch">
+<pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9816,7 +9820,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/Tom%20TWPages.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Dad/Downloads/Tom%20TWPages.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9836,7 +9840,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/Tom%20TWPages.htm&quot;
+            &quot;text&quot;: &quot;/C:/Users/Dad/Downloads/Tom%20TWPages.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9973,17 +9977,20 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200411063358305" modified="20200415053326057" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
-<pre>25px</pre>
+<div created="20200411063358305" modified="20200418112234374" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
+<pre>15px</pre>
 </div>
-<div created="20200411063358305" modified="20200415053326057" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
-<pre>34px</pre>
-</div>
-<div created="20200411063358304" modified="20200415053326056" title="$:/themes/tiddlywiki/vanilla/metrics/fontsize">
+<div created="20200411063358305" modified="20200418112234374" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
 <pre>24px</pre>
 </div>
-<div created="20200411063358304" modified="20200415053326057" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
-<pre>30px</pre>
+<div created="20200411063358304" modified="20200418112234374" title="$:/themes/tiddlywiki/vanilla/metrics/fontsize">
+<pre>14px</pre>
+</div>
+<div created="20200411063358304" modified="20200418112234374" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
+<pre>20px</pre>
+</div>
+<div created="20200418112220119" modified="20200418112220119" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
+<pre>fluid-fixed</pre>
 </div>
 <div color="#004080" created="20200411102446831" modified="20200411134005261" tags="SUBINDEX SCOPE" title="Application">
 <pre>!!Test Run
@@ -10178,6 +10185,43 @@ Continue to [[Delete a Tiddler |Content Test Run - Delete a Tiddler]]</pre>
 !!Language
 
 &lt;&lt;list-links filter:&quot;[tag[Language]tag&lt;currentTiddler&gt;sort[]]&quot;&gt;&gt;</pre>
+</div>
+<div created="20200418064445680" modified="20200418111935867" tags="META $:/tags/ViewToolbar" title="DivPop btn">
+<pre>\define divpop_current(ur_ref)
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
+popup
+&lt;/$button&gt;
+\end
+
+&lt;$list filter=&quot;[all[current]]&quot;&gt;
+&lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
+&lt;/$list&gt;</pre>
+</div>
+<div created="20200418110049404" modified="20200418111927478" tags="$:/tags/BelowStory META" title="DivPop glbl">
+<pre>&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
+&lt;div style=&quot;
+position: fixed;
+top: 0px;
+right: 0px;
+width: 300px;
+border: 3px solid;
+background: white;
+bottom: 0%;
+&quot;&gt;
+&lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+close
+&lt;/$button&gt;
+&lt;$tiddler tiddler=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$transclude mode=&quot;block&quot; /&gt;
+&lt;/$tiddler&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div created="20200223043825137" modified="20200411141357691" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.htm]]&lt;/div&gt;</pre>
