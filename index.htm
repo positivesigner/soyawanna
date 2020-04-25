@@ -249,7 +249,7 @@ Error message and password prompt
 
 <li>EDITOR</li>
 
-<li>ext Root doc</li>
+<li>ext Parent Return</li>
 
 <li>EXTENSION</li>
 
@@ -268,6 +268,8 @@ Error message and password prompt
 <li>Git Checkout</li>
 
 <li>Google Chrome Portable app</li>
+
+<li>Google Forms survey</li>
 
 <li>HARDWARE</li>
 
@@ -9701,8 +9703,8 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200411141432999" title="$:/state/sidebar">
-<pre>no</pre>
+<div created="20190925044925672" modified="20200425062731512" title="$:/state/sidebar">
+<pre>yes</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9722,7 +9724,7 @@ exports.startup = function() {
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="[[Soyawanna Dev topics]] [[TiddlyWiki Notes]]" title="$:/StoryList">
+<div created="20200425062738332" list="[[Soyawanna Dev topics]]" modified="20200425062738332" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
@@ -9925,8 +9927,8 @@ exports.startup = function() {
 <div created="20200405165041827" modified="20200405165049183" tags="DOC" title="EDITOR">
 <pre></pre>
 </div>
-<div created="20200223043343881" modified="20200223043440516" tags="EXTLINK" title="ext Root doc">
-<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
+<div created="20200223043343881" modified="20200425062755469" tags="META" title="ext Parent Return">
+<pre>&lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;./index.htm&quot;&gt;TiddlyWiki view of website&lt;/a&gt;&lt;/div&gt;</pre>
 </div>
 <div created="20200405184500604" modified="20200405184501933" tags="DOC" title="EXTENSION">
 <pre></pre>
@@ -9969,6 +9971,9 @@ Normal Font
 </div>
 <div created="20200222231926017" modified="20200411065218550" tags="BROWSER INSTALL" title="Google Chrome Portable app">
 <pre>Browser_Install/GoogleChrome Portable.htm</pre>
+</div>
+<div created="20200425062503769" modified="20200425062526398" tags="EDITOR BROWSER" title="Google Forms survey">
+<pre>Browser_Editor/GoogleForms Survey.htm</pre>
 </div>
 <div created="20200405223605285" modified="20200405223606792" tags="DOC" title="HARDWARE">
 <pre></pre>
@@ -10119,7 +10124,7 @@ All user tiddlers, export non-meta to HTML
 <div created="20200405232310294" modified="20200405232313084" tags="DOC" title="SOUND">
 <pre></pre>
 </div>
-<div created="20190925014523514" modified="20200405232123534" tags="INDEX" title="Soyawanna Dev topics">
+<div created="20190925014523514" modified="20200425062613376" tags="INDEX" title="Soyawanna Dev topics">
 <pre>\define CombinedList(UrTitle1 UrTitle2)
 &lt;ul&gt;
 &lt;$list filter=&quot;[tag[$UrTitle1$]tag[$UrTitle2$]]&quot; &gt;
@@ -10137,6 +10142,8 @@ $UrTitle$ - &lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
 &lt;/$list&gt;
 \end
 
+{{ext Parent Return}}
+
 &lt;$list filter=&quot;[is[tag]tag[DOC]]&quot;&gt;
 &lt;$macrocall $name=SecondTiddler UrTitle=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
@@ -10146,8 +10153,7 @@ $UrTitle$ - &lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
 [[___|Recent entries]]
 
 [[View All Pages]]
-
-&lt;a href=&quot;./index.htm&quot;&gt;TiddlyWiki view of website&lt;a&gt;</pre>
+</pre>
 </div>
 <div created="20200115095609017" modified="20200302224527888" tags="META $:/tags/ViewTemplate" title="template Home Button">
 <pre>&lt;div style=&quot;float:right&quot;&gt;
