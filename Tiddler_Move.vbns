@@ -262,10 +262,11 @@ Namespace Mx
                 End Function 'Found_TWFile
 
                 Public Shared Sub Overwrite_TWExport(ur_new_filepath As String, ur_exisitng_filepath As String)
+				    Dim strFILE_NAME = System.IO.Path.GetFilename(ur_new_filepath)
                     Using stmOUTPUT As New System.IO.StreamWriter(ur_exisitng_filepath, False, Mx.gUTF8_FileEncoding)
 						Using stmREADER As New System.IO.StreamReader(ur_new_filepath, gUTF8_FileEncoding)
 							While stmREADER.EndOfStream = False
-								stmOUTPUT.WriteLine(prv.Fix_Line_Href(stmREADER.ReadLine))
+								stmOUTPUT.WriteLine(prv.Fix_Line_Href(stmREADER.ReadLine, strFILE_NAME))
 							End While
 						End Using 'stmREADER
                     End Using 'stmOUTPUT
@@ -277,7 +278,7 @@ Namespace Mx
                 Const lit_hex_qmark = "%3F" '"%" & Conversion.Hex(Asc("?"))
                 Const lit_hex_space = "%20" '"%" & Conversion.Hex(Asc(s))
 
-                Public Shared Function Fix_Line_Href(ur_line As String) As String
+                Public Shared Function Fix_Line_Href(ur_line As String, ur_filename As String) As String
                     Dim strRET = ur_line
                     Dim strREM_SEARCH = strRET
 
@@ -288,7 +289,7 @@ Namespace Mx
                         If intFOUND_INDEX > 0 Then
                             intFOUND_INDEX += lit_href_qs.Length
                             strREM_SEARCH = Mid(strRET, intFOUND_INDEX)
-                            strREM_SEARCH = prv.Fix_Loc_Href(strREM_SEARCH)
+                            strREM_SEARCH = prv.Fix_Loc_Href(strREM_SEARCH, ur_filename)
                             strRET = Mid(strRET, 1, intFOUND_INDEX - 1) & strREM_SEARCH
                             If strRET.Length > ur_line.Length + 10000 Then
                                 Exit While
@@ -315,6 +316,14 @@ Namespace Mx
                         End If
                     End While 'intFOUND_INDEX
 
+					If strRET = "<button class="""">" Then
+						strRET = ""
+					ElseIf strRET = "popup" Then
+					    strRET = ""
+					ElseIf strRET = "</button> "
+					    strRET = ""
+					End If
+					
                     Fix_Line_Href = strRET.Replace("<button aria-label=""show sidebar""", "<a href=""#""><button aria-label=""show sidebar""").Replace("</svg></button>", "</svg></button></a>")
                 End Function 'Fix_Line_Href
 
@@ -329,13 +338,17 @@ Namespace Mx
                     Fix_Loc_AName = strRET
                 End Function 'Fix_Loc_AName
 
-                Public Shared Function Fix_Loc_Href(ur_line As String) As String
+                Public Shared Function Fix_Loc_Href(ur_line As String, ur_filename As String) As String
                     Dim strRET = ur_line
                     Dim intFOUND_START_QS = 1
                     Dim intFOUND_END_QS = InStr(intFOUND_START_QS, strRET, qs)
                     Dim intLINK_LENGTH = intFOUND_END_QS - intFOUND_START_QS
                     Dim strHLINK = Mid(strRET, intFOUND_START_QS, intLINK_LENGTH)
-                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt).Replace(".htm", ".html").Replace("./index.html", "./index.htm")
+                    strHLINK = strHLINK.Replace(lit_hex_qmark, mt).Replace(lit_hex_space, mt)
+					If Left(strHLINK, 2) <> "./" Then
+					    strHLINK = strHLINK.Replace(".htm", ".html")
+					End If
+					
                     strRET = Mid(strRET, 1, intFOUND_START_QS - 1) & strHLINK & Mid(strRET, intFOUND_END_QS)
                     Fix_Loc_Href = strRET
                 End Function 'Fix_Loc_Href
