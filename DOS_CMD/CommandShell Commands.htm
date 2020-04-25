@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Template — Design notes</title>
+<title>Command Shell — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>Command Shell commands</li>
+
 <li>DivPop btn</li>
 
 <li>DivPop glbl</li>
@@ -287,13 +289,13 @@ Error message and password prompt
 
 <li>template Home Button</li>
 
+<li>text Windows Commands</li>
+
 <li>TiddlyWiki Startup Options</li>
 
 <li>View All Pages</li>
 
 <li>What is this Wiki Stuff?</li>
-
-<li>WikiFile Title</li>
 
 </ul>
 </p>
@@ -9666,8 +9668,8 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
-<pre>TiddlyWiki Template</pre>
+<div created="20190925014404111" modified="20200425220342109" title="$:/SiteTitle">
+<pre>Command Shell</pre>
 </div>
 <div created="20200411063457323" modified="20200411063514558" title="$:/state/dropdown/keyboardshortcut/font-large-286565879">
 <pre>close</pre>
@@ -9687,7 +9689,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200425211605724" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200425223833936" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9702,13 +9704,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200418112041443" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200418112804713" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200425220404516" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200425211118809" list="[[WikiFile Title]] [[DivPop glbl]] [[DivPop btn]]" modified="20200425211552709" title="$:/StoryList">
+<div created="20200425220333360" list="[[Command Shell commands]] [[text Windows Commands]]" modified="20200425220333360" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9727,7 +9729,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/DOS_CMD/CommandShell%20Commands.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9747,7 +9749,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/DOS_CMD/CommandShell%20Commands.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9898,6 +9900,15 @@ exports.startup = function() {
 </div>
 <div created="20200418112031521" modified="20200418112031522" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
+</div>
+<div created="20190925014523514" modified="20200425220400125" tags="INDEX" title="Command Shell commands">
+<pre>{{ext Root doc}}
+
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
 </div>
 <div created="20200418064445680" modified="20200425204233962" tags="META $:/tags/ViewToolbar" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
@@ -10098,6 +10109,523 @@ All user tiddlers, export non-meta to HTML
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
+<div created="20200425220416169" modified="20200425223706725" tags="REF" title="text Windows Commands">
+<pre>https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
+
+&quot;&quot;&quot;
+
+Prerequisites
+The information that is contained in this topic applies to:Windows Server 2019
+
+Windows Server (Semi-Annual Channel)
+
+Windows Server 2016
+
+Windows Server 2012 R2
+
+Windows Server 2012
+
+Windows Server 2008 R2
+
+Windows Server 2008
+
+Windows 10
+
+Windows 8.1Command shell overview
+The Command shell was the first shell built into Windows to automate routine tasks, like user account management or nightly backups, with batch (.bat) files. With Windows Script Host you could run more sophisticated scripts in the Command shell. For more information, see
+cscript
+or
+wscript
+. You can perform operations more efficiently by using scripts than you can by using the user interface. Scripts accept all Commands that are available at the command line.
+
+Windows has two command shells: The Command shell and
+PowerShell
+. Each shell is a software program that provides direct communication between you and the operating system or application, providing an environment to automate IT operations.
+
+PowerShell was designed to extend the capabilities of the Command shell to run PowerShell commands called cmdlets. Cmdlets are similar to Windows Commands but provide a more extensible scripting language. You can run Windows Commands and PowerShell cmdlets in Powershell, but the Command shell can only run Windows Commands and not PowerShell cmdlets.
+
+For the most robust, up-to-date Windows automation, we recommend using PowerShell instead of Windows Commands or Windows Script Host for Windows automation.
+
+Note
+
+You can also download and install
+PowerShell Core
+, the open source version of PowerShell. Caution
+
+Incorrectly editing the registry may severely damage your system. Before making the following changes to the registry, you should back up any valued data on the computer. Note
+
+To enable or disable file and directory name completion in the Command shell on a computer or user logon session, run
+regedit.exe
+and set the following
+reg_DWOrd value
+:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\completionChar\reg_DWOrd
+
+To set the
+reg_DWOrd
+value, use the hexadecimal value of a control character for a particular function (for example,
+0 9
+is Tab and
+0 08
+is Backspace). User-specified settings take precedence over computer settings, and command-line options take precedence over registry settings.Command-line reference A-Z
+To find information about a specific Windows Command, in the following A-Z menu, click the letter that the Command starts with, and then click the Command name.
+
+A append
+arp
+assoc
+at
+atmadm
+attrib
+auditpol
+autochk
+autoconv
+autofmt
+B bcdboot
+bcdedit
+bdehdcfg
+bitsadmin
+bitsadmin addfile
+bitsadmin addfileset
+bitsadmin addfilewithranges
+bitsadmin cancel
+bitsadmin complete
+bitsadmin create
+bitsadmin getaclflags
+bitsadmin getbytestotal
+bitsadmin getbytestransferred
+bitsadmin getcompletiontime
+bitsadmin getcreationtime
+bitsadmin getdescription
+bitsadmin getdisplayname
+bitsadmin geterror
+bitsadmin geterrorcount
+bitsadmin getfilestotal
+bitsadmin getfilestransferred
+bitsadmin getminretrydelay
+bitsadmin getmodificationtime
+bitsadmin getnoprogresstimeout
+bitsadmin getnotifycmdline
+bitsadmin getnotifyflags
+bitsadmin getnotifyinterface
+bitsadmin getowner
+bitsadmin get priority
+bitsadmin getproxybypasslist
+bitsadmin getproxylist
+bitsadmin getproxyusage
+bitsadmin getreplydata
+bitsadmin getreplyfilename
+bitsadmin getreplyprogress
+bitsadmin getstate
+bitsadmin gettype
+bitsadmin help
+bitsadmin info
+bitsadmin list
+bitsadmin listfiles
+bitsadmin monitor
+bitsadmin nowrap
+bitsadmin rawreturn
+bitsadmin removecredentials
+bitsadmin replaceremoteprefix
+bitsadmin reset
+bitsadmin resume
+bitsadmin setaclflag
+bitsadmin setcredentials
+bitsadmin setdescription
+bitsadmin setdisplayname
+bitsadmin setminretrydelay
+bitsadmin setnoprogresstimeout
+bitsadmin setnotifycmdline
+bitsadmin setnotifyflags
+bitsadmin setpriority
+bitsadmin setproxysettings
+bitsadmin setreplyfilename
+bitsadmin suspend
+bitsadmin takeownership
+bitsadmin Transfer
+bitsadmin util
+bitsadmin wrap bootcfg
+bootcfg addsw
+bootcfg copy
+bootcfg dbg1394
+bootcfg debug
+  bootcfg default
+bootcfg delete
+bootcfg ems
+bootcfg query
+bootcfg raw
+bootcfg rmsw
+bootcfg timeout break
+C cacls
+call
+cd
+certreq
+certutil
+change
+change logon
+change port
+change user chcp
+chdir
+chglogon
+chgport
+chgusr
+chkdsk
+chkntfs
+choice
+cipher
+cleanmgr
+clip
+cls
+Cmd
+cmdkey
+cmstp
+color
+comp
+compact
+convert
+copy
+cprofile
+cscript
+D date
+dcgpofix
+defrag
+del
+dfsrmig
+diantz
+dir
+diskcomp
+diskcopy
+diskpart
+diskperf
+diskraid
+diskshadow
+dispdiag
+dnscmd
+doskey
+driverquery
+E echo
+edit
+endlocal
+erase
+eventcreate
+eventquery
+eventtriggers
+evntcmd
+exit
+expand
+extract
+F fc
+find
+findstr
+finger
+flattemp
+fondue
+for
+forfiles
+format
+freedisk
+fsutil
+fsutil 8dot3name
+ fsutil behavior
+ fsutil file
+fsutil fsinfo
+fsutil hardlink
+fsutil objectid
+fsutil quota
+fsutil repair
+fsutil reparsepoint
+fsutil resource
+fsutil sparse
+fsutil tiering
+fsutil transaction
+fsutil usn
+fsutil volume
+fsutil wim ftp
+ftype
+fveupdate
+G getmac
+gettype
+goto
+gpfixup
+gpresult
+gpupdate
+graftabl
+H help
+helpctr
+hostname
+I icacls
+if
+inuse
+ipconfig
+ipxroute
+irftp
+J jetpack
+K klist
+ksetup
+ksetup:setrealm
+ksetup:mapuser
+ksetup:addkdc
+ksetup:delkdc
+ksetup:addkpasswd
+ksetup:delkpasswd
+ksetup:server
+ksetup:setcomputerpassword
+ksetup:removerealm
+ksetup:domain
+ksetup:changepassword
+ksetup:listrealmflags
+ksetup:setrealmflags
+ksetup:addrealmflags
+ksetup:delrealmflags
+ksetup:dumpstate
+ksetup:addhosttorealmmap
+ksetup:delhosttorealmmap
+ksetup:setenctypeattr
+ksetup:getenctypeattr
+ksetup:addenctypeattr
+ksetup:delenctypeattr ktmutil
+ktpass
+L label
+lodctr
+logman
+logman create
+logman query
+logman start &amp;124; stop
+logman delete
+logman update
+logman import &amp;124; export logoff
+lpq
+lpr
+M macfile
+makecab
+manage-bde
+manage-bde: status
+manage-bde: on
+manage-bde: off
+manage-bde: pause
+manage-bde: resume
+manage-bde: lock
+manage-bde: unlock
+manage-bde: autounlock
+manage-bde: protectors
+manage-bde: tpm
+manage-bde: setidentifier
+manage-bde: ForceRecovery
+manage-bde: changepassword
+manage-bde: changepin
+manage-bde: changekey
+manage-bde: KeyPackage
+manage-bde: upgrade
+manage-bde: WipeFreeSpace mapadmin
+Md
+mkdir
+mklink
+mmc
+mode
+more
+mount
+mountvol
+move
+mqbkup
+mqsvc
+mqtgsvc
+msdt
+msg
+msiexec
+msinfo32
+mstsc
+N nbtstat
+netcfg
+netsh
+netstat
+Net print
+nfsadmin
+nfsshare
+nfsstat
+nlbmgr
+nslookup
+nslookup exit command
+nslookup finger command
+nslookup help
+nslookup ls
+nslookup lserver
+nslookup root
+nslookup server
+nslookup set
+nslookup set all
+nslookup set class
+nslookup set d2
+nslookup set debug
+nslookup set domain
+nslookup set port
+nslookup set querytype
+nslookup set recurse
+nslookup set retry
+nslookup set root
+nslookup set search
+nslookup set srchlist
+nslookup set timeout
+nslookup set type
+nslookup set vc
+nslookup view ntbackup
+ntcmdprompt
+ntfrsutl
+O openfiles
+P pagefileconfig
+path
+pathping
+pause
+pbadmin
+pentnt
+perfmon
+ping
+pnpunattend
+pnputil
+popd
+PowerShell
+PowerShell_ise
+print
+prncnfg
+prndrvr
+prnjobs
+prnmngr
+prnport
+prnqctl
+prompt
+pubprn
+pushd
+pushprinterconnections
+Q qappsrv
+qprocess
+query
+quser
+qwinsta
+R rcp
+rd
+rdpsign
+recover
+reg
+reg add
+reg compare
+reg copy
+reg delete
+reg export
+reg import
+reg load
+reg query
+reg restore
+reg save
+reg unload regini
+regsvr32
+relog
+rem
+ren
+rename
+repair-bde
+replace
+reset session
+rexec
+risetup
+rmdir
+robocopy
+route_ws2008
+rpcinfo
+rpcping
+rsh
+rundll32
+rwinsta
+S schtasks
+scwcmd
+scwcmd: analyze
+scwcmd: configure
+scwcmd: register
+scwcmd: rollback
+ scwcmd: transform
+ scwcmd: view
+ 
+
+secedit
+secedit:analyze
+secedit:configure
+secedit:export
+secedit:generaterollback
+secedit:import
+secedit:validate serverceipoptin
+Servermanagercmd
+serverweroptin
+set
+setlocal
+setx
+sfc
+shadow
+shift
+showmount
+shutdown
+sort
+start
+subst
+sxstrace
+sysocmgr
+systeminfo
+T takeown
+tapicfg
+taskkill
+tasklist
+tcmsetup
+telnet
+tftp
+time
+timeout
+title
+tlntadmn
+tpmvscmgr
+tracerpt
+tracert
+tree
+tscon
+tsdiscon
+tsecimp
+tskill
+tsprof
+type
+typeperf
+tzutil
+U unlodctr
+V ver
+verifier
+verify
+vol
+vssadmin
+-W waitfor
+wbadmin
+wbadmin enable backup
+wbadmin disable backup
+wbadmin start backup
+wbadmin stop job
+wbadmin get versions
+wbadmin get items
+wbadmin start recovery
+wbadmin get status
+wbadmin get disks
+wbadmin start systemstaterecovery
+wbadmin start systemstatebackup
+wbadmin delete systemstatebackup
+wbadmin start sysrecovery
+wbadmin restore catalog
+wbadmin delete catalog wdsutil
+wecutil
+wevtutil
+where
+whoami
+winnt
+winnt32
+winpop
+winrs
+wmic
+wscript
+X xcopy
+</pre>
+</div>
 <div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
 <pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
 
@@ -10172,15 +10700,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20190925014523514" modified="20200405135143829" tags="INDEX" title="WikiFile Title">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[META]sort[title]]&quot;&gt;&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]</pre>
 </div>
 
 </div>

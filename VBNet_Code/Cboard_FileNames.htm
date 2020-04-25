@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlyWiki Template — Design notes</title>
+<title>Cboard Filename — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -165,6 +165,8 @@ Error message and password prompt
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler</li>
 
+<li>$:/config/ShortcutInfo/export-vbns</li>
+
 <li>$:/config/ShortcutInfo/font-large</li>
 
 <li>$:/config/ShortcutInfo/font-normal</li>
@@ -174,6 +176,8 @@ Error message and password prompt
 <li>$:/config/ShortcutInfo/save-all-changes</li>
 
 <li>$:/config/ShortcutInfo/save-html-converted</li>
+
+<li>$:/config/shortcuts/export-vbns</li>
 
 <li>$:/config/shortcuts/font-large</li>
 
@@ -255,6 +259,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>Cboard Filename vbns</li>
+
 <li>DivPop btn</li>
 
 <li>DivPop glbl</li>
@@ -267,6 +273,8 @@ Error message and password prompt
 
 <li>INDEX</li>
 
+<li>keyboard action ExportVBNS</li>
+
 <li>keyboard action FontLarge</li>
 
 <li>keyboard action FontNormal</li>
@@ -276,6 +284,20 @@ Error message and password prompt
 <li>keyboard action SaveAllChanges</li>
 
 <li>keyboard action SaveHtmlConverted</li>
+
+<li>L1 cmd</li>
+
+<li>L2 include</li>
+
+<li>L3 main</li>
+
+<li>L4 branch</li>
+
+<li>L5 db</li>
+
+<li>L6 TempFile</li>
+
+<li>L6 UserBowl</li>
 
 <li>mcr OneLink</li>
 
@@ -287,13 +309,15 @@ Error message and password prompt
 
 <li>template Home Button</li>
 
+<li>template VBNSText</li>
+
 <li>TiddlyWiki Startup Options</li>
+
+<li>VBNS Text Export</li>
 
 <li>View All Pages</li>
 
 <li>What is this Wiki Stuff?</li>
-
-<li>WikiFile Title</li>
 
 </ul>
 </p>
@@ -371,6 +395,9 @@ exports.startup = function() {
 <div created="20190925051431806" modified="20190925051431807" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/new-tiddler">
 <pre>hide</pre>
 </div>
+<div created="20200425213112461" modified="20200425213120948" tags="META" title="$:/config/ShortcutInfo/export-vbns">
+<pre></pre>
+</div>
 <div created="20200411063056939" modified="20200411063122203" tags="META" title="$:/config/ShortcutInfo/font-large">
 <pre></pre>
 </div>
@@ -385,6 +412,9 @@ exports.startup = function() {
 </div>
 <div created="20200303061746900" modified="20200303061752887" tags="META" title="$:/config/ShortcutInfo/save-html-converted">
 <pre></pre>
+</div>
+<div created="20200425213042379" modified="20200425213057204" tags="META" title="$:/config/shortcuts/export-vbns">
+<pre>ctrl-shift-alt-V</pre>
 </div>
 <div created="20200411063126026" modified="20200411063510429" tags="META" title="$:/config/shortcuts/font-large">
 <pre>ctrl-shift-Quote</pre>
@@ -9611,7 +9641,7 @@ exports.startup = function() {
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;ul class=\&quot;\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#%24%3A%2Fplugins%2Fdanielo515%2FsearchNreplace\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;$:/plugins/danielo515/searchNreplace&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#DivPop%20btn\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;DivPop btn&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#DivPop%20glbl\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;DivPop glbl&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#ext%20Parent%20Return\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;ext Parent Return&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Font%20Size\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;Font Size&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#INDEX\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;INDEX&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20ExportVBNS\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action ExportVBNS&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20FontLarge\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action FontLarge&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20FontNormal\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action FontNormal&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20HomeTiddlers\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action HomeTiddlers&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20SaveAllChanges\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action SaveAllChanges&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20SaveHtmlConverted\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action SaveHtmlConverted&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#mcr%20OneLink\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;mcr OneLink&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Missing%20Tags%20Report\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;Missing Tags Report&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Recent%20entries\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;Recent entries&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#template%20Home%20Button\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;template Home Button&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#TiddlyWiki%20Startup%20Options\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;TiddlyWiki Startup Options&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#View%20All%20Pages\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;View All Pages&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#What%20is%20this%20Wiki%20Stuff%3F\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;What is this Wiki Stuff?&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Recent%20entries\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;___&lt;/a&gt;&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#View%20All%20Pages\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;View All Pages&lt;/a&gt;&lt;/p&gt;&quot;
+            &quot;text&quot;: &quot;&lt;div data-tiddler-title=\&quot;Cboard Filename vbns\&quot; data-tags=\&quot;INDEX\&quot; class=\&quot;tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-INDEX\&quot; style=\&quot;box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 5px; position: relative; margin-bottom: 28px; background-color: rgb(255, 255, 255); border: 1px solid rgb(255, 255, 255); padding: 28px 42px 42px; width: 1789px; border-radius: 2px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;div class=\&quot;tc-tiddler-body tc-reveal\&quot; style=\&quot;box-sizing: border-box; clear: both; font-size: 25px; line-height: 34px;\&quot;&gt;&lt;p style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;ul class=\&quot;\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#L4%20branch\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;L4 branch&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#L5%20db\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;L5 db&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#L6%20TempFile\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;L6 TempFile&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#L6%20UserBowl\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;L6 UserBowl&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Recent%20entries\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;___&lt;/a&gt;&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#View%20All%20Pages\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;View All Pages&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div style=\&quot;box-sizing: border-box; float: right;\&quot;&gt;&lt;span class=\&quot; tc-reveal\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;button class=\&quot;tc-btn-invisible\&quot; title=\&quot;Show sidebar\&quot; aria-label=\&quot;show sidebar\&quot; style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: 1.2; font-family: inherit; margin: 0px; overflow: visible; text-transform: none; -webkit-appearance: button; cursor: pointer; outline-color: rgb(87, 120, 216); padding: 0px; background: none; border: none;\&quot;&gt;&lt;svg class=\&quot;tc-image-chevron-left tc-image-button\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot; viewBox=\&quot;0 0 128 128\&quot; version=\&quot;1.1\&quot;&gt;&lt;g fill-rule=\&quot;evenodd\&quot; transform=\&quot;translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)\&quot;&gt;&lt;path d=\&quot;M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z\&quot; transform=\&quot;translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) \&quot;&gt;&lt;/path&gt;&lt;path d=\&quot;M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z\&quot; transform=\&quot;translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) \&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=\&quot;box-sizing: border-box; float: right;\&quot;&gt;&lt;button class=\&quot;tc-btn-invisible\&quot; title=\&quot;Open the default tiddlers\&quot; aria-label=\&quot;home\&quot; style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: 1.2; font-family: inherit; margin: 0px; overflow: visible; text-transform: none; -webkit-appearance: button; cursor: pointer; outline-color: rgb(87, 120, 216); padding: 0px; background: none; border: none;\&quot;&gt;&lt;span class=\&quot;tc-dirty-indicator\&quot; style=\&quot;box-sizing: border-box; fill: rgb(255, 0, 0); color: rgb(255, 0, 0);\&quot;&gt;&lt;svg class=\&quot;tc-image-home-button tc-image-button\&quot; viewBox=\&quot;0 0 128 128\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot;&gt;&lt;g fill-rule=\&quot;evenodd\&quot;&gt;&lt;path d=\&quot;M112.9847,119.501583 C112.99485,119.336814 113,119.170705 113,119.003406 L113,67.56802 C116.137461,70.5156358 121.076014,70.4518569 124.133985,67.3938855 C127.25818,64.2696912 127.260618,59.2068102 124.131541,56.0777326 L70.3963143,2.34250601 C68.8331348,0.779326498 66.7828947,-0.000743167069 64.7337457,1.61675364e-05 C62.691312,-0.00409949529 60.6426632,0.777559815 59.077717,2.34250601 L33,28.420223 L33,28.420223 L33,8.00697327 C33,3.58484404 29.4092877,0 25,0 C20.581722,0 17,3.59075293 17,8.00697327 L17,44.420223 L5.3424904,56.0777326 C2.21694607,59.2032769 2.22220878,64.2760483 5.34004601,67.3938855 C8.46424034,70.5180798 13.5271213,70.5205187 16.6561989,67.3914411 L17,67.04764 L17,119.993027 C17,119.994189 17.0000002,119.995351 17.0000007,119.996514 C17.0000002,119.997675 17,119.998838 17,120 C17,124.418278 20.5881049,128 24.9992458,128 L105.000754,128 C109.418616,128 113,124.409288 113,120 C113,119.832611 112.99485,119.666422 112.9847,119.501583 Z M97,112 L97,51.5736087 L97,51.5736087 L64.7370156,19.3106244 L33,51.04764 L33,112 L97,112 Z\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;div data-tiddler-title=\&quot;keyboard action SaveHtmlConverted\&quot; data-tags=\&quot;$:/tags/KeyboardShortcut META\&quot; class=\&quot;tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-%24%3A%2Ftags%2FKeyboardShortcut tc-tagged-META\&quot; style=\&quot;box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 5px; position: relative; margin-bottom: 28px; background-color: rgb(255, 255, 255); border: 1px solid rgb(255, 255, 255); padding: 28px 42px 42px; width: 1789px; border-radius: 2px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 24px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-style: initial; text-decoration-color: initial; transition: none 0s ease 0s; opacity: 1;\&quot;&gt;&lt;div class=\&quot;tc-tiddler-title\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;div class=\&quot;tc-titlebar\&quot; style=\&quot;box-sizing: border-box; font-weight: 300; font-size: 2.35em; line-height: 1.2em; color: rgb(24, 41, 85); margin: 0px; overflow: hidden;\&quot;&gt;&lt;span class=\&quot;tc-tiddler-controls\&quot; style=\&quot;box-sizing: border-box; float: right;\&quot;&gt;&lt;span class=\&quot; tc-reveal\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;button class=\&quot;tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions\&quot; title=\&quot;More actions\&quot; aria-label=\&quot;more\&quot; style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: 1.2; font-family: inherit; margin: 0px 0px 0px 5px; overflow: visible; text-transform: none; -webkit-appearance: button; cursor: pointer; outline-color: rgb(87, 120, 216); padding: 0px; background: none; border: none; vertical-align: baseline;\&quot;&gt;&lt;svg class=\&quot;tc-image-down-arrow tc-image-button\&quot; viewBox=\&quot;0 0 128 128\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot;&gt;&lt;path d=\&quot;M109.35638,81.3533152 C107.923899,82.7869182 105.94502,83.6751442 103.759224,83.6751442 L24.5910645,83.6751442 C20.225873,83.6751442 16.6751442,80.1307318 16.6751442,75.7584775 C16.6751442,71.3951199 20.2192225,67.8418109 24.5910645,67.8418109 L95.8418109,67.8418109 L95.8418109,-3.40893546 C95.8418109,-7.77412698 99.3862233,-11.3248558 103.758478,-11.3248558 C108.121835,-11.3248558 111.675144,-7.78077754 111.675144,-3.40893546 L111.675144,75.7592239 C111.675144,77.9416955 110.789142,79.9205745 109.356651,81.3538862 Z\&quot; transform=\&quot;translate(64.175144, 36.175144) rotate(45.000000) translate(-64.175144, -36.175144) \&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;&lt;span class=\&quot; tc-reveal\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;button class=\&quot;tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit\&quot; title=\&quot;Edit this tiddler\&quot; aria-label=\&quot;edit\&quot; style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: 1.2; font-family: inherit; margin: 0px 0px 0px 5px; overflow: visible; text-transform: none; -webkit-appearance: button; cursor: pointer; outline-color: rgb(87, 120, 216); padding: 0px; background: none; border: none; vertical-align: baseline;\&quot;&gt;&lt;svg class=\&quot;tc-image-edit-button tc-image-button\&quot; viewBox=\&quot;0 0 128 128\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot;&gt;&lt;g fill-rule=\&quot;evenodd\&quot;&gt;&lt;path d=\&quot;M116.870058,45.3431458 L108.870058,45.3431458 L108.870058,45.3431458 L108.870058,61.3431458 L116.870058,61.3431458 L116.870058,45.3431458 Z M124.870058,45.3431458 L127.649881,45.3431458 C132.066101,45.3431458 135.656854,48.9248678 135.656854,53.3431458 C135.656854,57.7524334 132.07201,61.3431458 127.649881,61.3431458 L124.870058,61.3431458 L124.870058,45.3431458 Z M100.870058,45.3431458 L15.6638275,45.3431458 C15.5064377,45.3431458 15.3501085,45.3476943 15.1949638,45.3566664 L15.1949638,45.3566664 C15.0628002,45.3477039 14.928279,45.3431458 14.7913977,45.3431458 C6.68160973,45.3431458 -8.34314575,53.3431458 -8.34314575,53.3431458 C-8.34314575,53.3431458 6.85614548,61.3431458 14.7913977,61.3431458 C14.9266533,61.3431458 15.0596543,61.3384973 15.190398,61.3293588 C15.3470529,61.3385075 15.5049057,61.3431458 15.6638275,61.3431458 L100.870058,61.3431458 L100.870058,45.3431458 L100.870058,45.3431458 Z\&quot; transform=\&quot;translate(63.656854, 53.343146) rotate(-45.000000) translate(-63.656854, -53.343146) \&quot;&gt;&lt;/path&gt;&lt;path d=\&quot;M35.1714596,124.189544 C41.9594858,123.613403 49.068777,121.917633 58.85987,118.842282 C60.6854386,118.268877 62.4306907,117.705515 65.1957709,116.802278 C81.1962861,111.575575 87.0734839,109.994907 93.9414474,109.655721 C102.29855,109.242993 107.795169,111.785371 111.520478,118.355045 C112.610163,120.276732 115.051363,120.951203 116.97305,119.861518 C118.894737,118.771832 119.569207,116.330633 118.479522,114.408946 C113.146151,105.003414 104.734907,101.112919 93.5468356,101.66546 C85.6716631,102.054388 79.4899908,103.716944 62.7116783,109.197722 C59.9734132,110.092199 58.2519873,110.64787 56.4625698,111.20992 C37.002649,117.322218 25.6914684,118.282267 16.8654804,112.957098 C14.9739614,111.815848 12.5154166,112.424061 11.3741667,114.31558 C10.2329168,116.207099 10.84113,118.665644 12.7326489,119.806894 C19.0655164,123.627836 26.4866335,124.926678 35.1714596,124.189544 Z\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;&lt;span class=\&quot; tc-reveal\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;button class=\&quot;tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose\&quot; title=\&quot;Close this tiddler\&quot; aria-label=\&quot;close\&quot; style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: 1.2; font-family: inherit; margin: 0px 0px 0px 5px; overflow: visible; text-transform: none; -webkit-appearance: button; cursor: pointer; outline-color: rgb(87, 120, 216); padding: 0px; background: none; border: none; vertical-align: baseline;\&quot;&gt;&lt;svg class=\&quot;tc-image-close-button tc-image-button\&quot; viewBox=\&quot;0 0 128 128\&quot; width=\&quot;22pt\&quot; height=\&quot;22pt\&quot;&gt;&lt;g fill-rule=\&quot;evenodd\&quot;&gt;&lt;path d=\&quot;M65.0864256,75.4091629 L14.9727349,125.522854 C11.8515951,128.643993 6.78104858,128.64922 3.65685425,125.525026 C0.539017023,122.407189 0.5336324,117.334539 3.65902635,114.209145 L53.7727171,64.0954544 L3.65902635,13.9817637 C0.537886594,10.8606239 0.532659916,5.79007744 3.65685425,2.6658831 C6.77469148,-0.451954124 11.8473409,-0.457338747 14.9727349,2.66805521 L65.0864256,52.7817459 L115.200116,2.66805521 C118.321256,-0.453084553 123.391803,-0.458311231 126.515997,2.6658831 C129.633834,5.78372033 129.639219,10.8563698 126.513825,13.9817637 L76.4001341,64.0954544 L126.513825,114.209145 C129.634965,117.330285 129.640191,122.400831 126.515997,125.525026 C123.39816,128.642863 118.32551,128.648248 115.200116,125.522854 L65.0864256,75.4091629 L65.0864256,75.4091629 Z\&quot;&gt;&lt;/path&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/button&gt;&lt;/span&gt;&lt;span class=\&quot; tc-reveal\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;span&gt; &lt;/span&gt;&lt;button class=\&quot;\&quot; style=\&quot;box-sizing: border-box; color: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: 1.2; font-family: inherit; margin: 0px 0px 0px 5px; overflow: visible; text-transform: none; -webkit-appearance: button; cursor: pointer; outline-color: rgb(87, 120, 216); vertical-align: baseline;\&quot;&gt;popup&lt;/button&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;span class=\&quot;tc-tiddler-title-icon\&quot; style=\&quot;box-sizing: border-box; vertical-align: middle;\&quot;&gt;&lt;/span&gt;&lt;h2 class=\&quot;tc-title\&quot; style=\&quot;box-sizing: border-box; line-height: 1.2; font-weight: 300; font-size: 1em; display: inline;\&quot;&gt;keyboard action SaveHtm&lt;/h2&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&quot;
         }
     }
 }</pre>
@@ -9666,8 +9696,8 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200116073709673" title="$:/SiteTitle">
-<pre>TiddlyWiki Template</pre>
+<div created="20190925014404111" modified="20200425175208163" title="$:/SiteTitle">
+<pre>Cboard Filename</pre>
 </div>
 <div created="20200411063457323" modified="20200411063514558" title="$:/state/dropdown/keyboardshortcut/font-large-286565879">
 <pre>close</pre>
@@ -9687,7 +9717,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200425211605724" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200425213129710" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9702,17 +9732,17 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200418112041443" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200418112804713" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200425175507996" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200425211118809" list="[[WikiFile Title]] [[DivPop glbl]] [[DivPop btn]]" modified="20200425211552709" title="$:/StoryList">
+<div created="20200425192735916" list="[[Cboard Filename vbns]] [[keyboard action SaveHtmlConverted]] [[template VBNSText]] [[keyboard action ExportVBNS]] $:/config/shortcuts/save-html-converted $:/config/shortcuts/export-vbns $:/config/ShortcutInfo/save-html-converted $:/config/ShortcutInfo/export-vbns" modified="20200425213107903" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
-<pre>[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]</pre>
+<div created="20200111074215259" modified="20200425175754914" title="$:/temp/advancedsearch">
+<pre>[all[tiddlers]tag[CODE]sort[title]]</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9727,7 +9757,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/Users/Dad/Downloads/2020m04d25%20CodeExport/Cboard_FileNames.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9747,7 +9777,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Browser_Editor/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/Users/Dad/Downloads/2020m04d25%20CodeExport/Cboard_FileNames.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9884,22 +9914,31 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200411063358305" modified="20200425203618864" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
+<div created="20200411063358305" modified="20200425190850433" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
 <pre>25px</pre>
 </div>
-<div created="20200411063358305" modified="20200425203618864" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
+<div created="20200411063358305" modified="20200425190850433" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
 <pre>34px</pre>
 </div>
-<div created="20200411063358304" modified="20200425203618863" title="$:/themes/tiddlywiki/vanilla/metrics/fontsize">
+<div created="20200411063358304" modified="20200425190850432" title="$:/themes/tiddlywiki/vanilla/metrics/fontsize">
 <pre>24px</pre>
 </div>
-<div created="20200411063358304" modified="20200425203618864" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
+<div created="20200411063358304" modified="20200425190850433" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
 <pre>30px</pre>
 </div>
 <div created="20200418112031521" modified="20200418112031522" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20200418064445680" modified="20200425204233962" tags="META $:/tags/ViewToolbar" title="DivPop btn">
+<div created="20190925014523514" modified="20200425175218535" tags="INDEX" title="Cboard Filename vbns">
+<pre>{{ext Root doc}}
+
+&lt;&lt;list-links filter:&quot;[tag[CODE]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
+</div>
+<div created="20200418064445680" modified="20200425194131631" tags="META $:/tags/ViewToolbar" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
@@ -9913,7 +9952,7 @@ popup
 &lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200418110049404" modified="20200425211546692" tags="$:/tags/BelowStory META" title="DivPop glbl">
+<div created="20200418110049404" modified="20200425194210547" tags="$:/tags/BelowStory META" title="DivPop glbl">
 <pre>&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
 &lt;div style=&quot;
 position: fixed;
@@ -9965,6 +10004,19 @@ Normal Font
 <div color="#8080c0" created="20190925051857974" modified="20200322103803201" tags="META" title="INDEX">
 <pre></pre>
 </div>
+<div created="20200425212552906" key="((export-vbns))" modified="20200425212847594" tags="$:/tags/KeyboardShortcut META" title="keyboard action ExportVBNS">
+<pre>\define ExportVBNS(ur_filename ur_stamp)
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
+$param=&quot;template VBNSText&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.vbns&quot;
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[CODE]sort[title]]&quot;&quot;&quot;/&gt;
+\end
+&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[%20]join[ ]split[.htm]join[]split[:]join[-colon-]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
+&lt;$macrocall $name=&quot;ExportVBNS&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
+&lt;/$list&gt;
+</pre>
+</div>
 <div created="20200411063250301" key="((font-large))" modified="20200411063336938" tags="META $:/tags/KeyboardShortcut" title="keyboard action FontLarge">
 <pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;30px&quot;/&gt;
@@ -9983,7 +10035,7 @@ Normal Font
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
 </div>
-<div created="20200223012728498" key="((save-all-changes))" modified="20200425211433127" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
+<div created="20200223012728498" key="((save-all-changes))" modified="20200425211905748" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
 <pre>\define ExportSaveAll(ur_filename ur_stamp)
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
@@ -9995,7 +10047,7 @@ Normal Font
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200303061828713" key="((save-html-converted))" modified="20200425211457220" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
+<div created="20200303061828713" key="((save-html-converted))" modified="20200425211916396" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
 <pre>\define ExportSaveHTML(ur_filename ur_stamp)
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
@@ -10006,6 +10058,281 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
 &lt;$macrocall $name=&quot;ExportSaveHTML&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
 &lt;/$list&gt;
+</pre>
+</div>
+<div created="20200425172027595" modified="20200425172211526" tags="CODE" title="L1 cmd" type="text/plain">
+<pre>start &quot;&quot; MxClasses\VBNetScript.exe /path=%0
+exit
+</pre>
+</div>
+<div created="20200425172234366" modified="20200425172253504" tags="CODE" title="L2 include" type="text/plain">
+<pre>MxClasses\MxBaseE9.vb
+</pre>
+</div>
+<div created="20200425172310545" modified="20200425172329931" tags="CODE" title="L3 main" type="text/plain">
+<pre>RetVal = Mx.sp.Clipboard_FileList
+End Function
+End Class
+End Namespace
+</pre>
+</div>
+<div created="20200425172358461" modified="20200425172435445" tags="CODE" title="L4 branch" type="text/plain">
+<pre>Namespace Mx
+    Public Class sp
+        Public Shared Function Clipboard_FileList() As Strap
+            Dim stpRET = Strapd()
+            Clipboard_FileList = stpRET
+            stpRET.d(&quot;QUIT&quot;)
+            Dim objERR_LIST = New ErrListBase : Try
+                'List what resources to find
+                'No command line; hard-coded paths
+                db.UserBowl.InsKey(enmUN.in_subfolder, Mx.Class1.SourceFolder)
+                Dim ins_appname = db.UserBowl.InsFrom_Application()
+                'Collect what resources you have
+                'Filter and group data into tables
+                db.TempFile.InsFrom_InFolder()
+
+                'Create output you want
+                Dim ins_bowl = db.UserBowl.InsKey(enmUN.to_clipboard, db.TempFile.ToString(True))
+                Dim ins_msgbox = db.MessageBox.Ins(
+                    New db.rMessageBox().
+                        vt(enmMB.text, ins_bowl.v(enmUB.contents)).
+                        vt(enmMB.title, db.UserBowl.SelKey(enmUN.app_name).v(enmUB.contents)),
+                        MsgBoxStyle.OkCancel
+                    )
+
+                If ins_msgbox.vUserResponse = MsgBoxResult.Ok Then
+                    db.Clipboard.Ins(
+                        New db.rClipboard().
+                        vt(enmCB.text, ins_bowl.v(enmUB.contents))
+                        )
+                End If
+
+            Catch ex As System.Exception
+                Call objERR_LIST.dError_Stack(ex)
+            End Try
+
+            If objERR_LIST.Found Then
+                stpRET.Clear().d(objERR_LIST.ToString)
+            End If
+        End Function 'Clipboard_SplitAt_AS_Skip_Comma
+    End Class 'sp
+End Namespace 'Mx
+</pre>
+</div>
+<div created="20200425174711695" modified="20200425175001796" tags="CODE" title="L5 db" type="text/plain">
+<pre>Namespace Mx
+    Partial Public Class db
+        Private Shared tblTempFile As sTempFile
+        Private Shared tblUserBowl As sUserBowl
+
+        &lt;System.Diagnostics.DebuggerHidden()&gt; Private Shared Sub Connect()
+            If db.tblUserBowl Is Nothing Then
+                db.tblTempFile = New sTempFile
+                db.tblUserBowl = New sUserBowl
+            End If 'sdaTCOL_NAME
+        End Sub 'Connect
+    End Class 'db
+End Namespace 'Mx
+</pre>
+</div>
+<div created="20200425174755355" modified="20200425174940394" tags="CODE" title="L6 TempFile" type="text/plain">
+<pre>Namespace Mx
+    Public Enum enmTF
+        in_filepath
+    End Enum
+
+    Partial Public Class db
+        &lt;System.Diagnostics.DebuggerHidden()&gt; Public Shared Function TempFile() As sTempFile
+            Call db.Connect()
+            TempFile = db.tblTempFile
+        End Function
+
+        Public Class rTempFile
+            Inherits TRow(Of enmTF)
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function vt(ur_enm As enmTF, ur_val As String) As rTempFile
+                vt = Me
+                Me.v_enm(ur_enm) = ur_val
+            End Function
+        End Class 'rTempFile
+
+        Public Class sTempFile
+            Private ttb As Objlist(Of rTempFile)
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Sub New()
+                Me.ttb = New Objlist(Of rTempFile)
+            End Sub
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function Ins(ur_from As rTempFile) As rTempFile
+                Ins = ur_from
+                Me.ttb.Add(ur_from)
+            End Function
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Sub InsFrom_InFolder()
+                Dim sdaSKIP_EXTENSION = New Sdata().d(&quot;.cmd&quot;).d(&quot;.exe&quot;).d(&quot;.txt&quot;)
+                Dim strIN_FOLDER = db.UserBowl.SelKey(enmUN.in_subfolder).v(enmUB.contents)
+                For Each strPATH In System.IO.Directory.GetFiles(strIN_FOLDER, &quot;*.*&quot;, System.IO.SearchOption.AllDirectories)
+                    Dim flnPATH = New MxText.FileName(strPATH)
+                    If AreEqual(flnPATH.gParentDir.Name, &quot;MxClasses&quot;) = False AndAlso
+                      AreEqual(flnPATH.gParentDir.Name, &quot;CustomLines&quot;) = False AndAlso
+                      sdaSKIP_EXTENSION.Contains(flnPATH.Ext.ToLower) = False Then
+                        Me.ttb.Add(
+                        New rTempFile().
+                        vt(enmTF.in_filepath, strPATH)
+                        )
+                    End If
+                Next strPATH
+            End Sub 'InsFrom_InFolder
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function Sel(ur_col As enmTF, ur_value As String) As sTempFile
+                Dim ret = New sTempFile
+                Sel = ret
+                For Each row In Me.ttb
+                    If AreEqual(row.v(ur_col), ur_value) Then
+                        ret.Ins(row)
+                    End If
+                Next
+            End Function 'Sel
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function SelAll() As Objlist(Of rTempFile)
+                SelAll = ttb
+            End Function 'SelAll
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function SelFirst() As rTempFile
+                If Me.ttb.Count = 0 Then
+                    SelFirst = New rTempFile()
+                Else
+                    SelFirst = Me.ttb.tr_b1(1)
+                End If
+            End Function
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Overloads Function ToString(ur_hdr As Boolean) As String
+                Dim stpRET = Strapd() : For Each kvpREC In Me.ttb.kvp
+                    stpRET.d(kvpREC.row.ToString((kvpREC.Indexb1 = 1) And ur_hdr))
+                Next kvpREC : ToString = stpRET
+            End Function 'ToString
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function ToCbrd(ur_hdr As Boolean) As Integer
+                ToCbrd = Mx.glbl.gCboard.SetText(Me.ToString(ur_hdr))
+            End Function
+        End Class 'sTempFile
+    End Class 'TF
+End Namespace 'Mx
+</pre>
+</div>
+<div created="20200425174843234" modified="20200425175925279" tags="CODE" title="L6 UserBowl" type="text/plain">
+<pre>Namespace Mx
+    Public Enum enmUB
+        bowl_name
+        contents
+    End Enum
+
+    Public Enum enmUN
+        app_name
+        in_subfolder
+        to_clipboard
+    End Enum
+
+    Partial Public Class db
+        &lt;System.Diagnostics.DebuggerHidden()&gt; Public Shared Function UserBowl() As sUserBowl
+            Call db.Connect()
+            UserBowl = db.tblUserBowl
+        End Function
+
+        Public Class rUserBowl
+            Inherits TRow(Of enmUB)
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function vt(ur_enm As enmUB, ur_val As String) As rUserBowl
+                vt = Me
+                Me.v_enm(ur_enm) = ur_val
+            End Function
+        End Class 'rUserBowl
+
+        Public Class sUserBowl
+            Private ttb As Objlist(Of rUserBowl)
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Sub New()
+                Me.ttb = New Objlist(Of rUserBowl)
+            End Sub
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function ExistsKey(ur_key As enmUN) As Boolean
+                ExistsKey = False
+                Dim strUN = TRow(Of enmUN).glbl.RefNames.v_enm(ur_key)
+                For Each row In Me.ttb
+                    If AreEqual(row.v(enmUB.bowl_name), strUN) Then
+                        ExistsKey = True
+                        Exit For
+                    End If
+                Next
+            End Function 'ExistsKey
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function Ins(ur_from As rUserBowl) As rUserBowl
+                Ins = ur_from
+                Me.ttb.Add(ur_from)
+            End Function
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function InsKey(ur_key As enmUN, ur_val As String) As rUserBowl
+                Dim ret = New rUserBowl
+                InsKey = ret
+                Me.ttb.Add(
+                    ret.
+                    vt(enmUB.bowl_name, TRow(Of enmUN).glbl.RefNames.v_enm(ur_key)).
+                    vt(enmUB.contents, ur_val)
+                    )
+            End Function
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function InsFrom_Application() As rUserBowl
+                Dim ret = New rUserBowl
+                InsFrom_Application = ret
+                Me.InsKey(enmUN.app_name, New MxText.FileName().d(Mx.Class1.SourcePath).FileGroup)
+            End Function
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function Sel(ur_col As enmUB, ur_value As String) As sUserBowl
+                Dim retUB = New sUserBowl
+                Sel = retUB
+                For Each rowUB In Me.ttb
+                    If AreEqual(rowUB.v(ur_col), ur_value) Then
+                        retUB.Ins(rowUB)
+                    End If
+                Next
+            End Function 'Sel
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function SelAll() As Objlist(Of rUserBowl)
+                SelAll = ttb
+            End Function 'SelAll
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function SelFirst() As rUserBowl
+                If Me.ttb.Count = 0 Then
+                    SelFirst = New rUserBowl()
+                Else
+                    SelFirst = Me.ttb.tr_b1(1)
+                End If
+            End Function
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function SelKey(ur_key As enmUN) As rUserBowl
+                Dim ret As rUserBowl = Nothing
+                Dim strUN = TRow(Of enmUN).glbl.RefNames.v_enm(ur_key)
+                For Each row In Me.ttb
+                    If AreEqual(row.v(enmUB.bowl_name), strUN) Then
+                        ret = row
+                        Exit For
+                    End If
+                Next
+                If ret Is Nothing Then ret = New rUserBowl
+                SelKey = ret
+            End Function 'SelKey
+
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Overloads Function ToString(ur_hdr As Boolean) As String
+                Dim stpRET = Strapd() : For Each kvpREC In Me.ttb.kvp
+                    stpRET.d(kvpREC.row.ToString((kvpREC.Indexb1 = 1) And ur_hdr))
+                Next kvpREC : ToString = stpRET
+            End Function 'ToString
+            &lt;System.Diagnostics.DebuggerHidden()&gt; Public Function ToCbrd(ur_hdr As Boolean) As Integer
+                ToCbrd = Mx.glbl.gCboard.SetText(Me.ToString(ur_hdr))
+            End Function
+        End Class 'sUserBowl
+    End Class 'UB, UN
+End Namespace 'Mx
 </pre>
 </div>
 <div created="20200319092542069" modified="20200405135527913" tags="META $:/tags/Macro" title="mcr OneLink">
@@ -10098,12 +10425,24 @@ All user tiddlers, export non-meta to HTML
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
+<div created="20200425212344887" description="VBNS Export" extension=".vbns" modified="20200425212709644" tags="META $:/tags/Exporter" title="template VBNSText">
+<pre>\define renderContent()
+{{{ $(exportFilter)$ ||$:/core/templates/plain-text-tiddler}}}
+\end
+&lt;&lt;renderContent&gt;&gt;</pre>
+</div>
 <div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
 <pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
 
 There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
+</div>
+<div created="20200425175326928" description="VBNS Export" extension=".vbns" modified="20200425175728117" tags="META $:/tags/Exporter" title="VBNS Text Export">
+<pre>\define renderContent()
+{{{ $(exportFilter)$ ||$:/core/templates/plain-text-tiddler}}}
+\end
+&lt;&lt;renderContent&gt;&gt;</pre>
 </div>
 <div created="20200405112008513" modified="20200405112242998" tags="META" title="View All Pages">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
@@ -10172,15 +10511,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20190925014523514" modified="20200405135143829" tags="INDEX" title="WikiFile Title">
-<pre>{{ext Root doc}}
-
-&lt;&lt;list-links filter:&quot;[tag[META]sort[title]]&quot;&gt;&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]</pre>
 </div>
 
 </div>
