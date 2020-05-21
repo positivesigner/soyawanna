@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>PositiveSigner Journal — Topics of interest</title>
+<title>Git Code — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -147,6 +147,12 @@ Error message and password prompt
 
 <li>$:/config/HideSidebarOnStartup</li>
 
+<li>$:/config/Manager/Filter</li>
+
+<li>$:/config/Manager/RecentTags</li>
+
+<li>$:/config/Manager/System</li>
+
 <li>$:/config/MissingLinks</li>
 
 <li>$:/config/Navigation/openLinkFromOutsideRiver</li>
@@ -201,15 +207,15 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/dropdown/keyboardshortcut/font-large-286565879</li>
+
+<li>$:/state/dropdown/keyboardshortcut/font-normal-286565879</li>
+
 <li>$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879</li>
 
 <li>$:/state/dropdown/keyboardshortcut/save-all-changes-286565879</li>
 
 <li>$:/state/dropdown/keyboardshortcut/save-html-converted-286565879</li>
-
-<li>$:/state/searchNreplace/replace</li>
-
-<li>$:/state/searchNreplace/search</li>
 
 <li>$:/state/showeditpreview</li>
 
@@ -231,57 +237,47 @@ Error message and password prompt
 
 <li>$:/temp/advancedsearch</li>
 
-<li>$:/temp/HidePluginWarning</li>
-
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/search</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
 
-<li>BoomJacket Speaker</li>
+<li>$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize</li>
 
-<li>Browser Local File access</li>
+<li>$:/themes/tiddlywiki/vanilla/metrics/bodylineheight</li>
 
-<li>Chrome Extension download</li>
+<li>$:/themes/tiddlywiki/vanilla/metrics/fontsize</li>
+
+<li>$:/themes/tiddlywiki/vanilla/metrics/lineheight</li>
+
+<li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
+
+<li>checkout a commit hash</li>
 
 <li>DivPop btn</li>
 
 <li>DivPop glbl</li>
 
-<li>DOC</li>
+<li>doc for GitHub's git.exe</li>
 
-<li>DownloadBar manager</li>
+<li>Doc move</li>
 
 <li>ext Parent Return</li>
 
-<li>ext TW Return</li>
-
-<li>EXTLINK</li>
-
-<li>Folder Path</li>
-
 <li>Font Size</li>
 
-<li>Git</li>
+<li>Git code</li>
 
-<li>Git App</li>
+<li>git_export_log.vns.cmd</li>
 
-<li>Git Checkout</li>
+<li>git_export_OldCodeFilename_AllCommits.vns.cmd</li>
 
-<li>Google Chrome Portable app</li>
-
-<li>Google Forms survey</li>
-
-<li>HideHeader</li>
-
-<li>ImDisk Ramdisk</li>
+<li>Hiding The Sidebar On Startup</li>
 
 <li>INDEX</li>
-
-<li>JavaScript</li>
-
-<li>Javascript Bookmarklets</li>
 
 <li>keyboard action FontLarge</li>
 
@@ -295,41 +291,21 @@ Error message and password prompt
 
 <li>mcr OneLink</li>
 
+<li>META</li>
+
 <li>Missing Tags Report</li>
-
-<li>Play Store web page for Chrome Extension Export extension</li>
-
-<li>Play Story web page for Clear Downloads Bar extension</li>
 
 <li>Recent entries</li>
 
-<li>Soyawanna Dev topics</li>
-
 <li>template Home Button</li>
-
-<li>TiddlerMove Scheduler</li>
-
-<li>TiddlyWiki</li>
-
-<li>TiddlyWiki Notes</li>
 
 <li>TiddlyWiki Startup Options</li>
 
-<li>TiddlyWiki Template Setup</li>
-
-<li>VBNetScript Compiler</li>
-
-<li>VBNetScript.exe</li>
+<li>update git_export</li>
 
 <li>View All Pages</li>
 
-<li>Website - Hosting</li>
-
 <li>What is this Wiki Stuff?</li>
-
-<li>ZIP file of Chrome Extension Export extension</li>
-
-<li>ZIP File of Clear Downloads Bar extension</li>
 
 </ul>
 </p>
@@ -380,13 +356,22 @@ exports.startup = function() {
 <div bag="default" created="20151007165524815" creator="Tobias Beer" modified="20200322104205653" revision="0" tags="META" title="$:/config/HideSidebarOnStartup" type="text/vnd.tiddlywiki">
 <pre>yes</pre>
 </div>
+<div created="20200302210534350" modified="20200302210611374" title="$:/config/Manager/Filter">
+<pre></pre>
+</div>
+<div created="20200302210551832" list="META" modified="20200302210556377" title="$:/config/Manager/RecentTags">
+<pre></pre>
+</div>
+<div created="20200302210537880" modified="20200302210613096" title="$:/config/Manager/System">
+<pre>system</pre>
+</div>
 <div created="20190925061735308" modified="20200322103952041" tags="META" title="$:/config/MissingLinks">
 <pre>no</pre>
 </div>
 <div created="20200111053033740" modified="20200111053033740" title="$:/config/Navigation/openLinkFromOutsideRiver">
 <pre>bottom</pre>
 </div>
-<div created="20190925052037606" modified="20200405134142666" title="$:/config/NewJournal/Title">
+<div created="20190925052037606" modified="20200405134850865" title="$:/config/NewJournal/Title">
 <pre>YYYYm0MMd0DD p0hhm0mms0ss</pre>
 </div>
 <div created="20190925051433967" modified="20190925051433967" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/control-panel">
@@ -9633,10 +9618,15 @@ exports.startup = function() {
 <div created="20190925014431388" modified="20190925051250712" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[ext TW Return]]</pre>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;ul class=\&quot;\&quot; style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#%24%3A%2Fplugins%2Fdanielo515%2FsearchNreplace\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;&lt;br class=\&quot;Apple-interchange-newline\&quot;&gt;$:/plugins/danielo515/searchNreplace&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#DivPop%20btn\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;DivPop btn&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#DivPop%20glbl\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;DivPop glbl&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#ext%20Parent%20Return\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;ext Parent Return&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Font%20Size\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;Font Size&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#INDEX\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;INDEX&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20ExportVBNS\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action ExportVBNS&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20FontLarge\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action FontLarge&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20FontNormal\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action FontNormal&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20HomeTiddlers\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action HomeTiddlers&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20SaveAllChanges\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action SaveAllChanges&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#keyboard%20action%20SaveHtmlConverted\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;keyboard action SaveHtmlConverted&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#mcr%20OneLink\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;mcr OneLink&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Missing%20Tags%20Report\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;Missing Tags Report&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Recent%20entries\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;Recent entries&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#template%20Home%20Button\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;template Home Button&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#TiddlyWiki%20Startup%20Options\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;TiddlyWiki Startup Options&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#View%20All%20Pages\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;View All Pages&lt;/a&gt;&lt;/li&gt;&lt;li style=\&quot;box-sizing: border-box;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#What%20is%20this%20Wiki%20Stuff%3F\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;What is this Wiki Stuff?&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#Recent%20entries\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;___&lt;/a&gt;&lt;/p&gt;&lt;p style=\&quot;box-sizing: border-box; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Helvetica, Arial, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;; font-size: 25px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;\&quot;&gt;&lt;a class=\&quot;tc-tiddlylink tc-tiddlylink-resolves\&quot; href=\&quot;#View%20All%20Pages\&quot; style=\&quot;box-sizing: border-box; background: transparent; text-decoration: none; font-weight: 500; color: rgb(87, 120, 216); user-select: inherit;\&quot;&gt;View All Pages&lt;/a&gt;&lt;/p&gt;&quot;
+        }
+    }
+}</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9685,31 +9675,31 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20190925014420922" modified="20200222231730154" title="$:/SiteSubtitle">
-<pre>Topics of interest</pre>
+<div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
+<pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200222231720244" title="$:/SiteTitle">
-<pre>PositiveSigner Journal</pre>
+<div created="20190925014404111" modified="20200521065750103" title="$:/SiteTitle">
+<pre>Git Code</pre>
 </div>
-<div created="20200319044943341" modified="20200319044951564" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
+<div created="20200411063457323" modified="20200411063514558" title="$:/state/dropdown/keyboardshortcut/font-large-286565879">
 <pre>close</pre>
 </div>
-<div created="20200223015341294" modified="20200223015351520" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
+<div created="20200411063516110" modified="20200411063532786" title="$:/state/dropdown/keyboardshortcut/font-normal-286565879">
 <pre>close</pre>
 </div>
-<div created="20200303035445220" modified="20200319044941573" title="$:/state/dropdown/keyboardshortcut/save-html-converted-286565879">
+<div created="20200314145948359" modified="20200314150024931" title="$:/state/dropdown/keyboardshortcut/home-tiddlers-286565879">
 <pre>close</pre>
 </div>
-<div created="20200411065127228" modified="20200411065130345" title="$:/state/searchNreplace/replace">
-<pre> </pre>
+<div created="20200223012850920" modified="20200303061803910" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
+<pre>close</pre>
 </div>
-<div created="20200411065126186" modified="20200411065126768" title="$:/state/searchNreplace/search">
-<pre>%20</pre>
+<div created="20200303061805552" modified="20200314150016898" title="$:/state/dropdown/keyboardshortcut/save-html-converted-286565879">
+<pre>close</pre>
 </div>
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200521072122623" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200521071328201" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9721,23 +9711,20 @@ exports.startup = function() {
 <div created="20190925052229880" modified="20200115080408562" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
-<div created="20190925051414187" modified="20200405133906025" title="$:/state/tab-1749438307">
+<div created="20190925051414187" modified="20200418112041443" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200405171059691" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200521065755790" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="[[Soyawanna Dev topics]] Git" title="$:/StoryList">
+<div created="20200521065745151" list="[[Git code]] [[Doc move]] [[checkout a commit hash]] git_export_log.vns.cmd git_export_OldCodeFilename_AllCommits.vns.cmd [[update git_export]] [[doc for GitHub's git.exe]]" modified="20200521065745151" title="$:/StoryList">
 <pre></pre>
 </div>
-<div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
+<div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
 <pre>[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]</pre>
-</div>
-<div created="20200322121153247" modified="20200322121153247" title="$:/temp/HidePluginWarning">
-<pre>yes</pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
 <pre>{
@@ -9752,7 +9739,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/index.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/Git/Git%20Code.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9772,7 +9759,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/index.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/Git/Git%20Code.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9796,6 +9783,9 @@ exports.startup = function() {
         }
     }
 }</pre>
+</div>
+<div created="20200302210517854" modified="20200302210519836" title="$:/temp/search">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
 <pre>{
@@ -9906,14 +9896,31 @@ exports.startup = function() {
     }
 }</pre>
 </div>
-<div created="20200405232223110" modified="20200411070222619" tags="HARDWARE SOUND" title="BoomJacket Speaker">
-<pre>Hardware_Sound/BoomJacket Speaker.htm</pre>
+<div created="20200411063358305" modified="20200521065739526" title="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize">
+<pre>15px</pre>
 </div>
-<div created="20200405223237370" modified="20200411065055109" tags="BROWSER [[LOCAL FILE]]" title="Browser Local File access">
-<pre>Browser_LocalFile/Browser LocalFile.htm</pre>
+<div created="20200411063358305" modified="20200521065739526" title="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight">
+<pre>24px</pre>
 </div>
-<div created="20200405184357283" modified="20200411065135372" tags="BROWSER EXTENSION" title="Chrome Extension download">
-<pre>Browser_Extension/ChromeExtension Download.htm</pre>
+<div created="20200411063358304" modified="20200521065739525" title="$:/themes/tiddlywiki/vanilla/metrics/fontsize">
+<pre>14px</pre>
+</div>
+<div created="20200411063358304" modified="20200521065739526" title="$:/themes/tiddlywiki/vanilla/metrics/lineheight">
+<pre>20px</pre>
+</div>
+<div created="20200418112031521" modified="20200418112031522" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
+<pre>fluid-fixed</pre>
+</div>
+<div created="20200521065910989" modified="20200521070506293" tags="DOC" title="checkout a commit hash">
+<pre>git checkout.cmd
+
+```
+@echo off
+SET ur_repo=
+SET ur_branch=
+rem &quot;C:\BitBucket\PortableGit\bin\git.exe&quot; -C %ur_repo% checkout -b test-branch %ur_branch%
+rem Use GitHub Desktop to delete the branch
+```</pre>
 </div>
 <div created="20200418064445680" modified="20200425204233962" tags="META $:/tags/ViewToolbar" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
@@ -9954,23 +9961,15 @@ close
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200405162602552" modified="20200405164337185" tags="META" title="DOC">
-<pre></pre>
+<div created="20200521071135237" modified="20200521071227121" tags="EXPERIMENT" title="doc for GitHub's git.exe">
+<pre>* Explain how to find the git.exe under GitHub Desktop's install folder</pre>
 </div>
-<div created="20200405184622787" modified="20200411065155735" tags="EXTENSION BROWSER" title="DownloadBar manager">
-<pre>Browser_Extension/DownloadBar Manager.htm</pre>
+<div created="20200521065828937" modified="20200521065902471" tags="EXPERIMENT" title="Doc move">
+<pre>* Git_Checkout htm
+* Git_Install htm</pre>
 </div>
 <div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
-</div>
-<div created="20200223043343881" modified="20200521071442122" tags="META" title="ext TW Return">
-<pre>&lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;./index.htm&quot;&gt;TiddlyWiki view of website&lt;/a&gt;&lt;/div&gt;</pre>
-</div>
-<div created="20200405164402303" modified="20200405164404013" tags="META" title="EXTLINK">
-<pre></pre>
-</div>
-<div created="20200319120553262" modified="20200411070238535" tags="FOLDER PATH" title="Folder Path">
-<pre>Folder_Path/Folder Shortcut.htm</pre>
 </div>
 <div created="20200319102534436" modified="20200319102543033" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
@@ -9990,35 +9989,34 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
-<div created="20200521072023595" modified="20200521072059094" tags="DOC" title="Git">
-<pre>Git\Git Code.htm</pre>
+<div created="20190925014523514" modified="20200521065826577" tags="INDEX" title="Git code">
+<pre>{{ext Parent Return}}
+
+!Tested
+&lt;&lt;list-links filter:&quot;[tag[DOC]sort[title]]&quot;&gt;&gt;
+
+!Experimenting
+&lt;&lt;list-links filter:&quot;[tag[EXPERIMENT]sort[title]]&quot;&gt;&gt;
+
+[[___|Recent entries]]
+
+[[View All Pages]]</pre>
 </div>
-<div created="20200319120242810" modified="20200411070149174" tags="INSTALL GIT" title="Git App">
-<pre>Git_Install/Git App.htm</pre>
+<div created="20200521070513810" modified="20200521070625002" tags="DOC" title="git_export_log.vns.cmd">
+<pre>It asks for folder name, then it writes out a log file</pre>
 </div>
-<div created="20200411064220921" modified="20200411064953841" tags="GIT CODE" title="Git Checkout">
-<pre>Git_Checkout/Git Checkout.htm</pre>
+<div created="20200521070633203" modified="20200521070927336" tags="DOC" title="git_export_OldCodeFilename_AllCommits.vns.cmd">
+<pre>* Run this in the directory above the repository folder
+
+It asks for a folder name and a partial file name, then it creates a &quot;LOGQ&quot; folder with one sub-folder for each commit timestamp. The sub-folder re-creates the folder structure of the found files at the time of the commit.
+
+* You may want to exclude zero-length files. Those show when the file was deleted or moved from a directory.</pre>
 </div>
-<div created="20200222231926017" modified="20200411065218550" tags="BROWSER INSTALL" title="Google Chrome Portable app">
-<pre>Browser_Install/GoogleChrome Portable.htm</pre>
-</div>
-<div created="20200425062503769" modified="20200425062526398" tags="EDITOR BROWSER" title="Google Forms survey">
-<pre>Browser_Editor/GoogleForms Survey.htm</pre>
-</div>
-<div created="20190925053827947" modified="20200111081344048" tags="EXTLINK" title="HideHeader">
-<pre>[ext[Hiding The Sidebar On Startup|TiddlyWiki Plugin Hiding The Sidebar On Startup.html]]</pre>
-</div>
-<div created="20200404064313585" modified="20200411070256613" tags="HARDWARE DISK" title="ImDisk Ramdisk">
-<pre>Hardware_Disk/ImDisk RamDisk.htm</pre>
+<div created="20190925053827947" modified="20200319102244278" tags="EXTLINK" title="Hiding The Sidebar On Startup">
+<pre>TiddlyWiki Plugin Hiding The Sidebar On Startup.html</pre>
 </div>
 <div color="#8080c0" created="20190925051857974" modified="20200322103803201" tags="META" title="INDEX">
 <pre></pre>
-</div>
-<div created="20200521060543238" modified="20200521060557904" tags="DOC" title="JavaScript">
-<pre>JavaScript\JavaScript Code.htm</pre>
-</div>
-<div created="20200319000731171" modified="20200411065256310" tags="JAVASCRIPT CODE" title="Javascript Bookmarklets">
-<pre>Browser_Javascript/Javascript Bookmarklets.htm</pre>
 </div>
 <div created="20200411063250301" key="((font-large))" modified="20200411063336938" tags="META $:/tags/KeyboardShortcut" title="keyboard action FontLarge">
 <pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
@@ -10070,6 +10068,9 @@ target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;$UrParentTag$&l
 &lt;div style=&quot;float:right&quot;&gt;[[_|$UrParentTag$]]&lt;/div&gt;
 \end
 </pre>
+</div>
+<div created="20200418112811387" list="$:/config/MissingLinks $:/config/Toolbar/Icons $:/.tb/modules/startup/hide-sidebar.js $:/config/HideSidebarOnStartup $:/config/ShortcutInfo/font-large $:/config/ShortcutInfo/font-normal $:/config/ShortcutInfo/home-tiddlers $:/config/ShortcutInfo/save-all-changes $:/config/ShortcutInfo/save-html-converted $:/config/shortcuts/font-large $:/config/shortcuts/font-normal $:/config/shortcuts/home-tiddlers $:/config/shortcuts/save-all-changes $:/config/shortcuts/save-html-converted $:/config/TextEditor/EnableToolbar $:/plugins/danielo515/searchNreplace [[ext Parent Return]] [[Font Size]] INDEX [[keyboard action FontLarge]] [[keyboard action FontNormal]] [[keyboard action HomeTiddlers]] [[keyboard action SaveAllChanges]] [[keyboard action SaveHtmlConverted]] [[mcr OneLink]] [[Missing Tags Report]] [[Recent entries]] [[template Home Button]] [[TiddlyWiki Startup Options]] [[View All Pages]] [[What is this Wiki Stuff?]] [[DivPop glbl]] [[DivPop btn]]" modified="20200418112811387" title="META">
+<pre></pre>
 </div>
 <div created="20200322103721813" modified="20200405134917329" tags="META" title="Missing Tags Report">
 <pre>\define MissingTags(UrPK)
@@ -10127,28 +10128,10 @@ All user tiddlers, export non-meta to HTML
 [all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]sort[title]]
 ```</pre>
 </div>
-<div created="20200319044341752" modified="20200319044458717" tags="EXTLINK" title="Play Store web page for Chrome Extension Export extension">
-<pre>https://chrome.google.com/webstore/detail/get-crx/dijpllakibenlejkbajahncialkbdkjc</pre>
-</div>
-<div created="20200319044552860" modified="20200319044621795" tags="EXTLINK" title="Play Story web page for Clear Downloads Bar extension">
-<pre>https://chrome.google.com/webstore/detail/always-clear-downloads-in/efoelbbfbknfhpmgclpcdbkoieedkkai</pre>
-</div>
 <div created="20200203145715457" modified="20200405135008598" tags="META" title="Recent entries">
 <pre>[[Missing Tags Report]]
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
-</div>
-<div created="20190925014523514" modified="20200521072121247" tags="INDEX" title="Soyawanna Dev topics">
-<pre>{{ext TW Return}}&lt;br&gt;
-
-&lt;$list filter=&quot;[tag[DOC]sort[title]]&quot;&gt;
-&lt;$macrocall $name=OneLink UrParentTag=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;br&gt;
-&lt;/$list&gt;
-
-[[___|Recent entries]]
-
-[[View All Pages]]
-</pre>
 </div>
 <div created="20200115095609017" modified="20200302224527888" tags="META $:/tags/ViewTemplate" title="template Home Button">
 <pre>&lt;div style=&quot;float:right&quot;&gt;
@@ -10168,15 +10151,6 @@ All user tiddlers, export non-meta to HTML
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20200319043546345" modified="20200411065334860" tags="CODE VB.Net" title="TiddlerMove Scheduler">
-<pre>VBNet_Code/TiddlerMove.htm</pre>
-</div>
-<div created="20200405221439259" modified="20200521060452771" tags="DOC" title="TiddlyWiki">
-<pre>TiddlyWiki\TiddlyWiki Code.htm</pre>
-</div>
-<div created="20200411141518317" modified="20200411141602055" tags="EDITOR BROWSER" title="TiddlyWiki Notes">
-<pre>Browser_Editor/Tom TWPages.htm</pre>
-</div>
 <div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
 <pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
 
@@ -10184,14 +10158,11 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
 </div>
-<div created="20200303055923536" modified="20200405225647618" tags="EDITOR BROWSER" title="TiddlyWiki Template Setup">
-<pre>Browser_Editor/TiddlyWiki Template Setup.htm</pre>
-</div>
-<div created="20200223033447853" modified="20200405233827187" tags="INSTALL VB.Net" title="VBNetScript Compiler">
-<pre>VBNet_Compiler/VBNetScript.htm</pre>
-</div>
-<div created="20200303060223422" modified="20200319043930957" tags="EXTLINK" title="VBNetScript.exe">
-<pre>VBNet_Compiler/VBNetScript.htm</pre>
+<div created="20200521071016324" modified="20200521071323925" tags="EXPERIMENT" title="update git_export">
+<pre>* Change to use MxBaseEc10
+* Change to look for GitHub's git exeuctable
+* Restructure with Want, Have, Use and Apply
+* Add a status form</pre>
 </div>
 <div created="20200405112008513" modified="20200405112242998" tags="META" title="View All Pages">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
@@ -10200,9 +10171,6 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 {{||$:/core/ui/ViewTemplate/tags}}
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
-</div>
-<div created="20200223032237138" modified="20200411070314670" tags="INSTALL WEBSITE" title="Website - Hosting">
-<pre>Website_Hosting/Website Setup.htm</pre>
 </div>
 <div created="20190925051442835" modified="20200322113443852" tags="META" title="What is this Wiki Stuff?">
 <pre>Here is some notes on [[How to use markup in Tiddly Wiki|Articles on how to use Tiddly Wiki]].
@@ -10263,12 +10231,6 @@ Test your Tiddler filter using a drop-down list:
 
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
-</div>
-<div created="20200303055809043" modified="20200319044244008" tags="EXTLINK" title="ZIP file of Chrome Extension Export extension">
-<pre>Browser_Extension/Get CRX v1d31.zip</pre>
-</div>
-<div created="20200303055634922" modified="20200319044529402" tags="EXTLINK" title="ZIP File of Clear Downloads Bar extension">
-<pre>chrome/Always Clear Downloads in Chrome v2d0.zip</pre>
 </div>
 
 </div>

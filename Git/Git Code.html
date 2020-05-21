@@ -6,7 +6,7 @@
 <meta name="tiddlywiki-version" content="5.1.21" />
 <meta name="format-detection" content="telephone=no">
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>TiddlerMove Utility — Design notes</title>
+<title>Git Code — Design notes</title>
 <div id="styleArea">
 <style data-tiddler-title="$:/boot/boot.css" data-tiddler-type="text/css" type="text/css">/*
 Basic styles used before we boot up the parsing engine
@@ -2312,8 +2312,8 @@ a.tc-tiddlylink:hover {
 <body class="tc-body">
 
 <section class="tc-story-river">
-<a name="TiddlerMovedesign">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-INDEX" data-tags="INDEX" data-tiddler-title="TiddlerMove design"><div class="tc-tiddler-title">
+<a name="Gitcode">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-INDEX" data-tags="INDEX" data-tiddler-title="Git code"><div class="tc-tiddler-title">
 <div class="tc-titlebar">
 <span class="tc-tiddler-controls">
 <span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
@@ -2335,7 +2335,7 @@ a.tc-tiddlylink:hover {
 
 
 <h2 class="tc-title">
-TiddlerMove design
+Git code
 </h2>
 
 </span>
@@ -2348,7 +2348,7 @@ TiddlerMove design
 <div class="tc-subtitle">
 <a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
 
-</a> 20th May 2020 at 10:51pm
+</a> 20th May 2020 at 11:58pm
 </div>
 </div>
 <div class=" tc-reveal">
@@ -2361,7 +2361,7 @@ color:#ffffff;">
 <span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p><div style="float:right">Back to <a class="tc-tiddlylink-external" href="../index.htmll" rel="noopener noreferrer" target="_blank">Main Index</a></div></p><h1 class="">Tested</h1><p><ul class=""></ul></p><h1 class="">Experimenting</h1><p><ul class=""><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlerMoveupdates">TiddlerMove updates</a></li></ul></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Recententries">___</a></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ViewAllPages">View All Pages</a></p></div>
+<div class="tc-tiddler-body tc-reveal"><p><div style="float:right">Back to <a class="tc-tiddlylink-external" href="../index.htmll" rel="noopener noreferrer" target="_blank">Main Index</a></div></p><h1 class="">Tested</h1><p><ul class=""><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#checkoutacommithash">checkout a commit hash</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#git_export_log.vns.cmd">git_export_log.vns.cmd</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#git_export_OldCodeFilename_AllCommits.vns.cmd">git_export_OldCodeFilename_AllCommits.vns.cmd</a></li></ul></p><h1 class="">Experimenting</h1><p><ul class=""><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#docforGitHub'sgit.exe">doc for GitHub's git.exe</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Docmove">Doc move</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#updategit_export">update git_export</a></li></ul></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Recententries">___</a></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ViewAllPages">View All Pages</a></p></div>
 
 
 <div style="float:right">
@@ -2388,8 +2388,8 @@ color:#ffffff;">
 </div>
 
 
-</a><a name="TiddlerMoveupdates">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="TiddlerMove updates"><div class="tc-tiddler-title">
+</a><a name="checkoutacommithash">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-DOC" data-tags="DOC" data-tiddler-title="checkout a commit hash"><div class="tc-tiddler-title">
 <div class="tc-titlebar">
 <span class="tc-tiddler-controls">
 <span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
@@ -2411,7 +2411,7 @@ color:#ffffff;">
 
 
 <h2 class="tc-title">
-TiddlerMove updates
+checkout a commit hash
 </h2>
 
 </span>
@@ -2424,7 +2424,87 @@ TiddlerMove updates
 <div class="tc-subtitle">
 <a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
 
-</a> 21st May 2020 at 12:20am
+</a> 21st May 2020 at 12:05am
+</div>
+</div>
+<div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+ DOC
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>git checkout.cmd</p><pre><code>@echo off
+SET ur_repo=
+SET ur_branch=
+rem &quot;C:\BitBucket\PortableGit\bin\git.exe&quot; -C %ur_repo% checkout -b test-branch %ur_branch%
+rem Use GitHub Desktop to delete the branch</code></pre></div>
+
+
+<div style="float:right">
+<span class=" tc-reveal" hidden="true"></span>
+<span class=" tc-reveal">
+<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
+    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
+        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
+        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
+    </g>
+</svg></button></a>
+</span>
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="docforGitHub'sgit.exe">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="doc for GitHub's git.exe"><div class="tc-tiddler-title">
+<div class="tc-titlebar">
+<span class="tc-tiddler-controls">
+<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+
+
+
+
+
+
+</span>
+</span>
+
+<span>
+
+<span class="tc-tiddler-title-icon" style="fill:;">
+
+</span>
+
+
+
+<h2 class="tc-title">
+doc for GitHub's git.exe
+</h2>
+
+</span>
+
+</div>
+
+<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
+</div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal">
+<div class="tc-subtitle">
+<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
+
+</a> 21st May 2020 at 12:12am
 </div>
 </div>
 <div class=" tc-reveal">
@@ -2437,7 +2517,311 @@ color:#333333;">
 <span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><h1 class="">Simple</h1><ul><li>Remove any &quot;Existing directory&quot; search code</li><li>On timer, if no data in status textbox, populate with search folder path</li></ul><h1 class="">Harder</h1><ul><li>Change to MxClasses\MxBaseEc10</li><li>Rewrite to Want, Have, Use, Apply format</li></ul><p><strong></strong></p><ul><li>Send e-mail  to Sam about how it works</li></ul></div>
+<div class="tc-tiddler-body tc-reveal"><ul><li>Explain how to find the git.exe under GitHub Desktop's install folder</li></ul></div>
+
+
+<div style="float:right">
+<span class=" tc-reveal" hidden="true"></span>
+<span class=" tc-reveal">
+<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
+    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
+        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
+        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
+    </g>
+</svg></button></a>
+</span>
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="Docmove">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="Doc move"><div class="tc-tiddler-title">
+<div class="tc-titlebar">
+<span class="tc-tiddler-controls">
+<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+
+
+
+
+
+
+</span>
+</span>
+
+<span>
+
+<span class="tc-tiddler-title-icon" style="fill:;">
+
+</span>
+
+
+
+<h2 class="tc-title">
+Doc move
+</h2>
+
+</span>
+
+</div>
+
+<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
+</div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal">
+<div class="tc-subtitle">
+<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
+
+</a> 20th May 2020 at 11:59pm
+</div>
+</div>
+<div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+ EXPERIMENT
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><ul><li>Git_Checkout htm</li><li>Git_Install htm</li></ul></div>
+
+
+<div style="float:right">
+<span class=" tc-reveal" hidden="true"></span>
+<span class=" tc-reveal">
+<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
+    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
+        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
+        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
+    </g>
+</svg></button></a>
+</span>
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="git_export_log.vns.cmd">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-DOC" data-tags="DOC" data-tiddler-title="git_export_log.vns.cmd"><div class="tc-tiddler-title">
+<div class="tc-titlebar">
+<span class="tc-tiddler-controls">
+<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+
+
+
+
+
+
+</span>
+</span>
+
+<span>
+
+<span class="tc-tiddler-title-icon" style="fill:;">
+
+</span>
+
+
+
+<h2 class="tc-title">
+git_export_log.vns.cmd
+</h2>
+
+</span>
+
+</div>
+
+<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
+</div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal">
+<div class="tc-subtitle">
+<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
+
+</a> 21st May 2020 at 12:06am
+</div>
+</div>
+<div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+ DOC
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>It asks for folder name, then it writes out a log file</p></div>
+
+
+<div style="float:right">
+<span class=" tc-reveal" hidden="true"></span>
+<span class=" tc-reveal">
+<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
+    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
+        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
+        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
+    </g>
+</svg></button></a>
+</span>
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="git_export_OldCodeFilename_AllCommits.vns.cmd">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-DOC" data-tags="DOC" data-tiddler-title="git_export_OldCodeFilename_AllCommits.vns.cmd"><div class="tc-tiddler-title">
+<div class="tc-titlebar">
+<span class="tc-tiddler-controls">
+<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+
+
+
+
+
+
+</span>
+</span>
+
+<span>
+
+<span class="tc-tiddler-title-icon" style="fill:;">
+
+</span>
+
+
+
+<h2 class="tc-title">
+git_export_OldCodeFilename_AllCommits.vns.cmd
+</h2>
+
+</span>
+
+</div>
+
+<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
+</div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal">
+<div class="tc-subtitle">
+<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
+
+</a> 21st May 2020 at 12:09am
+</div>
+</div>
+<div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+ DOC
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><ul><li>Run this in the directory above the repository folder</li></ul><p>It asks for a folder name and a partial file name, then it creates a &quot;LOGQ&quot; folder with one sub-folder for each commit timestamp. The sub-folder re-creates the folder structure of the found files at the time of the commit.</p><ul><li>You may want to exclude zero-length files. Those show when the file was deleted or moved from a directory.</li></ul></div>
+
+
+<div style="float:right">
+<span class=" tc-reveal" hidden="true"></span>
+<span class=" tc-reveal">
+<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
+    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
+        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
+        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
+    </g>
+</svg></button></a>
+</span>
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="updategit_export">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="update git_export"><div class="tc-tiddler-title">
+<div class="tc-titlebar">
+<span class="tc-tiddler-controls">
+<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+
+
+
+
+
+
+</span>
+</span>
+
+<span>
+
+<span class="tc-tiddler-title-icon" style="fill:;">
+
+</span>
+
+
+
+<h2 class="tc-title">
+update git_export
+</h2>
+
+</span>
+
+</div>
+
+<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
+</div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal">
+<div class="tc-subtitle">
+<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
+
+</a> 21st May 2020 at 12:13am
+</div>
+</div>
+<div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+ EXPERIMENT
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><ul><li>Change to use MxBaseEc10</li><li>Change to look for GitHub's git exeuctable</li><li>Restructure with Want, Have, Use and Apply</li><li>Add a status form</li></ul></div>
 
 
 <div style="float:right">
