@@ -6,7 +6,7 @@
 <meta name="tiddlywiki-version" content="5.1.21" />
 <meta name="format-detection" content="telephone=no">
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>JavaScript Code — Design notes</title>
+<title>TiddlerMove Utility — Design notes</title>
 <div id="styleArea">
 <style data-tiddler-title="$:/boot/boot.css" data-tiddler-type="text/css" type="text/css">/*
 Basic styles used before we boot up the parsing engine
@@ -2312,8 +2312,8 @@ a.tc-tiddlylink:hover {
 <body class="tc-body">
 
 <section class="tc-story-river">
-<a name="JavaScript">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-INDEX" data-tags="INDEX" data-tiddler-title="JavaScript"><div class="tc-tiddler-title">
+<a name="TiddlerMovedesign">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-INDEX" data-tags="INDEX" data-tiddler-title="TiddlerMove design"><div class="tc-tiddler-title">
 <div class="tc-titlebar">
 <span class="tc-tiddler-controls">
 <span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
@@ -2335,7 +2335,7 @@ a.tc-tiddlylink:hover {
 
 
 <h2 class="tc-title">
-JavaScript
+TiddlerMove design
 </h2>
 
 </span>
@@ -2348,7 +2348,7 @@ JavaScript
 <div class="tc-subtitle">
 <a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
 
-</a> 20th May 2020 at 10:42pm
+</a> 20th May 2020 at 10:51pm
 </div>
 </div>
 <div class=" tc-reveal">
@@ -2361,7 +2361,7 @@ color:#ffffff;">
 <span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p><div style="float:right">Back to <a class="tc-tiddlylink-external" href="../index.htmll" rel="noopener noreferrer" target="_blank">Main Index</a></div></p><h1 class="">Tested</h1><p><ul class=""><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPITest">FileAPI Test</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TryCatch">Try Catch</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#UseStrict">Use Strict</a></li></ul></p><h1 class="">Experimenting</h1><p><ul class=""><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPIChooseFiles">FileAPI Choose Files</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPITutorial">FileAPI Tutorial</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPIUploadfiles">FileAPI Upload files</a></li><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ForEachelementinarray">For Each element in array</a></li></ul></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Recententries">___</a></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ViewAllPages">View All Pages</a></p></div>
+<div class="tc-tiddler-body tc-reveal"><p><div style="float:right">Back to <a class="tc-tiddlylink-external" href="../index.htmll" rel="noopener noreferrer" target="_blank">Main Index</a></div></p><h1 class="">Tested</h1><p><ul class=""></ul></p><h1 class="">Experimenting</h1><p><ul class=""><li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlerMoveupdates">TiddlerMove updates</a></li></ul></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Recententries">___</a></p><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ViewAllPages">View All Pages</a></p></div>
 
 
 <div style="float:right">
@@ -2388,8 +2388,8 @@ color:#ffffff;">
 </div>
 
 
-</a><a name="FileAPIChooseFiles">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="FileAPI Choose Files"><div class="tc-tiddler-title">
+</a><a name="TiddlerMoveupdates">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="TiddlerMove updates"><div class="tc-tiddler-title">
 <div class="tc-titlebar">
 <span class="tc-tiddler-controls">
 <span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
@@ -2411,7 +2411,7 @@ color:#ffffff;">
 
 
 <h2 class="tc-title">
-FileAPI Choose Files
+TiddlerMove updates
 </h2>
 
 </span>
@@ -2424,7 +2424,7 @@ FileAPI Choose Files
 <div class="tc-subtitle">
 <a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
 
-</a> 20th May 2020 at 10:40pm
+</a> 20th May 2020 at 11:26pm
 </div>
 </div>
 <div class=" tc-reveal">
@@ -2437,551 +2437,7 @@ color:#333333;">
 <span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPITest">FileAPI Test</a></p><p>This button seems to work. I want to re-write it with functions and for-each on the array.</p><h1 class="">Test_FileAPI e2.htm</h1><pre><code>&lt;hmtl&gt;&lt;body&gt;
-&lt;h1&gt;Test FileAPI e2&lt;/h1&gt;&lt;br&gt;
-Example: Using form input for selecting file and load a file. Uses the multiple attribute to allow selecting several files at once.&lt;br&gt;
-&lt;input type=&quot;file&quot; id=&quot;files&quot; name=&quot;files[]&quot; multiple /&gt;  
-&lt;output id=&quot;list&quot;&gt;&lt;/output&gt;  
-&lt;script&gt;  
-    function handleFileSelect(evt) {  
-        var files = evt.target.files; // FileList object  
-        // files is a FileList of File objects. List some properties.  
-        var output = [];  
-        for (var i = 0, f; f = files[i]; i++) {  
-            output.push('  
-    &lt;li&gt;  
-        &lt;strong&gt;', f.name, '&lt;/strong&gt; (', f.type || 'n/a', ') - ',  
-                  f.size, ' bytes, last modified: ',  
-                  f.lastModifiedDate.toLocaleDateString(), '  
-    &lt;/li&gt;');  
-       }  
-        document.getElementById('list').innerHTML = '  
-    &lt;ul&gt;' + output.join('') + '&lt;/ul&gt;';  
-    }  
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);    
-&lt;/script&gt;
-&lt;/body&gt;&lt;/html&gt;</code></pre></div>
-
-
-<div style="float:right">
-<span class=" tc-reveal" hidden="true"></span>
-<span class=" tc-reveal">
-<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
-    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
-        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
-        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
-    </g>
-</svg></button></a>
-</span>
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="FileAPITest">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-DOC" data-tags="DOC" data-tiddler-title="FileAPI Test"><div class="tc-tiddler-title">
-<div class="tc-titlebar">
-<span class="tc-tiddler-controls">
-<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-
-
-
-
-
-
-</span>
-</span>
-
-<span>
-
-<span class="tc-tiddler-title-icon" style="fill:;">
-
-</span>
-
-
-
-<h2 class="tc-title">
-FileAPI Test
-</h2>
-
-</span>
-
-</div>
-
-<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
-</div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal">
-<div class="tc-subtitle">
-<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
-
-</a> 20th May 2020 at 10:36pm
-</div>
-</div>
-<div class=" tc-reveal">
-<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
-<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
-fill:#333333;
-color:#333333;">
- DOC
-</span>
-<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><p><a class="tc-tiddlylink-external" href="https://www.c-sharpcorner.com/UploadFile/65fc13/html5-file-api-reading-a-file-and-displaying-content/" rel="noopener noreferrer" target="_blank">File API examples</a></p><pre><code>&lt;hmtl&gt;&lt;body&gt;
-&lt;h1&gt;Test FileAPI e1&lt;/h1&gt;&lt;br&gt;
-&lt;script&gt;
-// Check for the various File API support.  
-if (window.File &amp;&amp; window.FileReader &amp;&amp; window.FileList &amp;&amp; window.Blob) {  
-alert('Great success! All the File APIs are supported.');  
-} else {  
-alert('The File APIs are not fully supported in this browser.');  
-} 
-&lt;/script&gt;
-&lt;/body&gt;&lt;/html&gt;</code></pre></div>
-
-
-<div style="float:right">
-<span class=" tc-reveal" hidden="true"></span>
-<span class=" tc-reveal">
-<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
-    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
-        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
-        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
-    </g>
-</svg></button></a>
-</span>
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="FileAPITutorial">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="FileAPI Tutorial"><div class="tc-tiddler-title">
-<div class="tc-titlebar">
-<span class="tc-tiddler-controls">
-<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-
-
-
-
-
-
-</span>
-</span>
-
-<span>
-
-<span class="tc-tiddler-title-icon" style="fill:;">
-
-</span>
-
-
-
-<h2 class="tc-title">
-FileAPI Tutorial
-</h2>
-
-</span>
-
-</div>
-
-<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
-</div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal">
-<div class="tc-subtitle">
-<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
-
-</a> 20th May 2020 at 11:35pm
-</div>
-</div>
-<div class=" tc-reveal">
-<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
-<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
-fill:#333333;
-color:#333333;">
- EXPERIMENT
-</span>
-<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><p>Another tutorial</p><p><a class="tc-tiddlylink-external" href="http://tutorials.jenkov.com/html5/file-api.htmll" rel="noopener noreferrer" target="_blank">http://tutorials.jenkov.com/html5/file-api.html</a></p></div>
-
-
-<div style="float:right">
-<span class=" tc-reveal" hidden="true"></span>
-<span class=" tc-reveal">
-<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
-    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
-        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
-        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
-    </g>
-</svg></button></a>
-</span>
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="FileAPIUploadfiles">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="FileAPI Upload files"><div class="tc-tiddler-title">
-<div class="tc-titlebar">
-<span class="tc-tiddler-controls">
-<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-
-
-
-
-
-
-</span>
-</span>
-
-<span>
-
-<span class="tc-tiddler-title-icon" style="fill:;">
-
-</span>
-
-
-
-<h2 class="tc-title">
-FileAPI Upload files
-</h2>
-
-</span>
-
-</div>
-
-<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
-</div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal">
-<div class="tc-subtitle">
-<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
-
-</a> 20th May 2020 at 10:41pm
-</div>
-</div>
-<div class=" tc-reveal">
-<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
-<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
-fill:#333333;
-color:#333333;">
- EXPERIMENT
-</span>
-<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPITest">FileAPI Test</a></p><p>I want to try the below code after <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#FileAPIChooseFiles">FileAPI Choose Files</a></p><h1 class="">Test_FileAPI e3.htm</h1><pre><code>&lt;hmtl&gt;&lt;body&gt;
-&lt;h1&gt;Test FileAPI e3&lt;/h1&gt;&lt;br&gt;
-After getting a file reference, instantiate a filereader object to read its contents into memory. When the load finishes, the reader is onload event is fired and its result attribute can be used to access the file data.
-&lt;style&gt;  
-  .thumb {  
-    height: 75px;  
-    border: 1px solid #000;  
-    margin: 10px 5px 0 0;  
-  }  
-&lt;/style&gt;  
-&lt;input type=&quot;file&quot; id=&quot;files&quot; name=&quot;files[]&quot; multiple /&gt;  
-&lt;output id=&quot;list&quot;&gt;&lt;/output&gt;  
-&lt;script&gt;  
-    function handleFileSelect(evt) {  
-        var files = evt.target.files; // FileList object  
-        // Loop through the FileList and render image files as thumbnails.  
-        for (var i = 0, f; f = files[i]; i++) {  
-            // Only process image files.  
-            if (!f.type.match('image.*')) {  
-                continue;  
-            }  
-            var reader = new FileReader();  
-            // Closure to capture the file information.  
-            reader.onload = (function (theFile) {  
-                return function (e) {  
-                    // Render thumbnail.  
-                    var span = document.createElement('span');  
-                    span.innerHTML = ['  
-    &lt;img class=&quot;thumb&quot; src=&quot;', e.target.result,  
-                            '&quot; title=&quot;', theFile.name, '&quot;/&gt;'].join('');  
-                    document.getElementById('list').insertBefore(span, null);  
-                };  
-            })(f);  
-            // Read in the image file as a data URL.  
-            reader.readAsDataURL(f);  
-        }  
-    }  
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);  
-&lt;/script&gt;  
-&lt;/body&gt;&lt;/html&gt;</code></pre></div>
-
-
-<div style="float:right">
-<span class=" tc-reveal" hidden="true"></span>
-<span class=" tc-reveal">
-<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
-    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
-        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
-        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
-    </g>
-</svg></button></a>
-</span>
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="ForEachelementinarray">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-EXPERIMENT" data-tags="EXPERIMENT" data-tiddler-title="For Each element in array"><div class="tc-tiddler-title">
-<div class="tc-titlebar">
-<span class="tc-tiddler-controls">
-<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-
-
-
-
-
-
-</span>
-</span>
-
-<span>
-
-<span class="tc-tiddler-title-icon" style="fill:;">
-
-</span>
-
-
-
-<h2 class="tc-title">
-For Each element in array
-</h2>
-
-</span>
-
-</div>
-
-<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
-</div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal">
-<div class="tc-subtitle">
-<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
-
-</a> 20th May 2020 at 11:33pm
-</div>
-</div>
-<div class=" tc-reveal">
-<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
-<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
-fill:#333333;
-color:#333333;">
- EXPERIMENT
-</span>
-<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><p><a class="tc-tiddlylink-external" href="https://stackoverflow.com/questions/10179815/get-loop-counter-index-using-for-of-syntax-in-javascript" rel="noopener noreferrer" target="_blank">https://stackoverflow.com/questions/10179815/get-loop-counter-index-using-for-of-syntax-in-javascript</a></p><p>ES6’s Array.prototype.entries now has support across current browser versions:</p><pre><code>for (const [i, value] of myArray.entries()) {
-    console.log('%d: %s', i, value);
-}</code></pre></div>
-
-
-<div style="float:right">
-<span class=" tc-reveal" hidden="true"></span>
-<span class=" tc-reveal">
-<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
-    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
-        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
-        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
-    </g>
-</svg></button></a>
-</span>
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="TryCatch">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-DOC" data-tags="DOC" data-tiddler-title="Try Catch"><div class="tc-tiddler-title">
-<div class="tc-titlebar">
-<span class="tc-tiddler-controls">
-<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-
-
-
-
-
-
-</span>
-</span>
-
-<span>
-
-<span class="tc-tiddler-title-icon" style="fill:;">
-
-</span>
-
-
-
-<h2 class="tc-title">
-Try Catch
-</h2>
-
-</span>
-
-</div>
-
-<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
-</div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal">
-<div class="tc-subtitle">
-<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
-
-</a> 20th May 2020 at 10:15pm
-</div>
-</div>
-<div class=" tc-reveal">
-<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
-<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
-fill:#333333;
-color:#333333;">
- DOC
-</span>
-<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><pre><code>&lt;html&gt;&lt;body&gt;
-&lt;h1&gt;Test JSErr e1&lt;/h1&gt;&lt;br&gt;
-&lt;script&gt;
-&quot;use strict&quot;;
-alert(&quot;e3&quot;);
-try{
-y = 5;
-throw(SystemException)
-}catch (e){
-let err_stack = e.stack.split(&quot;\n&quot;).slice(1);
-alert(e.message + &quot; @&quot; + (err_stack.length ? err_stack[0].trim().substring(3).replace(/%20/g, &quot; &quot;) : e.stack) );
-}
-  &lt;/script&gt;
-
-&lt;/body&gt;&lt;/html&gt;</code></pre></div>
-
-
-<div style="float:right">
-<span class=" tc-reveal" hidden="true"></span>
-<span class=" tc-reveal">
-<a href="#"><button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" version="1.1" viewBox="0 0 128 128" width="22pt">
-    <g fill-rule="evenodd" transform="translate(92.500000, 64.000000) rotate(-180.000000) translate(-92.500000, -64.000000) translate(6.000000, -3.000000)">
-        <path d="M112.743107,112.12741 C111.310627,113.561013 109.331747,114.449239 107.145951,114.449239 L27.9777917,114.449239 C23.6126002,114.449239 20.0618714,110.904826 20.0618714,106.532572 C20.0618714,102.169214 23.6059497,98.6159054 27.9777917,98.6159054 L99.2285381,98.6159054 L99.2285381,27.365159 C99.2285381,22.9999675 102.77295,19.4492387 107.145205,19.4492387 C111.508562,19.4492387 115.061871,22.993317 115.061871,27.365159 L115.061871,106.533318 C115.061871,108.71579 114.175869,110.694669 112.743378,112.127981 Z" transform="translate(67.561871, 66.949239) rotate(-45.000000) translate(-67.561871, -66.949239) "></path>
-        <path d="M151.35638,112.12741 C149.923899,113.561013 147.94502,114.449239 145.759224,114.449239 L66.5910645,114.449239 C62.225873,114.449239 58.6751442,110.904826 58.6751442,106.532572 C58.6751442,102.169214 62.2192225,98.6159054 66.5910645,98.6159054 L137.841811,98.6159054 L137.841811,27.365159 C137.841811,22.9999675 141.386223,19.4492387 145.758478,19.4492387 C150.121835,19.4492387 153.675144,22.993317 153.675144,27.365159 L153.675144,106.533318 C153.675144,108.71579 152.789142,110.694669 151.356651,112.127981 Z" transform="translate(106.175144, 66.949239) rotate(-45.000000) translate(-106.175144, -66.949239) "></path>
-    </g>
-</svg></button></a>
-</span>
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="UseStrict">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-DOC" data-tags="DOC" data-tiddler-title="Use Strict"><div class="tc-tiddler-title">
-<div class="tc-titlebar">
-<span class="tc-tiddler-controls">
-<span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-
-
-
-
-
-
-</span>
-</span>
-
-<span>
-
-<span class="tc-tiddler-title-icon" style="fill:;">
-
-</span>
-
-
-
-<h2 class="tc-title">
-Use Strict
-</h2>
-
-</span>
-
-</div>
-
-<div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div>
-</div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal">
-<div class="tc-subtitle">
-<a class="tc-tiddlylink tc-tiddlylink-missing" href="#">
-
-</a> 20th May 2020 at 11:28pm
-</div>
-</div>
-<div class=" tc-reveal">
-<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
-<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
-fill:#333333;
-color:#333333;">
- DOC
-</span>
-<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><p><a class="tc-tiddlylink-external" href="https://www.w3schools.com/js/js_strict.asp" rel="noopener noreferrer" target="_blank">https://www.w3schools.com/js/js_strict.asp</a><br><br>The syntax, for declaring strict mode, was designed to be compatible with older versions of JavaScript.<br><br>Compiling a numeric literal (4 + 5;) or a string literal (&quot;John Doe&quot;;) in a JavaScript program has no side effects. It simply compiles to a non existing variable and dies.<br><br>So &quot;use strict&quot;; only matters to new compilers that &quot;understand&quot; the meaning of it.<br></p></div>
+<div class="tc-tiddler-body tc-reveal"><h1 class="">Simple</h1><ul><li>Remove any &quot;Existing directory&quot; search code</li></ul><h1 class="">Harder</h1><ul><li>Change to MxClasses\MxBaseEc10</li><li>Rewrite to Want, Have, Use, Apply format</li></ul><p><strong></strong></p><ul><li>Send e-mail  to Sam about how it works</li></ul></div>
 
 
 <div style="float:right">

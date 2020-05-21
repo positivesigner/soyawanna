@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Tom TW Pages — Design notes</title>
+<title>TiddlyWiki Code — Design notes</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -369,11 +369,17 @@ Error message and password prompt
 
 <li>Reference</li>
 
+<li>Syntax highlighting in code</li>
+
 <li>tcl BackLinks</li>
 
 <li>template Home Button</li>
 
+<li>Template POPUP button</li>
+
 <li>Test Run</li>
+
+<li>TiddlerMove</li>
 
 <li>TiddlyWiki Code</li>
 
@@ -382,6 +388,8 @@ Error message and password prompt
 <li>TiddlyWiki Startup Options</li>
 
 <li>TiddlyWiki.com</li>
+
+<li>TW Template</li>
 
 <li>View All Pages</li>
 
@@ -9787,8 +9795,8 @@ exports.startup = function() {
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
-<div created="20190925014404111" modified="20200411102020854" title="$:/SiteTitle">
-<pre>Tom TW Pages</pre>
+<div created="20190925014404111" modified="20200521061028792" title="$:/SiteTitle">
+<pre>TiddlyWiki Code</pre>
 </div>
 <div created="20200411063457323" modified="20200411063514558" title="$:/state/dropdown/keyboardshortcut/font-large-286565879">
 <pre>close</pre>
@@ -9808,7 +9816,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200521060231195" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200521063144244" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9823,13 +9831,13 @@ exports.startup = function() {
 <div created="20190925051414187" modified="20200418112224978" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200418112847283" title="$:/state/tab/sidebar--595412856">
+<div created="20190925014513912" modified="20200521061120443" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="[[TiddlyWiki Code]]" title="$:/StoryList">
+<div list="[[TiddlyWiki Code]] [[Template POPUP button]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200418112159431" title="$:/temp/advancedsearch">
@@ -10395,13 +10403,13 @@ Normal Font
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200303061828713" key="((save-html-converted))" modified="20200425211457220" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
+<div created="20200303061828713" key="((save-html-converted))" modified="20200521061213517" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
 <pre>\define ExportSaveHTML(ur_filename ur_stamp)
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-download-file&quot;
 $param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
-exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
 \end
 &lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
 &lt;$macrocall $name=&quot;ExportSaveHTML&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
@@ -10589,6 +10597,11 @@ All user tiddlers, export non-meta to HTML
 
 &lt;&lt;list-links filter:&quot;[tag[Language]tag&lt;currentTiddler&gt;sort[]]&quot;&gt;&gt;</pre>
 </div>
+<div created="20200521062157231" modified="20200521062255917" tags="EXPERIMENT" title="Syntax highlighting in code">
+<pre>* Find out highlight keywords in code samples
+
+https://tiddlywiki.com/plugins/tiddlywiki/highlight/</pre>
+</div>
 <div created="20200415034507768" modified="20200415035112962" tags="$:/tags/Macro META" title="tcl BackLinks">
 <pre>\define ContinuedFrom(UrPK)
 &lt;$list filter=&quot;[[$UrPK$]backlinks[]]&quot;&gt;Continued from &lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;br&gt;&lt;/$list&gt;
@@ -10613,6 +10626,12 @@ All user tiddlers, export non-meta to HTML
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
+<div created="20200521062921100" modified="20200521063138584" tags="EXPERIMENT" title="Template POPUP button">
+<pre>* Fix the POPUP button from showing in the HTML export
+** Make it act like the X (close tiddler) button
+''''
+* Make another button to view the code of the current tiddler, but in a pop-up that does not get saved with the file</pre>
+</div>
 <div color="#008000" created="20200411103116804" modified="20200415041918181" tags="SUBINDEX DOC" title="Test Run">
 <pre>You can start a &lt;&lt;TagLinkNoBacklink &quot;Application&quot; &quot;Test Run&quot; &quot;TiddlyWiki Tutorial&quot;&gt;&gt;.
 
@@ -10628,7 +10647,10 @@ All user tiddlers, export non-meta to HTML
 
 &lt;&lt;list-links filter:&quot;[tag[Language]tag&lt;currentTiddler&gt;sort[]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20190925014523514" modified="20200521060141382" tags="INDEX" title="TiddlyWiki Code">
+<div created="20200521061604716" modified="20200521062016080" tags="EXTLINK UTILITY" title="TiddlerMove">
+<pre>TiddlerMove Design.htm</pre>
+</div>
+<div created="20190925014523514" modified="20200521062115427" tags="INDEX" title="TiddlyWiki Code">
 <pre>{{ext Parent Return}}
 &lt;div style=&quot;clear:both&quot;/&gt;
 TiddlyWiki is a Single-Page web browser application. It functions as a Document Editor that supports HTML formatting. It uses Javascript events to enable dynamic loading of content pages called Tiddlers.
@@ -10681,6 +10703,13 @@ The content is compiled into HTML / CSS / Javascript using TiddlyWiki language c
 
 * See [[Language]] topics
 
+!Tested
+&lt;$list filter=&quot;[tag[EXTLINK]tag[UTILITY]sort[title]]&quot;&gt;
+&lt;$macrocall $name=OneLink UrParentTag=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;br&gt;
+&lt;/$list&gt;
+
+!Experimenting
+&lt;&lt;list-links filter:&quot;[tag[EXPERIMENT]]&quot;&gt;&gt;
 
 [[___|Recent entries]]
 
@@ -10698,6 +10727,9 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 </div>
 <div created="20200411103934568" modified="20200411104001728" tags="EXTLINK" title="TiddlyWiki.com">
 <pre>https://tiddlywiki.com/</pre>
+</div>
+<div created="20200521061830721" modified="20200521062030580" tags="EXTLINK UTILITY" title="TW Template">
+<pre>TW_Template.htm</pre>
 </div>
 <div created="20200405112008513" modified="20200405112242998" tags="META" title="View All Pages">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
