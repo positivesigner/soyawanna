@@ -1,0 +1,8 @@
+Create a new VBNS program to look through
+sub-directories.
+- Find *.htm where modified date is after *.html
+	- These need re-exported using ctrl-alt-shift-h
+- Find *.txt files
+	- Group by month modified
+- Write out a TW_index.html in the root
+	- Just links to all *.htm files in sub-directories

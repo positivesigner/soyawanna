@@ -1,8 +1,8 @@
-start "" "C:\TJBF\zPortableInstalls\VBNetScript\VBNetScript.exe" %0
+start "" "MxClasses\VBNetScript.exe" %0
 exit
-C:\TJBF\zPortableInstalls\VBNetScript\DLL_WinForm2019m09d13\System.Drawing.dll
-C:\TJBF\zPortableInstalls\VBNetScript\DLL_WinForm2019m09d13\System.Windows.Forms.dll
-C:\TJBF\zPortableInstalls\VBNetScript\MxClasses\MxBaseE7.vb
+MxClasses\DLL_WinForm2019m09d13\System.Drawing.dll
+MxClasses\DLL_WinForm2019m09d13\System.Windows.Forms.dll
+MxClasses\MxBaseE7.vb
             Dim objFORM = New Mx.UIForm()
             'System.Windows.Forms.Application.Run(objFORM) only works from a command line program with no forms open. VBNetScript already has a form open.
 			If objFORM.lstFOLDER.Count > 0 Then
@@ -380,15 +380,30 @@ Namespace Mx
                 Dim sdaNEW_DATA_FILES = ur_dir_io.GetFiles(ur_parms_row.v(enmPCol.new_data_folder), strLIT_STAR_DOT_HTML)
                 Dim sdaEXISTING_FILES = ur_dir_io.GetSubFiles(ur_parms_row.v(enmPCol.existing_folder), strLIT_STAR_DOT_HTML)
                 For Each kvpNEW_DATA In sdaNEW_DATA_FILES.kvp
-                    For Each kvpEXISTING In sdaEXISTING_FILES.kvp
-                        If AreEqual(ur_path_io.GetFileName(kvpEXISTING.v), ur_path_io.GetFileName(kvpNEW_DATA.v)) Then
-                            Dim trwFILE = New FileRow()
-                            trwFILE.v(enmFCol.new_data_path) = kvpNEW_DATA.v
-                            trwFILE.v(enmFCol.existing_path) = kvpEXISTING.v
-                            ret_file_list.Add(trwFILE)
-                            Exit For
-                        End If
-                    Next kvpEXISTING
+				    Dim strEXISTING = ur_path_io.GetFileName(kvpNEW_DATA.v)
+					If StartingWithText(strEXISTING, "TWMove_") Then
+						strEXISTING = strEXISTING.SubString("TWMove_".Length).Replace("-colon-", ":").Replace("-fslash-", "\")
+						Dim intSTAMP = InStr(strEXISTING, "-stamp-")
+						If intSTAMP > 0 Then
+							strEXISTING = Left(strEXISTING, intSTAMP - 1) & ".htm"
+						End If
+						
+						Dim trwFILE = New FileRow()
+						trwFILE.v(enmFCol.new_data_path) = kvpNEW_DATA.v
+						trwFILE.v(enmFCol.existing_path) = strEXISTING
+						ret_file_list.Add(trwFILE)
+					
+					'Else 'ur_path_io
+					'	For Each kvpEXISTING In sdaEXISTING_FILES.kvp
+					'		If AreEqual(ur_path_io.GetFileName(kvpEXISTING.v), ur_path_io.GetFileName(kvpNEW_DATA.v)) Then
+					'			Dim trwFILE = New FileRow()
+					'			trwFILE.v(enmFCol.new_data_path) = kvpNEW_DATA.v
+					'			trwFILE.v(enmFCol.existing_path) = kvpEXISTING.v
+					'			ret_file_list.Add(trwFILE)
+					'			Exit For
+					'		End If
+					'	Next kvpEXISTING
+					End If 'ur_path_io
                 Next kvpNEW_DATA
             End Function 'wFileList_Matches
         End Class 'RsrcCompile
