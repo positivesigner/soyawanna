@@ -375,13 +375,13 @@ Error message and password prompt
 
 <li>Test Run</li>
 
+<li>TiddlyWiki Code</li>
+
 <li>TiddlyWiki Date Format reference</li>
 
 <li>TiddlyWiki Startup Options</li>
 
 <li>TiddlyWiki.com</li>
-
-<li>Tom TW Pages</li>
 
 <li>View All Pages</li>
 
@@ -9704,10 +9704,38 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Untitled]]
-# [[mcr div_pop]]
-# [[btn viewmenu popup]]
-# [[glbl DivPopTiddler]]</pre>
+# [[$:/config/MissingLinks]]
+# [[$:/config/Toolbar/Icons]]
+# [[$:/.tb/modules/startup/hide-sidebar.js]]
+# [[$:/config/HideSidebarOnStartup]]
+# [[$:/config/ShortcutInfo/font-large]]
+# [[$:/config/ShortcutInfo/font-normal]]
+# [[$:/config/ShortcutInfo/home-tiddlers]]
+# [[$:/config/ShortcutInfo/save-all-changes]]
+# [[$:/config/ShortcutInfo/save-html-converted]]
+# [[$:/config/shortcuts/font-large]]
+# [[$:/config/shortcuts/font-normal]]
+# [[$:/config/shortcuts/home-tiddlers]]
+# [[$:/config/shortcuts/save-all-changes]]
+# [[$:/config/shortcuts/save-html-converted]]
+# [[$:/config/TextEditor/EnableToolbar]]
+# [[ext Parent Return]]
+# [[Font Size]]
+# [[INDEX]]
+# [[keyboard action FontLarge]]
+# [[keyboard action FontNormal]]
+# [[keyboard action HomeTiddlers]]
+# [[keyboard action SaveAllChanges]]
+# [[keyboard action SaveHtmlConverted]]
+# [[mcr OneLink]]
+# [[Missing Tags Report]]
+# [[Recent entries]]
+# [[template Home Button]]
+# [[TiddlyWiki Startup Options]]
+# [[View All Pages]]
+# [[What is this Wiki Stuff?]]
+# [[DivPop glbl]]
+# [[DivPop btn]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9780,8 +9808,8 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200418112843302" title="$:/state/sidebar">
-<pre>yes</pre>
+<div created="20190925044925672" modified="20200521060231195" title="$:/state/sidebar">
+<pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
@@ -9801,7 +9829,7 @@ exports.startup = function() {
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200418111447006" list="[[DivPop glbl]] [[DivPop btn]] [[Tom TW Pages]]" modified="20200418112210961" title="$:/StoryList">
+<div list="[[TiddlyWiki Code]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200418112159431" title="$:/temp/advancedsearch">
@@ -9820,7 +9848,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Users/Dad/Downloads/Tom%20TWPages.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/TiddlyWiki/TiddlyWiki%20Code.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9840,7 +9868,7 @@ exports.startup = function() {
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Users/Dad/Downloads/Tom%20TWPages.htm&quot;
+            &quot;text&quot;: &quot;/C:/BBK/soyawanna/TiddlyWiki/TiddlyWiki%20Code.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9852,11 +9880,11 @@ exports.startup = function() {
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1920&quot;
+            &quot;text&quot;: &quot;1366&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1080&quot;
+            &quot;text&quot;: &quot;768&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10186,9 +10214,10 @@ Continue to [[Delete a Tiddler |Content Test Run - Delete a Tiddler]]</pre>
 
 &lt;&lt;list-links filter:&quot;[tag[Language]tag&lt;currentTiddler&gt;sort[]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200418064445680" modified="20200418111935867" tags="META $:/tags/ViewToolbar" title="DivPop btn">
+<div created="20200418064445680" modified="20200425204233962" tags="META $:/tags/ViewToolbar" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
 &lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
 popup
@@ -10199,7 +10228,7 @@ popup
 &lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200418110049404" modified="20200418112903196" tags="$:/tags/BelowStory META" title="DivPop glbl">
+<div created="20200418110049404" modified="20200425211546692" tags="$:/tags/BelowStory META" title="DivPop glbl">
 <pre>&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
 &lt;div style=&quot;
 position: fixed;
@@ -10212,6 +10241,7 @@ bottom: 0%;
 &quot;&gt;
 &lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
 &lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 close
 &lt;/$button&gt;
@@ -10223,8 +10253,8 @@ close
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200223043825137" modified="20200411141357691" tags="META" title="ext Parent Return">
-<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.htm]]&lt;/div&gt;</pre>
+<div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
+<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
 </div>
 <div created="20200319102534436" modified="20200319102543033" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
@@ -10353,15 +10383,30 @@ Normal Font
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
 </div>
-<div created="20200223012728498" key="((save-all-changes))" modified="20200223013015060" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
-<pre>&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot;/&gt;
+<div created="20200223012728498" key="((save-all-changes))" modified="20200425211433127" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
+<pre>\define ExportSaveAll(ur_filename ur_stamp)
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.htm&quot;
+/&gt;
+\end
+&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
+&lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
+&lt;/$list&gt;
 </pre>
 </div>
-<div created="20200303061828713" key="((save-html-converted))" modified="20200415061108457" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
-<pre>&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
-$param=&quot;$:/core/templates/exporters/StaticRiver&quot;
-exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]] [all[tiddlers]tag[SUBINDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;</pre>
+<div created="20200303061828713" key="((save-html-converted))" modified="20200425211457220" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveHtmlConverted">
+<pre>\define ExportSaveHTML(ur_filename ur_stamp)
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
+$param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
+\end
+&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
+&lt;$macrocall $name=&quot;ExportSaveHTML&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div color="#004080" created="20200411133533930" modified="20200411133904962" tags="SUBINDEX SCOPE" title="Language">
 <pre>!!Test Run
@@ -10583,20 +10628,7 @@ All user tiddlers, export non-meta to HTML
 
 &lt;&lt;list-links filter:&quot;[tag[Language]tag&lt;currentTiddler&gt;sort[]]&quot;&gt;&gt;</pre>
 </div>
-<div created="20200411133021999" modified="20200411133039291" tags="EXTLINK" title="TiddlyWiki Date Format reference">
-<pre>https://tiddlywiki.com/static/DateFormat.html</pre>
-</div>
-<div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
-<pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
-
-There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
-
-&lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
-</div>
-<div created="20200411103934568" modified="20200411104001728" tags="EXTLINK" title="TiddlyWiki.com">
-<pre>https://tiddlywiki.com/</pre>
-</div>
-<div created="20190925014523514" modified="20200415041419166" tags="INDEX" title="Tom TW Pages">
+<div created="20190925014523514" modified="20200521060141382" tags="INDEX" title="TiddlyWiki Code">
 <pre>{{ext Parent Return}}
 &lt;div style=&quot;clear:both&quot;/&gt;
 TiddlyWiki is a Single-Page web browser application. It functions as a Document Editor that supports HTML formatting. It uses Javascript events to enable dynamic loading of content pages called Tiddlers.
@@ -10653,6 +10685,19 @@ The content is compiled into HTML / CSS / Javascript using TiddlyWiki language c
 [[___|Recent entries]]
 
 [[View All Pages]]</pre>
+</div>
+<div created="20200411133021999" modified="20200411133039291" tags="EXTLINK" title="TiddlyWiki Date Format reference">
+<pre>https://tiddlywiki.com/static/DateFormat.html</pre>
+</div>
+<div created="20190925054126842" modified="20200319102334158" tags="META" title="TiddlyWiki Startup Options">
+<pre>Here is some notes on [[How to setup a Tiddly Wiki file|Articles on how to use Tiddly Wiki]].
+
+There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
+
+&lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
+</div>
+<div created="20200411103934568" modified="20200411104001728" tags="EXTLINK" title="TiddlyWiki.com">
+<pre>https://tiddlywiki.com/</pre>
 </div>
 <div created="20200405112008513" modified="20200405112242998" tags="META" title="View All Pages">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
