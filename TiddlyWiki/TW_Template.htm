@@ -203,6 +203,8 @@ Error message and password prompt
 
 <li>$:/plugins/danielo515/searchNreplace</li>
 
+<li>$:/plugins/malgam/version-control/versionTab</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -226,6 +228,8 @@ Error message and password prompt
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab--2112689675</li>
+
+<li>$:/state/tab-1680907261</li>
 
 <li>$:/state/tab-1749438307</li>
 
@@ -279,9 +283,9 @@ Error message and password prompt
 
 <li>mcr OneLink</li>
 
-<li>mcr T1Reveal</li>
+<li>mcr ref_iframe</li>
 
-<li>META</li>
+<li>mcr T1Reveal</li>
 
 <li>Missing Tags Report</li>
 
@@ -9611,8 +9615,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Untitled]]
-# [[mcr T1Reveal]]</pre>
+# [[$:/plugins/malgam/version-control/versionTab]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9661,6 +9664,158 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div caption="Versions" created="20180713032258699" creator="malgam" modified="20200525194749521" modifier="malgam" revision="" tags="META $:/tags/TiddlerInfo" title="$:/plugins/malgam/version-control/versionTab" type="">
+<pre>\define myText()
+$:/_commit_message/$(currentTiddler)$
+\end
+
+\define sourceTiddler()
+[[$(currentTiddler)$]]
+\end
+
+\define statedifftext()
+$:/state/verTab/$(currentVersion)$/difftext
+\end
+
+\define statevertab()
+$:/state/verTab/$(currentVersion)$/vertab
+\end
+
+\define statetabtype()
+$:/state/verTab/$(currentVersion)$/type
+\end
+
+\define RestoreButton()
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(restore this version)
+&lt;$action-setfield $tiddler=&lt;&lt;currentVersion&gt;&gt; $field=&quot;text&quot; $value={{{ [&lt;verTitle&gt;get[text]] }}} $timestamp=&quot;no&quot;/&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;fields[]prefix[_vc-]]&quot; variable=&quot;vcfield&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;currentVersion&gt;&gt; $field={{{ [&lt;vcfield&gt;removeprefix[_vc-]] }}} $value={{{ [&lt;verTitle&gt;get&lt;vcfield&gt;] }}} $timestamp=&quot;no&quot;/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;currentVersion&gt;fields[]] -title -text &quot; variable=&quot;cv-field&quot;&gt;
+&lt;$wikify name=&quot;vcfield&quot; text=&quot;_vc-&lt;&lt;cv-field&gt;&gt;&quot;&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;!has:field&lt;vcfield&gt;]&quot;&gt;
+&lt;$action-deletefield $tiddler=&lt;&lt;currentVersion&gt;&gt; $field=&lt;&lt;cv-field&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+&lt;/$button&gt;
+\end
+
+\define DeleteButton()
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(delete this version)
+&lt;$action-deletetiddler $tiddler=&lt;&lt;verTitle&gt;&gt;/&gt;
+&lt;/$button&gt;
+\end
+
+\define DiffTextButton()
+&lt;$list filter=&quot;[&lt;statedifftext&gt;!text[yes]]&quot; emptyMessage=&quot;&quot;&quot;
+&lt;$button set=&lt;&lt;statedifftext&gt;&gt; setTo=&quot;no&quot; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(hide differences)&lt;/$button&gt;&quot;&quot;&quot;&gt;
+&lt;$button set=&lt;&lt;statedifftext&gt;&gt; setTo=&quot;yes&quot; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(show differences)&lt;/$button&gt;
+&lt;/$list&gt;
+\end
+
+\define verTabs(type)
+&lt;div class=&quot;tc-tab-set $type$&quot;&gt;
+&lt;!-- Set up tabs --&gt;
+&lt;div class=&quot;tc-tab-buttons $type$&quot;&gt;
+&lt;$list filter=&quot;[&lt;statetabtype&gt;!text[vertical]]&quot; emptyMessage=&quot;&quot;&quot;
+&lt;$button set=&lt;&lt;statetabtype&gt;&gt; setTo=&quot;horizontal&quot; style=&quot;width: auto; margin-left: auto;&quot;&gt;→&lt;/$button&gt;&quot;&quot;&quot;&gt;
+&lt;$button set=&lt;&lt;statetabtype&gt;&gt; setTo=&quot;vertical&quot; style=&quot;width: auto; margin-left: auto;&quot;&gt;↓&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;currentVersion&gt;] [&lt;currentVersion&gt;listed[]prefix[$:/_vc]!sort[]]&quot; variable=&quot;verTitle&quot;&gt;
+&lt;$button set=&lt;&lt;statevertab&gt;&gt; setTo=&lt;&lt;verTitle&gt;&gt; selectedClass=&quot; tc-tab-selected&quot;&gt;
+&lt;$text text={{{ [&lt;currentVersion&gt;listed[]prefix[$:/_vc]allbefore:include&lt;verTitle&gt;count[]] }}}/&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tc-tab-divider $type$&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Version header info --&gt;
+&lt;div class=&quot;tc-tab-content $type$&quot; style=&quot;overflow: auto;&quot;&gt;
+&lt;$set name=&quot;verTitle&quot; value={{{ [&lt;statevertab&gt;get[text]] }}}&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;has:field[commit_message]]&quot;&gt;&lt;b&gt;Commit Message:&lt;/b&gt; &lt;$text text={{{ [&lt;verTitle&gt;get[commit_message]] }}}/&gt;&lt;br&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;prefix[$:/_vc]]&quot; emptyMessage=&quot;&lt;b&gt;Current Version&lt;/b&gt;&quot;&gt;&lt;b&gt;Version Tiddler&lt;/b&gt;: 
+&lt;$link to=&lt;&lt;verTitle&gt;&gt;&gt;&lt;$text text=&lt;&lt;verTitle&gt;&gt;/&gt;&lt;/$link&gt;&lt;br&gt;&lt;/$list&gt;
+&lt;div style=&quot;padding-bottom: 0.4em; float: right;&quot;&gt;&lt;&lt;DiffTextButton&gt;&gt; &lt;$list filter=&quot;[&lt;verTitle&gt;prefix[$:/_vc]]&quot;&gt; &lt;&lt;RestoreButton&gt;&gt; &lt;&lt;DeleteButton&gt;&gt; &lt;/$list&gt;&lt;/div&gt;
+
+&lt;!-- Display diff text --&gt;
+&lt;div class=&quot;diff-wrapper&quot;&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;fields[]prefix[_vc-]] ~[&lt;verTitle&gt;fields[]] -text -title +[sort[]] +[prepend[text]]&quot; variable=&quot;field&quot;&gt;
+&lt;b style=&quot;float: left;&quot;&gt;&lt;$text text={{{ [&lt;field&gt;removeprefix[_vc-]] ~[&lt;field&gt;] }}}/&gt;:&amp;nbsp;&lt;/b&gt;
+&lt;$list filter=&quot;[&lt;statedifftext&gt;!text[yes]]&quot;&gt;
+&lt;div&gt;&lt;pre&gt;&lt;$text text={{{ [&lt;verTitle&gt;get&lt;field&gt;] }}}/&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;statedifftext&gt;text[yes]]&quot;&gt;
+&lt;$set name=&quot;vcfield&quot; value={{{ [&lt;field&gt;regexp[^text$]] [&lt;field&gt;prefix[_vc-]] ~[&lt;field&gt;addprefix[_vc-]] }}}&gt;
+&lt;$set name=&quot;source&quot; value={{{ [&lt;currentVersion&gt;] [&lt;currentVersion&gt;listed[]prefix[$:/_vc/]!sort[]] +[after&lt;verTitle&gt;get&lt;vcfield&gt;] }}}&gt;
+&lt;$set name=&quot;destination&quot; value={{{ [&lt;verTitle&gt;get&lt;field&gt;] }}}&gt;
+&lt;$diff-text source=&lt;&lt;source&gt;&gt; dest=&lt;&lt;destination&gt;&gt;/&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+
+&lt;b&gt;Extra fields in previous version:&lt;/b&gt;&lt;br&gt;
+&lt;$set name=&quot;sourceVer&quot; value={{{ [&lt;currentVersion&gt;] [&lt;currentVersion&gt;listed[]prefix[$:/_vc/]!sort[]] +[after&lt;verTitle&gt;] }}}&gt;
+&lt;$list filter=&quot;[&lt;sourceVer&gt;fields[]prefix[_vc-]] +[sort[]]&quot; variable=&quot;field&quot;&gt;
+&lt;$set name=&quot;fieldtrimmed&quot; value={{{ [&lt;field&gt;removeprefix[_vc-]] }}}&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;!prefix[$:/_vc/]!has:field&lt;fieldtrimmed&gt;]&quot;&gt;&lt;&lt;fieldtrimmed&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;prefix[$:/_vc/]!has:field&lt;field&gt;]&quot;&gt;&lt;&lt;fieldtrimmed&gt;&gt;&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;&lt;br&gt;
+&lt;/$set&gt;
+
+&lt;/div&gt;
+
+&lt;/$set&gt;&lt;!-- verTitle --&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+\end
+
+\define commitActions()
+&lt;$wikify name=&quot;versionTitle&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;now&quot; format=&quot;$:/_vc/YYYY0MM0DD0hh0mm0ss/{{!!title}}&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$action-createtiddler $basetitle=&lt;&lt;versionTitle&gt;&gt; $savetitle=&quot;$:/temp/saveTid&quot; text={{!!text}} list=&lt;&lt;sourceTiddler&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler={{$:/temp/saveTid}} $field=&quot;commit_message&quot; $value={{{ [&lt;myText&gt;get[text]] }}}/&gt;
+&lt;$list filter=&quot;[all[current]fields[]] -title -text&quot; variable=&quot;field&quot;&gt;
+&lt;$action-setfield $tiddler={{$:/temp/saveTid}} $field={{{ [&lt;field&gt;addprefix[_vc-]] }}} $value={{{ [all[current]get&lt;field&gt;] }}}/&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+\end
+
+&lt;style&gt;
+.diff-wrapper { margin: 0 0 1em 0; }
+.diff-wrapper div { width: 100%; }
+.diff-wrapper pre {
+    margin: 0;
+    width: 100%;
+    max-height: 24em;
+    overflow-y: auto;
+}
+.my-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;my-container&quot;&gt;
+Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
+&lt;$edit-text tiddler=&lt;&lt;myText&gt;&gt; tag=&quot;input&quot; default=&quot;Enter commit message...&quot; class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;/span&gt;
+&lt;$button tooltip=&quot;Commit changes&quot; actions=&lt;&lt;commitActions&gt;&gt;&gt;Commit&lt;/$button&gt;
+&lt;/div&gt;
+
+---
+''Versions:''&lt;br&gt;
+&lt;$set name=&quot;currentVersion&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;statetabtype&gt;!text[vertical]]&quot; emptyMessage=&quot;&quot;&quot;&lt;&lt;verTabs &quot;tc-vertical&quot;&gt;&gt;&quot;&quot;&quot;&gt;
+&lt;&lt;verTabs&gt;&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+</pre>
+</div>
 <div created="20190925014420922" modified="20200111053100183" title="$:/SiteSubtitle">
 <pre>Design notes</pre>
 </div>
@@ -9685,7 +9840,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200524012843061" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200525222344593" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9697,16 +9852,19 @@ exports.startup = function() {
 <div created="20190925052229880" modified="20200115080408562" title="$:/state/tab--2112689675">
 <pre>$:/core/ui/ControlPanel/Basics</pre>
 </div>
+<div created="20200525194541348" modified="20200525194543339" title="$:/state/tab-1680907261">
+<pre>$:/core/ui/TiddlerInfo/Fields</pre>
+</div>
 <div created="20190925051414187" modified="20200418112041443" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20190925014513912" modified="20200524001602862" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/More</pre>
+<div created="20190925014513912" modified="20200525194603836" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200524012830141" list="[[WikiFile Title]]" modified="20200524012830141" title="$:/StoryList">
+<div list="[[WikiFile Title]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10014,6 +10172,19 @@ target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;$UrParentTag$&l
 \end
 </pre>
 </div>
+<div created="20200525222107718" modified="20200525222338765" tags="$:/tags/Macro" title="mcr ref_iframe">
+<pre>\define ref_iframe(ur_code)
+&lt;iframe
+src=&quot;javascript:if(window.focus){$ur_code$}&quot;
+scrolling=&quot;yes&quot;
+frameborder=&quot;0&quot;
+width=&quot;100%&quot;;&gt;
+&lt;/iframe&gt;
+\end
+\define test_ref_iframe(ur_pk)
+&lt;&lt;ref_iframe &quot;alert('$ur_pk$'.length)&quot;&gt;&gt;
+\end</pre>
+</div>
 <div created="20200524000147179" modified="20200524012835476" tags="META $:/tags/Macro" title="mcr T1Reveal">
 <pre>\define t1cb(UrContent)
 &lt;$list filter=&quot;[[$UrContent$]!match[]]&quot;&gt;
@@ -10042,9 +10213,6 @@ Copy to clipboard
 &lt;/$list&gt;
 &lt;/$list&gt;
 \end</pre>
-</div>
-<div created="20200418112811387" list="$:/config/MissingLinks $:/config/Toolbar/Icons $:/.tb/modules/startup/hide-sidebar.js $:/config/HideSidebarOnStartup $:/config/ShortcutInfo/font-large $:/config/ShortcutInfo/font-normal $:/config/ShortcutInfo/home-tiddlers $:/config/ShortcutInfo/save-all-changes $:/config/ShortcutInfo/save-html-converted $:/config/shortcuts/font-large $:/config/shortcuts/font-normal $:/config/shortcuts/home-tiddlers $:/config/shortcuts/save-all-changes $:/config/shortcuts/save-html-converted $:/config/TextEditor/EnableToolbar $:/plugins/danielo515/searchNreplace [[ext Parent Return]] [[Font Size]] INDEX [[keyboard action FontLarge]] [[keyboard action FontNormal]] [[keyboard action HomeTiddlers]] [[keyboard action SaveAllChanges]] [[keyboard action SaveHtmlConverted]] [[mcr OneLink]] [[Missing Tags Report]] [[Recent entries]] [[template Home Button]] [[TiddlyWiki Startup Options]] [[View All Pages]] [[What is this Wiki Stuff?]] [[DivPop glbl]] [[DivPop btn]]" modified="20200418112811387" title="META">
-<pre></pre>
 </div>
 <div created="20200322103721813" modified="20200405134917329" tags="META" title="Missing Tags Report">
 <pre>\define MissingTags(UrPK)
