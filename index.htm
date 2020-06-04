@@ -197,6 +197,8 @@ Error message and password prompt
 
 <li>$:/plugins/danielo515/searchNreplace</li>
 
+<li>$:/plugins/malgam/version-control/versionTab</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -249,11 +251,15 @@ Error message and password prompt
 
 <li>DivPop glbl</li>
 
+<li>DivPop.svg</li>
+
 <li>DOC</li>
 
 <li>DownloadBar manager</li>
 
 <li>ext Parent Return</li>
+
+<li>ext Parent Return sample</li>
 
 <li>ext TW Return</li>
 
@@ -294,6 +300,8 @@ Error message and password prompt
 <li>keyboard action SaveHtmlConverted</li>
 
 <li>mcr OneLink</li>
+
+<li>mcr T1Reveal</li>
 
 <li>Missing Tags Report</li>
 
@@ -9636,7 +9644,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[ext TW Return]]</pre>
+# [[keyboard action SaveAllChanges]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9685,6 +9693,158 @@ exports.startup = function() {
     }
 }</pre>
 </div>
+<div caption="Versions" created="20180713032258699" creator="malgam" modified="20200525194749521" modifier="malgam" revision="" tags="META $:/tags/TiddlerInfo" title="$:/plugins/malgam/version-control/versionTab" type="">
+<pre>\define myText()
+$:/_commit_message/$(currentTiddler)$
+\end
+
+\define sourceTiddler()
+[[$(currentTiddler)$]]
+\end
+
+\define statedifftext()
+$:/state/verTab/$(currentVersion)$/difftext
+\end
+
+\define statevertab()
+$:/state/verTab/$(currentVersion)$/vertab
+\end
+
+\define statetabtype()
+$:/state/verTab/$(currentVersion)$/type
+\end
+
+\define RestoreButton()
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(restore this version)
+&lt;$action-setfield $tiddler=&lt;&lt;currentVersion&gt;&gt; $field=&quot;text&quot; $value={{{ [&lt;verTitle&gt;get[text]] }}} $timestamp=&quot;no&quot;/&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;fields[]prefix[_vc-]]&quot; variable=&quot;vcfield&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;currentVersion&gt;&gt; $field={{{ [&lt;vcfield&gt;removeprefix[_vc-]] }}} $value={{{ [&lt;verTitle&gt;get&lt;vcfield&gt;] }}} $timestamp=&quot;no&quot;/&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;currentVersion&gt;fields[]] -title -text &quot; variable=&quot;cv-field&quot;&gt;
+&lt;$wikify name=&quot;vcfield&quot; text=&quot;_vc-&lt;&lt;cv-field&gt;&gt;&quot;&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;!has:field&lt;vcfield&gt;]&quot;&gt;
+&lt;$action-deletefield $tiddler=&lt;&lt;currentVersion&gt;&gt; $field=&lt;&lt;cv-field&gt;&gt;/&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+&lt;/$button&gt;
+\end
+
+\define DeleteButton()
+&lt;$button class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(delete this version)
+&lt;$action-deletetiddler $tiddler=&lt;&lt;verTitle&gt;&gt;/&gt;
+&lt;/$button&gt;
+\end
+
+\define DiffTextButton()
+&lt;$list filter=&quot;[&lt;statedifftext&gt;!text[yes]]&quot; emptyMessage=&quot;&quot;&quot;
+&lt;$button set=&lt;&lt;statedifftext&gt;&gt; setTo=&quot;no&quot; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(hide differences)&lt;/$button&gt;&quot;&quot;&quot;&gt;
+&lt;$button set=&lt;&lt;statedifftext&gt;&gt; setTo=&quot;yes&quot; class=&quot;tc-btn-invisible tc-tiddlylink&quot;&gt;(show differences)&lt;/$button&gt;
+&lt;/$list&gt;
+\end
+
+\define verTabs(type)
+&lt;div class=&quot;tc-tab-set $type$&quot;&gt;
+&lt;!-- Set up tabs --&gt;
+&lt;div class=&quot;tc-tab-buttons $type$&quot;&gt;
+&lt;$list filter=&quot;[&lt;statetabtype&gt;!text[vertical]]&quot; emptyMessage=&quot;&quot;&quot;
+&lt;$button set=&lt;&lt;statetabtype&gt;&gt; setTo=&quot;horizontal&quot; style=&quot;width: auto; margin-left: auto;&quot;&gt;→&lt;/$button&gt;&quot;&quot;&quot;&gt;
+&lt;$button set=&lt;&lt;statetabtype&gt;&gt; setTo=&quot;vertical&quot; style=&quot;width: auto; margin-left: auto;&quot;&gt;↓&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;currentVersion&gt;] [&lt;currentVersion&gt;listed[]prefix[$:/_vc]!sort[]]&quot; variable=&quot;verTitle&quot;&gt;
+&lt;$button set=&lt;&lt;statevertab&gt;&gt; setTo=&lt;&lt;verTitle&gt;&gt; selectedClass=&quot; tc-tab-selected&quot;&gt;
+&lt;$text text={{{ [&lt;currentVersion&gt;listed[]prefix[$:/_vc]allbefore:include&lt;verTitle&gt;count[]] }}}/&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/div&gt;
+&lt;div class=&quot;tc-tab-divider $type$&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Version header info --&gt;
+&lt;div class=&quot;tc-tab-content $type$&quot; style=&quot;overflow: auto;&quot;&gt;
+&lt;$set name=&quot;verTitle&quot; value={{{ [&lt;statevertab&gt;get[text]] }}}&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;has:field[commit_message]]&quot;&gt;&lt;b&gt;Commit Message:&lt;/b&gt; &lt;$text text={{{ [&lt;verTitle&gt;get[commit_message]] }}}/&gt;&lt;br&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;prefix[$:/_vc]]&quot; emptyMessage=&quot;&lt;b&gt;Current Version&lt;/b&gt;&quot;&gt;&lt;b&gt;Version Tiddler&lt;/b&gt;: 
+&lt;$link to=&lt;&lt;verTitle&gt;&gt;&gt;&lt;$text text=&lt;&lt;verTitle&gt;&gt;/&gt;&lt;/$link&gt;&lt;br&gt;&lt;/$list&gt;
+&lt;div style=&quot;padding-bottom: 0.4em; float: right;&quot;&gt;&lt;&lt;DiffTextButton&gt;&gt; &lt;$list filter=&quot;[&lt;verTitle&gt;prefix[$:/_vc]]&quot;&gt; &lt;&lt;RestoreButton&gt;&gt; &lt;&lt;DeleteButton&gt;&gt; &lt;/$list&gt;&lt;/div&gt;
+
+&lt;!-- Display diff text --&gt;
+&lt;div class=&quot;diff-wrapper&quot;&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;fields[]prefix[_vc-]] ~[&lt;verTitle&gt;fields[]] -text -title +[sort[]] +[prepend[text]]&quot; variable=&quot;field&quot;&gt;
+&lt;b style=&quot;float: left;&quot;&gt;&lt;$text text={{{ [&lt;field&gt;removeprefix[_vc-]] ~[&lt;field&gt;] }}}/&gt;:&amp;nbsp;&lt;/b&gt;
+&lt;$list filter=&quot;[&lt;statedifftext&gt;!text[yes]]&quot;&gt;
+&lt;div&gt;&lt;pre&gt;&lt;$text text={{{ [&lt;verTitle&gt;get&lt;field&gt;] }}}/&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;statedifftext&gt;text[yes]]&quot;&gt;
+&lt;$set name=&quot;vcfield&quot; value={{{ [&lt;field&gt;regexp[^text$]] [&lt;field&gt;prefix[_vc-]] ~[&lt;field&gt;addprefix[_vc-]] }}}&gt;
+&lt;$set name=&quot;source&quot; value={{{ [&lt;currentVersion&gt;] [&lt;currentVersion&gt;listed[]prefix[$:/_vc/]!sort[]] +[after&lt;verTitle&gt;get&lt;vcfield&gt;] }}}&gt;
+&lt;$set name=&quot;destination&quot; value={{{ [&lt;verTitle&gt;get&lt;field&gt;] }}}&gt;
+&lt;$diff-text source=&lt;&lt;source&gt;&gt; dest=&lt;&lt;destination&gt;&gt;/&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+
+&lt;b&gt;Extra fields in previous version:&lt;/b&gt;&lt;br&gt;
+&lt;$set name=&quot;sourceVer&quot; value={{{ [&lt;currentVersion&gt;] [&lt;currentVersion&gt;listed[]prefix[$:/_vc/]!sort[]] +[after&lt;verTitle&gt;] }}}&gt;
+&lt;$list filter=&quot;[&lt;sourceVer&gt;fields[]prefix[_vc-]] +[sort[]]&quot; variable=&quot;field&quot;&gt;
+&lt;$set name=&quot;fieldtrimmed&quot; value={{{ [&lt;field&gt;removeprefix[_vc-]] }}}&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;!prefix[$:/_vc/]!has:field&lt;fieldtrimmed&gt;]&quot;&gt;&lt;&lt;fieldtrimmed&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;verTitle&gt;prefix[$:/_vc/]!has:field&lt;field&gt;]&quot;&gt;&lt;&lt;fieldtrimmed&gt;&gt;&lt;/$list&gt;
+&lt;/$set&gt;
+&lt;/$list&gt;&lt;br&gt;
+&lt;/$set&gt;
+
+&lt;/div&gt;
+
+&lt;/$set&gt;&lt;!-- verTitle --&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+\end
+
+\define commitActions()
+&lt;$wikify name=&quot;versionTitle&quot; text=&quot;&quot;&quot;&lt;$macrocall $name=&quot;now&quot; format=&quot;$:/_vc/YYYY0MM0DD0hh0mm0ss/{{!!title}}&quot;/&gt;&quot;&quot;&quot;&gt;
+&lt;$action-createtiddler $basetitle=&lt;&lt;versionTitle&gt;&gt; $savetitle=&quot;$:/temp/saveTid&quot; text={{!!text}} list=&lt;&lt;sourceTiddler&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler={{$:/temp/saveTid}} $field=&quot;commit_message&quot; $value={{{ [&lt;myText&gt;get[text]] }}}/&gt;
+&lt;$list filter=&quot;[all[current]fields[]] -title -text&quot; variable=&quot;field&quot;&gt;
+&lt;$action-setfield $tiddler={{$:/temp/saveTid}} $field={{{ [&lt;field&gt;addprefix[_vc-]] }}} $value={{{ [all[current]get&lt;field&gt;] }}}/&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+\end
+
+&lt;style&gt;
+.diff-wrapper { margin: 0 0 1em 0; }
+.diff-wrapper div { width: 100%; }
+.diff-wrapper pre {
+    margin: 0;
+    width: 100%;
+    max-height: 24em;
+    overflow-y: auto;
+}
+.my-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;my-container&quot;&gt;
+Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
+&lt;$edit-text tiddler=&lt;&lt;myText&gt;&gt; tag=&quot;input&quot; default=&quot;Enter commit message...&quot; class=&quot;tc-edit-texteditor&quot;/&gt;
+&lt;/span&gt;
+&lt;$button tooltip=&quot;Commit changes&quot; actions=&lt;&lt;commitActions&gt;&gt;&gt;Commit&lt;/$button&gt;
+&lt;/div&gt;
+
+---
+''Versions:''&lt;br&gt;
+&lt;$set name=&quot;currentVersion&quot; value=&lt;&lt;currentTiddler&gt;&gt;&gt;
+&lt;$list filter=&quot;[&lt;statetabtype&gt;!text[vertical]]&quot; emptyMessage=&quot;&quot;&quot;&lt;&lt;verTabs &quot;tc-vertical&quot;&gt;&gt;&quot;&quot;&quot;&gt;
+&lt;&lt;verTabs&gt;&gt;
+&lt;/$list&gt;
+&lt;/$set&gt;
+</pre>
+</div>
 <div created="20190925014420922" modified="20200222231730154" title="$:/SiteSubtitle">
 <pre>Topics of interest</pre>
 </div>
@@ -9709,7 +9869,7 @@ exports.startup = function() {
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200521072122623" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200604212211631" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9730,7 +9890,7 @@ exports.startup = function() {
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="[[Soyawanna Dev topics]] Git" title="$:/StoryList">
+<div list="[[Soyawanna Dev topics]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200111074215259" title="$:/temp/advancedsearch">
@@ -9915,13 +10075,18 @@ exports.startup = function() {
 <div created="20200405184357283" modified="20200411065135372" tags="BROWSER EXTENSION" title="Chrome Extension download">
 <pre>Browser_Extension/ChromeExtension Download.htm</pre>
 </div>
-<div created="20200418064445680" modified="20200425204233962" tags="META $:/tags/ViewToolbar" title="DivPop btn">
+<div created="20200418064445680" modified="20200604201937798" tags="META $:/tags/ViewToolbar" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
-&lt;$button&gt;
+&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
-popup
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
+{{DivPop.svg}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text=&quot;Popup over Sidebar&quot;/&gt;&lt;/span&gt;
+&lt;/$list&gt;
 &lt;/$button&gt;
 \end
 
@@ -9954,6 +10119,108 @@ close
 &lt;/$list&gt;
 </pre>
 </div>
+<div created="20200604201919605" modified="20200604201921530" tags="META" title="DivPop.svg" type="image/svg+xml">
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;svg
+   xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;
+   xmlns:cc=&quot;http://creativecommons.org/ns#&quot;
+   xmlns:rdf=&quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#&quot;
+   xmlns:svg=&quot;http://www.w3.org/2000/svg&quot;
+   xmlns=&quot;http://www.w3.org/2000/svg&quot;
+   xmlns:sodipodi=&quot;http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd&quot;
+   xmlns:inkscape=&quot;http://www.inkscape.org/namespaces/inkscape&quot;
+   inkscape:version=&quot;1.0 (4035a4fb49, 2020-05-01)&quot;
+   sodipodi:docname=&quot;PopupSidebar.svg&quot;
+   id=&quot;svg52&quot;
+   version=&quot;1.1&quot;
+   height=&quot;22pt&quot;
+   width=&quot;22pt&quot;
+   viewBox=&quot;0 0 128 128&quot;
+   class=&quot;tc-image-close-button tc-image-button&quot;&gt;
+  &lt;metadata
+     id=&quot;metadata58&quot;&gt;
+    &lt;rdf:RDF&gt;
+      &lt;cc:Work
+         rdf:about=&quot;&quot;&gt;
+        &lt;dc:format&gt;image/svg+xml&lt;/dc:format&gt;
+        &lt;dc:type
+           rdf:resource=&quot;http://purl.org/dc/dcmitype/StillImage&quot; /&gt;
+        &lt;dc:title&gt;&lt;/dc:title&gt;
+      &lt;/cc:Work&gt;
+    &lt;/rdf:RDF&gt;
+  &lt;/metadata&gt;
+  &lt;defs
+     id=&quot;defs56&quot;&gt;
+    &lt;inkscape:perspective
+       id=&quot;perspective60&quot;
+       inkscape:persp3d-origin=&quot;64 : 36.371105 : 1&quot;
+       inkscape:vp_z=&quot;128 : 43.054765 : 1&quot;
+       inkscape:vp_y=&quot;0 : 313.29655 : 0&quot;
+       inkscape:vp_x=&quot;0 : 43.054765 : 1&quot;
+       sodipodi:type=&quot;inkscape:persp3d&quot; /&gt;
+  &lt;/defs&gt;
+  &lt;sodipodi:namedview
+     inkscape:current-layer=&quot;svg52&quot;
+     inkscape:window-maximized=&quot;0&quot;
+     inkscape:window-y=&quot;27&quot;
+     inkscape:window-x=&quot;61&quot;
+     inkscape:cy=&quot;12.415296&quot;
+     inkscape:cx=&quot;21.019608&quot;
+     inkscape:zoom=&quot;8&quot;
+     showgrid=&quot;false&quot;
+     id=&quot;namedview54&quot;
+     inkscape:window-height=&quot;480&quot;
+     inkscape:window-width=&quot;820&quot;
+     inkscape:pageshadow=&quot;2&quot;
+     inkscape:pageopacity=&quot;0&quot;
+     guidetolerance=&quot;10&quot;
+     gridtolerance=&quot;10&quot;
+     objecttolerance=&quot;10&quot;
+     borderopacity=&quot;1&quot;
+     bordercolor=&quot;#666666&quot;
+     pagecolor=&quot;#ffffff&quot; /&gt;
+  &lt;g
+     id=&quot;g50&quot;
+     fill-rule=&quot;evenodd&quot; /&gt;
+  &lt;rect
+     y=&quot;13.090909&quot;
+     x=&quot;10.909091&quot;
+     height=&quot;104.72727&quot;
+     width=&quot;111.27273&quot;
+     id=&quot;rect85&quot;
+     style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
+  &lt;rect
+     y=&quot;19.636366&quot;
+     x=&quot;19.09091&quot;
+     height=&quot;89.454567&quot;
+     width=&quot;95.454552&quot;
+     id=&quot;rect92&quot;
+     style=&quot;fill:#ffffff;stroke-width:4.36364&quot; /&gt;
+  &lt;rect
+     y=&quot;58.909092&quot;
+     x=&quot;50.727272&quot;
+     height=&quot;10.909091&quot;
+     width=&quot;42.545452&quot;
+     id=&quot;rect94&quot;
+     style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
+  &lt;path
+     id=&quot;path96&quot;
+     d=&quot;m 61.090909,34.363636 c 32.181818,24.545458 32.181818,24.545458 32.181818,24.545458 v 0&quot;
+     style=&quot;fill:#cccccc;stroke:#cccccc;stroke-width:4.36364px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1&quot; /&gt;
+  &lt;path
+     id=&quot;path98&quot;
+     d=&quot;M 64.909091,95.999999 C 93.272727,69.818185 93.272727,69.818185 93.272727,69.818185&quot;
+     style=&quot;fill:#b3b3b3;stroke:#cccccc;stroke-width:4.36364px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1&quot; /&gt;
+  &lt;rect
+     y=&quot;16.90909&quot;
+     x=&quot;86.727272&quot;
+     height=&quot;94.909088&quot;
+     width=&quot;8.181818&quot;
+     id=&quot;rect100&quot;
+     style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
+&lt;/svg&gt;
+</pre>
+</div>
 <div created="20200405162602552" modified="20200405164337185" tags="META" title="DOC">
 <pre></pre>
 </div>
@@ -9963,8 +10230,18 @@ close
 <div created="20200223043825137" modified="20200405184007122" tags="META" title="ext Parent Return">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
 </div>
-<div created="20200223043343881" modified="20200521071442122" tags="META" title="ext TW Return">
-<pre>&lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;./index.htm&quot;&gt;TiddlyWiki view of website&lt;/a&gt;&lt;/div&gt;</pre>
+<div created="20200223043825137" modified="20200604205743223" tags="META" title="ext Parent Return sample">
+<pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
+</div>
+<div created="20200223043343881" modified="20200604211740417" tags="META" title="ext TW Return">
+<pre>\define TW_Return(ur_url)
+&lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;$ur_url$&quot;&gt; (TiddlyWiki view of website)&lt;/a&gt;&lt;/div&gt;
+\end
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[no]]&quot;&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[.html]join[.htm]]&quot;&gt;
+&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;</pre>
 </div>
 <div created="20200405164402303" modified="20200405164404013" tags="META" title="EXTLINK">
 <pre></pre>
@@ -10038,12 +10315,15 @@ Normal Font
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;</pre>
 </div>
-<div created="20200223012728498" key="((save-all-changes))" modified="20200425211433127" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
+<div created="20200223012728498" key="((save-all-changes))" modified="20200604212109708" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
 <pre>\define ExportSaveAll(ur_filename ur_stamp)
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.htm&quot;
 /&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
+$param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
 \end
 &lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
 &lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
@@ -10070,6 +10350,35 @@ target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;$UrParentTag$&l
 &lt;div style=&quot;float:right&quot;&gt;[[_|$UrParentTag$]]&lt;/div&gt;
 \end
 </pre>
+</div>
+<div created="20200524000147179" modified="20200524012835476" tags="META $:/tags/Macro" title="mcr T1Reveal">
+<pre>\define t1cb(UrContent)
+&lt;$list filter=&quot;[[$UrContent$]!match[]]&quot;&gt;
+$UrContent$
+&lt;$button message=&quot;tm-copy-to-clipboard&quot; param=&quot;$UrContent$&quot;&gt;
+Copy to clipboard
+&lt;/$button&gt;
+&lt;/$list&gt;
+\end
+\define t1reveal(UrPK UrSeq UrContent)
+&lt;$list filter=&quot;[[$UrContent$]!match[]]&quot;&gt;
+&lt;br&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/popup/$UrPK$\$UrSeq$&quot; text=&quot;show&quot;&gt;
+&lt;$button set=&quot;$:/state/popup/$UrPK$\$UrSeq$&quot; setTo=&quot;show&quot;&gt;,,$UrSeq$,,&lt;/$button&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/popup/$UrPK$\$UrSeq$&quot; text=&quot;show&quot;&gt;
+&lt;$button set=&quot;$:/state/popup/$UrPK$\$UrSeq$&quot; setTo=&quot;hide&quot;&gt;^^$UrSeq$^^&lt;/$button&gt;&lt;br&gt;
+&quot;&quot;&quot;
+$UrContent$
+&quot;&quot;&quot;
+&lt;/$reveal&gt;
+&lt;$list filter=&quot;[[$UrSeq$]match[Pwd]]&quot;&gt;
+&lt;$button message=&quot;tm-copy-to-clipboard&quot; param=&quot;$UrContent$&quot;&gt;
+Copy to clipboard
+&lt;/$button&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
 <div created="20200322103721813" modified="20200405134917329" tags="META" title="Missing Tags Report">
 <pre>\define MissingTags(UrPK)
@@ -10138,8 +10447,8 @@ All user tiddlers, export non-meta to HTML
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20190925014523514" modified="20200521072121247" tags="INDEX" title="Soyawanna Dev topics">
-<pre>{{ext TW Return}}&lt;br&gt;
+<div created="20190925014523514" modified="20200604211711841" tags="INDEX" title="Soyawanna Dev topics">
+<pre>{{ext TW Return}}
 
 &lt;$list filter=&quot;[tag[DOC]sort[title]]&quot;&gt;
 &lt;$macrocall $name=OneLink UrParentTag=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;br&gt;
