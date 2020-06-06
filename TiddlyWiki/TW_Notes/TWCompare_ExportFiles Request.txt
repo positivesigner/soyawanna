@@ -1,3 +1,31 @@
+hard-coded parameters
+- exception list of $* tiddlers to get their own file
+- exception list of tags="META" tidders to get their own file
+
+hard-coded root path
+- look for each *.htm / *.html file
+- look for MOTW comment to verify
+
+hard-coded output path
+- If path exists, rename folder with -renstamp- suffix
+- Create output folder
+- create .htm-pound-.txt or .html-pound-.txt file in same relative folder structure
+	- has version tag, title tag, and any tiddler div initial tag like $*
+	- look for matching div open and close tags to parse file
+	- start after <div id="splashArea">
+	- skip any <div author="JeremyRuston"
+	- stop at close div for splashArea
+	- error if not find close div for splashArea and reached <div id="libraryModules"
+- create .htm-pound--dollar-.txt one file holding all $* tiddlers
+	- any tiddler div like $*
+- create .htm-pound--dollar-title.txt for any $* tiddlers in exception list
+	- any tiddler div like $*
+- create .htm-pound-title.txt files for each tiddler div not like $*
+	- fix any title-naming issues for windows file system
+	- exclude tags="META" tiddlers unless in exception list
+
+
+
 Within the first 50 characters:
 ```
 The following comment is called a MOTW
