@@ -1,0 +1,28 @@
+<iframe src="javascript:newWindow='';var qs = '&quot;';var qt = '&apos;';
+
+var objFRAME = document.createElement('iframe');
+objFRAME.setAttribute('id', 'innerFrame');
+objFRAME.setAttribute('src', 'http://www.google.com/');
+document.body.appendChild(objFRAME); 
+var objTEST = objFRAME;
+var strTEXT = '';
+if (objTEST===undefined) {
+strTEXT = 'undef obj';
+} else if (objTEST===null) {
+strTEXT = 'null obj';
+} else {
+var intSEQ = 0;
+var strNAME;
+for (strNAME in objTEST) {
+intSEQ += 1;
+strTEXT += ' ; ' + strNAME;
+}
+strTEXT = 'olen ' + intSEQ + strTEXT;
+}
+document.write(strTEXT);"/>
+
+
+alert(strTEXT);"/>
+
+
+<iframe src='' scrolling=yes frameborder=no/>
