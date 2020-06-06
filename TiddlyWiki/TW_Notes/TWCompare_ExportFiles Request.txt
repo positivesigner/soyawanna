@@ -1,0 +1,68 @@
+Within the first 50 characters:
+```
+The following comment is called a MOTW
+```
+
+Version data
+```
+<meta name="tiddlywiki-version" content="5.1.21" />
+```
+
+Browser Tab title stored in HTML
+```
+<title>TiddlyWiki — a non-linear personal web notebook</title>
+```
+
+all tiddlers contained in &lt;div lines
+
+example tiddler
+```
+<div created="20200606071702879" modified="20200606071714200" tags="" title="UrTitle">
+<pre></pre>
+</div>
+```
+
+
+divs after splashArea div
+```
+<div id="splashArea">
+```
+
+skip $core tiddler div
+```
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="TiddlyWiki5 core" list="readme" plugin-priority="0" plugin-type="plugin" title="$:/core" type="application/json" version="5.1.21">
+```
+
+divs after $core tiddler
+
+skip theme divs
+```
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.21">
+<div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="" description="Basic theme" name="Vanilla" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/vanilla" type="application/json" version="5.1.21">
+```
+
+divs after theme divs until close splashArea div
+```
+</div>
+```
+
+
+skip remianing three divs in file
+
+line #9541
+<!--~~ Library modules ~~-->
+<div id="libraryModules" style="display:none;">
+
+line #9605
+<!--~~ Boot kernel prologue ~~-->
+<div id="bootKernelPrefix" style="display:none;">
+
+line #9728
+<!--~~ Boot kernel ~~-->
+<div id="bootKernel" style="display:none;">
+
+then end of file line #12210
+<!--~~ Raw markup for the bottom of the body section ~~-->
+
+</body>
+</html>
