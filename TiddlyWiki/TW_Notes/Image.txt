@@ -1,5 +1,0 @@
-\define img_link(ur_pk)
-@@max-width:500px;
-[img [$ur_pk$]]
-@@
-\end

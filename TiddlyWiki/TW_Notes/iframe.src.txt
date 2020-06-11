@@ -19,10 +19,14 @@ strTEXT += ' ; ' + strNAME;
 }
 strTEXT = 'olen ' + intSEQ + strTEXT;
 }
-document.write(strTEXT);"/>
-
+document.write(strTEXT);"></iframe>
 
 alert(strTEXT);"/>
 
+<iframe src='iframe.scrE2.txt' height=100% width=100% scrolling=yes frameborder=no></iframe>
 
-<iframe src='' scrolling=yes frameborder=no/>
+
+\define iframe_txt(ur_pk)
+<div style="float:right">[ext[_ |$ur_pk$.txt.html]]</div>
+<iframe src='$ur_pk$.txt.html' scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+\end
