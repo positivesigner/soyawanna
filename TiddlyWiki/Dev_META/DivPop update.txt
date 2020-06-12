@@ -1,0 +1,4 @@
+- Popup window opened sidebar "top" menu on chrome when it was closed
+	- Is there a way to force the sidebar stay on the side instead of the top?
+
+- Put a link back to the popped-up tiddler next to the Close button
