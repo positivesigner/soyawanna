@@ -1,5 +1,0 @@
-section	create_indexpath
-C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\TiddlyWiki\TW_Notes.subdir.html	TestData\TiddlyWiki\TW_Notes\iframe.txt.html
-C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\TiddlyWiki\TW_Notes.subdir.html	TestData\TiddlyWiki\TW_Notes\Image.txt.html
-C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\Website_Hosting\Index_Notes.subdir.html	TestData\Website_Hosting\Index_Notes\index.txt.html
-C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\Windows\Configuration_Notes.subdir.html	TestData\Windows\Configuration_Notes\Disk Management.txt.html
