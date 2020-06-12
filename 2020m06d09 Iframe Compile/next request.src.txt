@@ -1,0 +1,5 @@
+- Output list of .txt.src files that do not have a corresponding .txt.htm file
+
+- remove leading space on entries in .subdir.txt files
+
+- root index.html file, first output <html lang="en"><body>

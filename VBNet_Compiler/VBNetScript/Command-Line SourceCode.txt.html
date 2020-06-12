@@ -1,0 +1,70 @@
+<pre style="font-family: sans-serif;">
+The main form starts up and calls the ProcExec function
+
+Download the <a href="..\VBNetScript.zip">ZIP File</a>
+
+- The Application Startup Events are enabled through adding code to a Namespace and Class
+
+[subs.vb]
+```
+Namespace My
+    Partial Friend Class MyApplication
+        Sub Main(sender As Object, e As Microsoft.VisualBasic.ApplicationServices.StartupEventArgs) Handles Me.Startup
+            Mx.Want.TestReferencedAssemblies_errhnd(e)
+            'Next goes to frmInput_1_Load, then Want.Compile_And_Run_Script
+        End Sub
+    End Class
+End Namespace
+```
+
+- I test whether the referenced assemblies are available by saving a constant value exposed in the .DDL
+
+```
+        Public Shared Sub TestReferencedAssemblies()
+            'Will error if DLL does is not available
+            Dim objV1 = System.Data.SqlClient.SortOrder.Ascending
+        End Sub 'TestReferencedAssemblies
+```
+
+
+- The input form's Load event is called after the Application Startup Event completes.
+
+[frmInput_1]
+```
+    Private Sub frmInput_1_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        Call Mx.Want.Compile_And_Run_Script_errhnd(Me, System.Environment.CommandLine)
+    End Sub 'frmInput_1_Load
+```
+
+
+- The main code branch is called from the frmInput_1 form. It reads the command line to find the script that should be compiled. It compiles and runs the script. If there was any output, it displays the output in a multi-line text box.
+
+[subs.vb]
+```
+        Public Shared Sub Compile_And_Run_Script(ur_form As frmInput_1, ur_command_text As String)
+            Dim userbowl_cart = Have.UserBowl
+            Dim strEXPORT_PROJECT_CODE_PATH = userbowl_cart.SelKey(enmUN.cmd_export_project_code).v(enmUB.contents)
+            If HasText(strEXPORT_PROJECT_CODE_PATH) Then
+                Call Want.Export_Project_Code(ur_form, userbowl_cart)
+
+            Else
+                Dim input_path_bowlname = enmUN.path
+                Dim app_folder_bowlname = enmUN.app_folder
+                Dim script_path_bowlname = userbowl_cart.Apply(input_path_bowlname, app_folder_bowlname)
+                Dim form_title_bowlname = userbowl_cart.Apply(script_path_bowlname, ur_form)
+                Dim report_output_bowlname = userbowl_cart.Apply(script_path_bowlname, app_folder_bowlname)
+                Dim window_color_bowlname = userbowl_cart.Apply(report_output_bowlname)
+                Dim form_close_bowlname = userbowl_cart.Apply(report_output_bowlname, window_color_bowlname, ur_form)
+            End If
+        End Sub 'Compile_And_Run_Script
+```
+
+[frmInput_1_Events.vb] <a href="frmInput_1_Events.vb" target="_blank">_</a>
+```
+<iframe src="frmInput_1_Events.vb" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[subs.vb] <a href="subs.vb" target="_blank">_</a>
+```
+<iframe src="subs.vb" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```

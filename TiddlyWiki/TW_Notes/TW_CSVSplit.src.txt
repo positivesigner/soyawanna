@@ -1,0 +1,17 @@
+\define csv_split(ur_pk)
+<$set name=lit_close_sqbkt value=']' >
+<$set name=pattern_onlynumbers value='^([0-9]*)$' >
+<$list filter="""[<currentTiddler>splitregexp[,]rest[1]splitregexp[\n]split[ ]split[#]split[%]split[(]split[)]split[;]split[:]split[.]split[*]split[=]split[_]split[-]split[']split["]split[{]split[}]split[/]split[\]split[[]split[&]split[+]split[>]splitregexp<lit_close_sqbkt>!regexp<pattern_onlynumbers>each:value[]!is[blank]sort[]]""">
+<$view field=title format=text />
+<$macrocall $name=codepoint ur_pk=<<currentTiddler>> />
+</$list>
+</$set>
+</$set>
+\end
+[[T1]]
+
+<$list filter="[[T1]get[text]splitregexp[\nhttp]rest[1]]">
+---<br>
+<<csv_split>>
+<br>---<br>
+</$list>

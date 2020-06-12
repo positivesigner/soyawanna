@@ -1,0 +1,120 @@
+<pre style="font-family: sans-serif;">
+The program compiles a .DLL file in memory, loads the .DLL dynamically, and runs the main procedure. It passes any output back to the main form.
+
+```
+		Public Shared Function RunCode(...) As String
+```
+
+It reads the source code file one line at a time.
+
+```
+			Using stmFILE = New System.IO.StreamReader(flnINPUT_SCRIPT
+                While stmFILE.EndOfStream = False
+                    If HasText(strLINE) = False Then
+                        strLINE = stmFILE.ReadLine
+                    End If
+```
+
+It skips the first lines that begin with command-line keywords like "start" or "exit".
+
+```
+                    If StartingWithText(strLINE.Trim, "start" & s) OrElse
+                    StartingWithText(strLINE.Trim, "exit") Then
+                        strLINE = mt
+```
+
+It dynamically loads the referenced .DLL files.
+
+```
+                    ElseIf EndingWithText(strLINE.Trim, ".DLL") Then
+                        objCOMPILER_PARM.ReferencedAssemblies.Add(strLINE.Trim)
+                        strLINE = mt
+```
+
+It reads the entire text of referenced .VB source code files.
+
+```
+                    ElseIf EndingWithText(strLINE.Trim, ".VB") Then
+                        sdaEXTERNAL_FILES.Add(strLINE.Trim)
+                        strLINE = mt
+
+```
+
+It looks specifically for OPTION and IMPORTS directives.
+
+```
+                    ElseIf StartingWithText(strLINE.Trim, "OPTION" & s) OrElse
+                    StartingWithText(strLINE.Trim, "IMPORTS" & s) Then
+                        stpCODE_FILE.dLine(strLINE)
+                        strLINE = mt
+```
+
+After it has read all the script lines, it compiles the new in-memory VB program's source code.
+
+```
+                strSOURCE_CODE = strLINE & Constants.vbCrLf & stmFILE.ReadToEnd
+```
+
+If you do not specify an "END FUNCTION" line, the compiler assumes this is a one-procedure program.
+
+```
+                If ContainingText(strSOURCE_CODE.ToUpper, "END FUNCTION") Then
+                    strFUNCTIONS = Mid(strSOURCE_CODE, InStr(strSOURCE_CODE.ToUpper, "END FUNCTION") + "END FUNCTION".Length)
+                    strSOURCE_CODE = Mid(strSOURCE_CODE, 1, InStr(strSOURCE_CODE.ToUpper, "END FUNCTION") - 1)
+```
+
+If you do not include an "END CLASS" line, the compiler assumes this is a one-class program.
+
+```
+                If ContainingText(strFUNCTIONS.ToUpper, "END CLASS") Then
+                    strCLASSES = Mid(strFUNCTIONS, InStr(strFUNCTIONS.ToUpper, "END CLASS") + "END CLASS".Length)
+                    strFUNCTIONS = Mid(strFUNCTIONS, 1, InStr(strFUNCTIONS.ToUpper, "END CLASS") - 1)
+```
+
+If you do not include an "END NAMESPACE" line, the compiler assumes this is a one-namespace program.
+
+```
+                If ContainingText(strCLASSES.ToUpper, "END NAMESPACE") Then
+                    strNAMESPACES = Mid(strCLASSES, InStr(strCLASSES.ToUpper, "END NAMESPACE") + "END NAMESPACE".Length)
+                    strCLASSES = Mid(strCLASSES, 1, InStr(strCLASSES.ToUpper, "END NAMESPACE") - 1)
+```
+
+The default namespace is Mx. There is a Class1 class with functions to retrieve the source code directory and file.
+
+```
+                stpCODE_FILE.dLine("Namespace Mx")
+                stpCODE_FILE.dLine("Class Class1")
+                stpCODE_FILE.dLine("Public Shared Function SourcePath() As String")
+                stpCODE_FILE.dLine("Public Shared Function SourceFolder() As String")
+```
+
+The main function is called RetVal. It defaults to returning an empty string. The main procedure code may assign a string to the variable RetVal and that data will be shown on the calling form.
+
+```
+                stpCODE_FILE.dLine("Public Shared Function RetVal() As String")
+                stpCODE_FILE.dLine("RetVal = " & qs & qs)
+                stpCODE_FILE.dLine("Try")
+                stpCODE_FILE.dLine(strSOURCE_CODE)
+                stpCODE_FILE.dLine("Catch ex As System.Exception")
+                stpCODE_FILE.dLine("RetVal = RetVal & Microsoft.VisualBasic.Constants.vbCrLf & ex.Message")
+                stpCODE_FILE.dLine("End Try")
+                stpCODE_FILE.dLine("End Function")
+```
+
+If the script defined any extra functions, classes, or namespaces, those are available from the main procedure code. Any external code files are read and added to the program directly.
+
+```
+                stpCODE_FILE.dLine(mt)
+                stpCODE_FILE.dLine(strFUNCTIONS)
+                stpCODE_FILE.dLine("End Class")
+                stpCODE_FILE.dLine(strCLASSES)
+                stpCODE_FILE.dLine("End Namespace")
+                stpCODE_FILE.dLine(strNAMESPACES)
+                For Each strENTRY In sdaEXTERNAL_FILES
+```
+
+
+```
+<div style="margin-left=30px"><a href="ScriptRun.vb" target="_blank">ScriptRun.vb</a></div>
+<iframe src="ScriptRun.vb" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
