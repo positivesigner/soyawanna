@@ -1,0 +1,2 @@
+section	in_filepath
+remove_indexpath	C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\Windows\t1.subdir.html

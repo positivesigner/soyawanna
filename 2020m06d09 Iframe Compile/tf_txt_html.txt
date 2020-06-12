@@ -1,0 +1,5 @@
+section	in_filepath
+txt_html	C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\TiddlyWiki\TW_Notes\iframe.txt.html
+txt_html	C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\TiddlyWiki\TW_Notes\Image.txt.html
+txt_html	C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\Website_Hosting\Index_Notes\index.txt.html
+txt_html	C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\Windows\Configuration_Notes\Disk Management.txt.html
