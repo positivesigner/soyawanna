@@ -1,0 +1,17 @@
+\define divpop_current(ur_ref)
+<$button class=<<tv-config-toolbar-class>> >
+<$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
+<$action-sendmessage $message="tm-close-tiddler" $param="pop_right"/>
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{PopupSidebar.svg}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text"><$text text="Popup over Sidebar"/></span>
+</$list>
+</$button>
+\end
+
+<$list filter="[all[current]]">
+<$macrocall $name=divpop_current ur_ref=<<currentTiddler>> /> 
+</$list>
