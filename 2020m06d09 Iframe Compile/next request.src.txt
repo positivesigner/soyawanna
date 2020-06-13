@@ -1,7 +1,0 @@
-- Output list of .src.txt files that do not have a corresponding .txt.htm file
-	- and list of .scr.txt misspellings
-
-- remove leading space on entries in .subdir.txt files
-
-- root index.html file, first output <html lang="en"><body>
-
