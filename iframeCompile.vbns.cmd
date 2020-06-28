@@ -199,7 +199,25 @@ Namespace Mx
                     Dim strSUBDIR_INDEX_FILE = kvpSD.v
                     Using stmOUTPUT = New System.IO.StreamWriter(strSUBDIR_INDEX_FILE, False, gUTF8_FileEncoding())
                         stmOUTPUT.WriteLine(Strapd().d("<html").dS("lang=").dSprtr(qs, "en").d(qs).d(">").d("<body>").d("<pre").dS("style=").dSprtr(qs, "font-family: sans-serif;").d(qs).d(">"))
-                        For Each trwENTRY In kvpSD.l.SelAll
+						Dim qrySUBDIR = kvpSD.l.SelAll
+						If qrySUBDIR.Count > 1 Then
+							For Each trwENTRY In kvpSD.l.SelAll
+								Dim flnLINK_FILE = FileNamed().d(trwENTRY.v(enmSD.linkfile_path))
+								Dim flnREL_LINK_FILE = FileNamed().d(flnLINK_FILE.gParentDir.Name).d(flnLINK_FILE.Name)
+								Dim stpNEW_LINE = Strapd()
+								stpNEW_LINE.d("<h2><b>")
+								stpNEW_LINE.d(flnLINK_FILE.gParentDir.Name.ToString.Replace("_", s)).dS("-").dS(flnLINK_FILE.FileBaseGroup.ToString.Replace("_", s))
+								stpNEW_LINE.d("<span").dS("style=").dSprtr(qs, "margin-left=30px").d(qs).d(">")
+								stpNEW_LINE.d("<a").dS("href=").dSprtr(qs, flnREL_LINK_FILE).d(qs)
+								stpNEW_LINE.dS("target=").dSprtr(qs, "_blank").d(qs).d(">")
+								stpNEW_LINE.d("_").d("</a>").d("</span>").d("</b>").d("</h2>")
+								stmOUTPUT.WriteLine(stpNEW_LINE)
+							Next trwENTRY
+                            
+						    stmOUTPUT.WriteLine("<hr>")
+						End If
+						
+                        For Each trwENTRY In qrySUBDIR
                             Dim flnLINK_FILE = FileNamed().d(trwENTRY.v(enmSD.linkfile_path))
                             Dim flnREL_LINK_FILE = FileNamed().d(flnLINK_FILE.gParentDir.Name).d(flnLINK_FILE.Name)
                             Dim stpNEW_LINE = Strapd()
@@ -221,6 +239,16 @@ Namespace Mx
                 Dim flnROOT_INDEX = flnROOT_FOLDER.gCopy.d(Have.UserBowl.SelKey(ur_root_index).v(enmUB.contents))
                 Using stmOUTPUT = New System.IO.StreamWriter(flnROOT_INDEX, False, gUTF8_FileEncoding())
                     stmOUTPUT.WriteLine(Strapd().d("<html").dS("lang=").dSprtr(qs, "en").d(qs).d(">").d("<body>").d("<pre").dS("style=").dSprtr(qs, "font-family: sans-serif;").d(qs).d(">"))
+                    For Each kvpSD In ur_subdir.SelEachSection.kvp
+                        Dim flnSUBDIR_INDEX_FILE = FileNamed().d(Mid(kvpSD.v, intROOT_FOLDER_OFFSET))
+                        Dim stpNEW_LINE = Strapd()
+                        stpNEW_LINE.d("<a").dS("href=").dSprtr(qs, flnSUBDIR_INDEX_FILE).d(qs)
+                        stpNEW_LINE.dS("target=").dSprtr(qs, "_blank").d(qs).d(">")
+                        stpNEW_LINE.d("<h1>").d(flnSUBDIR_INDEX_FILE.gParentDir.ToString.Replace("_", s)).dS("-").dS(flnSUBDIR_INDEX_FILE.FileBaseGroup.ToString.Replace("_", s)).d("</h1>").d("</a>")
+                        stmOUTPUT.WriteLine(stpNEW_LINE)
+                    Next kvpSD
+					
+					stmOUTPUT.WriteLine("<hr>")
                     For Each kvpSD In ur_subdir.SelEachSection.kvp
                         Dim flnSUBDIR_INDEX_FILE = FileNamed().d(Mid(kvpSD.v, intROOT_FOLDER_OFFSET))
                         Dim stpNEW_LINE = Strapd()
