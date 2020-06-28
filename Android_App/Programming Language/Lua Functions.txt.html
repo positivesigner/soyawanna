@@ -1,0 +1,43 @@
+<pre style="font-family: sans-serif;">
+I created some default functions that I need to see the key/value pairs in Lua tables
+
+[def.lua]
+- [def_tcompile]
+- This creates a 'tcompile' function that concatenates a table's string values then loads the result as a new function
+- [def_ti]
+- This creates a 'ti' function that adds a new numbered row to a table
+- [def_tia]
+- This clears out a global table variable and creates a 'tia' function that calls the 'ti' function for that table without having to pass it in as a parameter
+- [def_printk]
+- This creates a 'printk' function that prints all the keys in a table, sorted alphabetically
+- [def_printv]
+- This creates a 'printv' function that prints all the values in a table, sorted alphabetically
+- [def_tcopy]
+- This creates a 'tcopy' function that copies all records from one table into another
+- [def_printiv]
+- This creates a 'printiv' function that prints all the values in a table, in their original order (good for numeric-keyed tables)
+- [def_printkv]
+- This creates a 'printkv' function that prints all keys and values in a table, sorted by key alphabetically
+- [def_ioexec]
+- This creates a 'ioexec' function that runs a shell command and returns a table you can store
+    - Example: Prints all the .lua files under a directory
+
+```
+local ttbFILE = ioexec('find /sdcard/qlua5 -name "*.lua" -print')
+local strFILE = ""
+for k,v in pairs(ttbFILE) do
+  strFILE = v
+  break
+  end
+
+print('1: ' .. strFILE)
+```
+
+- [def_printio]
+- This creates a 'printio' function that runs printiv on the ioexec table
+    - Example: printio('ls /storage')
+
+```
+[def.lua.src.txt] <a href="def.lua.src.txt" target="_blank">_</a>
+<iframe src="def.lua.src.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
