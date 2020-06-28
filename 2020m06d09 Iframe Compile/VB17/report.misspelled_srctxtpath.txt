@@ -1,2 +1,0 @@
-section	in_filepath
-misspelled_srctxtpath	C:\BBK\soyawanna\2020m06d09 Iframe Compile\TestData\Windows\Configuration_Notes\format.scr.txt
