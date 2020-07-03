@@ -1,10 +1,6 @@
 section	in_filepath
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.luadist.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.qlua5.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Extension\Chrome\ChromeExtension Download.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Extension\Chrome\DownloadBar Manager.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Extension\Chrome\Full Page Screen Capture.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Extension\Chrome\Save Page as SingleFile.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Install\GoogleChrome\Portable Install.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Javascript\Bookmarklets\Javascript Bookmarklets.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Commands\Git Checkout.src.txt
@@ -12,7 +8,6 @@ missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\MGit App.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\PocketGit App.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Utilities\Git Utilities.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Google_HostedApp\Google Forms\Survey linked to Worksheet.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Hardware_Disk\RamDisk\ImDisk RamDisk.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\JavaScript\JS_Notes\JavaScript Code.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\AddOns\Hiding The Sidebar On Startup.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\AddOns\Text Replace Bar.src.txt
@@ -30,3 +25,6 @@ missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_CSVSplit.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_CSVSplit_result.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_CSVSplit_sample.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_Upgrade_URLs.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Full Page Screen Capture.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Save Page as SingleFile.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Disk Emulator\ImDisk RamDisk.src.txt
