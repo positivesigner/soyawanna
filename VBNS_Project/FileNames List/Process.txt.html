@@ -1,0 +1,18 @@
+<pre style="font-family: sans-serif;">
+Dim infolder_bowlname = userbowl_cart.Apply(appfolder_bowlname, windows_fs_cart)
+- The program uses windows_fs_cart to verify the appfolder exists
+
+tempfile_cart.Apply(infolder_bowlname, windows_fs_cart)
+- Populate the tempfile_cart from the windows_fs_cart directory list under the infolder
+
+Dim report_output_bowlname = userbowl_cart.Apply(tempfile_cart)
+- Pull all the tempfile_cart into a single report_output string
+
+Dim from_messagebox_bowlname = userbowl_cart.Apply(report_output_bowlname, appfolder_bowlname, messagebox_cart)
+Dim clipboard_recdate_bowlname = userbowl_cart.Apply(from_messagebox_bowlname, report_output_bowlname, windows_clipboard_cart)
+- Ask the user whether they want the results on the clipboard, and then populate the clipboard
+
+```
+[Cboard_FileNames.vbns.cmd] <a href="Cboard_FileNames.vbns.cmd" target="_blank">_</a>
+<iframe src="Cboard_FileNames.vbns.cmd" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```

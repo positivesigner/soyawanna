@@ -1,7 +1,7 @@
-start "" MxClasses\VBNetScript.exe /path=%0
+start "" "%~dp0\MxClasses\MxClasses\VBNetScript.exe" /path=%0
 exit
-MxClasses\MxBaseEc10.vb
-RetVal = Mx.Want.Clipboard_TextChuck_Table
+MxClasses\MxBaseEc12.vb
+RetVal = Mx.Want.Clipboard_TextChuck_Table_errhnd
 End Function
 End Class
 End Namespace
@@ -9,7 +9,7 @@ End Namespace
 'Namespace Mx
 '    Module subs
 '        Sub Main()
-'            Dim RetVal = Mx.Want.Clipboard_TextChuck_Table
+'            Dim RetVal = Mx.Want.Clipboard_TextChuck_Table_errhnd
 '            If RetVal <> "QUIT" Then MsgBox(RetVal)
 '        End Sub
 '    End Module 'subs
@@ -22,18 +22,25 @@ End Namespace
 
 Namespace Mx
     Public Class Want
-        Public Shared Function Clipboard_TextChuck_Table() As Strap
+        Public Shared Sub Clipboard_TextChuck_Table(ur_ret As Strap)
+            Dim userbowl_cart = Have.UserBowl
+            Dim appname_bowlname = enmUN.app_name
+            Dim windows_clipboard_cart = Have.Clipboard
+            Dim tempfield_cart = Have.TempField
+            Dim messagebox_cart = Have.MessageBox
+            Dim from_clipboard_bowlname = userbowl_cart.Apply(windows_clipboard_cart)
+            tempfield_cart.Apply(from_clipboard_bowlname)
+            Dim report_output_bowlname = userbowl_cart.Apply(tempfield_cart)
+            Dim from_messagebox_bowlname = userbowl_cart.Apply(report_output_bowlname, appname_bowlname, messagebox_cart)
+            userbowl_cart.Apply(from_messagebox_bowlname, report_output_bowlname, windows_clipboard_cart)
+        End Sub 'Clipboard_TextChuck_Table
+
+        Public Shared Function Clipboard_TextChuck_Table_errhnd() As Strap
             Dim stpRET = Strapd()
-            Clipboard_TextChuck_Table = stpRET
+            Clipboard_TextChuck_Table_errhnd = stpRET
             stpRET.d("QUIT")
             Dim objERR_LIST = New ErrListBase : Try
-                Have.InText_Search_FromGlobal(db.UserBowl, db.Clipboard)
-                Use.Compile_SplitRecords(db.UserBowl.SelKey(enmUN.from_clipboard), db.TempField)
-                Use.Compile_RecordReport(db.UserBowl, db.TempField)
-                Use.Ask_to_UpdateClipboard(
-                    ur_cboard_text:=db.UserBowl.SelKey(enmUN.to_clipboard),
-                    ur_app_name:=db.UserBowl.SelKey(enmUN.app_name)
-                    )
+                Call Clipboard_TextChuck_Table(stpRET)
 
             Catch ex As System.Exception
                 Call objERR_LIST.dError_Stack(ex)
@@ -42,94 +49,112 @@ Namespace Mx
             If objERR_LIST.Found Then
                 stpRET.Clear().d(objERR_LIST.ToString)
             End If
-        End Function 'Clipboard_TextChuck_Table
+        End Function 'Clipboard_TextChuck_Table_errhnd
     End Class 'Want
 
-    Public Class Have
-        Public Shared Sub InText_Search_FromGlobal(ur_bowl_table As db.sUserBowl, ur_cboard_table As db.sClipboard)
-            Dim ins_rec = db.Clipboard.InsFrom_Windows()
-            Dim strFOUND_TEXT = ins_rec.v(enmCB.text)
-            If HasText(strFOUND_TEXT) Then
-                ur_bowl_table.InsKey(enmUN.from_clipboard, strFOUND_TEXT)
+    Partial Public Class Have
+        Partial Public Class sTempField
+            Public Sub Apply(ur_from_clipboard As enmUN.zfrom_clipboard)
+                Call Use.Compile_SplitRecords(Me, Have.UserBowl.SelKey(ur_from_clipboard))
+            End Sub 'Apply(ur_from_clipboard
+        End Class 'sTempField
 
-            Else
-                Throw New System.Exception("Text not found on clipboard: Length = " & strFOUND_TEXT.Length)
-            End If
-        End Sub 'InText_Search_FromGlobal
+        Partial Public Class sUserBowl
+            Public Function Apply(ur_report_output As enmUN.zreport_output, ur_userbowl_appname As enmUN.zapp_name, ur_messagebox_cart As Have.sMessageBox) As enmUN.zfrom_messagebox
+                Dim retUN = enmUN.from_messagebox
+                Apply = retUN
+                Dim ins_msgbox = ur_messagebox_cart.Ins(
+                    New Have.rMessageBox().
+                        vt(enmMB.text, Me.SelKey(ur_report_output).v(enmUB.contents)).
+                        vt(enmMB.title, Me.SelKey(ur_userbowl_appname).v(enmUB.contents)),
+                    MsgBoxStyle.OkCancel
+                    )
+
+                If ins_msgbox.vUserResponse = MsgBoxResult.Ok Then
+                    Me.InsKey(retUN, enmUR.Ok)
+                End If
+            End Function 'Apply(ur_report_output
+
+            Public Function Apply(ur_tempfield_cart As Have.sTempField) As enmUN.zreport_output
+                Dim retUN = enmUN.report_output
+                Apply = retUN
+                Dim stpREPORT = New Strap
+                For Each krw In ur_tempfield_cart.SelAll.kvp
+                    If krw.Indexb1 = 1 Then
+                        For Each kcl In krw.row.RefColNames.kvp
+                            If kcl.Indexb1 > 1 Then
+                                stpREPORT.d(",")
+                            End If
+
+                            stpREPORT.d(kcl.v)
+                        Next kcl
+                    End If 'krw
+
+                    stpREPORT.dLine()
+                    stpREPORT.d(krw.Indexb1).d(qs).d(krw.row.v(enmTF.code_type)).d(qs)
+                    stpREPORT.d(krw.row.v(enmTF.code_text))
+                Next krw
+
+                Me.InsKey(retUN, stpREPORT.ToString)
+            End Function 'Apply(ur_tempfield_cart
+
+            Public Function Apply(ur_windows_clipboard_cart As Have.sClipboard) As enmUN.zfrom_clipboard
+                Dim retUN = enmUN.from_clipboard
+                Apply = retUN
+                Dim ins_rec = ur_windows_clipboard_cart.InsFrom_Windows()
+                Dim strFOUND_TEXT = ins_rec.v(enmCB.text)
+                If HasText(strFOUND_TEXT) Then
+                    Me.InsKey(retUN, strFOUND_TEXT)
+
+                Else
+                    Throw New System.Exception("Text not found on windows clipboard: Length = " & strFOUND_TEXT.Length)
+                End If
+            End Function 'Apply(ur_windows_clipboard_cart
+
+            Public Function Apply(ur_from_messagebox As enmUN.zfrom_messagebox, ur_userbowl_text As enmUN.zreport_output, ur_clipboard_cart As Have.sClipboard) As enmUN.zclipboard_recdate
+                Dim retKEY = enmUN.clipboard_recdate
+                Apply = retKEY
+                Dim trwCB_RECDATE = Me.SelKey(retKEY)
+                If Have.UserBowl.SelKey(ur_from_messagebox).v_is(enmUB.contents, enmUR.Ok) Then
+                    ur_clipboard_cart.Ins(
+                        New Have.rClipboard().
+                        vt(enmCB.text, Have.UserBowl.SelKey(ur_userbowl_text).v(enmUB.contents))
+                        )
+
+                    trwCB_RECDATE.vt(enmUB.contents, Now.ToString)
+                End If
+            End Function 'Apply(ur_from_messagebox
+        End Class 'sUserBowl
     End Class 'Have
 
     Public Class Use
-        Public Shared Sub Ask_to_UpdateClipboard(ur_cboard_text As db.rUserBowl, ur_app_name As db.rUserBowl)
-            Dim ins_msgbox = db.MessageBox.Ins(
-                New db.rMessageBox().
-                    vt(enmMB.text, ur_cboard_text.v(enmUB.contents)).
-                    vt(enmMB.title, ur_app_name.v(enmUB.contents)),
-                MsgBoxStyle.OkCancel
-                )
-
-            If ins_msgbox.vUserResponse = MsgBoxResult.Ok Then
-                db.Clipboard.Ins(
-                    New db.rClipboard().
-                    vt(enmCB.text, ur_cboard_text.v(enmUB.contents))
-                    )
-            End If
-        End Sub 'Ask_to_UpdateClipboard
-
-        Public Shared Sub Compile_RecordReport(ur_bowl_table As db.sUserBowl, ur_tempfield_table As db.sTempField)
-            Dim stpREPORT = New Strap
-            For Each krw In ur_tempfield_table.SelAll.kvp
-                If krw.Indexb1 = 1 Then
-                    For Each kcl In krw.row.RefColNames.kvp
-                        If kcl.Indexb1 > 1 Then
-                            stpREPORT.d(",")
-                        End If
-
-                        stpREPORT.d(kcl.v)
-                    Next kcl
-                End If 'krw
-
-                stpREPORT.dLine()
-                stpREPORT.d(krw.Indexb1).d(qs).d(krw.row.v(enmTF.code_type)).d(qs)
-                stpREPORT.d(krw.row.v(enmTF.code_text))
-            Next krw
-
-            ur_bowl_table.InsKey(enmUN.to_clipboard, stpREPORT.ToString)
-        End Sub 'Compile_RecordReport
-
-
-        Public Shared Sub Compile_SplitRecords(ur_text As db.rUserBowl, ur_tempfield_table As db.sTempField)
+        Public Shared Sub Compile_SplitRecords(ur_tempfield_table As Have.sTempField, ur_text As Have.rUserBowl)
             Call prv.wRecurse_CodeSplit(ur_tempfield_table, ur_text.v(enmUB.contents))
-        End Sub 'InsSplitAt_TAB
+        End Sub 'Compile_SplitRecords
 
         Private Class prv
-            Public Class bitCONTEXT
-                Inherits bitBASE
-            End Class
-
             Public Class enmCONTEXT
-                Public Shared comment As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared cur_continue As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared cur_close As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared default_search As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared dquote As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared quote As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared text_data As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
-                Public Shared wspace As bitCONTEXT = TRow(Of bitCONTEXT, enmCONTEXT).glbl.NewBitBase()
+                Inherits bitBASE
+                Public Shared comment As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared cur_continue As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared cur_close As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared default_search As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared dquote As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared quote As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared text_data As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
+                Public Shared wspace As enmCONTEXT = TRow(Of enmCONTEXT).glbl.NewBitBase()
             End Class 'enmCONTEXT
 
-            Public Class bitTL
-                Inherits bitBASE
-            End Class
-
             Public Class enmTL
-                Public Shared chunk_text As bitTL = TRow(Of bitTL, enmTL).glbl.NewBitBase()
-                Public Shared flag_operator_found As bitTL = TRow(Of bitTL, enmTL).glbl.NewBitBase()
-                Public Shared char_next_sprtr As bitTL = TRow(Of bitTL, enmTL).glbl.NewBitBase()
-                Public Shared chunk_type As bitTL = TRow(Of bitTL, enmTL).glbl.NewBitBase()
+                Inherits bitBASE
+                Public Shared chunk_text As enmTL = TRow(Of enmTL).glbl.NewBitBase()
+                Public Shared flag_operator_found As enmTL = TRow(Of enmTL).glbl.NewBitBase()
+                Public Shared char_next_sprtr As enmTL = TRow(Of enmTL).glbl.NewBitBase()
+                Public Shared chunk_type As enmTL = TRow(Of enmTL).glbl.NewBitBase()
             End Class
 
             Public Class rTempLine
-                Inherits TRow(Of bitTL, enmTL)
+                Inherits TRow(Of enmTL)
 
                 Public rem_text_index As Integer
 
@@ -140,20 +165,20 @@ Namespace Mx
                 End Sub
 
                 <System.Diagnostics.DebuggerHidden()>
-                Public Function vt(ur_enm As bitTL, ur_val As String) As rTempLine
+                Public Function vt(ur_enm As enmTL, ur_val As String) As rTempLine
                     vt = Me
                     Me.v(ur_enm) = ur_val
                 End Function
             End Class 'rTempLine
 
             Public Class boxChunk_State
-                Public gContext As bitCONTEXT
+                Public gContext As enmCONTEXT
                 Public gChunk_End As Integer
                 Public gSplit_Char As String
                 Public gStart_Index As Integer
                 Public gText_Orig As String
 
-                Public Sub New(ur_context As bitCONTEXT, ur_chunk_end As Integer, ur_split_char As String, ur_start_index As Integer, ur_text_orig As String)
+                Public Sub New(ur_context As enmCONTEXT, ur_chunk_end As Integer, ur_split_char As String, ur_start_index As Integer, ur_text_orig As String)
                     Me.gContext = ur_context
                     Me.gChunk_End = ur_chunk_end
                     Me.gSplit_Char = ur_split_char
@@ -164,21 +189,21 @@ Namespace Mx
 
             Public Class boxChunk_Loop
                 Public gChar_Entry As Char
-                Public gSkip_Context As bitCONTEXT
+                Public gSkip_Context As enmCONTEXT
 
-                Public Sub New(ur_char_entry As Char, ur_skip_context As bitCONTEXT)
+                Public Sub New(ur_char_entry As Char, ur_skip_context As enmCONTEXT)
                     Me.gChar_Entry = ur_char_entry
                     Me.gSkip_Context = ur_skip_context
                 End Sub
             End Class 'boxChunk_Loop
 
             Public Class boxSplit_State
-                Public gContext As bitCONTEXT
+                Public gContext As enmCONTEXT
                 Public gRow As rTempLine
                 Public gSplit As Integer
                 Public gText_Orig As String
 
-                Public Sub New(ur_context As bitCONTEXT, ur_row As rTempLine, ur_split As Integer, ur_text_orig As String)
+                Public Sub New(ur_context As enmCONTEXT, ur_row As rTempLine, ur_split As Integer, ur_text_orig As String)
                     Me.gContext = ur_context
                     Me.gRow = ur_row
                     Me.gSplit = ur_split
@@ -187,7 +212,7 @@ Namespace Mx
             End Class 'boxSplit_State
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Shared Sub gChunk_Next(ret_split_state As boxSplit_State, ur_large_text As String, ur_start_index As Integer, ur_context As bitCONTEXT)
+            Public Shared Sub gChunk_Next(ret_split_state As boxSplit_State, ur_large_text As String, ur_start_index As Integer, ur_context As enmCONTEXT)
                 Dim boxCHUNK = New boxChunk_State(
                         ur_context:=ur_context,
                         ur_chunk_end:=0,
@@ -257,7 +282,7 @@ Namespace Mx
                 Const chrTAB = vbTab
                 Const lit_ls_than_excl_hyph_hyph = "<!--"
 
-                Public Shared Function gChunk_Type(ur_large_text As String, ur_start_index As Integer) As bitCONTEXT
+                Public Shared Function gChunk_Type(ur_large_text As String, ur_start_index As Integer) As enmCONTEXT
                     gChunk_Type = enmCONTEXT.wspace
                     Dim chrNEXT = ur_large_text(b0(ur_start_index))
                     If (
@@ -271,7 +296,7 @@ Namespace Mx
                 End Function 'gChunk_Type
 
                 <System.Diagnostics.DebuggerHidden()>
-                Public Shared Function CommentClose(ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As bitCONTEXT
+                Public Shared Function CommentClose(ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As enmCONTEXT
                     CommentClose = enmCONTEXT.cur_continue
                     Select Case ur_chr_entry
                         Case chrGR_THAN
@@ -283,7 +308,7 @@ Namespace Mx
                 End Function 'CommentClose
 
                 <System.Diagnostics.DebuggerHidden()>
-                Public Shared Function QuoteSkip(ur_context As bitCONTEXT, ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As bitCONTEXT
+                Public Shared Function QuoteSkip(ur_context As enmCONTEXT, ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As enmCONTEXT
                     QuoteSkip = enmCONTEXT.cur_continue
                     Dim objEXIT_CHAR = chrQS
                     If ur_context Is enmCONTEXT.quote Then
@@ -304,7 +329,7 @@ Namespace Mx
                 End Function 'QuoteSkip
 
                 <System.Diagnostics.DebuggerHidden()>
-                Public Shared Function TDataCombine(ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As bitCONTEXT
+                Public Shared Function TDataCombine(ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As enmCONTEXT
                     TDataCombine = enmCONTEXT.cur_continue
                     Select Case ur_chr_entry
                         Case chrSP, chrLF, chrCR, chrTAB
@@ -346,7 +371,7 @@ Namespace Mx
                 End Function 'TDataCombine
 
                 <System.Diagnostics.DebuggerHidden()>
-                Public Shared Function WSpaceCombine(ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As bitCONTEXT
+                Public Shared Function WSpaceCombine(ur_large_text As String, ur_chr_entry As Char, ur_chrctr As Integer) As enmCONTEXT
                     WSpaceCombine = enmCONTEXT.cur_continue
                     Select Case ur_chr_entry
                         Case chrSP, chrLF, chrCR, chrTAB
@@ -373,7 +398,7 @@ Namespace Mx
             End Class 'prvChunkContext
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Shared Function gChunk_Skip(ur_large_text As String, ur_char_index As Integer, ur_context As bitCONTEXT) As Integer
+            Public Shared Function gChunk_Skip(ur_large_text As String, ur_char_index As Integer, ur_context As enmCONTEXT) As Integer
                 Dim boxSPLIT = New boxSplit_State(
                         ur_context:=ur_context,
                         ur_row:=New rTempLine,
@@ -392,7 +417,7 @@ Namespace Mx
             End Function 'gChunk_Skip
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Shared Sub wRecurse_CodeSplit(ret_chunk_table As db.sTempField, ur_source_text As String)
+            Public Shared Sub wRecurse_CodeSplit(ret_chunk_table As Have.sTempField, ur_source_text As String)
                 Dim boxSPLIT = New boxSplit_State(
                         ur_context:=enmCONTEXT.default_search,
                         ur_row:=New rTempLine,
@@ -411,7 +436,7 @@ Namespace Mx
                             )
 
                     Dim trwCODE = ret_chunk_table.Ins(
-                            New db.rTempField().
+                            New Have.rTempField().
                             vt(enmTF.code_text, boxSPLIT.gRow.v(enmTL.chunk_text)).
                             vt(enmTF.code_type, boxSPLIT.gRow.v(enmTL.chunk_type))
                             )
@@ -427,40 +452,37 @@ Namespace Mx
     End Class 'Use
 
 
-    Partial Public Class db
+    Partial Public Class Have
         Private Shared tblTempField As sTempField
         Private Shared tblUserBowl As sUserBowl
 
         <System.Diagnostics.DebuggerHidden()>
         Private Shared Sub Connect()
-            If db.tblUserBowl Is Nothing Then
-                db.tblTempField = New sTempField
-                db.tblUserBowl = New sUserBowl
+            If Have.tblUserBowl Is Nothing Then
+                Have.tblTempField = New sTempField
+                Have.tblUserBowl = New sUserBowl
             End If 'sdaTCOL_NAME
         End Sub 'Connect
-    End Class 'db
-
-    Public Class bitTF
-        Inherits bitBASE
-    End Class
+    End Class 'Have
 
     Public Class enmTF
-        Public Shared code_type As bitTF = TRow(Of bitTF, enmTF).glbl.NewBitBase()
-        Public Shared code_text As bitTF = TRow(Of bitTF, enmTF).glbl.NewBitBase()
+        Inherits bitBASE
+        Public Shared code_type As enmTF = TRow(Of enmTF).glbl.NewBitBase()
+        Public Shared code_text As enmTF = TRow(Of enmTF).glbl.NewBitBase()
     End Class
 
-    Partial Public Class db
+    Partial Public Class Have
         <System.Diagnostics.DebuggerHidden()>
         Public Shared Function TempField() As sTempField
-            Call db.Connect()
-            TempField = db.tblTempField
+            Call Have.Connect()
+            TempField = Have.tblTempField
         End Function
 
         Public Class rTempField
-            Inherits TRow(Of bitTF, enmTF)
+            Inherits TRow(Of enmTF)
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Function vt(ur_enm As bitTF, ur_val As String) As rTempField
+            Public Function vt(ur_enm As enmTF, ur_val As String) As rTempField
                 vt = Me
                 Me.v(ur_enm) = ur_val
             End Function
@@ -475,7 +497,7 @@ Namespace Mx
             End Sub
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Sub Del(ur_col As bitTF, ur_val As String)
+            Public Sub Del(ur_col As enmTF, ur_val As String)
                 For ROWCTR = Me.ttb.Count To 1 Step -1
                     If AreEqual(Me.ttb.tr_b1(ROWCTR).v(ur_col), ur_val) Then
                         Me.ttb.RemoveAt(b0(ROWCTR))
@@ -518,46 +540,53 @@ Namespace Mx
         End Class 'sTempField
     End Class 'TF
 
-    Public Class bitUB
-        Inherits bitBASE
-    End Class
-
     Public Class enmUB
-        Public Shared bowl_name As bitUB = TRow(Of bitUB, enmUB).glbl.NewBitBase()
-        Public Shared contents As bitUB = TRow(Of bitUB, enmUB).glbl.NewBitBase()
-    End Class
-
-    Public Class bitUN
         Inherits bitBASE
+        Public Shared bowl_name As enmUB = TRow(Of enmUB).glbl.NewBitBase()
+        Public Shared contents As enmUB = TRow(Of enmUB).glbl.NewBitBase()
     End Class
 
     Public Class enmUN
-        Public Shared app_name As bitUN = TRow(Of bitUN, enmUN).glbl.NewBitBase()
-        Public Shared cmdline_audit As bitUN = TRow(Of bitUN, enmUN).glbl.NewBitBase()
-        Public Shared cmdline_orig As bitUN = TRow(Of bitUN, enmUN).glbl.NewBitBase()
-        Public Shared cmdline_table As bitUN = TRow(Of bitUN, enmUN).glbl.NewBitBase()
-        Public Shared from_clipboard As bitUN = TRow(Of bitUN, enmUN).glbl.NewBitBase()
-        Public Shared to_clipboard As bitUN = TRow(Of bitUN, enmUN).glbl.NewBitBase()
+        Inherits bitBASE
+        Public Shared app_name As zapp_name = TRow(Of enmUN).glbl.Trbase(Of zapp_name).NewBitBase() : Public Class zapp_name : Inherits enmUN : End Class
+        Public Shared clipboard_recdate As zclipboard_recdate = TRow(Of enmUN).glbl.Trbase(Of zclipboard_recdate).NewBitBase() : Public Class zclipboard_recdate : Inherits enmUN : End Class
+        Public Shared cmdline_audit As enmUN = TRow(Of enmUN).glbl.NewBitBase()
+        Public Shared cmdline_orig As enmUN = TRow(Of enmUN).glbl.NewBitBase()
+        Public Shared cmdline_table As enmUN = TRow(Of enmUN).glbl.NewBitBase()
+        Public Shared from_clipboard As zfrom_clipboard = TRow(Of enmUN).glbl.Trbase(Of zfrom_clipboard).NewBitBase() : Public Class zfrom_clipboard : Inherits enmUN : End Class
+        Public Shared from_messagebox As enmUN = TRow(Of enmUN).glbl.Trbase(Of zfrom_messagebox).NewBitBase() : Public Class zfrom_messagebox : Inherits enmUN : End Class
+        Public Shared report_output As zreport_output = TRow(Of enmUN).glbl.Trbase(Of zreport_output).NewBitBase() : Public Class zreport_output : Inherits enmUN : End Class
     End Class
 
-    Partial Public Class db
+    Public Class enmUR
+        Inherits bitBASE
+        Public Shared Ok As enmUR = TRow(Of enmUR).glbl.NewBitBase()
+        Public Shared Cancel As enmUR = TRow(Of enmUR).glbl.NewBitBase()
+    End Class
+
+    Partial Public Class Have
         <System.Diagnostics.DebuggerHidden()>
         Public Shared Function UserBowl() As sUserBowl
-            Dim bolFIRST_INIT = (db.tblUserBowl Is Nothing)
-            Call db.Connect()
-            UserBowl = db.tblUserBowl
+            Dim bolFIRST_INIT = (Have.tblUserBowl Is Nothing)
+            Call Have.Connect()
+            UserBowl = Have.tblUserBowl
             If bolFIRST_INIT Then
-                Call db.tblUserBowl.InsFrom_Application()
-                'db.tblUserBowl.InsKey(enmUN.cmdline_audit, "1")
-                Call db.tblUserBowl.Cboard_CmdlineAudit()
+                Call Have.tblUserBowl.InsFrom_Application()
+                'Have.tblUserBowl.InsKey(enmUN.cmdline_audit, "1")
+                Call Have.tblUserBowl.Cboard_CmdlineAudit()
             End If
         End Function
 
         Public Class rUserBowl
-            Inherits TRow(Of bitUB, enmUB)
+            Inherits TRow(Of enmUB)
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Function vt(ur_enm As bitUB, ur_val As String) As rUserBowl
+            Public Function v_is(ur_enm As enmUB, ur_cmp As enmUR) As Boolean
+                v_is = AreEqual(Me.v(ur_enm), ur_cmp.name)
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function vt(ur_enm As enmUB, ur_val As String) As rUserBowl
                 vt = Me
                 Me.v(ur_enm) = ur_val
             End Function
@@ -575,32 +604,20 @@ Namespace Mx
             Public Sub Cboard_CmdlineAudit()
                 If HasText(Me.SelKey(enmUN.cmdline_audit).v(enmUB.contents)) Then
                     Dim strAUDIT = Me.ToString(True)
-                    Dim ins_msg = db.MessageBox.Ins(
-                        New db.rMessageBox().
+                    Dim ins_msg = Have.MessageBox.Ins(
+                        New Have.rMessageBox().
                             vt(enmMB.title, Me.SelKey(enmUN.app_name).v(enmUB.contents)).
                             vt(enmMB.text, strAUDIT),
                         MsgBoxStyle.OkCancel
                         )
                     If ins_msg.vUserResponse = MsgBoxResult.Ok Then
-                        db.Clipboard.Ins(
-                            New db.rClipboard().
+                        Have.Clipboard.Ins(
+                            New Have.rClipboard().
                             vt(enmCB.text, strAUDIT)
                             )
                     End If
                 End If
             End Sub 'Cboard_CmdlineAudit
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function ExistsKey(ur_key As bitUN) As Boolean
-                ExistsKey = False
-                Dim strUN = ur_key.name
-                For Each row In Me.ttb
-                    If AreEqual(row.v(enmUB.bowl_name), strUN) Then
-                        ExistsKey = True
-                        Exit For
-                    End If
-                Next
-            End Function 'ExistsKey
 
             <System.Diagnostics.DebuggerHidden()>
             Public Function Ins(ur_from As rUserBowl) As rUserBowl
@@ -609,15 +626,20 @@ Namespace Mx
             End Function
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Function InsKey(ur_key As bitUN, ur_val As String) As rUserBowl
-                Dim ret = New rUserBowl
+            Public Function InsKey(ur_key As enmUN, ur_val As String) As rUserBowl
+                Dim ret = Me.SelKey(ur_key)
                 InsKey = ret
-                Me.ttb.Add(
-                    ret.
-                    vt(enmUB.bowl_name, ur_key.name).
-                    vt(enmUB.contents, ur_val)
-                    )
-            End Function
+                If HasText(ret.v(enmUB.contents)) Then
+                    Throw New System.Exception("Cannot insert duplicate key for key: " & ur_key.name)
+                Else
+                    ret.vt(enmUB.contents, ur_val)
+                End If
+            End Function 'InsKey
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function InsKey(ur_key As enmUN, ur_val As enmUR) As rUserBowl
+                InsKey = Me.InsKey(ur_key, ur_val.name)
+            End Function 'InsKey
 
             <System.Diagnostics.DebuggerHidden()>
             Public Function InsFrom_Application() As rUserBowl
@@ -625,12 +647,12 @@ Namespace Mx
                 InsFrom_Application = ret
                 Me.InsKey(enmUN.app_name, New MxText.FileName().d(Mx.Class1.SourcePath).FileGroup)
 
-                Dim arlCMD_RET = MxText.Cmdline_UB(Of bitUN, enmUN, bitUB, enmUB).CommandLine_UBParm(enmUB.bowl_name, enmUB.contents, System.Environment.CommandLine)
+                Dim arlCMD_RET = MxText.Cmdline_UB(Of enmUN, enmUB).CommandLine_UBParm(enmUB.bowl_name, enmUB.contents, System.Environment.CommandLine)
                 Me.InsKey(enmUN.cmdline_orig, qs & System.Environment.CommandLine.Replace(qs, qs & qs) & qs)
                 Me.InsKey(enmUN.cmdline_table, qs & arlCMD_RET.ttbCMD_PARM.ToString(True).Replace(qs, qs & qs) & qs)
                 For Each rowFOUND In arlCMD_RET.ttbUB_PARM
                     Me.Ins(
-                        New db.rUserBowl().
+                        New Have.rUserBowl().
                         vt(enmUB.bowl_name, rowFOUND.v(enmUB.bowl_name)).
                         vt(enmUB.contents, rowFOUND.v(enmUB.contents))
                         )
@@ -638,7 +660,7 @@ Namespace Mx
             End Function
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Function Sel(ur_col As bitUB, ur_value As String) As sUserBowl
+            Public Function Sel(ur_col As enmUB, ur_value As String) As sUserBowl
                 Dim retUB = New sUserBowl
                 Sel = retUB
                 For Each rowUB In Me.ttb
@@ -656,16 +678,7 @@ Namespace Mx
             End Property 'SelAll
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Function SelFirst() As rUserBowl
-                If Me.ttb.Count = 0 Then
-                    SelFirst = New rUserBowl()
-                Else
-                    SelFirst = Me.ttb.tr_b1(1)
-                End If
-            End Function
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function SelKey(ur_key As bitUN) As rUserBowl
+            Public Function SelKey(ur_key As enmUN) As rUserBowl
                 Dim ret As rUserBowl = Nothing
                 Dim strUN = ur_key.name
                 For Each row In Me.ttb
@@ -673,8 +686,16 @@ Namespace Mx
                         ret = row
                         Exit For
                     End If
-                Next
-                If ret Is Nothing Then ret = New rUserBowl
+                Next row
+
+                If ret Is Nothing Then
+                    ret = New rUserBowl
+                    Me.ttb.Add(
+                        ret.
+                        vt(enmUB.bowl_name, ur_key.name)
+                        )
+                End If
+
                 SelKey = ret
             End Function 'SelKey
 
