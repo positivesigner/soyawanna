@@ -29,3 +29,4 @@ missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_Upgrade_URLs.src.tx
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Full Page Screen Capture.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Save Page as SingleFile.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Disk Emulator\ImDisk RamDisk.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\VBNet\MSBuild Compiler src\~Rebuild Local.cmd.src.txt
