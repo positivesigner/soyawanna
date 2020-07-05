@@ -1,0 +1,35 @@
+<pre style="font-family: sans-serif;">
+I want to install the a .Net Core 3.1 command line app
+
+!!! Download the .Net Core SDK
+
+https://dotnet.microsoft.com/download
+
+- Note: The download page has a Checksum (SHA512)
+
+```
+d4c564fb970f8f21ae7c1ae3185eb1f048d2ff79755198c25cfe461049c3a34de7392c8f4c66da2591b086ea69fb4d9caf830346ed98619743a201d05148ca16
+```
+
+!!! Verify the downloaded executable program
+
+[Command line]
+- [certutil -hashfile C:\User\UrUser\Downloads\dotnet-sdk-3.1.301-win-x64.exe SHA512]
+- Note: The output hash must match the page's Checksum (SHA512) hash
+
+- Note: You can use a .Net program to calculate the hash
+
+```
+Dim strPATH = "C:\User\UrUser\Downloads\dotnet-sdk-3.1.301-win-x64.exe"
+Using objSHA = New System.Security.Cryptography.SHA512Managed
+    Using stmFILE = System.IO.File.OpenRead(strPATH)
+        Console.WriteLine("[" & System.BitConverter.ToString(objSHA.ComputeHash(stmFILE)).Replace("-", "").ToLower & "]")
+    End Using
+End Using
+```
+
+!!! Test the installation succeeded
+
+[Command line]
+- [dotnet]
+- Note: It shows the program's usage options

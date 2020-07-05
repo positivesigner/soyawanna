@@ -1,0 +1,12 @@
+<pre style="font-family: sans-serif;">
+I want a .Net program to calculate the SHA512 hash of a file
+
+```
+Dim strPATH = "C:\...\SubDir\...\UrFile.ext"
+Using objSHA = New System.Security.Cryptography.SHA512Managed
+    Using stmFILE = System.IO.File.OpenRead(strPATH)
+        Console.WriteLine("[" & System.BitConverter.ToString(objSHA.ComputeHash(stmFILE)).Replace("-", "").ToLower & "]")
+        'Convert.ToBase64String(
+    End Using
+End Using
+```

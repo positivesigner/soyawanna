@@ -1,0 +1,50 @@
+<pre style="font-family: sans-serif;">
+I want to create a .Net Core 3.1 single-file, ready-to-run executable.
+
+!!! Hello world instructions
+
+https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro
+
+[Command Line]
+- [dotnet new console -lang VB -o myApp]
+- Note: The current directory has a new myApp folder
+- Contents: myApp.vbproj, Program.vb, obj folder
+- [cd myApp]
+- [copy Program.vb con]
+- Note: There is already the a Console.Writeline command in the Program.vb file
+- [dotnet run]
+- Note: The program takes half-a-minute to build
+- Note: The output says "Hello World!"
+
+!!! Compile as a ready-to-run, single-file executable
+
+[Command Line]
+- [dotnet publish -c Release -r win-x64 -p:PublishReadyToRun=true -p:PublishSingleFile=true]
+
+- Note: The "--self-contained" option is incompatible with the "-p:PublishReadyToRun=true" and "-p:PublishSingleFile=true" options
+- Note: You could also add the following lines inside the [myApp.vbproj] file, Project\PropertyGroup tag
+
+```
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishReadyToRun>true</PublishReadyToRun>
+    <PublishSingleFile>true</PublishSingleFile>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+```
+    - Then you could just compile with [dotnet publish -c Release]
+- Note: When you choose the Portable publish option, you'll get a package that is capable of running on either x86 (32-bit) machines and x64 (64-bit) machines. The next run would have to JIT compile the application again as it is used. The advantage here is that you'd only need to distribute one package, and it'll run on both x86/x64 machines.
+    - [dotnet publish -c Release -r portable --self-contained]
+
+- [dir *.exe /s]
+- Note: There is an executable under bin\Release\netcoreapp3.1\win-x64\myApp.exe
+- [copy bin\Release\netcoreapp3.1\win-x64\Publish\myapp.exe]
+- [rd /s /q bin]
+- [rd /s /q obj]
+- [set DOTNET_BUNDLE_EXTRACT_BASE_DIR=.
+- [myApp.exe]
+- Note: The program takes a few seconds to build
+- Note: The output says "Hello World!"
+- Note: There is a myApp subfolder with another subfolder containing all the .DLL files to run the myApp program
+- [myApp.exe]
+- Note: The program runs immediately
+- Note: The output says "Hello World!"
+- Note: If you delete the myApp subfolder, the next time you run the program it would take a few seconds to build

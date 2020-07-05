@@ -3,7 +3,6 @@ missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.l
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.qlua5.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Install\GoogleChrome\Portable Install.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Javascript\Bookmarklets\Javascript Bookmarklets.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Git\Commands\Git Checkout.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\MGit App.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\PocketGit App.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Utilities\Git Utilities.src.txt
