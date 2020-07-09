@@ -1,6 +1,9 @@
 section	in_filepath
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.luadist.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.qlua5.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Browser_App\TiddlyWiki\DivPop.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Browser_App\TiddlyWiki\SaveAllChanges.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\Browser_App\TiddlyWiki\TW_Template.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Install\GoogleChrome\Portable Install.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Javascript\Bookmarklets\Javascript Bookmarklets.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\MGit App.src.txt
@@ -11,9 +14,6 @@ missing_txthtmlpath	C:\Gthb\soyawanna\JavaScript\JS_Notes\JavaScript Code.src.tx
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\AddOns\Hiding The Sidebar On Startup.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\AddOns\Text Replace Bar.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Commands\today.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Dev_META\DivPop.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Dev_META\SaveAllChanges.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Dev_META\TW_Template.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Projects\Month Calendar.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TiddlerMove Design.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TiddlyWiki Code.src.txt
@@ -28,4 +28,3 @@ missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_Upgrade_URLs.src.tx
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Full Page Screen Capture.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Save Page as SingleFile.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Disk Emulator\ImDisk RamDisk.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\VBNet\MSBuild Compiler src\~Rebuild Local.cmd.src.txt
