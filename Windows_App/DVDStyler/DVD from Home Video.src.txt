@@ -1,0 +1,43 @@
+Use VLC to take a snapshot for the background image on the DVD menu
+
+Open app DVDStyler Portable
+- (It takes a minute to open)
+- Dialog box
+-- Create a new project = checked
+-- Click button OK -> Shows new dialog
+-- Click button No Template -> Closes dialog
+- Left-side menu
+-- Click tab File browser
+-- Select folder that has desired background image
+-- Double-click background image of menu -> Opens Dialog box
+--- Keep Aspect Ratio = checked
+--- Click button OK -> Closes dialog
+- Left-side menu
+-- Click tab Buttons
+-- Drag button onto background below image
+-- Double-click new button -> Opens dialog box
+--- Play all titles = checked
+--- Text = @UrButtonText
+--- Click button OK -> Closes dialog
+- DVD menu, Add sub-menu, Click option File -> Opens dialog
+-- Pick UrFile.mp4 from folder
+-- Click button Open -> Opens dialog box
+--- This file contains video in NTSC format. Do you want to change DVD format to NTSC too?
+--- Click button Yes -> Closes two dialogs
+- File menu, click option Burn DVD -> Opens dialog
+-- Temp Directory path needs to be a real folder
+-- Save to path is the output .ISO file -> Shows new dialog
+-- Click button Start
+-- Status windows shows percent complete
+-- If 'Preview' is checked, video player shows DVD
+-- Close video player -> Opens dialog
+--- Do you want to create an iso image of the video?
+--- Click button Yes -> Closes dialog
+-- Notice message says 'Generating was successful.'
+-- Click button Close
+
+
+Open app InfraRecorder Portable
+- Actions menu, click option Burn Image -> Opens dialog
+-- Select iso file -> Shows new dialog
+-- Click button OK -> Shows status
