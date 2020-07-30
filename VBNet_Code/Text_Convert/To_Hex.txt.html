@@ -1,0 +1,14 @@
+<pre style="font-family: sans-serif;">
+Change string with numbers (0 to 9) and/or letters (a-f) into decimal number
+
+[q/a page]
+- https://stackoverflow.com/questions/642417/how-do-you-convert-hex-to-decimal-using-vb-net
+
+[sample code]
+
+```
+Dim strTEXT = "FF"
+Dim strHEX_CODE = "&H" & strTEXT
+Dim intNUMBER = CInt(strHEX_CODE)
+MsgBox(intNUMBER) -> 255
+```

@@ -1,0 +1,37 @@
+<pre style="font-family: sans-serif;">
+Basic parsing of HTML entities into text sections
+
+[proj\2020m07d27 VBNS_ParseHTML]
+- [whitepace ignored]
+- begining of doc to first tag
+- [exclamation mark can lead into a comment block]
+- &lt;!--comment
+- &lt;!directive_tag
+- [forward slash is allowed between open angle bracket and tag name]
+- &lt;/tag
+- [greater than / closing angle bracket finishes tag name and attributes, or script section]
+- &lt;--comment-->
+- &lt;script>code&lt;/script>
+- &lt;tag>text
+- &lt;script>code
+- [hyphens can lead into a comment block]
+- &lt;!--comment-
+- &lt;!--comment--
+- [less than / opening angle bracket closes whitespace ignored, or starts new tag]
+- beginning of doc to first tag &lt;
+- text to new tag &lt;
+- &lt;script>code&lt;
+- [Next section with accumulated line text]
+- &lt;!--comment-    invalid without ending ->
+- &lt;!--comment--   invalid without ending >
+- &lt;!--comment---  invalid without ending -
+- &lt;!-             invalid without ending -
+- &lt;/script> ends script section
+- &lt; with alpha-numeric starts tag name
+- &lt;! with alpha-numeric starts directive name
+- Any alpha-numeric before first open-angle bracket is invalid
+- &lt;!-- with a-n continues comment section
+- &lt;script> with a-n continues script section
+- &lt; with a-n continues tag name
+- a-n continues text section
+

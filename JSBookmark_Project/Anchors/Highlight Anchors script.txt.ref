@@ -1,0 +1,1 @@
+avascript:(function(){var i,n,a;as=document.anchors;for(i=0;i<as.length;++i)    {a=as[i];n=a.name;a.appendChild(document.createTextNode("#"+n));a.style.border="1px solid";;a.href="#"+n;}})();
