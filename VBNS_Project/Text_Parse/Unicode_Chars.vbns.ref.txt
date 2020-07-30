@@ -1,0 +1,457 @@
+..\MxClasses\MxBaseEc12cmd.vb
+RetVal = Mx.Want.ParseCode_and_WriteReprt()
+End Function
+End Class
+End Namespace
+
+'Module Program
+'    Sub Main(args As String())
+'        Call Mx.Want.ParseCode_and_WriteReprt()
+'    End Sub
+'End Module
+
+Namespace Mx
+    Public Class Want
+        Public Shared Function ParseCode_and_WriteReprt() As Strap
+            Dim stpRET = Strapd()
+            ParseCode_and_WriteReprt = stpRET
+            Dim objWORD_PARSE = New Have.sWordParse
+            'Dim flnROOT = FileNamed().wAssemblyDir(System.Reflection.Assembly.GetEntryAssembly)
+            'Dim flnROOT = FileNamed().d(System.Environment.CurrentDirectory)
+            'Dim flnFILE = flnROOT.gCopy.d("empty_v5d1ec22.html")
+            Dim strUSER_PATH = InputBox("Please paste in a file path", "Unicode Chars")
+            Dim flnFILE = FileNamed().d(strUSER_PATH)
+            Dim flnROOT = flnFILE.gParentDir
+            Dim flnOUTPUT = flnROOT.gCopy.d("unicode.tsv")
+            Dim flnBLOCKS = flnROOT.gCopy.d("blocks.txt")
+            Dim sdaBLOCKS = objWORD_PARSE.BlockList
+            'Dim sdaBLOCKS = New Sdata
+            'Using stmBLOCKS = New System.IO.StreamReader(flnBLOCKS, gUTF8_FileEncoding)
+            '    While stmBLOCKS.EndOfStream = False
+            '        Dim strLINE = stmBLOCKS.ReadLine
+            '        If HasText(strLINE) AndAlso
+            '          StartingWithText(strLINE, "#") = False Then
+            '            sdaBLOCKS.d(strLINE)
+            '        End If
+            '    End While
+            'End Using 'stmBLOCKS
+
+            'Using stmOUT_FILE = New System.IO.StreamWriter(flnOUTPUT, False, gUTF8_FileEncoding)
+                Using stmIN_FILE = New System.IO.StreamReader(flnFILE, gUTF8_FileEncoding)
+                    Call objWORD_PARSE.Apply(stmIN_FILE, sdaBLOCKS, stpRET)
+                End Using
+            'End Using
+        End Function 'ParseCode_and_WriteReprt
+    End Class  'Want
+
+    Public Class Have
+        Public Class sWordParse
+            Public Sub Apply(ur_infile As System.IO.StreamReader, ur_blocks As Sdata, ur_outfile As Strap)
+                Dim lstBLOCK_NAME = New System.Collections.Generic.Dictionary(Of Integer, String)
+                Dim lstBLOCK_INDEX = New System.Collections.Generic.Dictionary(Of Integer, Integer)
+                For Each strLINE In ur_blocks
+                    Dim intFOUND_INDEX = InStr(strLINE, "..")
+                    Dim intBLOCK_STARTING = CInt("&H" & Left(strLINE, intFOUND_INDEX - 1))
+                    strLINE = Mid(strLINE, intFOUND_INDEX + 2)
+                    intFOUND_INDEX = InStr(strLINE, ";")
+                    strLINE = Trim(Mid(strLINE, intFOUND_INDEX + 1))
+                    lstBLOCK_NAME.Add(intBLOCK_STARTING, strLINE)
+                    lstBLOCK_INDEX.Add(lstBLOCK_INDEX.Count + 1, intBLOCK_STARTING)
+                Next strLINE
+
+                Dim lstCODE = New System.Collections.Generic.SortedDictionary(Of Integer, String)
+                While ur_infile.EndOfStream = False
+                    Dim intENTRY = ur_infile.Read()
+                    Dim strENTRY = ChrW(intENTRY)
+                    If lstCODE.ContainsKey(intENTRY) = False Then
+                        lstCODE.Add(intENTRY, strENTRY)
+                    End If
+                End While 'ur_infile
+
+                Dim lstRANGE = New System.Collections.Generic.SortedDictionary(Of Integer, Integer)
+                Dim intRECENT_RANGE = 0
+                Dim intRECENT_CONT = -1
+                For Each kvpENTRY In lstCODE
+                    If kvpENTRY.Key = 10 OrElse
+                      kvpENTRY.Key = 32 Then
+
+                    ElseIf kvpENTRY.Key <= 33 Then
+                        intRECENT_RANGE = kvpENTRY.Key
+                        intRECENT_CONT = intRECENT_RANGE
+                        lstRANGE.Add(intRECENT_RANGE, intRECENT_CONT.ToString)
+
+                    ElseIf kvpENTRY.Key - 1 = intRECENT_CONT Then
+                        intRECENT_CONT = kvpENTRY.Key
+                        lstRANGE.Item(intRECENT_RANGE) = intRECENT_CONT
+                    Else
+                        intRECENT_RANGE = kvpENTRY.Key
+                        intRECENT_CONT = intRECENT_RANGE
+                        lstRANGE.Add(intRECENT_RANGE, intRECENT_CONT.ToString)
+                    End If
+                Next kvpENTRY
+
+                Dim intNEXT_BLOCK_START = -1
+                Dim intNEXT_BLOCK_INDEX = 1
+                For Each kvpENTRY In lstRANGE
+                    If kvpENTRY.Key > intNEXT_BLOCK_START Then
+                        For BLKCTR = intNEXT_BLOCK_INDEX To lstBLOCK_INDEX.Count
+                            Dim intCUR_BLOCK = lstBLOCK_INDEX.Item(BLKCTR)
+                            Dim strNAME = lstBLOCK_NAME.Item(intCUR_BLOCK)
+                            If intCUR_BLOCK > kvpENTRY.Key Then
+                                intNEXT_BLOCK_INDEX = BLKCTR
+                                intNEXT_BLOCK_START = intCUR_BLOCK
+                                Exit For
+
+                            Else 'intCUR_BLOCK
+                                ur_outfile.dLine("[Block]" & "," & intCUR_BLOCK & "," & strNAME)
+                            End If
+                        Next BLKCTR
+                    End If 'kvpENTRY
+
+                    Dim strLINE = ""
+                    If kvpENTRY.Key < 33 Then
+                        strLINE = "[Control Code]"
+                    End If
+
+                    strLINE = kvpENTRY.Key.ToString
+                    If kvpENTRY.Key < kvpENTRY.Value Then
+                        strLINE &= "-" & kvpENTRY.Value.ToString
+                    End If
+
+                    strLINE &= "," & (kvpENTRY.Value + 1 - kvpENTRY.Key).ToString
+                    If kvpENTRY.Key = 9 Then
+                        strLINE &= ",[Tab]"
+
+                    ElseIf kvpENTRY.Key = 13 Then
+                        strLINE &= ",[CR]"
+
+                    Else
+                        strLINE &= ",["
+                        For CHRCTR = kvpENTRY.Key To kvpENTRY.Value
+                            strLINE &= ChrW(CHRCTR)
+                        Next
+
+                        strLINE &= "]"
+                    End If
+
+                    ur_outfile.dLine(strLINE)
+                Next 'kvpENTRY
+            End Sub 'Apply(ur_infile
+            
+            Public Function BlockList() As Sdata
+                Dim sdaBLOCKS = New Sdata
+                BlockList = sdaBLOCKS
+                For Each strline In ("0000..007F; Basic Latin"& vbLf & _
+"0080..00FF; Latin-1 Supplement"& vbLf & _
+"0100..017F; Latin Extended-A"& vbLf & _
+"0180..024F; Latin Extended-B"& vbLf & _
+"0250..02AF; IPA Extensions"& vbLf & _
+"02B0..02FF; Spacing Modifier Letters"& vbLf & _
+"0300..036F; Combining Diacritical Marks"& vbLf & _
+"0370..03FF; Greek and Coptic"& vbLf & _
+"0400..04FF; Cyrillic"& vbLf & _
+"0500..052F; Cyrillic Supplement"& vbLf & _
+"0530..058F; Armenian"& vbLf & _
+"0590..05FF; Hebrew"& vbLf & _
+"0600..06FF; Arabic"& vbLf & _
+"0700..074F; Syriac"& vbLf & _
+"0750..077F; Arabic Supplement"& vbLf & _
+"0780..07BF; Thaana"& vbLf & _
+"07C0..07FF; NKo"& vbLf & _
+"0800..083F; Samaritan"& vbLf & _
+"0840..085F; Mandaic"& vbLf & _
+"0860..086F; Syriac Supplement"& vbLf & _
+"08A0..08FF; Arabic Extended-A"& vbLf & _
+"0900..097F; Devanagari"& vbLf & _
+"0980..09FF; Bengali"& vbLf & _
+"0A00..0A7F; Gurmukhi"& vbLf & _
+"0A80..0AFF; Gujarati"& vbLf & _
+"0B00..0B7F; Oriya"& vbLf & _
+"0B80..0BFF; Tamil"& vbLf & _
+"0C00..0C7F; Telugu"& vbLf & _
+"0C80..0CFF; Kannada"& vbLf & _
+"0D00..0D7F; Malayalam"& vbLf & _
+"0D80..0DFF; Sinhala"& vbLf & _
+"0E00..0E7F; Thai"& vbLf & _
+"0E80..0EFF; Lao"& vbLf & _
+"0F00..0FFF; Tibetan"& vbLf & _
+"1000..109F; Myanmar"& vbLf & _
+"10A0..10FF; Georgian"& vbLf & _
+"1100..11FF; Hangul Jamo"& vbLf & _
+"1200..137F; Ethiopic"& vbLf & _
+"1380..139F; Ethiopic Supplement"& vbLf & _
+"13A0..13FF; Cherokee"& vbLf & _
+"1400..167F; Unified Canadian Aboriginal Syllabics"& vbLf & _
+"1680..169F; Ogham"& vbLf & _
+"16A0..16FF; Runic"& vbLf & _
+"1700..171F; Tagalog"& vbLf & _
+"1720..173F; Hanunoo"& vbLf & _
+"1740..175F; Buhid"& vbLf & _
+"1760..177F; Tagbanwa"& vbLf & _
+"1780..17FF; Khmer"& vbLf & _
+"1800..18AF; Mongolian"& vbLf & _
+"18B0..18FF; Unified Canadian Aboriginal Syllabics Extended"& vbLf & _
+"1900..194F; Limbu"& vbLf & _
+"1950..197F; Tai Le"& vbLf & _
+"1980..19DF; New Tai Lue"& vbLf & _
+"19E0..19FF; Khmer Symbols"& vbLf & _
+"1A00..1A1F; Buginese"& vbLf & _
+"1A20..1AAF; Tai Tham"& vbLf & _
+"1AB0..1AFF; Combining Diacritical Marks Extended"& vbLf & _
+"1B00..1B7F; Balinese"& vbLf & _
+"1B80..1BBF; Sundanese"& vbLf & _
+"1BC0..1BFF; Batak"& vbLf & _
+"1C00..1C4F; Lepcha"& vbLf & _
+"1C50..1C7F; Ol Chiki"& vbLf & _
+"1C80..1C8F; Cyrillic Extended-C"& vbLf & _
+"1C90..1CBF; Georgian Extended"& vbLf & _
+"1CC0..1CCF; Sundanese Supplement"& vbLf & _
+"1CD0..1CFF; Vedic Extensions"& vbLf & _
+"1D00..1D7F; Phonetic Extensions"& vbLf & _
+"1D80..1DBF; Phonetic Extensions Supplement"& vbLf & _
+"1DC0..1DFF; Combining Diacritical Marks Supplement"& vbLf & _
+"1E00..1EFF; Latin Extended Additional"& vbLf & _
+"1F00..1FFF; Greek Extended"& vbLf & _
+"2000..206F; General Punctuation"& vbLf & _
+"2070..209F; Superscripts and Subscripts"& vbLf & _
+"20A0..20CF; Currency Symbols"& vbLf & _
+"20D0..20FF; Combining Diacritical Marks for Symbols"& vbLf & _
+"2100..214F; Letterlike Symbols"& vbLf & _
+"2150..218F; Number Forms"& vbLf & _
+"2190..21FF; Arrows"& vbLf & _
+"2200..22FF; Mathematical Operators"& vbLf & _
+"2300..23FF; Miscellaneous Technical"& vbLf & _
+"2400..243F; Control Pictures"& vbLf & _
+"2440..245F; Optical Character Recognition"& vbLf & _
+"2460..24FF; Enclosed Alphanumerics"& vbLf & _
+"2500..257F; Box Drawing"& vbLf & _
+"2580..259F; Block Elements"& vbLf & _
+"25A0..25FF; Geometric Shapes"& vbLf & _
+"2600..26FF; Miscellaneous Symbols"& vbLf & _
+"2700..27BF; Dingbats"& vbLf & _
+"27C0..27EF; Miscellaneous Mathematical Symbols-A"& vbLf & _
+"27F0..27FF; Supplemental Arrows-A"& vbLf & _
+"2800..28FF; Braille Patterns"& vbLf & _
+"2900..297F; Supplemental Arrows-B"& vbLf & _
+"2980..29FF; Miscellaneous Mathematical Symbols-B"& vbLf & _
+"2A00..2AFF; Supplemental Mathematical Operators"& vbLf & _
+"2B00..2BFF; Miscellaneous Symbols and Arrows"& vbLf & _
+"2C00..2C5F; Glagolitic"& vbLf & _
+"2C60..2C7F; Latin Extended-C"& vbLf & _
+"2C80..2CFF; Coptic"& vbLf & _
+"2D00..2D2F; Georgian Supplement"& vbLf & _
+"2D30..2D7F; Tifinagh"& vbLf & _
+"2D80..2DDF; Ethiopic Extended"& vbLf & _
+"2DE0..2DFF; Cyrillic Extended-A"& vbLf & _
+"2E00..2E7F; Supplemental Punctuation"& vbLf & _
+"2E80..2EFF; CJK Radicals Supplement"& vbLf & _
+"2F00..2FDF; Kangxi Radicals"& vbLf & _
+"2FF0..2FFF; Ideographic Description Characters"& vbLf & _
+"3000..303F; CJK Symbols and Punctuation"& vbLf & _
+"3040..309F; Hiragana"& vbLf & _
+"30A0..30FF; Katakana"& vbLf & _
+"3100..312F; Bopomofo"& vbLf & _
+"3130..318F; Hangul Compatibility Jamo"& vbLf & _
+"3190..319F; Kanbun"& vbLf & _
+"31A0..31BF; Bopomofo Extended"& vbLf & _
+"31C0..31EF; CJK Strokes"& vbLf & _
+"31F0..31FF; Katakana Phonetic Extensions"& vbLf & _
+"3200..32FF; Enclosed CJK Letters and Months"& vbLf & _
+"3300..33FF; CJK Compatibility"& vbLf & _
+"3400..4DBF; CJK Unified Ideographs Extension A"& vbLf & _
+"4DC0..4DFF; Yijing Hexagram Symbols"& vbLf & _
+"4E00..9FFF; CJK Unified Ideographs"& vbLf & _
+"A000..A48F; Yi Syllables"& vbLf & _
+"A490..A4CF; Yi Radicals"& vbLf & _
+"A4D0..A4FF; Lisu"& vbLf & _
+"A500..A63F; Vai"& vbLf & _
+"A640..A69F; Cyrillic Extended-B"& vbLf & _
+"A6A0..A6FF; Bamum"& vbLf & _
+"A700..A71F; Modifier Tone Letters"& vbLf & _
+"A720..A7FF; Latin Extended-D"& vbLf & _
+"A800..A82F; Syloti Nagri"& vbLf & _
+"A830..A83F; Common Indic Number Forms"& vbLf & _
+"A840..A87F; Phags-pa"& vbLf & _
+"A880..A8DF; Saurashtra"& vbLf & _
+"A8E0..A8FF; Devanagari Extended"& vbLf & _
+"A900..A92F; Kayah Li"& vbLf & _
+"A930..A95F; Rejang"& vbLf & _
+"A960..A97F; Hangul Jamo Extended-A"& vbLf & _
+"A980..A9DF; Javanese"& vbLf & _
+"A9E0..A9FF; Myanmar Extended-B"& vbLf & _
+"AA00..AA5F; Cham"& vbLf & _
+"AA60..AA7F; Myanmar Extended-A"& vbLf & _
+"AA80..AADF; Tai Viet"& vbLf & _
+"AAE0..AAFF; Meetei Mayek Extensions"& vbLf & _
+"AB00..AB2F; Ethiopic Extended-A"& vbLf & _
+"AB30..AB6F; Latin Extended-E"& vbLf & _
+"AB70..ABBF; Cherokee Supplement"& vbLf & _
+"ABC0..ABFF; Meetei Mayek"& vbLf & _
+"AC00..D7AF; Hangul Syllables"& vbLf & _
+"D7B0..D7FF; Hangul Jamo Extended-B"& vbLf & _
+"D800..DB7F; High Surrogates"& vbLf & _
+"DB80..DBFF; High Private Use Surrogates"& vbLf & _
+"DC00..DFFF; Low Surrogates"& vbLf & _
+"E000..F8FF; Private Use Area"& vbLf & _
+"F900..FAFF; CJK Compatibility Ideographs"& vbLf & _
+"FB00..FB4F; Alphabetic Presentation Forms"& vbLf & _
+"FB50..FDFF; Arabic Presentation Forms-A"& vbLf & _
+"FE00..FE0F; Variation Selectors"& vbLf & _
+"FE10..FE1F; Vertical Forms"& vbLf & _
+"FE20..FE2F; Combining Half Marks"& vbLf & _
+"FE30..FE4F; CJK Compatibility Forms"& vbLf & _
+"FE50..FE6F; Small Form Variants"& vbLf & _
+"FE70..FEFF; Arabic Presentation Forms-B"& vbLf & _
+"FF00..FFEF; Halfwidth and Fullwidth Forms"& vbLf & _
+"FFF0..FFFF; Specials"& vbLf & _
+"10000..1007F; Linear B Syllabary"& vbLf & _
+"10080..100FF; Linear B Ideograms"& vbLf & _
+"10100..1013F; Aegean Numbers"& vbLf & _
+"10140..1018F; Ancient Greek Numbers"& vbLf & _
+"10190..101CF; Ancient Symbols"& vbLf & _
+"101D0..101FF; Phaistos Disc"& vbLf & _
+"10280..1029F; Lycian"& vbLf & _
+"102A0..102DF; Carian"& vbLf & _
+"102E0..102FF; Coptic Epact Numbers"& vbLf & _
+"10300..1032F; Old Italic"& vbLf & _
+"10330..1034F; Gothic"& vbLf & _
+"10350..1037F; Old Permic"& vbLf & _
+"10380..1039F; Ugaritic"& vbLf & _
+"103A0..103DF; Old Persian"& vbLf & _
+"10400..1044F; Deseret"& vbLf & _
+"10450..1047F; Shavian"& vbLf & _
+"10480..104AF; Osmanya"& vbLf & _
+"104B0..104FF; Osage"& vbLf & _
+"10500..1052F; Elbasan"& vbLf & _
+"10530..1056F; Caucasian Albanian"& vbLf & _
+"10600..1077F; Linear A"& vbLf & _
+"10800..1083F; Cypriot Syllabary"& vbLf & _
+"10840..1085F; Imperial Aramaic"& vbLf & _
+"10860..1087F; Palmyrene"& vbLf & _
+"10880..108AF; Nabataean"& vbLf & _
+"108E0..108FF; Hatran"& vbLf & _
+"10900..1091F; Phoenician"& vbLf & _
+"10920..1093F; Lydian"& vbLf & _
+"10980..1099F; Meroitic Hieroglyphs"& vbLf & _
+"109A0..109FF; Meroitic Cursive"& vbLf & _
+"10A00..10A5F; Kharoshthi"& vbLf & _
+"10A60..10A7F; Old South Arabian"& vbLf & _
+"10A80..10A9F; Old North Arabian"& vbLf & _
+"10AC0..10AFF; Manichaean"& vbLf & _
+"10B00..10B3F; Avestan"& vbLf & _
+"10B40..10B5F; Inscriptional Parthian"& vbLf & _
+"10B60..10B7F; Inscriptional Pahlavi"& vbLf & _
+"10B80..10BAF; Psalter Pahlavi"& vbLf & _
+"10C00..10C4F; Old Turkic"& vbLf & _
+"10C80..10CFF; Old Hungarian"& vbLf & _
+"10D00..10D3F; Hanifi Rohingya"& vbLf & _
+"10E60..10E7F; Rumi Numeral Symbols"& vbLf & _
+"10E80..10EBF; Yezidi"& vbLf & _
+"10F00..10F2F; Old Sogdian"& vbLf & _
+"10F30..10F6F; Sogdian"& vbLf & _
+"10FB0..10FDF; Chorasmian"& vbLf & _
+"10FE0..10FFF; Elymaic"& vbLf & _
+"11000..1107F; Brahmi"& vbLf & _
+"11080..110CF; Kaithi"& vbLf & _
+"110D0..110FF; Sora Sompeng"& vbLf & _
+"11100..1114F; Chakma"& vbLf & _
+"11150..1117F; Mahajani"& vbLf & _
+"11180..111DF; Sharada"& vbLf & _
+"111E0..111FF; Sinhala Archaic Numbers"& vbLf & _
+"11200..1124F; Khojki"& vbLf & _
+"11280..112AF; Multani"& vbLf & _
+"112B0..112FF; Khudawadi"& vbLf & _
+"11300..1137F; Grantha"& vbLf & _
+"11400..1147F; Newa"& vbLf & _
+"11480..114DF; Tirhuta"& vbLf & _
+"11580..115FF; Siddham"& vbLf & _
+"11600..1165F; Modi"& vbLf & _
+"11660..1167F; Mongolian Supplement"& vbLf & _
+"11680..116CF; Takri"& vbLf & _
+"11700..1173F; Ahom"& vbLf & _
+"11800..1184F; Dogra"& vbLf & _
+"118A0..118FF; Warang Citi"& vbLf & _
+"11900..1195F; Dives Akuru"& vbLf & _
+"119A0..119FF; Nandinagari"& vbLf & _
+"11A00..11A4F; Zanabazar Square"& vbLf & _
+"11A50..11AAF; Soyombo"& vbLf & _
+"11AC0..11AFF; Pau Cin Hau"& vbLf & _
+"11C00..11C6F; Bhaiksuki"& vbLf & _
+"11C70..11CBF; Marchen"& vbLf & _
+"11D00..11D5F; Masaram Gondi"& vbLf & _
+"11D60..11DAF; Gunjala Gondi"& vbLf & _
+"11EE0..11EFF; Makasar"& vbLf & _
+"11FB0..11FBF; Lisu Supplement"& vbLf & _
+"11FC0..11FFF; Tamil Supplement"& vbLf & _
+"12000..123FF; Cuneiform"& vbLf & _
+"12400..1247F; Cuneiform Numbers and Punctuation"& vbLf & _
+"12480..1254F; Early Dynastic Cuneiform"& vbLf & _
+"13000..1342F; Egyptian Hieroglyphs"& vbLf & _
+"13430..1343F; Egyptian Hieroglyph Format Controls"& vbLf & _
+"14400..1467F; Anatolian Hieroglyphs"& vbLf & _
+"16800..16A3F; Bamum Supplement"& vbLf & _
+"16A40..16A6F; Mro"& vbLf & _
+"16AD0..16AFF; Bassa Vah"& vbLf & _
+"16B00..16B8F; Pahawh Hmong"& vbLf & _
+"16E40..16E9F; Medefaidrin"& vbLf & _
+"16F00..16F9F; Miao"& vbLf & _
+"16FE0..16FFF; Ideographic Symbols and Punctuation"& vbLf & _
+"17000..187FF; Tangut"& vbLf & _
+"18800..18AFF; Tangut Components"& vbLf & _
+"18B00..18CFF; Khitan Small Script"& vbLf & _
+"18D00..18D8F; Tangut Supplement"& vbLf & _
+"1B000..1B0FF; Kana Supplement"& vbLf & _
+"1B100..1B12F; Kana Extended-A"& vbLf & _
+"1B130..1B16F; Small Kana Extension"& vbLf & _
+"1B170..1B2FF; Nushu"& vbLf & _
+"1BC00..1BC9F; Duployan"& vbLf & _
+"1BCA0..1BCAF; Shorthand Format Controls"& vbLf & _
+"1D000..1D0FF; Byzantine Musical Symbols"& vbLf & _
+"1D100..1D1FF; Musical Symbols"& vbLf & _
+"1D200..1D24F; Ancient Greek Musical Notation"& vbLf & _
+"1D2E0..1D2FF; Mayan Numerals"& vbLf & _
+"1D300..1D35F; Tai Xuan Jing Symbols"& vbLf & _
+"1D360..1D37F; Counting Rod Numerals"& vbLf & _
+"1D400..1D7FF; Mathematical Alphanumeric Symbols"& vbLf & _
+"1D800..1DAAF; Sutton SignWriting"& vbLf & _
+"1E000..1E02F; Glagolitic Supplement"& vbLf & _
+"1E100..1E14F; Nyiakeng Puachue Hmong"& vbLf & _
+"1E2C0..1E2FF; Wancho"& vbLf & _
+"1E800..1E8DF; Mende Kikakui"& vbLf & _
+"1E900..1E95F; Adlam"& vbLf & _
+"1EC70..1ECBF; Indic Siyaq Numbers"& vbLf & _
+"1ED00..1ED4F; Ottoman Siyaq Numbers"& vbLf & _
+"1EE00..1EEFF; Arabic Mathematical Alphabetic Symbols"& vbLf & _
+"1F000..1F02F; Mahjong Tiles"& vbLf & _
+"1F030..1F09F; Domino Tiles"& vbLf & _
+"1F0A0..1F0FF; Playing Cards"& vbLf & _
+"1F100..1F1FF; Enclosed Alphanumeric Supplement"& vbLf & _
+"1F200..1F2FF; Enclosed Ideographic Supplement"& vbLf & _
+"1F300..1F5FF; Miscellaneous Symbols and Pictographs"& vbLf & _
+"1F600..1F64F; Emoticons"& vbLf & _
+"1F650..1F67F; Ornamental Dingbats"& vbLf & _
+"1F680..1F6FF; Transport and Map Symbols"& vbLf & _
+"1F700..1F77F; Alchemical Symbols"& vbLf & _
+"1F780..1F7FF; Geometric Shapes Extended"& vbLf & _
+"1F800..1F8FF; Supplemental Arrows-C"& vbLf & _
+"1F900..1F9FF; Supplemental Symbols and Pictographs"& vbLf & _
+"1FA00..1FA6F; Chess Symbols"& vbLf & _
+"1FA70..1FAFF; Symbols and Pictographs Extended-A"& vbLf & _
+"1FB00..1FBFF; Symbols for Legacy Computing"& vbLf & _
+"20000..2A6DF; CJK Unified Ideographs Extension B"& vbLf & _
+"2A700..2B73F; CJK Unified Ideographs Extension C"& vbLf & _
+"2B740..2B81F; CJK Unified Ideographs Extension D"& vbLf & _
+"2B820..2CEAF; CJK Unified Ideographs Extension E"& vbLf & _
+"2CEB0..2EBEF; CJK Unified Ideographs Extension F"& vbLf & _
+"2F800..2FA1F; CJK Compatibility Ideographs Supplement"& vbLf & _
+"30000..3134F; CJK Unified Ideographs Extension G"& vbLf & _
+"E0000..E007F; Tags"& vbLf & _
+"E0100..E01EF; Variation Selectors Supplement"& vbLf & _
+"F0000..FFFFF; Supplementary Private Use Area-A"& vbLf & _
+"100000..10FFFF; Supplementary Private Use Area-B").Split(vbLf)
+                    sdaBLOCKS.d(strline)
+                Next strline
+            End Function 'BlockList
+        End Class 'WordParse
+    End Class 'Have
+End Namespace 'Mx
