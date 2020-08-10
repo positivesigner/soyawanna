@@ -1,0 +1,45 @@
+<button id="b1" type="button" onclick="try {var elem = document.getElementById('p1');var new_node = document.createElement('div');new_node.innerHTML = elem.innerHTML.replace(/(\r\n|\n|\r)/gm,'<br>').replace(/<br>\s+/gi, function(spaces) { return spaces.replace(/\s/g, '&nbsp;'); });new_node.setAttribute('style', elem.getAttribute('style'));elem.parentNode.removeChild(document.getElementById('b1'));elem.parentNode.replaceChild(new_node, elem);} catch(err) {alert(err.message)}">Wrap</button><pre id="p1" style="font-family: sans-serif;">
+
+&lt;button
+    id="b1"
+    type="button"
+    onclick="
+        try {
+            var elem = document.getElementById('p1');
+            var new_node = document.createElement('div');
+            new_node.innerHTML = elem.innerHTML
+              .replace(
+                /(\r\n|\n|\r)/gm,
+                '&lt;br>'
+                )
+              .replace(
+                /&lt;br>\s+/gi,
+                function(spaces) {
+                    return spaces
+                      .replace(
+                        /\s/g,
+                        '&amp;nbsp;'
+                        );
+                    }
+                );
+            new_node.setAttribute(
+                'style',
+                elem.getAttribute('style')
+                );
+            elem.parentNode.removeChild(
+                document.getElementById('b1')
+                );
+            elem.parentNode.replaceChild(
+                new_node,
+                elem
+                );
+        } catch(err) {alert(err.message)}
+        "
+    >
+    Wrap
+    &lt;/button>
+&lt;pre
+    id="p1"
+    style="font-family: sans-serif;"
+    >
+    UrNodeText and UrChildNodes

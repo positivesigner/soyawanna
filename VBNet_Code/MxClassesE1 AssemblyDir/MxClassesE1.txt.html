@@ -1,0 +1,82 @@
+<pre id="p1" style="font-family: sans-serif;">
+Test getting the assembly folder path and the most basic MxClass string functions 
+
+[MxClassesE1]
+- [Compilation Arguments]
+- Option Strict On
+- [Mx.ConstVar, design]
+- Using doubled double-quotes to represent blank string or a single space is not clear wether you missed something. mt and s are checked at compile time and have very specific meanings.
+- Using double-quotes and single-quotes when compiling a text string is tedius because one or the other needs escaped. qs and qt show clearly how many are actually being used.
+- Several very common functions get code shortcuts
+- [Mx.ConstVar, constants]
+- mt = zero-length string
+- qs = double-quotes
+- qt = single-quote
+- s = single space
+- [Mx.ConstVar, functions]
+- AreEqual = shortcut to String.Equals ingoring case
+- HasText = shortcut to Not IsNullorWhiteSpace
+- FileNamed() = shortcut to New MxText.FileName
+- Strapd() = shortcut to New Strap
+
+```
+[MxClassesE1.srcE1.txt] <a href="MxClassesE1.srcE1.txt" target="_blank">_</a>
+<iframe src="MxClassesE1.srcE1.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE1]
+- [Mx.Strap, design]
+- Wrapper for a private StringBuilder variable to hold a string array
+- Many functions are chainable, you can say Obj.Clear().Clear().Clear() and each call returns Obj
+- [Mx.Strap, operator]
+- Widening Operator CType(Strap) As String = return private char array when assigned to string variable
+- [Mx.Strap, function]
+- Clear = chained, empties the private char array
+- d(ur_text) = chained, appends the private char array
+- dLine(ur_text) = chained, appends a new vbCrLf, then text
+- dS(ur_text) = chained, appends single space, then text
+- dSprtr(ur_sprtr, ur_text) = chained, appends separator string, then text
+- HasText = tests whether the private char array is empty
+- Length = size of private char array
+- ToString = returns private char array as string
+
+
+```
+[MxClassesE1.srcE2.txt] <a href="MxClassesE1.srcE2.txt" target="_blank">_</a>
+<iframe src="MxClassesE1.srcE2.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE1]
+- [Mx.MxText.FileName, design]
+- Wrapper for a private String variable used for holding File System paths
+- Keeping System.IO.Path functions in this class makes file path traversal simples
+- Many functions are chainable, you can say Obj.Clear().Clear().Clear() and each call returns Obj
+- [Mx.MxText.FileName, operator]
+- Widening Operator CType(FileName) As String = return private String variable when assigned to string variable
+- Widening Operator CType(String) As FileName = return new FileName object when assigned to FileName variable
+- [Mx.MxText.FileName, function]
+- ToString = return private String variable
+- d(ur_filename) = chainable, append text as File System path to private String variable 
+- gParentDir = return new FileName object with parent path from private String variable
+- Name = sets or returns text of right-most path entry in private String variable
+- ParentDir = sets or returns text before right-most path entry in private String variable
+- wAssemblyDir = chainable, overwrites private String variable with Main Module Folder path
+- wParentDir = chainable, removse right-most path entry from private String variable
+
+```
+[MxClassesE1.srcE3.txt] <a href="MxClassesE1.srcE3.txt" target="_blank">_</a>
+<iframe src="MxClassesE1.srcE3.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE1]
+- [Mx.glbl, design]
+- Wraps the actual .Net global functions so they can be mocked out during testing
+- GetMainModulePath and GetMainModuleFolder are hard because the current assembly path is sometimes different
+- When running the program from a debugger, the assembly is in subfolder bin\Debug and possibly lower. GetMainModulePath and GetMainModulePath allow me to get to the vbproj code folder so relative subfolder paths when debugging match the executable's relative subfolder paths in tests
+- [Mx.glbl, gDiagnostics]
+- GetMainModulePath = GetMainModuleFolder with GetCurrentProcess.MainModule exe file
+- GetMainModuleFolder = GetCurrentProcess.MainModule parent path, removing bin\Debug\Framework folders
+```
+[MxClassesE1.srcE4.txt] <a href="MxClassesE1.srcE4.txt" target="_blank">_</a>
+<iframe src="MxClassesE1.srcE4.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```

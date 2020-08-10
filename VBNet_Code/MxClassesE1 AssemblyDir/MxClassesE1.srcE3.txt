@@ -1,0 +1,104 @@
+    Public Class MxText
+        Public Class FileName
+            Public FilePath As String
+            <System.Diagnostics.DebuggerHidden()>
+            Public Sub New()
+                Me.FilePath = mt
+            End Sub 'New
+            <System.Diagnostics.DebuggerHidden()>
+            Public Sub New(ur_path As String)
+                Me.FilePath = ur_path
+            End Sub 'New
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Widening Operator CType(b As FileName) As String
+                Return b.FilePath
+            End Operator 'CType
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Widening Operator CType(b As String) As FileName
+                Return New FileName(b)
+            End Operator 'CType
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shadows Function ToString() As String
+                ToString = Me.FilePath
+            End Function 'ToString
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function d(ur_file_name As String) As FileName
+                d = Me
+                If HasText(Me.FilePath) Then
+                    Me.FilePath = System.IO.Path.Combine(Me.FilePath, ur_file_name)
+
+                Else 'Me
+                    Me.FilePath = ur_file_name
+                End If 'Me
+            End Function 'd
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function gParentDir() As FileName
+                gParentDir = New FileName(Me.ParentDir)
+            End Function 'gParentDir
+
+            Public Property Name() As String
+                <System.Diagnostics.DebuggerHidden()>
+                Get
+                    Name = mt
+                    Dim strPATH = Me.FilePath
+                    If HasText(strPATH) Then
+                        If HasText(System.IO.Path.GetFileName(strPATH)) = False Then
+                            strPATH = System.IO.Path.GetDirectoryName(strPATH)
+                        End If 'strPATH
+                    End If
+
+                    If HasText(strPATH) Then
+                        Name = System.IO.Path.GetFileName(strPATH)
+                    End If
+                End Get
+
+                <System.Diagnostics.DebuggerHidden()>
+                Set(value As String)
+                    Me.wParentDir.d(value)
+                End Set
+            End Property 'Name
+
+            Public Property ParentDir() As String
+                <System.Diagnostics.DebuggerHidden()>
+                Get
+                    ParentDir = mt
+                    Dim strPATH = Me.FilePath
+                    If HasText(strPATH) Then
+                        If HasText(System.IO.Path.GetFileName(strPATH)) = False Then
+                            strPATH = System.IO.Path.GetDirectoryName(strPATH)
+                        End If 'strPATH
+                    End If 'strPATH
+
+                    If HasText(strPATH) Then
+                        ParentDir = System.IO.Path.GetDirectoryName(strPATH)
+                    End If 'strPATH
+                End Get
+
+                <System.Diagnostics.DebuggerHidden()>
+                Set(value As String)
+                    Dim strFILE_NAME = Me.Name
+                    If HasText(value) Then
+                        Me.FilePath = System.IO.Path.Combine(value, strFILE_NAME)
+
+                    Else 'value
+                        Me.FilePath = strFILE_NAME
+                    End If 'value
+                End Set
+            End Property 'ParentDir
+           
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function wAssemblyDir() As FileName
+                wAssemblyDir = Me
+                Me.FilePath = glbl.gDiagnostics.GetMainModuleFolder
+            End Function 'wAssemblyDir
+ 
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function wParentDir() As FileName
+                wParentDir = Me
+                Me.FilePath = Me.ParentDir
+            End Function 'wParentDir
+        End Class 'FileName
+    End Class 'MxText-FileName

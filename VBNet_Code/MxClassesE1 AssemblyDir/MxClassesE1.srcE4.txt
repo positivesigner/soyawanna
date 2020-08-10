@@ -1,0 +1,30 @@
+    Partial Public Class glbl
+        Public Class gDiagnostics
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function GetMainModulePath() As MxText.FileName
+                Dim flnEXE_PATH = FileNamed().d(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
+                GetMainModulePath = glbl.gDiagnostics.GetMainModuleFolder.d(flnEXE_PATH.Name)
+            End Function 'GetMainModulePath
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function GetMainModuleFolder() As MxText.FileName
+                Dim flnEXE_PATH = FileNamed().d(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
+                Dim flnPARENT_DIR = flnEXE_PATH.gParentDir
+                Dim flnTEMP_DIR = flnPARENT_DIR.gParentDir
+                If AreEqual(flnTEMP_DIR.Name, "Debug") Then
+                    flnPARENT_DIR = flnTEMP_DIR.gParentDir
+                End If
+                
+                If AreEqual(flnPARENT_DIR.Name, "Debug") Then
+                    flnPARENT_DIR = flnPARENT_DIR.gParentDir
+                End If
+                
+                If AreEqual(flnPARENT_DIR.Name, "bin") Then
+                    flnPARENT_DIR = flnPARENT_DIR.gParentDir
+                End If
+                
+                GetMainModuleFolder = flnPARENT_DIR
+            End Function 'GetMainModuleFolder
+        End Class 'gDiagnostics
+    End Class 'glbl
+End Namespace 'Mx

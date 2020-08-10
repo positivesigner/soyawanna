@@ -1,0 +1,57 @@
+    Public Class Strap
+        Private pstbTEXT As System.Text.StringBuilder
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub New()
+            Me.pstbTEXT = New System.Text.StringBuilder
+        End Sub
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shared Widening Operator CType(b As Strap) As String
+            Return b.ToString
+        End Operator
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function Clear() As Strap
+            Clear = Me
+            Call Me.pstbTEXT.Clear()
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function d(ur_text As String) As Strap
+            d = Me.dSprtr(mt, ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dLine(Optional ur_text As String = "") As Strap
+            dLine = Me.dSprtr(vbCrLf, ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dS(ur_text As String) As Strap
+            dS = Me.dSprtr(s, ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dSprtr(ur_sprtr As String, ur_text As String) As Strap
+            dSprtr = Me
+            Me.pstbTEXT.Append(ur_sprtr).Append(ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function HasText() As Boolean
+            HasText = (Me.Length > 0)
+        End Function
+
+        Public ReadOnly Property Length As Integer
+            <System.Diagnostics.DebuggerHidden()>
+            Get
+                Length = Me.pstbTEXT.Length
+            End Get
+        End Property
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shadows Function ToString() As String
+            ToString = Me.pstbTEXT.ToString
+        End Function
+    End Class 'Strap
