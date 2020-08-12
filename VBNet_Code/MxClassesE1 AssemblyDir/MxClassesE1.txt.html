@@ -49,7 +49,7 @@ Test getting the assembly folder path and the most basic MxClass string function
 [MxClassesE1]
 - [Mx.MxText.FileName, design]
 - Wrapper for a private String variable used for holding File System paths
-- Keeping System.IO.Path functions in this class makes file path traversal simples
+- Keeping System.IO.Path functions in this class makes file path traversal simple
 - Many functions are chainable, you can say Obj.Clear().Clear().Clear() and each call returns Obj
 - [Mx.MxText.FileName, operator]
 - Widening Operator CType(FileName) As String = return private String variable when assigned to string variable
@@ -79,4 +79,41 @@ Test getting the assembly folder path and the most basic MxClass string function
 ```
 [MxClassesE1.srcE4.txt] <a href="MxClassesE1.srcE4.txt" target="_blank">_</a>
 <iframe src="MxClassesE1.srcE4.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[Test the program]
+- [AppStartup module]
+- Command-line programs start and complete within one procedure, usually named Main
+- [Mx namespace]
+- By calling the processing logic from under the Mx namespace, all the Mx classes and functions do not need the Mx prefix to be used or to be imported
+- [Want class]
+- This is a holding class for the main processing logic
+- Links to expected environment files could be placed under a separate "Have" class
+- [Console_WriteAssemblyDir sub]
+- The processing logic function should describe where you see the results, and what results to expect
+- 'Use the Console user interface to write out the Assembly Directory name'
+```
+[MxClassesE1.srcE5.txt] <a href="MxClassesE1.srcE5.txt" target="_blank">_</a>
+<iframe src="MxClassesE1.srcE5.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[Testing project in .ZIP file]
+- "~Run Local.cmd" batch program runs the VB Project and shows the test results in the console window
+- This creates "bin\Debug\..." folders to compile the VB Project, but the console window should show main folder's name as the Assembly Directory.
+- Type the "exit" command or close the command line window when complete
+- "~Rebuild Local.cmd" batch program creates a "Dep" subdirectory with the VB Project compiled as .EXE
+- Running the Dep folder's .EXE program will create a %APPDATA% sub-directory to extract all the .DLL files needed to run the VB Project, but the console window should show the Dep folder as the Assembly Directory.
+
+```
+[AssemblyDir.zip] <a href="AssemblyDir.zip" target="_blank">_</a>
+```
+
+- You can create a batch program to set the environment variable DOTNET_BUNDLE_EXTRACT_BASE_DIR to the current directory "." and then run the VB Project .EXE
+- This will create a sub-directory to the current folder where the .DLL files are extracted
+- After the VB Project completes, the batch program can remove the .DLL files
+```
+set DOTNET_BUNDLE_EXTRACT_BASE_DIR=.
+rd /s /q myApp
+cmd /k myApp.exe
+rd /s /q myApp
 ```

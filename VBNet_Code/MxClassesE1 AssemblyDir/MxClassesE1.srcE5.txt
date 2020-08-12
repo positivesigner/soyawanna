@@ -1,0 +1,14 @@
+Module AppStartup
+    Sub Main(args As String())
+        Call Mx.Want.Console_WriteAssemblyDir()
+    End Sub 'Main
+End Module 'AppStartup
+
+Namespace Mx
+    Public Class Want
+        Public Shared Sub Console_WriteAssemblyDir()
+            Dim stpASSEMBLY_DIR = Strapd().dSprtr("[", FileNamed().wAssemblyDir).d("]")
+            Console.WriteLine(stpASSEMBLY_DIR)
+        End Sub 'Console_WriteAssemblyDir
+    End Class 'Want
+End Namespace 'Mx
