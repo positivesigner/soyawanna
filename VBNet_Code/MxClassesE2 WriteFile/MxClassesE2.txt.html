@@ -1,0 +1,123 @@
+<pre id="p1" style="font-family: sans-serif;">
+Test writing a UTF-8 file to the assembly folder path and and some additional MxClass functions 
+
+[MxClassesE2]
+- [Mx.ConstVar, functions]
+- ContainingText(ur_large_text, ur_small_text) = shortcut to InStr ingoring case
+- gUTF8_FileEncoding = shortcut to a one-time created object
+- EndingWithText(ur_large_text, ur_small_text) = shortcut to AreEqual on the end of ur_large_text
+- StartingWithText(ur_large_text, ur_small_text) = shortcut to AreEqual on the start of ur_large_text
+- [glbl class]
+- This holds a private variable and only creates the object on the first time gUTF8_Encoding gets called
+
+```
+[MxClassesE2.srcE1.txt] <a href="MxClassesE2.srcE1.txt" target="_blank">_</a>
+<iframe src="MxClassesE2.srcE1.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE2]
+- [Mx.ErrListBase, design]
+- Wrapper for a private Strap variable to hold an error message
+- This class is designed to get the Stack Trace and Exception information into a displayable format
+- Instead of testing whether a notice message is blank before continuing, check DoContinue
+- [Mx.ErrListBase, functions]
+- DoContinue = True if the private Strap variable is empty
+- dError_Data(ur_exception, ur_methodbase, Optional ur_procedure_status)
+    = Logs an error message with a specific function name
+- dError_Stack(ur_exception) = Logs an error message with the entire stack trace of function names
+- Found = True if the private Strap variable has text
+- ToString = return private Strap variable as String
+- Throw_Error_Data(ur_exception, ur_methodbase, ur_procedure_status)
+    = shortcut to call dError_Data followed by Throw New LocalException
+- [LocalException class]
+- This class inherts from System.Exception
+- It is used to distinguish System generated exceptions from exceptions that are re-thrown
+
+```
+[MxClassesE2.srcE2.txt] <a href="MxClassesE2.srcE2.txt" target="_blank">_</a>
+<iframe src="MxClassesE2.srcE2.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE2]
+- [Mx.Strap, function]
+- gCopy = return a new object with a copy of the text
+- r1(ur_text) = replaces the private String variable's @r1 text values with ur_text
+- r2(ur_text) = replaces the private String variable's @r2 text values with ur_text
+- rx(ur_index, ur_text) = replaces the private String variable's ("@r" and ur_index) text values with ur_text
+
+```
+[MxClassesE2.srcE3.txt] <a href="MxClassesE2.srcE3.txt" target="_blank">_</a>
+<iframe src="MxClassesE2.srcE3.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE2]
+- [Mx.MxText.FileName, functions]
+- dAppendEXT(ur_ext) = chainable, Appends ur_ext (or ".ur_ext" if ur_ext does not start with ".") to the private String variable
+- dAppendFileGroup(ur_text, Optional ur_separator) = chainable, Appends ur_separator and ur_text before the filename extension
+- dNowFileGroupYMDHMS(Optional ur_separator) = chainable, Appends ur_separator and Now.ToString(YmMdDhHmMsS) before the filename extension
+- dTempFileName() = chainable, Appends a new random string of 11 characters to the path
+- Ext property = Returns or overwrites the filename extenion
+- FileGroup property = Returns or overwrites the filename text before the filename extenion
+- gCopy = chainable, returns a new object with a copy of the file path
+- wEXT(ur_ext) = chainable, overwites the filename extension
+- Wrap(ur_path) = chainable, overwrites the entire path
+
+```
+[MxClassesE2.srcE4.txt] <a href="MxClassesE2.srcE4.txt" target="_blank">_</a>
+<iframe src="MxClassesE2.srcE4.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[MxClassesE2]
+- [Mx.glbl.gWindowsFS, global functions]
+- Delete = shortcut to System.IO.File.Delete
+- GetFiles(ur_search_folder, ur_filespec, ur_recurse_option) = shortcut to System.IO.Directory.GetFiles
+- GetDirectoriesGetDirectories(ur_search_folder, ur_filespec, ur_recurse_option)
+    = shortcut to System.IO.Directory.GetDirectories
+- GetRandomFileName = shortcut to System.IO.Path.GetRandomFileName
+- HasDir = shortcut to System.IO.Directory.Exists
+- HasFile = shortcut to System.IO.File.Exists
+- Move = shortcut to System.IO.File.Move
+- ReadAllText = shortcut to System.IO.File.ReadAllText
+- WriteAllText = shortcut to System.IO.File.WriteAllText
+
+```
+[MxClassesE2.srcE5.txt] <a href="MxClassesE2.srcE5.txt" target="_blank">_</a>
+<iframe src="MxClassesE2.srcE5.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+
+[Test the program]
+- [AppStartup.Main sub]
+- Call the Error Handler sub, which calls the processing logic sub
+- [Mx.Want.Console_WriteAssemblyDir_errhnd sub]
+- Hold a Strap variable passed into the processing logic sub
+- Hold an ErrListBase variable to catch system generated exceptions
+- Call the processing logic sub in a Try-Catch block
+- Display the processing logic result
+- Display any system generated exceptions
+- [ConsoleFS_WriteUnicodeText sub]
+- 'Use the Console user interface and the File System to write out the Unicode Text'
+- Look in the current directory for the "UTF-8 test greetings.txt" file
+- Create a "WriteUnicodeText.txt" output file with the a timestamp name and temp filename
+- For each UTF-8 Test file line, write it to the output file
+- For each UTF-8 Test file line, compare to the output file
+    - Fail the test if there are a different number of lines or if the lines don't match
+
+```
+[MxClassesE2.srcE6.txt] <a href="MxClassesE2.srcE6.txt" target="_blank">_</a>
+<iframe src="MxClassesE2.srcE6.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
+
+[Testing project in .ZIP file]
+- "~Run Local.cmd" batch program runs the VB Project and shows the test results in the console window
+- Type the "exit" command or close the command line window when complete
+- "~Rebuild Local.cmd" batch program creates a "Dep" subdirectory with the VB Project compiled as .EXE
+- ["~Run Test.cmd" batch program]
+- Clears out the temp files from the Dep folder
+- Copies the UTF-8 Test file to the Dep folder
+- Runs the executable
+- Outputs the .RESULT file
+- Waits for you to press a key to continue
+```
+[WriteUnicodeText.zip] <a href="WriteUnicodeText.zip" target="_blank">_</a>
+```

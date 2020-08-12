@@ -1,0 +1,50 @@
+Namespace Mx
+    Partial Public Class glbl
+        Public Class gWindowsFS
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Sub Delete(ur_path As String)
+                System.IO.File.Delete(ur_path)
+            End Sub
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function GetFiles(ur_search_folder As String, ur_filespec As String, ur_recurse_option As System.IO.SearchOption) As String()
+                GetFiles = System.IO.Directory.GetFiles(ur_search_folder, ur_filespec, ur_recurse_option)
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function GetDirectories(ur_search_folder As String, ur_filespec As String, ur_recurse_option As System.IO.SearchOption) As String()
+                GetDirectories = System.IO.Directory.GetDirectories(ur_search_folder, ur_filespec, ur_recurse_option)
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function GetRandomFileName() As String
+                GetRandomFileName = System.IO.Path.GetRandomFileName
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function HasDir(ur_search_folder As String) As Boolean
+                HasDir = System.IO.Directory.Exists(ur_search_folder)
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function HasFile(ur_search_Path As String) As Boolean
+                HasFile = System.IO.File.Exists(ur_search_Path)
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Sub Move(ur_source_path As String, ur_dest_path As String)
+                System.IO.File.Move(ur_source_path, ur_dest_path)
+            End Sub
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function ReadAllText(ur_file_path As String) As String
+                ReadAllText = System.IO.File.ReadAllText(ur_file_path, Mx.gUTF8_FileEncoding())
+            End Function
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Sub WriteAllText(ur_file_path As String, ur_text As String)
+                Call System.IO.File.WriteAllText(ur_file_path, ur_text, Mx.gUTF8_FileEncoding())
+            End Sub
+        End Class 'gWindowsFS
+    End Class 'glbl
+End Namespace 'Mx

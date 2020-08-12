@@ -1,3 +1,4 @@
+Namespace Mx
     Partial Public Class glbl
         Public Class gDiagnostics
             <System.Diagnostics.DebuggerHidden()>

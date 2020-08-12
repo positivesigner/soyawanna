@@ -1,3 +1,4 @@
+Namespace Mx
     Public Class Strap
         Private pstbTEXT As System.Text.StringBuilder
 
@@ -55,3 +56,4 @@
             ToString = Me.pstbTEXT.ToString
         End Function
     End Class 'Strap
+End Namespace 'Mx

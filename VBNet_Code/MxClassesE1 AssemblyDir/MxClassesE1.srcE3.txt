@@ -1,3 +1,4 @@
+Namespace Mx
     Public Class MxText
         Public Class FileName
             Public FilePath As String
@@ -102,3 +103,4 @@
             End Function 'wParentDir
         End Class 'FileName
     End Class 'MxText-FileName
+End Namespace 'Mx

@@ -73,7 +73,7 @@ Test getting the assembly folder path and the most basic MxClass string function
 - Wraps the actual .Net global functions so they can be mocked out during testing
 - GetMainModulePath and GetMainModuleFolder are hard because the current assembly path is sometimes different
 - When running the program from a debugger, the assembly is in subfolder bin\Debug and possibly lower. GetMainModulePath and GetMainModulePath allow me to get to the vbproj code folder so relative subfolder paths when debugging match the executable's relative subfolder paths in tests
-- [Mx.glbl, gDiagnostics]
+- [Mx.glbl.gDiagnostics, global functions]
 - GetMainModulePath = GetMainModuleFolder with GetCurrentProcess.MainModule exe file
 - GetMainModuleFolder = GetCurrentProcess.MainModule parent path, removing bin\Debug\Framework folders
 ```

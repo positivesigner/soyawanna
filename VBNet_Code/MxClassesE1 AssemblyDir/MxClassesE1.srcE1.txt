@@ -10,6 +10,7 @@ Namespace Mx
         Public Function AreEqual(ur_val As String, ur_cmp As String) As Boolean
             AreEqual = String.Equals(ur_val, ur_cmp, System.StringComparison.CurrentCultureIgnoreCase)
         End Function
+        <System.Diagnostics.DebuggerHidden()>
         Public Function HasText(ur_value As String) As Boolean
             HasText = Not String.IsNullOrWhiteSpace(ur_value)
         End Function 'HasText
@@ -24,3 +25,4 @@ Namespace Mx
             Strapd = New Strap
         End Function
     End Module 'ConstVar
+End Namespace 'Mx

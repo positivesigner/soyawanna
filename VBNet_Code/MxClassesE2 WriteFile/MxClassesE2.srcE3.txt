@@ -1,0 +1,26 @@
+Namespace Mx
+    Public Class Strap
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function gCopy() As Strap
+            gCopy = New Strap().d(Me)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function r1(ur_text As String) As Strap
+            r1 = Me
+            Call Me.pstbTEXT.Replace("@r1", ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function r2(ur_text As String) As Strap
+            r2 = Me
+            Call Me.pstbTEXT.Replace("@r2", ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function rx(ur_index As Integer, ur_text As String) As Strap
+            rx = Me
+            Call Me.pstbTEXT.Replace("@r" & ur_index, ur_text)
+        End Function
+    End Class 'Strap
+End Namespace 'Mx

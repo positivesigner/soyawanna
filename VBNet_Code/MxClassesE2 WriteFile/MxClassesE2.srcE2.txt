@@ -1,0 +1,72 @@
+Namespace Mx
+    Public Class ErrListBase
+        Dim pstpNOTICE_MSG As Strap
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub New()
+            pstpNOTICE_MSG = Strapd()
+        End Sub
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function DoContinue() As Boolean
+            DoContinue = (Me.Found = False)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub dError_Data(ur_exception As System.Exception, ur_methodbase As System.Reflection.MethodBase, Optional ur_procedure_status As String = mt)
+            If pstpNOTICE_MSG.Length > 0 Then
+                pstpNOTICE_MSG.dLine().dLine()
+            End If
+
+            pstpNOTICE_MSG.dLine(ur_exception.Message)
+            pstpNOTICE_MSG.dLine(Strapd().d("Error in @r1.@r2").r1(ur_methodbase.DeclaringType.Name).r2(ur_methodbase.Name).dS("(status: @r1)").r1(ur_procedure_status))
+        End Sub 'dError_Data
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub dError_Stack(ur_exception As System.Exception)
+            Dim hr As Integer = System.Runtime.InteropServices.Marshal.GetHRForException(ur_exception)
+            pstpNOTICE_MSG.dLine(ur_exception.GetType.ToString & "(0x" & hr.ToString("X8") & "): " & ur_exception.Message & System.Environment.NewLine & ur_exception.StackTrace & System.Environment.NewLine)
+            Dim st = New System.Diagnostics.StackTrace(ur_exception, True)
+            For Each objFRAME In st.GetFrames
+                If objFRAME.GetFileLineNumber() > 0 Then
+                    pstpNOTICE_MSG.dLine("Line:" & objFRAME.GetFileLineNumber() & " Filename: " & System.IO.Path.GetFileName(objFRAME.GetFileName) & System.Environment.NewLine)
+                End If
+            Next objFRAME
+        End Sub 'dError_Stack
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shadows Function Found() As Boolean
+            Found = (pstpNOTICE_MSG.Length > 0)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shadows Function ToString() As String
+            ToString = pstpNOTICE_MSG
+        End Function 'ToString
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub Throw_Error_Data(ur_exception As System.Exception, ur_methodbase As System.Reflection.MethodBase, Optional ur_procedure_status As String = mt)
+            Call Me.dError_Data(ur_exception, ur_methodbase, ur_procedure_status)
+            Throw New LocalException(mt)
+        End Sub 'Throw_Error_Data
+
+
+        Public Class LocalException
+            Inherits System.Exception
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Sub New()
+            End Sub
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Sub New(message As String)
+                MyBase.New(message)
+            End Sub
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Sub New(message As String, inner As System.Exception)
+                MyBase.New(message, inner)
+            End Sub
+        End Class 'LocalException
+    End Class 'ErrListBase
+End Namespace 'Mx
