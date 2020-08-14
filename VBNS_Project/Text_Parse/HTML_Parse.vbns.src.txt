@@ -1,0 +1,320 @@
+..\MxClasses\MxBaseEc12cmd.vb
+Call Mx.Want.ParseCode_and_WriteSections()
+RetVal = "QUIT"
+End Function
+End Class
+End Namespace
+
+'Module Program
+'    Sub Main(args As String())
+'        Call Mx.Want.ParseCode_and_WriteSections()
+'    End Sub
+'End Module
+
+Namespace Mx
+    Public Class Want
+        Public Shared Sub ParseCode_and_WriteSections()
+            Dim objWORD_PARSE = New Have.sWordParse
+            'Dim flnROOT = FileNamed().wAssemblyDir(System.Reflection.Assembly.GetEntryAssembly)
+            Dim flnROOT = FileNamed().d(System.Environment.CurrentDirectory)
+            Dim flnFILE = flnROOT.gCopy.d("empty_v5d1ec22.html")
+            Dim flnOUTPUT = flnROOT.gCopy.d("parse.tsv")
+            Using stmOUT_FILE = New System.IO.StreamWriter(flnOUTPUT, False, gUTF8_FileEncoding)
+                Using stmIN_FILE = New System.IO.StreamReader(flnFILE, gUTF8_FileEncoding)
+                    Call objWORD_PARSE.Apply(stmIN_FILE, stmOUT_FILE)
+                End Using
+            End Using
+            MsgBox(flnOUTPUT,,"")
+        End Sub 'ParseCode_and_WriteSections
+    End Class  'Want
+
+    Public Class Have
+        Public Class enmST
+            Inherits bitBASE
+            Public Shared branch_closecomment As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared branch_closescript_tag As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared branch_tag_or_comment As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared comment_tag As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared invalid_interdoc_text As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared invalid_tag As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared interdoc_ws As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared script_code As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared tag As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared text As enmST = TRow(Of enmST).glbl.NewBitBase()
+            Public Shared transition As enmST = TRow(Of enmST).glbl.NewBitBase()
+        End Class 'enmST
+
+        Public Class rWordParse
+            Public parse_state As enmST
+            Public parse_text As String
+        End Class
+
+        Public Class sWordParse
+            Inherits Objlist(Of rWordParse)
+
+            Public Sub Apply(ur_infile As System.IO.StreamReader, ur_outfile As System.IO.StreamWriter)
+                Dim chr_sp = AscW(s)
+                Dim chr_tab = AscW(vbTab)
+                Dim chr_cr = AscW(vbCr)
+                Dim chr_lf = AscW(vbLf)
+                Dim chr_exclm = AscW("!")
+                Dim chr_fslash = AscW("/")
+                Dim chr_gt = AscW(">")
+                Dim chr_hyph = AscW("-")
+                Dim chr_lt = AscW("<")
+                Dim strLIT_CLOSE_COMMENT = "-->"
+                Dim strLIT_CLOSE_SCRIPT = "</script>"
+                Dim strLIT_COMMENT_TAG = "<!--"
+                Dim strLIT_SCRIPT_TAG_START_E1 = "<script "
+                Dim strLIT_SCRIPT_TAG_START_E2 = "<script>"
+                Dim objSTATE = enmST.interdoc_ws
+                Dim stpLINE = Strapd()
+                While ur_infile.EndOfStream = False
+                    Dim intENTRY = ur_infile.Read()
+                    Dim strENTRY = ChrW(intENTRY)
+                    Dim bolNORMAL_CHAR = False
+                    If objSTATE Is enmST.branch_closecomment Then
+                        Dim abc = mt
+                    End If
+                    Select Case intENTRY
+                        Case chr_sp, chr_tab, chr_cr, chr_lf
+                            'begining of doc to first tag
+                            If objSTATE Is enmST.interdoc_ws Then
+                                stpLINE.d(strENTRY)
+
+                            Else
+                                bolNORMAL_CHAR = True
+                            End If
+
+                        Case chr_exclm
+                            '<!--comment
+                            '<!directive_tag
+                            If objSTATE Is enmST.branch_tag_or_comment Then
+                                stpLINE.d(strENTRY)
+                                If StartingWithText(strLIT_COMMENT_TAG, stpLINE) = False Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.tag)
+                                End If
+
+                            Else
+                                bolNORMAL_CHAR = True
+                            End If
+
+                        Case chr_fslash
+                            '</tag
+                            If objSTATE Is enmST.branch_tag_or_comment Then
+                                objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.tag)
+                                stpLINE.d(strENTRY)
+
+                            Else
+                                bolNORMAL_CHAR = True
+                            End If
+
+                        Case chr_gt
+                            '<--comment-->
+                            '<script>code</script>
+                            '<tag>text
+                            '<script>code
+                            If objSTATE Is enmST.branch_closecomment Then
+                                stpLINE.d(strENTRY)
+                                If AreEqual(strLIT_CLOSE_COMMENT, stpLINE) Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.comment_tag)
+                                    Me.Apply(objSTATE, stpLINE)
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.text)
+                                    stpLINE.Clear()
+
+                                Else
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.comment_tag)
+                                End If
+
+                            ElseIf objSTATE Is enmST.branch_closescript_tag Then
+                                stpLINE.d(strENTRY)
+                                If AreEqual(strLIT_CLOSE_SCRIPT, stpLINE) Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.tag)
+                                    Me.Apply(objSTATE, stpLINE)
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.text)
+                                    stpLINE.Clear()
+
+                                Else
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.script_code)
+                                End If
+
+                            ElseIf objSTATE Is enmST.tag Then
+                                stpLINE.d(strENTRY)
+                                Dim strTAG = stpLINE.ToString
+                                Me.Apply(objSTATE, stpLINE)
+                                If StartingWithText(strTAG, strLIT_SCRIPT_TAG_START_E1) OrElse
+                                  AreEqual(strTAG, strLIT_SCRIPT_TAG_START_E2) Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.script_code)
+                                    stpLINE.Clear()
+
+                                Else
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.text)
+                                    stpLINE.Clear()
+                                End If
+
+                            Else
+                                bolNORMAL_CHAR = True
+                            End If
+
+                        Case chr_hyph
+                            '<!--comment-
+                            '<!--comment--
+                            If objSTATE Is enmST.branch_closecomment Then
+                                stpLINE.d(strENTRY)
+                                If StartingWithText(strLIT_CLOSE_COMMENT, stpLINE) = False Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.comment_tag)
+                                End If
+
+                            ElseIf objSTATE Is enmST.comment_tag Then
+                                Me.Apply(objSTATE, stpLINE)
+                                objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.branch_closecomment)
+                                stpLINE.Clear.d(strENTRY)
+
+                            ElseIf objSTATE Is enmST.branch_tag_or_comment Then
+                                stpLINE.d(strENTRY)
+                                If AreEqual(strLIT_COMMENT_TAG, stpLINE) Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.comment_tag)
+
+                                ElseIf StartingWithText(strLIT_COMMENT_TAG, stpLINE) = False Then
+                                    objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.tag)
+                                End If
+
+                            Else
+                                bolNORMAL_CHAR = True
+                            End If
+
+                        Case chr_lt
+                            'beginning of doc to first tag <
+                            'text to new tag <
+                            '<script>code<
+                            If _
+                              objSTATE Is enmST.interdoc_ws OrElse
+                              objSTATE Is enmST.text Then
+                                Me.Apply(objSTATE, stpLINE)
+                                objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.branch_tag_or_comment)
+                                stpLINE.Clear.d(strENTRY)
+
+                            ElseIf objSTATE Is enmST.script_code Then
+                                Me.Apply(objSTATE, stpLINE)
+                                objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.branch_closescript_tag)
+                                stpLINE.Clear.d(strENTRY)
+
+                            Else
+                                bolNORMAL_CHAR = True
+                            End If
+
+                        Case Else 'intENTRY
+                            bolNORMAL_CHAR = True
+                    End Select 'intENTRY
+
+                    If bolNORMAL_CHAR Then
+                        '<!--comment-    invalid without ending ->
+                        '<!--comment--   invalid without ending >
+                        '<!--comment---  invalid without ending -
+                        '<!-             invalid without ending -
+                        If _
+                          objSTATE Is enmST.branch_closecomment Then
+                            objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.comment_tag)
+                            stpLINE.d(strENTRY)
+
+                            '</script>
+                        ElseIf objSTATE Is enmST.branch_closescript_tag Then
+                            stpLINE.d(strENTRY)
+                            If StartingWithText(strLIT_CLOSE_SCRIPT, stpLINE) = False Then
+                                objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.script_code)
+                            End If
+
+                            '<tag
+                            '<!directive
+                        ElseIf _
+                          objSTATE Is enmST.branch_closescript_tag OrElse
+                          objSTATE Is enmST.branch_tag_or_comment Then
+                            objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.tag)
+                            stpLINE.d(strENTRY)
+
+                            'beginning of doc to first tag   invalid
+                        ElseIf objSTATE Is enmST.interdoc_ws Then
+                            Me.Apply(objSTATE, stpLINE)
+                            objSTATE = Me.Apply(stpLINE, objSTATE, strENTRY, enmST.invalid_interdoc_text)
+                            stpLINE.Clear.d(strENTRY)
+
+                            '<!--comment
+                            '<script>code
+                            '<tag
+                            'text
+                        ElseIf _
+                          objSTATE Is enmST.comment_tag OrElse
+                          objSTATE Is enmST.invalid_interdoc_text OrElse
+                          objSTATE Is enmST.invalid_tag OrElse
+                          objSTATE Is enmST.script_code OrElse
+                          objSTATE Is enmST.tag OrElse
+                          objSTATE Is enmST.text Then
+                            stpLINE.d(strENTRY)
+                        End If
+                    End If 'bolNORMAL_CHAR
+                End While 'ur_infile
+
+                If stpLINE.HasText Then
+                    Me.Apply(objSTATE, stpLINE)
+                End If
+
+                For Each objWORD In Me
+                    If objWORD.parse_state Is enmST.tag OrElse
+                    objWORD.parse_state Is enmST.text OrElse
+                    objWORD.parse_state Is enmST.transition Then
+                        If HasText(objWORD.parse_text) Then
+                            ur_outfile.WriteLine(objWORD.parse_text)
+                        End If
+
+                    Else
+                        ur_outfile.WriteLine(objWORD.parse_state.name)
+                    End If
+                Next 'objWORD
+            End Sub 'Apply(ur_infile
+
+            '<System.Diagnostics.DebuggerHidden()>
+            Public Sub Apply(ur_state As enmST, ur_text As String)
+                Dim rowWORD = New rWordParse
+                rowWORD.parse_state = ur_state
+                rowWORD.parse_text = ur_text
+
+                If ur_state IsNot enmST.invalid_tag AndAlso
+                  ur_state IsNot enmST.invalid_interdoc_text Then
+                    For ROWCTR = Me.Count To 1 Step -1
+                        If Me.tr_b1(ROWCTR).parse_state Is enmST.transition Then
+                            Me.RemoveAt(b0(ROWCTR))
+
+                        Else
+                            Exit For
+                        End If
+                    Next ROWCTR
+
+                    Dim objPREV_STATE = enmST.interdoc_ws
+                    Dim strPREV_TEXT = mt
+                    If Me.Count > 0 Then
+                        objPREV_STATE = Me.tr_b1(Me.Count).parse_state
+                        strPREV_TEXT = Me.tr_b1(Me.Count).parse_text
+                    End If
+
+                    If _
+                      ur_state Is enmST.text AndAlso
+                      AreEqual(strPREV_TEXT, "<pre>") Then
+                        rowWORD.parse_text = "preformatted text"
+
+                    End If
+                End If 'ur_state
+
+                Me.Add(rowWORD)
+            End Sub 'Apply(ur_state
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Function Apply(ur_line As String, ur_cur_state As enmST, ur_char As String, ur_new_state As enmST) As enmST
+                Apply = ur_new_state
+                Dim rowWORD = New rWordParse
+                rowWORD.parse_state = enmST.transition
+                rowWORD.parse_text = "(" & ur_line & ") " & ur_cur_state.name & " to (" & ur_char & ") " & ur_new_state.name
+                Me.Add(rowWORD)
+            End Function 'Apply(ur_cur_state
+        End Class 'WordParse
+    End Class 'Have
+End Namespace 'Mx
