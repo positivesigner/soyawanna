@@ -8,23 +8,23 @@ missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\PocketGit App.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Utilities\Git Utilities.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Google_HostedApp\Google Forms\Survey linked to Worksheet.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\JavaScript\JS_Notes\JavaScript Code.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\AddOns\Hiding The Sidebar On Startup.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\AddOns\Text Replace Bar.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Commands\today.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Projects\Month Calendar.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Template\DivPop.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Template\SaveAllChanges.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\Template\TW_Template.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TiddlerMove Design.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TiddlyWiki Code.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TiddlyWiki Template Setup.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW Number Parsing.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW Save Filename.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TWCompare_ExportFiles Request.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_CSVSplit.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_CSVSplit_result.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_CSVSplit_sample.src.txt
-missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki\TW_Notes\TW_Upgrade_URLs.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\AddOns\Hiding The Sidebar On Startup.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\AddOns\Text Replace Bar.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\Commands\today.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\Projects\Month Calendar.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\Template\DivPop.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\Template\SaveAllChanges.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\Template\TW_Template.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TiddlerMove Design.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TiddlyWiki Code.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TiddlyWiki Template Setup.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TW Number Parsing.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TW Save Filename.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TWCompare_ExportFiles Request.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TW_CSVSplit.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TW_CSVSplit_result.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TW_CSVSplit_sample.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\TiddlyWiki_Code\TW_Notes\TW_Upgrade_URLs.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Full Page Screen Capture.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Chrome Extensions\Save Page as SingleFile.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Windows_App\Disk Emulator\ImDisk RamDisk.src.txt
