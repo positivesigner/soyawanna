@@ -1,0 +1,133 @@
+\define button_filter_header(ur_label, ur_field, ur_filter, ur_disp)
+     @@white-space: nowrap;
+    <$list filter='[[$ur_disp$]has[text]]'>
+    <$button class='tc-btn-invisible' style='width:100%;height:100%'>Filter: {{!!text}}
+<br>
+$ur_label$
+<$action-setfield $tiddler='$ur_filter$' text=''/>
+<$action-setfield $tiddler='$ur_disp$' text=''/>
+    </$button>
+    </$list>
+    <$list filter='[[$ur_filter$]!has[text]]'>
+    <$list filter='[[$:/state/popup/disp-sort_by]has[text]]'>
+    <$list filter='[{!!text}match[$ur_field$]]'>
+    <$button class='tc-btn-invisible' style='width:100%;height:100%'>
+    $ur_label$
+    <$action-setfield $tiddler='$:/state/popup/sort_by' text='!sort[$ur_field$]'/>
+    <$action-setfield $tiddler='$:/state/popup/disp-sort_by' text=''/>
+    </$button>
+    </$list>
+    <$list filter='[{!!text}!match[$ur_field$]]'>
+    <$button class='tc-btn-invisible' style='width:100%;height:100%'>
+    $ur_label$
+    <$action-setfield $tiddler='$:/state/popup/sort_by' text='sort[$ur_field$]'/>
+    <$action-setfield $tiddler='$:/state/popup/disp-sort_by' text='$ur_field$'/>
+    </$button>
+    </$list>
+    </$list>
+    <$list filter='[[$:/state/popup/disp-sort_by]count[]match[0]] [[$:/state/popup/disp-sort_by]!has[text]]'>
+    <$button class='tc-btn-invisible' style='width:100%;height:100%'>
+    $ur_label$
+    <$action-setfield $tiddler='$:/state/popup/sort_by' text='sort[$ur_field$]'/>
+    <$action-setfield $tiddler='$:/state/popup/disp-sort_by' text='$ur_field$'/>
+    </$button>
+    </$list>
+    </$list>
+    @@
+\end
+\define button_filter_detail(ur_label, ur_filter)
+<$button class='tc-btn-invisible' style='width:100%;height:100%'>$ur_filter$
+<$action-setfield $tiddler='$:/state/popup/filter-$ur_label$' text='field:$ur_label$[$ur_filter$]'
+ />
+<$action-setfield $tiddler='$:/state/popup/disp-filter-$ur_label$' text='$ur_filter$' />
+</$button>
+\end
+\define disp_rows(ur_sort_by, ur_filter_1, ur_filter_2, ur_filter_3, ur_filter_4, ur_filter_5)
+<$list filter='[tag[WORD]has[right-hand]has[location]has[palm]has[base-palm]has[move]has[eng-vocab]tag[section-1]$ur_filter_1$$ur_filter_2$$ur_filter_3$$ur_filter_4$$ur_filter_5$$ur_sort_by$]' >
+<tr>
+  <td>
+    <$macrocall $name=button_filter_detail ur_label='right-hand' ur_filter={{!!right-hand}} />
+  </td>
+  <td>
+    <$macrocall $name=button_filter_detail ur_label='location' ur_filter={{!!location}} />
+  </td>
+  <td>
+    <$macrocall $name=button_filter_detail ur_label='palm' ur_filter={{!!palm}} />
+  </td>
+  <td>
+    <$macrocall $name=button_filter_detail ur_label='base-palm' ur_filter={{!!base-palm}} />
+  </td>
+  <td>
+    <$macrocall $name=button_filter_detail ur_label='move' ur_filter={{!!move}} />
+  </td>
+  <td>
+    <$link to={{!!title}}><$view field="eng-vocab"/></$link>
+  </td>
+</tr>
+</$list>
+\end
+
+* Sort columns by clicking header word
+* Filter columns by clicking on a syllable
+
+<table>
+<tr>
+  <th>
+    <$macrocall $name=button_filter_header
+    ur_label='Right hand'
+    ur_field='right-hand'
+    ur_filter='$:/state/popup/filter-right-hand'
+    ur_disp='$:/state/popup/disp-filter-right-hand'
+    />
+   </th>
+  <th>
+    <$macrocall $name=button_filter_header
+    ur_label='Location'
+    ur_field='location'
+    ur_filter='$:/state/popup/filter-location'
+    ur_disp='$:/state/popup/disp-filter-location'
+    />
+  </th>
+  <th>
+    <$macrocall $name=button_filter_header
+    ur_label='Palm'
+    ur_field='palm'
+    ur_filter='$:/state/popup/filter-palm'
+    ur_disp='$:/state/popup/disp-filter-palm'
+    />
+  </th>
+  <th>
+    <$macrocall $name=button_filter_header
+    ur_label='Base Palm'
+    ur_field='base-palm'
+    ur_filter='$:/state/popup/filter-base-palm'
+    ur_disp='$:/state/popup/disp-filter-base-palm'
+    />
+  </th>
+  <th>
+    <$macrocall $name=button_filter_header
+    ur_label='Move'
+    ur_field='move'
+    ur_filter='$:/state/popup/filter-move'
+    ur_disp='$:/state/popup/disp-filter-move'
+    />
+  </th>
+  <th>
+    <$button class='tc-btn-invisible' style='width:100%;height:100%'>Eng-Vocab<$action-setfield $tiddler='$:/state/popup/sort_by' text='eng-vocab'/>
+    </$button>
+  </th>
+</tr>
+<$list filter='[[$:/state/popup/sort_by]]'><$vars sort_by={{!!text}} >
+<$list filter='[[$:/state/popup/filter-right-hand]]'><$vars filter-right-hand={{!!text}} >
+<$list filter='[[$:/state/popup/filter-location]]'><$vars filter-location={{!!text}} >
+<$list filter='[[$:/state/popup/filter-palm]]'><$vars filter-palm={{!!text}} >
+<$list filter='[[$:/state/popup/filter-base-palm]]'><$vars filter-base-palm={{!!text}} >
+<$list filter='[[$:/state/popup/filter-move]]'><$vars filter-move={{!!text}} >
+<$macrocall $name=disp_rows ur_sort_by=<<sort_by>> ur_filter_1=<<filter-right-hand>> ur_filter_2=<<filter-location>> ur_filter_3=<<filter-palm>> ur_filter_4=<<filter-base-palm>> ur_filter_5=<<filter-move>> />
+</$vars></$list>
+</$vars></$list>
+</$vars></$list>
+</$vars></$list>
+</$vars></$list>
+</$vars></$list>
+</table>

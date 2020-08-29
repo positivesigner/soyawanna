@@ -9907,7 +9907,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200827222817462" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200829065032987" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9934,7 +9934,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200827222706516" list="[[An Interview with Sarah Davis - ''Meet A Deaf Person'']] [[ASL Lookup Words section 1]]" modified="20200827222706516" title="$:/StoryList">
+<div created="20200829064931322" list="[[An Interview with Sarah Davis - ''Meet A Deaf Person'']] [[ASL Lookup Words section 1]]" modified="20200829064931322" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10136,61 +10136,143 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 
 [[View All Pages]]</pre>
 </div>
-<div created="20200827203222340" modified="20200827222814236" sort_by="move" tags="DOC" title="ASL Lookup Words section 1">
-<pre>* Sort columns by clicking header word
-&lt;table&gt;
+<div created="20200827203222340" modified="20200829065025943" sort_by="move" tags="DOC" title="ASL Lookup Words section 1">
+<pre>\define button_filter_header(ur_label, ur_field, ur_filter, ur_disp)
+     @@white-space: nowrap;
+    &lt;$list filter='[[$ur_disp$]has[text]]'&gt;
+    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Filter: {{!!text}}
+&lt;br&gt;
+$ur_label$
+&lt;$action-setfield $tiddler='$ur_filter$' text=''/&gt;
+&lt;$action-setfield $tiddler='$ur_disp$' text=''/&gt;
+    &lt;/$button&gt;
+    &lt;/$list&gt;
+    &lt;$list filter='[[$ur_filter$]!has[text]]'&gt;
+    &lt;$list filter='[[$:/state/popup/disp-sort_by]has[text]]'&gt;
+    &lt;$list filter='[{!!text}match[$ur_field$]]'&gt;
+    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;
+    $ur_label$
+    &lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='!sort[$ur_field$]'/&gt;
+    &lt;$action-setfield $tiddler='$:/state/popup/disp-sort_by' text=''/&gt;
+    &lt;/$button&gt;
+    &lt;/$list&gt;
+    &lt;$list filter='[{!!text}!match[$ur_field$]]'&gt;
+    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;
+    $ur_label$
+    &lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='sort[$ur_field$]'/&gt;
+    &lt;$action-setfield $tiddler='$:/state/popup/disp-sort_by' text='$ur_field$'/&gt;
+    &lt;/$button&gt;
+    &lt;/$list&gt;
+    &lt;/$list&gt;
+    &lt;$list filter='[[$:/state/popup/disp-sort_by]count[]match[0]] [[$:/state/popup/disp-sort_by]!has[text]]'&gt;
+    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;
+    $ur_label$
+    &lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='sort[$ur_field$]'/&gt;
+    &lt;$action-setfield $tiddler='$:/state/popup/disp-sort_by' text='$ur_field$'/&gt;
+    &lt;/$button&gt;
+    &lt;/$list&gt;
+    &lt;/$list&gt;
+    @@
+\end
+\define button_filter_detail(ur_label, ur_filter)
+&lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;$ur_filter$
+&lt;$action-setfield $tiddler='$:/state/popup/filter-$ur_label$' text='field:$ur_label$[$ur_filter$]'
+ /&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-$ur_label$' text='$ur_filter$' /&gt;
+&lt;/$button&gt;
+\end
+\define disp_rows(ur_sort_by, ur_filter_1, ur_filter_2, ur_filter_3, ur_filter_4, ur_filter_5)
+&lt;$list filter='[tag[WORD]has[right-hand]has[location]has[palm]has[base-palm]has[move]has[eng-vocab]tag[section-1]$ur_filter_1$$ur_filter_2$$ur_filter_3$$ur_filter_4$$ur_filter_5$$ur_sort_by$]' &gt;
 &lt;tr&gt;
-  &lt;th&gt;
-    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Right-hand&lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='right-hand'/&gt;
-    &lt;/$button&gt;
-   &lt;/th&gt;
-  &lt;th&gt;
-    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Location&lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='location'/&gt;
-    &lt;/$button&gt;
-  &lt;/th&gt;
-  &lt;th&gt;
-    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Palm&lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='palm'/&gt;
-    &lt;/$button&gt;
-  &lt;/th&gt;
-  &lt;th&gt;
-    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Base palm&lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='base-palm'/&gt;
-    &lt;/$button&gt;
-  &lt;/th&gt;
-  &lt;th&gt;
-    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Move&lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='move'/&gt;
-    &lt;/$button&gt;
-  &lt;/th&gt;
-  &lt;th&gt;
-    &lt;$button class='tc-btn-invisible' style='width:100%;height:100%'&gt;Eng-Vocab&lt;$action-setfield $tiddler='$:/state/popup/sort_by' text='eng-vocab'/&gt;
-    &lt;/$button&gt;
-  &lt;/th&gt;
-&lt;/tr&gt;
-&lt;$list filter='[[$:/state/popup/sort_by]]'&gt;
-&lt;$vars sort_by={{!!text}} &gt;
-&lt;$list filter='[tag[WORD]has[right-hand]has[location]has[palm]has[base-palm]has[move]has[eng-vocab]tag[section-1]sort&lt;sort_by&gt;]'&gt;
-&lt;tr&gt;
   &lt;td&gt;
-    &lt;$view field='right-hand'/&gt;
+    &lt;$macrocall $name=button_filter_detail ur_label='right-hand' ur_filter={{!!right-hand}} /&gt;
   &lt;/td&gt;
   &lt;td&gt;
-    &lt;$view field='location'/&gt;
+    &lt;$macrocall $name=button_filter_detail ur_label='location' ur_filter={{!!location}} /&gt;
   &lt;/td&gt;
   &lt;td&gt;
-    &lt;$view field='palm'/&gt;
+    &lt;$macrocall $name=button_filter_detail ur_label='palm' ur_filter={{!!palm}} /&gt;
   &lt;/td&gt;
   &lt;td&gt;
-    &lt;$view field='base-palm'/&gt;
+    &lt;$macrocall $name=button_filter_detail ur_label='base-palm' ur_filter={{!!base-palm}} /&gt;
   &lt;/td&gt;
   &lt;td&gt;
-    &lt;$view field='move'/&gt;
+    &lt;$macrocall $name=button_filter_detail ur_label='move' ur_filter={{!!move}} /&gt;
   &lt;/td&gt;
   &lt;td&gt;
     &lt;$link to={{!!title}}&gt;&lt;$view field=&quot;eng-vocab&quot;/&gt;&lt;/$link&gt;
   &lt;/td&gt;
 &lt;/tr&gt;
 &lt;/$list&gt;
-&lt;/$vars&gt;
-&lt;/$list&gt;
+\end
+
+* Sort columns by clicking header word
+* Filter columns by clicking on a syllable
+
+&lt;table&gt;
+&lt;tr&gt;
+  &lt;th&gt;
+    &lt;$macrocall $name=button_filter_header
+    ur_label='Right hand'
+    ur_field='right-hand'
+    ur_filter='$:/state/popup/filter-right-hand'
+    ur_disp='$:/state/popup/disp-filter-right-hand'
+    /&gt;
+   &lt;/th&gt;
+  &lt;th&gt;
+    &lt;$macrocall $name=button_filter_header
+    ur_label='Location'
+    ur_field='location'
+    ur_filter='$:/state/popup/filter-location'
+    ur_disp='$:/state/popup/disp-filter-location'
+    /&gt;
+  &lt;/th&gt;
+  &lt;th&gt;
+    &lt;$macrocall $name=button_filter_header
+    ur_label='Palm'
+    ur_field='palm'
+    ur_filter='$:/state/popup/filter-palm'
+    ur_disp='$:/state/popup/disp-filter-palm'
+    /&gt;
+  &lt;/th&gt;
+  &lt;th&gt;
+    &lt;$macrocall $name=button_filter_header
+    ur_label='Base Palm'
+    ur_field='base-palm'
+    ur_filter='$:/state/popup/filter-base-palm'
+    ur_disp='$:/state/popup/disp-filter-base-palm'
+    /&gt;
+  &lt;/th&gt;
+  &lt;th&gt;
+    &lt;$macrocall $name=button_filter_header
+    ur_label='Move'
+    ur_field='move'
+    ur_filter='$:/state/popup/filter-move'
+    ur_disp='$:/state/popup/disp-filter-move'
+    /&gt;
+  &lt;/th&gt;
+  &lt;th&gt;
+    &lt;$macrocall $name=button_filter_header
+    ur_label='Eng-Vocab'
+    ur_field='eng-vocab'
+    ur_filter=''
+    ur_disp=''
+    /&gt;
+  &lt;/th&gt;
+&lt;/tr&gt;
+&lt;$list filter='[[$:/state/popup/sort_by]]'&gt;&lt;$vars sort_by={{!!text}} &gt;
+&lt;$list filter='[[$:/state/popup/filter-right-hand]]'&gt;&lt;$vars filter-right-hand={{!!text}} &gt;
+&lt;$list filter='[[$:/state/popup/filter-location]]'&gt;&lt;$vars filter-location={{!!text}} &gt;
+&lt;$list filter='[[$:/state/popup/filter-palm]]'&gt;&lt;$vars filter-palm={{!!text}} &gt;
+&lt;$list filter='[[$:/state/popup/filter-base-palm]]'&gt;&lt;$vars filter-base-palm={{!!text}} &gt;
+&lt;$list filter='[[$:/state/popup/filter-move]]'&gt;&lt;$vars filter-move={{!!text}} &gt;
+&lt;$macrocall $name=disp_rows ur_sort_by=&lt;&lt;sort_by&gt;&gt; ur_filter_1=&lt;&lt;filter-right-hand&gt;&gt; ur_filter_2=&lt;&lt;filter-location&gt;&gt; ur_filter_3=&lt;&lt;filter-palm&gt;&gt; ur_filter_4=&lt;&lt;filter-base-palm&gt;&gt; ur_filter_5=&lt;&lt;filter-move&gt;&gt; /&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
 &lt;/table&gt;</pre>
 </div>
 <div base-palm="base unused" created="20200827211637172" eng-vocab="I am" location="Apart" modified="20200827215821103" move="Up-down" palm="In-up" right-hand="B4C" tags="section-1 WORD" title="BAIuU-I am">
