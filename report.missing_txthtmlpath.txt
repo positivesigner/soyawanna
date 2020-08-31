@@ -1,6 +1,8 @@
 section	in_filepath
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.luadist.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Android_App\Programming Language\def.lua.qlua5.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\AVUtil_Code\FFMPeg\FFMPeg Extract JPG.src.txt
+missing_txthtmlpath	C:\Gthb\soyawanna\AVUtil_Code\FFMPeg\FFMPeg Extract SRT.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Install\GoogleChrome\Portable Install.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Browser_Javascript\Bookmarklets\Javascript Bookmarklets.src.txt
 missing_txthtmlpath	C:\Gthb\soyawanna\Git\Install\MGit App.src.txt
