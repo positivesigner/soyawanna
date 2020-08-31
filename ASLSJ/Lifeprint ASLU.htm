@@ -387,17 +387,19 @@ Error message and password prompt
 
 <li>LifeprintASLU-1-video-ec10</li>
 
-<li>mcr ASLEntry GlblParentBook</li>
+<li>mcr ASLEntry GlblParentBook úhdr</li>
 
-<li>mcr ASLEntry GlblParentChapter</li>
+<li>mcr ASLEntry GlblParentChapter áhdr</li>
 
-<li>mcr ASLEntry GlblSectionLinks</li>
+<li>mcr ASLEntry GlblSectionLinks úftr</li>
 
-<li>mcr ASLEntry GlblVideoLinks</li>
+<li>mcr ASLEntry GlblVideoLinks óftr</li>
 
-<li>mcr ASLEntry GlblWordLinks</li>
+<li>mcr ASLEntry GlblWordLinks éftr</li>
 
-<li>mcr ASLEntry GlblWordUsage</li>
+<li>mcr ASLEntry GlblWordTitle éhdr</li>
+
+<li>mcr ASLEntry GlblWordUsage áftr</li>
 
 <li>mcr OneLink</li>
 
@@ -432,8 +434,6 @@ Error message and password prompt
 <li>SCLuI-zero</li>
 
 <li>SCOuI-yesterday</li>
-
-<li>SCOuL-S-on-cheek</li>
 
 <li>SFLrI-teach</li>
 
@@ -10074,7 +10074,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200831042433160" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200831212500452" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10101,7 +10101,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200830213016972" list="[[ASL Videos]] [[Word Title Audit]] LifeprintASLU-1-video" modified="20200831042427856" title="$:/StoryList">
+<div created="20200831212130172" list="[[ASL Videos]] LifeprintASLU LifeprintASLU-1-video" modified="20200831212411567" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10152,11 +10152,11 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1280&quot;
+            &quot;text&quot;: &quot;720&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;720&quot;
+            &quot;text&quot;: &quot;1280&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10541,10 +10541,10 @@ Open-B hand gestures in a direction. Although the ASL word does not change, the 
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
 </div>
-<div base-palm="base Right" created="20200831042329716" eng-vocab="person" location="Apart" modified="20200831042403139" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BALrU-person">
-<pre>''{{!!eng-vocab}}''
+<div base-palm="base Right" created="20200831042329716" eng-vocab="person" location="Apart" modified="20200831211015438" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BALrU-person">
+<pre>&lt;&lt;éhdr&gt;&gt;
 
-&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
 <div base-palm="base unused" created="20200827211033118" eng-vocab="our" location="Apart" modified="20200829120602979" move="Left-right" palm="Left" right-hand="B4C" tags="WORD" title="BALuL-our">
@@ -11000,14 +11000,14 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200829082635551" modified="20200830212240892" tags="BOOK" title="LifeprintASLU">
+<div created="20200829082635551" modified="20200831211239997" tags="BOOK" title="LifeprintASLU">
 <pre>Lifeprint.com - American Sign Language University
 
 Main website: https://www.lifeprint.com/
 
 YouTube video page: https://www.youtube.com/channel/UCvd8SHzSp07_U55qFI0-dDA
 
-&lt;$macrocall $name=glbl_video_links ur_book=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;óftr&gt;&gt;</pre>
 </div>
 <div book="LifeprintASLU" created="20200829082909400" modified="20200830212602225" pub-date="1-text" tags="CHAPTER" title="LifeprintASLU-1-text">
 <pre>&lt;$macrocall $name=glbl_parent_book ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
@@ -11021,16 +11021,16 @@ YouTube video page: https://www.youtube.com/channel/UCvd8SHzSp07_U55qFI0-dDA
 
 &lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200830212611775" modified="20200831023125360" pub-date="1-video" tags="CHAPTER" title="LifeprintASLU-1-video">
-<pre>&lt;$macrocall $name=glbl_parent_book ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200830212611775" modified="20200831212003309" pub-date="1-video" tags="CHAPTER" title="LifeprintASLU-1-video">
+<pre>&lt;&lt;úhdr&gt;&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/DaMjr4AfYA0&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
 
-&lt;$macrocall $name=glbl_section_links ur_title=&lt;&lt;currentTiddler&gt;&gt; ur_language=&quot;eng-vocab&quot; /&gt;
+&lt;&lt;úftr&gt;&gt;
 </pre>
 </div>
-<div book="LifeprintASLU" created="20200829131721239" language="eng-vocab" modified="20200831022240097" pub-date="1-video" section_seq="e1" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m00s&quot;&gt;Time 0:00&lt;/a&gt;" title="LifeprintASLU-1-video-e1">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200829131721239" language="eng-vocab" modified="20200831210433239" pub-date="1-video" section_seq="e1" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m00s&quot;&gt;Time 0:00&lt;/a&gt;" title="LifeprintASLU-1-video-e1">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;Lesson 1&quot;
 
@@ -11078,10 +11078,10 @@ Bill: (H'yes) Good-thing. LP.
 
 (L'behind) &quot;Dr. Bill Vicars&quot;, V-on-forehead, I-me. (H'yes) Good-thing.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200830234743548" language="eng-vocab" modified="20200831011154477" pub-date="1-video" section_seq="e2" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m05s&quot;&gt;Time 1:05&lt;/a&gt;" title="LifeprintASLU-1-video-e2">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200830234743548" language="eng-vocab" modified="20200831210447963" pub-date="1-video" section_seq="e2" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m05s&quot;&gt;Time 1:05&lt;/a&gt;" title="LifeprintASLU-1-video-e2">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;GOOD&quot;
 
@@ -11149,10 +11149,10 @@ Jen: Again.
 
 Bill: (T'aud) Yes, (L'right) she again.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831001730890" language="eng-vocab" modified="20200831013832234" pub-date="1-video" section_seq="e3" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m03s&quot;&gt;Time 2:03&lt;/a&gt;" title="LifeprintASLU-1-video-e3">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831001730890" language="eng-vocab" modified="20200831210459855" pub-date="1-video" section_seq="e3" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m03s&quot;&gt;Time 2:03&lt;/a&gt;" title="LifeprintASLU-1-video-e3">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;UNDERSTAND&quot;
 
@@ -11208,10 +11208,10 @@ Jen: Signing.
 
 Bill: (L'up) Signing-at-people. (L'down) hold-on. Signing.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831002944626" language="eng-vocab" modified="20200831013904746" pub-date="1-video" section_seq="e4" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m59s&quot;&gt;Time 2:59&lt;/a&gt;" title="LifeprintASLU-1-video-e4">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831002944626" language="eng-vocab" modified="20200831210513540" pub-date="1-video" section_seq="e4" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m59s&quot;&gt;Time 2:59&lt;/a&gt;" title="LifeprintASLU-1-video-e4">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;THIS / it / that&quot;, &quot;(just point)&quot;
 
@@ -11287,10 +11287,10 @@ Bill: (H'q)?
 
 Jen: Yes.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831004522961" language="eng-vocab" modified="20200831024343664" pub-date="1-video" section_seq="e5" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m59s&quot;&gt;Time 3:59&lt;/a&gt;" title="LifeprintASLU-1-video-e5">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831004522961" language="eng-vocab" modified="20200831210526393" pub-date="1-video" section_seq="e5" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m59s&quot;&gt;Time 3:59&lt;/a&gt;" title="LifeprintASLU-1-video-e5">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;NO&quot;
 
@@ -11326,10 +11326,10 @@ Bill: (T'right) (L'behind) &quot;ASK-(me)&quot; these. Question-me. (L'behind) &
 
 Bill: Question-me (L'behind) this.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831012414994" language="eng-vocab" modified="20200831013621371" pub-date="1-video" section_seq="e6" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m54s&quot;&gt;Time 4:54&lt;/a&gt;" title="LifeprintASLU-1-video-e6">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831012414994" language="eng-vocab" modified="20200831210538119" pub-date="1-video" section_seq="e6" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m54s&quot;&gt;Time 4:54&lt;/a&gt;" title="LifeprintASLU-1-video-e6">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;(do) YOU UNDERSTAND him / her / that-person?&quot;
 
@@ -11387,10 +11387,10 @@ Jen: My name JEN.
 
 Bill: Good-thing.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831013627737" language="eng-vocab" modified="20200831030255843" pub-date="1-video" section_seq="e7" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m01s&quot;&gt;Time 6:01&lt;/a&gt;" title="LifeprintASLU-1-video-e7">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831013627737" language="eng-vocab" modified="20200831210550230" pub-date="1-video" section_seq="e7" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m01s&quot;&gt;Time 6:01&lt;/a&gt;" title="LifeprintASLU-1-video-e7">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;Wh-type questions lower the eyebrows&quot;
 
@@ -11454,10 +11454,10 @@ Monitor: &quot;nice to meet you&quot;
 
 Bill: Nice meet-you. (H'yes).
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831015037299" language="eng-vocab" modified="20200831020241350" pub-date="1-video" section_seq="e8" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m14s&quot;&gt;Time 7:14&lt;/a&gt;" title="LifeprintASLU-1-video-e8">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831015037299" language="eng-vocab" modified="20200831210601680" pub-date="1-video" section_seq="e8" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m14s&quot;&gt;Time 7:14&lt;/a&gt;" title="LifeprintASLU-1-video-e8">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;YOU what-NAME?&quot;
 
@@ -11515,10 +11515,10 @@ Monitor: &quot;HEARING person&quot;
 
 Bill: (L'right) she hearing (H'yes). Hear (L'right) she, can (H'yes). (L'right) she hearing (H'yes).
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831020246546" language="eng-vocab" modified="20200831021420183" pub-date="1-video" section_seq="e9" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m03s&quot;&gt;Time 8:03&lt;/a&gt;" title="LifeprintASLU-1-video-e9">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831020246546" language="eng-vocab" modified="20200831210614490" pub-date="1-video" section_seq="e9" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m03s&quot;&gt;Time 8:03&lt;/a&gt;" title="LifeprintASLU-1-video-e9">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;CAN&quot;
 
@@ -11568,16 +11568,16 @@ Jen: Person.
 
 Bill: Person.
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831021424241" language="eng-vocab" modified="20200831021441385" pub-date="1-video" section_seq="ec10" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m03s&quot;&gt;Time 8:03&lt;/a&gt;" title="LifeprintASLU-1-video-ec10">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="LifeprintASLU" created="20200831021424241" language="eng-vocab" modified="20200831212447852" pub-date="1-video" section_seq="ec10" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=09m00s&quot;&gt;Time 9:00&lt;/a&gt;" title="LifeprintASLU-1-video-ec10">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;&quot;
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div created="20200829122242496" modified="20200829122943473" tags="$:/tags/Macro META" title="mcr ASLEntry GlblParentBook">
+<div created="20200829122242496" modified="20200831211555024" tags="$:/tags/Macro META" title="mcr ASLEntry GlblParentBook úhdr">
 <pre>\define ref_parent_book_compile_filter(ur_book, ur_pub_date)
 &lt;$link to=&quot;&quot;&quot;$ur_book$&quot;&quot;&quot; /&gt; chapter $ur_pub_date$
 \end
@@ -11588,9 +11588,13 @@ Monitor: &quot;&quot;
 &lt;/$vars&gt;&lt;/$list&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 \end
-</pre>
+\define úhdr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_parent_book ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
-<div created="20200829121833914" modified="20200829123223506" tags="$:/tags/Macro META" title="mcr ASLEntry GlblParentChapter">
+<div created="20200829121833914" modified="20200831210410657" tags="$:/tags/Macro META" title="mcr ASLEntry GlblParentChapter áhdr">
 <pre>\define ref_parent_chapter_disp_parent(ur_filter, ur_section_seq)
 &lt;$list filter=&quot;&quot;&quot;$ur_filter$&quot;&quot;&quot;&gt;
 &lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt; section $ur_section_seq$
@@ -11608,9 +11612,13 @@ Monitor: &quot;&quot;
 &lt;/$vars&gt;&lt;/$list&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 \end
-</pre>
+\define áhdr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
-<div created="20200829103714127" modified="20200831010516603" tags="$:/tags/Macro META" title="mcr ASLEntry GlblSectionLinks">
+<div created="20200829103714127" modified="20200831212117234" tags="$:/tags/Macro META" title="mcr ASLEntry GlblSectionLinks úftr">
 <pre>\define ref_section_links_disp_links(ur_filter)
 &lt;ul&gt;
 &lt;$list filter='[$ur_filter$sort[title]]' &gt;
@@ -11624,27 +11632,35 @@ Monitor: &quot;&quot;
 &lt;/ul&gt;
 \end
 \define ref_section_links_compile_filter(ur_book, ur_pub_date, ur_language)
-&lt;$macrocall $name=ref_section_links_disp_links ur_filter='field:book[$ur_book$]field:pub-date[$ur_pub_date$]field:language[$ur_language$]' /&gt;
+&lt;$macrocall $name=ref_section_links_disp_links ur_filter='field:book[$ur_book$]field:pub-date[$ur_pub_date$]has[section_seq]' /&gt;
 \end
 \define glbl_section_links(ur_title, ur_language)
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!book}]&quot;&quot;&quot;&gt;&lt;$vars cur_book=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!pub-date}]&quot;&quot;&quot;&gt;&lt;$vars cur_pub_date=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$macrocall $name=ref_section_links_compile_filter ur_book=&lt;&lt;cur_book&gt;&gt; ur_pub_date=&lt;&lt;cur_pub_date&gt;&gt; ur_language=&quot;$ur_language$&quot; /&gt;
+&lt;$macrocall $name=ref_section_links_compile_filter ur_book=&lt;&lt;cur_book&gt;&gt; ur_pub_date=&lt;&lt;cur_pub_date&gt;&gt; /&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 \end
-</pre>
+\define úftr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_section_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
-<div created="20200829123323430" modified="20200829123421533" tags="$:/tags/Macro META" title="mcr ASLEntry GlblVideoLinks">
+<div created="20200829123323430" modified="20200831211326299" tags="$:/tags/Macro META" title="mcr ASLEntry GlblVideoLinks óftr">
 <pre>\define ref_video_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;&quot;&quot;$ur_filter$&quot;&quot;&quot; &gt;&gt;
 \end
-\define glbl_video_links(ur_book)
-&lt;$macrocall $name=ref_video_links_disp_links ur_filter=&quot;&quot;&quot;[field:book[$ur_book$]!has[section_seq]]&quot;&quot;&quot; /&gt;
+\define glbl_video_links(ur_title)
+&lt;$macrocall $name=ref_video_links_disp_links ur_filter=&quot;&quot;&quot;[field:book[$ur_title$]!has[section_seq]]&quot;&quot;&quot; /&gt;
 \end
-</pre>
+\define óftr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_video_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
-<div created="20200829105849742" modified="20200831035617154" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks">
+<div created="20200829105849742" modified="20200831210833727" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
 <pre>\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
@@ -11690,9 +11706,24 @@ Monitor: &quot;&quot;
 &lt;$macrocall $name=ref_word_links_compile_filter ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
-</pre>
+\define éftr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
-<div created="20200829120936613" modified="20200830211607484" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage">
+<div created="20200831210856273" modified="20200831211005006" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordTitle éhdr">
+<pre>\define glbl_word_title(ur_title)
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!eng-vocab}]&quot;&quot;&quot;&gt;
+''&lt;&lt;currentTiddler&gt;&gt;''
+\end
+\define éhdr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_word_title ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
+</div>
+<div created="20200829120936613" modified="20200831210419275" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
 <pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
 &lt;$list filter=&quot;$ur_filter$&quot;&gt;
 @@padding-right: 50px;white-space: nowrap;
@@ -11713,7 +11744,11 @@ Monitor: &quot;&quot;
 &lt;/$list&gt;&lt;/$vars&gt;
 &lt;/$list&gt;
 \end
-</pre>
+\define áftr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
 </div>
 <div created="20200319092542069" modified="20200405135527913" tags="META $:/tags/Macro" title="mcr OneLink">
 <pre>\define OneLink(UrParentTag)
@@ -11902,18 +11937,6 @@ All user tiddlers, export non-meta to HTML
 </div>
 <div base-palm="base unused" created="20200830170245897" eng-vocab="yesterday" location="Chin-eye" modified="20200830184803607" move="In-out" palm="Out-down" right-hand="SOA" tags="WORD" title="SCOuI-yesterday">
 <pre>''{{!!eng-vocab}}''
-
-&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-</pre>
-</div>
-<div base-palm="base unused" created="20200827212614945" eng-vocab="S-on-cheek" location="Chin-eye" modified="20200829113345694" move="Left-right" palm="Out-down" right-hand="SOA" tags="WORD" title="SCOuL-S-on-cheek">
-<pre>''{{!!eng-vocab}}''
-
-* S hand at chin palm-out
-* bounce on chin
-* repeat
-
-Name signs are only given to people that Deaf have to speak with often. They just fingerspell most people's names who are not fluent in ASL. Being given a name sign is culturally important to Deaf people, so don't try to make up your own.
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 </pre>
