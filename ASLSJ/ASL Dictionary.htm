@@ -47,7 +47,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE." />
 <link id="faviconLink" rel="shortcut icon" href="favicon.ico">
-<title>Interview with Sarah Davis — ASLSJ Script</title>
+<title>ASL Print Dictionaries — Word List</title>
 <!--~~ This is a Tiddlywiki file. The points of interest in the file are marked with this pattern ~~-->
 
 <!--~~ Raw markup ~~-->
@@ -9967,11 +9967,11 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 &lt;/$set&gt;
 </pre>
 </div>
-<div created="20190925014420922" modified="20200827202556390" title="$:/SiteSubtitle">
-<pre>ASLSJ Script</pre>
+<div created="20190925014420922" modified="20200831030147449" title="$:/SiteSubtitle">
+<pre>Word List</pre>
 </div>
-<div created="20190925014404111" modified="20200827202541755" title="$:/SiteTitle">
-<pre>Interview with Sarah Davis</pre>
+<div created="20190925014404111" modified="20200831030144537" title="$:/SiteTitle">
+<pre>ASL Print Dictionaries</pre>
 </div>
 <div created="20200411063457323" modified="20200411063514558" title="$:/state/dropdown/keyboardshortcut/font-large-286565879">
 <pre>close</pre>
@@ -9991,7 +9991,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200830211727412" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200831030150636" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10012,13 +10012,13 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200611033233457" modified="20200827210543815" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20190925014513912" modified="20200827210539439" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/More</pre>
+<div created="20190925014513912" modified="20200831030131091" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/Tools</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200830211558212" list="[[ASL Videos]] RandomHouseASL [[mcr ASLEntry GlblSectionLinks]]" modified="20200830211634314" title="$:/StoryList">
+<div created="20200831030134705" list="[[ASL Videos]]" modified="20200831030134705" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10899,7 +10899,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 \end
 </pre>
 </div>
-<div created="20200829105849742" modified="20200829110017749" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks">
+<div created="20200829105849742" modified="20200831025931590" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks">
 <pre>\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
@@ -10908,6 +10908,11 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 \end
 \define glbl_word_links(ur_title)
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!eng-vocab}]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!right-hand}]&quot;&quot;&quot;&gt;Right-hand: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!location}]&quot;&quot;&quot;&gt;| Location: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!palm}]&quot;&quot;&quot;&gt;| Palm: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!base-palm}]&quot;&quot;&quot;&gt;| Base-palm: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!move}]&quot;&quot;&quot;&gt;| Move: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
 &lt;$macrocall $name=ref_word_links_compile_filter ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
