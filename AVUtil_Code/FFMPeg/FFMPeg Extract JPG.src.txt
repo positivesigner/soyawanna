@@ -1,0 +1,22 @@
+chcp 65001
+rem -ss 05:00 -t 10:00 means start at 5min and end 10min later at 15min
+C:\TJBF\zPortableInstalls\DVDStyler\App\DVDStyler\bin\ffmpeg.exe -i "C:\Users\Dad\Downloads\2016m10 KH\Oct 01 Broadcast.mp4" -r 0.083 -s 320x180 "C:\Users\Dad\Downloads\2016m10 KH\Split\output_%%04d.jpg"
+
+rem -r 1 means 1 frame per second.  -r 0.25 means 1 frames per 4 second
+rem -r 0.083 means 1 frame per 12 second, or 5 frames per minute
+rem 5 frames per minute means 50 frames is ten minutes of video
+rem 300 frames is one hour
+rem a portrait contact sheet with 5 columns is one min per row
+rem 10 rows per page means a contact sheet showing about 10 minutes of video
+rem a landscape contact sheet with 7 columns is one 3 min per 2 rows
+rem 7 rows per page means a contact sheet showing about 10 minutes of video
+
+rem Open on thumbnail image with IrfanView, select File menu Thumbnails option
+rem Select all files in the folder, select File menu Create Contact Sheet
+rem 1280x738, 738/1280*320 = 184.5, use -s 320x180 to keep aspect ratio
+rem paper 150px * 8.5in = 1250px wide, 150px * 11in = 1650in tall
+rem screen 1920px x 1080px with 7 x 7, stretch small images to maximal size
+
+
+rem C:\TJBF\zPortableInstalls\DVDStyler\App\DVDStyler\bin\ffmpeg.exe -ss 6 -i "C:\Users\Dad\Downloads\2016m09 KH\Split\JW Broadcasting-- 2016 September jwb_E_201609_01_r720P.mp4" -s 320x240 -frames:v 1 ur_seq.jpg
+pause

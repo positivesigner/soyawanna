@@ -299,6 +299,8 @@ Error message and password prompt
 
 <li>BAOuI-your</li>
 
+<li>BAOuL-not-that</li>
+
 <li>BAOuL-your</li>
 
 <li>BCIiU-good</li>
@@ -415,6 +417,8 @@ Error message and password prompt
 
 <li>SALuL-yourselves</li>
 
+<li>SAOoU-can</li>
+
 <li>SAOuT-yes</li>
 
 <li>SAOuU-zip</li>
@@ -488,6 +492,10 @@ Error message and password prompt
 <li>XAOuL-zigzag</li>
 
 <li>XCLrL-meet-someone</li>
+
+<li>XCLuL-hear</li>
+
+<li>XCLuU-hearing</li>
 
 <li>XCOuI-yesterday</li>
 
@@ -9825,7 +9833,7 @@ exports.startup = function() {
     &quot;tiddlers&quot;: {
         &quot;Untitled&quot;: {
             &quot;title&quot;: &quot;Untitled&quot;,
-            &quot;text&quot;: &quot;ield:b&quot;
+            &quot;text&quot;: &quot;field:right-hand&quot;
         }
     }
 }</pre>
@@ -10056,7 +10064,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200831030028199" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200831035747364" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10077,13 +10085,13 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200611033233457" modified="20200827210543815" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20190925014513912" modified="20200831025956375" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20190925014513912" modified="20200831031020400" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200830213016972" list="[[ASL Videos]] [[Word Title Audit]] LifeprintASLU LifeprintASLU-1-video LifeprintASLU-1-video-e7 STOrI-practice [[mcr ASLEntry GlblWordLinks]]" modified="20200831025959369" title="$:/StoryList">
+<div created="20200830213016972" list="[[ASL Videos]] [[ASL Lookup Words]] [[mcr ASLEntry GlblWordLinks]]" modified="20200831035623170" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10274,7 +10282,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200418112031521" modified="20200418112031522" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20200827203222340" language="asl-vocab" modified="20200829124853454" tags="DOC" title="ASL Lookup Words">
+<div created="20200827203222340" language="asl-vocab" modified="20200831035156526" tags="DOC" title="ASL Lookup Words">
 <pre>\define button_filter_header(ur_label, ur_field, ur_filter, ur_disp)
      @@white-space: nowrap;
     &lt;$list filter='[[$ur_disp$]has[text]]'&gt;
@@ -10346,6 +10354,19 @@ $ur_label$
 
 * Sort columns by clicking header word
 * Filter columns by clicking on a syllable
+
+&lt;$button&gt;Clear filters
+&lt;$action-setfield $tiddler='$:/state/popup/filter-right-hand' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-right-hand' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-location' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-location' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-palm' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-palm' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-base-palm' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-base-palm' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-move' text=''/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-move' text=''/&gt;
+&lt;/$button&gt;
 
 &lt;table&gt;
 &lt;tr&gt;
@@ -10587,6 +10608,12 @@ Welcome copies the way a gentleman puts his hand on his waist and bows to show r
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 
+</pre>
+</div>
+<div base-palm="base unused" created="20200831030417498" eng-vocab="not-that" location="Apart" modified="20200831030448896" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BAOuL-not-that">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 </pre>
 </div>
 <div base-palm="base unused" created="20200830073645574" eng-vocab="your" location="Apart" modified="20200830073728371" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BAOuL-your">
@@ -11340,7 +11367,7 @@ Bill: Good-thing.
 
 &lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831013627737" language="eng-vocab" modified="20200831015213443" pub-date="1-video" section_seq="e7" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m01s&quot;&gt;Time 6:01&lt;/a&gt;" title="LifeprintASLU-1-video-e7">
+<div book="LifeprintASLU" created="20200831013627737" language="eng-vocab" modified="20200831030255843" pub-date="1-video" section_seq="e7" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m01s&quot;&gt;Time 6:01&lt;/a&gt;" title="LifeprintASLU-1-video-e7">
 <pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 
 Monitor: &quot;Wh-type questions lower the eyebrows&quot;
@@ -11399,7 +11426,7 @@ Bill: Great (H'yes). Nice meet-you.
 
 Monitor: &quot;MEET&quot;
 
-Bill: Meet.
+Bill: Meet-someone.
 
 Monitor: &quot;nice to meet you&quot;
 
@@ -11595,12 +11622,40 @@ Monitor: &quot;&quot;
 \end
 </pre>
 </div>
-<div created="20200829105849742" modified="20200831025839251" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks">
+<div created="20200829105849742" modified="20200831035617154" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks">
 <pre>\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
 \define ref_word_links_compile_filter(ur_vocab)
 &lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[regexp:text[(?i)$ur_vocab$]field:language[eng-vocab]]&quot;&quot;&quot; /&gt;
+\end
+\define ref_word_links_disp_button(ur_right_hand ur_location ur_palm ur_base_palm ur_move)
+&lt;$button&gt;Find similar
+&lt;$action-setfield $tiddler='$:/state/popup/filter-right-hand' text='field:right-hand[$ur_right_hand$]'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-right-hand' text='$ur_right_hand$'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-location' text='field:location[$ur_location$]'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-location' text='$ur_location$'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-palm' text='field:palm[$ur_palm$]'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-palm' text='$ur_palm$'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-base-palm' text='field:base-palm[$ur_base_palm$]'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-base-palm' text='$ur_base_palm$'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/filter-move' text='field:move[$ur_move$]'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-filter-move' text='$ur_move$'/&gt;
+&lt;$action-navigate $to=&quot;ASL Lookup Words&quot;/&gt;
+&lt;/$button&gt;
+\end
+\define ref_word_links_button_parms(ur_title)
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!right-hand}]&quot;&quot;&quot;&gt;&lt;$vars cur_right-hand=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!location}]&quot;&quot;&quot;&gt;&lt;$vars cur_location=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[{$ur_title$!!palm}]&quot;&gt;&lt;$vars cur_palm=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[{$ur_title$!!base-palm}]&quot;&gt;&lt;$vars cur_base-palm=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[{$ur_title$!!move}]&quot;&gt;&lt;$vars cur_move=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$macrocall $name=ref_word_links_disp_button ur_right_hand=&lt;&lt;cur_right-hand&gt;&gt; ur_location=&lt;&lt;cur_location&gt;&gt; ur_palm=&lt;&lt;cur_palm&gt;&gt; ur_base_palm=&lt;&lt;cur_base-palm&gt;&gt; ur_move=&lt;&lt;cur_move&gt;&gt; /&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
 \end
 \define glbl_word_links(ur_title)
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!eng-vocab}]&quot;&quot;&quot;&gt;
@@ -11609,6 +11664,7 @@ Monitor: &quot;&quot;
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!palm}]&quot;&quot;&quot;&gt;| Palm: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!base-palm}]&quot;&quot;&quot;&gt;| Base-palm: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!move}]&quot;&quot;&quot;&gt;| Move: &lt;&lt;currentTiddler&gt;&gt;&lt;/$list&gt;
+&lt;$macrocall $name=ref_word_links_button_parms ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; /&gt;
 &lt;$macrocall $name=ref_word_links_compile_filter ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
@@ -11788,6 +11844,12 @@ All user tiddlers, export non-meta to HTML
 
 </pre>
 </div>
+<div base-palm="base Out-down" created="20200831030704012" eng-vocab="can" location="Apart" modified="20200831030734970" move="Up-down" palm="Out-down" right-hand="SOA" tags="WORD" title="SAOoU-can">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
 <div base-palm="base unused" created="20200831022810855" eng-vocab="yes" location="Apart" modified="20200831022848826" move="Twist-bend" palm="Out-down" right-hand="SOA" tags="WORD" title="SAOuT-yes">
 <pre>''{{!!eng-vocab}}''
 
@@ -11856,7 +11918,7 @@ Name signs are only given to people that Deaf have to speak with often. They jus
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 </pre>
 </div>
-<div base-palm="base Right" created="20200831022000059" eng-vocab="practice" location="Together" modified="20200831022130502" move="In-out" palm="Out-down" right-hand="SOA" tags="WORD" title="STOrI-practice">
+<div base-palm="base Right" created="20200831022000059" eng-vocab="practice" location="Together" modified="20200831035531353" move="In-out" palm="Out-down" right-hand="SOA" tags="WORD" title="STOrI-practice">
 <pre>''{{!!eng-vocab}}''
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
@@ -12213,6 +12275,18 @@ Deaf is a blend of the words 'say' (on the mouth) and 'listen' (on the ear). The
 </pre>
 </div>
 <div base-palm="base Right" created="20200831025339591" eng-vocab="meet-someone" location="Chin-eye" modified="20200831025621741" move="Left-right" palm="Left" right-hand="XILY" tags="WORD" title="XCLrL-meet-someone">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
+<div base-palm="base unused" created="20200831030604532" eng-vocab="hear" location="Chin-eye" modified="20200831030654696" move="Left-right" palm="Left" right-hand="XILY" tags="WORD" title="XCLuL-hear">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
+<div base-palm="base unused" created="20200831030518755" eng-vocab="hearing" location="Chin-eye" modified="20200831030551694" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XCLuU-hearing">
 <pre>''{{!!eng-vocab}}''
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
