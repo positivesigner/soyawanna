@@ -285,6 +285,8 @@ Error message and password prompt
 
 <li>BAIuU-she-is</li>
 
+<li>BALrU-person</li>
+
 <li>BALuL-our</li>
 
 <li>BAOoI-hold-on</li>
@@ -322,6 +324,8 @@ Error message and password prompt
 <li>BTLrL-again</li>
 
 <li>BTOiL-nice</li>
+
+<li>BTOiU-learn</li>
 
 <li>BTOiU-school</li>
 
@@ -431,6 +435,10 @@ Error message and password prompt
 
 <li>SCOuL-S-on-cheek</li>
 
+<li>SFLrI-teach</li>
+
+<li>SFLrU-teacher</li>
+
 <li>STLiU-none</li>
 
 <li>STLrU-zip</li>
@@ -442,6 +450,8 @@ Error message and password prompt
 <li>template Home Button</li>
 
 <li>TiddlyWiki Startup Options</li>
+
+<li>UALuL-hard-of-hearing</li>
 
 <li>UALuL-you</li>
 
@@ -10064,7 +10074,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200831035747364" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200831042433160" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10091,7 +10101,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200830213016972" list="[[ASL Videos]] [[ASL Lookup Words]] [[mcr ASLEntry GlblWordLinks]]" modified="20200831035623170" title="$:/StoryList">
+<div created="20200830213016972" list="[[ASL Videos]] [[Word Title Audit]] LifeprintASLU-1-video" modified="20200831042427856" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10531,6 +10541,12 @@ Open-B hand gestures in a direction. Although the ASL word does not change, the 
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
 </div>
+<div base-palm="base Right" created="20200831042329716" eng-vocab="person" location="Apart" modified="20200831042403139" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BALrU-person">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
 <div base-palm="base unused" created="20200827211033118" eng-vocab="our" location="Apart" modified="20200829120602979" move="Left-right" palm="Left" right-hand="B4C" tags="WORD" title="BALuL-our">
 <pre>''{{!!eng-vocab}}''
 
@@ -10711,6 +10727,12 @@ Hello word example video: https://m.youtube.com/watch?v=543a6GRjVVk
 </pre>
 </div>
 <div base-palm="base In-up" created="20200831024753577" eng-vocab="nice" location="Together" modified="20200831024820454" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BTOiL-nice">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
+<div base-palm="base In-up" created="20200831042158373" eng-vocab="learn" location="Together" modified="20200831042300677" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BTOiU-learn">
 <pre>''{{!!eng-vocab}}''
 
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
@@ -11896,6 +11918,18 @@ Name signs are only given to people that Deaf have to speak with often. They jus
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 </pre>
 </div>
+<div base-palm="base Right" created="20200831042030838" eng-vocab="teach" location="Forehead" modified="20200831042106624" move="In-out" palm="Left" right-hand="SOA" tags="WORD" title="SFLrI-teach">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
+<div base-palm="base Right" created="20200831042132039" eng-vocab="teacher" location="Forehead" modified="20200831042313998" move="Up-down" palm="Left" right-hand="SOA" tags="WORD" title="SFLrU-teacher">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
+</div>
 <div base-palm="base In-up" created="20200829131434271" eng-vocab="none" location="Together" modified="20200829131538803" move="Up-down" palm="Left" right-hand="SOA" tags="WORD" title="STLiU-none">
 <pre>''{{!!eng-vocab}}''
 
@@ -11948,6 +11982,12 @@ Name signs are only given to people that Deaf have to speak with often. They jus
 There is a sidebar with settings. It has a minimum width, so when your browser windows is not wide enough, the sidebar turns into a top menu bar. The below Tiddly describes a plugin that hides the sidebar / top menu bar on startup.
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
+</div>
+<div base-palm="base unused" created="20200831041807192" eng-vocab="hard-of-hearing" location="Apart" modified="20200831041857568" move="Left-right" palm="Left" right-hand="URK" tags="WORD" title="UALuL-hard-of-hearing">
+<pre>''{{!!eng-vocab}}''
+
+&lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+</pre>
 </div>
 <div base-palm="base unused" created="20200830073321331" eng-vocab="you" location="Apart" modified="20200830073444103" move="Left-right" palm="Left" right-hand="URK" tags="WORD" title="UALuL-you">
 <pre>''{{!!eng-vocab}}''
