@@ -9917,7 +9917,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200829123452373" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200830211719361" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9944,7 +9944,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200829120830223" list="[[ASL Videos]] [[Deaf Newspaper]] [[An Interview with Sarah Davis - &quot;Meet A Deaf Person&quot;]] DNP-2020m01d24-e1 [[mcr ASLEntry GlblWordUsage]] [[mcr ASLEntry GlblParentChapter]] [[mcr ASLEntry GlblParentBook]] [[mcr ASLEntry GlblVideoLinks]]" modified="20200829120921645" title="$:/StoryList">
+<div created="20200830210255898" list="[[ASL Videos]] [[Deaf Newspaper]] [[An Interview with Sarah Davis - &quot;Meet A Deaf Person&quot;]] DNP-2020m01d24-e1 [[mcr ASLEntry GlblSectionLinks]]" modified="20200830211658337" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10135,10 +10135,12 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200418112031521" modified="20200418112031522" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div book="Deaf Newspaper" created="20200829082909400" modified="20200829122535955" pub-date="2012m01d24" tags="CHAPTER" title="An Interview with Sarah Davis - &quot;Meet A Deaf Person&quot;">
+<div book="Deaf Newspaper" created="20200829082909400" modified="20200830210911089" pub-date="2012m01d24" tags="CHAPTER" title="An Interview with Sarah Davis - &quot;Meet A Deaf Person&quot;">
 <pre>&lt;$macrocall $name=glbl_parent_book ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 
 Ken Davis interviews his daughter about her friends at school reaction to his classroom visit
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/hRRw15weblc&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
 
 &lt;$macrocall $name=glbl_section_links ur_title=&lt;&lt;currentTiddler&gt;&gt; ur_language=&quot;eng-vocab&quot; /&gt;
 </pre>
@@ -10577,7 +10579,7 @@ close
 &lt;/svg&gt;
 </pre>
 </div>
-<div book="Deaf Newspaper" created="20200827202739828" language="eng-vocab" modified="20200829123232956" pub-date="2012m01d24" section_seq="1" tags="DOC" title="DNP-2020m01d24-e1">
+<div book="Deaf Newspaper" created="20200827202739828" language="eng-vocab" modified="20200830211245811" pub-date="2012m01d24" section_seq="1" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=hRRw15weblc#t=00m00s&quot; frameborder=&quot;0&quot; allow=&quot;autoplay; encrypted-media&quot; allowfullscreen&gt;Time 0:00&lt;/a&gt;" title="DNP-2020m01d24-e1">
 <pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 
 Ken Davis: Hello. Welcome our Deaf Newspaper. (Looking down L'down) I-am KEN DAVIS, Deaf Newspaper.
@@ -10713,9 +10715,18 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 \end
 </pre>
 </div>
-<div created="20200829103714127" modified="20200829103952806" tags="$:/tags/Macro META" title="mcr ASLEntry GlblSectionLinks">
+<div created="20200829103714127" modified="20200830211224198" tags="$:/tags/Macro META" title="mcr ASLEntry GlblSectionLinks">
 <pre>\define ref_section_links_disp_links(ur_filter)
-&lt;&lt;list-links '[$ur_filter$]' &gt;&gt;
+&lt;ul&gt;
+&lt;$list filter='[$ur_filter$]' &gt;
+&lt;li&gt;
+&lt;$link at=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;
+&lt;&lt;currentTiddler&gt;&gt;
+&lt;/$list&gt;
+&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
 \end
 \define ref_section_links_compile_filter(ur_book, ur_pub_date, ur_language)
 &lt;$macrocall $name=ref_section_links_disp_links ur_filter='field:book[$ur_book$]field:pub-date[$ur_pub_date$]field:language[$ur_language$]' /&gt;
@@ -10752,7 +10763,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 \end
 </pre>
 </div>
-<div created="20200829120936613" modified="20200829121039051" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage">
+<div created="20200829120936613" modified="20200830211451871" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage">
 <pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
 &lt;$list filter=&quot;$ur_filter$&quot;&gt;
 @@padding-right: 50px;white-space: nowrap;
@@ -10764,6 +10775,9 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)$ur_vocab$]field:language[eng-vocab]]&quot;&quot;&quot; /&gt;
 \end
 \define glbl_words_usage(ur_title)
+&lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;
+&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;
 &lt;$list filter=&quot;[has[right-hand]sort[eng-vocab]]&quot;&gt;&lt;$vars cur_word=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$list filter=&quot;[{!!eng-vocab}]&quot;&gt;
 &lt;$macrocall $name=ref_words_usage_compile_filter ur_title='$ur_title$' ur_word=&lt;&lt;cur_word&gt;&gt; ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
