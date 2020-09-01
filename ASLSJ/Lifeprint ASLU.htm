@@ -339,6 +339,8 @@ Error message and password prompt
 
 <li>DivPop.svg</li>
 
+<li>Draft of 'LifeprintASLU'</li>
+
 <li>ext Parent Return sample</li>
 
 <li>ext TW Return</li>
@@ -10095,7 +10097,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200901035621718" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200901064213293" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10122,7 +10124,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200901034638072" list="[[ASL Videos]] [[ASL Lookup Words]] BAOuI-her" modified="20200901035600454" title="$:/StoryList">
+<div created="20200901055247982" list="[[ASL Videos]] [[Draft of 'LifeprintASLU']] LifeprintASLU-1-video LifeprintASLU-1-video-e1 [[DivPop btn]]" modified="20200901055816097" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10173,11 +10175,11 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;720&quot;
+            &quot;text&quot;: &quot;1280&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;1280&quot;
+            &quot;text&quot;: &quot;720&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10796,11 +10798,19 @@ Normal clapping like applause is palm-left, so the palm-up/down helps differenti
 &lt;$macrocall $name=glbl_word_links ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 </pre>
 </div>
-<div created="20200418064445680" modified="20200830071247218" tags="META $:/tags/ViewToolbar" title="DivPop btn">
-<pre>\define divpop_current(ur_ref)
+<div created="20200418064445680" modified="20200901064125859" tags="META $:/tags/ViewToolbar" title="DivPop btn">
+<pre>\define ref_divpop_prefix()
+&quot;&quot;&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!match[&quot;]]&quot;&quot;&quot;&gt;&quot;&lt;/$list&gt;
+\end
+\define ref_divpop_suffix()
+&quot;&quot;&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!match[&quot;]]&quot;&quot;&quot;&gt;&quot;&lt;/$list&gt;
+\end
+\define divpop_current(ur_ref)
 &lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;&quot;$ur_ref$&quot;&quot;&quot;/&gt;
+&lt;$list filter=&quot;&quot;&quot;[[$ur_ref$]]&quot;&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
 &lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
 {{DivPop.svg}}
@@ -10941,6 +10951,15 @@ close
      style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
 &lt;/svg&gt;
 </pre>
+</div>
+<div created="20200829082635551" draft.of="LifeprintASLU" draft.title="LifeprintASLU" modified="20200901055650566" tags="BOOK" title="Draft of 'LifeprintASLU'">
+<pre>Lifeprint.com - American Sign Language University
+
+Main website: https://www.lifeprint.com/
+
+YouTube video page: https://www.youtube.com/channel/UCvd8SHzSp07_U55qFI0-dDA
+
+&lt;&lt;óftr&gt;&gt;</pre>
 </div>
 <div created="20200223043825137" modified="20200604205743223" tags="META" title="ext Parent Return sample">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
