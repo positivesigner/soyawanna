@@ -371,17 +371,17 @@ Error message and password prompt
 
 <li>RandomHouseASL-Y</li>
 
-<li>RandomHouseASL-Y-f1063</li>
+<li>RandomHouseASL-Y-p1063</li>
 
-<li>RandomHouseASL-Y-f1064</li>
+<li>RandomHouseASL-Y-p1064</li>
 
-<li>RandomHouseASL-Y-f1065</li>
+<li>RandomHouseASL-Y-p1065</li>
 
 <li>RandomHouseASL-Z</li>
 
-<li>RandomHouseASL-Z-f1066</li>
+<li>RandomHouseASL-Z-p1066</li>
 
-<li>RandomHouseASL-Z-f1067</li>
+<li>RandomHouseASL-Z-p1067</li>
 
 <li>Recent entries</li>
 
@@ -9749,7 +9749,65 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[ASL Lookup Words]]</pre>
+# [[$:/config/MissingLinks]]
+# [[$:/config/Toolbar/Icons]]
+# [[$:/.tb/modules/startup/hide-sidebar.js]]
+# [[$:/config/HideSidebarOnStartup]]
+# [[$:/config/ShortcutInfo/font-large]]
+# [[$:/config/ShortcutInfo/font-normal]]
+# [[$:/config/ShortcutInfo/home-tiddlers]]
+# [[$:/config/ShortcutInfo/save-all-changes]]
+# [[$:/config/ShortcutInfo/save-html-converted]]
+# [[$:/config/shortcuts/font-large]]
+# [[$:/config/shortcuts/font-normal]]
+# [[$:/config/shortcuts/home-tiddlers]]
+# [[$:/config/shortcuts/save-all-changes]]
+# [[$:/config/shortcuts/save-html-converted]]
+# [[$:/config/TextEditor/EnableToolbar]]
+# [[$:/plugins/malgam/version-control/versionTab]]
+# [[DivPop btn]]
+# [[DivPop glbl]]
+# [[DivPop.svg]]
+# [[ext Parent Return sample]]
+# [[ext TW Return]]
+# [[Font Size]]
+# [[img base-palm-base In-up]]
+# [[img base-palm-base Out-down]]
+# [[img base-palm-base Right]]
+# [[img base-palm-base unused]]
+# [[img move-Flick-snap]]
+# [[img move-In-out]]
+# [[img move-Left-right]]
+# [[img move-Twist-bend]]
+# [[img move-Up-down]]
+# [[img palm-In-up]]
+# [[img palm-Left]]
+# [[img palm-Out-down]]
+# [[INDEX]]
+# [[keyboard action FontLarge]]
+# [[keyboard action FontNormal]]
+# [[keyboard action HomeTiddlers]]
+# [[keyboard action SaveAllChanges]]
+# [[keyboard action SaveHtmlConverted]]
+# [[mcr ASLEntry GlblImgDisp]]
+# [[mcr ASLEntry GlblParentBook úhdr]]
+# [[mcr ASLEntry GlblParentChapter áhdr]]
+# [[mcr ASLEntry GlblSectionLinks úftr]]
+# [[mcr ASLEntry GlblVideoLinks óftr]]
+# [[mcr ASLEntry GlblWordLinks éftr]]
+# [[mcr ASLEntry GlblWordTitle éhdr]]
+# [[mcr ASLEntry GlblWordUsage áftr]]
+# [[mcr OneLink]]
+# [[mcr ref_iframe]]
+# [[mcr T1Reveal]]
+# [[Missing Tags Report]]
+# [[Recent entries]]
+# [[template Home Button]]
+# [[TiddlyWiki Startup Options]]
+# [[Unused Word Audit]]
+# [[View All Pages]]
+# [[What is this Wiki Stuff?]]
+# [[Word Title Audit]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9974,7 +10032,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200901194603737" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200901203220587" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10001,7 +10059,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200901194047616" list="$:/Import [[ASL Lookup Words]] [[ASL Videos]] [[Recent entries]] [[Unused Word Audit]]" modified="20200901194549457" title="$:/StoryList">
+<div created="20200901202911631" list="[[ASL Videos]] RandomHouseASL RandomHouseASL-Y" modified="20200901203215269" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10874,12 +10932,12 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829105849742" modified="20200901035614507" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
+<div created="20200829105849742" modified="20200901202638056" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
 <pre>\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
 \define ref_word_links_compile_filter(ur_vocab)
-&lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[regexp:text[(?i)$ur_vocab$]field:language[eng-vocab]]&quot;&quot;&quot; /&gt;
+&lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)$ur_vocab$]]&quot;&quot;&quot; /&gt;
 \end
 \define ref_word_links_disp_button(ur_right_hand ur_location ur_palm ur_base_palm ur_move)
 &lt;$button&gt;Find similar
@@ -10943,7 +11001,7 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829120936613" modified="20200831210419275" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
+<div created="20200829120936613" modified="20200901202810606" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
 <pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
 &lt;$list filter=&quot;$ur_filter$&quot;&gt;
 @@padding-right: 50px;white-space: nowrap;
@@ -10952,7 +11010,7 @@ $ur_value$
 &lt;/$list&gt;
 \end
 \define ref_words_usage_compile_filter(ur_title, ur_word, ur_vocab)
-&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)$ur_vocab$]field:language[eng-vocab]]&quot;&quot;&quot; /&gt;
+&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)$ur_vocab$]]&quot;&quot;&quot; /&gt;
 \end
 \define glbl_words_usage(ur_title)
 &lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;
@@ -10965,7 +11023,7 @@ $ur_value$
 &lt;/$list&gt;
 \end
 \define áftr()
-&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]has[section_seq]!has[draft.of]]&quot;&quot;&quot;&gt;
 &lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end</pre>
@@ -11093,7 +11151,7 @@ YouTube video page: https://www.youtube.com/user/deafnewspaper
 &lt;&lt;úftr&gt;&gt;
 </pre>
 </div>
-<div book="RandomHouseASL" created="20200830073747308" language="eng-vocab" modified="20200901055405851" pub-date="Y" section_seq="1063" tags="DOC" title="RandomHouseASL-Y-f1063">
+<div book="RandomHouseASL" created="20200830073747308" modified="20200901202933304" pub-date="Y" section_seq="p1063" tags="DOC" title="RandomHouseASL-Y-p1063">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 * yesterday
@@ -11110,7 +11168,7 @@ YouTube video page: https://www.youtube.com/user/deafnewspaper
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="RandomHouseASL" created="20200830072838977" language="eng-vocab" modified="20200901193235712" pub-date="Y" section_seq="1064" tags="DOC" title="RandomHouseASL-Y-f1064">
+<div book="RandomHouseASL" created="20200830072838977" modified="20200901203014700" pub-date="Y" section_seq="p1064" tags="DOC" title="RandomHouseASL-Y-p1064">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 * you
@@ -11127,7 +11185,7 @@ YouTube video page: https://www.youtube.com/user/deafnewspaper
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="RandomHouseASL" created="20200829131908562" language="eng-vocab" modified="20200901055454453" pub-date="Y" section_seq="1065" tags="DOC" title="RandomHouseASL-Y-f1065">
+<div book="RandomHouseASL" created="20200829131908562" modified="20200901202951540" pub-date="Y" section_seq="p1065" tags="DOC" title="RandomHouseASL-Y-p1065">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 * You're-too-late
@@ -11150,8 +11208,8 @@ YouTube video page: https://www.youtube.com/user/deafnewspaper
 &lt;$macrocall $name=glbl_section_links ur_title=&lt;&lt;currentTiddler&gt;&gt; ur_language=&quot;eng-vocab&quot; /&gt;
 </pre>
 </div>
-<div book="RandomHouseASL" created="20200827202739828" language="eng-vocab" modified="20200829131824855" pub-date="Z" section_seq="1066" tags="DOC" title="RandomHouseASL-Z-f1066">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="RandomHouseASL" created="20200827202739828" modified="20200901203158222" pub-date="Z" section_seq="p1066" tags="DOC" title="RandomHouseASL-Z-p1066">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 * zeal
 ** aspriation
@@ -11169,17 +11227,17 @@ YouTube video page: https://www.youtube.com/user/deafnewspaper
 * zigzag
 * zip
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="RandomHouseASL" created="20200829131721239" language="eng-vocab" modified="20200901193639628" pub-date="Z" section_seq="1066" tags="DOC" title="RandomHouseASL-Z-f1067">
-<pre>&lt;$macrocall $name=glbl_parent_chapter ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+<div book="RandomHouseASL" created="20200829131721239" modified="20200901203142511" pub-date="Z" section_seq="p1067" tags="DOC" title="RandomHouseASL-Z-p1067">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 * zipper
 * zoom
 ** set-off
 ** shoot-up
 
-&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
+&lt;&lt;áftr&gt;&gt;</pre>
 </div>
 <div created="20200203145715457" modified="20200901192949016" tags="META" title="Recent entries">
 <pre>[[Word Title Audit]]
