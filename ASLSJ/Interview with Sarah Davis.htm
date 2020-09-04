@@ -10010,7 +10010,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200904071355264" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200904103241292" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -11312,14 +11312,14 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
 </div>
-<div created="20200901191725217" modified="20200903204529732" tags="META" title="Unused Word Audit">
+<div created="20200901191725217" modified="20200904103135090" tags="META" title="Unused Word Audit">
 <pre>\define unused_word_disp(ur_title, ur_eng_vocab)
 &lt;$list filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)$ur_eng_vocab$]count[]match[0]]&quot;&quot;&quot;&gt;
 &lt;$link to=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; /&gt;&lt;br&gt;
 &lt;/$list&gt;
 \end
 \define unused_word_audit(ur_title, ur_eng_vocab)
-&lt;$list filter=&quot;&quot;&quot;[[$ur_eng_vocab$]split[(]join[\(]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[[$ur_eng_vocab$]split[(]join[\(]split[)]join[\)]]&quot;&quot;&quot;&gt;
 &lt;$macrocall $name=unused_word_disp ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_eng_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 
 &lt;/$list&gt;
