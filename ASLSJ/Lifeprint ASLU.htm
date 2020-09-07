@@ -297,6 +297,8 @@ Error message and password prompt
 
 <li>BTrll-again</li>
 
+<li>Display Chapter</li>
+
 <li>DivPop btn</li>
 
 <li>DivPop glbl</li>
@@ -741,25 +743,79 @@ Error message and password prompt
 
 <li>LifeprintASLU-1-video</li>
 
-<li>LifeprintASLU-1-video-e1</li>
+<li>LifeprintASLU-1-video-m00s00</li>
 
-<li>LifeprintASLU-1-video-e2</li>
+<li>LifeprintASLU-1-video-m00s15</li>
 
-<li>LifeprintASLU-1-video-e3</li>
+<li>LifeprintASLU-1-video-m00s30</li>
 
-<li>LifeprintASLU-1-video-e4</li>
+<li>LifeprintASLU-1-video-m00s45</li>
 
-<li>LifeprintASLU-1-video-e5</li>
+<li>LifeprintASLU-1-video-m01s00</li>
 
-<li>LifeprintASLU-1-video-e6</li>
+<li>LifeprintASLU-1-video-m01s15</li>
 
-<li>LifeprintASLU-1-video-e7</li>
+<li>LifeprintASLU-1-video-m01s30</li>
 
-<li>LifeprintASLU-1-video-e8</li>
+<li>LifeprintASLU-1-video-m01s45</li>
 
-<li>LifeprintASLU-1-video-e9</li>
+<li>LifeprintASLU-1-video-m02s00</li>
 
-<li>LifeprintASLU-1-video-ec10</li>
+<li>LifeprintASLU-1-video-m02s15</li>
+
+<li>LifeprintASLU-1-video-m02s30</li>
+
+<li>LifeprintASLU-1-video-m02s45</li>
+
+<li>LifeprintASLU-1-video-m03s00</li>
+
+<li>LifeprintASLU-1-video-m03s15</li>
+
+<li>LifeprintASLU-1-video-m03s30</li>
+
+<li>LifeprintASLU-1-video-m03s45</li>
+
+<li>LifeprintASLU-1-video-m04s00</li>
+
+<li>LifeprintASLU-1-video-m04s15</li>
+
+<li>LifeprintASLU-1-video-m04s30</li>
+
+<li>LifeprintASLU-1-video-m04s45</li>
+
+<li>LifeprintASLU-1-video-m05s00</li>
+
+<li>LifeprintASLU-1-video-m05s15</li>
+
+<li>LifeprintASLU-1-video-m05s30</li>
+
+<li>LifeprintASLU-1-video-m05s45</li>
+
+<li>LifeprintASLU-1-video-m06s00</li>
+
+<li>LifeprintASLU-1-video-m06s15</li>
+
+<li>LifeprintASLU-1-video-m06s30</li>
+
+<li>LifeprintASLU-1-video-m06s45</li>
+
+<li>LifeprintASLU-1-video-m07s00</li>
+
+<li>LifeprintASLU-1-video-m07s15</li>
+
+<li>LifeprintASLU-1-video-m07s30</li>
+
+<li>LifeprintASLU-1-video-m07s45</li>
+
+<li>LifeprintASLU-1-video-m08s00</li>
+
+<li>LifeprintASLU-1-video-m08s15</li>
+
+<li>LifeprintASLU-1-video-m08s30</li>
+
+<li>LifeprintASLU-1-video-m08s45</li>
+
+<li>LifeprintASLU-1-video-m10s00</li>
 
 <li>mcr ASLEntry GlblImgDisp</li>
 
@@ -10399,7 +10455,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200907114957493" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200907145001238" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10426,7 +10482,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200907112322677" list="[[ASL Videos]] [[Recent entries]] [[Word ASLSJ Syll Audit]]" modified="20200907114821582" title="$:/StoryList">
+<div created="20200907144821209" list="[[ASL Videos]] LifeprintASLU LifeprintASLU-1-video" modified="20200907144903475" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10960,6 +11016,15 @@ Hello word example video: https://m.youtube.com/watch?v=543a6GRjVVk
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div created="20200907144521855" modified="20200907144956388" tags="META" title="Display Chapter">
+<pre>&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]field:book{$:/state/popup/disp-book}field:pub-date{$:/state/popup/disp-pub-date}has[section_seq]sort[title]]&quot;&quot;&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
+{{||$:/core/ui/ViewTemplate/tags}}
+&lt;$transclude mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;
 </pre>
 </div>
 <div created="20200418064445680" modified="20200901064248288" tags="META $:/tags/ViewToolbar" title="DivPop btn">
@@ -11811,7 +11876,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200829082635551" modified="20200831211239997" tags="BOOK" title="LifeprintASLU">
+<div created="20200829082635551" modified="20200907143542167" tags="BOOK" title="LifeprintASLU">
 <pre>Lifeprint.com - American Sign Language University
 
 Main website: https://www.lifeprint.com/
@@ -11832,7 +11897,7 @@ YouTube video page: https://www.youtube.com/channel/UCvd8SHzSp07_U55qFI0-dDA
 
 &lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200830212611775" modified="20200831212003309" pub-date="1-video" tags="CHAPTER" title="LifeprintASLU-1-video">
+<div book="LifeprintASLU" created="20200830212611775" modified="20200907144103846" pub-date="1-video" tags="CHAPTER" title="LifeprintASLU-1-video">
 <pre>&lt;&lt;úhdr&gt;&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/DaMjr4AfYA0&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen&gt;&lt;/iframe&gt;
@@ -11840,10 +11905,8 @@ YouTube video page: https://www.youtube.com/channel/UCvd8SHzSp07_U55qFI0-dDA
 &lt;&lt;úftr&gt;&gt;
 </pre>
 </div>
-<div book="LifeprintASLU" created="20200829131721239" language="eng-vocab" modified="20200831210433239" pub-date="1-video" section_seq="e1" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m00s&quot;&gt;Time 0:00&lt;/a&gt;" title="LifeprintASLU-1-video-e1">
+<div book="LifeprintASLU" created="20200829131721239" language="eng-vocab" modified="20200907135113016" pub-date="1-video" section_seq="m00s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m00s&quot;&gt;Time 0:00&lt;/a&gt;" title="LifeprintASLU-1-video-m00s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
-
-Monitor: &quot;Lesson 1&quot;
 
 Bill: (T'right) Hello.
 
@@ -11855,13 +11918,27 @@ Jen: JEN.
 
 Bill: (T'aud) (N'understand) She JEN. I,me BILL. (H'yes).
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907135028638" language="eng-vocab" modified="20200907135759332" pub-date="1-video" section_seq="m00s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m10s&quot;&gt;Time 0:19&lt;/a&gt;" title="LifeprintASLU-1-video-m00s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
+Monitor: &quot;Lesson 1&quot;
+
 (L'behind) &quot;LESSON&quot; these, (L'down) lesson 1.
 
 Monitor: &quot;Practice Sheet: 1.A&quot;
 
 Bill: (L'behind) &quot;Practice Sheet&quot; these, (L'down) practice sheet.
 
-Sheet 1A.
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907135219654" language="eng-vocab" modified="20200907135441791" pub-date="1-video" section_seq="m00s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m30s&quot;&gt;Time 0:30&lt;/a&gt;" title="LifeprintASLU-1-video-m00s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
+Monitor: &quot;Practice Sheet: 1.A&quot;
+
+Bill: Sheet 1A.
 
 (T'right) (L'behind) &quot;1&quot; this, 1.
 
@@ -11874,6 +11951,11 @@ Jen: A.
 Bill: (H'yes) Good this.
 
 (T'aud) (H'yes).
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907135312950" language="eng-vocab" modified="20200907135425219" pub-date="1-video" section_seq="m00s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=00m45s&quot;&gt;Time 0:45&lt;/a&gt;" title="LifeprintASLU-1-video-m00s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;Dr. Bill Vicars&quot;, &quot;Lifeprint.com&quot;
 
@@ -11891,7 +11973,7 @@ Bill: (H'yes) Good-thing. LP.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200830234743548" language="eng-vocab" modified="20200831210447963" pub-date="1-video" section_seq="e2" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m05s&quot;&gt;Time 1:05&lt;/a&gt;" title="LifeprintASLU-1-video-e2">
+<div book="LifeprintASLU" created="20200830234743548" language="eng-vocab" modified="20200907135721632" pub-date="1-video" section_seq="m01s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m05s&quot;&gt;Time 1:05&lt;/a&gt;" title="LifeprintASLU-1-video-m01s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;GOOD&quot;
@@ -11910,13 +11992,23 @@ Jen: Yes.
 
 Bill: (T'aud) Good-thing.
 
-(L'down) Yes-with-A-shape, maybe? (L'down) Yes-with-S-shape, I,me.
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907135559204" language="eng-vocab" modified="20200907135928412" pub-date="1-video" section_seq="m01s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m25s&quot;&gt;Time 1:25&lt;/a&gt;" title="LifeprintASLU-1-video-m01s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
+Bill: (L'down) Yes-with-A-shape, maybe? (L'down) Yes-with-S-shape, I,me.
 
 Monitor: &quot;NO&quot;
 
 Bill: (T'left) (H'no) No.
 
 Jen: No.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907135843296" language="eng-vocab" modified="20200907140035789" pub-date="1-video" section_seq="m01s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m30s&quot;&gt;Time 1:30&lt;/a&gt;" title="LifeprintASLU-1-video-m01s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;AGAIN&quot;
 
@@ -11935,6 +12027,11 @@ Monitor: &quot;Don't UNDERSTAND&quot;
 Bill: (H'no) Understand.
 
 Jen: (H'no) Understand.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907135946189" language="eng-vocab" modified="20200907140133599" pub-date="1-video" section_seq="m01s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=01m48s&quot;&gt;Time 1:48&lt;/a&gt;" title="LifeprintASLU-1-video-m01s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;YES&quot;
 
@@ -11962,7 +12059,7 @@ Bill: (T'aud) Yes, (L'right) she again.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831001730890" language="eng-vocab" modified="20200831210459855" pub-date="1-video" section_seq="e3" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m03s&quot;&gt;Time 2:03&lt;/a&gt;" title="LifeprintASLU-1-video-e3">
+<div book="LifeprintASLU" created="20200831001730890" language="eng-vocab" modified="20200907140650025" pub-date="1-video" section_seq="m02s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m03s&quot;&gt;Time 2:03&lt;/a&gt;" title="LifeprintASLU-1-video-m02s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;UNDERSTAND&quot;
@@ -11993,6 +12090,11 @@ Bill: I,me.
 
 Jen: I,me.
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907140232923" language="eng-vocab" modified="20200907140701936" pub-date="1-video" section_seq="m02s18" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m18s&quot;&gt;Time 2:18&lt;/a&gt;" title="LifeprintASLU-1-video-m02s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;Raise eyebrows for yes/no questions.&quot;
 
 BIll: (L'behind) &quot;yes/no questions&quot; these, (H'q)? (H'yes).
@@ -12007,6 +12109,11 @@ Bill: (H'q) You understand me?
 
 Bill: (T'aud) (H'yes) Good. (H'q) You understand me?
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907140347804" language="eng-vocab" modified="20200907140816246" pub-date="1-video" section_seq="m02s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m32s&quot;&gt;Time 2:32&lt;/a&gt;" title="LifeprintASLU-1-video-m02s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;SIGN [version 1]&quot;, &quot;SIGN [version 2]
 
 Bill: (T'right) (L'behind) &quot;SIGN [version 1]&quot; these, sign-language.
@@ -12017,11 +12124,18 @@ Bill: (L'behind) &quot;SIGN version 2]&quot; these, signing.
 
 Jen: Signing.
 
-Bill: (L'up) Signing-at-people. (L'down) hold-on. Signing.
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907140449017" language="eng-vocab" modified="20200907140807716" pub-date="1-video" section_seq="m02s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m48s&quot;&gt;Time 2:48&lt;/a&gt;" title="LifeprintASLU-1-video-m02s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
+Bill: (L'up) Signing-large. (L'down) hold-on. Signing.
+
+Sign-language. Signing.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831002944626" language="eng-vocab" modified="20200831210513540" pub-date="1-video" section_seq="e4" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m59s&quot;&gt;Time 2:59&lt;/a&gt;" title="LifeprintASLU-1-video-e4">
+<div book="LifeprintASLU" created="20200831002944626" language="eng-vocab" modified="20200907141000194" pub-date="1-video" section_seq="m03s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=02m59s&quot;&gt;Time 2:59&lt;/a&gt;" title="LifeprintASLU-1-video-m03s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;THIS / it / that&quot;, &quot;(just point)&quot;
@@ -12048,6 +12162,11 @@ Monitor: &quot;SIGN THIS...&quot;
 
 Bill: Sign-language this.
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907140846691" language="eng-vocab" modified="20200907141106877" pub-date="1-video" section_seq="m03s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m15s&quot;&gt;Time 3:15&lt;/a&gt;" title="LifeprintASLU-1-video-m03s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;(do) YOU UNDERSTAND ME?&quot;
 
 Bill: (H'q)?
@@ -12057,6 +12176,11 @@ Jen: (H'q)?
 Monitor: &quot;FORGOT&quot;, &quot;FORGET&quot;
 
 Bill: Forgot. Hold-on, forgot.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141014723" language="eng-vocab" modified="20200907141212140" pub-date="1-video" section_seq="m03s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m30s&quot;&gt;Time 3:30&lt;/a&gt;" title="LifeprintASLU-1-video-m03s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;(do) YOU UNDERSTAND ME?&quot;
 
@@ -12071,6 +12195,13 @@ Bill: (H'q) You understand me?
 Bill: (T'right) Good-thing, good, great.
 
 Monitor: &quot;Again&quot;
+
+Bill: (T'aud) Again.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141111108" language="eng-vocab" modified="20200907141201769" pub-date="1-video" section_seq="m03s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m44s&quot;&gt;Time 3:44&lt;/a&gt;" title="LifeprintASLU-1-video-m03s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Bill: (T'aud) Again.
 
@@ -12100,7 +12231,7 @@ Jen: Yes.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831004522961" language="eng-vocab" modified="20200831210526393" pub-date="1-video" section_seq="e5" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m59s&quot;&gt;Time 3:59&lt;/a&gt;" title="LifeprintASLU-1-video-e5">
+<div book="LifeprintASLU" created="20200831004522961" language="eng-vocab" modified="20200907141422946" pub-date="1-video" section_seq="m04s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=03m59s&quot;&gt;Time 3:59&lt;/a&gt;" title="LifeprintASLU-1-video-m04s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;NO&quot;
@@ -12123,13 +12254,28 @@ Bill: Maybe, (L'down) second-option. (L'right-aud) (H'q) Question.
 
 Jen: Question.
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141329712" language="eng-vocab" modified="20200907141517859" pub-date="1-video" section_seq="m04s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m18s&quot;&gt;Time 4:18&lt;/a&gt;" title="LifeprintASLU-1-video-m04s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;second version&quot;, &quot;second item of 2&quot;
 
 Bill: (T'aud) (L'down) second-option.
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141450161" language="eng-vocab" modified="20200907141549561" pub-date="1-video" section_seq="m04s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m34s&quot;&gt;Time 4:34&lt;/a&gt;" title="LifeprintASLU-1-video-m04s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;ASK&quot;
 
 Bill: (L'behind) &quot;ASK&quot; these. (L'down) first- option, (H'q) Ask? (L'down) second-option, (H'q) Question. (H'yes).
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141522586" language="eng-vocab" modified="20200907141612589" pub-date="1-video" section_seq="m04s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m46s&quot;&gt;Time 4:46&lt;/a&gt;" title="LifeprintASLU-1-video-m04s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;ASK-me&quot;, &quot;ASK-him/her&quot;
 
@@ -12139,7 +12285,7 @@ Bill: Question-me (L'behind) this.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831012414994" language="eng-vocab" modified="20200831210538119" pub-date="1-video" section_seq="e6" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m54s&quot;&gt;Time 4:54&lt;/a&gt;" title="LifeprintASLU-1-video-e6">
+<div book="LifeprintASLU" created="20200831012414994" language="eng-vocab" modified="20200907141738666" pub-date="1-video" section_seq="m05s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=04m54s&quot;&gt;Time 4:54&lt;/a&gt;" title="LifeprintASLU-1-video-m05s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;(do) YOU UNDERSTAND him / her / that-person?&quot;
@@ -12149,6 +12295,11 @@ Bill: (T-right) (H'q)?
 Jen: (H'q) You understand (L'right-aud) someone?
 
 Bill: (H'yes).
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141646006" language="eng-vocab" modified="20200907141834007" pub-date="1-video" section_seq="m05s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=05m13s&quot;&gt;Time 5:13&lt;/a&gt;" title="LifeprintASLU-1-video-m05s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;sometimes&quot;
 
@@ -12168,19 +12319,21 @@ Jen: Signing.
 
 Bill: Signing (H'yes).
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141747963" language="eng-vocab" modified="20200907141917061" pub-date="1-video" section_seq="m05s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=05m29s&quot;&gt;Time 5:29&lt;/a&gt;" title="LifeprintASLU-1-video-m05s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;NAME&quot;
 
 Bill: Name.
 
 Jen: Name.
 
-Monitor: &quot;I (am) named&quot;
-
-Bill: I,me name BILL. (H'yes).
-
-Monitor: &quot;MY NAME&quot;
-
-Bill: My name BILL.
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907141846046" language="eng-vocab" modified="20200907141908646" pub-date="1-video" section_seq="m05s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=05m44s&quot;&gt;Time 5:44&lt;/a&gt;" title="LifeprintASLU-1-video-m05s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;I (am) named&quot;
 
@@ -12200,7 +12353,7 @@ Bill: Good-thing.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831013627737" language="eng-vocab" modified="20200831210550230" pub-date="1-video" section_seq="e7" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m01s&quot;&gt;Time 6:01&lt;/a&gt;" title="LifeprintASLU-1-video-e7">
+<div book="LifeprintASLU" created="20200831013627737" language="eng-vocab" modified="20200907142103713" pub-date="1-video" section_seq="m06s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m01s&quot;&gt;Time 6:01&lt;/a&gt;" title="LifeprintASLU-1-video-m06s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;Wh-type questions lower the eyebrows&quot;
@@ -12208,6 +12361,11 @@ Monitor: &quot;Wh-type questions lower the eyebrows&quot;
 Bill: (T'right) (L'behind) &quot;lower&quot; these. (H'q)?
 
 Jen: (H'q)?
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907142040394" language="eng-vocab" modified="20200907142202191" pub-date="1-video" section_seq="m06s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m15s&quot;&gt;Time 6:15&lt;/a&gt;" title="LifeprintASLU-1-video-m06s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;who what when where why how&quot;, &quot;how much&quot;, &quot;how many&quot;
 
@@ -12227,6 +12385,11 @@ Jen: (H'q) name?
 
 Bill: (H'yes). (H'q) name?
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907142112006" language="eng-vocab" modified="20200907142302346" pub-date="1-video" section_seq="m06s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m28s&quot;&gt;Time 6:28&lt;/a&gt;" title="LifeprintASLU-1-video-m06s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;NAME&quot;
 
 Bill: Name.
@@ -12245,6 +12408,11 @@ Bill: (H'q) You name?
 
 Jen: JEN.
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907142207180" language="eng-vocab" modified="20200907142535215" pub-date="1-video" section_seq="m06s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=06m45s&quot;&gt;Time 6:45&lt;/a&gt;" title="LifeprintASLU-1-video-m06s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;nice to meet you&quot;
 
 Bill: Nice meet-you.
@@ -12255,7 +12423,14 @@ Bill: Good. Nice meet-you (H'yes).
 
 Jen: Nice meet-you.
 
-Bill: Great (H'yes). Nice meet-you.
+Bill: Great (H'yes).
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907142414249" language="eng-vocab" modified="20200907142525316" pub-date="1-video" section_seq="m07s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m02s&quot;&gt;Time 7:02&lt;/a&gt;" title="LifeprintASLU-1-video-m07s00">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
+Bill: Nice meet-you.
 
 Monitor: &quot;MEET&quot;
 
@@ -12267,7 +12442,7 @@ Bill: Nice meet-you. (H'yes).
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831015037299" language="eng-vocab" modified="20200831210601680" pub-date="1-video" section_seq="e8" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m14s&quot;&gt;Time 7:14&lt;/a&gt;" title="LifeprintASLU-1-video-e8">
+<div book="LifeprintASLU" created="20200831015037299" language="eng-vocab" modified="20200907142727829" pub-date="1-video" section_seq="m07s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m14s&quot;&gt;Time 7:14&lt;/a&gt;" title="LifeprintASLU-1-video-m07s15">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;YOU what-NAME?&quot;
@@ -12287,6 +12462,11 @@ Bill: Deaf.
 Jen: Deaf.
 
 Bill: (H'yes). Deaf. (L'down) Letter-D? Number-1, Deaf (H'yes). Maybe Deaf, maybe.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907142603623" language="eng-vocab" modified="20200907142916643" pub-date="1-video" section_seq="m07s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m35s&quot;&gt;Time 7:35&lt;/a&gt;" title="LifeprintASLU-1-video-m07s30" type=" ">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;YES&quot;
 
@@ -12316,6 +12496,11 @@ Bill: (T'right) Deaf you?
 
 Jen: JE...
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907142736179" language="eng-vocab" modified="20200907142938175" pub-date="1-video" section_seq="m07s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=07m44s&quot;&gt;Time 7:44&lt;/a&gt;" title="LifeprintASLU-1-video-m07s45" type=" ">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Bill: Not-that. You Deaf, you?
 
 Jen: (H'no) No.
@@ -12328,7 +12513,7 @@ Bill: (L'right) she hearing (H'yes). Hear (L'right) she, can (H'yes). (L'right) 
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831020246546" language="eng-vocab" modified="20200831210614490" pub-date="1-video" section_seq="e9" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m03s&quot;&gt;Time 8:03&lt;/a&gt;" title="LifeprintASLU-1-video-e9">
+<div book="LifeprintASLU" created="20200831020246546" language="eng-vocab" modified="20200907143052977" pub-date="1-video" section_seq="m08s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m03s&quot;&gt;Time 8:03&lt;/a&gt;" title="LifeprintASLU-1-video-m08s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;CAN&quot;
@@ -12343,9 +12528,19 @@ Jen: Deaf you?
 
 Bill: Yes. I,me Deaf, hard-of-hearing.
 
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907143012119" language="eng-vocab" modified="20200907143135570" pub-date="1-video" section_seq="m08s15" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m16s&quot;&gt;Time 8:16&lt;/a&gt;" title="LifeprintASLU-1-video-m08s15">
+<pre>&lt;&lt;áhdr&gt;&gt;
+
 Monitor: &quot;DEAF / Hard of hearing&quot;
 
 Bill: I,me Deaf, maybe (L'behind) &quot;Hard of hearing&quot; these, hard-of-hearing, maybe.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907143057772" language="eng-vocab" modified="20200907143213181" pub-date="1-video" section_seq="m08s30" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m30s&quot;&gt;Time 8:30&lt;/a&gt;" title="LifeprintASLU-1-video-m08s30">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;TEACH&quot;
 
@@ -12362,6 +12557,11 @@ Bill: (T'right) Teacher.
 Jen: Teacher.
 
 Bill: (H'yes) Teacher.
+
+&lt;&lt;áftr&gt;&gt;</pre>
+</div>
+<div book="LifeprintASLU" created="20200907143140939" language="eng-vocab" modified="20200907143204472" pub-date="1-video" section_seq="m08s45" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=08m44s&quot;&gt;Time 8:44&lt;/a&gt;" title="LifeprintASLU-1-video-m08s45">
+<pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;LEARN&quot;
 
@@ -12381,7 +12581,7 @@ Bill: Person.
 
 &lt;&lt;áftr&gt;&gt;</pre>
 </div>
-<div book="LifeprintASLU" created="20200831021424241" language="eng-vocab" modified="20200831212447852" pub-date="1-video" section_seq="ec10" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=09m00s&quot;&gt;Time 9:00&lt;/a&gt;" title="LifeprintASLU-1-video-ec10">
+<div book="LifeprintASLU" created="20200831021424241" language="eng-vocab" modified="20200907143232127" pub-date="1-video" section_seq="m10s00" tags="DOC" time_link="&lt;a target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=DaMjr4AfYA0#t=09m00s&quot;&gt;Time 9:00&lt;/a&gt;" title="LifeprintASLU-1-video-m10s00">
 <pre>&lt;&lt;áhdr&gt;&gt;
 
 Monitor: &quot;&quot;
@@ -12440,8 +12640,15 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829103714127" modified="20200902003631763" tags="$:/tags/Macro META" title="mcr ASLEntry GlblSectionLinks úftr">
-<pre>\define ref_section_links_disp_links(ur_filter)
+<div created="20200829103714127" modified="20200907144851944" tags="$:/tags/Macro META" title="mcr ASLEntry GlblSectionLinks úftr">
+<pre>\define ref_section_btndisp_all(ur_book, ur_pub_date)
+&lt;$button&gt;Display entire chapter
+&lt;$action-setfield $tiddler='$:/state/popup/disp-book' text='$ur_book$'/&gt;
+&lt;$action-setfield $tiddler='$:/state/popup/disp-pub-date' text='$ur_pub_date$'/&gt;
+&lt;$action-navigate $to=&quot;Display Chapter&quot;/&gt;
+&lt;/$button&gt;
+\end
+\define ref_section_links_disp_links(ur_filter)
 &lt;ul&gt;
 &lt;$list filter=&quot;&quot;&quot;[$ur_filter$sort[title]]&quot;&quot;&quot; &gt;
 &lt;li&gt;
@@ -12460,6 +12667,7 @@ $ur_value$
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!book}]&quot;&quot;&quot;&gt;&lt;$vars cur_book=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!pub-date}]&quot;&quot;&quot;&gt;&lt;$vars cur_pub_date=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$macrocall $name=ref_section_links_compile_filter ur_book=&lt;&lt;cur_book&gt;&gt; ur_pub_date=&lt;&lt;cur_pub_date&gt;&gt; /&gt;
+&lt;$macrocall $name=ref_section_btndisp_all ur_book=&lt;&lt;cur_book&gt;&gt; ur_pub_date=&lt;&lt;cur_pub_date&gt;&gt; /&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 \end
