@@ -10455,7 +10455,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200913023536606" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200913075414899" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10482,7 +10482,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200913022324249" list="$:/Import [[Lifeprint ASL University]] [[Word ASLSJ Syll Audit]] [[Unused Word Audit]] [[Word Title Audit]]" modified="20200913023438270" title="$:/StoryList">
+<div list="[[Lifeprint ASL University]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -12685,12 +12685,12 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829105849742" modified="20200912232019891" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
+<div created="20200829105849742" modified="20200913053847636" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
 <pre>\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
 \define ref_word_links_compile_filter(ur_vocab)
-&lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)\b$ur_vocab$\b]]&quot;&quot;&quot; /&gt;
+&lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)\b(?&lt;!-)$ur_vocab$(?!-)\b]]&quot;&quot;&quot; /&gt;
 \end
 \define ref_word_links_disp_button(ur_right_hand ur_location ur_palm ur_base_palm ur_move)
 &lt;$button&gt;Find similar
@@ -12791,7 +12791,7 @@ $ur_syll$
 \end
 </pre>
 </div>
-<div created="20200829120936613" modified="20200912232555239" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
+<div created="20200829120936613" modified="20200913054221327" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
 <pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
 &lt;$list filter=&quot;$ur_filter$&quot;&gt;
 @@padding-right: 50px;white-space: nowrap;
@@ -12801,7 +12801,7 @@ $ur_word$&lt;$macrocall $name=glbl_word_detail ur_title=&quot;&quot;&quot;$ur_wo
 &lt;/$list&gt;
 \end
 \define ref_words_usage_compile_filter(ur_title, ur_word, ur_vocab)
-&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)\b$ur_vocab$\b]]&quot;&quot;&quot; /&gt;
+&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)\b(?&lt;!-)$ur_vocab$(?!-)\b]]&quot;&quot;&quot; /&gt;
 \end
 \define glbl_words_usage(ur_title)
 &lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;
@@ -13025,9 +13025,9 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div created="20200901191725217" modified="20200912232258733" tags="META" title="Unused Word Audit">
+<div created="20200901191725217" modified="20200913054049572" tags="META" title="Unused Word Audit">
 <pre>\define unused_word_disp(ur_title, ur_eng_vocab)
-&lt;$list filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)\b$ur_eng_vocab$\b]count[]match[0]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)\b(?&lt;!-)$ur_eng_vocab$(?!-)\b]count[]match[0]]&quot;&quot;&quot;&gt;
 &lt;$link to=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; /&gt;&lt;br&gt;
 &lt;/$list&gt;
 \end
@@ -13130,7 +13130,7 @@ Test your Tiddler filter using a drop-down list:
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
 </div>
-<div created="20200907074930746" modified="20200913023452634" tags="META" title="Word ASLSJ Syll Audit">
+<div created="20200907074930746" modified="20200913073557049" tags="META" title="Word ASLSJ Syll Audit">
 <pre>\define WordASLJSSyllEntryAudit(ur_title ur_entry)
 &lt;$list filter=&quot;&quot;&quot;[[img $ur_entry$]!is[tiddler]]&quot;&quot;&quot;&gt;
 &lt;$list filter=&quot;&quot;&quot;[[$ur_entry$]!match[-]]&quot;&quot;&quot;&gt;
@@ -13167,13 +13167,13 @@ Missing aslsj_syll parameter matching $ur_parm_val$: &lt;$link to=&quot;&quot;&q
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;B4C&quot; ur_aslsj_list=&quot;yfufuff jllll yffff cllll jffff jlulull cfufuff clulull&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;W78F&quot; ur_aslsj_list=&quot;ylfll jlfll jflll rflll&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;URK&quot; ur_aslsj_list=&quot;cllnn cffnn clulnn cfufnn lrtnn yffnn&quot; /&gt;
-&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;XILY&quot; ur_aslsj_list=&quot;cfnnn clnnn jfnnn rfnnn jlnnn jnnnl&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;XILY&quot; ur_aslsj_list=&quot;cfnnn clnnn jfnnn rfnnn jlnnn jnnnl yfnnn&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;SOA&quot; ur_aslsj_list=&quot;cnnnn ynnnn rnnnn rffff jnnnn&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Forehead&quot; ur_aslsj_list=&quot;WD W&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Chin-eye&quot; ur_aslsj_list=&quot;C CD Ch^D CKh^D Ch^qvD CKD&quot; /&gt;
-&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Together&quot; ur_aslsj_list=&quot;(v=v) (klxlk) (kllk) (v=c=v) (^ky^)&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Together&quot; ur_aslsj_list=&quot;(v=v) (klxlk) (kllk) (v=c=v) (^ky^) (^kcy^)&quot; /&gt;
 &lt;!--apart--&gt;
-&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Elbow&quot; ur_aslsj_list=&quot;&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Elbow&quot; ur_aslsj_list=&quot;YD&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;base-palm&quot; ur_parm_val=&quot;base In-up&quot; ur_aslsj_list=&quot;jUi, yjUi,&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;base-palm&quot; ur_parm_val=&quot;base Right&quot; ur_aslsj_list=&quot;yU,&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;base-palm&quot; ur_parm_val=&quot;base Out-down&quot; ur_aslsj_list=&quot;yiUj, iUj,&quot; /&gt;
