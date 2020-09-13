@@ -10354,7 +10354,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200912125907261" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200912225558279" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10381,7 +10381,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="$:/Import [[ASL Print Dictionaries]]" title="$:/StoryList">
+<div list="[[ASL Print Dictionaries]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -11983,7 +11983,7 @@ $ur_syll$
 \end
 </pre>
 </div>
-<div created="20200829120936613" modified="20200912125705984" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
+<div created="20200829120936613" modified="20200912225252899" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
 <pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
 &lt;$list filter=&quot;$ur_filter$&quot;&gt;
 @@padding-right: 50px;white-space: nowrap;
@@ -11993,7 +11993,7 @@ $ur_word$&lt;$macrocall $name=glbl_word_detail ur_title=&quot;&quot;&quot;$ur_wo
 &lt;/$list&gt;
 \end
 \define ref_words_usage_compile_filter(ur_title, ur_word, ur_vocab)
-&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)$ur_vocab$]]&quot;&quot;&quot; /&gt;
+&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)\b$ur_vocab$\b]]&quot;&quot;&quot; /&gt;
 \end
 \define glbl_words_usage(ur_title)
 &lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;

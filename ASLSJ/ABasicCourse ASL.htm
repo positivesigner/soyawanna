@@ -141,6 +141,10 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
+<li>$:/_commit_message/mcr ASLEntry GlblWordUsage áftr</li>
+
+<li>$:/_vc/20200912162445/mcr ASLEntry GlblWordUsage áftr</li>
+
 <li>$:/.tb/modules/startup/hide-sidebar.js</li>
 
 <li>$:/config/DefaultSidebarTab</li>
@@ -231,6 +235,8 @@ Error message and password prompt
 
 <li>$:/state/tab--1498284803</li>
 
+<li>$:/state/tab--1932140766</li>
+
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab--2112689675</li>
@@ -245,11 +251,19 @@ Error message and password prompt
 
 <li>$:/state/tabs/controlpanel/toolbars-1345989671</li>
 
+<li>$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/difftext</li>
+
+<li>$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/type</li>
+
+<li>$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/vertab</li>
+
 <li>$:/StoryList</li>
 
 <li>$:/temp/advancedsearch</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/saveTid</li>
 
 <li>$:/temp/search</li>
 
@@ -327,8 +341,6 @@ Error message and password prompt
 
 <li>BAiiu-angry</li>
 
-<li>BAiiu-happy</li>
-
 <li>BAiiu-heavy</li>
 
 <li>BAiiu-tired</li>
@@ -336,6 +348,10 @@ Error message and password prompt
 <li>BAnii-my,mine</li>
 
 <li>BAnil-please</li>
+
+<li>BAnit-blue</li>
+
+<li>BAniu-happy</li>
 
 <li>BAnll-and</li>
 
@@ -353,7 +369,9 @@ Error message and password prompt
 
 <li>BAnou-child</li>
 
-<li>BAnou-short(height)</li>
+<li>BAnou-short</li>
+
+<li>BArll-box</li>
 
 <li>BArll-classifier-large-CC</li>
 
@@ -385,8 +403,6 @@ Error message and password prompt
 
 <li>BCnlu-woman</li>
 
-<li>BFilu-son</li>
-
 <li>BFiou-husband</li>
 
 <li>BFnlf-boy</li>
@@ -400,6 +416,8 @@ Error message and password prompt
 <li>BFnli-tall</li>
 
 <li>BFnlu-man</li>
+
+<li>BFolu-son</li>
 
 <li>BTiof-weak</li>
 
@@ -415,6 +433,8 @@ Error message and password prompt
 
 <li>BTrll-America</li>
 
+<li>BTrlt-book</li>
+
 <li>Display Chapter</li>
 
 <li>DivPop btn</li>
@@ -422,6 +442,8 @@ Error message and password prompt
 <li>DivPop glbl</li>
 
 <li>DivPop.svg</li>
+
+<li>Draft of 'BAnit-blue'</li>
 
 <li>ext Parent Return sample</li>
 
@@ -915,6 +937,8 @@ Error message and password prompt
 
 <li>WAiii-interesting</li>
 
+<li>WAiiu-light</li>
+
 <li>WAnlu-classifier-F</li>
 
 <li>WFnii-smart</li>
@@ -926,8 +950,6 @@ Error message and password prompt
 <li>Word Title Audit</li>
 
 <li>WTool-family</li>
-
-<li>XAiiu-light(weight)</li>
 
 <li>XAnii-I,me</li>
 
@@ -981,6 +1003,37 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
+<div created="20200912232442661" modified="20200912232443689" title="$:/_commit_message/mcr ASLEntry GlblWordUsage áftr">
+<pre>Working</pre>
+</div>
+<div _vc-created="20200829120936613" _vc-modified="20200912232121545" _vc-tags="$:/tags/Macro META" commit_message="Working" created="20200912232445517" list="[[mcr ASLEntry GlblWordUsage áftr]]" modified="20200912232445517" title="$:/_vc/20200912162445/mcr ASLEntry GlblWordUsage áftr">
+<pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
+&lt;$list filter=&quot;$ur_filter$&quot;&gt;
+@@padding-right: 50px;white-space: nowrap;
+&lt;$link to=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot;&gt;
+$ur_word$&lt;$macrocall $name=glbl_word_detail ur_title=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; /&gt;&lt;/$link&gt;
+@@
+&lt;/$list&gt;
+\end
+\define ref_words_usage_compile_filter(ur_title, ur_word, ur_vocab)
+&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)\b$ur_vocab$\b]]&quot;&quot;&quot; /&gt;
+\end
+\define glbl_words_usage(ur_title)
+&lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;
+&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;[has[right-hand]sort[eng-vocab]]&quot;&gt;&lt;$vars cur_word=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;&quot;&quot;[{!!eng-vocab}]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=ref_words_usage_compile_filter ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_word=&lt;&lt;cur_word&gt;&gt; ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$vars&gt;
+&lt;/$list&gt;
+\end
+\define áftr()
+&lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]has[section_seq]!has[draft.of]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=glbl_words_usage ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end</pre>
+</div>
 <div bag="default" created="20151010151732122" creator="Tobias Beer" modified="20200322104155292" module-type="startup" revision="0" tags="META" title="$:/.tb/modules/startup/hide-sidebar.js" type="application/javascript">
 <pre>/*\
 title: $:/.tb/modules/startup/hide-sidebar.js
@@ -10282,10 +10335,15 @@ exports.startup = function() {
 <div created="20190925014431388" modified="20190925051250712" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[mcr ASLEntry GlblWordUsage áftr]]</pre>
+<div plugin-type="import" status="pending" title="$:/Import" type="application/json">
+<pre>{
+    &quot;tiddlers&quot;: {
+        &quot;Untitled&quot;: {
+            &quot;title&quot;: &quot;Untitled&quot;,
+            &quot;text&quot;: &quot;data:image/png;base64,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&quot;
+        }
+    }
+}</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10516,7 +10574,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200912125804334" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200913013759698" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200907060741096" modified="20200907060741096" title="$:/state/tab--1253679641">
@@ -10524,6 +10582,9 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 </div>
 <div created="20200111074213994" modified="20200904111645298" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Standard</pre>
+</div>
+<div created="20200912232437297" modified="20200912232437297" title="$:/state/tab--1932140766">
+<pre>$:/plugins/malgam/version-control/versionTab</pre>
 </div>
 <div created="20200115080054808" modified="20200115080137665" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
@@ -10546,7 +10607,16 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div list="[[A Basic Course in American Sign Language]]" title="$:/StoryList">
+<div created="20200912232505557" modified="20200912232738380" title="$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/difftext">
+<pre>yes</pre>
+</div>
+<div created="20200912232454700" modified="20200912232457076" title="$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/type">
+<pre>horizontal</pre>
+</div>
+<div created="20200912232451168" modified="20200912232736074" title="$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/vertab">
+<pre>mcr ASLEntry GlblWordUsage áftr</pre>
+</div>
+<div created="20200913010309978" list="[[A Basic Course in American Sign Language]] [[ASL Lookup Words]] [[Word ASLSJ Syll Audit]]" modified="20200913013747725" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200904111702479" title="$:/temp/advancedsearch">
@@ -10609,6 +10679,9 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
         }
     }
 }</pre>
+</div>
+<div created="20200912232445517" modified="20200912232445517" title="$:/temp/saveTid">
+<pre>$:/_vc/20200912162445/mcr ASLEntry GlblWordUsage áftr</pre>
 </div>
 <div created="20200302210517854" modified="20200302210519836" title="$:/temp/search">
 <pre></pre>
@@ -13107,14 +13180,6 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jllll D iUj h^ zq" base-palm="base In-up" created="20200903200812221" eng-vocab="happy" location="Apart" modified="20200907080231617" move="Up-down" palm="In-up" right-hand="B4C" tags="WORD" title="BAiiu-happy">
-<pre>&lt;&lt;éhdr&gt;&gt;
-
-&quot;enjoy&quot; + &quot;a lot&quot;
-
-&lt;&lt;éftr&gt;&gt;
-</pre>
-</div>
 <div aslsj_syll="ffffy, yffff A yjUi, iUjy dv hv zp zq" base-palm="base In-up" created="20200903201639204" eng-vocab="heavy" location="Apart" modified="20200907080222469" move="Up-down" palm="In-up" right-hand="B4C" tags="WORD" title="BAiiu-heavy">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
@@ -13145,6 +13210,22 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;enjoy&quot; + &quot;if you do?&quot;
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="cllll A iUj qo Uy zq" base-palm="base not used" created="20200912225742157" eng-vocab="blue" location="Apart" modified="20200912232820851" move="Twist-bend" palm="In-up" right-hand="B4C" tags="WORD" title="BAnit-blue">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;word&quot; + &quot;B&quot;
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="jllll D iUj h^ zq" base-palm="base not used" created="20200903200812221" eng-vocab="happy" location="Apart" modified="20200913012002424" move="Up-down" palm="In-up" right-hand="B4C" tags="WORD" title="BAniu-happy">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;enjoy&quot; + &quot;a lot&quot;
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -13219,12 +13300,24 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jllll A jUiy hv zq" base-palm="base not used" created="20200903204842757" eng-vocab="short(height)" location="Apart" modified="20200907102553731" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BAnou-short(height)">
+<div aslsj_syll="jllll A jUiy hv zq" base-palm="base not used" created="20200903204842757" eng-vocab="short" location="Apart" modified="20200912231801785" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BAnou-short">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;hand on top of something&quot; + &quot;move down&quot;
 
+*short height
 *small
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="ffffj, jffff A yU, Uy ^ky^ pk qy p~ q~ llllj, jllll" base-palm="base Right" created="20200912230249792" eng-vocab="box" location="Apart" modified="20200912230658291" move="Left-right" palm="Left" right-hand="B4C" tags="WORD" title="BArll-box">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;front and back sides of box&quot; + &quot;left and right sides of box&quot;
+
+*package
+*room
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -13273,7 +13366,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="yffff CD jUiy - ffffy, yffff A yjUi, jUiy (v=c=v)" base-palm="base In-up" created="20200904110604390" eng-vocab="wife" location="Chin-eye" modified="20200907102014857" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BCiou-wife">
+<div aslsj_syll="yffff CD jUiy zhv - ffffy, yffff A yjUi, jUiy (v=c=v)" base-palm="base In-up" created="20200904110604390" eng-vocab="wife" location="Chin-eye" modified="20200913013640078" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BCiou-wife">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;girl&quot; + &quot;marry&quot;
@@ -13327,7 +13420,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jlulull WD Uy zq" base-palm="base not used" created="20200904104916167" eng-vocab="mother" location="Chin-eye" modified="20200907101119165" move="In-out" palm="Left" right-hand="B4C" tags="WORD" title="BCnli-mother">
+<div aslsj_syll="jlulull CD Uy zq" base-palm="base not used" created="20200904104916167" eng-vocab="mother" location="Chin-eye" modified="20200913011319951" move="In-out" palm="Left" right-hand="B4C" tags="WORD" title="BCnli-mother">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;girl&quot; + &quot;tall&quot;
@@ -13343,7 +13436,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jlulull CD Uy zq WD" base-palm="base not used" created="20200904105531842" eng-vocab="parents" location="Chin-eye" modified="20200907101057911" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BCnlu-parents">
+<div aslsj_syll="jlulull CD Uy zh^ WD" base-palm="base not used" created="20200904105531842" eng-vocab="parents" location="Chin-eye" modified="20200913013406257" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BCnlu-parents">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;mother&quot; + &quot;father&quot;
@@ -13351,7 +13444,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jlulull CD Uy zq D" base-palm="base not used" created="20200904110704815" eng-vocab="woman" location="Chin-eye" modified="20200907101038632" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BCnlu-woman">
+<div aslsj_syll="jlulull CD Uy zhv D" base-palm="base not used" created="20200904110704815" eng-vocab="woman" location="Chin-eye" modified="20200913013439326" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BCnlu-woman">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;girl&quot; + &quot;fancy clothes&quot;
@@ -13359,15 +13452,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="cllll WD Uy - nnnnc, cllll YD yiUj, iUjy (v=v)" base-palm="base In-up" created="20200904105943534" eng-vocab="son" location="Forehead" modified="20200907100921182" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BFilu-son">
-<pre>&lt;&lt;éhdr&gt;&gt;
-
-&quot;boy&quot; + &quot;baby&quot;
-
-&lt;&lt;éftr&gt;&gt;
-</pre>
-</div>
-<div aslsj_syll="yffff WD jUiy - ffffy, yffff A yjUi, jUiy (v=c=v)" base-palm="base In-up" created="20200904104554115" eng-vocab="husband" location="Forehead" modified="20200907100648736" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BFiou-husband">
+<div aslsj_syll="yffff WD jUiy zhv - ffffy, yffff A yjUi, jUiy (v=c=v)" base-palm="base In-up" created="20200904104554115" eng-vocab="husband" location="Forehead" modified="20200913013650351" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BFiou-husband">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;boy&quot; + &quot;marry&quot;
@@ -13417,10 +13502,18 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jlulull WD Uy zq D" base-palm="base not used" created="20200904104812277" eng-vocab="man" location="Forehead" modified="20200907100103095" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BFnlu-man">
+<div aslsj_syll="jlulull WD Uy zhv D" base-palm="base not used" created="20200904104812277" eng-vocab="man" location="Forehead" modified="20200913013500746" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BFnlu-man">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;boy&quot; + &quot;fancy clothes&quot;
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="cllll WD Uy zhv - nnnnc, cllll YD yiUj, iUjy (v=v)" base-palm="base Out-down" created="20200904105943534" eng-vocab="son" location="Forehead" modified="20200913013741753" move="Up-down" palm="Left" right-hand="B4C" tags="WORD" title="BFolu-son">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;boy&quot; + &quot;baby&quot;
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -13461,7 +13554,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="llllc, cllll A yU, Uy kllk pk qy pk qy" base-palm="base Out-down" created="20200912105502891" eng-vocab="classifier-large-BB" location="Together" modified="20200912105527269" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BTool-classifier-large-BB">
+<div aslsj_syll="llllc, cllll A yiUj, jUiy (kllk) pk qy pk qy" base-palm="base Out-down" created="20200912105502891" eng-vocab="classifier-large-BB" location="Together" modified="20200913012414376" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BTool-classifier-large-BB">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;very-width object&quot; + &quot;flat surface&quot;
@@ -13469,7 +13562,7 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="llllc, cllll A yU, Uy kllk pk qy" base-palm="base Out-down" created="20200912105121444" eng-vocab="classifier-small-BB" location="Together" modified="20200912105451300" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BTool-classifier-small-BB">
+<div aslsj_syll="llllc, cllll A yiUj, jUiy (kllk) pk qy" base-palm="base Out-down" created="20200912105121444" eng-vocab="classifier-small-BB" location="Together" modified="20200913012439487" move="Left-right" palm="Out-down" right-hand="B4C" tags="WORD" title="BTool-classifier-small-BB">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;body-width object&quot; + &quot;flat surface&quot;
@@ -13481,6 +13574,14 @@ repeat[img height=25px [img zp]][img height=25px [img zq]], repeat-up[img height
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;crowd of people&quot; + &quot;blend&quot; + &quot;stir&quot;
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="llllj, jllll A yU, Uy (kllk) po qo jUi, iUj zp zq" base-palm="base Right" created="20200912230056885" eng-vocab="book" location="Together" modified="20200913011549883" move="Twist-bend" palm="Left" right-hand="B4C" tags="WORD" title="BTrlt-book">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;book covers&quot; + &quot;fold open&quot;
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -13647,6 +13748,9 @@ close
      style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
 &lt;/svg&gt;
 </pre>
+</div>
+<div modified="20200912232809295" title="Draft of 'BAnit-blue'">
+<pre></pre>
 </div>
 <div created="20200223043825137" modified="20200604205743223" tags="META" title="ext Parent Return sample">
 <pre>&lt;div style=&quot;float:right&quot;&gt;Back to [ext[Main Index|../index.html]]&lt;/div&gt;</pre>
@@ -14442,17 +14546,12 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829105849742" modified="20200907090323164" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
+<div created="20200829105849742" modified="20200912232019891" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
 <pre>\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
 \define ref_word_links_compile_filter(ur_vocab)
-&lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)$ur_vocab$]]&quot;&quot;&quot; /&gt;
-\end
-\define ref_word_links_compile_vocab(ur_vocab)
-&lt;$list filter=&quot;&quot;&quot;[[$ur_vocab$]split[(]join[\(]split[)]join[\)]]&quot;&quot;&quot;&gt;
-&lt;$macrocall $name=ref_word_links_compile_filter ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;
+&lt;$macrocall $name=ref_word_links_disp_links ur_filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)\b$ur_vocab$\b]]&quot;&quot;&quot; /&gt;
 \end
 \define ref_word_links_disp_button(ur_right_hand ur_location ur_palm ur_base_palm ur_move)
 &lt;$button&gt;Find similar
@@ -14496,7 +14595,7 @@ $ur_value$
 &lt;$macrocall $name=glbl_img_disp ur_syllable=move  ur_value=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 &lt;$macrocall $name=ref_word_links_button_parms ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; /&gt;
-&lt;$macrocall $name=ref_word_links_compile_vocab ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;$macrocall $name=ref_word_links_compile_filter ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
 \define éftr()
@@ -14553,7 +14652,7 @@ $ur_syll$
 \end
 </pre>
 </div>
-<div created="20200829120936613" modified="20200912125705984" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
+<div created="20200829120936613" modified="20200912232555239" tags="$:/tags/Macro META" title="mcr ASLEntry GlblWordUsage áftr">
 <pre>\define ref_words_usage_disp_links(ur_word, ur_filter)
 &lt;$list filter=&quot;$ur_filter$&quot;&gt;
 @@padding-right: 50px;white-space: nowrap;
@@ -14563,16 +14662,14 @@ $ur_word$&lt;$macrocall $name=glbl_word_detail ur_title=&quot;&quot;&quot;$ur_wo
 &lt;/$list&gt;
 \end
 \define ref_words_usage_compile_filter(ur_title, ur_word, ur_vocab)
-&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)$ur_vocab$]]&quot;&quot;&quot; /&gt;
+&lt;$macrocall $name=ref_words_usage_disp_links ur_word=&quot;&quot;&quot;$ur_word$&quot;&quot;&quot; ur_filter=&quot;&quot;&quot;[[$ur_title$]regexp:text[(?i)\b$ur_vocab$\b]]&quot;&quot;&quot; /&gt;
 \end
 \define glbl_words_usage(ur_title)
 &lt;$list filter=&quot;&quot;&quot;[{!!time_link}]&quot;&quot;&quot;&gt;
 &lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
 &lt;/$list&gt;
-&lt;$list filter=&quot;[has[right-hand]sort[eng-vocab]]&quot;&gt;&lt;$vars cur_word=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$list filter=&quot;&quot;&quot;[{!!eng-vocab}split[(]join[\(]split[)]join[\)]]&quot;&quot;&quot;&gt;
-&lt;$macrocall $name=ref_words_usage_compile_filter ur_title='$ur_title$' ur_word=&lt;&lt;cur_word&gt;&gt; ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;&lt;/$vars&gt;
+&lt;$list filter=&quot;[has[right-hand]sort[eng-vocab]]&quot;&gt;
+&lt;$macrocall $name=ref_words_usage_compile_filter ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_word=&lt;&lt;currentTiddler&gt;&gt; ur_vocab={{!!eng-vocab}} /&gt;
 &lt;/$list&gt;
 \end
 \define áftr()
@@ -14709,7 +14806,7 @@ All user tiddlers, export non-meta to HTML
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="ynnnn CD Uy - nnnnc, cllll YD yiUj, iUjy (v=v)" base-palm="base In-up" created="20200904102642957" eng-vocab="daughter" location="Chin-eye" modified="20200907100934568" move="Up-down" palm="Left" right-hand="SOA" tags="WORD" title="SCilu-daughter">
+<div aslsj_syll="ynnnn CD Uy zhv - nnnnc, cllll YD yiUj, iUjy (v=v)" base-palm="base Out-down" created="20200904102642957" eng-vocab="daughter" location="Chin-eye" modified="20200913013753070" move="Up-down" palm="Left" right-hand="SOA" tags="WORD" title="SCilu-daughter">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;girl&quot; + &quot;baby&quot;
@@ -14717,7 +14814,7 @@ All user tiddlers, export non-meta to HTML
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="rffff CKD iUj q^ q~ yffff" base-palm="base not used" created="20200904061619137" eng-vocab="warm" location="Chin-eye" modified="20200907101819864" move="In-out" palm="In-up" right-hand="SOA" tags="WORD" title="SCnii-warm">
+<div aslsj_syll="rffff CKD iUj q^ q~ yffff" base-palm="base not used" created="20200904061619137" eng-vocab="warm" location="Chin-eye" modified="20200913010958327" move="In-out" palm="In-up" right-hand="SOA" tags="WORD" title="SCnii-warm">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;something in mouth&quot; + &quot;steam coming out&quot;
@@ -14733,7 +14830,7 @@ All user tiddlers, export non-meta to HTML
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="rnnnn CD qk zq" base-palm="base not used" created="20200904095245564" eng-vocab="aunt" location="Chin-eye" modified="20200907080155719" move="Left-right" palm="Out-down" right-hand="SOA" tags="WORD" title="SCnol-aunt">
+<div aslsj_syll="rnnnn CD jUi qk zq" base-palm="base not used" created="20200904095245564" eng-vocab="aunt" location="Chin-eye" modified="20200913012852122" move="Left-right" palm="Out-down" right-hand="SOA" tags="WORD" title="SCnol-aunt">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;letter-A&quot; + &quot;girl&quot;
@@ -14819,7 +14916,7 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="cllnn CD jUi qk zq" base-palm="base not used" created="20200904110459848" eng-vocab="uncle" location="Forehead" modified="20200907092636922" move="Left-right" palm="Out-down" right-hand="URK" tags="WORD" title="UFnol-uncle">
+<div aslsj_syll="cllnn WD jUi qk zq" base-palm="base not used" created="20200904110459848" eng-vocab="uncle" location="Forehead" modified="20200913011208921" move="Left-right" palm="Out-down" right-hand="URK" tags="WORD" title="UFnol-uncle">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;boy&quot; + &quot;letter-U&quot;
@@ -14835,16 +14932,10 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div created="20200901191725217" modified="20200904103135090" tags="META" title="Unused Word Audit">
+<div created="20200901191725217" modified="20200912232258733" tags="META" title="Unused Word Audit">
 <pre>\define unused_word_disp(ur_title, ur_eng_vocab)
-&lt;$list filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)$ur_eng_vocab$]count[]match[0]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[has[section_seq]regexp:text[(?i)\b$ur_eng_vocab$\b]count[]match[0]]&quot;&quot;&quot;&gt;
 &lt;$link to=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; /&gt;&lt;br&gt;
-&lt;/$list&gt;
-\end
-\define unused_word_audit(ur_title, ur_eng_vocab)
-&lt;$list filter=&quot;&quot;&quot;[[$ur_eng_vocab$]split[(]join[\(]split[)]join[\)]]&quot;&quot;&quot;&gt;
-&lt;$macrocall $name=unused_word_disp ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_eng_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-
 &lt;/$list&gt;
 \end
 
@@ -14853,7 +14944,7 @@ Unused entries:
 &lt;$list filter=&quot;
 [has[right-hand]sort[title]sort[eng-vocab]]
 &quot;&gt;
-&lt;$macrocall $name=unused_word_audit ur_title=&lt;&lt;currentTiddler&gt;&gt; ur_eng_vocab={{!!eng-vocab}} /&gt;
+&lt;$macrocall $name=unused_word_disp ur_title=&lt;&lt;currentTiddler&gt;&gt; ur_eng_vocab={{!!eng-vocab}} /&gt;
 &lt;/$list&gt;
 </pre>
 </div>
@@ -14881,6 +14972,16 @@ Unused entries:
 &quot;like&quot; doubled
 
 *interest
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="llflj, jlfll A yiUj, jUiy d^ h^ yU, Uy" base-palm="base Out-down" created="20200903202109083" eng-vocab="light" location="Apart" modified="20200913012145254" move="Up-down" palm="Out-down" right-hand="W78F" tags="WORD" title="WAiiu-light">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;feel&quot; + &quot;hands rise up&quot;
+
+*light weight
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -14964,7 +15065,7 @@ Test your Tiddler filter using a drop-down list:
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
 </div>
-<div created="20200907074930746" modified="20200907092045785" tags="META" title="Word ASLSJ Syll Audit">
+<div created="20200907074930746" modified="20200913013758535" tags="META" title="Word ASLSJ Syll Audit">
 <pre>\define WordASLJSSyllEntryAudit(ur_title ur_entry)
 &lt;$list filter=&quot;&quot;&quot;[[img $ur_entry$]!is[tiddler]]&quot;&quot;&quot;&gt;
 &lt;$list filter=&quot;&quot;&quot;[[$ur_entry$]!match[-]]&quot;&quot;&quot;&gt;
@@ -14980,6 +15081,44 @@ Missing aslsj_syll parameter value: &lt;$link to=&quot;&quot;&quot;$ur_title$&qu
 &lt;$macrocall $name=WordASLJSSyllEntryAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_entry=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 \end
+\define FilterASLSJSyllEntryAudit(ur_title, ur_parm_field, ur_parm_val, ur_aslsj_list, ur_rem_aslsj)
+&lt;$list filter=&quot;&quot;&quot;[enlist[$ur_rem_aslsj$]count[]match[0]]&quot;&quot;&quot;&gt;
+Missing aslsj_syll parameter matching $ur_parm_val$: &lt;$link to=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot;/&gt;&lt;br&gt;
+- Know parameters: $ur_aslsj_list$&lt;br&gt;
+- ASLSJ Syll: {{$ur_title$!!aslsj_syll}}&lt;br&gt;
+&lt;/$list&gt;
+&lt;$list filter=&quot;&quot;&quot;[enlist[$ur_rem_aslsj$]first[]] +[remove{$ur_title$!!aslsj_syll}] +[count[]!match[0]]&quot;&quot;&quot;&gt;
+&lt;$list filter=&quot;&quot;&quot;[enlist[$ur_rem_aslsj$]rest[]join[ ]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=FilterASLSJSyllEntryAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;$ur_parm_field$&quot; ur_parm_val=&quot;$ur_parm_val$&quot; ur_aslsj_list=&quot;$ur_aslsj_list$&quot; ur_rem_aslsj=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+\define FilterASLSJSyllParmAudit(ur_title, ur_parm_field, ur_parm_val, ur_aslsj_list)
+&lt;$list filter=&quot;&quot;&quot;[{$ur_title$!!$ur_parm_field$}match[$ur_parm_val$]]&quot;&quot;&quot;&gt;
+&lt;$macrocall $name=FilterASLSJSyllEntryAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;$ur_parm_field$&quot; ur_parm_val=&quot;$ur_parm_val$&quot; ur_aslsj_list=&quot;$ur_aslsj_list$&quot; ur_rem_aslsj=&quot;$ur_aslsj_list$&quot; /&gt;
+&lt;/$list&gt;
+\end
+\define FilterASLSJSyllAudit(ur_title)
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;B4C&quot; ur_aslsj_list=&quot;yfufuff jllll yffff cllll jffff jlulull cfufuff&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;W78F&quot; ur_aslsj_list=&quot;ylfll jlfll jflll rflll&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;URK&quot; ur_aslsj_list=&quot;cllnn cffnn clulnn cfufnn&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;XILY&quot; ur_aslsj_list=&quot;cfnnn clnnn jfnnn rfnnn jlnnn&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;SOA&quot; ur_aslsj_list=&quot;cnnnn ynnnn rnnnn rffff&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Forehead&quot; ur_aslsj_list=&quot;WD W&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Chin-eye&quot; ur_aslsj_list=&quot;C CD Ch^D CKh^D Ch^qvD CKD&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Together&quot; ur_aslsj_list=&quot;(v=v) (klxlk) (kllk)&quot; /&gt;
+&lt;!--apart--&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Elbow&quot; ur_aslsj_list=&quot;&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;base-palm&quot; ur_parm_val=&quot;base In-up&quot; ur_aslsj_list=&quot;jUi, yjUi,&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;base-palm&quot; ur_parm_val=&quot;base Right&quot; ur_aslsj_list=&quot;yU,&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;base-palm&quot; ur_parm_val=&quot;base Out-down&quot; ur_aslsj_list=&quot;yiUj, iUj,&quot; /&gt;
+&lt;!--base not used--&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;palm&quot; ur_parm_val=&quot;In-up&quot; ur_aslsj_list=&quot;iUj iUjy&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;palm&quot; ur_parm_val=&quot;Left&quot; ur_aslsj_list=&quot;Uy&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;palm&quot; ur_parm_val=&quot;Out-down&quot; ur_aslsj_list=&quot;jUi jUiy&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;move&quot; ur_parm_val=&quot;Left-right&quot; ur_aslsj_list=&quot;qk qy zqy&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;move&quot; ur_parm_val=&quot;Up-down&quot; ur_aslsj_list=&quot;h^ hv zh^ zhv&quot; /&gt;
+\end
 
 Audit entries:
 
@@ -14987,6 +15126,7 @@ Audit entries:
 [has:field[right-hand]sort[title]]
 &quot;&gt;
 &lt;$macrocall $name=&quot;WordASLJSSyllAudit&quot; ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;$macrocall $name=&quot;FilterASLSJSyllAudit&quot; ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
 </pre>
 </div>
@@ -15057,14 +15197,6 @@ Audit entries:
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;group&quot; + &quot;letter-F&quot;
-
-&lt;&lt;éftr&gt;&gt;
-</pre>
-</div>
-<div aslsj_syll="llflj, jlfll A yiUj, jUiy d^ h^ yU, Uy" base-palm="base In-up" created="20200903202109083" eng-vocab="light(weight)" location="Apart" modified="20200907090517636" move="Up-down" palm="In-up" right-hand="XILY" tags="WORD" title="XAiiu-light(weight)">
-<pre>&lt;&lt;éhdr&gt;&gt;
-
-&quot;feel&quot; + &quot;hands rise up&quot;
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -15186,7 +15318,7 @@ Audit entries:
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="clnnn CD Uy - llllc, cllll yiUj, jUiy (kllk)" base-palm="base Out-down" created="20200902012640864" eng-vocab="deaf" location="Chin-eye" modified="20200907083732789" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XColu-deaf">
+<div aslsj_syll="clnnn CD Uy zhv - llllc, cllll yiUj, jUiy (kllk)" base-palm="base Out-down" created="20200902012640864" eng-vocab="deaf" location="Chin-eye" modified="20200913013619768" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XColu-deaf">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;hear&quot; + &quot;closed&quot;
@@ -15204,7 +15336,7 @@ Audit entries:
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jlnnn CD Uy - nnnlj, jlnnn A yU, Uy (v=c=v)" base-palm="base Right" created="20200904105847656" eng-vocab="sister" location="Chin-eye" modified="20200907083220142" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XCrlu-sister">
+<div aslsj_syll="jlnnn CD Uy zhv - nnnlj, jlnnn A yU, Uy (v=c=v)" base-palm="base Right" created="20200904105847656" eng-vocab="sister" location="Chin-eye" modified="20200913013700870" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XCrlu-sister">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;girl&quot; + &quot;same&quot;
@@ -15230,7 +15362,7 @@ Audit entries:
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
-<div aslsj_syll="jlnnn WD Uy - nnnlj, jlnnn A yU, Uy (v=c=v)" base-palm="base Right" created="20200904095543030" eng-vocab="brother" location="Forehead" modified="20200907083149360" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XFrlu-brother">
+<div aslsj_syll="jlnnn WD Uy zhv - nnnlj, jlnnn A yU, Uy (v=c=v)" base-palm="base Right" created="20200904095543030" eng-vocab="brother" location="Forehead" modified="20200913013713267" move="Up-down" palm="Left" right-hand="XILY" tags="WORD" title="XFrlu-brother">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;boy&quot; + &quot;same&quot;
