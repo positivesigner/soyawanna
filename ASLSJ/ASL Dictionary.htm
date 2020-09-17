@@ -10153,7 +10153,9 @@ exports.startup = function() {
 # [[$:/plugins/malgam/version-control/versionTab]]
 # [[ASL Lookup Words]]
 # [[ASLSJ Syllables]]
+# [[Display as Vocab]]
 # [[Display Chapter]]
+# [[Display Vocab]]
 # [[DivPop btn]]
 # [[DivPop glbl]]
 # [[DivPop.svg]]
@@ -10385,14 +10387,12 @@ exports.startup = function() {
 # [[Recent entries]]
 # [[template Home Button]]
 # [[TiddlyWiki Startup Options]]
+# [[tmplt ASLEntry EngVocab]]
 # [[Unused Word Audit]]
 # [[View All Pages]]
 # [[What is this Wiki Stuff?]]
 # [[Word ASLSJ Syll Audit]]
-# [[Word Title Audit]]
-# [[tmplt ASLEntry EngVocab]]
-# [[Display Vocab]]
-# [[Display as Vocab]]</pre>
+# [[Word Title Audit]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10617,7 +10617,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200915114414357" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200917090950608" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -12162,8 +12162,23 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829105849742" modified="20200913053847636" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
-<pre>\define ref_word_links_disp_links(ur_filter)
+<div created="20200829105849742" modified="20200917090426593" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
+<pre>\define ref_word_links_disp_rhyme_entry(ur_parm_label, ur_prefix, ur_char, ur_suffix)
+&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix[$ur_prefix$$ur_char$$ur_suffix$-]count[]!match[0]]&quot;&quot;&quot;&gt;Rhymes with different $ur_parm_label$ [$ur_char$]:
+&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix[$ur_prefix$$ur_char$$ur_suffix$-]]&quot;&quot;&quot;&gt;&lt;div style=&quot;display: inline-block;margin-left:40px&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; &gt;&lt;&lt;currentTiddler&gt;&gt;&lt;$macrocall $name=glbl_word_detail ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$link&gt;&lt;/div&gt;
+&lt;/$list&gt;&lt;br&gt;
+&lt;/$list&gt;
+\end
+\define ref_word_links_disp_rhymes(ur_parm_list, ur_parm_seq, ur_parm_label, ur_parm_remove_prefix_end, ur_parm_remove_suffix_start)
+&lt;$list filter=&quot;&quot;&quot;[[$ur_parm_list$]split[]] -[&lt;var_prefix&gt;split[]nth[$ur_parm_seq$]]&quot;&quot;&quot;&gt;&lt;$vars parm_char=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;var_prefix&gt;split[]butlast[$ur_parm_remove_prefix_end$]join[]]&quot;&quot;&quot;&gt;&lt;$vars calc_prefix=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;&quot;&quot;[&lt;var_prefix&gt;split[]butfirst[$ur_parm_remove_suffix_start$]join[]]&quot;&quot;&quot;&gt;&lt;$vars calc_suffix=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$macrocall $name=ref_word_links_disp_rhyme_entry ur_parm_label=&quot;&quot;&quot;$ur_parm_label$&quot;&quot;&quot; ur_prefix=&lt;&lt;calc_prefix&gt;&gt; ur_char=&lt;&lt;parm_char&gt;&gt; ur_suffix=&lt;&lt;calc_suffix&gt;&gt; /&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+\end
+\define ref_word_links_disp_links(ur_filter)
 &lt;&lt;list-links &quot;$ur_filter$&quot; &gt;&gt;
 \end
 \define ref_word_links_compile_filter(ur_vocab)
@@ -12213,6 +12228,19 @@ $ur_value$
 &lt;$macrocall $name=ref_word_links_button_parms ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; /&gt;
 &lt;$macrocall $name=ref_word_links_compile_filter ur_vocab=&lt;&lt;currentTiddler&gt;&gt; /&gt;
 &lt;/$list&gt;
+&lt;$list filter=&quot;&quot;&quot;[[$ur_title$]split[-]nth[1]] +[join[]]&quot;&quot;&quot;&gt;&lt;$vars var_prefix=&lt;&lt;currentTiddler&gt;&gt; &gt;
+
+&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix&lt;var_prefix&gt;] -[[$ur_title$]] +[count[]!match[0]]&quot;&quot;&quot;&gt;Rhymes with:
+&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix&lt;var_prefix&gt;] -[[$ur_title$]]&quot;&quot;&quot;&gt;&lt;div style=&quot;display: inline-block;margin-left:40px&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/div&gt;
+&lt;/$list&gt;&lt;br&gt;
+&lt;/$list&gt;
+
+&lt;$macrocall $name=ref_word_links_disp_rhymes ur_parm_list=&quot;BWUXS&quot; ur_parm_seq=&quot;1&quot; ur_parm_label=&quot;handshape&quot; ur_parm_remove_prefix_end=&quot;5&quot; ur_parm_remove_suffix_start=&quot;1&quot; /&gt;
+&lt;$macrocall $name=ref_word_links_disp_rhymes ur_parm_list=&quot;FCATE&quot; ur_parm_seq=&quot;2&quot; ur_parm_label=&quot;location&quot; ur_parm_remove_prefix_end=&quot;4&quot; ur_parm_remove_suffix_start=&quot;2&quot; /&gt;
+&lt;$macrocall $name=ref_word_links_disp_rhymes ur_parm_list=&quot;nrio&quot; ur_parm_seq=&quot;3&quot; ur_parm_label=&quot;base-palm&quot; ur_parm_remove_prefix_end=&quot;3&quot; ur_parm_remove_suffix_start=&quot;3&quot; /&gt;
+&lt;$macrocall $name=ref_word_links_disp_rhymes ur_parm_list=&quot;lio&quot; ur_parm_seq=&quot;4&quot; ur_parm_label=&quot;palm&quot; ur_parm_remove_prefix_end=&quot;2&quot; ur_parm_remove_suffix_start=&quot;4&quot; /&gt;
+&lt;$macrocall $name=ref_word_links_disp_rhymes ur_parm_list=&quot;luitf&quot; ur_parm_seq=&quot;5&quot; ur_parm_label=&quot;movement&quot; ur_parm_remove_prefix_end=&quot;1&quot; ur_parm_remove_suffix_start=&quot;5&quot; /&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
 \end
 \define éftr()
 &lt;$list filter=&quot;&quot;&quot;[[$(currentTiddler)$]!has[draft.of]]&quot;&quot;&quot;&gt;
