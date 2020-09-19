@@ -1,0 +1,28 @@
+\define unique_groups()
+<$list filter="[has[eng-vocab]]"><$list filter="[<currentTiddler>split[-]nth[1]]"><<currentTiddler>> </$list></$list>
+\end
+\define unique_counts()
+<$wikify name=ugrp text=<<unique_groups>> >
+<$list filter="[<ugrp>split[ ]!match[]sort[]each:value[]]">
+<$list filter="[has[eng-vocab]prefix<currentTiddler>count[]]"><<currentTiddler>> </$list>
+</$list>
+</$wikify>
+\end
+\define count_size()
+<$wikify name=ugrp text=<<unique_groups>> >
+<$list filter="[<ugrp>split[ ]!match[]sort[]each:value[]]"><$vars ur_entry=<<currentTiddler>> >
+<$list filter="[has[eng-vocab]prefix<ur_entry>count[]match[$(currentTiddler)$]]">
+<$list filter="[has[eng-vocab]prefix<ur_entry>]">1 </$list>
+</$list>
+</$vars></$list>
+</$wikify>
+\end
+<$wikify name=ucnt text=<<unique_counts>> >
+<$list filter="[<ucnt>split[ ]trim[]!match[]sort[]each:value[]]">
+ASLSJ Prefix Groups with <<currentTiddler>> words -
+<$wikify name=usize text=<<count_size>> >
+<$list filter="[<usize>split[ ]trim[]!match[]sum[]divide<currentTiddler>]"><<currentTiddler>><br>
+</$list>
+</$wikify>
+</$list>
+</$wikify>

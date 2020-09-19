@@ -265,6 +265,8 @@ Error message and password prompt
 
 <li>ASL Lookup Words</li>
 
+<li>ASLSJ Prefix Group Sizes</li>
+
 <li>ASLSJ Syllables</li>
 
 <li>BAniu-I-am</li>
@@ -10396,7 +10398,8 @@ exports.startup = function() {
 # [[View All Pages]]
 # [[What is this Wiki Stuff?]]
 # [[Word ASLSJ Syll Audit]]
-# [[Word Title Audit]]</pre>
+# [[Word Title Audit]]
+# [[ASLSJ Prefix Group Sizes]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10621,7 +10624,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200919051051052" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200919092543774" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -11000,6 +11003,37 @@ $ur_label$
 &lt;/$vars&gt;&lt;/$list&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
 &lt;/table&gt;</pre>
+</div>
+<div created="20200919091933650" modified="20200919092356173" tags="META" title="ASLSJ Prefix Group Sizes">
+<pre>\define unique_groups()
+&lt;$list filter=&quot;[has[eng-vocab]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;split[-]nth[1]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt; &lt;/$list&gt;&lt;/$list&gt;
+\end
+\define unique_counts()
+&lt;$wikify name=ugrp text=&lt;&lt;unique_groups&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;ugrp&gt;split[ ]!match[]sort[]each:value[]]&quot;&gt;
+&lt;$list filter=&quot;[has[eng-vocab]prefix&lt;currentTiddler&gt;count[]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt; &lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+\end
+\define count_size()
+&lt;$wikify name=ugrp text=&lt;&lt;unique_groups&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;ugrp&gt;split[ ]!match[]sort[]each:value[]]&quot;&gt;&lt;$vars ur_entry=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[has[eng-vocab]prefix&lt;ur_entry&gt;count[]match[$(currentTiddler)$]]&quot;&gt;
+&lt;$list filter=&quot;[has[eng-vocab]prefix&lt;ur_entry&gt;]&quot;&gt;1 &lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$wikify&gt;
+\end
+&lt;$wikify name=ucnt text=&lt;&lt;unique_counts&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;ucnt&gt;split[ ]trim[]!match[]sort[]each:value[]]&quot;&gt;
+ASLSJ Prefix Groups with &lt;&lt;currentTiddler&gt;&gt; words -
+&lt;$wikify name=usize text=&lt;&lt;count_size&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;usize&gt;split[ ]trim[]!match[]sum[]divide&lt;currentTiddler&gt;]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+&lt;/$wikify&gt;
+</pre>
 </div>
 <div created="20200907060221990" modified="20200907103609597" tags="META" title="ASLSJ Syllables">
 <pre>A[img height=25px [img nnnnr,]][img height=25px [img rnnnn]], bent-A[img height=25px [img nnnny,]][img height=25px [img ynnnn]], open-A[img height=25px img nnnnj,]][img height=25px [img jnnnn]]
@@ -12717,7 +12751,7 @@ All user tiddlers, export non-meta to HTML
 [all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]sort[title]]
 ```</pre>
 </div>
-<div created="20200203145715457" modified="20200907075124071" tags="META" title="Recent entries">
+<div created="20200203145715457" modified="20200919092413260" tags="META" title="Recent entries">
 <pre>[[Word Title Audit]]
 
 [[Word ASLSJ Syll Audit]]
@@ -12725,6 +12759,8 @@ All user tiddlers, export non-meta to HTML
 [[Unused Word Audit]]
 
 [[Missing Tags Report]]
+
+[[ASLSJ Prefix Group Sizes]]
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
@@ -12880,7 +12916,7 @@ Test your Tiddler filter using a drop-down list:
 * Filter categories found here: https://tiddlywiki.com/static/is%2520Operator.html
 </pre>
 </div>
-<div created="20200907074930746" modified="20200919050825382" tags="META" title="Word ASLSJ Syll Audit">
+<div created="20200907074930746" modified="20200919071052531" tags="META" title="Word ASLSJ Syll Audit">
 <pre>\define WordASLJSSyllEntryAudit(ur_title ur_entry)
 &lt;$list filter=&quot;&quot;&quot;[[img $ur_entry$]!is[tiddler]]&quot;&quot;&quot;&gt;
 &lt;$list filter=&quot;&quot;&quot;[[$ur_entry$]!match[-]]&quot;&quot;&quot;&gt;
@@ -12938,7 +12974,7 @@ Extra aslsj_syll parameter must not match $ur_parm_val$: &lt;$link to=&quot;&quo
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;B4C&quot; ur_aslsj_list=&quot;yfufuff jllll yffff cllll jffff jlulull cfufuff clulull&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;W78F&quot; ur_aslsj_list=&quot;ylfll jlfll jflll rflll lrfll clululn cfffn&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;URK&quot; ur_aslsj_list=&quot;cllnn cffnn clulnn cfufnn lrtnn yffnn&quot; /&gt;
-&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;XILY&quot; ur_aslsj_list=&quot;cfnnn clnnn jfnnn rfnnn jlnnn jnnnl yfnnn&quot; /&gt;
+&lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;XILY&quot; ur_aslsj_list=&quot;cfnnn clnnn jfnnn rfnnn jlnnn jnnnl yfnnn cnnnl&quot; /&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;right-hand&quot; ur_parm_val=&quot;SOA&quot; ur_aslsj_list=&quot;cnnnn ynnnn rnnnn rffff jnnnn&quot; /&gt;
 &lt;$vars aslsj_w=&quot;WD W&quot; aslsj_c=&quot;C CD Ch^D CKh^D Ch^qvD CKD&quot; aslsj_t=&quot;(v=v) (klxlk) (kllk) (v=c=v) (^ky^) (^kcy^) (ylly) (vkyv)&quot; aslsj_y=&quot;YD Y&quot;&gt;
 &lt;$macrocall $name=FilterASLSJSyllParmAudit ur_title=&quot;&quot;&quot;$ur_title$&quot;&quot;&quot; ur_parm_field=&quot;location&quot; ur_parm_val=&quot;Forehead&quot; ur_aslsj_list=&lt;&lt;aslsj_w&gt;&gt; /&gt;

@@ -1,0 +1,47 @@
+<html lang="en"><div style="font-family:sans-serif;white-space:pre-wrap;"
+>Group totals
+
+unique_groups()
+- find list of titles with UrAttribute
+    - [has[UrAttribute]]
+- split by the prefix before the first hyphen
+    - [&lt;currentTiddler>split[-]nth[1]]
+- return each title's prefix followed by a space
+    - >&lt;&lt;currentTiddler>> &lt;
+
+unique_counts()
+- create a new variable ugrp with the list of title prefixes from unique_groups()
+    - &lt;$wikify name=ugrp text=&lt;&lt;unique_groups>>
+- split the new variable by spaces
+    - [&lt;ugrp>split[ ]
+- ignore white-space only entries, and sort the rest alphabetically
+    - !match[]sort[]
+- use "each:value" to get the unique title prefixes in the list
+    - each:value[]]
+- for each unique title prefix, get a count of titles with UrAttribute
+    - [has[UrAttribute]prefix<currentTiddler>count[]]
+
+count_size()
+- create a new variable ugrp with the list of title prefixes from unique_groups()
+    - &lt;$wikify name=ugrp text=&lt;&lt;unique_groups>>
+- split the new variable by spaces, ignore white-space, sort, use "each:value", store as ur_entry
+    - [&lt;ugrp>split[ ]!match[]sort[]each:value[]]
+    - ur_entry=&lt;&lt;currentTiddler>>
+- for each unique title prefix, only continue where the count of titles with UrAttribute matches the parent unique count
+    - [has[UrAttribute]prefix&lt;ur_entry>count[]match[$(currentTiddler)$]]
+- find all the titles with the unique title prefix, and return a "1" for each entry
+    - [has[UrAttribute]prefix<ur_entry>]">1 &lt;
+
+main()
+- create a new variable ucnt with the list of title prefixes from unique_counts()
+    - &lt;$wikify name=ucnt text=&lt;&lt;unique_counts>>
+- split the new variable by spaces, ignore white-space, sort, use "each:value"
+    - [<ucnt>split[ ]trim[]!match[]sort[]each:value[]]
+- For each unique count,
+    - list the entry
+    - sum the number of entries returned from count_size() divided by the unique count
+
+```
+[Group Totals.src.txt] <a href="Group Totals.src.txt" target="_blank">_</a>
+<iframe src="Group Totals.src.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+```
