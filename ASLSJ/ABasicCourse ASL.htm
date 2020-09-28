@@ -565,6 +565,8 @@ Error message and password prompt
 
 <li>BTiil-new</li>
 
+<li>BTiiu-arrive</li>
+
 <li>BTiiu-morning</li>
 
 <li>BTili-lesson</li>
@@ -586,6 +588,8 @@ Error message and password prompt
 <li>BTiot-cook</li>
 
 <li>BTiot-cookie</li>
+
+<li>BTiou-become</li>
 
 <li>BTiou-hamburger</li>
 
@@ -1368,6 +1372,8 @@ Error message and password prompt
 <li>XAnoi-ask</li>
 
 <li>XAnoi-oh-i-see</li>
+
+<li>XAnol-bathroom</li>
 
 <li>XAnou-need</li>
 
@@ -11037,7 +11043,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200921113359429" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20200927193736478" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200907060741096" modified="20200907060741096" title="$:/state/tab--1253679641">
@@ -11097,7 +11103,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200912232451168" modified="20200919092956747" title="$:/state/verTab/mcr ASLEntry GlblWordUsage áftr/vertab">
 <pre>$:/_vc/20200912162445/mcr ASLEntry GlblWordUsage áftr</pre>
 </div>
-<div created="20200921091928288" list="[[A Basic Course in American Sign Language]] ABasicCourse [[Display as Vocab]] STrli-go-with [[Unused Word Audit]] [[Word ASLSJ Syll Audit]] [[Word Title Audit]]" modified="20200921112606616" title="$:/StoryList">
+<div created="20200927193553917" list="[[A Basic Course in American Sign Language]] [[Browse ASL Word List]] XTrlu-1-hour" modified="20200927193611366" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200904111702479" title="$:/temp/advancedsearch">
@@ -14655,6 +14661,13 @@ Final number: &lt;&lt;currentTiddler&gt;&gt;
 &lt;&lt;éftr&gt;&gt;
 </pre>
 </div>
+<div aslsj_syll="llllj, jllll A yjUi, iUjy (v=v)" base-palm="base In-up" created="20200927184829723" eng-vocab="arrive" location="Together" modified="20200927185051570" move="Up-down" palm="In-up" right-hand="B4C" tags="WORD" title="BTiiu-arrive">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
 <div aslsj_syll="llllj, jllll A yjUi, iUjy (vkyv) h^" base-palm="base In-up" created="20200919060528821" eng-vocab="morning" location="Together" modified="20200919060816155" move="Up-down" palm="In-up" right-hand="B4C" tags="WORD" title="BTiiu-morning">
 <pre>&lt;&lt;éhdr&gt;&gt;
 
@@ -14756,6 +14769,13 @@ Final number: &lt;&lt;currentTiddler&gt;&gt;
 <pre>&lt;&lt;éhdr&gt;&gt;
 
 &quot;flat surface&quot; + &quot;twist cutter&quot;, as in &quot;use the cookie cutter to make shapes in the dough&quot;
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="llllj, jllll A yjUi, jUiy (v=v) po qo zp zq" base-palm="base In-up" created="20200927185329341" eng-vocab="become" location="Together" modified="20200927185459694" move="Up-down" palm="Out-down" right-hand="B4C" tags="WORD" title="BTiou-become">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
@@ -15899,7 +15919,7 @@ $ur_value$
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20200829105849742" modified="20200917153912784" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
+<div created="20200829105849742" modified="20200927193706412" tags="META $:/tags/Macro" title="mcr ASLEntry GlblWordLinks éftr">
 <pre>\define ref_word_links_disp_alt_parm(ur_parm_seq, ur_char)
 &lt;$list filter=&quot;[[1Bimg jllll]] [[1Wimg clululn]] [[1Uimg cllnn]] [[1Ximg clnnn]] [[1Simg cnnnn]] [[2Fimg WD]] [[2Cimg CD]] [[2Aimg A]] [[2Timg (kllk)]] [[2Eimg YD]] [[3nimg base-palm-base not used]] [[3rimg yU,]] [[3iimg jUi,]] [[3oimg iUj,]] [[4limg Uy]] [[4oimg jUi]] [[4iimg iUj]] [[5limg qk]] [[5uimg h^]] [[5iimg qv]] [[5timg qo]] [[5fimg q~]] +[prefix[$ur_parm_seq$$ur_char$]]&quot;&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;split[]butfirst[2]join[]]&quot;&gt;
@@ -15977,7 +15997,7 @@ $ur_value$
 &lt;$list filter=&quot;&quot;&quot;[[$ur_title$]split[-]nth[1]] +[join[]]&quot;&quot;&quot;&gt;&lt;$vars var_prefix=&lt;&lt;currentTiddler&gt;&gt; &gt;
 
 &lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix&lt;var_prefix&gt;] -[[$ur_title$]] +[count[]!match[0]]&quot;&quot;&quot;&gt;Rhymes with:
-&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix&lt;var_prefix&gt;] -[[$ur_title$]]&quot;&quot;&quot;&gt;&lt;div style=&quot;display: inline-block;margin-left:40px&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/div&gt;
+&lt;$list filter=&quot;&quot;&quot;[all[tiddlers]has[eng-vocab]prefix&lt;var_prefix&gt;] -[[$ur_title$]]&quot;&quot;&quot;&gt;&lt;div style=&quot;display: inline-block;margin-left:40px&quot;&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; &gt;&lt;&lt;currentTiddler&gt;&gt; &lt;$macrocall $name=glbl_word_detail ur_title=&lt;&lt;currentTiddler&gt;&gt; /&gt; &lt;/$link&gt;&lt;/div&gt;
 &lt;/$list&gt;&lt;br&gt;
 &lt;/$list&gt;
 
@@ -17626,6 +17646,16 @@ Audit entries:
 &quot;yes&quot; repeated
 
 *oh
+
+&lt;&lt;éftr&gt;&gt;
+</pre>
+</div>
+<div aslsj_syll="frnnn A jUi qk zq" base-palm="base not used" created="20200927185144181" eng-vocab="bathroom" location="Apart" modified="20200927185320970" move="Left-right" palm="Out-down" right-hand="XILY" tags="WORD" title="XAnol-bathroom">
+<pre>&lt;&lt;éhdr&gt;&gt;
+
+&quot;letter T word&quot;
+
+*toilet
 
 &lt;&lt;éftr&gt;&gt;
 </pre>
