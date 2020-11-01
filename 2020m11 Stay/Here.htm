@@ -279,6 +279,8 @@ Error message and password prompt
 
 <li>DivPop.svg</li>
 
+<li>Draft of 'keyboard action SaveAllChanges'</li>
+
 <li>ext Parent Return sample</li>
 
 <li>ext TW Return</li>
@@ -9873,7 +9875,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20201101134758917" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20201101134920373" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9894,16 +9896,16 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20201101133200383" modified="20201101134706101" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/GitHub</pre>
 </div>
-<div created="20200611033233457" modified="20200611033247631" title="$:/state/tab/moresidebar-1850697562">
-<pre>$:/core/ui/MoreSideBar/All</pre>
+<div created="20200611033233457" modified="20201101134844674" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20190925014513912" modified="20201101134659203" title="$:/state/tab/sidebar--595412856">
-<pre>$:/core/ui/SideBar/Tools</pre>
+<div created="20190925014513912" modified="20201101134839332" title="$:/state/tab/sidebar--595412856">
+<pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20201101133148887" list="T1" modified="20201101134703481" title="$:/StoryList">
+<div created="20201101133148887" list="T1 [[Draft of 'keyboard action SaveAllChanges']]" modified="20201101134854160" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10238,6 +10240,18 @@ close
      id=&quot;rect100&quot;
      style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
 &lt;/svg&gt;
+</pre>
+</div>
+<div created="20200223012728498" draft.of="keyboard action SaveAllChanges" draft.title="keyboard action SaveAllChanges" key="((save-all-changes))" modified="20201101134918077" tags="META $:/tags/KeyboardShortcut" title="Draft of 'keyboard action SaveAllChanges'">
+<pre>\define ExportSaveAll(ur_filename ur_stamp)
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.htm&quot;
+/&gt;
+\end
+&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
+&lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
+&lt;/$list&gt;
 </pre>
 </div>
 <div created="20200223043825137" modified="20200604205743223" tags="META" title="ext Parent Return sample">
