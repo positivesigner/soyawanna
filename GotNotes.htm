@@ -327,6 +327,12 @@ Error message and password prompt
 
 <li>TWNotes</li>
 
+<li>TWNotes\Assigned</li>
+
+<li>TWNotes\Data</li>
+
+<li>TWNotes\RemToAssign</li>
+
 <li>View All Pages</li>
 
 <li>What is this Wiki Stuff?</li>
@@ -9885,7 +9891,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20201101144910810" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20201101150915331" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9915,7 +9921,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20201101144712315" list="GotNotes TWNotes" modified="20201101144712315" title="$:/StoryList">
+<div created="20201101144712315" list="GotNotes [[GitHub Saver]] [[GitHub Saver\GitHub Saver — publishing with Tiddlywiki 5]] TWNotes\Data TWNotes TWNotes\Assigned TWNotes\RemToAssign" modified="20201101145940621" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10325,8 +10331,8 @@ Copy the new token text to the clipboard
 
 </pre>
 </div>
-<div created="20201101144252872" modified="20201101144338367" tags="NOTES" title="GitHub Saver\GitHub Saver — publishing with Tiddlywiki 5">
-<pre>https://kookma.github.io/TW5-GitHub-Saver/</pre>
+<div created="20201101144252872" modified="20201101150002176" tags="NOTES" title="GitHub Saver\GitHub Saver — publishing with Tiddlywiki 5" twnote="https://kookma.github.io/TW5-GitHub-Saver/">
+<pre>{{!!twnote}}</pre>
 </div>
 <div created="20201101141851633" modified="20201101144144334" tags="DOC" title="GitHub Saver\Save from website">
 <pre>Generate an [[OAuth token |GitHub OAuth\Get new token]]
@@ -10536,7 +10542,22 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 
 &lt;&lt;OneLink &quot;Hiding The Sidebar On Startup&quot;&gt;&gt;</pre>
 </div>
-<div created="20201101144613900" modified="20201101144742422" tags="TOPIC" title="TWNotes">
+<div created="20201101145050367" modified="20201101145056871" tags="TOPIC" title="TWNotes">
+<pre>&lt;&lt;list-links filter:&quot;[prefix&lt;currentTiddler&gt;tag[DOC]!match&lt;currentTiddler&gt;sort[title]]&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20201101145106502" modified="20201101150913659" tags="DOC" title="TWNotes\Assigned">
+<pre>&lt;$list filter=&quot;[{TWNotes\Data}split[http]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]first[]!suffix[URL]addprefix[http]]&quot;&gt;&lt;$vars http_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[all[tiddlers]field:twnote&lt;currentTiddler&gt;]&quot;&gt;&lt;$vars tiddler_containing_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;tiddler_containing_link&gt;&gt; /&gt;&lt;br&gt;
+- &lt;&lt;http_link&gt;&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+</pre>
+</div>
+<div created="20201101144613900" modified="20201101145033560" tags="DOC" title="TWNotes\Data">
 <pre>```
 URL,Title,Selection,Folder,Timestamp
 https://kookma.github.io/TW5-GitHub-Saver/,GitHub Saver — publishing with Tiddlywiki 5,,Hardware and History,1604239133
@@ -10547,6 +10568,16 @@ To get the same results as subfilter[one two three] you could use enlist[] ...
 You can keep the list focused on the selected tiddlers and use triple curly braces (filtered Transclusions)...
 
 One compelling use of the subfilter is to access a list and apply it to another. So this is in fact a way to do &quot;&quot;named&quot;&quot; filters for use as needed.&quot;,Hardware and History,1604235195
+</pre>
+</div>
+<div created="20201101145158420" modified="20201101150130523" tags="DOC" title="TWNotes\RemToAssign">
+<pre>&lt;$list filter=&quot;[{TWNotes\Data}split[http]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]first[]!suffix[URL]addprefix[http]]&quot;&gt;&lt;$vars http_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[all[tiddlers]field:twnote&lt;currentTiddler&gt;count[]match[0]]&quot;&gt;
+&lt;&lt;http_link&gt;&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
 </pre>
 </div>
 <div created="20200405112008513" modified="20200405112242998" tags="META" title="View All Pages">
