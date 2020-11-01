@@ -9881,7 +9881,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20201101143131506" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20201101143629651" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9911,7 +9911,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20201101141950458" list="GotNotes" modified="20201101142949462" title="$:/StoryList">
+<div created="20201101141950458" list="GotNotes [[GitHub OAuth]] [[GitHub OAuth\Get new token]]" modified="20201101143216862" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10283,8 +10283,13 @@ Normal Font
 <pre>&lt;&lt;list-links filter:&quot;[prefix&lt;currentTiddler&gt;!match&lt;currentTiddler&gt;sort[title]]&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20201101142317484" modified="20201101142943242" tags="" title="GitHub OAuth\Get new token">
-<pre>Go to https://github.com/
+<div created="20201101142317484" modified="20201101143623830" tags="" title="GitHub OAuth\Get new token">
+<pre>Reasons for creating a new GitHub OAuth token: 
+
+* The TW Control Panel form does not save the Password field internally. Therefore when you clear out the browser's cache, you will have to re-enter the token text so the TW file can create a commit in your repository
+* Using your GitHub password instead of an OAuth token only seems to work when the TW file is saved locally. When loaded from the web, you must use an OAuth token instead of a GitHub password.
+
+Go to https://github.com/
 
 Login
 
