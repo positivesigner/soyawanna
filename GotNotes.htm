@@ -9897,7 +9897,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20201101161349298" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20201101161818166" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9927,7 +9927,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20201101161343569" list="GotNotes TiddlyWiki [[TiddlyWiki\triple curly braces]]" modified="20201101161345211" title="$:/StoryList">
+<div created="20201101161533884" list="GotNotes WebNotes WebNotes\RemToAssign" modified="20201101161607666" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -10593,16 +10593,12 @@ There is a sidebar with settings. It has a minimum width, so when your browser w
 <pre>&lt;&lt;list-links filter:&quot;[prefix&lt;currentTiddler&gt;tag[DOC]!match&lt;currentTiddler&gt;sort[title]]&quot;&gt;&gt;
 </pre>
 </div>
-<div created="20201101145106502" modified="20201101161250751" tags="DOC" title="WebNotes\Assigned">
-<pre>&lt;$list filter=&quot;[{TWNotes\Data}split[http]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$list filter=&quot;[&lt;http_text&gt;split[,]first[]!suffix[URL]addprefix[http]]&quot;&gt;&lt;$vars http_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$list filter=&quot;[all[tiddlers]field:twnote&lt;currentTiddler&gt;]&quot;&gt;&lt;$vars tiddler_containing_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$link to=&lt;&lt;tiddler_containing_link&gt;&gt; /&gt;&lt;br&gt;
-- &lt;&lt;http_link&gt;&gt;
+<div created="20201101145106502" modified="20201101161811452" tags="DOC" title="WebNotes\Assigned">
+<pre>&lt;ul&gt;
+&lt;$list filter=&quot;[all[tiddlers]!field:twnote[]]&quot;&gt;&lt;$vars tiddler_containing_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;tiddler_containing_link&gt;&gt; /&gt;&lt;/li&gt;
 &lt;/$vars&gt;&lt;/$list&gt;
-&lt;/$vars&gt;&lt;/$list&gt;
-&lt;/$vars&gt;&lt;/$list&gt;
-</pre>
+&lt;/ul&gt;</pre>
 </div>
 <div created="20201101144613900" modified="20201101161258715" tags="DOC" title="WebNotes\Data">
 <pre>```
@@ -10617,7 +10613,7 @@ You can keep the list focused on the selected tiddlers and use triple curly brac
 One compelling use of the subfilter is to access a list and apply it to another. So this is in fact a way to do &quot;&quot;named&quot;&quot; filters for use as needed.&quot;,Hardware and History,1604235195
 </pre>
 </div>
-<div created="20201101145158420" modified="20201101161314140" tags="DOC" title="WebNotes\RemToAssign">
+<div created="20201101145158420" modified="20201101161603326" tags="DOC" title="WebNotes\RemToAssign">
 <pre>\define link_title()
 ''[&lt;$list filter=&quot;[&lt;http_text&gt;split[,]butlast[]last[]]&quot; /&gt;]'' &lt;$list filter=&quot;[&lt;http_text&gt;split[,]rest[]first[]]&quot; /&gt;
 &lt;$list filter=&quot;[&lt;http_text&gt;split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]floor[]]&quot;&gt;&lt;$vars tid_year=&lt;&lt;currentTiddler&gt;&gt; &gt;
@@ -10631,7 +10627,7 @@ One compelling use of the subfilter is to access a list and apply it to another.
 &lt;/$list&gt;
 &lt;/ul&gt;
 \end
-&lt;$list filter=&quot;[{WebNotes\Data}split[http]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[{WebNotes\Data}split[http]limit[100]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$list filter=&quot;[&lt;http_text&gt;split[,]first[]!suffix[URL]addprefix[http]]&quot;&gt;&lt;$vars http_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$list filter=&quot;[all[tiddlers]field:twnote&lt;currentTiddler&gt;count[]match[0]]&quot;&gt;
 &lt;&lt;http_link&gt;&gt;&lt;br&gt;
