@@ -9891,7 +9891,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20201101153643856" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20201101154300963" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -10570,11 +10570,14 @@ You can keep the list focused on the selected tiddlers and use triple curly brac
 One compelling use of the subfilter is to access a list and apply it to another. So this is in fact a way to do &quot;&quot;named&quot;&quot; filters for use as needed.&quot;,Hardware and History,1604235195
 </pre>
 </div>
-<div created="20201101145158420" modified="20201101153639481" tags="DOC" title="TWNotes\RemToAssign">
+<div created="20201101145158420" modified="20201101154259083" tags="DOC" title="TWNotes\RemToAssign">
 <pre>\define link_title()
 ''[&lt;$list filter=&quot;[&lt;http_text&gt;split[,]butlast[]last[]]&quot; /&gt;]'' &lt;$list filter=&quot;[&lt;http_text&gt;split[,]rest[]first[]]&quot; /&gt;
-&lt;$list filter=&quot;[&lt;http_text&gt;split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]multiply[1000]floor[]divide[1000]]&quot;&gt;(&lt;&lt;currentTiddler&gt;&gt;)
-&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]floor[]]&quot;&gt;&lt;$vars tid_year=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]subtract&lt;tid_year&gt;multiply[12]floor[]]&quot;&gt;&lt;$vars tid_month=&lt;&lt;currentTiddler&gt;&gt; &gt;
+(&lt;&lt;tid_year&gt;&gt;-&lt;&lt;tid_month&gt;&gt;)
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
 \end
 &lt;$list filter=&quot;[{TWNotes\Data}split[http]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;$list filter=&quot;[&lt;http_text&gt;split[,]first[]!suffix[URL]addprefix[http]]&quot;&gt;&lt;$vars http_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
