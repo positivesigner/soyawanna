@@ -287,6 +287,8 @@ Error message and password prompt
 
 <li>keyboard action SaveHtmlConverted</li>
 
+<li>mcr glbl_code_split</li>
+
 <li>mcr OneLink</li>
 
 <li>mcr ref_iframe</li>
@@ -9621,7 +9623,7 @@ exports.startup = function() {
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[ext TW Return]]</pre>
+# [[mcr glbl_code_split]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9846,7 +9848,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200101055747328" modified="20200101060051241" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20190925044925672" modified="20200611033300790" title="$:/state/sidebar">
+<div created="20190925044925672" modified="20201102084440921" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20200111074213994" modified="20200111074213994" title="$:/state/tab--1498284803">
@@ -9873,7 +9875,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
 <div created="20200115080122418" modified="20200115080133954" title="$:/state/tabs/controlpanel/toolbars-1345989671">
 <pre>$:/core/ui/ControlPanel/Toolbars/EditToolbar</pre>
 </div>
-<div created="20200611033250388" list="[[WikiFile Title]] [[mcr ref_iframe]]" modified="20200611033250388" title="$:/StoryList">
+<div list="[[WikiFile Title]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20200111074215259" modified="20200322111238630" title="$:/temp/advancedsearch">
@@ -9892,7 +9894,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/BBK/soyawanna/TiddlyWiki/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/Gthb/soyawanna/TiddlyWiki_Code/Template/TW_Template.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -9912,7 +9914,7 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/BBK/soyawanna/TiddlyWiki/TW_Template.htm&quot;
+            &quot;text&quot;: &quot;/C:/Gthb/soyawanna/TiddlyWiki_Code/Template/TW_Template.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -9924,11 +9926,11 @@ Commit message: &lt;span style=&quot;flex-grow: 1&quot;&gt;
         },
         &quot;$:/info/browser/screen/width&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/width&quot;,
-            &quot;text&quot;: &quot;1366&quot;
+            &quot;text&quot;: &quot;1280&quot;
         },
         &quot;$:/info/browser/screen/height&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/screen/height&quot;,
-            &quot;text&quot;: &quot;768&quot;
+            &quot;text&quot;: &quot;720&quot;
         },
         &quot;$:/info/browser/language&quot;: {
             &quot;title&quot;: &quot;$:/info/browser/language&quot;,
@@ -10291,6 +10293,13 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
 &lt;$macrocall $name=&quot;ExportSaveHTML&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
 &lt;/$list&gt;
+</pre>
+</div>
+<div created="20201102001304343" modified="20201102002756379" tags="$:/tags/Macro META" title="mcr glbl_code_split" type="application/x-tiddler">
+<pre>\define glbl_code_split(ur_tiddler)
+&lt;$list filter=&quot;[{$ur_tiddler$}splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u003E]join[&amp;#x003E;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005D]join[&amp;#x005D;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007D]join[&amp;#x007D;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u0034]join[&amp;#x0034;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\n]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;
+\end
 </pre>
 </div>
 <div created="20200319092542069" modified="20200405135527913" tags="META $:/tags/Macro" title="mcr OneLink">
