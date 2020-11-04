@@ -1,0 +1,23 @@
+\define tw_line_text(ur_skip_count)
+<$list filter="[{TW Snapshot}splitregexp[\n]butfirst[35001]first[50]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]]"><<currentTiddler>><br></$list>
+</$list>
+\end
+<$button>
+<$wikify name=html_out text=<<tw_line_text>> >
+<$action-setfield $tiddler="$:/state/popup/TWLinesOutput" text=<<html_out>>/>
+</$wikify>
+Set output
+</$button><br>
+<$edit-text tiddler="$:/state/popup/TWLinesOutput" autoHeight=no />
+
+
+
+[[TW Snapshot]] lines: <$list filter="[{TW Snapshot}splitregexp[\n]count[]]" /><br>
+'____'____'-_____-'____'____'<br>
+<$list filter="[{TW Snapshot}splitregexp[\n]butfirst[19948]first[50]]">
+<$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]">
+<<currentTiddler>><br>
+</$list>
+</$list>
+'____'____'-_____-'____'____'<br>
+<!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.-->
