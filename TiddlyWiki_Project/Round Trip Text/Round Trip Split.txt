@@ -16,6 +16,7 @@
 \define glbl_code_split_disp(ur_source_note_pk, ur_temp_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
 Line Count: <$list filter="[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]"></$list><br>
 Rem to find: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
+Source data: [[$ur_source_note_pk$]]<br>
 \end
 \define glbl_code_split_combine()
 $(currentTiddler)$$(str_html_out)$
@@ -37,7 +38,7 @@ $(currentTiddler)$$(str_html_out)$
   </$list>
 \end
 \define glbl_code_split(ur_note_pk, ur_first_line_skip)
-<$macrocall $name=glbl_code_split_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" />
+<$macrocall $name=glbl_code_split_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
 <$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
   <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
     <$macrocall $name=glbl_code_split_disp ur_source_note_pk=<<source_note_pk>> ur_temp_note_pk=<<temp_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
