@@ -1,8 +1,30 @@
-\define glbl_code_section_group(ur_note_pk, ur_skip_count)
-<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentTiddler>><br></$list></$list>
+\define glbl_code_section_group(ur_note_pk, ur_skip_count, ur_include_count)
+<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[$ur_include_count$]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentTiddler>><br></$list></$list>
+\end
+\define glbl_code_section_keyline(ur_source_note_pk, ur_line_start, ur_line_next)
+<$list filter="[[$ur_source_note_pk$]get[text]splitbefore[$ur_line_start$]splitregexp[\n]count[]subtract[1]]"><$vars skip_lines=<<currentTiddler>> >
+  <$list filter="[[$ur_source_note_pk$]get[text]splitregexp[\n]butfirst<skip_lines>join[
+]splitbefore[$ur_line_next$]splitregexp[\n]count[]subtract[1]]"><$vars include_lines=<<currentTiddler>> >
+    <$macrocall $name=glbl_code_section_group ur_note_pk="$ur_source_note_pk$" ur_skip_count=<<skip_lines>> ur_include_count=<<include_lines>> />
+    </$vars></$list>
+  </$vars></$list>
+\end
+\define glbl_code_section_linerange(ur_note_pk, ur_key_list)
+<$list filter="[[$ur_key_list$]splitregexp[\n]count[]]" ><$vars list_len=<<currentTiddler>> >
+  <$list filter="[range<list_len>subtract[2]!match[-1]]"><$vars cur_ctr=<<currentTiddler>> >
+    <$list filter="[<cur_ctr>add[1]]"><$vars next_ctr=<<currentTiddler>> >
+      <$list filter="[[$ur_key_list$]splitregexp[\n]butfirst<cur_ctr>first[]]"><$vars line_start=<<currentTiddler>> >
+        <$list filter="[[$ur_key_list$]splitregexp[\n]butfirst<next_ctr>first[]!match[]]"><$vars line_next=<<currentTiddler>> >
+          <hr>
+          <$macrocall $name=glbl_code_section_keyline ur_source_note_pk="$ur_note_pk$" ur_line_start=<<line_start>> ur_line_next=<<line_next>> />
+           </$vars></$list>
+        </$vars></$list>
+      </$vars></$list>
+    </$vars></$list>
+  </$vars></$list>
 \end
 \define glbl_code_section_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_section_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_section_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> ur_include_count=100 /></$list>
 \end
 \define glbl_code_section_data()
 <$macrocall $name=glbl_code_section_count ur_note_pk=<<source_note_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
@@ -38,14 +60,14 @@ Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
   <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
     <$macrocall $name=glbl_code_section_disp ur_source_note_pk=<<source_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
     <$button>
-      <$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="subtract" />
-      
-      Browse next 100 lines
-      </$button><br>
-    <$button>
       <$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="add" />
       
       Browse prev 100 lines
+      </$button><br>
+    <$button>
+      <$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="subtract" />
+      
+      Browse next 100 lines
       </$button><br>
 
     <<glbl_code_section_data>>
