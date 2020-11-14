@@ -3197,7 +3197,7 @@ ARTICLE
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">Organize Notes</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 2:28am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 4:03am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"><span class="tc-tag-list-item">
 <span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
 fill:#333333;
@@ -3207,7 +3207,54 @@ ARTICLE
 <span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p>I prefer to put a tag on each note that I create. That way I can exclude my personal notes from the HTML version export.</p><ul><li>Images tag: IMG</li><li>Meta-data tag: META</li><li>Main Index tag: INDEX</li><li>Main Document tag: DOC</li><li>Individual Articles: ARTICLE</li><li>External Link tag: EXTLINK</li></ul><p>The &quot;Untagged&quot; list should be empty.</p></div>
+<div class="tc-tiddler-body tc-reveal"><p>I prefer to put a tag on each note that I create. That way I can exclude my personal notes from the HTML version export.</p><ul><li>Meta-Note / Generic Macros tag: META</li><li>Main Index tag: INDEX</li><li>Main Document tag: DOC</li><li>Individual Articles: ARTICLE</li><li>External Link tag: EXTLINK</li><li>Article Images tag: IMG</li><li>Article Macros tag: MCR</li></ul><p>The &quot;Untagged&quot; list should be empty.</p><p>[New note]</p><ul><li>Title = View All Pages</li><li>Main Body Text = </li></ul><pre><code>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
+{{||$:/core/ui/ViewTemplate/tags}}
+&lt;$transclude mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;</code></pre><p>[Recent Entries note]</p><ul><li>[Main Body text, at top]</li><li>Add link <code>[[View All Pages]]</code></li></ul></div>
+
+
+<div style="float:right;padding-left:30px;">
+
+
+<button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" viewBox="0 0 128 128" width="22pt"><g fill-rule="evenodd"><path d="M47.544 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L66.656 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.105 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.317-5.595z"></path><path d="M8.931 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L28.041 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.104 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.316-5.595z"></path></g></svg></button>
+
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="Save Directly to GitHub Repository">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-ARTICLE" data-tags="ARTICLE" data-tiddler-title="Save Directly to GitHub Repository"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+<button class="tc-btn-invisible tc-btn-DivPop%20btn">
+
+
+
+
+
+</button> 
+</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">Save Directly to GitHub Repository</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 3:55am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+ARTICLE
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://github.com/" rel="noopener noreferrer" target="_blank">https://github.com/</a>]</p><ul><li>Login</li><li>Click the top-right corner Profile menu, click the Settings option -&gt; Navigates page</li></ul><p>[<a class="tc-tiddlylink-external" href="https://github.com/settings/profile" rel="noopener noreferrer" target="_blank">https://github.com/settings/profile</a>]</p><ul><li>Scroll down the left-side links, click the Developer Options option -&gt; Navigates page</li></ul><p>[<a class="tc-tiddlylink-external" href="https://github.com/settings/apps" rel="noopener noreferrer" target="_blank">https://github.com/settings/apps</a>]</p><ul><li>In the left-side links, click the Personal Access Tokens option -&gt; Navigates page</li></ul><p>[<a class="tc-tiddlylink-external" href="https://github.com/settings/tokens" rel="noopener noreferrer" target="_blank">https://github.com/settings/tokens</a>]</p><ul><li>Choose a token name from the record list -&gt; Navigates page</li></ul><p>[Example <a class="tc-tiddlylink-external" href="https://github.com/settings/tokens/123456789" rel="noopener noreferrer" target="_blank">https://github.com/settings/tokens/123456789</a>]</p><ul><li>At the top, click button Regenerate Token</li><li>Copy the new token text to the clipboard</li></ul><p>[Wiki File <a class="tc-tiddlylink tc-tiddlylink-shadow" href="#%24%3A%2FControlPanel">$:/ControlPanel</a>]</p><ul><li>[Saving tab, <a class="tc-tiddlylink tc-tiddlylink-missing" href="#GitHub">GitHub</a> Saver sub-tab]</li><li>Username = <code>UrGitHubUserName</code></li><li>Password, OAUTH Token = Paste from clipboard</li><li>Note: This password will need to be re-pasted each time the Wiki File is opened</li><li>Target repository: <code>UrGitHubUserName\UrRepositoryName</code></li><li>Target branch for saving: <code>master</code></li><li>Note: You can choose a different branch</li><li>Path to target file: <code>/UrRelativeFolderPathFromRoot/</code></li><li>Filename of target file: <a class="tc-tiddlylink tc-tiddlylink-missing" href="#UrWikiFileName">UrWikiFileName</a></li><li>Note: You will have to manually change the Path and Filename if you move or rename the Wiki File</li><li>Server API URL: <code>https://api.github.com</code></li></ul></div>
 
 
 <div style="float:right;padding-left:30px;">

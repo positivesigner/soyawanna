@@ -303,6 +303,8 @@ Error message and password prompt
 
 <li>Recent Entries</li>
 
+<li>Save Directly to GitHub Repository</li>
+
 <li>Save Status on every Note</li>
 
 <li>See all Recently Changed Notes</li>
@@ -310,6 +312,8 @@ Error message and password prompt
 <li>template Home Button</li>
 
 <li>Test the Alt-S Keyboard Shortcut</li>
+
+<li>View All Pages</li>
 
 </ul>
 </p>
@@ -9743,7 +9747,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/plugins/danielo515/searchNreplace]]</pre>
+# [[View All Pages]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9798,7 +9802,7 @@ Error message and password prompt
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201114114009285" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201114120307979" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -9807,7 +9811,7 @@ Error message and password prompt
 <div created="20201114095219937" modified="20201114113018400" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114051921184" modified="20201114114009285" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201114120307979" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9816,7 +9820,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201114113009716" list="[[Notes Wiki]] [[Additional Features]] [[Note Editor tweaks]]" modified="20201114113900675" title="$:/StoryList">
+<div created="20201114113009716" list="[[Notes Wiki]] [[Recent Entries]] [[Additional Features]] [[Organize Notes]]" modified="20201114120214782" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10649,22 +10653,83 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$image source={{!!img}} /&gt;
 </pre>
 </div>
-<div created="20201114102510288" img="" modified="20201114102810622" tags="ARTICLE" title="Organize Notes">
+<div created="20201114102510288" img="" modified="20201114120306602" tags="ARTICLE" title="Organize Notes">
 <pre>I prefer to put a tag on each note that I create. That way I can exclude my personal notes from the HTML version export.
 
-* Images tag: IMG
-* Meta-data tag: META
+* Meta-Note / Generic Macros tag: META
 * Main Index tag: INDEX
 * Main Document tag: DOC
 * Individual Articles: ARTICLE
 * External Link tag: EXTLINK
+* Article Images tag: IMG
+* Article Macros tag: MCR
 
-The &quot;Untagged&quot; list should be empty.</pre>
+The &quot;Untagged&quot; list should be empty.
+
+[New note]
+
+* Title = View All Pages
+* Main Body Text = 
+
+```
+&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
+{{||$:/core/ui/ViewTemplate/tags}}
+&lt;$transclude mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;
+```
+
+[Recent Entries note]
+
+* [Main Body text, at top]
+* Add link `[[View All Pages]]`
+</pre>
 </div>
-<div created="20201114092453491" modified="20201114101940080" tags="META" title="Recent Entries">
-<pre>[[Font Size]]
+<div created="20201114092453491" modified="20201114120154308" tags="META" title="Recent Entries">
+<pre>[[View All Pages]]
+
+[[Font Size]]
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
+</div>
+<div created="20201114114223980" img="" modified="20201114115514871" tags="ARTICLE" title="Save Directly to GitHub Repository">
+<pre>[https://github.com/]
+
+* Login
+* Click the top-right corner Profile menu, click the Settings option -&gt; Navigates page
+
+[https://github.com/settings/profile]
+
+* Scroll down the left-side links, click the Developer Options option -&gt; Navigates page
+
+[https://github.com/settings/apps]
+
+* In the left-side links, click the Personal Access Tokens option -&gt; Navigates page
+
+[https://github.com/settings/tokens]
+
+* Choose a token name from the record list -&gt; Navigates page
+
+[Example https://github.com/settings/tokens/123456789]
+
+* At the top, click button Regenerate Token
+* Copy the new token text to the clipboard
+
+[Wiki File $:/ControlPanel]
+
+* [Saving tab, GitHub Saver sub-tab]
+* Username = `UrGitHubUserName`
+* Password, OAUTH Token = Paste from clipboard
+* Note: This password will need to be re-pasted each time the Wiki File is opened
+* Target repository: `UrGitHubUserName\UrRepositoryName`
+* Target branch for saving: `master`
+* Note: You can choose a different branch
+* Path to target file: `/UrRelativeFolderPathFromRoot/`
+* Filename of target file: UrWikiFileName
+* Note: You will have to manually change the Path and Filename if you move or rename the Wiki File
+* Server API URL: `https://api.github.com`
+</pre>
 </div>
 <div created="20201114110059132" img="" modified="20201114110652976" tags="ARTICLE" title="Save Status on every Note">
 <pre>The Sidebar's Save icon turn red when there are changes in the Wiki File that need to be saved. I like to also show the red icon in the bottom right corner of every note.
@@ -10749,6 +10814,14 @@ The &quot;Untagged&quot; list should be empty.</pre>
 ---
 &lt;$image source={{!!img}} /&gt;
 </pre>
+</div>
+<div created="20200405112008513" modified="20201114120252171" tags="META" title="View All Pages">
+<pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
+{{||$:/core/ui/ViewTemplate/tags}}
+&lt;$transclude mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;</pre>
 </div>
 
 
