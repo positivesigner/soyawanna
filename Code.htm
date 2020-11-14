@@ -179,6 +179,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab--1963855381</li>
@@ -307,7 +309,7 @@ Error message and password prompt
 <div created="20201114071306644" modified="20201114071316766" tags="META" title="$:/config/shortcuts/save-all-changes">
 <pre>alt-S</pre>
 </div>
-<div created="20201114120819491" modified="20201114120819491" title="$:/config/TextEditor/EnableToolbar">
+<div created="20201114120819491" modified="20201114130232081" title="$:/config/TextEditor/EnableToolbar">
 <pre>no</pre>
 </div>
 <div created="20201114120816634" modified="20201114120816634" title="$:/config/WikiParserRules/Inline/wikilink">
@@ -9745,22 +9747,25 @@ Error message and password prompt
 <div created="20201114120450940" modified="20201114120459356" title="$:/SiteTitle">
 <pre>Code Samples</pre>
 </div>
-<div created="20201114120733010" modified="20201114125717676" title="$:/state/sidebar">
+<div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
+<div created="20201114120733010" modified="20201114132035552" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20201114120754864" modified="20201114120834882" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114120733011" modified="20201114125717676" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201114132035552" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201114125505026" list="[[Code Samples]] TiddlyWiki" modified="20201114125701221" title="$:/StoryList">
+<div created="20201114130123952" list="[[Code Samples]]" modified="20201114132022557" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10089,18 +10094,22 @@ close
 <div created="20201114125538769" modified="20201114125616242" tags="EXT" title="ext TW Empty Setup">
 <pre>[ext[TiddlyWiki_Project\Empty Setup\TW Empty Setup.html]]</pre>
 </div>
-<div created="20201114124116532" modified="20201114124147363" tags="META" title="ext TW Return">
+<div created="20201114124116532" modified="20201114131046632" tags="META" title="ext TW Return">
 <pre>\define TW_Return(ur_url, ur_link_title)
 &lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;$ur_url$&quot;&gt; ($ur_link_title$)&lt;/a&gt;&lt;/div&gt;
 \end
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[.html]join[.htm]]&quot;&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]]&quot;&gt;
 &lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;TiddlyWiki view of website&quot; /&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
+&lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[.html]join[.htm]split[.htm]join[.html]]&quot;&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]split[.htm]join[.html]]&quot;&gt;
 &lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;Static HTML view of website&quot; /&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
 </pre>
@@ -10151,14 +10160,12 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201114122421811" e4="MxClasses\MxBaseEc12.vb" modified="20201114122447646" tags="DOC" title="MxClasses">
-<pre>&lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
-&lt;$list filter=&quot;[&lt;ref_note_pk&gt;get[img]else[]]&quot; variable=ref_img_pk&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;ref_note_pk&gt;&gt; /&gt;@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;&lt;$image width=200px source=&lt;&lt;ref_img_pk&gt;&gt; /&gt;@@&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+<div created="20201114122421811" e4="MxClasses\MxBaseEc12.vb" modified="20201114132007513" tags="DOC" title="MxClasses">
+<pre>\define fn_name_slash()$(currentTiddler)$\
+
+&lt;ol&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
@@ -12438,14 +12445,12 @@ End Namespace 'Mx
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20201114121330345" e1="TiddlerMove\VBNS Code" modified="20201114121702460" tags="DOC" title="TiddlerMove">
-<pre>&lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
-&lt;$list filter=&quot;[&lt;ref_note_pk&gt;get[img]else[]]&quot; variable=ref_img_pk&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;ref_note_pk&gt;&gt; /&gt;@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;&lt;$image width=200px source=&lt;&lt;ref_img_pk&gt;&gt; /&gt;@@&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+<div created="20201114121330345" e1="TiddlerMove\VBNS Code" modified="20201114132014682" tags="DOC" title="TiddlerMove">
+<pre>\define fn_name_slash()$(currentTiddler)$\
+
+&lt;ol&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
@@ -12967,16 +12972,14 @@ Namespace Mx
 End Namespace 'Mx
 </pre>
 </div>
-<div created="20201114122650961" e1="TiddlyWiki\mcr glbl_code_section" e2="TiddlyWiki\mcr glbl_code_split" e3="TiddlyWiki\DivPop btn" e4="TiddlyWiki\DivPop glbl" modified="20201114125708219" tags="DOC" title="TiddlyWiki">
-<pre>{{ext TW Empty Setup}}
+<div created="20201114122650961" e1="TiddlyWiki\mcr glbl_code_section" e2="TiddlyWiki\mcr glbl_code_split" e3="TiddlyWiki\DivPop btn" e4="TiddlyWiki\DivPop glbl" modified="20201114131948052" tags="DOC" title="TiddlyWiki">
+<pre>\define fn_name_slash()$(currentTiddler)$\
+
+{{ext TW Empty Setup}}
 
 &lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
-&lt;$list filter=&quot;[&lt;ref_note_pk&gt;get[img]else[]]&quot; variable=ref_img_pk&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;ref_note_pk&gt;&gt; /&gt;@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;&lt;$image width=200px source=&lt;&lt;ref_img_pk&gt;&gt; /&gt;@@&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
@@ -13208,14 +13211,12 @@ Copy to clipboard
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20201114121713240" e1="VBNetScript\frmInput_1_Events.vb" e2="VBNetScript\subs.vb" e3="VBNetScript\ScriptRun.vb" e4="VBNetScript\~Clear Local.cmd" e5="VBNetScript\VersionUpd.vbns" e6="VBNetScript\~Rebuild Local.cmd" modified="20201114122311421" tags="DOC" title="VBNetScript">
-<pre>&lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
-&lt;$list filter=&quot;[&lt;ref_note_pk&gt;get[img]else[]]&quot; variable=ref_img_pk&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;ref_note_pk&gt;&gt; /&gt;@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;&lt;$image width=200px source=&lt;&lt;ref_img_pk&gt;&gt; /&gt;@@&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+<div created="20201114121713240" e1="VBNetScript\frmInput_1_Events.vb" e2="VBNetScript\subs.vb" e3="VBNetScript\ScriptRun.vb" e4="VBNetScript\~Clear Local.cmd" e5="VBNetScript\VersionUpd.vbns" e6="VBNetScript\~Rebuild Local.cmd" modified="20201114132025584" tags="DOC" title="VBNetScript">
+<pre>\define fn_name_slash()$(currentTiddler)$\
+
+&lt;ol&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
