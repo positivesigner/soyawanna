@@ -3404,7 +3404,7 @@ ARTICLE
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">Static HTML backlink</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 4:44am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 5:23am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"><span class="tc-tag-list-item">
 <span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
 fill:#333333;
@@ -3418,13 +3418,17 @@ ARTICLE
 &lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;$ur_url$&quot;&gt; ($ur_link_title$)&lt;/a&gt;&lt;/div&gt;
 \end
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[.html]join[.htm]]&quot;&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]]&quot;&gt;
 &lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;TiddlyWiki view of website&quot; /&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
+&lt;/$list&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[.html]join[.htm]split[.htm]join[.html]]&quot;&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
+&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]split[.htm]join[.html]]&quot;&gt;
 &lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;Static HTML view of website&quot; /&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;</code></pre><p>[Main Index note]</p><ul><li>[At top of code]</li><li>Insert line <code>{{ext TW Return}}</code></li><li>Note: The Static HTML and Wiki File pages will be linked to each other through the link at the top-right corner of the Main Index note</li></ul></div>
 
