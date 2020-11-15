@@ -237,17 +237,35 @@ Error message and password prompt
 
 <li>TiddlyWiki</li>
 
+<li>TiddlyWiki\Backlink to HTML,HTM</li>
+
+<li>TiddlyWiki\Code Copy data</li>
+
+<li>TiddlyWiki\Date Part</li>
+
+<li>TiddlyWiki\Delete All Notes with Tag</li>
+
+<li>TiddlyWiki\Display Code Section</li>
+
 <li>TiddlyWiki\DivPop btn</li>
 
 <li>TiddlyWiki\DivPop glbl</li>
 
-<li>TiddlyWiki\ext TW Return</li>
+<li>TiddlyWiki\Global Macro</li>
 
-<li>TiddlyWiki\mcr glbl_code_section</li>
+<li>TiddlyWiki\List Links from Numbered Fields</li>
 
-<li>TiddlyWiki\mcr glbl_code_split</li>
+<li>TiddlyWiki\List Links of Prefixed Notes</li>
 
-<li>TiddlyWiki\mcr T1Reveal</li>
+<li>TiddlyWiki\List Links standard</li>
+
+<li>TiddlyWiki\Recently Changed Notes</li>
+
+<li>TiddlyWiki\Reveal Section and Copy Data</li>
+
+<li>TiddlyWiki\Save Wiki and Export HTML</li>
+
+<li>TiddlyWiki\View All notes</li>
 
 <li>VBNetScript</li>
 
@@ -9750,7 +9768,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201114132035552" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201115021126740" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9759,13 +9777,13 @@ Error message and password prompt
 <div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114120733011" modified="20201114132035552" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201115021126741" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201114130123952" list="[[Code Samples]]" modified="20201114132022557" title="$:/StoryList">
+<div created="20201114212457398" list="[[Code Samples]] TiddlyWiki" modified="20201115021117464" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10160,12 +10178,12 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201114122421811" e4="MxClasses\MxBaseEc12.vb" modified="20201114132007513" tags="DOC" title="MxClasses">
-<pre>\define fn_name_slash()$(currentTiddler)$\
-
-&lt;ol&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+<div created="20201114122421811" modified="20201114213306849" tags="DOC" title="MxClasses">
+<pre>&lt;ol&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
 &lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
@@ -12445,12 +12463,12 @@ End Namespace 'Mx
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20201114121330345" e1="TiddlerMove\VBNS Code" modified="20201114132014682" tags="DOC" title="TiddlerMove">
-<pre>\define fn_name_slash()$(currentTiddler)$\
-
-&lt;ol&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+<div created="20201114121330345" e1="TiddlerMove\VBNS Code" modified="20201114213315085" tags="DOC" title="TiddlerMove">
+<pre>&lt;ol&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
 &lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
@@ -12972,70 +12990,22 @@ Namespace Mx
 End Namespace 'Mx
 </pre>
 </div>
-<div created="20201114122650961" e1="TiddlyWiki\mcr glbl_code_section" e2="TiddlyWiki\mcr glbl_code_split" e3="TiddlyWiki\DivPop btn" e4="TiddlyWiki\DivPop glbl" modified="20201114131948052" tags="DOC" title="TiddlyWiki">
-<pre>\define fn_name_slash()$(currentTiddler)$\
-
-{{ext TW Empty Setup}}
+<div created="20201114122650961" modified="20201114213217113" tags="DOC" title="TiddlyWiki">
+<pre>{{ext TW Empty Setup}}
 
 &lt;ol&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
 &lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
 </div>
-<div created="20201114124608519" modified="20201114124806294" tags="" title="TiddlyWiki\DivPop btn">
-<pre>Tag = `$:/tags/ViewToolbar`
+<div created="20201114123249034" modified="20201114213554580" tags="" title="TiddlyWiki\Backlink to HTML,HTM">
+<pre>Title = ext TW Return
 
 ```
-\define divpop_current(ur_ref)
-&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
-&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
-{{DivPop.svg}}
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
-&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text=&quot;Popup over Sidebar&quot;/&gt;&lt;/span&gt;
-&lt;/$list&gt;
-&lt;/$button&gt;
-\end
-
-&lt;$list filter=&quot;[all[current]]&quot;&gt;
-&lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
-&lt;/$list&gt;</pre>
-</div>
-<div created="20201114124629564" modified="20201114124736436" tags="" title="TiddlyWiki\DivPop glbl">
-<pre>Tag = `$:/tags/BelowStory`
-
-```
-&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
-&lt;div style=&quot;
-position: fixed;
-top: 0px;
-right: 0px;
-width: 350px;
-border: 3px solid;
-background: white;
-bottom: 0%;
-&quot;&gt;
-&lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
-close
-&lt;/$button&gt;
-&lt;$tiddler tiddler=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$transclude mode=&quot;block&quot; /&gt;
-&lt;/$tiddler&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/$list&gt;
-</pre>
-</div>
-<div created="20201114123249034" modified="20201114123757837" tags="" title="TiddlyWiki\ext TW Return">
-<pre>```
 \define TW_Return(ur_url, ur_link_title)
 &lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;$ur_url$&quot;&gt; ($ur_link_title$)&lt;/a&gt;&lt;/div&gt;
 \end
@@ -13050,72 +13020,10 @@ close
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201114122716116" modified="20201114122740157" tags="" title="TiddlyWiki\mcr glbl_code_section">
-<pre>```
-\define glbl_code_section_group(ur_note_pk, ur_skip_count)
-&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
-\end
-\define glbl_code_section_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_section_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-\end
-\define glbl_code_section_data()
-&lt;$macrocall $name=glbl_code_section_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-\end
-\define glbl_code_section_next_group_disp(ur_rem_counter, ur_oper)
-&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;
-\end
-\define glbl_code_section_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
-Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-\end
-\define glbl_code_section_init(ur_note_pk, ur_first_line_skip)
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
-      &lt;$button&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        Reset destination edit field
-        &lt;/$button&gt;
-      &lt;/$list&gt;&lt;br&gt;
-	
-    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-\define glbl_code_section(ur_note_pk, ur_first_line_skip)
-&lt;$macrocall $name=glbl_code_section_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
-[[$ur_note_pk$]]&lt;br&gt;
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$macrocall $name=glbl_code_section_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
-      
-      Browse next 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
-      
-      Browse prev 100 lines
-      &lt;/$button&gt;&lt;br&gt;
+<div created="20201114122843653" modified="20201114213710712" tags="" title="TiddlyWiki\Code Copy data">
+<pre>Title = mcr glbl_code_split
 
-    &lt;&lt;glbl_code_section_data&gt;&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-
-&lt;!--&lt;$macrocall $name=glbl_code_section ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
-
-&lt;!--&lt;&lt;glbl_code_section &quot;WebNotes\Data 1 &gt;&gt;--&gt;
-
-&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
-</pre>
-</div>
-<div created="20201114122843653" modified="20201114122859068" tags="" title="TiddlyWiki\mcr glbl_code_split">
-<pre>```
+```
 \define glbl_code_split_group(ur_note_pk, ur_skip_count)
 &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&amp;#x0022;&amp;#x0022;&amp;#x0022;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;
 &lt;/$list&gt;&lt;/$list&gt;
@@ -13181,8 +13089,182 @@ $(currentTiddler)$$(str_html_out)$
 &lt;!--&lt;$macrocall $name=glbl_code_split ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
 </pre>
 </div>
-<div created="20201114123106960" modified="20201114123133690" tags="" title="TiddlyWiki\mcr T1Reveal">
+<div created="20201115020219189" modified="20201115021123857" tags="" title="TiddlyWiki\Date Part">
+<pre>Tag = `$:/tags/Macro`
+
+```
+\define glbl_dt_ddd()
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]&quot;&gt;
+&lt;$view field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]DDD&quot; /&gt;
+&lt;/$list&gt;
+\end
+</pre>
+</div>
+<div created="20201114212052546" modified="20201114212116544" tags="" title="TiddlyWiki\Delete All Notes with Tag">
 <pre>```
+&lt;$button&gt;
+&lt;$list filter=&quot;[tag[ARTICLE]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+Del ARTICLE
+&lt;/$button&gt;
+</pre>
+</div>
+<div created="20201114122716116" modified="20201114213637660" tags="" title="TiddlyWiki\Display Code Section">
+<pre>Title = mcr glbl_code_section
+
+```
+\define glbl_code_section_group(ur_note_pk, ur_skip_count)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_section_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_section_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+\end
+\define glbl_code_section_data()
+&lt;$macrocall $name=glbl_code_section_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+\end
+\define glbl_code_section_next_group_disp(ur_rem_counter, ur_oper)
+&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+\define glbl_code_section_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+\end
+\define glbl_code_section_init(ur_note_pk, ur_first_line_skip)
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
+      &lt;$button&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        Reset destination edit field
+        &lt;/$button&gt;
+      &lt;/$list&gt;&lt;br&gt;
+	
+    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+\define glbl_code_section(ur_note_pk, ur_first_line_skip)
+&lt;$macrocall $name=glbl_code_section_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
+[[$ur_note_pk$]]&lt;br&gt;
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$macrocall $name=glbl_code_section_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
+      
+      Browse next 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
+      
+      Browse prev 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+
+    &lt;&lt;glbl_code_section_data&gt;&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+
+&lt;!--&lt;$macrocall $name=glbl_code_section ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_section &quot;WebNotes\Data 1 &gt;&gt;--&gt;
+
+&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
+</pre>
+</div>
+<div created="20201114124608519" modified="20201114124806294" tags="" title="TiddlyWiki\DivPop btn">
+<pre>Tag = `$:/tags/ViewToolbar`
+
+```
+\define divpop_current(ur_ref)
+&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
+{{DivPop.svg}}
+&lt;/$list&gt;
+&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
+&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text=&quot;Popup over Sidebar&quot;/&gt;&lt;/span&gt;
+&lt;/$list&gt;
+&lt;/$button&gt;
+\end
+
+&lt;$list filter=&quot;[all[current]]&quot;&gt;
+&lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
+&lt;/$list&gt;</pre>
+</div>
+<div created="20201114124629564" modified="20201114124736436" tags="" title="TiddlyWiki\DivPop glbl">
+<pre>Tag = `$:/tags/BelowStory`
+
+```
+&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
+&lt;div style=&quot;
+position: fixed;
+top: 0px;
+right: 0px;
+width: 350px;
+border: 3px solid;
+background: white;
+bottom: 0%;
+&quot;&gt;
+&lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+close
+&lt;/$button&gt;
+&lt;$tiddler tiddler=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$transclude mode=&quot;block&quot; /&gt;
+&lt;/$tiddler&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+</pre>
+</div>
+<div created="20201115020441944" modified="20201115020732573" tags="" title="TiddlyWiki\Global Macro">
+<pre>Tag = `$:/tags/Macro`
+</pre>
+</div>
+<div created="20201114212600868" modified="20201114212626525" tags="" title="TiddlyWiki\List Links from Numbered Fields">
+<pre>```
+&lt;ol&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
+&lt;$list filter=&quot;[&lt;ref_note_pk&gt;get[img]else[]]&quot; variable=ref_img_pk&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;ref_note_pk&gt;&gt; /&gt;@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;&lt;$image width=200px source=&lt;&lt;ref_img_pk&gt;&gt; /&gt;@@&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div created="20201114213222783" modified="20201114213339284" tags="" title="TiddlyWiki\List Links of Prefixed Notes">
+<pre>```
+&lt;ol&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div created="20201114212643675" modified="20201115002952512" tags="" title="TiddlyWiki\List Links standard">
+<pre>```
+&lt;&lt;list-links filter:&quot;[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]&quot;&gt;&gt;</pre>
+</div>
+<div created="20201114212849876" modified="20201114212859313" tags="" title="TiddlyWiki\Recently Changed Notes">
+<pre>```
+&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20201114123106960" modified="20201114213738237" tags="" title="TiddlyWiki\Reveal Section and Copy Data">
+<pre>Title = mcr T1Reveal
+
+```
 \define t1cb(UrContent)
 &lt;$list filter=&quot;[[$UrContent$]!match[]]&quot;&gt;
 $UrContent$
@@ -13211,12 +13293,37 @@ Copy to clipboard
 &lt;/$list&gt;
 \end</pre>
 </div>
-<div created="20201114121713240" e1="VBNetScript\frmInput_1_Events.vb" e2="VBNetScript\subs.vb" e3="VBNetScript\ScriptRun.vb" e4="VBNetScript\~Clear Local.cmd" e5="VBNetScript\VersionUpd.vbns" e6="VBNetScript\~Rebuild Local.cmd" modified="20201114132025584" tags="DOC" title="VBNetScript">
-<pre>\define fn_name_slash()$(currentTiddler)$\
-
-&lt;ol&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;fn_name_slash&gt;sort[]]&quot;&gt;
+<div created="20201114212755582" modified="20201114212820815" tags="" title="TiddlyWiki\Save Wiki and Export HTML">
+<pre>```
+\define ExportSaveAll(ur_filename ur_stamp)
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/tab/sidebar--595412856&quot; text=&quot;$:/core/ui/SideBar/More&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.htm&quot;
+/&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot;
+$param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
+\end
+&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
+&lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20201114213433883" modified="20201114213445930" tags="" title="TiddlyWiki\View All notes">
+<pre>```
+&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
+{{||$:/core/ui/ViewTemplate/tags}}
+&lt;$transclude mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20201114121713240" e1="VBNetScript\frmInput_1_Events.vb" e2="VBNetScript\subs.vb" e3="VBNetScript\ScriptRun.vb" e4="VBNetScript\~Clear Local.cmd" e5="VBNetScript\VersionUpd.vbns" e6="VBNetScript\~Rebuild Local.cmd" modified="20201114213322028" tags="DOC" title="VBNetScript">
+<pre>&lt;ol&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
 &lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
