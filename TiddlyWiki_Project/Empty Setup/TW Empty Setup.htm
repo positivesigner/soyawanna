@@ -227,6 +227,8 @@ Error message and password prompt
 
 <li>Basic Wiki Setup</li>
 
+<li>btn Delete notes</li>
+
 <li>Change the Font Size</li>
 
 <li>Change Title and Default Page Search</li>
@@ -294,6 +296,8 @@ Error message and password prompt
 <li>keyboard action HomeTiddlers</li>
 
 <li>keyboard action SaveAllChanges</li>
+
+<li>mcr glbl_image</li>
 
 <li>Note Editor tweaks</li>
 
@@ -9806,7 +9810,7 @@ Error message and password prompt
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201114132331274" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201118045647573" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -9815,7 +9819,7 @@ Error message and password prompt
 <div created="20201114095219937" modified="20201114113018400" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114051921184" modified="20201114132331274" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201118045647573" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9824,7 +9828,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201114130718631" list="[[Notes Wiki]] [[Additional Features]] [[Static HTML backlink]] [[Recent Entries]] [[ext TW Return]]" modified="20201114132307249" title="$:/StoryList">
+<div created="20201118045423715" list="[[Notes Wiki]] [[Additional Features]] [[btn Delete notes]]" modified="20201118045423715" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10145,6 +10149,12 @@ close
 &lt;/$list&gt;
 &lt;/ol&gt;
 </pre>
+</div>
+<div created="20201118045544465" modified="20201118045640438" tags="META" title="btn Delete notes">
+<pre>&lt;$button&gt;
+&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+Del ARTICLE and IMG notes
+&lt;/$button&gt;</pre>
 </div>
 <div created="20201114092536024" img="" modified="20201114111118585" tags="ARTICLE" title="Change the Font Size">
 <pre>[New note]
@@ -10630,6 +10640,14 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
 &lt;/$list&gt;
 </pre>
+</div>
+<div created="20201118045416305" modified="20201118045525094" tags="$:/tags/Macro" title="mcr glbl_image">
+<pre>\define glbl_image_high(ur_image_pk, ur_size:200)
+&lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img height=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
+\end
+\define glbl_image_wide(ur_image_pk, ur_size:500)
+&lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img width=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
+\end</pre>
 </div>
 <div created="20201114111503706" img="" modified="20201114114008089" tags="ARTICLE" title="Note Editor tweaks">
 <pre>[Sidebar]

@@ -255,6 +255,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\Hard Line Breaks</li>
 
+<li>TiddlyWiki\Image link opens Note</li>
+
 <li>TiddlyWiki\List Links from Numbered Fields</li>
 
 <li>TiddlyWiki\List Links of Prefixed Notes</li>
@@ -9719,7 +9721,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[ext TW Return]]</pre>
+# [[mcr glbl_image]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9774,7 +9776,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201115035654148" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201118050004020" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9783,13 +9785,13 @@ Error message and password prompt
 <div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114120733011" modified="20201115035654149" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201118050004020" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201114212457398" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Date Part]]" modified="20201115035556374" title="$:/StoryList">
+<div created="20201118045439838" list="[[Code Samples]] TiddlyWiki" modified="20201118045955230" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -13273,6 +13275,17 @@ close
 
 ```
 &quot;&quot;&quot;</pre>
+</div>
+<div created="20201118045416305" modified="20201118050000963" title="TiddlyWiki\Image link opens Note">
+<pre>Tag = `$:/tags/Macro`
+
+```
+\define glbl_image_high(ur_image_pk, ur_size:200)
+&lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img height=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
+\end
+\define glbl_image_wide(ur_image_pk, ur_size:500)
+&lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img width=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
+\end</pre>
 </div>
 <div created="20201114212600868" modified="20201114212626525" tags="" title="TiddlyWiki\List Links from Numbered Fields">
 <pre>```
