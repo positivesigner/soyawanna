@@ -215,6 +215,18 @@ Error message and password prompt
 
 <li>Font Size</li>
 
+<li>GoogleContacts</li>
+
+<li>GoogleContacts\Export as CSV</li>
+
+<li>GoogleGmail</li>
+
+<li>GoogleGmail\Export as MBOX</li>
+
+<li>Instapaper</li>
+
+<li>Instapaper\Export as CSV</li>
+
 <li>keyboard action FontLarge</li>
 
 <li>keyboard action FontNormal</li>
@@ -222,6 +234,8 @@ Error message and password prompt
 <li>keyboard action HomeTiddlers</li>
 
 <li>keyboard action SaveAllChanges</li>
+
+<li>mcr glbl_article_list</li>
 
 <li>MxClasses</li>
 
@@ -250,6 +264,8 @@ Error message and password prompt
 <li>TiddlyWiki\DivPop btn</li>
 
 <li>TiddlyWiki\DivPop glbl</li>
+
+<li>TiddlyWiki\Encrypt file</li>
 
 <li>TiddlyWiki\Global Macro</li>
 
@@ -9776,7 +9792,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201118050004020" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201120072023915" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9785,13 +9801,13 @@ Error message and password prompt
 <div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114120733011" modified="20201118050004020" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201120072023915" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201118045439838" list="[[Code Samples]] TiddlyWiki" modified="20201118045955230" title="$:/StoryList">
+<div created="20201120071112924" list="[[Code Samples]] [[TiddlyWiki\Encrypt file]]" modified="20201120071122228" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10152,6 +10168,171 @@ Normal Font
 &lt;/$button&gt;
 </pre>
 </div>
+<div created="20201120062130308" modified="20201120063232204" tags="DOC" title="GoogleContacts">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201120062504606" modified="20201120063130580" tags="" title="GoogleContacts\Export as CSV">
+<pre>&quot;&quot;&quot;
+[https://contacts.google.com/]
+- ]Left-side menu]
+- Click button Export -&gt; Opens dialog
+- Export contacts = Contacts (total count)
+- Export as = Google CSV
+- Click button Export -&gt; Downloads file, Closes dialog
+
+[CSV file]
+- Header fields =
+&quot;&quot;&quot;
+
+```
+Name
+Given Name
+Additional Name
+Family Name
+Yomi Name
+Given Name Yomi
+Additional Name Yomi
+Family Name Yomi
+Name Prefix
+Name Suffix
+Initials
+Nickname
+Short Name
+Maiden Name
+Birthday
+Gender
+Location
+Billing Information
+Directory Server
+Mileage
+Occupation
+Hobby
+Sensitivity
+Priority
+Subject
+Notes
+Language
+Photo
+Group Membership
+E-mail 1 - Type
+E-mail 1 - Value
+E-mail 2 - Type
+E-mail 2 - Value
+Phone 1 - Type
+Phone 1 - Value
+Phone 2 - Type
+Phone 2 - Value
+Address 1 - Type
+Address 1 - Formatted
+Address 1 - Street
+Address 1 - City
+Address 1 - PO Box
+Address 1 - Region
+Address 1 - Postal Code
+Address 1 - Country
+Address 1 - Extended Address
+Organization 1 - Type
+Organization 1 - Name
+Organization 1 - Yomi Name
+Organization 1 - Title
+Organization 1 - Department
+Organization 1 - Symbol
+Organization 1 - Location
+Organization 1 - Job Description
+Relation 1 - Type
+Relation 1 - Value
+Website 1 - Type
+Website 1 - Value
+```
+
+- Header line =
+
+```
+Name,Given Name,Additional Name,Family Name,Yomi Name,Given Name Yomi,Additional Name Yomi,Family Name Yomi,Name Prefix,Name Suffix,Initials,Nickname,Short Name,Maiden Name,Birthday,Gender,Location,Billing Information,Directory Server,Mileage,Occupation,Hobby,Sensitivity,Priority,Subject,Notes,Language,Photo,Group Membership,E-mail 1 - Type,E-mail 1 - Value,E-mail 2 - Type,E-mail 2 - Value,Phone 1 - Type,Phone 1 - Value,Phone 2 - Type,Phone 2 - Value,Address 1 - Type,Address 1 - Formatted,Address 1 - Street,Address 1 - City,Address 1 - PO Box,Address 1 - Region,Address 1 - Postal Code,Address 1 - Country,Address 1 - Extended Address,Organization 1 - Type,Organization 1 - Name,Organization 1 - Yomi Name,Organization 1 - Title,Organization 1 - Department,Organization 1 - Symbol,Organization 1 - Location,Organization 1 - Job Description,Relation 1 - Type,Relation 1 - Value,Website 1 - Type,Website 1 - Value
+```
+
+- Sample data 1
+
+```
+.me,.me,,,,,,,,,,,,,,,,,,,,,,,,,,,Imported 8/5/16 ::: * myContacts,,,,,Mobile,5554443333 ::: 16665554444,,,,,,,,,,,,,,,,,,,,,,,
+```
+
+- Sample data 2
+
+```
+UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* myContacts,,,,,Mobile,(444) 333-2222,,,,,,,,,,,,,,,,,,,,,,,
+```
+</pre>
+</div>
+<div created="20201120065856142" modified="20201120065901264" tags="DOC" title="GoogleGmail">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201120065906665" modified="20201120071041866" tags="" title="GoogleGmail\Export as MBOX">
+<pre>&quot;&quot;&quot;
+[https://takeout.google.com/]
+- [Products section]
+- Click link Deselect All
+- [Mail section]
+- checkbox = set
+- [End of Page section]
+- Click button Next Step -&gt; Navigates section
+- [Choose file type, frequency &amp; destination]
+- Frequency = Export once
+- File type = .zip
+- File size = 2 GB
+- Click button Create Export -&gt; Navigates section
+- [Export Progress]
+- Note: Google is creating a copy of files from Mail. This process can take a long time (possibly hours or days) to complete. You'll receive an email when your export is done.
+
+[https://mail.google.com/]
+- [Message with title &quot;Archive of Google data requested&quot;]
+- Note: You can ignore the message or click the link to verify it was you
+- 
+</pre>
+</div>
+<div created="20201120063216566" modified="20201120063224319" tags="DOC" title="Instapaper">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201120063258141" modified="20201120064133983" tags="" title="Instapaper\Export as CSV">
+<pre>&quot;&quot;&quot;
+[https://www.instapaper.com/u]
+- [Top-right corner login-name]
+- Drop-down menu, Click option Settings -&gt; Navigates page
+- [Settings page, Export section]
+- Click link Download .CSV file -&gt; Opens dialog
+- Click button OK -&gt; Starts download, closes dialog
+
+[CSV file]
+- Header fields =
+&quot;&quot;&quot;
+
+```
+URL
+Title
+Selection
+Folder
+Timestamp
+```
+
+- Header line =
+
+```
+URL,Title,Selection,Folder,Timestamp
+```
+
+- Sample data 1 =
+
+```
+https://m.youtube.com/watch?v=ABC123DEF&amp;index=14,&quot;&quot;&quot;UrQuotedText&quot;&quot; - UrVideoTitle&quot;,UrCommentText,&quot;UrInstapaperFolder&quot;,1605840648
+```
+
+- Sample data 1 =
+
+```
+https://www.urcompany.com/urfolder/urarticle/,UrArticleTitle,,UrInstapaperFolder,UrCommentText1603883475
+```
+</pre>
+</div>
 <div created="20200411063250301" key="((font-large))" modified="20200411063336938" tags="META $:/tags/KeyboardShortcut" title="keyboard action FontLarge">
 <pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;30px&quot;/&gt;
@@ -10186,15 +10367,21 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201114122421811" modified="20201114213306849" tags="DOC" title="MxClasses">
-<pre>&lt;ol&gt;
+<div created="20201120062240873" modified="20201120062341421" tags="$:/tags/Macro MCR" title="mcr glbl_article_list">
+<pre>\define glbl_article_list()
+&lt;ol&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
 &lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
 &lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
+\end
+
 </pre>
+</div>
+<div created="20201114122421811" modified="20201120062500770" tags="DOC" title="MxClasses">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
 <div created="20201114122330954" modified="20201114122415201" tags="" title="MxClasses\MxBaseEc12.vb">
 <pre>```
@@ -12471,15 +12658,8 @@ End Namespace 'Mx
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20201114121330345" e1="TiddlerMove\VBNS Code" modified="20201114213315085" tags="DOC" title="TiddlerMove">
-<pre>&lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/ol&gt;
-</pre>
+<div created="20201114121330345" modified="20201120062427729" tags="DOC" title="TiddlerMove">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
 <div created="20201114121628366" modified="20201114121644178" tags="" title="TiddlerMove\VBNS Code">
 <pre>```
@@ -12998,17 +13178,10 @@ Namespace Mx
 End Namespace 'Mx
 </pre>
 </div>
-<div created="20201114122650961" modified="20201114213217113" tags="DOC" title="TiddlyWiki">
+<div created="20201114122650961" modified="20201120062448215" tags="DOC" title="TiddlyWiki">
 <pre>{{ext TW Empty Setup}}
 
-&lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/ol&gt;
-</pre>
+&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
 <div created="20201114123249034" modified="20201114213554580" tags="" title="TiddlyWiki\Backlink to HTML,HTM">
 <pre>Title = ext TW Return
@@ -13266,6 +13439,23 @@ close
 &lt;/$list&gt;
 </pre>
 </div>
+<div created="20201120071125076" modified="20201120072023050" tags="" title="TiddlyWiki\Encrypt file">
+<pre>&quot;&quot;&quot;
+[Wiki file]
+- [Sidebar, Tools tab]
+- Click button Set Password -&gt; Opens dialog
+- Password = UrPasswordText
+- Repeat password = UrPasswordText
+- Click button Set Password -&gt; Closes dialog
+
+[keyboard action SaveAllChanges]
+- [&lt;$action-sendmessage $message=&quot;tm-download-file&quot;]
+- Comment out this tag to keep the HTML Wiki version from being exported
+- Save the Wiki file
+
+- Note: The password will be required to start the Wiki application when you open the Wiki file
+</pre>
+</div>
 <div created="20201115020441944" modified="20201115020732573" tags="" title="TiddlyWiki\Global Macro">
 <pre>Tag = `$:/tags/Macro`
 </pre>
@@ -13406,15 +13596,8 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201114121713240" e1="VBNetScript\frmInput_1_Events.vb" e2="VBNetScript\subs.vb" e3="VBNetScript\ScriptRun.vb" e4="VBNetScript\~Clear Local.cmd" e5="VBNetScript\VersionUpd.vbns" e6="VBNetScript\~Rebuild Local.cmd" modified="20201114213322028" tags="DOC" title="VBNetScript">
-<pre>&lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/ol&gt;
-</pre>
+<div created="20201114121713240" modified="20201120062439159" tags="DOC" title="VBNetScript">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
 <div created="20201114121934192" modified="20201114122008201" tags="" title="VBNetScript\~Clear Local.cmd">
 <pre>```
