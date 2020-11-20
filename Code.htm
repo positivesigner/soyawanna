@@ -179,6 +179,10 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/searchNreplace/replace</li>
+
+<li>$:/state/searchNreplace/search</li>
+
 <li>$:/state/showeditpreview</li>
 
 <li>$:/state/sidebar</li>
@@ -226,6 +230,8 @@ Error message and password prompt
 <li>Instapaper</li>
 
 <li>Instapaper\Export as CSV</li>
+
+<li>Instapaper\Parse file</li>
 
 <li>keyboard action FontLarge</li>
 
@@ -290,6 +296,18 @@ Error message and password prompt
 <li>TiddlyWiki\Save Wiki and Export HTML</li>
 
 <li>TiddlyWiki\View All notes</li>
+
+<li>VBNetCode</li>
+
+<li>VBNetCode\Checksum calculate</li>
+
+<li>VBNetCode\File Exists</li>
+
+<li>VBNetCode\File Size</li>
+
+<li>VBNetCode\Send Keys</li>
+
+<li>VBNetCode\To Hex</li>
 
 <li>VBNetScript</li>
 
@@ -9789,10 +9807,16 @@ Error message and password prompt
 <div created="20201114120450940" modified="20201114120459356" title="$:/SiteTitle">
 <pre>Code Samples</pre>
 </div>
+<div created="20201120073448936" modified="20201120073508319" title="$:/state/searchNreplace/replace">
+<pre></pre>
+</div>
+<div created="20201120073446559" modified="20201120073508062" title="$:/state/searchNreplace/search">
+<pre></pre>
+</div>
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201120072023915" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201120090350063" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9801,13 +9825,13 @@ Error message and password prompt
 <div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114120733011" modified="20201120072023915" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201120090350063" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201120071112924" list="[[Code Samples]] [[TiddlyWiki\Encrypt file]]" modified="20201120071122228" title="$:/StoryList">
+<div created="20201120082521026" list="[[Code Samples]] VBNetScript GoogleGmail [[GoogleGmail\Export as MBOX]] VBNetCode [[VBNetCode\To Hex]]" modified="20201120085753066" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10267,7 +10291,7 @@ UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* my
 <div created="20201120065856142" modified="20201120065901264" tags="DOC" title="GoogleGmail">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201120065906665" modified="20201120071041866" tags="" title="GoogleGmail\Export as MBOX">
+<div created="20201120065906665" modified="20201120084448976" tags="" title="GoogleGmail\Export as MBOX">
 <pre>&quot;&quot;&quot;
 [https://takeout.google.com/]
 - [Products section]
@@ -10287,8 +10311,30 @@ UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* my
 [https://mail.google.com/]
 - [Message with title &quot;Archive of Google data requested&quot;]
 - Note: You can ignore the message or click the link to verify it was you
-- 
-</pre>
+- [Message with title &quot;Your Google data is ready to download&quot;]
+- Click button Download Your Files -&gt; Opens tab
+
+[Google Takeout form]
+- Re-enter your password
+- [Record where Export = Mail]
+- Note: The size of the export file is also in the Export column
+- Click button Download -&gt; Downloads file
+- Note: The file may take a long time to download depending on your internet connection and the size of the file
+
+[ZIP file]
+- Extract the ZIP file to a folder
+
+[Takeout folder]
+- Open the archive_browser.html -&gt; Opens browser
+
+[Archive Browser page]
+- [File Formats tab]
+- Note: An mbox is a way of storing mail messages and is supported by common mail clients like Microsoft Outlook, Mozilla Thunderbird, and Apple's Mail program. These files are most easily opened by a dedicated mail client like those listed above
+
+[Takeout\Mail folder]
+- [All mail Including Spam and Trash.mbox]
+- Split this file into smaller text files... somehow
+- Format: </pre>
 </div>
 <div created="20201120063216566" modified="20201120063224319" tags="DOC" title="Instapaper">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
@@ -10330,6 +10376,50 @@ https://m.youtube.com/watch?v=ABC123DEF&amp;index=14,&quot;&quot;&quot;UrQuotedT
 
 ```
 https://www.urcompany.com/urfolder/urarticle/,UrArticleTitle,,UrInstapaperFolder,UrCommentText1603883475
+```
+</pre>
+</div>
+<div created="20201120073431941" modified="20201120073513854" tags="" title="Instapaper\Parse file">
+<pre>```
+\define link_title()
+''[&lt;$list filter=&quot;[&lt;http_text&gt;split[,]butlast[]last[]]&quot; /&gt;]'' &lt;$list filter=&quot;[&lt;http_text&gt;split[,]rest[]first[]]&quot; /&gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]floor[]]&quot;&gt;&lt;$vars tid_year=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]subtract&lt;tid_year&gt;multiply[12]floor[]]&quot;&gt;&lt;$vars tid_month=&lt;&lt;currentTiddler&gt;&gt; &gt;
+(&lt;&lt;tid_year&gt;&gt;-&lt;&lt;tid_month&gt;&gt;)
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;ul&gt;
+&lt;$list filter='[&lt;http_text&gt;split[,]butlast[]butlast[]butfirst[]butfirst[]join[,]split[&quot;]butfirst[]butlast[]join[&quot;]split[&quot;&quot;]join[&quot;]split[...]]'&gt;
+&lt;li&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;/li&gt;
+&lt;/$list&gt;
+&lt;/ul&gt;
+\end
+&lt;$list filter=&quot;[{WebNotes\Data}split[http]count[]]&quot; &gt;&lt;$vars total_count=&lt;&lt;currentTiddler&gt;&gt; &gt;Count of entries: &lt;&lt;total_count&gt;&gt;&lt;br&gt;&lt;br&gt;
+&lt;!--
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/audit_1k&quot; text=&quot;0&quot;/&gt;
+Reset
+&lt;/$button&gt;&lt;br&gt;
+
+&lt;$button&gt;
+&lt;$list filter=&quot;[{$:/state/popup/audit_1k}add[1000]]&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/audit_1k&quot; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+Next 1k
+&lt;/$list&gt;
+&lt;/$button&gt;&lt;br&gt;
+{{$:/state/popup/audit_1k}}
+
+&lt;$list filter=&quot;[{WebNotes\Data}split[http]first{$:/state/popup/audit_1k}last[1000]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
+--&gt;
+&lt;$list filter=&quot;[{WebNotes\Data}split[{{]join[-opencurlybrace-]split[http]]&quot;&gt;&lt;$vars http_text=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[&lt;http_text&gt;split[,]first[]!suffix[URL]addprefix[http]]&quot;&gt;&lt;$vars http_link=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list filter=&quot;[all[tiddlers]field:twnote&lt;currentTiddler&gt;count[]match[0]]&quot;&gt;
+&lt;&lt;http_link&gt;&gt;&lt;br&gt;
+- &lt;&lt;link_title&gt;&gt; &lt;br&gt;
+&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
+&lt;/$vars&gt;&lt;/$list&gt;
 ```
 </pre>
 </div>
@@ -13595,6 +13685,65 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 {{||$:/core/ui/ViewTemplate/tags}}
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20201120085755744" modified="20201120085758963" tags="DOC" title="VBNetCode">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201120090004852" modified="20201120090156564" tags="" title="VBNetCode\Checksum calculate">
+<pre>I want a .Net program to calculate the SHA512 hash of a file
+
+```
+Dim strHASH_KEY = &quot;&quot;
+Using objSHA = New System.Security.Cryptography.SHA512Managed
+    Using stmFILE = System.IO.File.OpenRead(flnDATA)
+        strHASH_KEY = &quot;[&quot; &amp; System.BitConverter.ToString(objSHA.ComputeHash(stmFILE)).Replace(&quot;-&quot;, &quot;&quot;).ToLower &amp; &quot;]&quot;
+        'Convert.ToBase64String(
+    End Using
+End Using
+</pre>
+</div>
+<div created="20201120085802844" modified="20201120085846718" tags="" title="VBNetCode\File Exists">
+<pre>```
+Dim bolFILE_EXISTS = System.IO.File.Exists(flnDATA)</pre>
+</div>
+<div created="20201120085851658" modified="20201120085927350" tags="" title="VBNetCode\File Size">
+<pre>```
+Dim sioFILE = New System.IO.FileInfo(flnDATA)
+Dim intFILE_SIZE = sioFILE.Length</pre>
+</div>
+<div created="20201120090211950" modified="20201120090225652" tags="" title="VBNetCode\Send Keys">
+<pre>Send one alt-tab
+
+```
+System.Windows.Forms.SendKeys.Send(&quot;%{TAB}&quot;)
+```
+
+Hold down Alt, press alt-tab twice, and release Alt
+
+```
+System.Windows.Forms.SendKeys.Send(&quot;%({TAB}{TAB})&quot;)
+```
+
+The Windows key is not so easy to emulate.
+- Auto-It or Auto-Hotkey can do more complicated patterns
+- VB.Net can use PInvoke to have more capabilities</pre>
+</div>
+<div created="20201120090305995" modified="20201120090345715" tags="" title="VBNetCode\To Hex">
+<pre>&quot;&quot;&quot;
+Change string with numbers (0 to 9) and/or letters (a-f) into decimal number
+
+[q/a page]
+- https://stackoverflow.com/questions/642417/how-do-you-convert-hex-to-decimal-using-vb-net
+
+[sample code]
+&quot;&quot;&quot;
+
+```
+Dim strTEXT = &quot;FF&quot;
+Dim strHEX_CODE = &quot;&amp;H&quot; &amp; strTEXT
+Dim intNUMBER = CInt(strHEX_CODE)
+MsgBox(intNUMBER) -&gt; 255
+</pre>
 </div>
 <div created="20201114121713240" modified="20201120062439159" tags="DOC" title="VBNetScript">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
