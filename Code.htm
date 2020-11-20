@@ -301,6 +301,8 @@ Error message and password prompt
 
 <li>VBNetCode\Checksum calculate</li>
 
+<li>VBNetCode\Copy File Lines</li>
+
 <li>VBNetCode\File Exists</li>
 
 <li>VBNetCode\File Size</li>
@@ -9816,7 +9818,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201120090350063" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201120100508706" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9825,13 +9827,13 @@ Error message and password prompt
 <div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201114120733011" modified="20201120090350063" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201120100508706" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201120082521026" list="[[Code Samples]] VBNetScript GoogleGmail [[GoogleGmail\Export as MBOX]] VBNetCode [[VBNetCode\To Hex]]" modified="20201120085753066" title="$:/StoryList">
+<div created="20201120091936629" list="[[Code Samples]] GoogleGmail [[GoogleGmail\Export as MBOX]] VBNetCode [[VBNetCode\Copy File Lines]]" modified="20201120100437924" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10291,7 +10293,7 @@ UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* my
 <div created="20201120065856142" modified="20201120065901264" tags="DOC" title="GoogleGmail">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201120065906665" modified="20201120084448976" tags="" title="GoogleGmail\Export as MBOX">
+<div created="20201120065906665" modified="20201120100431186" tags="" title="GoogleGmail\Export as MBOX">
 <pre>&quot;&quot;&quot;
 [https://takeout.google.com/]
 - [Products section]
@@ -10333,7 +10335,8 @@ UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* my
 
 [Takeout\Mail folder]
 - [All mail Including Spam and Trash.mbox]
-- Split this file into smaller text files... somehow
+- Use Mozilla Thunderbird to read the MBOX file
+- OR Split this file into smaller text files... [[somehow |VBNetCode\Copy File Lines]]
 - Format: </pre>
 </div>
 <div created="20201120063216566" modified="20201120063224319" tags="DOC" title="Instapaper">
@@ -13700,6 +13703,25 @@ Using objSHA = New System.Security.Cryptography.SHA512Managed
         'Convert.ToBase64String(
     End Using
 End Using
+</pre>
+</div>
+<div created="20201120090621807" modified="20201120100507682" tags="" title="VBNetCode\Copy File Lines">
+<pre>```
+Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;TXT&quot;), bolAPPEND_FILE, gUTF8_FileEncoding)
+	Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
+		While stmDATA.EndOfStream = False
+			'Character copy
+			Dim intENTRY = stmDATA.Read()
+			Dim strENTRY = ChrW(intENTRY)
+			stmOUT_FILE.Write(strENTRY)
+			
+			'Line copy
+			Dim strLINE = stmDATA.ReadLine()
+			stmOUT_FILE.WriteLine(strLINE)
+		End While 'stmDATA
+	End Using 'stmDATA
+End Using 'stmOUT_FILE
+
 </pre>
 </div>
 <div created="20201120085802844" modified="20201120085846718" tags="" title="VBNetCode\File Exists">
