@@ -191,6 +191,8 @@ Error message and password prompt
 
 <li>$:/state/tab-1749438307</li>
 
+<li>$:/state/tab-2065006209</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
 
 <li>$:/status/RequireReloadDueToPluginChange</li>
@@ -227,6 +229,8 @@ Error message and password prompt
 
 <li>GoogleGmail\Export as MBOX</li>
 
+<li>GoogleGmail\MBOX file parsing test</li>
+
 <li>Instapaper</li>
 
 <li>Instapaper\Export as CSV</li>
@@ -259,13 +263,11 @@ Error message and password prompt
 
 <li>TiddlyWiki\Backlink to HTML,HTM</li>
 
-<li>TiddlyWiki\Code Copy data</li>
+<li>TiddlyWiki\Code View or Copy data</li>
 
 <li>TiddlyWiki\Date Part</li>
 
 <li>TiddlyWiki\Delete All Notes with Tag</li>
-
-<li>TiddlyWiki\Display Code Section</li>
 
 <li>TiddlyWiki\DivPop btn</li>
 
@@ -9818,22 +9820,25 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201120100508706" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201121100006406" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
 <pre>$:/themes/tiddlywiki/vanilla/themetweaks</pre>
 </div>
-<div created="20201114120754864" modified="20201114130206992" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Settings</pre>
+<div created="20201114120754864" modified="20201121095938479" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201114120733011" modified="20201120100508706" title="$:/state/tab/sidebar--595412856">
+<div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
+<pre>$:/core/ui/ControlPanel/Saving/General</pre>
+</div>
+<div created="20201114120733011" modified="20201121100006407" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201120091936629" list="[[Code Samples]] GoogleGmail [[GoogleGmail\Export as MBOX]] VBNetCode [[VBNetCode\Copy File Lines]]" modified="20201120100437924" title="$:/StoryList">
+<div created="20201121095614368" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Code View or Copy data]]" modified="20201121095928412" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10293,7 +10298,7 @@ UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* my
 <div created="20201120065856142" modified="20201120065901264" tags="DOC" title="GoogleGmail">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201120065906665" modified="20201120100431186" tags="" title="GoogleGmail\Export as MBOX">
+<div created="20201120065906665" modified="20201120121329973" tags="" title="GoogleGmail\Export as MBOX">
 <pre>&quot;&quot;&quot;
 [https://takeout.google.com/]
 - [Products section]
@@ -10337,7 +10342,210 @@ UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* my
 - [All mail Including Spam and Trash.mbox]
 - Use Mozilla Thunderbird to read the MBOX file
 - OR Split this file into smaller text files... [[somehow |VBNetCode\Copy File Lines]]
-- Format: </pre>
+- Format:
+
+Record Start = Leading &quot;From &quot; &lt;- Including the space
+Tags = &quot;WordsWithoutSpaces:&quot; &lt;- no spaces in tag name
+Tag continuation values = &quot; Every Line With Leading Space Or Tab After Tag Name&quot;
+Email Content = &quot;First line that is not a tag or tag continuation -&gt; through last line before next leading &quot; &quot;From &quot;
+</pre>
+</div>
+<div created="20201120121400876" modified="20201120121421901" tags="" title="GoogleGmail\MBOX file parsing test">
+<pre>```
+start &quot;&quot; &quot;%~dp0\MxClasses\VBNetScript.exe&quot; /path=%0 &amp; exit
+MxClasses\MxBaseEc12.vb
+RetVal = Mx.Want.TextFile_Split_errhnd
+End Function
+End Class
+End Namespace
+
+'Namespace Mx
+'    Module subs
+'        Sub Main()
+'            Dim RetVal = Mx.Want.TextFile_Split_errhnd
+'            If Mx.AreEqual(RetVal, &quot;QUIT&quot;) = False Then MsgBox(RetVal)
+'        End Sub
+'    End Module 'subs
+
+'    Public Class Class1
+'        Public Shared SourceFolder As String = My.Application.Info.DirectoryPath.Replace(&quot;\bin\Debug&quot;, &quot;&quot;)
+'        Public Shared SourcePath As String = &quot;UrFolder\MyApp.exe&quot;
+'    End Class
+'End Namespace 'Mx
+
+Namespace Mx
+    Public Class Want
+        Public Shared Sub TextFile_Split(ret_message As Strap)
+			Dim tabchr = CHR(9)
+			Dim flnDATA = FileNamed().d(&quot;C:\Users\Dad\Downloads\Takeout\Mail\All mail Including Spam and Trash.mbox&quot;)
+			Dim intLINE_COUNT = 0
+			Dim sdaPREFIX_SKIPPED = New Sdata
+			Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;TXT&quot;), False, gUTF8_FileEncoding)
+				Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
+				    Dim bolINCLUDE_INDENTED_LINES = False
+					Dim bolHTML_TEXT = False
+					Dim bolPLAIN_TEXT = False
+					Dim bolSKIP_TEXT = False
+					While stmDATA.EndOfStream = False
+						Dim strLINE = stmDATA.ReadLine()
+						If strLINE.Length = 0 Then
+						
+						ElseIf Left(strLINE, 5) = &quot;From &quot; AndAlso
+						  Len(strLINE) = 59 Then
+						    bolINCLUDE_INDENTED_LINES = False
+							bolHTML_TEXT = False
+							bolPLAIN_TEXT = False
+							bolSKIP_TEXT = False
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine(strLINE)
+							intLINE_COUNT += 1
+						
+						ElseIf bolSKIP_TEXT Then
+						
+						ElseIf bolPLAIN_TEXT Then
+							If strLINE.Trim.Length &gt; 0 Then
+								Dim bolCUR_HTML = False
+								Dim intFOUND_SPRTR = InStr(strLINE, &quot;&lt;&quot;)
+								Dim intFOUND_TAGCLOSE = InStr(strLINE, &quot;&gt;&quot;)
+								If intFOUND_SPRTR &gt; 0 AndAlso
+								  intFOUND_TAGCLOSE &gt; intFOUND_SPRTR Then
+									bolHTML_TEXT = True
+									bolCUR_HTML = True
+									
+									End If
+								
+								If Left(strLINE, 16) = &quot;X-Attachment-Id:&quot; OrElse
+								  Left(strLINE, 32) = &quot;Content-Transfer-Encoding:base64&quot; Then
+									bolSKIP_TEXT = True
+									
+									End If 'strLINE
+								
+								If bolHTML_TEXT = False Then
+									stmOUT_FILE.WriteLine(strLINE)
+									intLINE_COUNT += 1
+								
+								ElseIf bolCUR_HTML Then
+									Dim strTEXT = strLINE
+									While intFOUND_SPRTR &gt; 0
+										Dim strPREFIX = Mid(strTEXT, 1, intFOUND_SPRTR - 1)
+										Dim strTAG = Mid(strTEXT, intFOUND_SPRTR)
+										intFOUND_SPRTR = InStr(strTAG, &quot;&gt;&quot;)
+										If intFOUND_SPRTR = 0 Then
+											strTEXT = strPREFIX
+										
+										Else
+											strTEXT = strPREFIX &amp; Mid(strTAG, intFOUND_SPRTR + 1)
+											intFOUND_SPRTR = InStr(strTEXT, &quot;&lt;&quot;)
+											
+											End If 'intFOUND_SPRTR
+										
+										End While 'intFOUND_SPRTR
+									
+									If strTEXT.Trim.Length &gt; 0 Then
+										stmOUT_FILE.WriteLine(strTEXT)
+										intLINE_COUNT += 1
+										
+										End If
+									
+									End If 'intFOUND_SPRTR
+									
+								End If 'strLINE
+							
+						ElseIf (Left(strLINE, 1) = s OrElse Left(strLINE, 1) = tabchr) AndAlso
+						  bolINCLUDE_INDENTED_LINES Then
+							'stmOUT_FILE.WriteLine(strLINE)
+							'intLINE_COUNT += 1
+						    
+						Else 'strLINE
+						    bolINCLUDE_INDENTED_LINES = False
+							Dim strPREFIX = mt
+						    Dim intFOUND_SPRTR = InStr(strLINE, &quot;:&quot;)
+							If intFOUND_SPRTR &gt; 0 Then
+							    strPREFIX = Mid(strLINE, 1, intFOUND_SPRTR)
+								If InStr(strPREFIX, tabchr) &gt; 0 OrElse
+								  InStr(strPREFIX, s) &gt; 0 Then
+									strPREFIX = mt
+									
+									End If
+								
+								End If
+							
+							If strPREFIX = &quot;Content-Type:&quot; OrElse
+							  strPREFIX = &quot;Subject:&quot; OrElse
+							  strPREFIX = &quot;To:&quot; OrElse
+							  strPREFIX = &quot;Date:&quot; OrElse
+							  strPREFIX = &quot;From:&quot; Then
+								bolINCLUDE_INDENTED_LINES = True
+								stmOUT_FILE.WriteLine(strLINE)
+								intLINE_COUNT += 1
+							
+							ElseIf Right(strPREFIX, 1) = &quot;:&quot; Then
+								bolINCLUDE_INDENTED_LINES = True
+								If sdaPREFIX_SKIPPED.Contains(strPREFIX) = False Then
+									sdaPREFIX_SKIPPED.d(strPREFIX)
+									
+								    End If
+							
+							ElseIf strPREFIX = &quot;&quot; Then
+							    bolPLAIN_TEXT = True
+								intFOUND_SPRTR = InStr(strLINE, &quot;&lt;&quot;)
+								Dim intFOUND_TAGCLOSE = InStr(strLINE, &quot;&gt;&quot;)
+								If intFOUND_SPRTR &gt; 0 AndAlso
+								  intFOUND_TAGCLOSE &gt; intFOUND_SPRTR Then
+									bolHTML_TEXT = True
+									
+									End If
+								
+								End If 'strPREFIX
+							
+							End If 'strLINE
+						
+						If intLINE_COUNT &gt;= 100000 Then
+							Exit While
+							
+							End If
+						
+						End While 'stmDATA
+					
+					End Using 'stmDATA
+				
+				End Using 'stmOUT_FILE
+			
+			Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;PREFIX_SKIPPED.TXT&quot;), False, gUTF8_FileEncoding)
+				Call sdaPREFIX_SKIPPED.Sort()
+				For Each strENTRY In sdaPREFIX_SKIPPED
+					stmOUT_FILE.WriteLine(strENTRY)
+					
+					Next strENTRY
+				
+				End Using 'stmOUT_FILE
+
+			ret_message.Clear.d(intLINE_COUNT.ToString)
+			
+			End Sub 'TextFile_Split
+
+        Public Shared Function TextFile_Split_errhnd() As Strap
+            Dim stpRET = Strapd()
+            TextFile_Split_errhnd = stpRET
+            stpRET.d(&quot;QUIT&quot;)
+            Dim objERR_LIST = New ErrListBase : Try
+                Call TextFile_Split(stpRET)
+
+            Catch ex As System.Exception
+                Call objERR_LIST.dError_Stack(ex)
+            End Try
+
+            If objERR_LIST.Found Then
+                stpRET.Clear().d(objERR_LIST.ToString)
+            End If
+        End Function 'TextFile_Split_errhnd
+    End Class 'Want
+End Namespace 'Mx
+</pre>
 </div>
 <div created="20201120063216566" modified="20201120063224319" tags="DOC" title="Instapaper">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
@@ -13294,8 +13502,10 @@ End Namespace 'Mx
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201114122843653" modified="20201114213710712" tags="" title="TiddlyWiki\Code Copy data">
-<pre>Title = mcr glbl_code_split
+<div created="20201114122843653" modified="20201121095904665" tags="" title="TiddlyWiki\Code View or Copy data">
+<pre>Title = `mcr glbl_code_split`
+
+Tags = `$:/tags/Macro`
 
 ```
 \define glbl_code_split_group(ur_note_pk, ur_skip_count)
@@ -13357,6 +13567,66 @@ $(currentTiddler)$$(str_html_out)$
     &lt;/$vars&gt;
   &lt;/$list&gt;
 \end
+\define glbl_code_disp_group(ur_note_pk, ur_skip_count)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_disp_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+\end
+\define glbl_code_disp_data()
+&lt;$macrocall $name=glbl_code_disp_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+\end
+\define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
+&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+\define glbl_code_disp_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+\end
+\define glbl_code_disp_init(ur_note_pk, ur_first_line_skip)
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
+      &lt;$button&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        Reset destination edit field
+        &lt;/$button&gt;
+      &lt;/$list&gt;&lt;br&gt;
+	
+    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+\define glbl_code_disp(ur_note_pk, ur_first_line_skip)
+&lt;$macrocall $name=glbl_code_disp_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
+[[$ur_note_pk$]]&lt;br&gt;
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$macrocall $name=glbl_code_disp_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
+      
+      Browse next 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
+      
+      Browse prev 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+
+    &lt;&lt;glbl_code_disp_data&gt;&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+
+&lt;!--&lt;$macrocall $name=glbl_code_disp ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_disp &quot;WebNotes\Data 1 &gt;&gt;--&gt;
+
+&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
 
 &lt;!--[[WebNotes\Data]]--&gt;
 
@@ -13414,72 +13684,6 @@ $(currentTiddler)$$(str_html_out)$
 &lt;$list filter=&quot;[tag[ARTICLE]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
 Del ARTICLE
 &lt;/$button&gt;
-</pre>
-</div>
-<div created="20201114122716116" modified="20201114213637660" tags="" title="TiddlyWiki\Display Code Section">
-<pre>Title = mcr glbl_code_section
-
-```
-\define glbl_code_section_group(ur_note_pk, ur_skip_count)
-&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
-\end
-\define glbl_code_section_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_section_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-\end
-\define glbl_code_section_data()
-&lt;$macrocall $name=glbl_code_section_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-\end
-\define glbl_code_section_next_group_disp(ur_rem_counter, ur_oper)
-&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;
-\end
-\define glbl_code_section_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
-Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-\end
-\define glbl_code_section_init(ur_note_pk, ur_first_line_skip)
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
-      &lt;$button&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        Reset destination edit field
-        &lt;/$button&gt;
-      &lt;/$list&gt;&lt;br&gt;
-	
-    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-\define glbl_code_section(ur_note_pk, ur_first_line_skip)
-&lt;$macrocall $name=glbl_code_section_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
-[[$ur_note_pk$]]&lt;br&gt;
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$macrocall $name=glbl_code_section_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
-      
-      Browse next 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
-      
-      Browse prev 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-
-    &lt;&lt;glbl_code_section_data&gt;&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-
-&lt;!--&lt;$macrocall $name=glbl_code_section ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
-
-&lt;!--&lt;&lt;glbl_code_section &quot;WebNotes\Data 1 &gt;&gt;--&gt;
-
-&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
 </pre>
 </div>
 <div created="20201114124608519" modified="20201114124806294" tags="" title="TiddlyWiki\DivPop btn">
@@ -13705,7 +13909,7 @@ Using objSHA = New System.Security.Cryptography.SHA512Managed
 End Using
 </pre>
 </div>
-<div created="20201120090621807" modified="20201120100507682" tags="" title="VBNetCode\Copy File Lines">
+<div created="20201120090621807" modified="20201120120914254" tags="" title="VBNetCode\Copy File Lines">
 <pre>```
 Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;TXT&quot;), bolAPPEND_FILE, gUTF8_FileEncoding)
 	Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
@@ -13721,7 +13925,44 @@ Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;TX
 		End While 'stmDATA
 	End Using 'stmDATA
 End Using 'stmOUT_FILE
+```
 
+Split File into chunks of 100,000 lines each
+
+```
+Dim intFILE_COUNT = 0
+Dim intLINE_COUNT = 0
+Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
+	While stmDATA.EndOfStream = False
+		intFILE_COUNT += 1
+		intLINE_COUNT = 0
+		Dim strFILE_COUNT = intFILE_COUNT.ToString()
+		If Len(strFILE_COUNT) = 2 Then
+			strFILE_COUNT = &quot;c&quot; &amp; strFILE_COUNT
+		ElseIf Len(strFILE_COUNT) = 3 Then
+			strFILE_COUNT = &quot;d&quot; &amp; strFILE_COUNT
+			
+			End If 'strFILE_COUNT
+		
+		strFILE_COUNT = &quot;e&quot; &amp; strFILE_COUNT
+		Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(strFILE_COUNT &amp; &quot;.TXT&quot;), False, gUTF8_FileEncoding)
+			While stmDATA.EndOfStream = False
+				Dim strLINE = stmDATA.ReadLine()
+				stmOUT_FILE.WriteLine(strLINE)
+				intLINE_COUNT += 1
+				
+				If intLINE_COUNT &gt;= 100000 Then
+					Exit While
+					
+					End If
+				
+				End While 'stmDATA
+			
+			End Using 'stmOUT_FILE
+
+		End While 'stmDATA
+	
+	End Using 'stmDATA
 </pre>
 </div>
 <div created="20201120085802844" modified="20201120085846718" tags="" title="VBNetCode\File Exists">

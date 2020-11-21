@@ -2571,6 +2571,8 @@ DOC
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#GoogleGmail%5CExport%20as%20MBOX">GoogleGmail\Export as MBOX</a></li>
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#GoogleGmail%5CMBOX%20file%20parsing%20test">GoogleGmail\MBOX file parsing test</a></li>
+
 
 </ol></p></div>
 
@@ -2604,11 +2606,240 @@ DOC
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">GoogleGmail\Export as MBOX</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>20th November 2020 at 2:04am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>20th November 2020 at 4:13am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://takeout.google.com/" rel="noopener noreferrer" target="_blank">https://takeout.google.com/</a>]<br>- [Products section]<br>- Click link Deselect All<br>- [Mail section]<br>- checkbox = set<br>- [End of Page section]<br>- Click button Next Step -&gt; Navigates section<br>- [Choose file type, frequency &amp; destination]<br>- Frequency = Export once<br>- File type = .zip<br>- File size = 2 GB<br>- Click button Create Export -&gt; Navigates section<br>- [Export Progress]<br>- Note: Google is creating a copy of files from Mail. This process can take a long time (possibly hours or days) to complete. You'll receive an email when your export is done.<br><br>[<a class="tc-tiddlylink-external" href="https://mail.google.com/" rel="noopener noreferrer" target="_blank">https://mail.google.com/</a>]<br>- [Message with title &quot;Archive of Google data requested&quot;]<br>- Note: You can ignore the message or click the link to verify it was you<br>- [Message with title &quot;Your Google data is ready to download&quot;]<br>- Click button Download Your Files -&gt; Opens tab<br><br>[Google Takeout form]<br>- Re-enter your password<br>- [Record where Export = Mail]<br>- Note: The size of the export file is also in the Export column<br>- Click button Download -&gt; Downloads file<br>- Note: The file may take a long time to download depending on your internet connection and the size of the file<br><br>[ZIP file]<br>- Extract the ZIP file to a folder<br><br>[Takeout folder]<br>- Open the archive_browser.html -&gt; Opens browser<br><br>[Archive Browser page]<br>- [File Formats tab]<br>- Note: An mbox is a way of storing mail messages and is supported by common mail clients like Microsoft Outlook, Mozilla Thunderbird, and Apple's Mail program. These files are most easily opened by a dedicated mail client like those listed above<br><br>[Takeout\Mail folder]<br>- [All mail Including Spam and Trash.mbox]<br>- Use Mozilla Thunderbird to read the MBOX file<br>- OR Split this file into smaller text files... <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNetCode%5CCopy%20File%20Lines">somehow </a><br>- Format: </p></div>
+<div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://takeout.google.com/" rel="noopener noreferrer" target="_blank">https://takeout.google.com/</a>]<br>- [Products section]<br>- Click link Deselect All<br>- [Mail section]<br>- checkbox = set<br>- [End of Page section]<br>- Click button Next Step -&gt; Navigates section<br>- [Choose file type, frequency &amp; destination]<br>- Frequency = Export once<br>- File type = .zip<br>- File size = 2 GB<br>- Click button Create Export -&gt; Navigates section<br>- [Export Progress]<br>- Note: Google is creating a copy of files from Mail. This process can take a long time (possibly hours or days) to complete. You'll receive an email when your export is done.<br><br>[<a class="tc-tiddlylink-external" href="https://mail.google.com/" rel="noopener noreferrer" target="_blank">https://mail.google.com/</a>]<br>- [Message with title &quot;Archive of Google data requested&quot;]<br>- Note: You can ignore the message or click the link to verify it was you<br>- [Message with title &quot;Your Google data is ready to download&quot;]<br>- Click button Download Your Files -&gt; Opens tab<br><br>[Google Takeout form]<br>- Re-enter your password<br>- [Record where Export = Mail]<br>- Note: The size of the export file is also in the Export column<br>- Click button Download -&gt; Downloads file<br>- Note: The file may take a long time to download depending on your internet connection and the size of the file<br><br>[ZIP file]<br>- Extract the ZIP file to a folder<br><br>[Takeout folder]<br>- Open the archive_browser.html -&gt; Opens browser<br><br>[Archive Browser page]<br>- [File Formats tab]<br>- Note: An mbox is a way of storing mail messages and is supported by common mail clients like Microsoft Outlook, Mozilla Thunderbird, and Apple's Mail program. These files are most easily opened by a dedicated mail client like those listed above<br><br>[Takeout\Mail folder]<br>- [All mail Including Spam and Trash.mbox]<br>- Use Mozilla Thunderbird to read the MBOX file<br>- OR Split this file into smaller text files... <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNetCode%5CCopy%20File%20Lines">somehow </a><br>- Format:<br><br>Record Start = Leading &quot;From &quot; &lt;- Including the space<br>Tags = &quot;WordsWithoutSpaces:&quot; &lt;- no spaces in tag name<br>Tag continuation values = &quot; Every Line With Leading Space Or Tab After Tag Name&quot;<br>Email Content = &quot;First line that is not a tag or tag continuation -&gt; through last line before next leading &quot; &quot;From &quot;<br></p></div>
+
+
+<div style="float:right;padding-left:30px;">
+
+
+<button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" viewBox="0 0 128 128" width="22pt"><g fill-rule="evenodd"><path d="M47.544 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L66.656 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.105 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.317-5.595z"></path><path d="M8.931 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L28.041 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.104 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.316-5.595z"></path></g></svg></button>
+
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="GoogleGmail\MBOX file parsing test">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="GoogleGmail\MBOX file parsing test"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+<button class="tc-btn-invisible tc-btn-DivPop%20btn">
+
+
+
+
+
+</button> 
+</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">GoogleGmail\MBOX file parsing test</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>20th November 2020 at 4:14am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><pre><code>start &quot;&quot; &quot;%~dp0\MxClasses\VBNetScript.exe&quot; /path=%0 &amp; exit
+MxClasses\MxBaseEc12.vb
+RetVal = Mx.Want.TextFile_Split_errhnd
+End Function
+End Class
+End Namespace
+
+'Namespace Mx
+'    Module subs
+'        Sub Main()
+'            Dim RetVal = Mx.Want.TextFile_Split_errhnd
+'            If Mx.AreEqual(RetVal, &quot;QUIT&quot;) = False Then MsgBox(RetVal)
+'        End Sub
+'    End Module 'subs
+
+'    Public Class Class1
+'        Public Shared SourceFolder As String = My.Application.Info.DirectoryPath.Replace(&quot;\bin\Debug&quot;, &quot;&quot;)
+'        Public Shared SourcePath As String = &quot;UrFolder\MyApp.exe&quot;
+'    End Class
+'End Namespace 'Mx
+
+Namespace Mx
+    Public Class Want
+        Public Shared Sub TextFile_Split(ret_message As Strap)
+			Dim tabchr = CHR(9)
+			Dim flnDATA = FileNamed().d(&quot;C:\Users\Dad\Downloads\Takeout\Mail\All mail Including Spam and Trash.mbox&quot;)
+			Dim intLINE_COUNT = 0
+			Dim sdaPREFIX_SKIPPED = New Sdata
+			Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;TXT&quot;), False, gUTF8_FileEncoding)
+				Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
+				    Dim bolINCLUDE_INDENTED_LINES = False
+					Dim bolHTML_TEXT = False
+					Dim bolPLAIN_TEXT = False
+					Dim bolSKIP_TEXT = False
+					While stmDATA.EndOfStream = False
+						Dim strLINE = stmDATA.ReadLine()
+						If strLINE.Length = 0 Then
+						
+						ElseIf Left(strLINE, 5) = &quot;From &quot; AndAlso
+						  Len(strLINE) = 59 Then
+						    bolINCLUDE_INDENTED_LINES = False
+							bolHTML_TEXT = False
+							bolPLAIN_TEXT = False
+							bolSKIP_TEXT = False
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine()
+							stmOUT_FILE.WriteLine(strLINE)
+							intLINE_COUNT += 1
+						
+						ElseIf bolSKIP_TEXT Then
+						
+						ElseIf bolPLAIN_TEXT Then
+							If strLINE.Trim.Length &gt; 0 Then
+								Dim bolCUR_HTML = False
+								Dim intFOUND_SPRTR = InStr(strLINE, &quot;&lt;&quot;)
+								Dim intFOUND_TAGCLOSE = InStr(strLINE, &quot;&gt;&quot;)
+								If intFOUND_SPRTR &gt; 0 AndAlso
+								  intFOUND_TAGCLOSE &gt; intFOUND_SPRTR Then
+									bolHTML_TEXT = True
+									bolCUR_HTML = True
+									
+									End If
+								
+								If Left(strLINE, 16) = &quot;X-Attachment-Id:&quot; OrElse
+								  Left(strLINE, 32) = &quot;Content-Transfer-Encoding:base64&quot; Then
+									bolSKIP_TEXT = True
+									
+									End If 'strLINE
+								
+								If bolHTML_TEXT = False Then
+									stmOUT_FILE.WriteLine(strLINE)
+									intLINE_COUNT += 1
+								
+								ElseIf bolCUR_HTML Then
+									Dim strTEXT = strLINE
+									While intFOUND_SPRTR &gt; 0
+										Dim strPREFIX = Mid(strTEXT, 1, intFOUND_SPRTR - 1)
+										Dim strTAG = Mid(strTEXT, intFOUND_SPRTR)
+										intFOUND_SPRTR = InStr(strTAG, &quot;&gt;&quot;)
+										If intFOUND_SPRTR = 0 Then
+											strTEXT = strPREFIX
+										
+										Else
+											strTEXT = strPREFIX &amp; Mid(strTAG, intFOUND_SPRTR + 1)
+											intFOUND_SPRTR = InStr(strTEXT, &quot;&lt;&quot;)
+											
+											End If 'intFOUND_SPRTR
+										
+										End While 'intFOUND_SPRTR
+									
+									If strTEXT.Trim.Length &gt; 0 Then
+										stmOUT_FILE.WriteLine(strTEXT)
+										intLINE_COUNT += 1
+										
+										End If
+									
+									End If 'intFOUND_SPRTR
+									
+								End If 'strLINE
+							
+						ElseIf (Left(strLINE, 1) = s OrElse Left(strLINE, 1) = tabchr) AndAlso
+						  bolINCLUDE_INDENTED_LINES Then
+							'stmOUT_FILE.WriteLine(strLINE)
+							'intLINE_COUNT += 1
+						    
+						Else 'strLINE
+						    bolINCLUDE_INDENTED_LINES = False
+							Dim strPREFIX = mt
+						    Dim intFOUND_SPRTR = InStr(strLINE, &quot;:&quot;)
+							If intFOUND_SPRTR &gt; 0 Then
+							    strPREFIX = Mid(strLINE, 1, intFOUND_SPRTR)
+								If InStr(strPREFIX, tabchr) &gt; 0 OrElse
+								  InStr(strPREFIX, s) &gt; 0 Then
+									strPREFIX = mt
+									
+									End If
+								
+								End If
+							
+							If strPREFIX = &quot;Content-Type:&quot; OrElse
+							  strPREFIX = &quot;Subject:&quot; OrElse
+							  strPREFIX = &quot;To:&quot; OrElse
+							  strPREFIX = &quot;Date:&quot; OrElse
+							  strPREFIX = &quot;From:&quot; Then
+								bolINCLUDE_INDENTED_LINES = True
+								stmOUT_FILE.WriteLine(strLINE)
+								intLINE_COUNT += 1
+							
+							ElseIf Right(strPREFIX, 1) = &quot;:&quot; Then
+								bolINCLUDE_INDENTED_LINES = True
+								If sdaPREFIX_SKIPPED.Contains(strPREFIX) = False Then
+									sdaPREFIX_SKIPPED.d(strPREFIX)
+									
+								    End If
+							
+							ElseIf strPREFIX = &quot;&quot; Then
+							    bolPLAIN_TEXT = True
+								intFOUND_SPRTR = InStr(strLINE, &quot;&lt;&quot;)
+								Dim intFOUND_TAGCLOSE = InStr(strLINE, &quot;&gt;&quot;)
+								If intFOUND_SPRTR &gt; 0 AndAlso
+								  intFOUND_TAGCLOSE &gt; intFOUND_SPRTR Then
+									bolHTML_TEXT = True
+									
+									End If
+								
+								End If 'strPREFIX
+							
+							End If 'strLINE
+						
+						If intLINE_COUNT &gt;= 100000 Then
+							Exit While
+							
+							End If
+						
+						End While 'stmDATA
+					
+					End Using 'stmDATA
+				
+				End Using 'stmOUT_FILE
+			
+			Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(&quot;PREFIX_SKIPPED.TXT&quot;), False, gUTF8_FileEncoding)
+				Call sdaPREFIX_SKIPPED.Sort()
+				For Each strENTRY In sdaPREFIX_SKIPPED
+					stmOUT_FILE.WriteLine(strENTRY)
+					
+					Next strENTRY
+				
+				End Using 'stmOUT_FILE
+
+			ret_message.Clear.d(intLINE_COUNT.ToString)
+			
+			End Sub 'TextFile_Split
+
+        Public Shared Function TextFile_Split_errhnd() As Strap
+            Dim stpRET = Strapd()
+            TextFile_Split_errhnd = stpRET
+            stpRET.d(&quot;QUIT&quot;)
+            Dim objERR_LIST = New ErrListBase : Try
+                Call TextFile_Split(stpRET)
+
+            Catch ex As System.Exception
+                Call objERR_LIST.dError_Stack(ex)
+            End Try
+
+            If objERR_LIST.Found Then
+                stpRET.Clear().d(objERR_LIST.ToString)
+            End If
+        End Function 'TextFile_Split_errhnd
+    End Class 'Want
+End Namespace 'Mx
+</code></pre></div>
 
 
 <div style="float:right;padding-left:30px;">
@@ -5794,13 +6025,11 @@ DOC
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CBacklink%20to%20HTML%2CHTM">TiddlyWiki\Backlink to HTML,HTM</a></li>
 
-<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CCode%20Copy%20data">TiddlyWiki\Code Copy data</a></li>
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CCode%20View%20or%20Copy%20data">TiddlyWiki\Code View or Copy data</a></li>
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CDate%20Part">TiddlyWiki\Date Part</a></li>
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CDelete%20All%20Notes%20with%20Tag">TiddlyWiki\Delete All Notes with Tag</a></li>
-
-<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CDisplay%20Code%20Section">TiddlyWiki\Display Code Section</a></li>
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CDivPop%20btn">TiddlyWiki\DivPop btn</a></li>
 
@@ -5903,8 +6132,8 @@ DOC
 </div>
 
 
-</a><a name="TiddlyWiki\Code Copy data">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="TiddlyWiki\Code Copy data"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+</a><a name="TiddlyWiki\Code View or Copy data">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="TiddlyWiki\Code View or Copy data"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
 <button class="tc-btn-invisible tc-btn-DivPop%20btn">
 
 
@@ -5912,12 +6141,12 @@ DOC
 
 
 </button> 
-</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">TiddlyWiki\Code Copy data</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 1:37pm</div></div><div class=" tc-reveal">
+</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">TiddlyWiki\Code View or Copy data</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>21st November 2020 at 1:59am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p>Title = mcr glbl_code_split</p><pre><code>\define glbl_code_split_group(ur_note_pk, ur_skip_count)
+<div class="tc-tiddler-body tc-reveal"><p>Title = <code>mcr glbl_code_split</code></p><p>Tags = <code>$:/tags/Macro</code></p><pre><code>\define glbl_code_split_group(ur_note_pk, ur_skip_count)
 &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&amp;#x0022;&amp;#x0022;&amp;#x0022;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;
 &lt;/$list&gt;&lt;/$list&gt;
 \end
@@ -5976,6 +6205,66 @@ $(currentTiddler)$$(str_html_out)$
     &lt;/$vars&gt;
   &lt;/$list&gt;
 \end
+\define glbl_code_disp_group(ur_note_pk, ur_skip_count)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_disp_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+\end
+\define glbl_code_disp_data()
+&lt;$macrocall $name=glbl_code_disp_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+\end
+\define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
+&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+\define glbl_code_disp_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+\end
+\define glbl_code_disp_init(ur_note_pk, ur_first_line_skip)
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
+      &lt;$button&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        Reset destination edit field
+        &lt;/$button&gt;
+      &lt;/$list&gt;&lt;br&gt;
+	
+    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+\define glbl_code_disp(ur_note_pk, ur_first_line_skip)
+&lt;$macrocall $name=glbl_code_disp_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
+[[$ur_note_pk$]]&lt;br&gt;
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$macrocall $name=glbl_code_disp_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
+      
+      Browse next 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
+      
+      Browse prev 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+
+    &lt;&lt;glbl_code_disp_data&gt;&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+
+&lt;!--&lt;$macrocall $name=glbl_code_disp ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_disp &quot;WebNotes\Data 1 &gt;&gt;--&gt;
+
+&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
 
 &lt;!--[[WebNotes\Data]]--&gt;
 
@@ -6061,102 +6350,6 @@ $(currentTiddler)$$(str_html_out)$
 &lt;$list filter=&quot;[tag[ARTICLE]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
 Del ARTICLE
 &lt;/$button&gt;
-</code></pre></div>
-
-
-<div style="float:right;padding-left:30px;">
-
-
-<button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" viewBox="0 0 128 128" width="22pt"><g fill-rule="evenodd"><path d="M47.544 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L66.656 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.105 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.317-5.595z"></path><path d="M8.931 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L28.041 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.104 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.316-5.595z"></path></g></svg></button>
-
-
-</div>
-
-<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
-<span class="tc-dirty-indicator">
-
-
-</span>
-
-</button></div>
-
-</div>
-
-
-</a><a name="TiddlyWiki\Display Code Section">
-<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="TiddlyWiki\Display Code Section"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
-<button class="tc-btn-invisible tc-btn-DivPop%20btn">
-
-
-
-
-
-</button> 
-</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">TiddlyWiki\Display Code Section</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 1:36pm</div></div><div class=" tc-reveal">
-<div class="tc-tags-wrapper"></div>
-</div>
-
-<div class="tc-tiddler-body tc-reveal"><p>Title = mcr glbl_code_section</p><pre><code>\define glbl_code_section_group(ur_note_pk, ur_skip_count)
-&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
-\end
-\define glbl_code_section_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_section_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-\end
-\define glbl_code_section_data()
-&lt;$macrocall $name=glbl_code_section_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-\end
-\define glbl_code_section_next_group_disp(ur_rem_counter, ur_oper)
-&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;
-\end
-\define glbl_code_section_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
-Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-\end
-\define glbl_code_section_init(ur_note_pk, ur_first_line_skip)
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
-      &lt;$button&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        Reset destination edit field
-        &lt;/$button&gt;
-      &lt;/$list&gt;&lt;br&gt;
-	
-    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-\define glbl_code_section(ur_note_pk, ur_first_line_skip)
-&lt;$macrocall $name=glbl_code_section_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
-[[$ur_note_pk$]]&lt;br&gt;
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$macrocall $name=glbl_code_section_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
-      
-      Browse next 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
-      
-      Browse prev 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-
-    &lt;&lt;glbl_code_section_data&gt;&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-
-&lt;!--&lt;$macrocall $name=glbl_code_section ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
-
-&lt;!--&lt;&lt;glbl_code_section &quot;WebNotes\Data 1 &gt;&gt;--&gt;
-
-&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
 </code></pre></div>
 
 
@@ -6949,7 +7142,7 @@ End Using
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">VBNetCode\Copy File Lines</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>20th November 2020 at 2:05am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>20th November 2020 at 4:09am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
@@ -6966,8 +7159,39 @@ End Using
 			stmOUT_FILE.WriteLine(strLINE)
 		End While 'stmDATA
 	End Using 'stmDATA
-End Using 'stmOUT_FILE
+End Using 'stmOUT_FILE</code></pre><p>Split File into chunks of 100,000 lines each</p><pre><code>Dim intFILE_COUNT = 0
+Dim intLINE_COUNT = 0
+Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
+	While stmDATA.EndOfStream = False
+		intFILE_COUNT += 1
+		intLINE_COUNT = 0
+		Dim strFILE_COUNT = intFILE_COUNT.ToString()
+		If Len(strFILE_COUNT) = 2 Then
+			strFILE_COUNT = &quot;c&quot; &amp; strFILE_COUNT
+		ElseIf Len(strFILE_COUNT) = 3 Then
+			strFILE_COUNT = &quot;d&quot; &amp; strFILE_COUNT
+			
+			End If 'strFILE_COUNT
+		
+		strFILE_COUNT = &quot;e&quot; &amp; strFILE_COUNT
+		Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT(strFILE_COUNT &amp; &quot;.TXT&quot;), False, gUTF8_FileEncoding)
+			While stmDATA.EndOfStream = False
+				Dim strLINE = stmDATA.ReadLine()
+				stmOUT_FILE.WriteLine(strLINE)
+				intLINE_COUNT += 1
+				
+				If intLINE_COUNT &gt;= 100000 Then
+					Exit While
+					
+					End If
+				
+				End While 'stmDATA
+			
+			End Using 'stmOUT_FILE
 
+		End While 'stmDATA
+	
+	End Using 'stmDATA
 </code></pre></div>
 
 
