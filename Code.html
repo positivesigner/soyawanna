@@ -6342,13 +6342,18 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">TiddlyWiki\Delete All Notes with Tag</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>14th November 2020 at 1:21pm</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>21st November 2020 at 3:54am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
 <div class="tc-tiddler-body tc-reveal"><pre><code>&lt;$button&gt;
 &lt;$list filter=&quot;[tag[ARTICLE]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
 Del ARTICLE
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
+Del DOC fields starting with `E`
 &lt;/$button&gt;
 </code></pre></div>
 
