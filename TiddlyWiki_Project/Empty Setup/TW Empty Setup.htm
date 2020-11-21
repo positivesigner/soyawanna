@@ -9824,7 +9824,7 @@ Error message and password prompt
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201121100310686" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201121102418414" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -9833,7 +9833,7 @@ Error message and password prompt
 <div created="20201114095219937" modified="20201121100300657" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201114051921184" modified="20201121100310686" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201121102418415" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9842,7 +9842,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201121100219920" list="[[Notes Wiki]] [[Additional Features]] [[Save Directly to GitHub Repository]]" modified="20201121100254043" title="$:/StoryList">
+<div created="20201121102201864" list="[[Notes Wiki]] [[Recent Entries]] [[Save Directly to GitHub Repository]] [[Font Size]]" modified="20201121102213248" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10565,7 +10565,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200319102534436" modified="20201114093302456" tags="META" title="Font Size">
+<div created="20200319102534436" modified="20201121102416570" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
 Big Font
@@ -10575,7 +10575,16 @@ Big Font
 {{keyboard action FontNormal}}
 Normal Font
 &lt;/$button&gt;
-</pre>
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/tab/sidebar--595412856&quot; text=&quot;$:/core/ui/SideBar/More&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
+Save Wiki to GitHub
+&lt;/$button&gt;
+
+[[btn Delete notes]]</pre>
 </div>
 <div created="20201114103049865" img="" modified="20201114105723569" tags="ARTICLE" title="Home Notes Keyboard Shortcut">
 <pre>The form opens with just the Main Index notes shown. I prefer Alt-H to re-open the Main Index notes while closing all other open notes.
@@ -10896,7 +10905,7 @@ The &quot;Untagged&quot; list should be empty.
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20201114114223980" img="" modified="20201121100228302" tags="ARTICLE" title="Save Directly to GitHub Repository">
+<div created="20201114114223980" img="" modified="20201121102230430" tags="ARTICLE" title="Save Directly to GitHub Repository">
 <pre>[https://github.com/]
 
 * Login
@@ -10948,7 +10957,6 @@ The &quot;Untagged&quot; list should be empty.
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
 Save Wiki to GitHub
 &lt;/$button&gt;
-````
 </pre>
 </div>
 <div created="20201114110059132" img="" modified="20201114110652976" tags="ARTICLE" title="Save Status on every Note">
