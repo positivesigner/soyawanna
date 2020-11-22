@@ -1,9 +1,0 @@
-[
-    {
-        "created": "20200611033801422",
-        "text": "\\define cboard_copy(ur_text)\n\n```\n$ur_text$\n```\n<span style=\"margin-left:30px\">\n<<copy-to-clipboard \"$ur_text$\">>\n</span>\n\\end\n\\define cboard_pwd(ur_text ur_pk)\n<$reveal type=\"nomatch\" state=\"$:/state/popup/$ur_pk$\" text=\"show\">\n\n<$button set=\"$:/state/popup/$ur_pk$\" setTo=\"show\">Show</$button>\n\n</$reveal>\n<$reveal type=\"match\" state=\"$:/state/popup/$ur_pk$\" text=\"show\">\n\n<$button set=\"$:/state/popup/$ur_pk$\" setTo=\"hide\">Hide</$button>\n\n```\n$ur_text$\n```\n\n</$reveal>\n<span style=\"margin-left:30px\">\n<<copy-to-clipboard \"$ur_text$\">>\n</span>\n\\end",
-        "title": "mcr cboard_copy",
-        "tags": "$:/tags/Macro META",
-        "modified": "20200611034801742"
-    }
-]
