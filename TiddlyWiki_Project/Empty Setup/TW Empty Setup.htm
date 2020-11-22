@@ -173,6 +173,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/plugins/danielo515/searchNreplace</li>
@@ -267,9 +269,13 @@ Error message and password prompt
 
 <li>ext TW Return</li>
 
+<li>External Link organization</li>
+
 <li>Font Size</li>
 
 <li>Home Notes Keyboard Shortcut</li>
+
+<li>Image link opens Note</li>
 
 <li>img Add a Field Value</li>
 
@@ -306,6 +312,8 @@ Error message and password prompt
 <li>keyboard action SaveAllChanges</li>
 
 <li>mcr glbl_code_split</li>
+
+<li>mcr glbl_ext</li>
 
 <li>mcr glbl_image</li>
 
@@ -358,8 +366,8 @@ Error message and password prompt
 <div created="20201114112556463" modified="20201114112556463" title="$:/config/Navigation/openLinkFromOutsideRiver">
 <pre>bottom</pre>
 </div>
-<div created="20201114092209983" modified="20201114092209983" title="$:/config/RelinkOnRename">
-<pre>yes</pre>
+<div created="20201114092209983" modified="20201122105853903" title="$:/config/RelinkOnRename">
+<pre>no</pre>
 </div>
 <div created="20200411063056939" modified="20200411063122203" tags="META" title="$:/config/ShortcutInfo/font-large">
 <pre></pre>
@@ -9767,6 +9775,11 @@ Error message and password prompt
 <div created="20201114051205793" modified="20201114051205793" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[mcr glbl_ext]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -9826,7 +9839,7 @@ Error message and password prompt
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201122091620605" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201122112024308" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -9835,7 +9848,7 @@ Error message and password prompt
 <div created="20201114095219937" modified="20201121100300657" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201114051921184" modified="20201122091620606" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201122112024308" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9844,7 +9857,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201122091400104" list="[[Notes Wiki]] [[Additional Features]] [[Adding a Webpage Favicon]]" modified="20201122091422278" title="$:/StoryList">
+<div created="20201122111912313" list="[[Notes Wiki]] [[Additional Features]] [[External Link organization]]" modified="20201122111924281" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10072,7 +10085,7 @@ Error message and password prompt
 * Title = `$:/favicon.ico`
 </pre>
 </div>
-<div created="20201114085731300" e1="See all Recently Changed Notes" e2="Change the Font Size" e3="Organize Notes" e4="Anchor a note to the Right Side of Window" e5="Home Notes Keyboard Shortcut" e6="Note Editor tweaks" e7="Save Directly to GitHub Repository" e8="Static HTML backlink" e9="Delete Existing Notes by Tag" ec10="View or Copy Note source code" ec11="Adding a Webpage Favicon" modified="20201122091618516" tags="DOC" title="Additional Features">
+<div created="20201114085731300" e1="See all Recently Changed Notes" e2="Change the Font Size" e3="Organize Notes" e4="Anchor a note to the Right Side of Window" e5="Home Notes Keyboard Shortcut" e6="Note Editor tweaks" e7="Save Directly to GitHub Repository" e8="Static HTML backlink" e9="Delete Existing Notes by Tag" ec10="View or Copy Note source code" ec11="Adding a Webpage Favicon" ec12="External Link organization" ec13="Image link opens Note" modified="20201122110348953" tags="DOC" title="Additional Features">
 <pre>&lt;ol&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
@@ -10581,6 +10594,25 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
+<div created="20201122105001011" modified="20201122112021457" tags="ARTICLE" title="External Link organization">
+<pre>* Create one Note for each external link in this format
+** Title always starts with `ext` and a space, then the external link description
+** Tagged as EXT
+** Contains one line in this format:
+
+```
+[ext[ur_url]]
+```
+
+* Reference the note with the `ext` macro, but don't include the `ext` prefix or the leading space
+* The link is shown, and there will be `-&gt;` on the right side of the Note window
+* This flags links that will open in a new tab, and allows you to easily open the `ext` Note and change the saved link
+
+```
+&lt;&lt;ext &quot;UrExternalLinkDiscption&quot;&gt;&gt;
+```
+</pre>
+</div>
 <div created="20200319102534436" modified="20201121102416570" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
@@ -10625,6 +10657,21 @@ Save Wiki to GitHub
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 ```
 
+</pre>
+</div>
+<div created="20201118045416305" modified="20201122110333449" tags="ARTICLE" title="Image link opens Note">
+<pre>* If an image is very tall, use the glbl_image_wide macro:
+
+```
+&lt;&lt;glbl_image_wide &quot;ur_image_note_pk&quot;&gt;&gt;
+
+```
+* If an image is very wide compared to it's height, use the glbl_image_high macro:
+
+```
+&lt;&lt;glbl_image_high &quot;ur_image_note_pk&quot;&gt;&gt;
+
+```
 </pre>
 </div>
 <div created="20201114082544910" modified="20201114100837652" tags="IMG" title="img Add a Field Value" type="image/png">
@@ -10825,7 +10872,13 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 
 &lt;!--&lt;$macrocall $name=glbl_code_split ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;</pre>
 </div>
-<div created="20201118045416305" modified="20201118045525094" tags="$:/tags/Macro" title="mcr glbl_image">
+<div created="20201122104355355" modified="20201122111916676" tags="$:/tags/Macro META" title="mcr glbl_ext">
+<pre>\define ext(ur_extnote_pk)
+{{ext $ur_extnote_pk$}}&lt;div style=&quot;float:right&quot;&gt;[[-&gt;|ext $ur_extnote_pk$]]&lt;/div&gt;
+\end
+</pre>
+</div>
+<div created="20201118045416305" modified="20201122110144403" tags="$:/tags/Macro META" title="mcr glbl_image">
 <pre>\define glbl_image_high(ur_image_pk, ur_size:200)
 &lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img height=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
 \end
