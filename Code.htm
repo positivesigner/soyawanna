@@ -221,6 +221,8 @@ Error message and password prompt
 
 <li>ext TW Addon Text Replace</li>
 
+<li>ext TW Create Javascript Plugin</li>
+
 <li>ext TW Empty Setup</li>
 
 <li>ext TW Manual</li>
@@ -277,6 +279,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\Backlink to HTML,HTM</li>
 
+<li>TiddlyWiki\Character List</li>
+
 <li>TiddlyWiki\Clipboard Copy</li>
 
 <li>TiddlyWiki\Code View or Copy data</li>
@@ -306,6 +310,8 @@ Error message and password prompt
 <li>TiddlyWiki\Image link opens Note</li>
 
 <li>TiddlyWiki\Import Macros</li>
+
+<li>TiddlyWiki\Javascript Calculation in Bookmarklet</li>
 
 <li>TiddlyWiki\List Links from Numbered Fields</li>
 
@@ -9850,7 +9856,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201122090543106" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201122103207327" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9862,13 +9868,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201122090543106" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201122103207328" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201122084720436" list="[[Code Samples]] TiddlyWiki" modified="20201122085211816" title="$:/StoryList">
+<div created="20201122084720436" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Clipboard Copy]] [[ext TW Empty Setup]] [[ext TW Create Javascript Plugin]] [[TiddlyWiki\Javascript Calculation in Bookmarklet]] [[TiddlyWiki\Character List]]" modified="20201122094622890" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10202,6 +10208,9 @@ close
 </div>
 <div created="20201122081641355" modified="20201122081701292" tags="EXT" title="ext TW Addon Text Replace">
 <pre>[ext[TiddlyWiki_Code\AddOns\Text Replace Bar.htm]]</pre>
+</div>
+<div created="20201122094331450" modified="20201122094412217" tags="EXT" title="ext TW Create Javascript Plugin">
+<pre>[ext[https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki]]</pre>
 </div>
 <div created="20201114125538769" modified="20201114125616242" tags="EXT" title="ext TW Empty Setup">
 <pre>[ext[TiddlyWiki_Project\Empty Setup\TW Empty Setup.html]]</pre>
@@ -13530,7 +13539,7 @@ Namespace Mx
 End Namespace 'Mx
 </pre>
 </div>
-<div created="20201114122650961" modified="20201122081721159" tags="DOC" title="TiddlyWiki">
+<div created="20201114122650961" modified="20201122094420737" tags="DOC" title="TiddlyWiki">
 <pre>{{ext TW Empty Setup}}
 
 {{ext TW Addon Text Replace}}
@@ -13544,6 +13553,8 @@ End Namespace 'Mx
 {{ext Shuffle List Entries}}
 
 {{ext TW Snapshot Review}}
+
+{{ext TW Create Javascript Plugin}}
 
 &lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
@@ -13564,6 +13575,20 @@ End Namespace 'Mx
 &lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;Static HTML view of website&quot; /&gt;
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20201122103148931" modified="20201122103206345" tags="" title="TiddlyWiki\Character List">
+<pre>```
+\define CharRef(ur_code)
+&lt;div style=&quot;display: inline-block&quot;&gt;[&amp;#$ur_code$;]&lt;br&gt;,,$ur_code$,,&lt;/div&gt;
+\end
+
+&lt;$list filter=&quot;[range[128]subtract[1]multiply[128]]&quot; variable=cur_block&gt;
+&lt;h2&gt;&lt;&lt;cur_block&gt;&gt;&lt;/h2&gt;
+&lt;$list filter=&quot;[range[128]subtract[1]] +[add&lt;cur_block&gt;] &quot; variable=cur_code&gt;
+&lt;$macrocall $name=CharRef ur_code=&lt;&lt;cur_code&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+</pre>
 </div>
 <div created="20201122090049660" modified="20201122090539189" tags="" title="TiddlyWiki\Clipboard Copy">
 <pre>Tags = `$:/tags/Macro`
@@ -14145,6 +14170,23 @@ alert(strTEXT);&quot;/&gt;
 <div created="20201122082034701" modified="20201122082044541" tags="" title="TiddlyWiki\Import Macros">
 <pre>```
 \import [[mcr date_list]]</pre>
+</div>
+<div created="20201122095752111" modified="20201122101723719" tags="" title="TiddlyWiki\Javascript Calculation in Bookmarklet">
+<pre>* Click the button to copy the text to a javascript bookmarklet
+* Open a new tab
+* Type the letter &quot;j&quot; in the address bar, paste in the clipboard text, and press enter
+* The Javascript alert box shows the message
+
+```
+\define glbl_copyto_js_bookmarklet(ur_js_code)
+&lt;pre&gt;$ur_js_code$&lt;/pre&gt;
+&lt;$macrocall $name=&quot;copy-to-clipboard&quot; src=&quot;&quot;&quot;avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){const el = newWindow.document.createElement('textarea');const ur_str='$ur_js_code$';try {el.value =eval(ur_str)}catch(err) {el.value = err.message;}; newWindow.document.body.appendChild(el); el.select();void(newWindow.focus());}&quot;&quot;&quot; /&gt;
+\end
+
+&lt;!--|v
+&lt;&lt;glbl_copyto_js_bookmarklet &quot;&quot;&quot;parseInt(&quot;FF&quot;,16).toString(10);&quot;&quot;&quot;&gt;&gt;
+^|--&gt;
+</pre>
 </div>
 <div created="20201114212600868" modified="20201114212626525" tags="" title="TiddlyWiki\List Links from Numbered Fields">
 <pre>```
