@@ -207,25 +207,51 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>AndroidChromeBrowser</li>
+
+<li>AndroidChromeBrowser\Desktop Shortcut to Website</li>
+
+<li>AndroidGit</li>
+
+<li>AndroidGit\Pocket Git pull repository updates</li>
+
 <li>AndroidProgramming</li>
 
-<li>AndroidProgramming\QLua5 Console Commands</li>
+<li>AndroidProgramming\DCoder</li>
 
-<li>AndroidProgramming\QLua5 Console Run a Program</li>
+<li>AndroidQLua</li>
 
-<li>AndroidProgramming\QLua5 Deploy a Program Module</li>
+<li>AndroidQLua\Console Commands</li>
 
-<li>AndroidProgramming\QLua5 Editor Run a Program</li>
+<li>AndroidQLua\Console Run a Program</li>
 
-<li>AndroidProgramming\QLua5 MxClasses Design</li>
+<li>AndroidQLua\Deploy a Program Module</li>
 
-<li>AndroidProgramming\QLua5 MxClasses LoadFile</li>
+<li>AndroidQLua\Editor Run a Program</li>
 
-<li>AndroidProgramming\QLua5 MxClasses Require Program Module</li>
+<li>AndroidQLua\MxClasses Design</li>
 
-<li>AndroidProgramming\QLua5 Source Code Editor</li>
+<li>AndroidQLua\MxClasses LoadFile</li>
+
+<li>AndroidQLua\MxClasses Require Program Module</li>
+
+<li>AndroidQLua\Source Code Editor</li>
+
+<li>AndroidScreenshot</li>
+
+<li>AndroidScreenshot\Screenshot Easy</li>
+
+<li>AndroidVNC</li>
+
+<li>AndroidVNC\RealVNC remote control Windows O/S</li>
+
+<li>AndroidWebDav</li>
+
+<li>AndroidWebDav\BestDAV</li>
 
 <li>ChromeBrowser</li>
+
+<li>ChromeBrowser\Browse Local Folders</li>
 
 <li>ChromeBrowser\Turn off Chrome spell check highlighting</li>
 
@@ -9908,7 +9934,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201123012752745" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201123020840895" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9920,13 +9946,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201123012752745" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201123020840895" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201123002251220" list="[[Code Samples]] ChromeBrowser AndroidProgramming [[AndroidProgramming\QLua5 Deploy a Program Module]]" modified="20201123012647792" title="$:/StoryList">
+<div created="20201123013142724" list="[[Code Samples]] ChromeBrowser [[ChromeBrowser\Browse Local Folders]]" modified="20201123020321809" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10099,10 +10125,141 @@ Error message and password prompt
 <div created="20201114120802874" modified="20201114120802874" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
+<div created="20201123015537663" modified="20201123015538776" tags="DOC" title="AndroidChromeBrowser">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123015541645" modified="20201123020314441" tags="" title="AndroidChromeBrowser\Desktop Shortcut to Website">
+<pre>&quot;&quot;&quot;
+This does not work for file:///sdcard HTML files
+Note: You can use Total Commander to create a local file desktop shortcut
+Note: You can also create a Website shortcut on the Desktop from Google Chrome
+Note: You can also create a Browser shortcut to a local folder
+
+[Google Chrome app]
+- [Non-incognito mode]
+- Navigate to website page
+- Note: This does not work for file:///sdcard HTML files
+- [Top-right menu]
+- Click the three-lines menu, option Add to Home screen -&gt; Opens dialog
+- [Add to Home screen dialog]
+- Shortcut name / UrShortcutName
+- Click button Add -&gt; Closes dialog
+
+[Desktop icons]
+- Click icon UrShortcutName -&gt; Opens browser
+</pre>
+</div>
+<div created="20201123013818561" modified="20201123013822643" tags="DOC" title="AndroidGit">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123013824034" modified="20201123015659957" tags="" title="AndroidGit\Pocket Git pull repository updates">
+<pre>&quot;&quot;&quot;
+[Pocket Git app]
+- [Repositories List page, Top-right menu]
+- Click button Preferences (looks like three lines) -Navigates page
+- [Preferences page, Defaults section]
+- Click link Default Directory -&gt; Opens dialog
+- [Select Folder dialog]
+- Select the Downloads folder -&gt; Closes dialog
+- [Preferences page, Defaults section]
+- Note: Default Directory = /storage/emulated/0/Download
+- Click button Back (looks like a left arrow) -&gt; Navigates page
+
+- [Repositories List page, Bottom-right menu]
+- Click button Create Project (looks like a red button with a Plus sign) -&gt; Opens dialog
+- [Create Project dialog]
+- Project Name = UrProjectName
+- Clone URL = UrRepositoryURL
+- Note: Local Path automatically creates a sub-directory under the Downloads folder
+- Authentication menu, click option Password
+- Username = UrRepositoryUsername
+- Password = UrRepositoryPassword
+- [Create Project dialog, Top-right menu]
+- Click button Save (looks like a floppy disk) -&gt; Closes dialog
+
+- [Repositories List page]
+- Click repository UrProjectName -&gt; Navigates page
+
+- [Repository page, Top-right menu]
+- Click the Remotes menu (looks like a cloud), click option Fetch -&gt; Starts process
+- Wait for popup message &quot;Finished fetching&quot;
+- Click the Remotes menu, click option Pull -&gt; Starts process
+- Wait for popup message &quot;Finished pulling&quot;
+
+[File system]
+- [Downloads folder]
+- Note: All the files in the repository are available under the UrProjectName sub-folder in the Downloads folder
+</pre>
+</div>
 <div created="20201123002254149" modified="20201123002300197" tags="DOC" title="AndroidProgramming">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201123004757491" modified="20201123012200661" tags="" title="AndroidProgramming\QLua5 Console Commands">
+<div created="20201123012902619" modified="20201123013003195" tags="" title="AndroidProgramming\DCoder">
+<pre>Note: I found that the DCoder app actually submitted the VB code to a web server. So there was no way for me to access the local file system.
+
+```
+  'Visual Basic.Net Compiler version 0.0.0.5943 (Mono 4.0.1)
+
+Imports System
+Imports System.Collections.Generic
+Imports System.Text.RegularExpressions
+
+Namespace Dcoder
+  Public Module Program
+    Public Sub Main(args() As string)
+      Dim strRET = &quot;Hi&quot;
+      For Each strENTRY As String In SubDir_List(&quot;/&quot;)
+          For Each strE2 As String In SubDir_List(&quot;/&quot; &amp; strENTRY)
+          For Each strE3 As String In SubDir_List(&quot;/&quot; &amp; strENTRY)
+              strRET &amp;= vbLf &amp; strENTRY &amp; &quot;/&quot; &amp; strE2 &amp; &quot;/&quot; &amp; strE3
+          Next strE3
+          Next strE2
+      Next strENTRY
+      
+      strRET &amp;= vbLf &amp; &quot;Done&quot;
+      Console.WriteLine(strRET)
+    End Sub 'Main
+
+    Public Function t1(ur_root_dir As String) As String
+        Return &quot;no&quot;
+    End Function
+
+    Public Function SubDir_List(ur_root_dir As String) As System.Collections.Generic.List(Of String)
+      Dim lstRET = New System.Collections.Generic.List(Of String)
+      SubDir_List = lstRET
+      Try
+      Dim proc = New System.Diagnostics.Process
+      Dim stg = new System.Diagnostics.ProcessStartInfo
+      proc.StartInfo = stg
+      stg.FileName = &quot;ls&quot;
+      stg.Arguments = ur_root_dir
+
+      'stg.FileName = &quot;find&quot;
+      'stg.Arguments = &quot;. -name '*' -print&quot;
+
+      stg.UseShellExecute = false
+      stg.RedirectStandardOutput= true
+      stg.RedirectStandardError = true
+      stg.CreateNoWindow = true
+      proc.Start()
+      Dim strCL_OUT = proc.StandardOutput.ReadToEnd()
+      'strRET = &quot;[Output: &quot; &amp; vbLf &amp; strCL_OUT &amp; &quot;]&quot;
+      'strRET &amp;= vbLf &amp; &quot;(err: &quot; &amp; vbLf &amp; proc.StandardError.ReadToEnd() &amp; &quot;)&quot;
+      For Each strENTRY As String In strCL_OUT.Split(CHR(10))
+          If strENTRY &lt;&gt; &quot;&quot; Then
+              lstRET.Add(strENTRY)
+          End If
+      Next strENTRY
+      Catch ex As System.Exception
+      End Try
+    End Function 'SubDir_List
+  End Module
+End Namespace</pre>
+</div>
+<div created="20201123013207926" modified="20201123013213732" tags="DOC" title="AndroidQLua">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123004757491" modified="20201123013224655" tags="" title="AndroidQLua\Console Commands">
 <pre>&quot;&quot;&quot;
 [QLua app]
 - Click button Console -&gt; Navigates page
@@ -10157,7 +10314,7 @@ exit
 
 </pre>
 </div>
-<div created="20201123005851663" modified="20201123012636759" tags="" title="AndroidProgramming\QLua5 Console Run a Program">
+<div created="20201123005851663" modified="20201123013233555" tags="" title="AndroidQLua\Console Run a Program">
 <pre>&quot;&quot;&quot;
 [Lua console]
 - Note: I had problems using the `LoadString` function with the `loadfile` command
@@ -10211,7 +10368,7 @@ loadfile('/sdcard/qlua5/ur_file.lua')()
 &quot;&quot;&quot;
 - Output is the Lua program output</pre>
 </div>
-<div created="20201123010637123" modified="20201123012751558" tags="" title="AndroidProgramming\QLua5 Deploy a Program Module">
+<div created="20201123010637123" modified="20201123013240372" tags="" title="AndroidQLua\Deploy a Program Module">
 <pre>&quot;&quot;&quot;
 Note: The `share/5.3` directory under the QLua5 folder is where Lua looks to load &quot;program modules&quot; that must be loaded to the _G array as a prerequisites to running the current program
 
@@ -10259,7 +10416,7 @@ require 'UrFileName'
 &quot;&quot;&quot;
 - Output is the Lua program output</pre>
 </div>
-<div created="20201123004303114" modified="20201123004700808" tags="" title="AndroidProgramming\QLua5 Editor Run a Program">
+<div created="20201123004303114" modified="20201123013246964" tags="" title="AndroidQLua\Editor Run a Program">
 <pre>&quot;&quot;&quot;
 [QLua app]
 - Click button Editor -&gt; Navigates page
@@ -10280,7 +10437,7 @@ require 'UrFileName'
 - Note: The the last line says &quot;Press enter to exit&quot;
 </pre>
 </div>
-<div created="20201123002441749" modified="20201123003505936" tags="" title="AndroidProgramming\QLua5 MxClasses Design">
+<div created="20201123002441749" modified="20201123013253073" tags="" title="AndroidQLua\MxClasses Design">
 <pre>&quot;&quot;&quot;
 I created some default functions that I need to see the key/value pairs in Lua tables
 
@@ -10322,7 +10479,7 @@ print('1: ' .. strFILE)
     - Example: printio('ls /storage')
 </pre>
 </div>
-<div created="20201123003552326" modified="20201123010952656" tags="" title="AndroidProgramming\QLua5 MxClasses LoadFile">
+<div created="20201123003552326" modified="20201123013305356" tags="" title="AndroidQLua\MxClasses LoadFile">
 <pre>```
 --[under folder /sdcard/qlua5]
 --This file can be run by the QLua command &quot;LoadFile&quot; because it uses the Load function instead of the LoadString function in def_tcompile and def_tia
@@ -10418,7 +10575,7 @@ for k,v in pairs(ttbFILE) do
 
 print('1: ' .. strFILE)</pre>
 </div>
-<div created="20201123002301609" modified="20201123011046117" tags="" title="AndroidProgramming\QLua5 MxClasses Require Program Module">
+<div created="20201123002301609" modified="20201123013258956" tags="" title="AndroidQLua\MxClasses Require Program Module">
 <pre>```
 --[under folder /sdcard/qlua5]
 --Create subdir share/5.3
@@ -10519,7 +10676,7 @@ print('1: ' .. strFILE)
 --]]
 </pre>
 </div>
-<div created="20201123003919133" modified="20201123004246103" tags="" title="AndroidProgramming\QLua5 Source Code Editor">
+<div created="20201123003919133" modified="20201123013311051" tags="" title="AndroidQLua\Source Code Editor">
 <pre>&quot;&quot;&quot;
 [QLua app]
 - Click button Editor -&gt; Navigates page
@@ -10540,8 +10697,107 @@ print('1: ' .. strFILE)
 - Note: The file gets saved in the folder /sdcard/qlua5
 </pre>
 </div>
+<div created="20201123015406141" modified="20201123015408041" tags="DOC" title="AndroidScreenshot">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123015408671" modified="20201123015440946" tags="" title="AndroidScreenshot\Screenshot Easy">
+<pre>&quot;&quot;&quot;
+[Google Play Store app]
+- Install app Screenshot Easy by Ice Cold Apps
+- Note: Contains ads
+</pre>
+</div>
+<div created="20201123013315742" modified="20201123013324213" tags="DOC" title="AndroidVNC">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123013331150" modified="20201123013905205" tags="" title="AndroidVNC\RealVNC remote control Windows O/S">
+<pre>&quot;&quot;&quot;
+Windows O/S
+
+[https://www.realvnc.com/en/connect/download/viewer/windows/]
+- Install app VNC Connect for Windows
+
+[VNC Connect for Windows app]
+- Connects to login
+- Note: Allows connection by RealVNC's VNC Viewer app on Android O/S
+
+Android O/S
+
+[Google Play Store]
+- Install app VNC Viewer by RealVNC Limited
+
+[VNC Viewer app]
+- Connects to login
+- [Alt tab]
+- Use Ctrl-Esc to get to the Windows Start Menu and the Task Bar to change windows
+</pre>
+</div>
+<div created="20201123015233167" modified="20201123015237752" tags="DOC" title="AndroidWebDav">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123015241026" modified="20201123015323428" tags="" title="AndroidWebDav\BestDAV">
+<pre>&quot;&quot;&quot;
+Access files on Android device from a networked Windows computer
+
+[Andrdoid OS]
+- [Google Play Store]
+- Install app WebDAV Server - BestDAV
+- - Free or Pro edition
+
+[WebDAV Server]
+- [Main page, top bar]
+- Note: Folders not listed under the &quot;Folders&quot; button automatically has read-only access via WebDav
+- Click button Settings -&gt; nav
+- [Settings page]
+- Website Home Directory = /storage
+- [Main page, bottom bar]
+- Click button Start Server
+- Note: The server's network URL starts with &quot;http://&quot; and ends with &quot;:8080&quot;
+- - Sample = http://192.168.0.15:8080
+
+[Windows computer]
+- [browser]
+- Address = http://192.168.0.15:8080
+- Click link Get the file list -&gt; nav
+- Note: The directory shows the &quot;external&quot; SD Card name (if any) and &quot;enc_emulated&quot;
+- To see the &quot;internal&quot; /sdcard folder on the android device,
+- - Click link &quot;enc_emulated&quot; -&gt; /_dir.cgi?dir=%2Fenc_emulated
+- - Edit the address to say /_dir.cgi?dir=%2Femulated/0
+
+- [Windows Explorer]
+- Address = \\192.168.0.15@8080\DavWWWRoot
+- Note: The directory shows the &quot;external&quot; SD Card name (if any) and &quot;emulated&quot;, &quot;enc_emulated&quot;, and &quot;self&quot;
+- To see the &quot;internal&quot; /sdcard folder on the android device,
+- - Click link &quot;emulated&quot; -&gt; http://192.168.0.15:8080/emulated
+- - Edit the address to say http://192.168.0.15:8080/emulated/0
+</pre>
+</div>
 <div created="20201122114337476" modified="20201122114345094" tags="DOC" title="ChromeBrowser">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123020323635" modified="20201123020839833" tags="" title="ChromeBrowser\Browse Local Folders">
+<pre>&quot;&quot;&quot;
+Note: You can use Total Commander to create a local file desktop shortcut
+Note: You can also create a Website shortcut on the Desktop from Google Chrome
+
+[Google Chrome app]
+- [Windows O/S]
+- Navigate to file:///C:/
+- [Android O/S]
+- Navigate to file:///sdcard/
+
+- [Directory list]
+- Select which sub-folder you want to bookmark
+- [Navigation bar, Top-right icons]
+- Click button Bookmark Page (looks like a star shape) -&gt; Opens dialog
+- [Bookmark Added dialog]
+- Name = UrShortName
+- Click button Done -&gt; Closes dialog
+- [Navigation bar]
+- Address = UrShortName -&gt; Shows suggestions
+- [Suggestion list]
+- Select the suggested link -&gt; Navigates page
+</pre>
 </div>
 <div created="20201122114355449" modified="20201122114419837" tags="" title="ChromeBrowser\Turn off Chrome spell check highlighting">
 <pre>* Three-dots menu, Settigns option, search for Language
@@ -15368,8 +15624,11 @@ Your browser does not support the HTML 5 audio tag.
 - Note: The new file was added to the current folder
 </pre>
 </div>
-<div created="20201123001735983" modified="20201123002002110" tags="" title="TotalCommander\Local file desktop shortcut">
+<div created="20201123001735983" modified="20201123020112153" tags="" title="TotalCommander\Local file desktop shortcut">
 <pre>&quot;&quot;&quot;
+Note: You can also create a Website shortcut on the Desktop from Google Chrome
+Note: You can also create a Browser shortcut to a local folder
+
 [Total Commander directory]
 - Hold down on file entry named like *.html -&gt; Opens menu
 
