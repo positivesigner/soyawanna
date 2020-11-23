@@ -207,6 +207,24 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>AndroidProgramming</li>
+
+<li>AndroidProgramming\QLua5 Console Commands</li>
+
+<li>AndroidProgramming\QLua5 Console Run a Program</li>
+
+<li>AndroidProgramming\QLua5 Deploy a Program Module</li>
+
+<li>AndroidProgramming\QLua5 Editor Run a Program</li>
+
+<li>AndroidProgramming\QLua5 MxClasses Design</li>
+
+<li>AndroidProgramming\QLua5 MxClasses LoadFile</li>
+
+<li>AndroidProgramming\QLua5 MxClasses Require Program Module</li>
+
+<li>AndroidProgramming\QLua5 Source Code Editor</li>
+
 <li>ChromeBrowser</li>
 
 <li>ChromeBrowser\Turn off Chrome spell check highlighting</li>
@@ -362,6 +380,12 @@ Error message and password prompt
 <li>TiddlyWiki\Video and Audio</li>
 
 <li>TiddlyWiki\View All notes</li>
+
+<li>TotalCommander</li>
+
+<li>TotalCommander\Create new Text File</li>
+
+<li>TotalCommander\Local file desktop shortcut</li>
 
 <li>VBNetCode</li>
 
@@ -9884,7 +9908,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201122115759022" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201123012752745" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9896,13 +9920,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201122115759023" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201123012752745" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201122115526307" list="[[Code Samples]] TiddlyWiki" modified="20201122115730418" title="$:/StoryList">
+<div created="20201123002251220" list="[[Code Samples]] ChromeBrowser AndroidProgramming [[AndroidProgramming\QLua5 Deploy a Program Module]]" modified="20201123012647792" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10074,6 +10098,447 @@ Error message and password prompt
 </div>
 <div created="20201114120802874" modified="20201114120802874" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
+</div>
+<div created="20201123002254149" modified="20201123002300197" tags="DOC" title="AndroidProgramming">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123004757491" modified="20201123012200661" tags="" title="AndroidProgramming\QLua5 Console Commands">
+<pre>&quot;&quot;&quot;
+[QLua app]
+- Click button Console -&gt; Navigates page
+
+- [console window]
+- Note: The right-arrow symbol (greater-than sign) is the Lua prompt
+- Note: Comment line-endings in a Lua file are separated by two hyhpens
+&quot;&quot;&quot;
+
+```
+--Single-line comment
+ur_object.ur_function() --Comment until end of line
+```
+
+&quot;&quot;&quot;
+- Note: Multi-line comments in a Lua file are separated by two hyphens and two open brackets, and closed by two hyphens and two close brackets
+&quot;&quot;&quot;
+
+```
+--[[
+Block comment
+multiple lines
+--]]
+```
+
+&quot;&quot;&quot;
+- Note: Commands in Lua are case sensitive
+- - You can create functions named `abc`, `Abc`, `abC`, and `ABC`, and each one can store to a different value
+
+- Note: Exiting the Lua interpreter returns to the Linux Shell command line interpreter that was created by QLua
+- Run the `os.exit()` command
+&quot;&quot;&quot;
+
+```
+os.exit()
+```
+
+&quot;&quot;&quot;
+[Linux Shell CLI]
+- Note: The $ symbol (dollar sign) is the Linux Shell prompt
+- Note: Commands in Linux Shell are case sensitive
+- - You can create programs named `abc`, `Abc`, `abC`, and `ABC`, and each one can run different code
+- - Most standard Linux Shell commands are named with all lowercase characters, so only `abc` would be the standard way to name a program
+
+- Note: Exiting the Linux Shell returns to the QLua app main menu
+- Run the `exit` command
+&quot;&quot;&quot;
+
+```
+exit
+```
+
+</pre>
+</div>
+<div created="20201123005851663" modified="20201123012636759" tags="" title="AndroidProgramming\QLua5 Console Run a Program">
+<pre>&quot;&quot;&quot;
+[Lua console]
+- Note: I had problems using the `LoadString` function with the `loadfile` command
+- - In the Lua code, replace any references to the `LoadString` function with the `Load` function
+- - The `Load` command did not need extra escaping like`\\r` for the parameter, so replace `\\r` with `\r` when using the `Load` command
+- Save the result of the loadfile command to create a new function from the file
+&quot;&quot;&quot;
+
+```
+urfile_fn=loadfile('/sdcard/qlua5/ur_file.lua')
+```
+
+&quot;&quot;&quot;
+- Note: This added a row to the _G table
+- Note: Just typing a function name or a table name shows the type of data stored in the row
+&quot;&quot;&quot;
+
+```
+_G.urfile
+```
+
+&quot;&quot;&quot;
+- Output is `function: 0x#####`
+- Note: any command except _G is an implied name lookup in the _G table
+&quot;&quot;&quot;
+
+```
+urfile
+```
+
+&quot;&quot;&quot;
+- Output is also the same `function: 0x####`
+- Note: You can run a function by adding parentheses to the end of the function name
+- Running a function can load additional functions into the _G table
+&quot;&quot;&quot;
+
+```
+urfile()
+```
+
+&quot;&quot;&quot;
+- Output is the Lua program output
+- Note: Any functions or tables added to the _G table are available
+- Note: You can load a Lua function and run it on the same line instead of storing the program in a variable by adding an extra pair of parentheses
+&quot;&quot;&quot;
+
+```
+loadfile('/sdcard/qlua5/ur_file.lua')()
+```
+
+&quot;&quot;&quot;
+- Output is the Lua program output</pre>
+</div>
+<div created="20201123010637123" modified="20201123012751558" tags="" title="AndroidProgramming\QLua5 Deploy a Program Module">
+<pre>&quot;&quot;&quot;
+Note: The `share/5.3` directory under the QLua5 folder is where Lua looks to load &quot;program modules&quot; that must be loaded to the _G array as a prerequisites to running the current program
+
+[QLua Editor]
+- Note: I had problems using the `LoadString` function with the `require` command
+- - In the Lua code, replace any references to the `Load` function with the `LoadString` function
+- - The `LoadString` command needs extra escaping like`\\r` for the parameter, so replace `\r` with `\\r` when using the `LoadString` command
+
+- [Bottom bar]
+- Click button Save-As (Looks like a page with a Plus in the bottom-right corner) -&gt; Open dialog
+
+- [Save As dialog]
+- If necessary,
+- - [Bottom bar]
+- - Click button New Folder (looks like a Plus sign) -&gt; Opens dialog
+- - Directory Name = `share`
+- - Click button OK -&gt; Closes dialog
+
+- [Folder list]
+- Select folder `share`
+- If necessary,
+- - [Bottom bar]
+- - Click button New Folder (looks like a Plus sign) -&gt; Opens dialog
+- - Directory Name = `5.3`
+- - Click button OK -&gt; Closes dialog
+
+- [Folder list]
+- Select folder `5.3`
+- [Bottom bar]
+- File name = UrFileName.lua
+- Click button OK (looks like a checkmark)
+
+[File Manager]
+- Note: Your Lua program is stored in folder `/sdcard/qlua/share/5.3`
+
+[Lua console]
+- Note: The require command to loads and runs a program module
+- - Do not include the path or the `.lua` file extension
+&quot;&quot;&quot;
+
+```
+require 'UrFileName'
+```
+
+&quot;&quot;&quot;
+- Output is the Lua program output</pre>
+</div>
+<div created="20201123004303114" modified="20201123004700808" tags="" title="AndroidProgramming\QLua5 Editor Run a Program">
+<pre>&quot;&quot;&quot;
+[QLua app]
+- Click button Editor -&gt; Navigates page
+
+- [QLua app, Editor page, Top-right side menu]
+- Click button Open file (looks like a Tabbed folder) -&gt; Opens dialog
+- Select file -&gt; Closes dialog
+
+- [QLua app, Editor page, Main Body text]
+- Note: You can change the source code and save again before each run
+
+- [Bottom bar]
+- Click button Run (looks like a right-arrow play button) -&gt; Navigates page
+
+- [console window]
+- Note: The top line shows the current path and the Linux shell command used to show the editor
+- Note: The output of your program is below the first line
+- Note: The the last line says &quot;Press enter to exit&quot;
+</pre>
+</div>
+<div created="20201123002441749" modified="20201123003505936" tags="" title="AndroidProgramming\QLua5 MxClasses Design">
+<pre>&quot;&quot;&quot;
+I created some default functions that I need to see the key/value pairs in Lua tables
+
+[def.lua]
+- [def_tcompile]
+- This creates a 'tcompile' function that concatenates a table's string values then loads the result as a new function
+- [def_ti]
+- This creates a 'ti' function that adds a new numbered row to a table
+- [def_tia]
+- This clears out a global table variable and creates a 'tia' function that calls the 'ti' function for that table without having to pass it in as a parameter
+- [def_printk]
+- This creates a 'printk' function that prints all the keys in a table, sorted alphabetically
+- [def_printv]
+- This creates a 'printv' function that prints all the values in a table, sorted alphabetically
+- [def_tcopy]
+- This creates a 'tcopy' function that copies all records from one table into another
+- [def_printiv]
+- This creates a 'printiv' function that prints all the values in a table, in their original order (good for numeric-keyed tables)
+- [def_printkv]
+- This creates a 'printkv' function that prints all keys and values in a table, sorted by key alphabetically
+- [def_ioexec]
+- This creates a 'ioexec' function that runs a shell command and returns a table you can store
+    - Example: Prints all the .lua files under a directory
+&quot;&quot;&quot;
+
+```
+local ttbFILE = ioexec('find /sdcard/qlua5 -name &quot;*.lua&quot; -print')
+local strFILE = &quot;&quot;
+for k,v in pairs(ttbFILE) do
+  strFILE = v
+  break
+  end
+
+print('1: ' .. strFILE)
+```
+
+- [def_printio]
+- This creates a 'printio' function that runs printiv on the ioexec table
+    - Example: printio('ls /storage')
+</pre>
+</div>
+<div created="20201123003552326" modified="20201123010952656" tags="" title="AndroidProgramming\QLua5 MxClasses LoadFile">
+<pre>```
+--[under folder /sdcard/qlua5]
+--This file can be run by the QLua command &quot;LoadFile&quot; because it uses the Load function instead of the LoadString function in def_tcompile and def_tia
+
+print()
+
+def_tcompile = {'function tcompile(ur_table) load(table.concat(ur_table, &quot;\\r&quot;))() end'}
+load(table.concat(def_tcompile, &quot;\r&quot;))()
+
+def_ti = {'function ti(ur_table, ur_line) table.insert(ur_table, ur_line) end'}
+tcompile(def_ti)
+
+def_tia = {}
+ti(def_tia, 'function tia(ur_table)')
+ti(def_tia, '  local strASSIGN = ur_table .. &quot; = {}; &quot; ')
+ti(def_tia, '  strASSIGN = strASSIGN .. &quot;function tii(ur_line) ti(&quot; .. ur_table .. &quot;, ur_line) end&quot; ')
+ti(def_tia, '  load(strASSIGN)() ')
+ti(def_tia, '  end')
+tcompile(def_tia)
+
+tia 'def_printk'
+tii 'function printk(ur_table)'
+tii '  local pk = {}'
+tii '  for k in pairs(ur_table) do'
+tii '    table.insert(pk, k)'
+tii '    end'
+tii '  table.sort(pk)'
+tii '  for k,v in pairs(pk) do print(v) end'
+tii '  end'
+tcompile(def_printk)
+
+tia 'def_printv'
+tii 'function printv(ur_table)'
+tii '  local pk = {}'
+tii '  for k,v in pairs(ur_table) do'
+tii '    table.insert(pk, v)'
+tii '    end'
+tii '  table.sort(pk)'
+tii '  for k,v in pairs(pk) do print(v) end'
+tii '  end'
+tcompile(def_printv)
+
+tia 'def_tcopy'
+tii 'function tcopy(ur_src_table, ur_dest_table)'
+tii '  for k,v in pairs(ur_src_table) do'
+tii '    table.insert(ur_dest_table, v)'
+tii '    end'
+tii '  end'
+tcompile(def_tcopy)
+
+tia 'def_printiv'
+tii 'function printiv(ur_table)'
+tii '  for k,v in pairs(ur_table) do'
+tii '    print(v)'
+tii '    end'
+tii '  end'
+tcompile(def_printiv)
+
+tia 'def_printkv'
+tii 'function printkv(ur_table)'
+tii '  local pk = {}'
+tii '  for k in pairs(ur_table) do'
+tii '    table.insert(pk, k)'
+tii '    end'
+tii '  table.sort(pk)'
+tii '  for k,v in pairs(pk) do print(v .. &quot;: &quot; .. type(ur_table[v]) ) end'
+tii '  end'
+tcompile(def_printkv)
+
+tia 'def_ioexec'
+tii 'function ioexec(ur_cmd)'
+tii '  local iofile = io.popen(ur_cmd)'
+tii '  local retTABLE = {}'
+tii '  for k in iofile:lines() do table.insert(retTABLE, k) end'
+tii '  iofile:close()'
+tii '  return retTABLE'
+tii '  end'
+tcompile(def_ioexec)
+
+tia 'def_printio'
+tii 'function printio(ur_cmd)'
+tii '  printiv(ioexec(ur_cmd))'
+tii '  end'
+tcompile(def_printio)
+
+--printio('ls /storage')
+local ttbFILE = ioexec('find /sdcard/Download -name &quot;TWMove_*.htm&quot; -print')
+local strFILE = &quot;&quot;
+for k,v in pairs(ttbFILE) do
+  strFILE = v
+  break
+  end
+
+print('1: ' .. strFILE)</pre>
+</div>
+<div created="20201123002301609" modified="20201123011046117" tags="" title="AndroidProgramming\QLua5 MxClasses Require Program Module">
+<pre>```
+--[under folder /sdcard/qlua5]
+--Create subdir share/5.3
+--Put in a copy of def.lua
+--This file can be run by the QLua command &quot;require&quot; because it uses the LoadString function instead of the Load function in def_tcompile and def_tia
+
+print()
+
+def_tcompile = {'function tcompile(ur_table) loadstring(table.concat(ur_table, &quot;\\r&quot;))() end'}
+loadstring(table.concat(def_tcompile, &quot;\\r&quot;))()
+
+def_ti = {'function ti(ur_table, ur_line) table.insert(ur_table, ur_line) end'}
+tcompile(def_ti)
+
+def_tia = {}
+ti(def_tia, 'function tia(ur_table)')
+ti(def_tia, '  local strASSIGN = ur_table .. &quot; = {}; &quot; ')
+ti(def_tia, '  strASSIGN = strASSIGN .. &quot;function tii(ur_line) ti(&quot; .. ur_table .. &quot;, ur_line) end&quot; ')
+ti(def_tia, '  loadstring(strASSIGN)() ')
+ti(def_tia, '  end')
+tcompile(def_tia)
+
+tia 'def_printk'
+tii 'function printk(ur_table)'
+tii '  local pk = {}'
+tii '  for k in pairs(ur_table) do'
+tii '    table.insert(pk, k)'
+tii '    end'
+tii '  table.sort(pk)'
+tii '  for k,v in pairs(pk) do print(v) end'
+tii '  end'
+tcompile(def_printk)
+
+tia 'def_printv'
+tii 'function printv(ur_table)'
+tii '  local pk = {}'
+tii '  for k,v in pairs(ur_table) do'
+tii '    table.insert(pk, v)'
+tii '    end'
+tii '  table.sort(pk)'
+tii '  for k,v in pairs(pk) do print(v) end'
+tii '  end'
+tcompile(def_printv)
+
+tia 'def_tcopy'
+tii 'function tcopy(ur_src_table, ur_dest_table)'
+tii '  for k,v in pairs(ur_src_table) do'
+tii '    table.insert(ur_dest_table, v)'
+tii '    end'
+tii '  end'
+tcompile(def_tcopy)
+
+tia 'def_printiv'
+tii 'function printiv(ur_table)'
+tii '  for k,v in pairs(ur_table) do'
+tii '    print(v)'
+tii '    end'
+tii '  end'
+tcompile(def_printiv)
+
+tia 'def_printkv'
+tii 'function printkv(ur_table)'
+tii '  local pk = {}'
+tii '  for k in pairs(ur_table) do'
+tii '    table.insert(pk, k)'
+tii '    end'
+tii '  table.sort(pk)'
+tii '  for k,v in pairs(pk) do print(v .. &quot;: &quot; .. type(ur_table[v]) ) end'
+tii '  end'
+tcompile(def_printkv)
+
+tia 'def_ioexec'
+tii 'function ioexec(ur_cmd)'
+tii '  local iofile = io.popen(ur_cmd)'
+tii '  local retTABLE = {}'
+tii '  for k in iofile:lines() do table.insert(retTABLE, k) end'
+tii '  iofile:close()'
+tii '  return retTABLE'
+tii '  end'
+tcompile(def_ioexec)
+
+tia 'def_printio'
+tii 'function printio(ur_cmd)'
+tii '  printiv(ioexec(ur_cmd))'
+tii '  end'
+tcompile(def_printio)
+
+--printio('ls /storage')
+--[[
+local ttbFILE = ioexec('find /sdcard/Download -name &quot;TWMove_*.htm&quot; -print')
+local strFILE = &quot;&quot;
+for k,v in pairs(ttbFILE) do
+  strFILE = v
+  break
+  end
+
+print('1: ' .. strFILE)
+--]]
+</pre>
+</div>
+<div created="20201123003919133" modified="20201123004246103" tags="" title="AndroidProgramming\QLua5 Source Code Editor">
+<pre>&quot;&quot;&quot;
+[QLua app]
+- Click button Editor -&gt; Navigates page
+
+- [QLua app, Editor page, Top-right side menu]
+- Click button New File (looks like a page with a Plus sign) -&gt; Opens dialog
+
+- [New file dialog]
+- Click option Blank file -&gt; Closes dialog
+
+- [QLua app, Editor page, Main Body text]
+- Enter some text
+
+- [Bottom bar]
+- Click button Save (looks like a 3.5&quot; floppy disk)
+
+[SDCard file list]
+- Note: The file gets saved in the folder /sdcard/qlua5
+</pre>
 </div>
 <div created="20201122114337476" modified="20201122114345094" tags="DOC" title="ChromeBrowser">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
@@ -14881,6 +15346,51 @@ Your browser does not support the HTML 5 audio tag.
 {{||$:/core/ui/ViewTemplate/tags}}
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20201123001257327" modified="20201123001301905" tags="DOC" title="TotalCommander">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123001317438" modified="20201123001723641" tags="" title="TotalCommander\Create new Text File">
+<pre>&quot;&quot;&quot;
+[Total Commander directory]
+- [Top of the directory]
+- Hold down on the '..' button to see the menu -&gt; Opens menu
+- - or Hold down on any subdirectory name to see the menu -&gt; Opens menu
+
+- [context menu]
+- Click option New Text file -&gt; Opens dialog
+
+- [Create new text file dialog]
+- Enter a new text file name
+- Click button OK -&gt; Closes dialog
+
+- [Directory list]
+- Note: The new file was added to the current folder
+</pre>
+</div>
+<div created="20201123001735983" modified="20201123002002110" tags="" title="TotalCommander\Local file desktop shortcut">
+<pre>&quot;&quot;&quot;
+[Total Commander directory]
+- Hold down on file entry named like *.html -&gt; Opens menu
+
+- [context menu]
+- Click option Create link on desktop -&gt; Opens dialog
+
+- [Create link dialog, main page, command line section]
+- Click button '&gt;&gt;' -&gt; Opens dialog
+
+- [Choose app dialog, main page]
+- Click option Choose app * -&gt; Navigates page
+
+- [Choose app dialog, Choose app * page]
+- Click option Chrome -&gt; Navigates page
+
+- [Create link dialog, main page]
+- Click button OK / Apply -&gt; Closes dialog
+
+[Android Desktop icons]
+- Note: The icon was added to the desktop automatically
+</pre>
 </div>
 <div created="20201120085755744" modified="20201120085758963" tags="DOC" title="VBNetCode">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
