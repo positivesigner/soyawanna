@@ -1,3 +1,0 @@
-chcp 65001
-C:\TJBF\zPortableInstalls\DVDStyler\App\DVDStyler\bin\ffmpeg.exe -i "C:\Users\Dad\Downloads\2016m10 KH\Oct 01 Broadcast.mp4" "C:\Users\Dad\Downloads\2016m10 KH\Oct 01 Broadcast.srt"
-pause

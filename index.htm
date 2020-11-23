@@ -257,6 +257,8 @@ Error message and password prompt
 
 <li>ChromeBrowser\Browse Local Folders</li>
 
+<li>ChromeBrowser\Command Line Options</li>
+
 <li>ChromeBrowser\Turn off Chrome spell check highlighting</li>
 
 <li>Code Samples</li>
@@ -295,6 +297,12 @@ Error message and password prompt
 
 <li>ext TW Snapshot v5d01d23 pre-release</li>
 
+<li>FFMPeg</li>
+
+<li>FFMPeg\Extract Captions file</li>
+
+<li>FFMPeg\Extract JPG files</li>
+
 <li>Font Size</li>
 
 <li>GoogleContacts</li>
@@ -311,11 +319,27 @@ Error message and password prompt
 
 <li>GooglePlay\Share purchased apps with another account</li>
 
+<li>GooglePlusCodes</li>
+
+<li>GooglePlusCodes\Find a Plus Code</li>
+
 <li>Instapaper</li>
 
 <li>Instapaper\Export as CSV</li>
 
 <li>Instapaper\Parse file</li>
+
+<li>IrfanView</li>
+
+<li>IrfanView\Contact Sheet</li>
+
+<li>JavaScriptBookmarklets</li>
+
+<li>JavaScriptBookmarklets\Extract iFrame pages</li>
+
+<li>JavaScriptBookmarklets\Extract images</li>
+
+<li>JavaScriptBookmarklets\Extract plain text</li>
 
 <li>keyboard action FontLarge</li>
 
@@ -450,6 +474,10 @@ Error message and password prompt
 <li>VBNetScript\VersionUpd.vbns</li>
 
 <li>View All Pages</li>
+
+<li>YouTube</li>
+
+<li>YouTube\Captions text</li>
 
 </ul>
 </p>
@@ -9942,7 +9970,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201123023107485" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201123041224874" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9954,13 +9982,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201123023107485" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201123041224875" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201123020900375" list="[[Code Samples]] [[View All Pages]] GooglePlay [[GooglePlay\Share purchased apps with another account]]" modified="20201123022122186" title="$:/StoryList">
+<div created="20201123032053606" list="[[Code Samples]] JavaScriptBookmarklets YouTube [[YouTube\Captions text]]" modified="20201123032053606" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10703,12 +10731,12 @@ print('1: ' .. strFILE)
 --]]
 </pre>
 </div>
-<div created="20201123003919133" modified="20201123013311051" tags="" title="AndroidQLua\Source Code Editor">
+<div created="20201123003919133" modified="20201123023200317" tags="" title="AndroidQLua\Source Code Editor">
 <pre>&quot;&quot;&quot;
 [QLua app]
 - Click button Editor -&gt; Navigates page
 
-- [QLua app, Editor page, Top-right side menu]
+- [QLua app, Editor page, Top-right side icons]
 - Click button New File (looks like a page with a Plus sign) -&gt; Opens dialog
 
 - [New file dialog]
@@ -10826,9 +10854,66 @@ Note: You can also create a Website shortcut on the Desktop from Google Chrome
 - Select the suggested link -&gt; Navigates page
 </pre>
 </div>
-<div created="20201122114355449" modified="20201122114419837" tags="" title="ChromeBrowser\Turn off Chrome spell check highlighting">
-<pre>* Three-dots menu, Settigns option, search for Language
-* Spell check section header checkbox = clear</pre>
+<div created="20201123032108752" modified="20201123032627445" tags="" title="ChromeBrowser\Command Line Options">
+<pre>&quot;&quot;&quot;
+The command line options are usually two hyphens followed by a keyword
+
+- Note: The incognito option starts the browser with an open Incognito window
+&quot;&quot;&quot;
+
+```
+–incognito
+```
+
+&quot;&quot;&quot;
+- Note: Google Chrome Portable has these parameters automatically included when calling the Chrome.exe program.
+&quot;&quot;&quot;
+
+```
+–user-data-dir=&quot;%TEMP%&quot;
+–disk-cache-dir=&quot;%TEMP%\GoogleChromePortable\Cache&quot;
+```
+
+&quot;&quot;&quot;
+To override the user data and all the cache directories:
+
+- Find the INI file in the PortableApp sub-directory
+&quot;&quot;&quot;
+
+```
+GoogleChromePortable\Other\Source\GoogleChromePortable.ini
+```
+
+&quot;&quot;&quot;
+- Copy it to the program main directory
+&quot;&quot;&quot;
+
+```
+GoogleChromePortable\GoogleChromePortable.ini
+```
+
+&quot;&quot;&quot;
+- [Edit the file]
+- CacheInTemp = false
+- Save file
+- Note: When you restart Google Chrome Portable, cached files will be stored under the program's folder
+&quot;&quot;&quot;
+
+```
+C:\TJBF\zPortableInstalls\Chrome\Data\profile\Default\*Cache\
+```
+</pre>
+</div>
+<div created="20201122114355449" modified="20201123023439057" tags="" title="ChromeBrowser\Turn off Chrome spell check highlighting">
+<pre>&quot;&quot;&quot;
+[Google Chrome app]
+- [Top-right icons]
+- Click the three-dots menu, option Settings -&gt; Navigates page
+- [Settings page[
+- search for Language -&gt; Filters results
+- [Languages section]
+- checkbox Spell check = clear -&gt; Chrome will not highlight spelling errors
+</pre>
 </div>
 <div created="20201114120614179" modified="20201114124502212" tags="INDEX" title="Code Samples">
 <pre>{{ext TW Return}}
@@ -11042,6 +11127,42 @@ close
 <div created="20201122075245605" modified="20201122075302391" tags="EXT" title="ext TW Snapshot v5d01d23 pre-release">
 <pre>[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23pre-release.html]]</pre>
 </div>
+<div created="20201123023842770" modified="20201123023858307" tags="DOC" title="FFMPeg">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123023906643" modified="20201123024016813" tags="" title="FFMPeg\Extract Captions file">
+<pre>```
+chcp 65001
+C:\UrPath\ffmpeg.exe -i &quot;C:\UrPath\UrFile.mp4&quot; &quot;C:\UrPath\UrFile.srt&quot;
+pause
+</pre>
+</div>
+<div created="20201123024045018" modified="20201123024748520" tags="" title="FFMPeg\Extract JPG files">
+<pre>&quot;&quot;&quot;
+[ffmpeg.exe command-line options]
+- `-ss 05:00 -t 10:00` means start at 5min and end 10min later at 15min
+- `-r 1` means 1 frame per second
+- `-r 0.25` means 1 frame every 4 seconds
+- `-r 0.083` means 1 frame every 12 seconds, or 5 frames per minute, 50 frames out of every ten minutes, or 300 frames every hour
+
+- IrfanView can create a portrait contact sheet with 5 columns, representing one min of video per row, 10 rows per page showing 10 minutes of video
+- IrfanView can create a landscape contact sheet with 7 columns is one 3 min per 2 rows, 7 rows per page showing 10.5 minutes of video, two pages showing 21 minutes
+
+- Open on thumbnail image with IrfanView, select File menu Thumbnails option
+- Select all files in the folder, select File menu Create Contact Sheet
+- 1280x738, 738/1280*320 = 184.5, use -s 320x180 to keep aspect ratio
+- paper 150px * 8.5in = 1250px wide, 150px * 11in = 1650in tall
+- screen 1920px x 1080px with 7 x 7, stretch small images to maximal size
+
+&quot;&quot;&quot;
+
+```
+chcp 65001
+rem -ss 05:00 -t 10:00 means start at 5min and end 10min later at 15min
+C:\UrPath\ffmpeg.exe -i &quot;C:\UrPath\UrFile.mp4&quot; -r 0.083 -s 320x180 &quot;UrPath\UrSubdir\output_%%04d.jpg&quot;
+
+</pre>
+</div>
 <div created="20200319102534436" modified="20201114093302456" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
@@ -11057,10 +11178,10 @@ Normal Font
 <div created="20201120062130308" modified="20201120063232204" tags="DOC" title="GoogleContacts">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201120062504606" modified="20201120063130580" tags="" title="GoogleContacts\Export as CSV">
+<div created="20201120062504606" modified="20201123023606292" tags="" title="GoogleContacts\Export as CSV">
 <pre>&quot;&quot;&quot;
 [https://contacts.google.com/]
-- ]Left-side menu]
+- [Left-side menu]
 - Click button Export -&gt; Opens dialog
 - Export contacts = Contacts (total count)
 - Export as = Google CSV
@@ -11446,14 +11567,48 @@ If the 'Family' logins does not contain the account you want to access your shar
 - Note: The Added Account can now use the Play Store app to install the Family Library shared app
 </pre>
 </div>
+<div created="20201123033613282" modified="20201123033636504" tags="DOC" title="GooglePlusCodes">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123033637054" modified="20201123035643913" tags="" title="GooglePlusCodes\Find a Plus Code">
+<pre>&quot;&quot;&quot;
+[https://plus.codes/map/]
+- [Search box, Left-side icon]
+- Click the three-lines menu, option Satellite -&gt; Refreshes window
+- Click the three-lines menu, option Grid -&gt; Refreshes window
+- [Navigate to location]
+- When the mouse icon is a hand, double-click to Zoom in
+- Each time you click, the location will show as 8 characters, a plus sign, and two suffix characters
+- - Example: 73F6C9JH+HR
+- The last two Zoom levels allow you to select a single Plus Code rectangle, which has three suffix characters after the plus sign
+- - Example: 73F6C9JH+HR7
+- Copy the browser address bar
+- - Example: https://plus.codes/73F6C9JH+HR7
+
+- Note: You can email the page link to someone
+- - They will have to turn on the satellite and / or grid options again
+
+- Note: You can use the browser to bookmark the current page
+- - Android O/S Chrome can create a desktop shortcut to the current website page (when not in Incognito mode)
+
+- Note: The plus codes are 8 characters, a plus, and two or three suffix characters
+- - The bottom of the Plus.Codes website's map only temporarily shows the three suffix characters after you click, quickly reverting to show only two suffix characters
+- - You can still see all three suffix characters in the address bar
+
+- [Bottom location code bar, Right-side icon]
+- Click button Navigate (looks like a Right-Turn Only road sign) -&gt; Navigates to Google Maps website
+- Note: Android O/S Chrome app will ask to Stay On Web or Use The App
+- - Click button Use The App to open the Google Maps app
+</pre>
+</div>
 <div created="20201120063216566" modified="20201120063224319" tags="DOC" title="Instapaper">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201120063258141" modified="20201120064133983" tags="" title="Instapaper\Export as CSV">
+<div created="20201120063258141" modified="20201123023658441" tags="" title="Instapaper\Export as CSV">
 <pre>&quot;&quot;&quot;
 [https://www.instapaper.com/u]
-- [Top-right corner login-name]
-- Drop-down menu, Click option Settings -&gt; Navigates page
+- [Top-right icon]
+- Click login-name menu, option Settings -&gt; Navigates page
 - [Settings page, Export section]
 - Click link Download .CSV file -&gt; Opens dialog
 - Click button OK -&gt; Starts download, closes dialog
@@ -11532,6 +11687,53 @@ Next 1k
 &lt;/$vars&gt;&lt;/$list&gt;
 ```
 </pre>
+</div>
+<div created="20201123024815198" modified="20201123024819586" tags="DOC" title="IrfanView">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123024821711" modified="20201123025111152" tags="" title="IrfanView\Contact Sheet">
+<pre>&quot;&quot;&quot;
+[IrfanView app]
+- Open one thumbnail image -&gt; Loads image
+- Click the File menu option Thumbnails -&gt; Opens dialog
+- [Thumbnails dialog]
+- Select all files in the folder
+- Click the File menu, option Create Contact Sheet
+- 1280x738, 738/1280*320 = 184.5, use -s 320x180 to keep aspect ratio
+- paper 150px * 8.5in = 1250px wide, 150px * 11in = 1650in tall
+- screen 1920px x 1080px with 7 x 7, stretch small images to maximal size</pre>
+</div>
+<div created="20201123032719183" modified="20201123032732437" tags="DOC" title="JavaScriptBookmarklets">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123032735208" modified="20201123032834425" tags="" title="JavaScriptBookmarklets\Extract iFrame pages">
+<pre>```
+(function(){ var imgs = document.getElementsByTagName('iframe'),t=[]; for (var i=0, n=imgs.length;i'+ imgs[i].src+''); if (t.length) { var w=window.open('','_blank'); if (w) {w.document.write(t.join(' '));w.document.close();} else alert('cannot pop a window'); } })();
+</pre>
+</div>
+<div created="20201123032806607" modified="20201123032826550" tags="" title="JavaScriptBookmarklets\Extract images">
+<pre>```
+avascript:(function(){ var imgs = document.getElementsByTagName('img'),t=[]; for (var i=0, n=imgs.length;i&lt;n;i++) t.push('&lt;a href=&quot;'+imgs[i].src+'&quot;&gt;&lt;img src=&quot;'+ imgs[i].src+'&quot; width=&quot;100&quot;&gt;&lt;/a&gt;'); if (t.length) { var w=window.open('','_blank'); if (w) {w.document.write(t.join(' '));w.document.close();} else alert('cannot pop a window'); } })();
+</pre>
+</div>
+<div created="20201123032857760" modified="20201123033531048" tags="" title="JavaScriptBookmarklets\Extract plain text">
+<pre>Copy the HTML body to a new window, so CSS and Javascript are ignored
+
+```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML;void(newWindow.focus());}
+```
+
+Copy the HTML body to a new window showing the HTML tags, so you can see the HTML code
+
+```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/&lt;/g,&quot;&lt;br&gt;&amp;lt;&quot;);void(newWindow.focus());}
+```
+
+Copy the HTML body without any HTML tags, so the text is loaded without any HTML or CSS styling
+
+```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&lt;[^&gt;]+&gt;/g, '&lt;br&gt;');void(newWindow.focus());}
+```</pre>
 </div>
 <div created="20200411063250301" key="((font-large))" modified="20200411063336938" tags="META $:/tags/KeyboardShortcut" title="keyboard action FontLarge">
 <pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
@@ -17142,13 +17344,36 @@ Namespace Mx
 End Namespace 'Mx
 </pre>
 </div>
-<div created="20200405112008513" modified="20201123021953239" tags="META" title="View All Pages">
-<pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]!prefix[undefined]sort[title]]&quot;&gt;
+<div created="20200405112008513" modified="20201123023543336" tags="META" title="View All Pages">
+<pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXT]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]!prefix[undefined]sort[title]]&quot;&gt;
 &lt;hr&gt;
 &lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
 {{||$:/core/ui/ViewTemplate/tags}}
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20201123040248207" modified="20201123040256229" tags="DOC" title="YouTube">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123040257132" modified="20201123041222187" tags="" title="YouTube\Captions text">
+<pre>&quot;&quot;&quot;
+[Find a YouTube video with Closed Captions]
+- Note: Android O/S will need to show the YouTube page as a Desktop Site
+- - [Top-right icons]
+- - Click the three-dots menu, option Desktop site -&gt; Reloads page
+
+- [Below video, Right-side icons]
+- Click the three-dots menu, option Open Transcript -&gt; Navigates page below video or right-side of video
+- You can highlight the captions text and copy to the clipboard
+- Note: You can paste the captions text into a document and save or print them
+
+- OR you can select all text on the page
+- - Paste all text into a new text document
+- - Search for &quot;00:&quot; to find the first line of the captions
+- - Windows O/S: Search for &quot;Up next&quot; to find the end of the captions
+- - Android O/S: Search for &quot;views&quot; or [the video title] to find the end of the captions
+
+</pre>
 </div>
 
 
