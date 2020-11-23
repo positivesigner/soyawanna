@@ -305,6 +305,14 @@ Error message and password prompt
 
 <li>Font Size</li>
 
+<li>GitCLI</li>
+
+<li>GitCLI\Checkout hash</li>
+
+<li>GitHubDesktop</li>
+
+<li>GitHubDesktop\Git executable</li>
+
 <li>GoogleContacts</li>
 
 <li>GoogleContacts\Export as CSV</li>
@@ -474,6 +482,10 @@ Error message and password prompt
 <li>VBNetScript\VersionUpd.vbns</li>
 
 <li>View All Pages</li>
+
+<li>WindowsCLI</li>
+
+<li>WindowsCLI\Command list</li>
 
 <li>YouTube</li>
 
@@ -9964,13 +9976,13 @@ Error message and password prompt
 <div created="20201120073448936" modified="20201122115012261" title="$:/state/searchNreplace/replace">
 <pre></pre>
 </div>
-<div created="20201120073446559" modified="20201122115011797" title="$:/state/searchNreplace/search">
-<pre> -  - </pre>
+<div created="20201120073446559" modified="20201123050129721" title="$:/state/searchNreplace/search">
+<pre></pre>
 </div>
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201123041224874" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201123051841262" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9982,13 +9994,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201123041224875" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201123051841262" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201123032053606" list="[[Code Samples]] JavaScriptBookmarklets YouTube [[YouTube\Captions text]]" modified="20201123032053606" title="$:/StoryList">
+<div created="20201123050023344" list="[[Code Samples]] AndroidMultipleUsers GitCLI [[GitCLI\Checkout hash]]" modified="20201123050023344" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10004,7 +10016,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/full&quot;: {
             &quot;title&quot;: &quot;$:/info/url/full&quot;,
-            &quot;text&quot;: &quot;file:///C:/Gthb/soyawanna/Code.htm&quot;
+            &quot;text&quot;: &quot;file:///C:/Gthb/soyawanna/index.htm&quot;
         },
         &quot;$:/info/url/host&quot;: {
             &quot;title&quot;: &quot;$:/info/url/host&quot;,
@@ -10024,7 +10036,7 @@ Error message and password prompt
         },
         &quot;$:/info/url/pathname&quot;: {
             &quot;title&quot;: &quot;$:/info/url/pathname&quot;,
-            &quot;text&quot;: &quot;/C:/Gthb/soyawanna/Code.htm&quot;
+            &quot;text&quot;: &quot;/C:/Gthb/soyawanna/index.htm&quot;
         },
         &quot;$:/info/url/search&quot;: {
             &quot;title&quot;: &quot;$:/info/url/search&quot;,
@@ -11173,6 +11185,39 @@ Big Font
 {{keyboard action FontNormal}}
 Normal Font
 &lt;/$button&gt;
+</pre>
+</div>
+<div created="20201123050314050" modified="20201123050319548" tags="DOC" title="GitCLI">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123050328797" modified="20201123051838767" tags="" title="GitCLI\Checkout hash">
+<pre>```
+@echo off
+SET ur_repo=
+SET ur_branch=
+&quot;C:\UrPath\git.exe&quot; -C %ur_repo% checkout -b test-branch %ur_branch%
+
+rem Use GitHub Desktop to delete the branch
+</pre>
+</div>
+<div created="20201123050104351" modified="20201123050109539" tags="DOC" title="GitHubDesktop">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123050110284" modified="20201123050150015" tags="" title="GitHubDesktop\Git executable">
+<pre>&quot;&quot;&quot;
+When GitHub Desktop is installed, the Git.exe program is placed in the %APPDATA% folder. There is one sub-directory for each version of Git that has been downloaded. Look for the latest version-numbered folder.
+&quot;&quot;&quot;
+
+```
+C:\Users\UrUser\AppData\Local\GitHubDesktop\app-UrVersion
+```
+
+&quot;&quot;&quot;
+Under the app-UrVersion folder, find the Git.exe program
+&quot;&quot;&quot;
+
+```
+app-UrVersion\resources\app\git\cmd\git.exe
 </pre>
 </div>
 <div created="20201120062130308" modified="20201120063232204" tags="DOC" title="GoogleContacts">
@@ -17351,6 +17396,526 @@ End Namespace 'Mx
 {{||$:/core/ui/ViewTemplate/tags}}
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20201123042118719" modified="20201123042121149" tags="DOC" title="WindowsCLI">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201123042121924" modified="20201123042135232" tags="" title="WindowsCLI\Command list">
+<pre>https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
+
+&quot;&quot;&quot;
+
+Prerequisites
+The information that is contained in this topic applies to:Windows Server 2019
+
+Windows Server (Semi-Annual Channel)
+
+Windows Server 2016
+
+Windows Server 2012 R2
+
+Windows Server 2012
+
+Windows Server 2008 R2
+
+Windows Server 2008
+
+Windows 10
+
+Windows 8.1Command shell overview
+The Command shell was the first shell built into Windows to automate routine tasks, like user account management or nightly backups, with batch (.bat) files. With Windows Script Host you could run more sophisticated scripts in the Command shell. For more information, see
+cscript
+or
+wscript
+. You can perform operations more efficiently by using scripts than you can by using the user interface. Scripts accept all Commands that are available at the command line.
+
+Windows has two command shells: The Command shell and
+PowerShell
+. Each shell is a software program that provides direct communication between you and the operating system or application, providing an environment to automate IT operations.
+
+PowerShell was designed to extend the capabilities of the Command shell to run PowerShell commands called cmdlets. Cmdlets are similar to Windows Commands but provide a more extensible scripting language. You can run Windows Commands and PowerShell cmdlets in Powershell, but the Command shell can only run Windows Commands and not PowerShell cmdlets.
+
+For the most robust, up-to-date Windows automation, we recommend using PowerShell instead of Windows Commands or Windows Script Host for Windows automation.
+
+Note
+
+You can also download and install
+PowerShell Core
+, the open source version of PowerShell. Caution
+
+Incorrectly editing the registry may severely damage your system. Before making the following changes to the registry, you should back up any valued data on the computer. Note
+
+To enable or disable file and directory name completion in the Command shell on a computer or user logon session, run
+regedit.exe
+and set the following
+reg_DWOrd value
+:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Command Processor\completionChar\reg_DWOrd
+
+To set the
+reg_DWOrd
+value, use the hexadecimal value of a control character for a particular function (for example,
+0 9
+is Tab and
+0 08
+is Backspace). User-specified settings take precedence over computer settings, and command-line options take precedence over registry settings.Command-line reference A-Z
+To find information about a specific Windows Command, in the following A-Z menu, click the letter that the Command starts with, and then click the Command name.
+
+A append
+arp
+assoc
+at
+atmadm
+attrib
+auditpol
+autochk
+autoconv
+autofmt
+B bcdboot
+bcdedit
+bdehdcfg
+bitsadmin
+bitsadmin addfile
+bitsadmin addfileset
+bitsadmin addfilewithranges
+bitsadmin cancel
+bitsadmin complete
+bitsadmin create
+bitsadmin getaclflags
+bitsadmin getbytestotal
+bitsadmin getbytestransferred
+bitsadmin getcompletiontime
+bitsadmin getcreationtime
+bitsadmin getdescription
+bitsadmin getdisplayname
+bitsadmin geterror
+bitsadmin geterrorcount
+bitsadmin getfilestotal
+bitsadmin getfilestransferred
+bitsadmin getminretrydelay
+bitsadmin getmodificationtime
+bitsadmin getnoprogresstimeout
+bitsadmin getnotifycmdline
+bitsadmin getnotifyflags
+bitsadmin getnotifyinterface
+bitsadmin getowner
+bitsadmin get priority
+bitsadmin getproxybypasslist
+bitsadmin getproxylist
+bitsadmin getproxyusage
+bitsadmin getreplydata
+bitsadmin getreplyfilename
+bitsadmin getreplyprogress
+bitsadmin getstate
+bitsadmin gettype
+bitsadmin help
+bitsadmin info
+bitsadmin list
+bitsadmin listfiles
+bitsadmin monitor
+bitsadmin nowrap
+bitsadmin rawreturn
+bitsadmin removecredentials
+bitsadmin replaceremoteprefix
+bitsadmin reset
+bitsadmin resume
+bitsadmin setaclflag
+bitsadmin setcredentials
+bitsadmin setdescription
+bitsadmin setdisplayname
+bitsadmin setminretrydelay
+bitsadmin setnoprogresstimeout
+bitsadmin setnotifycmdline
+bitsadmin setnotifyflags
+bitsadmin setpriority
+bitsadmin setproxysettings
+bitsadmin setreplyfilename
+bitsadmin suspend
+bitsadmin takeownership
+bitsadmin Transfer
+bitsadmin util
+bitsadmin wrap bootcfg
+bootcfg addsw
+bootcfg copy
+bootcfg dbg1394
+bootcfg debug
+  bootcfg default
+bootcfg delete
+bootcfg ems
+bootcfg query
+bootcfg raw
+bootcfg rmsw
+bootcfg timeout break
+C cacls
+call
+cd
+certreq
+certutil
+change
+change logon
+change port
+change user chcp
+chdir
+chglogon
+chgport
+chgusr
+chkdsk
+chkntfs
+choice
+cipher
+cleanmgr
+clip
+cls
+Cmd
+cmdkey
+cmstp
+color
+comp
+compact
+convert
+copy
+cprofile
+cscript
+D date
+dcgpofix
+defrag
+del
+dfsrmig
+diantz
+dir
+diskcomp
+diskcopy
+diskpart
+diskperf
+diskraid
+diskshadow
+dispdiag
+dnscmd
+doskey
+driverquery
+E echo
+edit
+endlocal
+erase
+eventcreate
+eventquery
+eventtriggers
+evntcmd
+exit
+expand
+extract
+F fc
+find
+findstr
+finger
+flattemp
+fondue
+for
+forfiles
+format
+freedisk
+fsutil
+fsutil 8dot3name
+ fsutil behavior
+ fsutil file
+fsutil fsinfo
+fsutil hardlink
+fsutil objectid
+fsutil quota
+fsutil repair
+fsutil reparsepoint
+fsutil resource
+fsutil sparse
+fsutil tiering
+fsutil transaction
+fsutil usn
+fsutil volume
+fsutil wim ftp
+ftype
+fveupdate
+G getmac
+gettype
+goto
+gpfixup
+gpresult
+gpupdate
+graftabl
+H help
+helpctr
+hostname
+I icacls
+if
+inuse
+ipconfig
+ipxroute
+irftp
+J jetpack
+K klist
+ksetup
+ksetup:setrealm
+ksetup:mapuser
+ksetup:addkdc
+ksetup:delkdc
+ksetup:addkpasswd
+ksetup:delkpasswd
+ksetup:server
+ksetup:setcomputerpassword
+ksetup:removerealm
+ksetup:domain
+ksetup:changepassword
+ksetup:listrealmflags
+ksetup:setrealmflags
+ksetup:addrealmflags
+ksetup:delrealmflags
+ksetup:dumpstate
+ksetup:addhosttorealmmap
+ksetup:delhosttorealmmap
+ksetup:setenctypeattr
+ksetup:getenctypeattr
+ksetup:addenctypeattr
+ksetup:delenctypeattr ktmutil
+ktpass
+L label
+lodctr
+logman
+logman create
+logman query
+logman start &amp;124; stop
+logman delete
+logman update
+logman import &amp;124; export logoff
+lpq
+lpr
+M macfile
+makecab
+manage-bde
+manage-bde: status
+manage-bde: on
+manage-bde: off
+manage-bde: pause
+manage-bde: resume
+manage-bde: lock
+manage-bde: unlock
+manage-bde: autounlock
+manage-bde: protectors
+manage-bde: tpm
+manage-bde: setidentifier
+manage-bde: ForceRecovery
+manage-bde: changepassword
+manage-bde: changepin
+manage-bde: changekey
+manage-bde: KeyPackage
+manage-bde: upgrade
+manage-bde: WipeFreeSpace mapadmin
+Md
+mkdir
+mklink
+mmc
+mode
+more
+mount
+mountvol
+move
+mqbkup
+mqsvc
+mqtgsvc
+msdt
+msg
+msiexec
+msinfo32
+mstsc
+N nbtstat
+netcfg
+netsh
+netstat
+Net print
+nfsadmin
+nfsshare
+nfsstat
+nlbmgr
+nslookup
+nslookup exit command
+nslookup finger command
+nslookup help
+nslookup ls
+nslookup lserver
+nslookup root
+nslookup server
+nslookup set
+nslookup set all
+nslookup set class
+nslookup set d2
+nslookup set debug
+nslookup set domain
+nslookup set port
+nslookup set querytype
+nslookup set recurse
+nslookup set retry
+nslookup set root
+nslookup set search
+nslookup set srchlist
+nslookup set timeout
+nslookup set type
+nslookup set vc
+nslookup view ntbackup
+ntcmdprompt
+ntfrsutl
+O openfiles
+P pagefileconfig
+path
+pathping
+pause
+pbadmin
+pentnt
+perfmon
+ping
+pnpunattend
+pnputil
+popd
+PowerShell
+PowerShell_ise
+print
+prncnfg
+prndrvr
+prnjobs
+prnmngr
+prnport
+prnqctl
+prompt
+pubprn
+pushd
+pushprinterconnections
+Q qappsrv
+qprocess
+query
+quser
+qwinsta
+R rcp
+rd
+rdpsign
+recover
+reg
+reg add
+reg compare
+reg copy
+reg delete
+reg export
+reg import
+reg load
+reg query
+reg restore
+reg save
+reg unload regini
+regsvr32
+relog
+rem
+ren
+rename
+repair-bde
+replace
+reset session
+rexec
+risetup
+rmdir
+robocopy
+route_ws2008
+rpcinfo
+rpcping
+rsh
+rundll32
+rwinsta
+S schtasks
+scwcmd
+scwcmd: analyze
+scwcmd: configure
+scwcmd: register
+scwcmd: rollback
+ scwcmd: transform
+ scwcmd: view
+ 
+
+secedit
+secedit:analyze
+secedit:configure
+secedit:export
+secedit:generaterollback
+secedit:import
+secedit:validate serverceipoptin
+Servermanagercmd
+serverweroptin
+set
+setlocal
+setx
+sfc
+shadow
+shift
+showmount
+shutdown
+sort
+start
+subst
+sxstrace
+sysocmgr
+systeminfo
+T takeown
+tapicfg
+taskkill
+tasklist
+tcmsetup
+telnet
+tftp
+time
+timeout
+title
+tlntadmn
+tpmvscmgr
+tracerpt
+tracert
+tree
+tscon
+tsdiscon
+tsecimp
+tskill
+tsprof
+type
+typeperf
+tzutil
+U unlodctr
+V ver
+verifier
+verify
+vol
+vssadmin
+-W waitfor
+wbadmin
+wbadmin enable backup
+wbadmin disable backup
+wbadmin start backup
+wbadmin stop job
+wbadmin get versions
+wbadmin get items
+wbadmin start recovery
+wbadmin get status
+wbadmin get disks
+wbadmin start systemstaterecovery
+wbadmin start systemstatebackup
+wbadmin delete systemstatebackup
+wbadmin start sysrecovery
+wbadmin restore catalog
+wbadmin delete catalog wdsutil
+wecutil
+wevtutil
+where
+whoami
+winnt
+winnt32
+winpop
+winrs
+wmic
+wscript
+X xcopy
+</pre>
 </div>
 <div created="20201123040248207" modified="20201123040256229" tags="DOC" title="YouTube">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
