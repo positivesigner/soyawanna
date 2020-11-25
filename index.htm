@@ -459,6 +459,16 @@ Error message and password prompt
 
 <li>VBNetCode\Copy File Lines</li>
 
+<li>VBNetCode\DotNet Core Compile EXE</li>
+
+<li>VBNetCode\DotNet Core Installation using Binaries</li>
+
+<li>VBNetCode\DotNet Core Installed Path</li>
+
+<li>VBNetCode\DotNet Core New Project</li>
+
+<li>VBNetCode\DotNetCore Installation using Installer</li>
+
 <li>VBNetCode\File Exists</li>
 
 <li>VBNetCode\File Size</li>
@@ -486,6 +496,8 @@ Error message and password prompt
 <li>WindowsCLI</li>
 
 <li>WindowsCLI\Command list</li>
+
+<li>WindowsCLI\Environment Variables</li>
 
 <li>YouTube</li>
 
@@ -9982,7 +9994,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201123051841262" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201125105653352" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -9994,13 +10006,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201123051841262" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201125105653352" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201123050023344" list="[[Code Samples]] AndroidMultipleUsers GitCLI [[GitCLI\Checkout hash]]" modified="20201123050023344" title="$:/StoryList">
+<div created="20201125074729814" list="[[Code Samples]] VBNetCode [[VBNetCode\DotNet Core Compile EXE]]" modified="20201125082139202" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -16041,6 +16053,314 @@ Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
 	End Using 'stmDATA
 </pre>
 </div>
+<div created="20201125101410500" modified="20201125105652746" tags="" title="VBNetCode\DotNet Core Compile EXE">
+<pre>[https://github.com/dotnet/core/issues/5409]
+
+&lt;&lt;&lt;
+In .NET 5 the single-file publish may produce more than one file and it's by design. See the expected behavior described here: 
+
+https://github.com/dotnet/designs/blob/main/accepted/2020/single-file/design.md#user-experience
+
+In 3.1 single-file is basically just a self-extracting executable - it writes everything into temp and runs from there. As such for the running app nothing really changes (everything is a file, with a path and so on).
+
+In 5 we don't write to disk by default, all managed assemblies are loaded directly from the executable. The problem is native libraries - it's technically VERY difficult to include a random .dll in an executable and run it from the executable directly.
+
+If you only take the .exe and run it, it won't work - it needs those additional files.
+
+If you need .NET 5 but want the self-extracting behavior you can set IncludeAllContentForSelfExtract=true and it will behave basically the same as in 3.1.
+
+There's also a &quot;hybrid&quot; mode IncludeNativeLibrariesForSelfExtract=true which will produce just one executable and that will write the native libraries to temp and then run.
+&lt;&lt;&lt;
+
+User-replaced value = UrProjectDir
+
+&quot;&quot;&quot;
+[Windows CLI]
+- `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true`
+- Text output -&gt;
+&quot;&quot;&quot;
+
+```
+Microsoft (R) Build Engine version 16.8.0+126527ff1 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  t3 -&gt; UrProjectDir\bin\Release\net5.0\win10-x64\UrProjectDir.dll
+  t3 -&gt; UrProjectDir\bin\Release\net5.0\win10-x64\publish\
+```
+
+&quot;&quot;&quot;
+[UrProjectDir folder]
+- New sub-folder: bin
+
+[Windows CLI]
+- To find the program location, `dir UrProjectDir.exe /s /b`
+- `copy bin\Release\net5.0\win10-x64\publish\UrProjectDir.exe .`
+- `UrProjectDir.exe`
+- Text output shows as if you ran the command `dotnet run`
+
+- Note: You can output the `System.AppContext.BaseDirectory` to find the Temp that holds the uncompressed program
+&quot;&quot;&quot;
+
+&quot;&quot;&quot;
+[Main sub]
+- `Console.WriteLine(System.AppContext.BaseDirectory)`
+
+[Windows CLI]
+- `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true`
+- `copy bin\Release\net5.0\win10-x64\publish\UrProjectDir.exe . /y`
+- `UrProjectDir.exe`
+- Text output =
+&quot;&quot;&quot;
+
+```
+C:\Users\UrUsername\AppData\Local\Temp\.net\UrProjectDir\SomeRandom-8-letters.SomeRandom-3-letters\
+```
+
+&quot;&quot;&quot;
+- Note: This folder gets created on the first run the of UrProjectDir.exe
+- - The second run starts faster because the files have already been extracted to this temporary folder
+- - You can delete the temporary folder, and running the UrProjectDir.exe will create it again.
+
+- Note: You can specify a different temporary folder by setting the Environment Variable `DOTNET_BUNDLE_EXTRACT_BASE_DIR`
+
+- `set DOTNET_BUNDLE_EXTRACT_BASE_DIR=%USERPROFILE%\Downloads\UrProjectDir\tmp`
+- Note: You can set the Environment Variable in a batch file and it will not be saved for new Windows CLI windows.
+- - To set it permanently, use `Control Panel` \ `System and Security` \ `System` \ `Advanced systems settings` \ `Advanced` tab \ `Environment Variables` button \ top or bottom section \ `New` button, Variable Name = `DOTNET_BUNDLE_EXTRACT_BASE_DIR`, Variable Value = `UrFullPathToTempDirectory`, `OK button`
+- - Trying to use a relative directory path ends up not running the executable
+
+- `UrProjectDir.exe`
+- Text output = `C:\Users\UrUsername\Downloads\UrProjectFolder\tmp\UrProjectFolder\SomeRandom-8-letters.SomeRandom-3-letters\`
+- `dir tmp /s`
+- Text output = 23 Files, 8 Dirs
+
+- [Remove the temporary files in the UrProjectDir]
+- `rd bin /s /q`
+- `rd obj /s /q`
+- `rd tmp /s /q`
+</pre>
+</div>
+<div created="20201125081506890" modified="20201125081527151" tags="" title="VBNetCode\DotNet Core Installation using Binaries">
+<pre>&quot;&quot;&quot;
+[https://docs.microsoft.com/en-us/dotnet/core/install/windows?tabs=net50]
+&quot;&quot;&quot;
+
+&lt;&lt;&lt;
+As an alternative to the Windows installers for .NET, you can download and manually install the SDK or runtime. Manual install is usually performed as part of continuous integration testing. For a developer or user, it's generally better to use an installer.
+
+Both .NET SDK and .NET Runtime can be manually installed after they've been downloaded. If you install .NET SDK, you don't need to install the corresponding runtime. First, download a binary release for either the SDK or the runtime from one of the following sites:
+
+https://dotnet.microsoft.com/download/dotnet/5.0
+
+https://dotnet.microsoft.com/download/dotnet-core
+
+Create a directory to extract .NET to, for example %USERPROFILE%\dotnet. Then, extract the downloaded zip file into that directory.
+
+By default, .NET CLI commands and apps won't use .NET installed in this way and you must explicitly choose to use it. To do so, change the environment variables with which an application is started:
+
+```
+set DOTNET_ROOT=%USERPROFILE%\dotnet
+set PATH=%USERPROFILE%\dotnet;%PATH%
+set DOTNET_MULTILEVEL_LOOKUP=0
+```
+
+This approach lets you install multiple versions into separate locations, then explicitly choose which install location an application should use by running the application with environment variables pointing at that location.
+
+When DOTNET_MULTILEVEL_LOOKUP is set to 0, .NET ignores any globally installed .NET version. Remove that environment setting to let .NET consider the default global install location when selecting the best framework for running the application. The default is typically C:\Program Files\dotnet, which is where the installers install .NET.
+&lt;&lt;&lt;
+
+&quot;&quot;&quot;
+[https://docs.microsoft.com/en-us/dotnet/core/install/how-to-detect-installed-versions?pivots=os-windows]
+&quot;&quot;&quot;
+
+&lt;&lt;&lt;
+When you install .NET from an installer or script, it's installed to a standard folder. Much of the time the installer or script you're using to install .NET gives you an option to install to a different folder. If you choose to install to a different folder, adjust the start of the folder path.
+
+dotnet executable in C:\program files\dotnet\dotnet.exe
+
+.NET SDK in C:\program files\dotnet\sdk\{version}\
+
+.NET Runtime in C:\program files\dotnet\shared\{runtime-type}\{version}\
+&lt;&lt;&lt;
+</pre>
+</div>
+<div created="20201125081724693" modified="20201125081748341" tags="" title="VBNetCode\DotNet Core Installed Path">
+<pre>[Windows CLI]
+
+```
+dotnet --info
+```
+
+- [text output]
+
+```
+.NET Core SDK (reflecting any global.json):
+ Version:   3.1.401
+ Commit:    5b6f5e5005
+
+Runtime Environment:
+ OS Name:     Windows
+ OS Version:  10.0.18363
+ OS Platform: Windows
+ RID:         win10-x64
+ Base Path:   C:\Program Files\dotnet\sdk\3.1.401\
+
+Host (useful for support):
+  Version: 3.1.7
+  Commit:  fcfdef8d6b
+
+.NET Core SDKs installed:
+  3.1.301 [C:\Program Files\dotnet\sdk]
+  3.1.401 [C:\Program Files\dotnet\sdk]
+
+.NET Core runtimes installed:
+  Microsoft.AspNetCore.All 2.1.21 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.All]
+  Microsoft.AspNetCore.App 2.1.21 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 3.1.5 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.AspNetCore.App 3.1.7 [C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App]
+  Microsoft.NETCore.App 2.1.21 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 3.1.5 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.NETCore.App 3.1.7 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]
+  Microsoft.WindowsDesktop.App 3.1.5 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+  Microsoft.WindowsDesktop.App 3.1.7 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]
+
+To install additional .NET Core runtimes or SDKs:
+  https://aka.ms/dotnet-download
+```
+</pre>
+</div>
+<div created="20201125082348650" modified="20201125101910960" tags="" title="VBNetCode\DotNet Core New Project">
+<pre>[https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new]
+
+```
+dotnet new &lt;TEMPLATE&gt; [--dry-run] [--force] [-i|--install {PATH|NUGET_ID}]
+    [-lang|--language {&quot;C#&quot;|&quot;F#&quot;|VB}] [-n|--name &lt;OUTPUT_NAME&gt;]
+    [--nuget-source &lt;SOURCE&gt;] [-o|--output &lt;OUTPUT_DIRECTORY&gt;]
+    [-u|--uninstall] [--update-apply] [--update-check] [Template options]
+```
+
+[https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new]
+
+&lt;&lt;&lt;
+You can run dotnet new --list or dotnet new -l to see a list of all installed templates. If the TEMPLATE value isn't an exact match on text in the Templates or Short Name column from the returned table, a substring match is performed on those two columns.
+
+Starting with .NET Core 3.0 SDK, the CLI searches for templates in NuGet.org when you invoke the dotnet new command in the following conditions:
+
+* If the CLI can't find a template match when invoking dotnet new, not even partial.
+* If there's a newer version of the template available. In this case, the project or artifact is created but the CLI warns you about an updated version of the template.
+&lt;&lt;&lt;
+
+[https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli]
+
+&quot;&quot;&quot;
+User-replaced value = UrProjectDir
+
+[Windows CLI]
+- `cd %USERPROFILE%\Downloads`
+- [User Downloads folder]
+- `md UrProjectDir`
+- `cd UrProjectDir`
+- `dotnet new console --language VB`
+- Text output =
+&quot;&quot;&quot;
+
+```
+Getting ready...
+The template &quot;Console Application&quot; was created successfully.
+
+Processing post-creation actions...
+Running 'dotnet restore' on C:\Users\Dad\Downloads\t3\t3.vbproj...
+  Determining projects to restore...
+  Restored C:\Users\Dad\Downloads\t3\t3.vbproj (in 65 ms).
+Restore succeeded.
+```
+
+&quot;&quot;&quot;
+[UrProjectDir folder]
+- New files: UrProjectDir.vbproj and Program.vb
+- New sub-folder: obj
+
+[Windows CLI]
+- `dotnet add package Figgle`
+- Text output =
+&quot;&quot;&quot;
+
+```
+  Determining projects to restore...
+  Writing C:\Users\Dad\AppData\Local\Temp\tmpE018.tmp
+info : Adding PackageReference for package 'Figgle' into project 'C:\Users\Dad\Downloads\t3\t3.vbproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/figgle/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/figgle/index.json 104ms
+info : Restoring packages for C:\Users\Dad\Downloads\t3\t3.vbproj...
+
+info : Installing runtime.osx.10.10-x64.runtime.native.System.Security.Cryptography.Apple 4.3.0.
+info : Installing runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl 4.3.0.
+
+info : Package 'Figgle' is compatible with all the specified frameworks in project 'C:\Users\Dad\Downloads\t3\t3.vbproj'.
+info : PackageReference for package 'Figgle' version '0.4.0' added to file 'C:\Users\Dad\Downloads\t3\t3.vbproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: C:\Users\Dad\Downloads\t3\obj\project.assets.json
+log  : Restored C:\Users\Dad\Downloads\t3\t3.vbproj (in 8.04 sec).
+```
+
+&quot;&quot;&quot;
+[Program.vb file]
+- [Main sub]
+&quot;&quot;&quot;
+
+```
+Console.WriteLine(Figgle.FiggleFonts.Standard.Render(&quot;Hello, World!&quot;))
+```
+
+&quot;&quot;&quot;
+[Windows CLI]
+- `dotnet run`
+- If you did not enter the program line incorrectly, Text output =
+&quot;&quot;&quot;
+
+```
+Program.vb(5,79): error BC30037: Character is not valid.
+
+The build failed. Fix the build errors and run again.
+```
+
+&quot;&quot;&quot;
+- If you entered the program line correctly, Text output shows Hello World in a large font
+&quot;&quot;&quot;
+</pre>
+</div>
+<div created="20201125081406466" modified="20201125082136438" tags="" title="VBNetCode\DotNetCore Installation using Installer">
+<pre>&quot;&quot;&quot;
+[https://dotnet.microsoft.com/platform/support/policy/dotnet-core]
+- 2020m11d24: .NET 5 is the current version of DotNet Core. It was released on November 10, 2020.
+
+[https://dotnet.microsoft.com/download/dotnet-core]
+- [Supported versions, record Version = .NET 5.0]
+- Click link .NET 5.0 -&gt; Navigates page
+
+[https://dotnet.microsoft.com/download/dotnet/5.0]
+- [record Release Information = v5.0.0, Build Apps column]
+- [SDK grid, record OS = Windows]
+- Click link x86 -&gt; Navigates page
+
+[https://dotnet.microsoft.com/download/dotnet/thank-you/sdk-5.0.100-windows-x64-installer]
+- Auto-download started -&gt; Saves file
+
+[Local Computer Downloads folder]
+- [filename = dotnet-sdk-5.0.100-win-x64.exe]
+- Run program -&gt; Opens form
+
+[Microsoft .NET SDK 5.0.100 (x64) Installer window]
+- Click button Install -&gt; Windows dialog
+- Question: Do you want to allow the program to make changes to your computer?
+- Click button Yes -&gt; Closes dialog
+- Wait for progress bar to complete -&gt; Navigates page
+- Note: Installation was successful
+- Click button Close -&gt; Closes window
+
+[[VBNetCode\DotNet Core Installed Path]]</pre>
+</div>
 <div created="20201120085802844" modified="20201120085846718" tags="" title="VBNetCode\File Exists">
 <pre>```
 Dim bolFILE_EXISTS = System.IO.File.Exists(flnDATA)</pre>
@@ -17916,6 +18236,21 @@ wmic
 wscript
 X xcopy
 </pre>
+</div>
+<div created="20201125083403339" modified="20201125083735460" tags="" title="WindowsCLI\Environment Variables">
+<pre>&quot;&quot;&quot;
+User-replaced value = UrUserName
+
+[https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1]
+- cd %USERPROFILE%
+- cd -&gt; Text output
+
+C:\Users\UrUserName\
+
+- cd %TEMP%
+- cd -&gt; Text output
+
+C:\Users\Dad\AppData\Local\Temp</pre>
 </div>
 <div created="20201123040248207" modified="20201123040256229" tags="DOC" title="YouTube">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
