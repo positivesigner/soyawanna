@@ -9994,7 +9994,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201125105653352" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201125111943195" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10006,13 +10006,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201125105653352" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201125111943195" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201125074729814" list="[[Code Samples]] VBNetCode [[VBNetCode\DotNet Core Compile EXE]]" modified="20201125082139202" title="$:/StoryList">
+<div created="20201125074729814" list="[[Code Samples]] VBNetCode [[VBNetCode\DotNet Core Compile EXE]]" modified="20201125110345180" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -16053,7 +16053,7 @@ Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
 	End Using 'stmDATA
 </pre>
 </div>
-<div created="20201125101410500" modified="20201125105652746" tags="" title="VBNetCode\DotNet Core Compile EXE">
+<div created="20201125101410500" modified="20201125111942235" tags="" title="VBNetCode\DotNet Core Compile EXE">
 <pre>[https://github.com/dotnet/core/issues/5409]
 
 &lt;&lt;&lt;
@@ -16074,9 +16074,12 @@ There's also a &quot;hybrid&quot; mode IncludeNativeLibrariesForSelfExtract=true
 
 User-replaced value = UrProjectDir
 
+[UrProjectDir folder]
+- Start with [[VBNetCode\DotNet Core New Project]]
+
 &quot;&quot;&quot;
 [Windows CLI]
-- `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true`
+- `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep`
 - Text output -&gt;
 &quot;&quot;&quot;
 
@@ -16087,17 +16090,17 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Determining projects to restore...
   All projects are up-to-date for restore.
   t3 -&gt; UrProjectDir\bin\Release\net5.0\win10-x64\UrProjectDir.dll
-  t3 -&gt; UrProjectDir\bin\Release\net5.0\win10-x64\publish\
+  t3 -&gt; UrProjectDir\Dep\
 ```
 
 &quot;&quot;&quot;
 [UrProjectDir folder]
-- New sub-folder: bin
+- New sub-folders: bin, Dep
+- Note: The compiled program is in the Dep subfolder named UrProjectDir.exe
+- - The UrProjectDir.pdb file is used for debugging purposes and would not normally be deployed with your EXE file
 
 [Windows CLI]
-- To find the program location, `dir UrProjectDir.exe /s /b`
-- `copy bin\Release\net5.0\win10-x64\publish\UrProjectDir.exe .`
-- `UrProjectDir.exe`
+- `Dep\UrProjectDir.exe`
 - Text output shows as if you ran the command `dotnet run`
 
 - Note: You can output the `System.AppContext.BaseDirectory` to find the Temp that holds the uncompressed program
@@ -16108,9 +16111,17 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 - `Console.WriteLine(System.AppContext.BaseDirectory)`
 
 [Windows CLI]
-- `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true`
-- `copy bin\Release\net5.0\win10-x64\publish\UrProjectDir.exe . /y`
-- `UrProjectDir.exe`
+- `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep`
+- Note: If running DotNet Core 3.1,
+- - `dotnet publish -c Release -r win-x64 -p:PublishReadyToRun=true -p:PublishSingleFile=true`
+- -  The &quot;--self-contained&quot; option is incompatible with the &quot;-p:PublishReadyToRun=true&quot; and &quot;-p:PublishSingleFile=true&quot; options
+
+- Note: When you choose the Portable publish option, you'll get a package that is capable of running on either x86 (32-bit) machines and x64 (64-bit) machines
+- - The next run would have to JIT compile the application again as it is used
+- - The advantage here is that you'd only need to distribute one package, and it'll run on both x86/x64 machines
+- - `dotnet publish -c Release -r portable --self-contained`
+
+- `Dep\UrProjectDir.exe`
 - Text output =
 &quot;&quot;&quot;
 
@@ -16230,17 +16241,8 @@ To install additional .NET Core runtimes or SDKs:
 ```
 </pre>
 </div>
-<div created="20201125082348650" modified="20201125101910960" tags="" title="VBNetCode\DotNet Core New Project">
+<div created="20201125082348650" modified="20201125110628363" tags="" title="VBNetCode\DotNet Core New Project">
 <pre>[https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new]
-
-```
-dotnet new &lt;TEMPLATE&gt; [--dry-run] [--force] [-i|--install {PATH|NUGET_ID}]
-    [-lang|--language {&quot;C#&quot;|&quot;F#&quot;|VB}] [-n|--name &lt;OUTPUT_NAME&gt;]
-    [--nuget-source &lt;SOURCE&gt;] [-o|--output &lt;OUTPUT_DIRECTORY&gt;]
-    [-u|--uninstall] [--update-apply] [--update-check] [Template options]
-```
-
-[https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new]
 
 &lt;&lt;&lt;
 You can run dotnet new --list or dotnet new -l to see a list of all installed templates. If the TEMPLATE value isn't an exact match on text in the Templates or Short Name column from the returned table, a substring match is performed on those two columns.
@@ -16259,9 +16261,7 @@ User-replaced value = UrProjectDir
 [Windows CLI]
 - `cd %USERPROFILE%\Downloads`
 - [User Downloads folder]
-- `md UrProjectDir`
-- `cd UrProjectDir`
-- `dotnet new console --language VB`
+- `dotnet new console -lang VB -o UrProjectDir`
 - Text output =
 &quot;&quot;&quot;
 
@@ -16270,13 +16270,15 @@ Getting ready...
 The template &quot;Console Application&quot; was created successfully.
 
 Processing post-creation actions...
-Running 'dotnet restore' on C:\Users\Dad\Downloads\t3\t3.vbproj...
+Running 'dotnet restore' on C:\Users\UrUsername\Downloads\UrProjectDir\UrProjectDir.vbproj...
   Determining projects to restore...
-  Restored C:\Users\Dad\Downloads\t3\t3.vbproj (in 65 ms).
+  Restored C:\Users\UrUsername\Downloads\UrProjectDir\UrProjectDir.vbproj (in 65 ms).
 Restore succeeded.
 ```
 
 &quot;&quot;&quot;
+- `cd UrProjectDir`
+
 [UrProjectDir folder]
 - New files: UrProjectDir.vbproj and Program.vb
 - New sub-folder: obj
