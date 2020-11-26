@@ -195,11 +195,15 @@ Error message and password prompt
 
 <li>$:/state/tab/sidebar--595412856</li>
 
+<li>$:/state/UrNotePK</li>
+
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
 
 <li>$:/temp/info-plugin</li>
+
+<li>$:/temp/NewTagName</li>
 
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
@@ -377,6 +381,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\Backlink to HTML,HTM</li>
 
+<li>TiddlyWiki\Button Set Field</li>
+
 <li>TiddlyWiki\Character List</li>
 
 <li>TiddlyWiki\Clipboard Copy</li>
@@ -502,6 +508,8 @@ Error message and password prompt
 <li>WindowsCLI\Command list</li>
 
 <li>WindowsCLI\Environment Variables</li>
+
+<li>WindowsCLI\Unicode characters</li>
 
 <li>YouTube</li>
 
@@ -9998,7 +10006,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201126014317314" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201126042914778" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10010,13 +10018,16 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201126014317314" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201126042914778" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
+</div>
+<div created="20201126041406589" modified="20201126041416939" title="$:/state/UrNotePK">
+<pre>no</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201125074729814" list="[[Code Samples]] WindowsCLI VBNetCode [[VBNetCode\DotNet Core Compile EXE]] [[WindowsCLI\Batch Replacement Parameters]] [[WindowsCLI\Command line hide Errors]]" modified="20201126005828045" title="$:/StoryList">
+<div created="20201126032510099" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\DivPop btn]] [[TiddlyWiki\Character List]] WindowsCLI [[WindowsCLI\Unicode characters]] [[TiddlyWiki\Button Set Field]]" modified="20201126041248694" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10076,6 +10087,9 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20201126032539462" modified="20201126032539462" title="$:/temp/NewTagName">
+<pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.22">
 <pre>{
@@ -14686,13 +14700,56 @@ End Namespace 'Mx
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201122103148931" modified="20201122103206345" tags="" title="TiddlyWiki\Character List">
+<div created="20201126041258745" modified="20201126041434802" tags="" title="TiddlyWiki\Button Set Field">
+<pre>```
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/UrNotePK&quot; text=&quot;yes&quot;/&gt;
+Set UrNotePK = yes
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/UrNotePK&quot; text=&quot;no&quot;/&gt;
+Set UrNotePK = no
+&lt;/$button&gt;
+</pre>
+</div>
+<div created="20201122103148931" modified="20201126042910329" tags="" title="TiddlyWiki\Character List">
 <pre>```
 \define CharRef(ur_code)
 &lt;div style=&quot;display: inline-block&quot;&gt;[&amp;#$ur_code$;]&lt;br&gt;,,$ur_code$,,&lt;/div&gt;
 \end
 
-&lt;$list filter=&quot;[range[128]subtract[1]multiply[128]]&quot; variable=cur_block&gt;
+https://en.wikipedia.org/wiki/Unicode_block
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;0&quot;/&gt;
+Show Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;65536&quot;/&gt;
+Show Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;131072&quot;/&gt;
+Show Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;196608&quot;/&gt;
+Show Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
+&lt;/$button&gt;
+
+Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
+
+Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
+
+Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+&lt;$list filter=&quot;[range[512]subtract[1]add{$:/state/mcr CharRef CharacterListBase}multiply[128]]&quot; variable=cur_block&gt;
 &lt;h2&gt;&lt;&lt;cur_block&gt;&gt;&lt;/h2&gt;
 &lt;$list filter=&quot;[range[128]subtract[1]] +[add&lt;cur_block&gt;] &quot; variable=cur_code&gt;
 &lt;$macrocall $name=CharRef ur_code=&lt;&lt;cur_code&gt;&gt; /&gt;
@@ -18356,6 +18413,71 @@ C:\Users\UrUserName\AppData\Local\Temp
 C:\Users\UrUserName\AppData\Roaming
 ```
 </pre>
+</div>
+<div created="20201126032511213" modified="20201126040210043" tags="" title="WindowsCLI\Unicode characters">
+<pre>&quot;&quot;&quot;
+[Program.cmd file]
+- [Use the Unicode UTF-8 codepage]
+- 'chcp 56001'
+
+[https://conemu.github.io/en/AltNumpad.html]
+- [Use the standard Windows ANSI Character input]
+- Hold down Alt key, then type the Decimal sequence using only the 0-9 on the Numeric Keypad
+- - Note: This only works for the first 255 characters of the current Windows code page
+
+- [Enable Alt-Numeric Keypad input of Unicode Characters]
+- [RegEdit.exe]
+- Navigate to`HKEY_CURRENT_USER\Control Panel\Input Method`
+- New String Value
+- - name = EnableHexNumpad
+- - value = `1`
+
+- Reboot your computer
+
+- [Within any application]
+- Turn on Numlock
+- Hold down Alt key, then type the Numeric Keypad Plus (+) key and the Hexadecimal sequence using only the letters A-F on the main keyboard and 0-9 on the Numeric Keypad
+
+[https://www.fileformat.info/tool/unicodeinput/index.htm]
+- Click link &quot;Right here&quot; -&gt; Downloads file
+- - [https://www.fileformat.info/tool/unicodeinput/unicodeinput.zip]
+
+[Downloads folder]
+- [unicodeinput.zip]
+- Unpack ZIP file
+- [unicodeinput.exe]
+- Run program -&gt; Opens window
+- Close window -&gt; Shows in system tray as `blue circle with white lowercase letter i`
+
+[In any program]
+- Hold down Alt key, the type the Numeric Keypad Plus (+) key -&gt; Opens window
+- U+ = hex code for Unicode character
+- Click button Send -&gt; Closes window, types Unicode character in desired program
+
+[https://www.generacodice.com/en/articolo/203149/How-to-use-unicode-characters-in-Windows-command-line]
+- HEX input delivers a character on KeyUp of Alt; all the other ways to deliver a character happen on KeyDown; so many applications are not ready to see a character on KeyUp. (Only applicable to applications using Console-I/O API.)
+- - Conclusion: many application would not react on HEX input events.
+- - Unless your keyboard layout supports input of A LOT of characters without prefix keys, some buggy applications may skip characters when you Paste via Console’s UI
+
+- One should also keep in mind that the “alternative, ‘more capable’ consoles” for Windows are not consoles at all. They do not support Console-I/O APIs, so the programs which rely on these APIs to work would not function. (The programs which use only “File-I/O APIs to the console filehandles” would work fine, though.)
+- - One example of such non-console is a part of MicroSoft’s Powershell. 
+
+[Change the default Codepage of Windows console]
+- [RegEdit.exe]
+- Navigate to `HKEY_CURRENT_USER\Software\Microsoft\Command Processor`
+- New String Value
+- - Name = Autorun
+- - Value = chcp 65001.
+
+- [Windows CLI]
+- `@chcp 65001&gt;nul`
+
+- Note: Actually, the trick is that the command prompt actually understands these non-english characters, just can't display them correctly
+- - When I enter a path in the command prompt that contains some non-english chracters it is displayed as &quot;?? ?????? ?????&quot;
+- - When you submit your command (cd &quot;??? ?????? ?????&quot; in my case), everything is working as expected
+
+[https://devblogs.microsoft.com/commandline/introducing-windows-terminal/]
+- Windows Terminal is a new, modern, fast, efficient, powerful, and productive terminal application for users of command-line tools and shells like Command Prompt, PowerShell, and WSL.</pre>
 </div>
 <div created="20201123040248207" modified="20201123040256229" tags="DOC" title="YouTube">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
