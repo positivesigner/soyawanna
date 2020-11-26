@@ -10829,19 +10829,25 @@ Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">VBNetCode\DotNet Core Compile EXE</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 3:19am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 4:36pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
 <div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://github.com/dotnet/core/issues/5409" rel="noopener noreferrer" target="_blank">https://github.com/dotnet/core/issues/5409</a>]</p><blockquote class="tc-quote"><p>In .NET 5 the single-file publish may produce more than one file and it's by design. See the expected behavior described here: </p><p><a class="tc-tiddlylink-external" href="https://github.com/dotnet/designs/blob/main/accepted/2020/single-file/design.md#user-experience" rel="noopener noreferrer" target="_blank">https://github.com/dotnet/designs/blob/main/accepted/2020/single-file/design.md#user-experience</a></p><p>In 3.1 single-file is basically just a self-extracting executable - it writes everything into temp and runs from there. As such for the running app nothing really changes (everything is a file, with a path and so on).</p><p>In 5 we don't write to disk by default, all managed assemblies are loaded directly from the executable. The problem is native libraries - it's technically VERY difficult to include a random .dll in an executable and run it from the executable directly.</p><p>If you only take the .exe and run it, it won't work - it needs those additional files.</p><p>If you need .NET 5 but want the self-extracting behavior you can set IncludeAllContentForSelfExtract=true and it will behave basically the same as in 3.1.</p><p>There's also a &quot;hybrid&quot; mode IncludeNativeLibrariesForSelfExtract=true which will produce just one executable and that will write the native libraries to temp and then run.
 </p></blockquote><p>User-replaced value = UrProjectDir</p><p>[UrProjectDir folder]
-- Start with <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNetCode%5CDotNet%20Core%20New%20Project">VBNetCode\DotNet Core New Project</a></p><p>[Windows CLI]<br>- <code>dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep</code><br>- Text output -&gt;<br></p><pre><code>Microsoft (R) Build Engine version 16.8.0+126527ff1 for .NET
+- Start with <a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNetCode%5CDotNet%20Core%20New%20Project">VBNetCode\DotNet Core New Project</a></p><p>[Windows CLI]<br>- [Compile into an EXE]<br>- <code>dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep</code><br>- Text output -&gt;<br></p><pre><code>Microsoft (R) Build Engine version 16.8.0+126527ff1 for .NET
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Determining projects to restore...
   All projects are up-to-date for restore.
   t3 -&gt; UrProjectDir\bin\Release\net5.0\win10-x64\UrProjectDir.dll
-  t3 -&gt; UrProjectDir\Dep\</code></pre><p>[UrProjectDir folder]<br>- New sub-folders: bin, Dep<br>- Note: The compiled program is in the Dep subfolder named UrProjectDir.exe<br>- - The UrProjectDir.pdb file is used for debugging purposes and would not normally be deployed with your EXE file<br><br>[Windows CLI]<br>- <code>Dep\UrProjectDir.exe</code><br>- Text output shows as if you ran the command <code>dotnet run</code><br><br>- Note: You can output the <code>System.AppContext.BaseDirectory</code> to find the Temp that holds the uncompressed program<br></p><p>[Main sub]<br>- <code>Console.WriteLine(System.AppContext.BaseDirectory)</code><br><br>[Windows CLI]<br>- <code>dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep</code><br>- Note: If running DotNet Core 3.1,<br>- - <code>dotnet publish -c Release -r win-x64 -p:PublishReadyToRun=true -p:PublishSingleFile=true</code><br>- -  The &quot;–self-contained&quot; option is incompatible with the &quot;-p:PublishReadyToRun=true&quot; and &quot;-p:PublishSingleFile=true&quot; options<br><br>- Note: When you choose the Portable publish option, you'll get a package that is capable of running on either x86 (32-bit) machines and x64 (64-bit) machines<br>- - The next run would have to JIT compile the application again as it is used<br>- - The advantage here is that you'd only need to distribute one package, and it'll run on both x86/x64 machines<br>- - <code>dotnet publish -c Release -r portable --self-contained</code><br><br>- <code>Dep\UrProjectDir.exe</code><br>- Text output =<br></p><pre><code>C:\Users\UrUsername\AppData\Local\Temp\.net\UrProjectDir\SomeRandom-8-letters.SomeRandom-3-letters\</code></pre><p>- Note: This folder gets created on the first run the of UrProjectDir.exe<br>- - The second run starts faster because the files have already been extracted to this temporary folder<br>- - You can delete the temporary folder, and running the UrProjectDir.exe will create it again.<br><br>- Note: You can specify a different temporary folder by setting the Environment Variable <code>DOTNET_BUNDLE_EXTRACT_BASE_DIR</code><br><br>- <code>set DOTNET_BUNDLE_EXTRACT_BASE_DIR=%USERPROFILE%\Downloads\UrProjectDir\tmp</code><br>- Note: You can set the Environment Variable in a batch file and it will not be saved for new Windows CLI windows.<br>- - To set it permanently, use <code>Control Panel</code> \ <code>System and Security</code> \ <code>System</code> \ <code>Advanced systems settings</code> \ <code>Advanced</code> tab \ <code>Environment Variables</code> button \ top or bottom section \ <code>New</code> button, Variable Name = <code>DOTNET_BUNDLE_EXTRACT_BASE_DIR</code>, Variable Value = <code>UrFullPathToTempDirectory</code>, <code>OK button</code><br>- - Trying to use a relative directory path ends up not running the executable<br><br>- <code>UrProjectDir.exe</code><br>- Text output = <code>C:\Users\UrUsername\Downloads\UrProjectFolder\tmp\UrProjectFolder\SomeRandom-8-letters.SomeRandom-3-letters\</code><br>- <code>dir tmp /s</code><br>- Text output = 23 Files, 8 Dirs<br><br>- [Remove the temporary files in the UrProjectDir]<br>- <code>rd bin /s /q</code><br>- <code>rd obj /s /q</code><br>- <code>rd tmp /s /q</code><br></p></div>
+  t3 -&gt; UrProjectDir\Dep\</code></pre><p>[UrProjectDir folder]<br>- [Look for the new folders]<br>- New sub-folders: bin, Dep<br>- Note: The compiled program is in the Dep subfolder named UrProjectDir.exe<br>- - The UrProjectDir.pdb file is used for debugging purposes and would not normally be deployed with your EXE file<br><br>[Windows CLI]<br>- [Remove the temporary folders in the UrProjectDir]<br>- <code>rd bin /s /q</code><br>- <code>rd obj /s /q</code><br>- [Run the project]<br>- <code>Dep\UrProjectDir.exe</code><br>- Text output shows as if you ran the command <code>dotnet run</code><br><br>- Note: You can output the <code>System.AppContext.BaseDirectory</code> to find the Temp that holds the uncompressed program<br></p><p>[Program.vb file]<br>- [Replaces lines in Main sub]<br>- <code>Console.WriteLine(System.AppContext.BaseDirectory)</code><br><br>[Windows CLI]<br>- [Compile into an EXE]<br>- <code>dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep</code><br>- Note: If running DotNet Core 3.1,<br>- - <code>dotnet publish -c Release -r win-x64 -p:PublishReadyToRun=true -p:PublishSingleFile=true</code><br>- -  The &quot;–self-contained&quot; option is incompatible with the &quot;-p:PublishReadyToRun=true&quot; and &quot;-p:PublishSingleFile=true&quot; options<br><br>- Note: When you choose the Portable publish option, you'll get a package that is capable of running on either x86 (32-bit) machines and x64 (64-bit) machines<br>- - The next run would have to JIT compile the application again as it is used<br>- - The advantage here is that you'd only need to distribute one package, and it'll run on both x86/x64 machines<br>- - <code>dotnet publish -c Release -r portable --self-contained</code><br><br>- [Remove the temporary folders in the UrProjectDir]<br>- <code>rd bin /s /q</code><br>- <code>rd obj /s /q</code><br>- [Run the project]<br>- <code>Dep\UrProjectDir.exe</code><br>- Text output =<br></p><pre><code>C:\Users\UrUsername\AppData\Local\Temp\.net\UrProjectDir\SomeRandom-8-letters.SomeRandom-3-letters\</code></pre><p>- Note: This folder gets created on the first run the of UrProjectDir.exe<br>- - The second run starts faster because the files have already been extracted to this temporary folder<br>- - You can delete the temporary folder, and running the UrProjectDir.exe will create it again.<br><br>- Note: You can specify a different temporary folder by setting the Environment Variable <code>DOTNET_BUNDLE_EXTRACT_BASE_DIR</code><br><br>- <code>SET DOTNET_BUNDLE_EXTRACT_BASE_DIR=%USERPROFILE%\Downloads\UrProjectDir\tmp</code><br>- Note: You can set the Environment Variable in a batch file and it will not be saved for new Windows CLI windows.<br>- - To set it permanently, use <code>Control Panel</code> \ <code>System and Security</code> \ <code>System</code> \ <code>Advanced systems settings</code> \ <code>Advanced</code> tab \ <code>Environment Variables</code> button \ top or bottom section \ <code>New</code> button, Variable Name = <code>DOTNET_BUNDLE_EXTRACT_BASE_DIR</code>, Variable Value = <code>UrFullPathToTempDirectory</code>, <code>OK button</code><br>- - Trying to use a relative directory path ends up not running the executable<br><br>- [Run the project]<br>- <code>Dep\UrProjectDir.exe</code><br>- Text output = <br></p><pre><code>C:\Users\UrUsername\Downloads\UrProjectFolder\tmp\UrProjectFolder\SomeRandom-8-letters.SomeRandom-3-letters\</code></pre><p>- [Review the size of the TMP folder]<br>- <code>dir tmp /s</code><br>- Text output = 23 Files, 8 Dirs<br><br>- [Remove the temporary directory]<br>- <code>rd tmp /s /q</code><br><br>[UrProjectDir\Dep folder]<br>- [Create a script to run the project and clean up the temporary files]<br>- New file = UrProjectDir.cmd<br><br>[UrProjectDir.cmd file]<br></p><pre><code>@@ECHO OFF
+SET CUR_DIR=%~dp0
+SET DOTNET_BUNDLE_EXTRACT_BASE_DIR=%CUR_DIR%tmp
+&quot;%CUR_DIR%UrProjectDir.exe&quot;
+rd &quot;%CUR_DIR%bin&quot; /s /q 2&gt; nul
+rd &quot;%CUR_DIR%obj&quot; /s /q 2&gt; nul
+rd &quot;%CUR_DIR%tmp&quot; /s /q 2&gt; nul</code></pre><p>[Windows CLI]<br>- [Run the clean-execution script]<br>- <code>Dep\UrProjectDir.cmd</code><br>- Note: There is no tmp subfolder<br></p></div>
 
 
 <div style="float:right;padding-left:30px;">
@@ -10913,11 +10919,11 @@ set DOTNET_MULTILEVEL_LOOKUP=0</code></pre><p>This approach lets you install mul
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">VBNetCode\DotNet Core Installed Path</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 12:17am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 3:53pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p>[Windows CLI]</p><pre><code>dotnet --info</code></pre><p>- [text output]</p><pre><code>.NET Core SDK (reflecting any global.json):
+<div class="tc-tiddler-body tc-reveal"><p>[Windows CLI]<br>- [Run the system information report]<br>- <code>dotnet --info</code><br></p><pre><code>.NET Core SDK (reflecting any global.json):
  Version:   3.1.401
  Commit:    5b6f5e5005
 
@@ -10980,18 +10986,18 @@ To install additional .NET Core runtimes or SDKs:
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">VBNetCode\DotNet Core New Project</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 3:06am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 3:52pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new</a>]</p><blockquote class="tc-quote"><p>You can run dotnet new –list or dotnet new -l to see a list of all installed templates. If the TEMPLATE value isn't an exact match on text in the Templates or Short Name column from the returned table, a substring match is performed on those two columns.</p><p>Starting with .NET Core 3.0 SDK, the CLI searches for templates in NuGet.org when you invoke the dotnet new command in the following conditions:</p><ul><li>If the CLI can't find a template match when invoking dotnet new, not even partial.</li><li>If there's a newer version of the template available. In this case, the project or artifact is created but the CLI warns you about an updated version of the template.</li></ul></blockquote><p>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli</a>]</p><p>User-replaced value = UrProjectDir<br><br>[Windows CLI]<br>- <code>cd %USERPROFILE%\Downloads</code><br>- [User Downloads folder]<br>- <code>dotnet new console -lang VB -o UrProjectDir</code><br>- Text output =<br></p><pre><code>Getting ready...
+<div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new</a>]</p><blockquote class="tc-quote"><p>You can run dotnet new –list or dotnet new -l to see a list of all installed templates. If the TEMPLATE value isn't an exact match on text in the Templates or Short Name column from the returned table, a substring match is performed on those two columns.</p><p>Starting with .NET Core 3.0 SDK, the CLI searches for templates in NuGet.org when you invoke the dotnet new command in the following conditions:</p><ul><li>If the CLI can't find a template match when invoking dotnet new, not even partial.</li><li>If there's a newer version of the template available. In this case, the project or artifact is created but the CLI warns you about an updated version of the template.</li></ul></blockquote><p>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli</a>]</p><p>User-replaced value = UrProjectDir<br><br>[Windows CLI]<br>- [Navigate to the User Downloads folder]<br>- <code>cd %USERPROFILE%\Downloads</code><br>- [Create a new DotNet Core project named UrProjectDir]<br>- <code>dotnet new console -lang VB -o UrProjectDir</code><br>- Text output =<br></p><pre><code>Getting ready...
 The template &quot;Console Application&quot; was created successfully.
 
 Processing post-creation actions...
 Running 'dotnet restore' on C:\Users\UrUsername\Downloads\UrProjectDir\UrProjectDir.vbproj...
   Determining projects to restore...
   Restored C:\Users\UrUsername\Downloads\UrProjectDir\UrProjectDir.vbproj (in 65 ms).
-Restore succeeded.</code></pre><p>- <code>cd UrProjectDir</code><br><br>[UrProjectDir folder]<br>- New files: UrProjectDir.vbproj and Program.vb<br>- New sub-folder: obj<br><br>[Windows CLI]<br>- <code>dotnet add package Figgle</code><br>- Text output =<br></p><pre><code>  Determining projects to restore...
+Restore succeeded.</code></pre><p>- [Navigate to the new UrProjectDir]<br>- <code>cd UrProjectDir</code><br><br>[UrProjectDir folder]<br>- [Look for the new files and folders]<br>- New files: UrProjectDir.vbproj and Program.vb<br>- New sub-folder: obj<br><br>[Windows CLI]<br>- [Download a dependency]<br>- <code>dotnet add package Figgle</code><br>- Text output =<br></p><pre><code>  Determining projects to restore...
   Writing C:\Users\Dad\AppData\Local\Temp\tmpE018.tmp
 info : Adding PackageReference for package 'Figgle' into project 'C:\Users\Dad\Downloads\t3\t3.vbproj'.
 info :   GET https://api.nuget.org/v3/registration5-gz-semver2/figgle/index.json
@@ -11005,7 +11011,7 @@ info : Package 'Figgle' is compatible with all the specified frameworks in proje
 info : PackageReference for package 'Figgle' version '0.4.0' added to file 'C:\Users\Dad\Downloads\t3\t3.vbproj'.
 info : Committing restore...
 info : Writing assets file to disk. Path: C:\Users\Dad\Downloads\t3\obj\project.assets.json
-log  : Restored C:\Users\Dad\Downloads\t3\t3.vbproj (in 8.04 sec).</code></pre><p>[Program.vb file]<br>- [Main sub]<br></p><pre><code>Console.WriteLine(Figgle.FiggleFonts.Standard.Render(&quot;Hello, World!&quot;))</code></pre><p>[Windows CLI]<br>- <code>dotnet run</code><br>- If you did not enter the program line incorrectly, Text output =<br></p><pre><code>Program.vb(5,79): error BC30037: Character is not valid.
+log  : Restored C:\Users\Dad\Downloads\t3\t3.vbproj (in 8.04 sec).</code></pre><p>[Program.vb file]<br>- [Replace lines in Main sub]<br>- <code>Console.WriteLine(Figgle.FiggleFonts.Standard.Render(&quot;Hello, World!&quot;))</code><br><br>[Windows CLI]<br>- [Compile into an EXE and run it]<br>- <code>dotnet run</code><br>- If you did not enter the program line incorrectly, Text output =<br></p><pre><code>Program.vb(5,79): error BC30037: Character is not valid.
 
 The build failed. Fix the build errors and run again.</code></pre><p>- If you entered the program line correctly, Text output shows Hello World in a large font<br>
 </p></div>
@@ -12792,12 +12798,88 @@ DOC
 <div class="tc-tiddler-body tc-reveal"><p><ol>
 
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#WindowsCLI%5CBatch%20Replacement%20Parameters">WindowsCLI\Batch Replacement Parameters</a></li>
+
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#WindowsCLI%5CCommand%20line%20hide%20Errors">WindowsCLI\Command line hide Errors</a></li>
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#WindowsCLI%5CCommand%20list">WindowsCLI\Command list</a></li>
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#WindowsCLI%5CEnvironment%20Variables">WindowsCLI\Environment Variables</a></li>
 
 
 </ol></p></div>
+
+
+<div style="float:right;padding-left:30px;">
+
+
+<button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" viewBox="0 0 128 128" width="22pt"><g fill-rule="evenodd"><path d="M47.544 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L66.656 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.105 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.317-5.595z"></path><path d="M8.931 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L28.041 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.104 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.316-5.595z"></path></g></svg></button>
+
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="WindowsCLI\Batch Replacement Parameters">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="WindowsCLI\Batch Replacement Parameters"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+<button class="tc-btn-invisible tc-btn-DivPop%20btn">
+
+
+
+
+
+</button> 
+</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">WindowsCLI\Batch Replacement Parameters</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 5:16pm</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>User Replacement Text = UrProgram<br><br>[Example.cmd file]<br>- SET CUR_DIR=%~dp0<br>- &quot;%CUR_DIR%UrProgram.exe&quot;<br></p></div>
+
+
+<div style="float:right;padding-left:30px;">
+
+
+<button aria-label="show sidebar" class="tc-btn-invisible" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" viewBox="0 0 128 128" width="22pt"><g fill-rule="evenodd"><path d="M47.544 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L66.656 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.105 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.317-5.595z"></path><path d="M8.931 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L28.041 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.104 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.316-5.595z"></path></g></svg></button>
+
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="WindowsCLI\Command line hide Errors">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="WindowsCLI\Command line hide Errors"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+<button class="tc-btn-invisible tc-btn-DivPop%20btn">
+
+
+
+
+
+</button> 
+</span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">WindowsCLI\Command line hide Errors</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 5:43pm</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>[Windows CLI]<br>- [Turn off standard messages being echoed to the console]<br>- <code>@@ECHO OFF</code><br><br>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/troubleshoot/cpp/redirecting-error-command-prompt" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/troubleshoot/cpp/redirecting-error-command-prompt</a>]<br>- To redirect the error message to NUL, use the following command:<br></p><pre><code>dir file.xxx 2&gt; nul</code></pre><p>- You can print the errors and standard output to a single file by using the &amp;1 command to redirect the output for STDERR to STDOUT and then sending the output from STDOUT to a file:<br></p><pre><code>dir file.xxx 1&gt; output.msg 2&gt;&amp;1</code></pre></div>
 
 
 <div style="float:right;padding-left:30px;">
@@ -12865,11 +12947,11 @@ DOC
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">WindowsCLI\Environment Variables</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 12:37am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>25th November 2020 at 5:05pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><p>User-replaced value = UrUserName<br><br>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1</a>]<br>- cd %USERPROFILE%<br>- cd -&gt; Text output<br><br>C:\Users\UrUserName\<br><br>- cd %TEMP%<br>- cd -&gt; Text output<br><br>C:\Users\Dad\AppData\Local\Temp</p></div>
+<div class="tc-tiddler-body tc-reveal"><p>[<a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1</a>]<br>- Environment variable %USERPROFILE%<br><br>User-replaced value = UrUserName<br><br>[Windows CLI]<br>- [Show the Current Directory environment variable]<br>- ECHO %CD%<br>- Text output = C:\Users\UrUserName<br><br>- [Navigate to the C:\Users\UrUserName folder]<br>- cd %USERPROFILE%<br>- cd -&gt; Text output<br></p><pre><code>C:\Users\UrUserName\</code></pre><p>- [Navigate to the C:\Users\UrUserName\AppData\Local\Temp folder]<br>- cd %TEMP%<br>- cd -&gt; Text output<br></p><pre><code>C:\Users\UrUserName\AppData\Local\Temp</code></pre><p>- [Navigate to the C:\Users\UrUserName\AppData\Roaming folder]<br>- cd %APPDATA%<br>- cd -&gt; Text output<br></p><pre><code>C:\Users\UrUserName\AppData\Roaming</code></pre></div>
 
 
 <div style="float:right;padding-left:30px;">

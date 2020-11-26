@@ -495,6 +495,10 @@ Error message and password prompt
 
 <li>WindowsCLI</li>
 
+<li>WindowsCLI\Batch Replacement Parameters</li>
+
+<li>WindowsCLI\Command line hide Errors</li>
+
 <li>WindowsCLI\Command list</li>
 
 <li>WindowsCLI\Environment Variables</li>
@@ -9994,7 +9998,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201125111943195" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201126014317314" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10006,13 +10010,13 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201125111943195" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201126014317314" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201125074729814" list="[[Code Samples]] VBNetCode [[VBNetCode\DotNet Core Compile EXE]]" modified="20201125110345180" title="$:/StoryList">
+<div created="20201125074729814" list="[[Code Samples]] WindowsCLI VBNetCode [[VBNetCode\DotNet Core Compile EXE]] [[WindowsCLI\Batch Replacement Parameters]] [[WindowsCLI\Command line hide Errors]]" modified="20201126005828045" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -16053,7 +16057,7 @@ Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
 	End Using 'stmDATA
 </pre>
 </div>
-<div created="20201125101410500" modified="20201125111942235" tags="" title="VBNetCode\DotNet Core Compile EXE">
+<div created="20201125101410500" modified="20201126003617329" tags="" title="VBNetCode\DotNet Core Compile EXE">
 <pre>[https://github.com/dotnet/core/issues/5409]
 
 &lt;&lt;&lt;
@@ -16079,6 +16083,7 @@ User-replaced value = UrProjectDir
 
 &quot;&quot;&quot;
 [Windows CLI]
+- [Compile into an EXE]
 - `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep`
 - Text output -&gt;
 &quot;&quot;&quot;
@@ -16095,11 +16100,16 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 &quot;&quot;&quot;
 [UrProjectDir folder]
+- [Look for the new folders]
 - New sub-folders: bin, Dep
 - Note: The compiled program is in the Dep subfolder named UrProjectDir.exe
 - - The UrProjectDir.pdb file is used for debugging purposes and would not normally be deployed with your EXE file
 
 [Windows CLI]
+- [Remove the temporary folders in the UrProjectDir]
+- `rd bin /s /q`
+- `rd obj /s /q`
+- [Run the project]
 - `Dep\UrProjectDir.exe`
 - Text output shows as if you ran the command `dotnet run`
 
@@ -16107,10 +16117,12 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 &quot;&quot;&quot;
 
 &quot;&quot;&quot;
-[Main sub]
+[Program.vb file]
+- [Replaces lines in Main sub]
 - `Console.WriteLine(System.AppContext.BaseDirectory)`
 
 [Windows CLI]
+- [Compile into an EXE]
 - `dotnet publish -c Release -r win10-x64 -p:PublishSingleFile=true -p:IncludeAllContentForSelfExtract=true -p:PublishTrimmed=true --output Dep`
 - Note: If running DotNet Core 3.1,
 - - `dotnet publish -c Release -r win-x64 -p:PublishReadyToRun=true -p:PublishSingleFile=true`
@@ -16121,6 +16133,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 - - The advantage here is that you'd only need to distribute one package, and it'll run on both x86/x64 machines
 - - `dotnet publish -c Release -r portable --self-contained`
 
+- [Remove the temporary folders in the UrProjectDir]
+- `rd bin /s /q`
+- `rd obj /s /q`
+- [Run the project]
 - `Dep\UrProjectDir.exe`
 - Text output =
 &quot;&quot;&quot;
@@ -16136,20 +16152,50 @@ C:\Users\UrUsername\AppData\Local\Temp\.net\UrProjectDir\SomeRandom-8-letters.So
 
 - Note: You can specify a different temporary folder by setting the Environment Variable `DOTNET_BUNDLE_EXTRACT_BASE_DIR`
 
-- `set DOTNET_BUNDLE_EXTRACT_BASE_DIR=%USERPROFILE%\Downloads\UrProjectDir\tmp`
+- `SET DOTNET_BUNDLE_EXTRACT_BASE_DIR=%USERPROFILE%\Downloads\UrProjectDir\tmp`
 - Note: You can set the Environment Variable in a batch file and it will not be saved for new Windows CLI windows.
 - - To set it permanently, use `Control Panel` \ `System and Security` \ `System` \ `Advanced systems settings` \ `Advanced` tab \ `Environment Variables` button \ top or bottom section \ `New` button, Variable Name = `DOTNET_BUNDLE_EXTRACT_BASE_DIR`, Variable Value = `UrFullPathToTempDirectory`, `OK button`
 - - Trying to use a relative directory path ends up not running the executable
 
-- `UrProjectDir.exe`
-- Text output = `C:\Users\UrUsername\Downloads\UrProjectFolder\tmp\UrProjectFolder\SomeRandom-8-letters.SomeRandom-3-letters\`
+- [Run the project]
+- `Dep\UrProjectDir.exe`
+- Text output = 
+&quot;&quot;&quot;
+
+```
+C:\Users\UrUsername\Downloads\UrProjectFolder\tmp\UrProjectFolder\SomeRandom-8-letters.SomeRandom-3-letters\
+```
+
+&quot;&quot;&quot;
+- [Review the size of the TMP folder]
 - `dir tmp /s`
 - Text output = 23 Files, 8 Dirs
 
-- [Remove the temporary files in the UrProjectDir]
-- `rd bin /s /q`
-- `rd obj /s /q`
+- [Remove the temporary directory]
 - `rd tmp /s /q`
+
+[UrProjectDir\Dep folder]
+- [Create a script to run the project and clean up the temporary files]
+- New file = UrProjectDir.cmd
+
+[UrProjectDir.cmd file]
+&quot;&quot;&quot;
+
+```
+@@ECHO OFF
+SET CUR_DIR=%~dp0
+SET DOTNET_BUNDLE_EXTRACT_BASE_DIR=%CUR_DIR%tmp
+&quot;%CUR_DIR%UrProjectDir.exe&quot;
+rd &quot;%CUR_DIR%bin&quot; /s /q 2&gt; nul
+rd &quot;%CUR_DIR%obj&quot; /s /q 2&gt; nul
+rd &quot;%CUR_DIR%tmp&quot; /s /q 2&gt; nul
+```
+
+&quot;&quot;&quot;
+[Windows CLI]
+- [Run the clean-execution script]
+- `Dep\UrProjectDir.cmd`
+- Note: There is no tmp subfolder
 </pre>
 </div>
 <div created="20201125081506890" modified="20201125081527151" tags="" title="VBNetCode\DotNet Core Installation using Binaries">
@@ -16196,14 +16242,12 @@ dotnet executable in C:\program files\dotnet\dotnet.exe
 &lt;&lt;&lt;
 </pre>
 </div>
-<div created="20201125081724693" modified="20201125081748341" tags="" title="VBNetCode\DotNet Core Installed Path">
-<pre>[Windows CLI]
-
-```
-dotnet --info
-```
-
-- [text output]
+<div created="20201125081724693" modified="20201125235353020" tags="" title="VBNetCode\DotNet Core Installed Path">
+<pre>&quot;&quot;&quot;
+[Windows CLI]
+- [Run the system information report]
+- `dotnet --info`
+&quot;&quot;&quot;
 
 ```
 .NET Core SDK (reflecting any global.json):
@@ -16241,7 +16285,7 @@ To install additional .NET Core runtimes or SDKs:
 ```
 </pre>
 </div>
-<div created="20201125082348650" modified="20201125110628363" tags="" title="VBNetCode\DotNet Core New Project">
+<div created="20201125082348650" modified="20201125235209608" tags="" title="VBNetCode\DotNet Core New Project">
 <pre>[https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new]
 
 &lt;&lt;&lt;
@@ -16259,8 +16303,9 @@ Starting with .NET Core 3.0 SDK, the CLI searches for templates in NuGet.org whe
 User-replaced value = UrProjectDir
 
 [Windows CLI]
+- [Navigate to the User Downloads folder]
 - `cd %USERPROFILE%\Downloads`
-- [User Downloads folder]
+- [Create a new DotNet Core project named UrProjectDir]
 - `dotnet new console -lang VB -o UrProjectDir`
 - Text output =
 &quot;&quot;&quot;
@@ -16277,13 +16322,16 @@ Restore succeeded.
 ```
 
 &quot;&quot;&quot;
+- [Navigate to the new UrProjectDir]
 - `cd UrProjectDir`
 
 [UrProjectDir folder]
+- [Look for the new files and folders]
 - New files: UrProjectDir.vbproj and Program.vb
 - New sub-folder: obj
 
 [Windows CLI]
+- [Download a dependency]
 - `dotnet add package Figgle`
 - Text output =
 &quot;&quot;&quot;
@@ -16308,15 +16356,11 @@ log  : Restored C:\Users\Dad\Downloads\t3\t3.vbproj (in 8.04 sec).
 
 &quot;&quot;&quot;
 [Program.vb file]
-- [Main sub]
-&quot;&quot;&quot;
+- [Replace lines in Main sub]
+- `Console.WriteLine(Figgle.FiggleFonts.Standard.Render(&quot;Hello, World!&quot;))`
 
-```
-Console.WriteLine(Figgle.FiggleFonts.Standard.Render(&quot;Hello, World!&quot;))
-```
-
-&quot;&quot;&quot;
 [Windows CLI]
+- [Compile into an EXE and run it]
 - `dotnet run`
 - If you did not enter the program line incorrectly, Text output =
 &quot;&quot;&quot;
@@ -17722,6 +17766,38 @@ End Namespace 'Mx
 <div created="20201123042118719" modified="20201123042121149" tags="DOC" title="WindowsCLI">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
+<div created="20201126010659810" modified="20201126011611076" tags="" title="WindowsCLI\Batch Replacement Parameters">
+<pre>&quot;&quot;&quot;
+User Replacement Text = UrProgram
+
+[Example.cmd file]
+- SET CUR_DIR=%~dp0
+- &quot;%CUR_DIR%UrProgram.exe&quot;
+</pre>
+</div>
+<div created="20201126012633352" modified="20201126014316501" tags="" title="WindowsCLI\Command line hide Errors">
+<pre>&quot;&quot;&quot;
+[Windows CLI]
+- [Turn off standard messages being echoed to the console]
+- `@@ECHO OFF`
+
+[https://docs.microsoft.com/en-us/troubleshoot/cpp/redirecting-error-command-prompt]
+- To redirect the error message to NUL, use the following command:
+&quot;&quot;&quot;
+
+```
+dir file.xxx 2&gt; nul
+```
+
+&quot;&quot;&quot;
+- You can print the errors and standard output to a single file by using the &amp;1 command to redirect the output for STDERR to STDOUT and then sending the output from STDOUT to a file:
+&quot;&quot;&quot;
+
+```
+dir file.xxx 1&gt; output.msg 2&gt;&amp;1
+```
+</pre>
+</div>
 <div created="20201123042121924" modified="20201123042135232" tags="" title="WindowsCLI\Command list">
 <pre>https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
 
@@ -18239,20 +18315,47 @@ wscript
 X xcopy
 </pre>
 </div>
-<div created="20201125083403339" modified="20201125083735460" tags="" title="WindowsCLI\Environment Variables">
+<div created="20201125083403339" modified="20201126010532693" tags="" title="WindowsCLI\Environment Variables">
 <pre>&quot;&quot;&quot;
+[https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1]
+- Environment variable %USERPROFILE%
+
 User-replaced value = UrUserName
 
-[https://docs.microsoft.com/en-us/windows/deployment/usmt/usmt-recognized-environment-variables#bkmk-1]
+[Windows CLI]
+- [Show the Current Directory environment variable]
+- ECHO %CD%
+- Text output = C:\Users\UrUserName
+
+- [Navigate to the C:\Users\UrUserName folder]
 - cd %USERPROFILE%
 - cd -&gt; Text output
+&quot;&quot;&quot;
 
+```
 C:\Users\UrUserName\
+```
 
+&quot;&quot;&quot;
+- [Navigate to the C:\Users\UrUserName\AppData\Local\Temp folder]
 - cd %TEMP%
 - cd -&gt; Text output
+&quot;&quot;&quot;
 
-C:\Users\Dad\AppData\Local\Temp</pre>
+```
+C:\Users\UrUserName\AppData\Local\Temp
+```
+
+&quot;&quot;&quot;
+- [Navigate to the C:\Users\UrUserName\AppData\Roaming folder]
+- cd %APPDATA%
+- cd -&gt; Text output
+&quot;&quot;&quot;
+
+```
+C:\Users\UrUserName\AppData\Roaming
+```
+</pre>
 </div>
 <div created="20201123040248207" modified="20201123040256229" tags="DOC" title="YouTube">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
