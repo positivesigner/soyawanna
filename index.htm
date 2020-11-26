@@ -383,8 +383,6 @@ Error message and password prompt
 
 <li>TiddlyWiki\Button Set Field</li>
 
-<li>TiddlyWiki\Character List</li>
-
 <li>TiddlyWiki\Clipboard Copy</li>
 
 <li>TiddlyWiki\Code View or Copy data</li>
@@ -393,17 +391,23 @@ Error message and password prompt
 
 <li>TiddlyWiki\Date Part</li>
 
+<li>TiddlyWiki\Decimal To Hex</li>
+
 <li>TiddlyWiki\Delete All Notes with Tag</li>
 
 <li>TiddlyWiki\DivPop btn</li>
 
 <li>TiddlyWiki\DivPop glbl</li>
 
+<li>TiddlyWiki\Embed Font</li>
+
 <li>TiddlyWiki\Encrypt file</li>
 
 <li>TiddlyWiki\External Link organization</li>
 
 <li>TiddlyWiki\Filter Operators</li>
+
+<li>TiddlyWiki\Fonts via URL</li>
 
 <li>TiddlyWiki\Global Macro</li>
 
@@ -449,9 +453,13 @@ Error message and password prompt
 
 <li>TiddlyWiki\TiddlySaver from Downloads</li>
 
+<li>TiddlyWiki\Unicode Character List</li>
+
 <li>TiddlyWiki\Video and Audio</li>
 
 <li>TiddlyWiki\View All notes</li>
+
+<li>TiddlyWiki\Wikify Text</li>
 
 <li>TotalCommander</li>
 
@@ -10006,7 +10014,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201126042914778" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201126062306000" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10018,7 +10026,7 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201126042914778" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201126062306001" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201126041406589" modified="20201126041416939" title="$:/state/UrNotePK">
@@ -10027,7 +10035,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201126032510099" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\DivPop btn]] [[TiddlyWiki\Character List]] WindowsCLI [[WindowsCLI\Unicode characters]] [[TiddlyWiki\Button Set Field]]" modified="20201126041248694" title="$:/StoryList">
+<div created="20201126055628035" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Decimal To Hex]] [[TiddlyWiki\Unicode Character List]]" modified="20201126062133287" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -14713,50 +14721,6 @@ Set UrNotePK = no
 &lt;/$button&gt;
 </pre>
 </div>
-<div created="20201122103148931" modified="20201126042910329" tags="" title="TiddlyWiki\Character List">
-<pre>```
-\define CharRef(ur_code)
-&lt;div style=&quot;display: inline-block&quot;&gt;[&amp;#$ur_code$;]&lt;br&gt;,,$ur_code$,,&lt;/div&gt;
-\end
-
-https://en.wikipedia.org/wiki/Unicode_block
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;0&quot;/&gt;
-Show Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;65536&quot;/&gt;
-Show Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;131072&quot;/&gt;
-Show Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;196608&quot;/&gt;
-Show Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
-&lt;/$button&gt;
-
-Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
-
-Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
-
-Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
-
-Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
-
-&lt;$list filter=&quot;[range[512]subtract[1]add{$:/state/mcr CharRef CharacterListBase}multiply[128]]&quot; variable=cur_block&gt;
-&lt;h2&gt;&lt;&lt;cur_block&gt;&gt;&lt;/h2&gt;
-&lt;$list filter=&quot;[range[128]subtract[1]] +[add&lt;cur_block&gt;] &quot; variable=cur_code&gt;
-&lt;$macrocall $name=CharRef ur_code=&lt;&lt;cur_code&gt;&gt; /&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-</pre>
-</div>
 <div created="20201122090049660" modified="20201122090539189" tags="" title="TiddlyWiki\Clipboard Copy">
 <pre>Tags = `$:/tags/Macro`
 
@@ -15030,6 +14994,47 @@ $ur_num$&lt;br&gt;
 |`[UTC]`|Time-shift the represented date to UTC. Must be at very start of format string|
 </pre>
 </div>
+<div created="20201126055630134" modified="20201126055943344" tags="" title="TiddlyWiki\Decimal To Hex">
+<pre>&quot;&quot;&quot;
+Name = mcr glbl_dec_to_hex5
+Tag = `$:/tags/Macro`
+&quot;&quot;&quot;
+
+```
+\define glbl_dec_to_hex5(ur_code)
+&lt;$list filter=&quot;[[$ur_code$]divide[16]divide[16]divide[16]divide[16]floor[]]&quot; variable=lvl_x4&gt;
+&lt;$list filter=&quot;[&lt;lvl_x4&gt;multiply[16]multiply[16]multiply[16]multiply[16]]&quot; variable=lvl_d4&gt;
+&lt;$list filter=&quot;[[$ur_code$]subtract&lt;lvl_d4&gt;divide[16]divide[16]divide[16]floor[]]&quot; variable=lvl_x3&gt;
+&lt;$list filter=&quot;[&lt;lvl_x3&gt;multiply[16]multiply[16]multiply[16]]&quot; variable=lvl_d3&gt;
+&lt;$list filter=&quot;[[$ur_code$]subtract&lt;lvl_d4&gt;subtract&lt;lvl_d3&gt;divide[16]divide[16]floor[]]&quot; variable=lvl_x2&gt;
+&lt;$list filter=&quot;[&lt;lvl_x2&gt;multiply[16]multiply[16]]&quot; variable=lvl_d2&gt;
+&lt;$list filter=&quot;[[$ur_code$]subtract&lt;lvl_d4&gt;subtract&lt;lvl_d3&gt;subtract&lt;lvl_d2&gt;divide[16]floor[]]&quot; variable=lvl_x1&gt;
+&lt;$list filter=&quot;[&lt;lvl_x1&gt;multiply[16]]&quot; variable=lvl_d1&gt;
+&lt;$list filter=&quot;[[$ur_code$]subtract&lt;lvl_d4&gt;subtract&lt;lvl_d3&gt;subtract&lt;lvl_d2&gt;subtract&lt;lvl_d1&gt;]&quot; variable=lvl_xrem&gt;
+&lt;$list filter=&quot;[range[15]butfirst[9]match&lt;lvl_x4&gt;add[55]] [range[10]subtract[1]match&lt;lvl_x4&gt;add[48]]&quot; variable=lvl_h4&gt;
+&lt;$list filter=&quot;[range[15]butfirst[9]match&lt;lvl_x3&gt;add[55]] [range[10]subtract[1]match&lt;lvl_x3&gt;add[48]]&quot; variable=lvl_h3&gt;
+&lt;$list filter=&quot;[range[15]butfirst[9]match&lt;lvl_x2&gt;add[55]] [range[10]subtract[1]match&lt;lvl_x2&gt;add[48]]&quot; variable=lvl_h2&gt;
+&lt;$list filter=&quot;[range[15]butfirst[9]match&lt;lvl_x1&gt;add[55]] [range[10]subtract[1]match&lt;lvl_x1&gt;add[48]]&quot; variable=lvl_h1&gt;
+&lt;$list filter=&quot;[range[15]butfirst[9]match&lt;lvl_xrem&gt;add[55]] [range[10]subtract[1]match&lt;lvl_xrem&gt;add[48]]&quot; variable=lvl_hrem&gt;
+&lt;$wikify name=str_hex_out text=&quot;0x&amp;#&lt;&lt;lvl_h4&gt;&gt;;-&amp;#&lt;&lt;lvl_h3&gt;&gt;;&amp;#&lt;&lt;lvl_h2&gt;&gt;;&amp;#&lt;&lt;lvl_h1&gt;&gt;;&amp;#&lt;&lt;lvl_hrem&gt;&gt;;&quot; &gt;
+&lt;&lt;str_hex_out&gt;&gt;
+&lt;/$wikify&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end</pre>
+</div>
 <div created="20201114212052546" modified="20201121115457497" tags="" title="TiddlyWiki\Delete All Notes with Tag">
 <pre>```
 &lt;$button&gt;
@@ -15093,6 +15098,30 @@ close
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$list&gt;
+</pre>
+</div>
+<div created="20201126045717527" modified="20201126050102782" tags="" title="TiddlyWiki\Embed Font">
+<pre>&quot;&quot;&quot;
+[https://tiddlywiki.narkive.com/bS0CgWKQ/tw-tw5-how-to-embed-a-font-using-font-face-and-data-url]
+- Visit: http://www.fontsquirrel.com/tools/webfont-generator
+- Upload your font file (&quot;.ttf&quot;, &quot;.eot&quot;, &quot;.woff&quot;, etc)
+- Select option &quot;Expert&quot;
+- Check the option case at CSS &gt;&gt; Base64 Encode
+- Generate your webkit -&gt; Downloads file
+
+[stylesheet.zip file]
+- Unpack ZIP file -&gt; Downloads file
+
+[stylesheet.css]
+- Note: The file's content in Base64 encoded
+
+[Wiki file]
+- Drag-drop file to import -&gt; Creates note
+- [styleshee.css note]
+- Make sure the field font-family is what you want
+- Tag = $:/tags/Stylesheet
+- Tiddler type = Plain text (text/plain)
+- Create a new note and use the font
 </pre>
 </div>
 <div created="20201120071125076" modified="20201120072023050" tags="" title="TiddlyWiki\Encrypt file">
@@ -15167,6 +15196,35 @@ subtract - treating each input title as a number, subtract from each the numeric
 sum - produce the sum of the input numbers
 trunc - truncates a list of numbers to their integer part, removing any fractional part
 untrunc - rounds a list of numbers to the next integer with largest absolute value, that is, away from zero</pre>
+</div>
+<div created="20201126044755527" modified="20201126045229581" tags="" title="TiddlyWiki\Fonts via URL">
+<pre>```
+&lt;link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'&gt;
+&lt;link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'&gt;
+&lt;link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'&gt;
+&lt;link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'&gt;
+&lt;link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'&gt;
+
+@@font-family: 'Playfair Display';
+!'Playfair Display'  1234567890 ABC abc
+@@
+
+@@font-family: 'Sofia';
+!'Sofia'  1234567890 ABC abc
+@@
+
+@@font-family: 'Alex Brush';
+!'Alex Brush'  1234567890 ABC abc
+@@
+
+@@font-family: 'Akronim';
+!'Akronim'  1234567890 ABC abc
+@@
+
+@@font-family: 'Annie Use Your Telescope';
+!'Annie Use Your Telescope'  1234567890 ABC abc
+@@
+</pre>
 </div>
 <div created="20201115020441944" modified="20201115020732573" tags="" title="TiddlyWiki\Global Macro">
 <pre>Tag = `$:/tags/Macro`
@@ -15955,6 +16013,80 @@ The program's text box shows the folder I'm polling. When it picks up a file, th
 
 It's not perfect, but definitely doable for most amateur programmers.</pre>
 </div>
+<div created="20201122103148931" modified="20201126061339292" tags="" title="TiddlyWiki\Unicode Character List">
+<pre>```
+\define CharRef(ur_code, ur_line_grouping)
+&lt;$list filter=&quot;[[$ur_code$]divide[$ur_line_grouping$]floor[]] &quot; variable=div_val&gt;
+&lt;$list filter=&quot;[[$ur_code$]divide[$ur_line_grouping$]match&lt;div_val&gt;] &quot;&gt;&lt;br&gt;&lt;sub&gt;$ur_code$
+&lt;&lt;glbl_dec_to_hex5 &quot;$ur_code$&quot;&gt;&gt;
+&lt;/sub&gt;&lt;br&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+[&amp;#$ur_code$;]
+\end
+
+https://en.wikipedia.org/wiki/Unicode_block
+
+https://en.wikipedia.org/wiki/Plane_(Unicode)
+
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef LineGrouping&quot; text=&quot;&quot;/&gt;
+Line Grouping = 10
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef LineGrouping&quot; text=&quot;16&quot;/&gt;
+Line Grouping = 16
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;&quot;/&gt;
+Clear selection
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;0&quot;/&gt;
+Show Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;65536&quot;/&gt;
+Show Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;131072&quot;/&gt;
+Show Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;196608&quot;/&gt;
+Show Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
+&lt;/$button&gt;
+
+Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
+
+Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
+
+Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+@@font-family: &quot;Lucida Console&quot;, Courier, monospace;
+&lt;$list filter=&quot;[{$:/state/mcr CharRef LineGrouping}!match[]else[10]] &quot; variable=line_grouping&gt;
+&lt;$list filter=&quot;[[$:/state/mcr CharRef CharacterListBase]get[text]!match[]]&quot;&gt;
+&lt;$list filter=&quot;[range[512]subtract[1]multiply[128]add{$:/state/mcr CharRef CharacterListBase}]&quot; variable=cur_block&gt;
+&lt;h2&gt;&lt;&lt;cur_block&gt;&gt;&lt;/h2&gt;
+&lt;$list filter=&quot;[range[128]subtract[1]] +[add&lt;cur_block&gt;] &quot; variable=cur_code&gt;
+&lt;$macrocall $name=CharRef ur_code=&lt;&lt;cur_code&gt;&gt; ur_line_grouping=&lt;&lt;line_grouping&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+
+</pre>
+</div>
 <div created="20201122113449363" modified="20201122113859524" tags="" title="TiddlyWiki\Video and Audio">
 <pre>* Title = mcr glbl_ext_av
 * Tag = `$:/tags/Macro`
@@ -15993,6 +16125,12 @@ Your browser does not support the HTML 5 audio tag.
 {{||$:/core/ui/ViewTemplate/tags}}
 &lt;$transclude mode=&quot;block&quot;/&gt;
 &lt;/$list&gt;</pre>
+</div>
+<div created="20201126055955961" modified="20201126060042675" tags="" title="TiddlyWiki\Wikify Text">
+<pre>```
+&lt;$wikify name=str_text_out text=&quot;&amp;#65;&quot;&gt;
+A = &lt;&lt;str_text_out&gt;&gt;
+&lt;/$wikify&gt;</pre>
 </div>
 <div created="20201123001257327" modified="20201123001301905" tags="DOC" title="TotalCommander">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
