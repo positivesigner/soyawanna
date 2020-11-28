@@ -195,6 +195,8 @@ Error message and password prompt
 
 <li>$:/state/tab/sidebar--595412856</li>
 
+<li>$:/state/TestText</li>
+
 <li>$:/state/UrNotePK</li>
 
 <li>$:/status/RequireReloadDueToPluginChange</li>
@@ -381,11 +383,17 @@ Error message and password prompt
 
 <li>TiddlyWiki\Backlink to HTML,HTM</li>
 
+<li>TiddlyWiki\Button navigate to Note</li>
+
 <li>TiddlyWiki\Button Set Field</li>
 
 <li>TiddlyWiki\Clipboard Copy</li>
 
 <li>TiddlyWiki\Code View or Copy data</li>
+
+<li>TiddlyWiki\Codeblock Widget</li>
+
+<li>TiddlyWiki\Compare Lines</li>
 
 <li>TiddlyWiki\Construct a Calendar</li>
 
@@ -437,6 +445,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\List Links standard</li>
 
+<li>TiddlyWiki\List Widget</li>
+
 <li>TiddlyWiki\Local Video or Audio Files</li>
 
 <li>TiddlyWiki\Published Tools</li>
@@ -450,6 +460,8 @@ Error message and password prompt
 <li>TiddlyWiki\Source Code Samples</li>
 
 <li>TiddlyWiki\Standard Text Formatting</li>
+
+<li>TiddlyWiki\Textbox field</li>
 
 <li>TiddlyWiki\TiddlySaver from Downloads</li>
 
@@ -10014,7 +10026,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201126062306000" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201128155829469" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10026,8 +10038,11 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201126062306001" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201128155829469" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
+</div>
+<div created="20201128140218595" modified="20201128140247037" title="$:/state/TestText">
+<pre></pre>
 </div>
 <div created="20201126041406589" modified="20201126041416939" title="$:/state/UrNotePK">
 <pre>no</pre>
@@ -10035,7 +10050,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201126055628035" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Decimal To Hex]] [[TiddlyWiki\Unicode Character List]]" modified="20201126062133287" title="$:/StoryList">
+<div created="20201128122620036" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Code View or Copy data]]" modified="20201128153432271" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -14708,6 +14723,31 @@ End Namespace 'Mx
 &lt;/$list&gt;
 &lt;/$list&gt;</pre>
 </div>
+<div created="20201128143514120" modified="20201128144632778" tags="" title="TiddlyWiki\Button navigate to Note">
+<pre>```
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-new-tiddler&quot; title=&quot;$:/state/Test1&quot; tags=&quot;OneTag [[Another Tag]]&quot; text=&lt;&lt;now &quot;Today is DDth, MMM YYYY&quot;&gt;&gt;/&gt;
+Create Note `$:/state/Test1` and Edit
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/Test1&quot; text=&quot;yes&quot;/&gt;
+&lt;$action-navigate $to=&quot;$:/state/Test1&quot;/&gt;
+Create Note `$:/state/Test1` and Show
+&lt;/$button&gt;
+
+[[$:/state/Test1]]
+
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;$:/state/Test1&quot;/&gt;
+Close Note: `$:/state/Test1`
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-delete-tiddler&quot; $param=&quot;$:/state/Test1&quot;/&gt;
+Delete Note: `$:/state/Test1`
+&lt;/$button&gt;</pre>
+</div>
 <div created="20201126041258745" modified="20201126041434802" tags="" title="TiddlyWiki\Button Set Field">
 <pre>```
 &lt;$button&gt;
@@ -14747,12 +14787,28 @@ Set UrNotePK = no
 &lt;/span&gt;
 \end</pre>
 </div>
-<div created="20201114122843653" modified="20201121095904665" tags="" title="TiddlyWiki\Code View or Copy data">
+<div created="20201114122843653" modified="20201128155621952" tags="" title="TiddlyWiki\Code View or Copy data">
 <pre>Title = `mcr glbl_code_split`
 
 Tags = `$:/tags/Macro`
 
 ```
+\define glbl_code_block(ur_note_pk)
+[[$ur_note_pk$]]
+&lt;$codeblock code={{$ur_note_pk$}} /&gt;
+\end
+\define glbl_code_linenum(ur_note_pk, ur_skip_count, ur_section_size, ur_disp_linenum)
+&lt;div style=&quot;clear:both&quot;&gt;[[$ur_note_pk$]]&lt;/div&gt;
+&lt;$list filter=&quot;[[$ur_skip_count$]!match[]else[0]]&quot; variable=intSKIP_COUNT&gt;
+&lt;$list filter=&quot;[[$ur_note_pk$]get[text]splitregexp[\n]butfirst&lt;intSKIP_COUNT&gt;count[]]&quot; variable=intLINE_COUNT&gt;
+&lt;$list filter=&quot;[[$ur_section_size$]!match[]!match[0]else&lt;intLINE_COUNT&gt;]&quot; variable=intSECTION_SIZE&gt;
+&lt;$list filter=&quot;[range&lt;intSECTION_SIZE&gt;]&quot; variable=intCUR_LINE&gt;
+&lt;$list filter=&quot;[&lt;intCUR_LINE&gt;subtract[1]]&quot; variable=IntREMOVE_LINE&gt;
+&lt;$list filter=&quot;[[$ur_note_pk$]get[text]splitregexp[\n]butfirst&lt;intSKIP_COUNT&gt;butfirst&lt;IntREMOVE_LINE&gt;first[]]&quot; variable=strCUR_LINE&gt;
+&lt;$list filter=&quot;[[$ur_disp_linenum$]!match[n]!match[0]]&quot;&gt;&lt;div style=&quot;float:left&quot;&gt;&lt;&lt;intCUR_LINE&gt;&gt;&lt;/div&gt;&lt;/$list&gt;
+&lt;$codeblock code=&lt;&lt;strCUR_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
 \define glbl_code_split_group(ur_note_pk, ur_skip_count)
 &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&amp;#x0022;&amp;#x0022;&amp;#x0022;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;
 &lt;/$list&gt;&lt;/$list&gt;
@@ -14876,7 +14932,149 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;!--[[WebNotes\Data]]--&gt;
 
 &lt;!--&lt;$macrocall $name=glbl_code_split ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_block &quot;UrNotePK&quot;&gt;&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_linenum &quot;UrNotePK&quot; 0 15 n&gt;&gt;--&gt;
 </pre>
+</div>
+<div created="20201128131315887" modified="20201128152907186" tags="" title="TiddlyWiki\Codeblock Widget">
+<pre>\define sample_data_e1()
+```
+sample code &quot;here&quot; and &quot;there&quot;
+```
+\end
+
+\define sample_data_e2()
+&lt;$codeblock code=&quot;&quot;&quot;sample code &quot;here&quot; and &quot;there&quot;
+&quot;&quot;&quot;/&gt;
+\end
+
+\define sample_data_e3() \define sample_data_e3() sample code &quot;here&quot; and &quot;there&quot;
+
+\define sample_data_e4()
+\define sample_data_e4()
+sample
+code &quot;&quot;&quot;here&quot;&quot;&quot;
+and &quot;there&quot;
+\end &lt;--Last line of macro
+\end
+
+\define sample_data_e5()
+&lt;$codeblock code={{{ [[UrNotePK]get[text]] }}}/&gt;
+\end
+
+&lt;$codeblock code=&lt;&lt;sample_data_e1&gt;&gt;/&gt;
+
+You can use the `&lt;$codeblock&gt;` widget to display text as the three-backticks TiddlyWiki formatting block. Make sure to put an enter at the end of the string if it ends with d-quotes.
+
+&lt;$codeblock code=&lt;&lt;sample_data_e2&gt;&gt;/&gt;
+
+If you need to show text triple d-quotes in a code string, define a macro to return the string literal instead of passing in a code string.
+
+&lt;$codeblock code=&lt;&lt;sample_data_e3&gt;&gt;/&gt;
+
+Make sure to put a leading space or some trailing comment text on any line within the macro that has `\end` by itself. Otherwise the macro definition will end early.
+
+&lt;$codeblock code=&lt;&lt;sample_data_e4&gt;&gt;/&gt;
+
+Another way to display a Note's content is by using the triple-curly-brace inclusion.
+
+&lt;$codeblock code=&lt;&lt;sample_data_e5&gt;&gt;/&gt;
+</pre>
+</div>
+<div created="20201128135346756" modified="20201128151955658" tags="" title="TiddlyWiki\Compare Lines">
+<pre>Name = mcr glbl_compare_lines
+
+Tag = `$:/tags/Macro`
+
+```
+\define glbl_compare_lines_results_table(ur_note_pk, ur_second_pk, ur_row_count)
+&lt;table&gt;&lt;tr&gt;
+&lt;th&gt;''Line''&lt;/th&gt;
+&lt;th&gt;Show text&lt;/th&gt;
+&lt;th&gt;First Side&lt;br&gt;Second Side&lt;/th&gt;
+&lt;/tr&gt;
+&lt;$list filter=&quot;[range&lt;intSECOND_COUNT&gt;subtract[1]]&quot; variable=&quot;intCUR_ENTRY&quot;&gt;
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;intCUR_ENTRY&gt;first[]]&quot; variable=&quot;strFIRST_LINE&quot;&gt;
+&lt;$list filter=&quot;[{$ur_second_pk$}splitregexp[\n]butfirst&lt;intCUR_ENTRY&gt;first[]!match&lt;strFIRST_LINE&gt;]&quot; variable=&quot;strSECOND_LINE&quot;&gt;
+&lt;tr&gt;
+&lt;td rowspan=2&gt;
+
+!!&lt;&lt;intCUR_ENTRY&gt;&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextSection1&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/CompareTextLine1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
+&lt;$list filter=&quot;[{$:/state/CompareTextLine1}!match[]else[0]]&quot; variable=intSTART_LINE&gt;&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
+&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;add[1]]&quot; variable=intNEXT_LINE&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
+&lt;&lt;intPREV_LINE&gt;&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
+&lt;&lt;intNEXT_LINE&gt;&gt;
+&lt;/$button&gt;&lt;br&gt;[[$ur_note_pk$]]&lt;br&gt;
+&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_note_pk$&quot;  ur_skip_count=&lt;&lt;intSTART_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&quot;&quot; /&gt;
+&lt;$action-navigate $to=&quot;$:/state/CompareTextSection1&quot;/&gt;
+&lt;&lt;intCUR_ENTRY&gt;&gt;
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;$codeblock code=&lt;&lt;strFIRST_LINE&gt;&gt; /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextSection2&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/CompareTextLine2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
+&lt;$list filter=&quot;[{$:/state/CompareTextLine2}!match[]else[0]]&quot; variable=intSTART_LINE&gt;
+&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
+&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;add[1]]&quot; variable=intNEXT_LINE&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
+&lt;&lt;intPREV_LINE&gt;&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
+&lt;&lt;intNEXT_LINE&gt;&gt;
+&lt;/$button&gt;&lt;br&gt;[[$ur_second_pk$]]&lt;br&gt;
+&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_second_pk$&quot;  ur_skip_count=&lt;&lt;intSTART_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&quot;&quot; /&gt;
+&lt;$action-navigate $to=&quot;$:/state/CompareTextSection2&quot;/&gt;
+&lt;&lt;intCUR_ENTRY&gt;&gt;
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;$codeblock code=&lt;&lt;strSECOND_LINE&gt;&gt; /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;
+&lt;/table&gt;
+\end
+\define glbl_compare_lines(ur_note_pk, ur_second_pk)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]count[]]&quot; variable=&quot;intFIRST_COUNT&quot;&gt;
+&lt;$list filter=&quot;[{$ur_second_pk$}splitregexp[\n]count[]]&quot; variable=&quot;intSECOND_COUNT&quot;&gt;
+&lt;$list filter=&quot;[{$ur_second_pk$}splitregexp[\n]count[]subtract&lt;intFIRST_COUNT&gt;]&quot; variable=&quot;intSECOND_EXTRA&quot;&gt;
+
+[[$ur_note_pk$]] line count: &lt;&lt;intFIRST_COUNT&gt;&gt;
+
+[[$ur_second_pk$]] line count: &lt;&lt;intSECOND_COUNT&gt;&gt;
+
+''$ur_second_pk$'' excess line count: ''&lt;&lt;intSECOND_EXTRA&gt;&gt;''
+
+&lt;$macrocall $name=glbl_compare_lines_results_table ur_note_pk=&quot;$ur_note_pk$&quot; ur_second_pk=&quot;$ur_second_pk$&quot; ur_row_count=&lt;&lt;intSECOND_COUNT&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+&lt;!--
+&lt;$edit-text tiddler=&quot;$:/state/CompareText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+&lt;$edit-text tiddler=&quot;$:/state/CompareText2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+
+&lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
+--&gt;</pre>
 </div>
 <div created="20201122082202947" modified="20201122082213730" tags="" title="TiddlyWiki\Construct a Calendar">
 <pre>```
@@ -15585,6 +15783,33 @@ alt-H
 <pre>```
 &lt;&lt;list-links filter:&quot;[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]&quot;&gt;&gt;</pre>
 </div>
+<div created="20201128124052252" modified="20201128124426206" tags="" title="TiddlyWiki\List Widget">
+<pre>! Content and Attributes
+
+The content of the `&lt;$list&gt;` widget is an optional template to use for rendering each tiddler in the list.
+
+The action of the list widget depends on the results of the filter combined with several options for specifying the template:
+
+* If the filter evaluates to an empty list, the text of the ''emptyMessage'' attribute is rendered, and all other templates are ignored
+* Otherwise, if the ''template'' attribute is specified then it is taken as the title of a tiddler to use as a template for rendering each item of the list
+* Otherwise, if the list widget content is not blank, it is used as a template for rendering each item of the list
+* Otherwise, a default template is used consisting of a `&lt;span&gt;` or `&lt;div&gt;` element wrapped around a link to the item
+
+|!Attribute |!Description |
+|filter |The [[tiddler filter|Filters]] to display |
+|template |The title of a template tiddler for transcluding each tiddler in the list. When no template is specified, the body of the ListWidget serves as the item template. With no body, a simple link to the tiddler is returned. |
+|editTemplate |An alternative template to use for [[DraftTiddlers|DraftMechanism]] in edit mode |
+|variable |The name for a [[variable|Variables]] in which the title of each listed tiddler is stored. Defaults to ''currentTiddler'' |
+|emptyMessage |Message to be displayed when the list is empty |
+|storyview |Optional name of module responsible for animating/processing the list |
+|history |The title of the tiddler containing the navigation history |
+
+!! Additional Notes and Edge Cases
+
+* If the `filter` attribute is not present then a default of `[!is[system]sort[title]]` is used
+* If the list widget is completely empty (ie only whitespace between the opening and closing tags), then it behaves as if the content were a `DIV` or a `SPAN` containing a link to the current tiddler (it’s a `DIV` if the list widget is in block mode, or a SPAN if it is in inline mode)
+* If the `template` attribute is not present then the content of the list widget will be used as the template, unless the widget is completely empty in which case a default template is used</pre>
+</div>
 <div created="20201115024816393" modified="20201115024850797" tags="" title="TiddlyWiki\Local Video or Audio Files">
 <pre>```
 &lt;video width=&quot;320&quot; height=&quot;180&quot;
@@ -15979,6 +16204,37 @@ Surrounding text with an ampersand (&amp;) and a semi-colon translate to an HTML
 ```
 
 &amp;''''lt;
+</pre>
+</div>
+<div created="20201128140041887" modified="20201128141626498" tags="" title="TiddlyWiki\Textbox field">
+<pre>\define sample_data_e1()
+&lt;$edit-text tiddler=&quot;$:/state/TestText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
+\end
+
+\define sample_data_e2()
+&lt;$edit-text tiddler=&quot;$:/state/TestText2&quot; field=text default=&quot;here&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=textarea/&gt;
+\end
+
+You can choose to edit a Note or Note's field in a single-line or multi-line textbox.
+
+* The `default` parameter is automatically placed in the textbox when the Note does not exist
+** Typing in the box will add to the default text
+** The Note will be created when the text in the box is changed
+** Otherwise the default text will not be saved
+
+* The `placeholder` parameter is shown as greyed-out text when the Note does not exist and there is no default text, or the note exists and the text field is empty
+** Typing in the box will overwrite the placeholder text
+
+Note: Editing a Note PK that starts with `$:/state/` will not be saved and does not affect the Wiki's &quot;dirty&quot; flag
+
+[[$:/state/TestText1]]
+&lt;$codeblock code=&lt;&lt;sample_data_e1&gt;&gt; /&gt;
+&lt;&lt;sample_data_e1&gt;&gt;
+
+---
+[[$:/state/TestText2]]
+&lt;$codeblock code=&lt;&lt;sample_data_e2&gt;&gt; /&gt;
+&lt;&lt;sample_data_e2&gt;&gt;
 </pre>
 </div>
 <div created="20201122082336103" modified="20201122082411727" tags="" title="TiddlyWiki\TiddlySaver from Downloads">
