@@ -183,6 +183,18 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/Compare saves</li>
+
+<li>$:/state/CompareText2</li>
+
+<li>$:/state/NewTempNote1</li>
+
+<li>$:/state/NewTempNote2</li>
+
+<li>$:/state/NewTempNoteData</li>
+
+<li>$:/state/NewTempNotePK</li>
+
 <li>$:/state/searchNreplace/replace</li>
 
 <li>$:/state/searchNreplace/search</li>
@@ -253,6 +265,8 @@ Error message and password prompt
 
 <li>Delete Existing Notes by Tag</li>
 
+<li>Display Note text lines</li>
+
 <li>DivPop btn</li>
 
 <li>DivPop glbl</li>
@@ -312,6 +326,8 @@ Error message and password prompt
 <li>keyboard action SaveAllChanges</li>
 
 <li>mcr glbl_code_split</li>
+
+<li>mcr glbl_compare_lines</li>
 
 <li>mcr glbl_ext</li>
 
@@ -9778,7 +9794,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr glbl_ext]]</pre>
+# [[Font Size]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9830,6 +9846,166 @@ Error message and password prompt
 <div created="20201114050937337" modified="20201114085332837" title="$:/SiteTitle">
 <pre>Notes Wiki</pre>
 </div>
+<div created="20201128163842527" modified="20201128164153962" title="$:/state/Compare saves">
+<pre>yes</pre>
+</div>
+<div created="20201128171541192" modified="20201128171541192" title="$:/state/CompareText2">
+<pre>\define glbl_code_block(ur_note_pk)
+[[$ur_note_pk$]]
+&lt;$codeblock code={{$ur_note_pk$}} /&gt;
+\end
+\define glbl_code_linenum(ur_note_pk, ur_skip_count, ur_section_size, ur_disp_linenum)
+&lt;div style=&quot;clear:both&quot;&gt;[[$ur_note_pk$]]&lt;/div&gt;
+&lt;$list filter=&quot;[[$ur_skip_count$]!match[]else[0]]&quot; variable=intSKIP_COUNT&gt;
+&lt;$list filter=&quot;[[$ur_note_pk$]get[text]splitregexp[\n]butfirst&lt;intSKIP_COUNT&gt;count[]]&quot; variable=intLINE_COUNT&gt;
+&lt;$list filter=&quot;[[$ur_section_size$]!match[]!match[0]else&lt;intLINE_COUNT&gt;]&quot; variable=intSECTION_SIZE&gt;
+&lt;$list filter=&quot;[range&lt;intSECTION_SIZE&gt;]&quot; variable=intCUR_LINE&gt;
+&lt;$list filter=&quot;[&lt;intCUR_LINE&gt;subtract[1]]&quot; variable=IntREMOVE_LINE&gt;
+&lt;$list filter=&quot;[[$ur_note_pk$]get[text]splitregexp[\n]butfirst&lt;intSKIP_COUNT&gt;butfirst&lt;IntREMOVE_LINE&gt;first[]]&quot; variable=strCUR_LINE&gt;
+&lt;$list filter=&quot;[[$ur_disp_linenum$]!match[n]!match[0]]&quot;&gt;&lt;div style=&quot;float:left&quot;&gt;&lt;&lt;intCUR_LINE&gt;&gt;&lt;/div&gt;&lt;/$list&gt;
+&lt;$codeblock code=&lt;&lt;strCUR_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_split_group(ur_note_pk, ur_skip_count)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&amp;#x0022;&amp;#x0022;&amp;#x0022;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;
+&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_split_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_split_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+\end
+\define glbl_code_split_data()
+&lt;$macrocall $name=glbl_code_split_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+\end
+\define glbl_code_split_next_group_disp(ur_rem_counter)
+&lt;$list filter=&quot;[{$ur_rem_counter$}subtract[1]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+\define glbl_code_split_disp(ur_source_note_pk, ur_temp_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+Rem to find: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+Source data: [[$ur_source_note_pk$]]&lt;br&gt;
+\end
+\define glbl_code_split_combine()
+$(currentTiddler)$$(str_html_out)$
+\end
+\define glbl_code_split_init(ur_note_pk, ur_first_line_skip)
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_note_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]add[1]floor[]]&quot;&gt;
+      &lt;$button&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_note_pk&gt;&gt; text=&quot;&quot; /&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        Reset destination edit field
+        &lt;/$button&gt;
+      &lt;/$list&gt;&lt;br&gt;
+	
+    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+\define glbl_code_split(ur_note_pk, ur_first_line_skip)
+&lt;$macrocall $name=glbl_code_split_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_note_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$macrocall $name=glbl_code_split_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_note_pk=&lt;&lt;temp_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+    &lt;$button&gt;
+      &lt;$wikify name=str_html_out text=&lt;&lt;glbl_code_split_data&gt;&gt; &gt;
+        &lt;$list filter=&quot;[&lt;temp_note_pk&gt;get[text]else[]]&quot;&gt;&lt;$vars combine_html_out=&lt;&lt;glbl_code_split_combine&gt;&gt; &gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_note_pk&gt;&gt; text=&lt;&lt;combine_html_out&gt;&gt; /&gt;
+         &lt;/$vars&gt;&lt;/$list&gt;
+        &lt;$macrocall $name=glbl_code_split_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; /&gt;
+        &lt;/$wikify&gt;
+      
+      Find next 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+
+    &lt;$edit-text tiddler=&lt;&lt;temp_note_pk&gt;&gt; autoHeight=no /&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+\define glbl_code_disp_group(ur_note_pk, ur_skip_count)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_disp_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_note_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+\end
+\define glbl_code_disp_data()
+&lt;$macrocall $name=glbl_code_disp_count ur_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+\end
+\define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
+&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+&lt;/$list&gt;
+\end
+\define glbl_code_disp_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: &lt;$list filter=&quot;[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
+\end
+\define glbl_code_disp_init(ur_note_pk, ur_first_line_skip)
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
+      &lt;$button&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
+        Reset destination edit field
+        &lt;/$button&gt;
+      &lt;/$list&gt;&lt;br&gt;
+	
+    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+\define glbl_code_disp(ur_note_pk, ur_first_line_skip)
+&lt;$macrocall $name=glbl_code_disp_init ur_note_pk=&quot;$ur_note_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
+[[$ur_note_pk$]]&lt;br&gt;
+&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
+  &lt;$vars source_note_pk=&quot;$ur_note_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
+    &lt;$macrocall $name=glbl_code_disp_disp ur_source_note_pk=&lt;&lt;source_note_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
+      
+      Browse next 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+    &lt;$button&gt;
+      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
+      
+      Browse prev 100 lines
+      &lt;/$button&gt;&lt;br&gt;
+
+    &lt;&lt;glbl_code_disp_data&gt;&gt;
+    &lt;/$vars&gt;
+  &lt;/$list&gt;
+\end
+
+&lt;!--&lt;$macrocall $name=glbl_code_disp ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_disp &quot;WebNotes\Data 1 &gt;&gt;--&gt;
+
+&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
+
+&lt;!--[[WebNotes\Data]]--&gt;
+
+&lt;!--&lt;$macrocall $name=glbl_code_split ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_block &quot;UrNotePK&quot;&gt;&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_linenum &quot;UrNotePK&quot; 0 15 n&gt;&gt;--&gt;</pre>
+</div>
+<div created="20201128164531392" modified="20201128164531392" title="$:/state/NewTempNote1">
+<pre>yes</pre>
+</div>
+<div created="20201128164536308" modified="20201128172141650" title="$:/state/NewTempNote2">
+<pre>&lt;&lt;glbl_code_block &quot;keyboard action SaveAllChanges&quot;&gt;&gt;</pre>
+</div>
+<div created="20201128164830319" modified="20201128172139163" title="$:/state/NewTempNoteData">
+<pre>&lt;&lt;glbl_code_block &quot;keyboard action SaveAllChanges&quot;&gt;&gt;</pre>
+</div>
+<div created="20201128164436067" modified="20201128164534216" title="$:/state/NewTempNotePK">
+<pre>$:/state/NewTempNote2</pre>
+</div>
 <div created="20201121095357883" modified="20201121095359795" title="$:/state/searchNreplace/replace">
 <pre>glbl_code_disp</pre>
 </div>
@@ -9839,7 +10015,7 @@ Error message and password prompt
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201122112024308" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201128172233091" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -9848,7 +10024,7 @@ Error message and password prompt
 <div created="20201114095219937" modified="20201121100300657" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201114051921184" modified="20201122112024308" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201128172233091" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9857,7 +10033,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201122111912313" list="[[Notes Wiki]] [[Additional Features]] [[External Link organization]]" modified="20201122111924281" title="$:/StoryList">
+<div created="20201128170641817" list="[[Font Size]] $:/state/NewTempNote2 [[keyboard action SaveAllChanges]]" modified="20201128172204027" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10085,7 +10261,7 @@ Error message and password prompt
 * Title = `$:/favicon.ico`
 </pre>
 </div>
-<div created="20201114085731300" e1="See all Recently Changed Notes" e2="Change the Font Size" e3="Organize Notes" e4="Anchor a note to the Right Side of Window" e5="Home Notes Keyboard Shortcut" e6="Note Editor tweaks" e7="Save Directly to GitHub Repository" e8="Static HTML backlink" e9="Delete Existing Notes by Tag" ec10="View or Copy Note source code" ec11="Adding a Webpage Favicon" ec12="External Link organization" ec13="Image link opens Note" modified="20201122110348953" tags="DOC" title="Additional Features">
+<div created="20201114085731300" e1="See all Recently Changed Notes" e2="Change the Font Size" e3="Organize Notes" e4="Anchor a note to the Right Side of Window" e5="Home Notes Keyboard Shortcut" e6="Note Editor tweaks" e7="Save Directly to GitHub Repository" e8="Static HTML backlink" e9="Delete Existing Notes by Tag" ec10="View or Copy Note source code" ec11="Adding a Webpage Favicon" ec12="External Link organization" ec13="Image link opens Note" ec14="Display Note text lines" modified="20201128163132643" tags="DOC" title="Additional Features">
 <pre>&lt;ol&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[e]sort[]]&quot; variable=lookup_name&gt;
 &lt;$list filter=&quot;[&lt;currentTiddler&gt;get&lt;lookup_name&gt;]&quot; variable=ref_note_pk&gt;
@@ -10362,6 +10538,29 @@ Del ARTICLE and IMG notes, and DOC tags starting with `E`
 [[btn Delete notes]]
 </pre>
 </div>
+<div created="20201128162711605" modified="20201128163110536" tags="ARTICLE" title="Display Note text lines">
+<pre>* Show all text lines as a code block
+
+```
+&lt;&lt;glbl_code_block &quot;UrNotePK&quot;&gt;&gt;
+```
+
+* Show all text lines with line numbers
+
+```
+&lt;&lt;glbl_code_linenum &quot;UrNotePK&quot;&gt;&gt;
+```
+
+* Show the text lines of two Notes that have differences
+
+```
+&lt;$edit-text tiddler=&quot;$:/state/CompareText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+&lt;$edit-text tiddler=&quot;$:/state/CompareText2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+
+&lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
+```
+</pre>
+</div>
 <div created="20200418064445680" modified="20200604201937798" tags="META $:/tags/ViewToolbar" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
 &lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
@@ -10613,7 +10812,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 ```
 </pre>
 </div>
-<div created="20200319102534436" modified="20201121102416570" tags="META" title="Font Size">
+<div created="20200319102534436" modified="20201128170116788" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
 Big Font
@@ -10631,6 +10830,28 @@ Normal Font
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; /&gt;
 Save Wiki to GitHub
 &lt;/$button&gt;
+
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;!prefix[Draft of]]&quot; variable=strNOTE_PK&gt;
+&lt;$button&gt;
+&lt;$list filter=&quot;[list[$:/StoryList]] -[&lt;strNOTE_PK&gt;]&quot; variable=strCLOSE_PK&gt;
+&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&lt;&lt;strCLOSE_PK&gt;&gt;/&gt;
+&lt;/$list&gt;
+Close all other open Notes
+&lt;/$button&gt;
+&lt;/$list&gt;
+
+&lt;$edit-text tiddler=&quot;$:/state/NewTempNotePK&quot; field=text default=&quot;$:/state/NewTempNote&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
+
+&lt;$list filter=&quot;[{$:/state/NewTempNotePK}!match[]]&quot; variable=strNOTE_PK&gt;
+&lt;$edit-text tiddler=&quot;$:/state/NewTempNoteData&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=textarea/&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;strNOTE_PK&gt;&gt; text={{$:/state/NewTempNoteData}}/&gt;
+&lt;$action-navigate $to=&lt;&lt;strNOTE_PK&gt;&gt;/&gt;
+Create temporary Note: &lt;&lt;strNOTE_PK&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;
+
 
 [[btn Delete notes]]</pre>
 </div>
@@ -10731,7 +10952,7 @@ Save Wiki to GitHub
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 </pre>
 </div>
-<div created="20201114070625406" key="((save-all-changes))" modified="20201114113823654" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
+<div created="20201114070625406" key="((save-all-changes))" modified="20201128172228969" tags="META $:/tags/KeyboardShortcut" title="keyboard action SaveAllChanges">
 <pre>\define ExportSaveAll(ur_filename ur_stamp)
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
@@ -10740,15 +10961,31 @@ Save Wiki to GitHub
 /&gt;
 &lt;$action-sendmessage $message=&quot;tm-download-file&quot;
 $param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
-exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
+exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
 \end
 &lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
 &lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201120193614867" modified="20201121095431451" tags="$:/tags/Macro META" title="mcr glbl_code_split">
-<pre>\define glbl_code_split_group(ur_note_pk, ur_skip_count)
+<div created="20201128162437302" modified="20201128162450835" tags="$:/tags/Macro META" title="mcr glbl_code_split">
+<pre>\define glbl_code_block(ur_note_pk)
+[[$ur_note_pk$]]
+&lt;$codeblock code={{$ur_note_pk$}} /&gt;
+\end
+\define glbl_code_linenum(ur_note_pk, ur_skip_count, ur_section_size, ur_disp_linenum)
+&lt;div style=&quot;clear:both&quot;&gt;[[$ur_note_pk$]]&lt;/div&gt;
+&lt;$list filter=&quot;[[$ur_skip_count$]!match[]else[0]]&quot; variable=intSKIP_COUNT&gt;
+&lt;$list filter=&quot;[[$ur_note_pk$]get[text]splitregexp[\n]butfirst&lt;intSKIP_COUNT&gt;count[]]&quot; variable=intLINE_COUNT&gt;
+&lt;$list filter=&quot;[[$ur_section_size$]!match[]!match[0]else&lt;intLINE_COUNT&gt;]&quot; variable=intSECTION_SIZE&gt;
+&lt;$list filter=&quot;[range&lt;intSECTION_SIZE&gt;]&quot; variable=intCUR_LINE&gt;
+&lt;$list filter=&quot;[&lt;intCUR_LINE&gt;subtract[1]]&quot; variable=IntREMOVE_LINE&gt;
+&lt;$list filter=&quot;[[$ur_note_pk$]get[text]splitregexp[\n]butfirst&lt;intSKIP_COUNT&gt;butfirst&lt;IntREMOVE_LINE&gt;first[]]&quot; variable=strCUR_LINE&gt;
+&lt;$list filter=&quot;[[$ur_disp_linenum$]!match[n]!match[0]]&quot;&gt;&lt;div style=&quot;float:left&quot;&gt;&lt;&lt;intCUR_LINE&gt;&gt;&lt;/div&gt;&lt;/$list&gt;
+&lt;$codeblock code=&lt;&lt;strCUR_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;
+\end
+\define glbl_code_split_group(ur_note_pk, ur_skip_count)
 &lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&amp;#x0022;&amp;#x0022;&amp;#x0022;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;
 &lt;/$list&gt;&lt;/$list&gt;
 \end
@@ -10870,7 +11107,99 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 
 &lt;!--[[WebNotes\Data]]--&gt;
 
-&lt;!--&lt;$macrocall $name=glbl_code_split ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;</pre>
+&lt;!--&lt;$macrocall $name=glbl_code_split ur_note_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_block &quot;UrNotePK&quot;&gt;&gt;--&gt;
+
+&lt;!--&lt;&lt;glbl_code_linenum &quot;UrNotePK&quot; 0 15 n&gt;&gt;--&gt;</pre>
+</div>
+<div created="20201128162512662" modified="20201128162528720" tags="$:/tags/Macro META" title="mcr glbl_compare_lines">
+<pre>\define glbl_compare_lines_results_table(ur_note_pk, ur_second_pk, ur_row_count)
+&lt;table&gt;&lt;tr&gt;
+&lt;th&gt;''Line''&lt;/th&gt;
+&lt;th&gt;Show text&lt;/th&gt;
+&lt;th&gt;First Side&lt;br&gt;Second Side&lt;/th&gt;
+&lt;/tr&gt;
+&lt;$list filter=&quot;[range&lt;intSECOND_COUNT&gt;subtract[1]]&quot; variable=&quot;intCUR_ENTRY&quot;&gt;
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]butfirst&lt;intCUR_ENTRY&gt;first[]]&quot; variable=&quot;strFIRST_LINE&quot;&gt;
+&lt;$list filter=&quot;[{$ur_second_pk$}splitregexp[\n]butfirst&lt;intCUR_ENTRY&gt;first[]!match&lt;strFIRST_LINE&gt;]&quot; variable=&quot;strSECOND_LINE&quot;&gt;
+&lt;tr&gt;
+&lt;td rowspan=2&gt;
+
+!!&lt;&lt;intCUR_ENTRY&gt;&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextSection1&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/CompareTextLine1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
+&lt;$list filter=&quot;[{$:/state/CompareTextLine1}!match[]else[0]]&quot; variable=intSTART_LINE&gt;&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
+&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;add[1]]&quot; variable=intNEXT_LINE&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
+&lt;&lt;intPREV_LINE&gt;&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
+&lt;&lt;intNEXT_LINE&gt;&gt;
+&lt;/$button&gt;&lt;br&gt;[[$ur_note_pk$]]&lt;br&gt;
+&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_note_pk$&quot;  ur_skip_count=&lt;&lt;intSTART_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&quot;&quot; /&gt;
+&lt;$action-navigate $to=&quot;$:/state/CompareTextSection1&quot;/&gt;
+&lt;&lt;intCUR_ENTRY&gt;&gt;
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;$codeblock code=&lt;&lt;strFIRST_LINE&gt;&gt; /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextSection2&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/CompareTextLine2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
+&lt;$list filter=&quot;[{$:/state/CompareTextLine2}!match[]else[0]]&quot; variable=intSTART_LINE&gt;
+&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
+&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;add[1]]&quot; variable=intNEXT_LINE&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
+&lt;&lt;intPREV_LINE&gt;&gt;
+&lt;/$button&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
+&lt;&lt;intNEXT_LINE&gt;&gt;
+&lt;/$button&gt;&lt;br&gt;[[$ur_second_pk$]]&lt;br&gt;
+&lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_second_pk$&quot;  ur_skip_count=&lt;&lt;intSTART_LINE&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&quot;&quot; /&gt;
+&lt;$action-navigate $to=&quot;$:/state/CompareTextSection2&quot;/&gt;
+&lt;&lt;intCUR_ENTRY&gt;&gt;
+&lt;/$button&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;$codeblock code=&lt;&lt;strSECOND_LINE&gt;&gt; /&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;
+&lt;/table&gt;
+\end
+\define glbl_compare_lines(ur_note_pk, ur_second_pk)
+&lt;$list filter=&quot;[{$ur_note_pk$}splitregexp[\n]count[]]&quot; variable=&quot;intFIRST_COUNT&quot;&gt;
+&lt;$list filter=&quot;[{$ur_second_pk$}splitregexp[\n]count[]]&quot; variable=&quot;intSECOND_COUNT&quot;&gt;
+&lt;$list filter=&quot;[{$ur_second_pk$}splitregexp[\n]count[]subtract&lt;intFIRST_COUNT&gt;]&quot; variable=&quot;intSECOND_EXTRA&quot;&gt;
+
+[[$ur_note_pk$]] line count: &lt;&lt;intFIRST_COUNT&gt;&gt;
+
+[[$ur_second_pk$]] line count: &lt;&lt;intSECOND_COUNT&gt;&gt;
+
+''$ur_second_pk$'' excess line count: ''&lt;&lt;intSECOND_EXTRA&gt;&gt;''
+
+&lt;$macrocall $name=glbl_compare_lines_results_table ur_note_pk=&quot;$ur_note_pk$&quot; ur_second_pk=&quot;$ur_second_pk$&quot; ur_row_count=&lt;&lt;intSECOND_COUNT&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+\end
+
+&lt;!--
+&lt;$edit-text tiddler=&quot;$:/state/CompareText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+&lt;$edit-text tiddler=&quot;$:/state/CompareText2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+
+&lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
+--&gt;</pre>
 </div>
 <div created="20201122104355355" modified="20201122111916676" tags="$:/tags/Macro META" title="mcr glbl_ext">
 <pre>\define ext(ur_extnote_pk)
@@ -10967,7 +11296,7 @@ The &quot;Untagged&quot; list should be empty.
 * Add link `[[View All Pages]]`
 </pre>
 </div>
-<div created="20201114092453491" modified="20201114120154308" tags="META" title="Recent Entries">
+<div created="20201114092453491" modified="20201128164048667" tags="META" title="Recent Entries">
 <pre>[[View All Pages]]
 
 [[Font Size]]
