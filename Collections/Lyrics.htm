@@ -9716,7 +9716,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr glbl_code_split]]</pre>
+# [[mcr glbl_ext]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -9940,7 +9940,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201130075114134" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201130133006698" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -9949,7 +9949,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div created="20201114095219937" modified="20201121100300657" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201114051921184" modified="20201130075114134" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201130133006698" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -9958,7 +9958,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201130073857446" list="[[Lyrics Wiki]] [[Pop Songs]] [[Pop Songs\No One is to Blame]]" modified="20201130074951585" title="$:/StoryList">
+<div list="$:/Import [[Lyrics Wiki]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10652,8 +10652,9 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
 --&gt;</pre>
 </div>
-<div created="20201122104355355" modified="20201122111916676" tags="$:/tags/Macro META" title="mcr glbl_ext">
+<div created="20201122104355355" modified="20201130132843052" tags="$:/tags/Macro META" title="mcr glbl_ext">
 <pre>\define ext(ur_extnote_pk)
+&lt;$list filter=&quot;[[ext $ur_extnote_pk$]get[text]count[]match[0]]&quot;&gt;Missing: [$ur_extnote_pk$]&lt;/$list&gt;
 {{ext $ur_extnote_pk$}}&lt;div style=&quot;float:right&quot;&gt;[[-&gt;|ext $ur_extnote_pk$]]&lt;/div&gt;
 \end
 </pre>
