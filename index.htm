@@ -293,6 +293,8 @@ Error message and password prompt
 
 <li>Excel VBA</li>
 
+<li>Excel VBA\Get Worksheet</li>
+
 <li>Excel VBA\New Macro</li>
 
 <li>EXT</li>
@@ -10101,7 +10103,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201213013039236" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201213015451280" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10113,7 +10115,7 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201213013039236" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201213015451280" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201128140218595" modified="20201128140247037" title="$:/state/TestText">
@@ -10125,7 +10127,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201213012720722" list="[[Code Samples]] [[Excel VBA]] [[Excel VBA\New Macro]]" modified="20201213012720722" title="$:/StoryList">
+<div created="20201213012720722" list="[[Code Samples]] [[Excel VBA]] [[Excel VBA\New Macro]] [[Excel VBA\Get Worksheet]]" modified="20201213012720722" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11226,7 +11228,16 @@ close
 <div created="20201213012723873" modified="20201213012728563" tags="DOC" title="Excel VBA">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20201213012740276" modified="20201213013038313" tags="" title="Excel VBA\New Macro">
+<div created="20201213014222028" modified="20201213015450317" tags="" title="Excel VBA\Get Worksheet">
+<pre>```
+Dim wksDATA As Worksheet
+Set wksDATA = Application.ActiveSheet
+wksDATA.Cells(2,2).Value = &quot;Hi&quot;
+
+'Press F5 to run the macro
+'Note: Cell B2 says &quot;Hi&quot;</pre>
+</div>
+<div created="20201213012740276" modified="20201213013407403" tags="" title="Excel VBA\New Macro">
 <pre>&quot;&quot;&quot;
 [Microsoft Excel application]
 - [Ribbon menus]
@@ -11238,7 +11249,11 @@ close
 - Click button Edit Macro -&gt; Opens window
 
 [VBA Editor]
-- You can change the name of the macro and add commands</pre>
+- You can change the name of the macro and add commands
+- Close the editor
+
+[Microsoft Excel application]
+- Save the file as a Macro-Enabled workbook (mwb)</pre>
 </div>
 <div created="20201122081432097" list="[[ext TW Empty Setup]] [[ext TW Manual]] [[ext TW Snapshot v5d01d22]] [[ext TW Snapshot v5d01d23 pre-release]] [[ext Shuffle List Entries]]" modified="20201122081435067" title="EXT">
 <pre></pre>
