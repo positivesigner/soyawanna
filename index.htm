@@ -305,6 +305,16 @@ Error message and password prompt
 
 <li>ext Shuffle List Entries</li>
 
+<li>ext SQLite Blob text</li>
+
+<li>ext SQLite DB Browser</li>
+
+<li>ext SQLite Language functions</li>
+
+<li>ext SQLite schema information</li>
+
+<li>ext SQLite Top 5 Records</li>
+
 <li>ext Tiddly Wiki Home Button source code</li>
 
 <li>ext TiddlyWiki Save Button source code</li>
@@ -411,6 +421,18 @@ Error message and password prompt
 
 <li>Regular Expressions\Explanation</li>
 
+<li>SQLite</li>
+
+<li>SQLite\Blob text</li>
+
+<li>SQLite\Database Browser</li>
+
+<li>SQLite\Information Schema</li>
+
+<li>SQLite\String Manipulation</li>
+
+<li>SQLite\Top or Limit records</li>
+
 <li>template Home Button</li>
 
 <li>TiddlerMove</li>
@@ -463,6 +485,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\Hard Line Breaks</li>
 
+<li>TiddlyWiki\Hex Codes Used</li>
+
 <li>TiddlyWiki\iFrame</li>
 
 <li>TiddlyWiki\iFrame to Local HTML file</li>
@@ -505,8 +529,6 @@ Error message and password prompt
 
 <li>TiddlyWiki\Source Code Samples</li>
 
-<li>TiddlyWiki\Standard Text Formatting</li>
-
 <li>TiddlyWiki\Textbox field</li>
 
 <li>TiddlyWiki\TiddlySaver from Downloads</li>
@@ -518,6 +540,8 @@ Error message and password prompt
 <li>TiddlyWiki\View All notes</li>
 
 <li>TiddlyWiki\Wikify Text</li>
+
+<li>TiddlyWiki\WikiText Formatting</li>
 
 <li>TotalCommander</li>
 
@@ -10099,7 +10123,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201213185006655" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201214055558130" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10111,7 +10135,7 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201213185006655" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201214055558131" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201128140218595" modified="20201128140247037" title="$:/state/TestText">
@@ -10123,7 +10147,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201213184944890" list="[[Code Samples]]" modified="20201213184953554" title="$:/StoryList">
+<div created="20201214051430748" list="[[Code Samples]] TiddlyWiki [[Recent Entries]] [[TiddlyWiki\Hex Codes Used]] [[TiddlyWiki\WikiText Formatting]]" modified="20201214055548449" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11265,6 +11289,21 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20201122075535137" modified="20201122075559123" tags="EXT" title="ext Shuffle List Entries">
 <pre>[ext[TiddlyWiki_Code\Snapshot\mklauber TWPlugin Shuffle.txt.html]]</pre>
+</div>
+<div created="20201213204034881" modified="20201213204047152" tags="EXT" title="ext SQLite Blob text">
+<pre>https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite</pre>
+</div>
+<div created="20201213202527435" modified="20201213202538704" tags="EXT" title="ext SQLite DB Browser">
+<pre>https://sqlitebrowser.org/dl/</pre>
+</div>
+<div created="20201213202425178" modified="20201213202441554" tags="EXT" title="ext SQLite Language functions">
+<pre>https://sqlite.org/lang_corefunc.html</pre>
+</div>
+<div created="20201213202325709" modified="20201213202355675" tags="EXT" title="ext SQLite schema information">
+<pre>https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata</pre>
+</div>
+<div created="20201213202559876" modified="20201213202611872" tags="EXT" title="ext SQLite Top 5 Records">
+<pre>https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite</pre>
 </div>
 <div created="20201122110844802" modified="20201122110953419" tags="EXT" title="ext Tiddly Wiki Home Button source code">
 <pre>[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid]]</pre>
@@ -14674,6 +14713,115 @@ Tempered Greedy Token Solution
 ** &lt;&lt;disp_re &quot;AB.CAB.DFGHBC&quot; &quot;B(?:(?!D)(?!C).)*C&quot;&gt;&gt;
 </pre>
 </div>
+<div created="20201213200618762" modified="20201213200739280" tags="DOC" title="SQLite">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20201213204025126" modified="20201213204125965" tags="" title="SQLite\Blob text">
+<pre>&lt;&lt;ext &quot;SQLite Blob text&quot;&gt;&gt;
+
+```
+WITH RECURSIVE test(c,cur) as (
+     SELECT '', HEX(blob_field) FROM UrTable WHERE UrPK = 6
+   UNION ALL
+    select c || char((case substr(cur,1,1) when 'A' then 10 when 'B' then 11 when 'C' then 12 when 'D' then 13 when 'E' then 14 when 'F' then 15 else substr(cur,1,1) end)*16
+               + (case substr(cur,2,1) when 'A' then 10 when 'B' then 11 when 'C' then 12 when 'D' then 13 when 'E' then 14 when 'F' then 15 else substr(cur,2,1) end)),
+substr(cur,3)
+from test where length(cur)&gt;0
+)
+select * from test
+```
+</pre>
+</div>
+<div created="20201213200625437" modified="20201213202550640" tags="" title="SQLite\Database Browser">
+<pre>&lt;&lt;ext &quot;SQLite DB Browser&quot;&gt;&gt;
+
+I used `DB Browser for SQLite - .zip (no installer) for 64-bit Windows`</pre>
+</div>
+<div created="20201213200728313" modified="20201213202515376" tags="" title="SQLite\Information Schema">
+<pre>&lt;&lt;ext &quot;SQLite schema information&quot;&gt;&gt;
+
+```
+SELECT name, sql FROM sqlite_master
+WHERE type='table'
+ORDER BY name;
+```
+
+&lt;&lt;ext &quot;SQLite Language functions&quot;&gt;&gt;
+
+sqlite_source_id()
+
+```
+--version string of SQLite Library source code
+2020-08-14 13:23:32 fca8dc8b578f215a969cd899336378966156154710873e68b3d9ac5881b0ff3f
+```
+
+sqlite_version()
+
+```
+--version string of SQLite Library running
+3.33.0
+```</pre>
+</div>
+<div created="20201213201204778" modified="20201213203007288" tags="" title="SQLite\String Manipulation">
+<pre>&lt;&lt;ext &quot;SQLite Language functions&quot;&gt;&gt;
+
+```
+--comment
+```
+
+CHAR(unicode_char_list)
+
+COALESCE(field_list)
+
+HEX(field)
+
+IFNULL(field, default_text)
+
+INSTR(field, search_text)
+
+LENGTH(field)
+
+LIKE(field, comparison_text)
+
+* field LIKE comparisontext
+* LIKE(field, comparison_text, escape_char)
+
+LOWER(field)
+
+LTRIM(field)
+
+* LTRIM(field, chars_to_remove)
+
+PRINTF(format_text, field_list)
+
+REPLACE(field, search_text, new_text)
+
+RTRIM(field)
+
+* RTRIM(field, chars_to_remove)
+
+SUBSTR(field, start_char)
+
+* SUBSTR(field, start_char, char_count)
+
+TRIM(field)
+
+* TRIM(field, chars_to_remove)
+
+typeof(field)
+
+* &quot;null&quot;, &quot;integer&quot;, &quot;real&quot;, &quot;text&quot;, or &quot;blob&quot;.
+
+UNICODE(number)
+
+UPPER(field)
+</pre>
+</div>
+<div created="20201213200920976" modified="20201213202644326" tags="" title="SQLite\Top or Limit records">
+<pre>&lt;&lt;ext &quot;SQLite Top 5 Records&quot;&gt;&gt;
+
+SELECT * FROM Table_Name LIMIT 5;</pre>
+</div>
 <div created="20200115095609017" modified="20201114110632545" tags="META $:/tags/ViewTemplate" title="template Home Button">
 <pre>&lt;div style=&quot;float:right;padding-left:30px;&quot;&gt;
 {{$:/core/ui/TopBar/menu}}
@@ -15520,7 +15668,7 @@ Another way to display a Note's content is by using the triple-curly-brace inclu
 &lt;$codeblock code=&lt;&lt;sample_data_e5&gt;&gt;/&gt;
 </pre>
 </div>
-<div created="20201128135346756" modified="20201128151955658" tags="" title="TiddlyWiki\Compare Lines">
+<div created="20201128135346756" modified="20201214032230075" tags="" title="TiddlyWiki\Compare Lines">
 <pre>Name = mcr glbl_compare_lines
 
 Tag = `$:/tags/Macro`
@@ -15542,21 +15690,21 @@ Tag = `$:/tags/Macro`
 &lt;/td&gt;
 &lt;td&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextSection1&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/CompareTextLine1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
-&lt;$list filter=&quot;[{$:/state/CompareTextLine1}!match[]else[0]]&quot; variable=intSTART_LINE&gt;&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextLine1&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextSection1&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/popup/CompareTextLine1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
+&lt;$list filter=&quot;[{$:/state/popup/CompareTextLine1}!match[]else[0]]&quot; variable=intSTART_LINE&gt;&lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
 &lt;$list filter=&quot;[&lt;intSTART_LINE&gt;add[1]]&quot; variable=intNEXT_LINE&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextLine1&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
 &lt;&lt;intPREV_LINE&gt;&gt;
 &lt;/$button&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine1&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextLine1&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
 &lt;&lt;intNEXT_LINE&gt;&gt;
 &lt;/$button&gt;&lt;br&gt;[[$ur_note_pk$]]&lt;br&gt;
 &lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_note_pk$&quot;  ur_skip_count=&lt;&lt;intSTART_LINE&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&quot;&quot; /&gt;
-&lt;$action-navigate $to=&quot;$:/state/CompareTextSection1&quot;/&gt;
+&lt;$action-navigate $to=&quot;$:/state/popup/CompareTextSection1&quot;/&gt;
 &lt;&lt;intCUR_ENTRY&gt;&gt;
 &lt;/$button&gt;
 &lt;/td&gt;
@@ -15565,22 +15713,22 @@ Tag = `$:/tags/Macro`
 &lt;tr&gt;
 &lt;td&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextSection2&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/CompareTextLine2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
-&lt;$list filter=&quot;[{$:/state/CompareTextLine2}!match[]else[0]]&quot; variable=intSTART_LINE&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextLine2&quot; text=&lt;&lt;intCUR_ENTRY&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextSection2&quot; text=&quot;&quot;&quot;&lt;$edit-text tiddler=&quot;$:/state/popup/CompareTextLine2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=input/&gt;
+&lt;$list filter=&quot;[{$:/state/popup/CompareTextLine2}!match[]else[0]]&quot; variable=intSTART_LINE&gt;
 &lt;$list filter=&quot;[&lt;intSTART_LINE&gt;subtract[1]]&quot; variable=intPREV_LINE&gt;
 &lt;$list filter=&quot;[&lt;intSTART_LINE&gt;add[1]]&quot; variable=intNEXT_LINE&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextLine2&quot; text=&lt;&lt;intPREV_LINE&gt;&gt;/&gt;
 &lt;&lt;intPREV_LINE&gt;&gt;
 &lt;/$button&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/CompareTextLine2&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/CompareTextLine2&quot; text=&lt;&lt;intNEXT_LINE&gt;&gt;/&gt;
 &lt;&lt;intNEXT_LINE&gt;&gt;
 &lt;/$button&gt;&lt;br&gt;[[$ur_second_pk$]]&lt;br&gt;
 &lt;$macrocall $name=glbl_code_disp_group ur_note_pk=&quot;$ur_second_pk$&quot;  ur_skip_count=&lt;&lt;intSTART_LINE&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;/$list&gt;&lt;/$list&gt;&quot;&quot;&quot; /&gt;
-&lt;$action-navigate $to=&quot;$:/state/CompareTextSection2&quot;/&gt;
+&lt;$action-navigate $to=&quot;$:/state/popup/CompareTextSection2&quot;/&gt;
 &lt;&lt;intCUR_ENTRY&gt;&gt;
 &lt;/$button&gt;
 &lt;/td&gt;
@@ -15607,10 +15755,10 @@ Tag = `$:/tags/Macro`
 \end
 
 &lt;!--
-&lt;$edit-text tiddler=&quot;$:/state/CompareText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
-&lt;$edit-text tiddler=&quot;$:/state/CompareText2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+&lt;$edit-text tiddler=&quot;$:/state/popup/CompareText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
+&lt;$edit-text tiddler=&quot;$:/state/popup/CompareText2&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=no tag=textarea/&gt;
 
-&lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
+&lt;&lt;glbl_compare_lines &quot;$:/state/popup/CompareText1&quot; &quot;$:/state/popup/CompareText2&quot;&gt;&gt;
 --&gt;</pre>
 </div>
 <div created="20201122082202947" modified="20201122082213730" tags="" title="TiddlyWiki\Construct a Calendar">
@@ -16121,6 +16269,62 @@ line four starts&lt;/pre&gt;`
 line four starts&lt;/pre&gt;
 </pre>
 </div>
+<div created="20201213231329924" modified="20201213231355309" tags="" title="TiddlyWiki\Hex Codes Used">
+<pre>```
+\define dec_to_u_hex4()
+&lt;$list variable=cur_d4 filter=&quot;[[$(dec_num)$]divide[16]floor[]divide[16]floor[]divide[16]floor[]]&quot;
+&gt;&lt;$list variable=rem_d4 filter=&quot;[[0]subtract&lt;cur_d4&gt;multiply[16]multiply[16]multiply[16]add[$(dec_num)$]]&quot;
+&gt;&lt;$list variable=cur_d3 filter=&quot;[&lt;rem_d4&gt;divide[16]floor[]divide[16]floor[]]&quot;
+&gt;&lt;$list variable=rem_d3 filter=&quot;[[0]subtract&lt;cur_d3&gt;multiply[16]multiply[16]add&lt;rem_d4&gt;]&quot;
+&gt;&lt;$list variable=cur_d2 filter=&quot;[&lt;rem_d3&gt;divide[16]floor[]]&quot;
+&gt;&lt;$list variable=rem_d2 filter=&quot;[[0]subtract&lt;cur_d2&gt;multiply[16]add&lt;rem_d3&gt;]&quot;
+&gt;&lt;$list variable=hex filter=&quot;[[;]addsuffix&lt;cur_d4&gt;addsuffix[;]addsuffix&lt;cur_d3&gt;addsuffix[;]addsuffix&lt;cur_d2&gt;addsuffix[;]addsuffix&lt;rem_d2&gt;split[;10]join[A]split[;11]join[B]split[;12]join[C]split[;13]join[D]split[;14]join[E]split[;15]join[F]split[;]join[]]&quot;
+&gt;\u&lt;&lt;hex&gt;&gt;&lt;/$list&gt;&lt;!--hex
+--&gt;&lt;/$list&gt;&lt;!--rem_d2
+--&gt;&lt;/$list&gt;&lt;!--cur_d2
+--&gt;&lt;/$list&gt;&lt;!--rem_d3
+--&gt;&lt;/$list&gt;&lt;!--cur_d3
+--&gt;&lt;/$list&gt;&lt;!--rem_d3
+--&gt;&lt;/$list&gt;&lt;!--cur_d4
+--&gt;
+\end
+\define entry_hexcode(ur_char, ur_code_page)
+&lt;$list variable=cur_codepage filter=&quot;[[$ur_code_page$]!match[]else[0]multiply[256]]&quot;&gt;
+&lt;$list variable=dec_num filter=&quot;[range[256]add&lt;cur_codepage&gt;]&quot;&gt;
+&lt;$wikify name=hex_unicode text=&lt;&lt;dec_to_u_hex4&gt;&gt; &gt;
+&lt;$list filter=&quot;[[$ur_char$]regexp&lt;hex_unicode&gt;]&quot; variable=match_text&gt;
+-$ur_char$-&lt;&lt;hex_unicode&gt;&gt;-&lt;&lt;dec_num&gt;&gt;
+&lt;/$list&gt;&lt;!--match_text--&gt;
+&lt;/$wikify&gt;&lt;!--hex_unicode--&gt;
+&lt;/$list&gt;&lt;!--cur_unicode--&gt;
+&lt;/$list&gt;&lt;!--cur_unicode--&gt;
+\end
+\define unicode_points(ur_pk)
+&lt;$list variable=code_page filter=&quot;[[$:/state/unicode_points_codepage]get[text]else[0]]&quot;&gt;
+
+Code page = &lt;&lt;code_page&gt;&gt; &lt;$button
+
+style=&quot;margin-left:30px&quot;&gt;
+&lt;$list variable=&quot;next_page&quot; filter=&quot;[&lt;code_page&gt;add[1]]&quot;&gt;&lt;$action-setfield $tiddler=&quot;$:/state/unicode_points_codepage&quot; text=&lt;&lt;next_page&gt;&gt;/&gt;&lt;/$list&gt;
+Next page
+&lt;/$button&gt;&lt;$button
+
+style=&quot;margin-left:30px&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/unicode_points_codepage&quot; text=&quot;0&quot;/&gt;
+Reset
+&lt;/$button&gt;&lt;br&gt;
+
+
+&lt;$list variable=cur_char filter=&quot;[[$ur_pk$]get[text]split[]each:value[]sort[]]&quot;&gt;-&lt;&lt;cur_char&gt;&gt;-
+&lt;$macrocall $name=entry_hexcode ur_code_page=&lt;&lt;code_page&gt;&gt; ur_char=&lt;&lt;cur_char&gt;&gt; /&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;/$list&gt;&lt;!--cur_char--&gt;
+&lt;/$list&gt;&lt;!--code_page--&gt;
+\end
+
+&lt;&lt;unicode_points &quot;UrPK&quot;&gt;&gt;</pre>
+</div>
 <div created="20201122085021065" modified="20201122085120688" tags="" title="TiddlyWiki\iFrame">
 <pre>Use an iFrame to run JavaScript in a TiddlyWiki
 
@@ -16584,20 +16788,20 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201206173035181" modified="20201206204154182" title="TiddlyWiki\Section Display">
+<div created="20201206173035181" modified="20201214031036685" title="TiddlyWiki\Section Display">
 <pre>Note name = `mcr glbl_section_disp`
 
 Tag = `$:/tags/Macro`
 
 ```
 \define glbl_section_disp(ur_title, ur_section_num)
-&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/$(currentTiddler)$-popup$ur_section_num$&quot; text=&quot;show&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; set=&quot;$:/state/$(currentTiddler)$-popup$ur_section_num$&quot; setTo=&quot;show&quot;&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/popup/$(currentTiddler)$-popup$ur_section_num$&quot; text=&quot;show&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; set=&quot;$:/state/popup/$(currentTiddler)$-popup$ur_section_num$&quot; setTo=&quot;show&quot;&gt;
 
 !!$ur_title$ - Show
 &lt;/$button&gt;&lt;/$reveal&gt;
-&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/$(currentTiddler)$-popup$ur_section_num$&quot; text=&quot;show&quot;&gt;
-&lt;$button class=&quot;tc-btn-invisible&quot; set=&quot;$:/state/$(currentTiddler)$-popup$ur_section_num$&quot; setTo=&quot;hide&quot;&gt;
+&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/popup/$(currentTiddler)$-popup$ur_section_num$&quot; text=&quot;show&quot;&gt;
+&lt;$button class=&quot;tc-btn-invisible&quot; set=&quot;$:/state/popup/$(currentTiddler)$-popup$ur_section_num$&quot; setTo=&quot;hide&quot;&gt;
 
 !!$ur_title$
 &lt;/$button&gt;&lt;br&gt;
@@ -16665,7 +16869,199 @@ section content
 * These lines show that the `$:/state/sidebar` Note is &quot;no&quot; to hide the sidebar, or &quot;yes&quot; show it
 </pre>
 </div>
-<div created="20200111053354295" modified="20201122114328168" title="TiddlyWiki\Standard Text Formatting" type="">
+<div created="20201128140041887" modified="20201128141626498" tags="" title="TiddlyWiki\Textbox field">
+<pre>\define sample_data_e1()
+&lt;$edit-text tiddler=&quot;$:/state/TestText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
+\end
+
+\define sample_data_e2()
+&lt;$edit-text tiddler=&quot;$:/state/TestText2&quot; field=text default=&quot;here&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=textarea/&gt;
+\end
+
+You can choose to edit a Note or Note's field in a single-line or multi-line textbox.
+
+* The `default` parameter is automatically placed in the textbox when the Note does not exist
+** Typing in the box will add to the default text
+** The Note will be created when the text in the box is changed
+** Otherwise the default text will not be saved
+
+* The `placeholder` parameter is shown as greyed-out text when the Note does not exist and there is no default text, or the note exists and the text field is empty
+** Typing in the box will overwrite the placeholder text
+
+Note: Editing a Note PK that starts with `$:/state/` will not be saved and does not affect the Wiki's &quot;dirty&quot; flag
+
+[[$:/state/TestText1]]
+&lt;$codeblock code=&lt;&lt;sample_data_e1&gt;&gt; /&gt;
+&lt;&lt;sample_data_e1&gt;&gt;
+
+---
+[[$:/state/TestText2]]
+&lt;$codeblock code=&lt;&lt;sample_data_e2&gt;&gt; /&gt;
+&lt;&lt;sample_data_e2&gt;&gt;
+</pre>
+</div>
+<div created="20201122082336103" modified="20201122082411727" tags="" title="TiddlyWiki\TiddlySaver from Downloads">
+<pre>Make a small form with a timer that moves downloaded TiddlyWiki files back to their original folder
+
+- I have not tried to play around with running TW5 on Node.js. I don't prefer having to use TiddlyDesktop as a separate web browser. Installing a plugin would only save my wiki changes under the downloads directory. I like using a portable web browser on my thumb drive, and I am able to run non-admin programs on my computer. So I made a small program with a timer to move each saved TW file from my Downloads directory back to its original loading location.
+
+- I leave the program running all the time I am logged in. Alt-S saves the data in TiddlyWiki to the Downloads folder. After at most five seconds, the timer moves the file to overwrite the original location. The form flashes on the screen for one second and then hides itself until another move.
+
+1) I created an alt-S shortcut macro to save the current wiki with a specific filename prefix (TWMove_), the entire file path - with substitutions for path-specific characters (: and \), and a time stamp. (Using split/join is accurate enough for me.)
+
+Example: TWMove_C-colon-slash-RootDirOne-slash-SubDirTwo-slash-UrWiki.html
+
+```
+
+\define ExportSaveAll(ur_filename ur_stamp)
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
+/&gt;
+\end
+&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
+&lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
+&lt;/$list&gt;
+```
+
+2) I have my web browser save all downloaded files to a specific Downloads folder. (Specifically on Google Chrome, I did install a plugin to automatically hide the dowloaded files bar. It was getting annoying.)
+
+3) I created a small program with a multi-line textbox, and a timer to poll the Downloads folder every five seconds. It moves all the TWMove files in alphabetical order, so the latest timestamped file will be processed last. It finds the destination path as part of the filename. (Moving assumes the original TW.html file is not locked by the browser. This happened to me once, but I just had to restart the browser to release the file lock.)
+
+The program's text box shows the folder I'm polling. When it picks up a file, the original path is pre-pended to the textbox's list of processed files and the form flashes in the foreground for a second. (I could have made a system tray pop-up notification instead.)
+
+It's not perfect, but definitely doable for most amateur programmers.</pre>
+</div>
+<div created="20201122103148931" modified="20201126061339292" tags="" title="TiddlyWiki\Unicode Character List">
+<pre>```
+\define CharRef(ur_code, ur_line_grouping)
+&lt;$list filter=&quot;[[$ur_code$]divide[$ur_line_grouping$]floor[]] &quot; variable=div_val&gt;
+&lt;$list filter=&quot;[[$ur_code$]divide[$ur_line_grouping$]match&lt;div_val&gt;] &quot;&gt;&lt;br&gt;&lt;sub&gt;$ur_code$
+&lt;&lt;glbl_dec_to_hex5 &quot;$ur_code$&quot;&gt;&gt;
+&lt;/sub&gt;&lt;br&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+[&amp;#$ur_code$;]
+\end
+
+https://en.wikipedia.org/wiki/Unicode_block
+
+https://en.wikipedia.org/wiki/Plane_(Unicode)
+
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef LineGrouping&quot; text=&quot;&quot;/&gt;
+Line Grouping = 10
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef LineGrouping&quot; text=&quot;16&quot;/&gt;
+Line Grouping = 16
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;&quot;/&gt;
+Clear selection
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;0&quot;/&gt;
+Show Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;65536&quot;/&gt;
+Show Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;131072&quot;/&gt;
+Show Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
+&lt;/$button&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;196608&quot;/&gt;
+Show Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
+&lt;/$button&gt;
+
+Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
+
+Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
+
+Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+@@font-family: &quot;Lucida Console&quot;, Courier, monospace;
+&lt;$list filter=&quot;[{$:/state/mcr CharRef LineGrouping}!match[]else[10]] &quot; variable=line_grouping&gt;
+&lt;$list filter=&quot;[[$:/state/mcr CharRef CharacterListBase]get[text]!match[]]&quot;&gt;
+&lt;$list filter=&quot;[range[512]subtract[1]multiply[128]add{$:/state/mcr CharRef CharacterListBase}]&quot; variable=cur_block&gt;
+&lt;h2&gt;&lt;&lt;cur_block&gt;&gt;&lt;/h2&gt;
+&lt;$list filter=&quot;[range[128]subtract[1]] +[add&lt;cur_block&gt;] &quot; variable=cur_code&gt;
+&lt;$macrocall $name=CharRef ur_code=&lt;&lt;cur_code&gt;&gt; ur_line_grouping=&lt;&lt;line_grouping&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+&lt;/$list&gt;
+
+</pre>
+</div>
+<div created="20201122113449363" modified="20201207001258327" tags="" title="TiddlyWiki\Video and Audio">
+<pre>* Title = mcr glbl_ext_av
+* Tag = `$:/tags/Macro`
+* Note: The paths are relative to the current website. You cannot load Video or Audio content from other websites due to browser restrictions.
+
+* Note: You can add attribute `poster=&quot;placeholder.png&quot; ` to the Video tag if you have a specific image you want instead of the video's first frame
+
+```
+\define glbl_ext_video(UrFolder,UrVideo,UrTime)
+&lt;video width=&quot;320&quot; height=&quot;180&quot;
+controls preload=&quot;metadata&quot;&gt;
+&lt;source src=&quot;$UrFolder$/$UrVideo$.mp4#t=$UrTime$&quot; type=
+&quot;video/mp4&quot;&gt;
+Your browser does not support the HTML 5 video tag.
+&lt;/video&gt;
+\end
+\define glbl_ext_audio(UrFolder,UrAudio,UrTime)
+&lt;audio controls preload=&quot;none&quot;&gt;
+&lt;source src=&quot;$UrFolder$/$UrAudio$.mp3#t=$UrTime$&quot; type=
+&quot;audio/mp3&quot;&gt;
+Your browser does not support the HTML 5 audio tag.
+&lt;/audio&gt;
+\end
+
+&lt;!--|v
+* Hard-coded to only use MP4 files
+
+&lt;&lt;glbl_ext_video &quot;MyVideosSubFolder&quot; &quot;MyVideoFile&quot; &quot;00:01:00&quot;&gt;&gt;
+
+&lt;&lt;glbl_ext_video &quot;file:///C:/UrFolder/UrSubFolder&quot; &quot;UrFilenameNoExtension&quot; &quot;00:01:00&quot;&gt;&gt;
+^|--&gt;
+&lt;!--|v
+&lt;&lt;glbl_ext_audio &quot;MyAudioSubFolder&quot; &quot;MyAudioFile&quot; &quot;00:01:00&quot;&gt;&gt;
+^|--&gt;
+</pre>
+</div>
+<div created="20201114213433883" modified="20201114213445930" tags="" title="TiddlyWiki\View All notes">
+<pre>```
+&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
+{{||$:/core/ui/ViewTemplate/tags}}
+&lt;$transclude mode=&quot;block&quot;/&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20201126055955961" modified="20201206173127094" tags="" title="TiddlyWiki\Wikify Text">
+<pre>```
+&lt;$wikify name=str_text_out text=&quot;&amp;#65;&quot;&gt;
+A = &lt;&lt;str_text_out&gt;&gt;
+&lt;/$wikify&gt;
+
+&lt;$wikify name=str_text_out text=&quot;''bold font''&quot; output=html&gt;
+B = &lt;&lt;str_text_out&gt;&gt;
+&lt;/$wikify&gt;</pre>
+</div>
+<div created="20200111053354295" modified="20201214055450277" title="TiddlyWiki\WikiText Formatting" type="">
 <pre>You can type most standard text without problems. Leading, repeated, or paired special characters may need escaped.
 
 !Vertical Spacing
@@ -16882,199 +17278,49 @@ Surrounding text with an ampersand (&amp;) and a semi-colon translate to an HTML
 ```
 
 &amp;''''lt;
-</pre>
-</div>
-<div created="20201128140041887" modified="20201128141626498" tags="" title="TiddlyWiki\Textbox field">
-<pre>\define sample_data_e1()
-&lt;$edit-text tiddler=&quot;$:/state/TestText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
-\end
 
-\define sample_data_e2()
-&lt;$edit-text tiddler=&quot;$:/state/TestText2&quot; field=text default=&quot;here&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=textarea/&gt;
-\end
 
-You can choose to edit a Note or Note's field in a single-line or multi-line textbox.
+!!CSS Styles
 
-* The `default` parameter is automatically placed in the textbox when the Note does not exist
-** Typing in the box will add to the default text
-** The Note will be created when the text in the box is changed
-** Otherwise the default text will not be saved
-
-* The `placeholder` parameter is shown as greyed-out text when the Note does not exist and there is no default text, or the note exists and the text field is empty
-** Typing in the box will overwrite the placeholder text
-
-Note: Editing a Note PK that starts with `$:/state/` will not be saved and does not affect the Wiki's &quot;dirty&quot; flag
-
-[[$:/state/TestText1]]
-&lt;$codeblock code=&lt;&lt;sample_data_e1&gt;&gt; /&gt;
-&lt;&lt;sample_data_e1&gt;&gt;
-
----
-[[$:/state/TestText2]]
-&lt;$codeblock code=&lt;&lt;sample_data_e2&gt;&gt; /&gt;
-&lt;&lt;sample_data_e2&gt;&gt;
-</pre>
-</div>
-<div created="20201122082336103" modified="20201122082411727" tags="" title="TiddlyWiki\TiddlySaver from Downloads">
-<pre>Make a small form with a timer that moves downloaded TiddlyWiki files back to their original folder
-
-- I have not tried to play around with running TW5 on Node.js. I don't prefer having to use TiddlyDesktop as a separate web browser. Installing a plugin would only save my wiki changes under the downloads directory. I like using a portable web browser on my thumb drive, and I am able to run non-admin programs on my computer. So I made a small program with a timer to move each saved TW file from my Downloads directory back to its original loading location.
-
-- I leave the program running all the time I am logged in. Alt-S saves the data in TiddlyWiki to the Downloads folder. After at most five seconds, the timer moves the file to overwrite the original location. The form flashes on the screen for one second and then hides itself until another move.
-
-1) I created an alt-S shortcut macro to save the current wiki with a specific filename prefix (TWMove_), the entire file path - with substitutions for path-specific characters (: and \), and a time stamp. (Using split/join is accurate enough for me.)
-
-Example: TWMove_C-colon-slash-RootDirOne-slash-SubDirTwo-slash-UrWiki.html
+You can apply CSS styles in-line with the text. Make sure you put the semi-colon at the end of the style list.
 
 ```
-
-\define ExportSaveAll(ur_filename ur_stamp)
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-&lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;TWMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
-/&gt;
-\end
-&lt;$list filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
-&lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
-&lt;/$list&gt;
+You can apply @@background-color:yellow; CSS styles @@ in-line with the text.
 ```
 
-2) I have my web browser save all downloaded files to a specific Downloads folder. (Specifically on Google Chrome, I did install a plugin to automatically hide the dowloaded files bar. It was getting annoying.)
-
-3) I created a small program with a multi-line textbox, and a timer to poll the Downloads folder every five seconds. It moves all the TWMove files in alphabetical order, so the latest timestamped file will be processed last. It finds the destination path as part of the filename. (Moving assumes the original TW.html file is not locked by the browser. This happened to me once, but I just had to restart the browser to release the file lock.)
-
-The program's text box shows the folder I'm polling. When it picks up a file, the original path is pre-pended to the textbox's list of processed files and the form flashes in the foreground for a second. (I could have made a system tray pop-up notification instead.)
-
-It's not perfect, but definitely doable for most amateur programmers.</pre>
-</div>
-<div created="20201122103148931" modified="20201126061339292" tags="" title="TiddlyWiki\Unicode Character List">
-<pre>```
-\define CharRef(ur_code, ur_line_grouping)
-&lt;$list filter=&quot;[[$ur_code$]divide[$ur_line_grouping$]floor[]] &quot; variable=div_val&gt;
-&lt;$list filter=&quot;[[$ur_code$]divide[$ur_line_grouping$]match&lt;div_val&gt;] &quot;&gt;&lt;br&gt;&lt;sub&gt;$ur_code$
-&lt;&lt;glbl_dec_to_hex5 &quot;$ur_code$&quot;&gt;&gt;
-&lt;/sub&gt;&lt;br&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-[&amp;#$ur_code$;]
-\end
-
-https://en.wikipedia.org/wiki/Unicode_block
-
-https://en.wikipedia.org/wiki/Plane_(Unicode)
+You can apply @@background-color:yellow; CSS styles @@ in-line with the text.
 
 
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef LineGrouping&quot; text=&quot;&quot;/&gt;
-Line Grouping = 10
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef LineGrouping&quot; text=&quot;16&quot;/&gt;
-Line Grouping = 16
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;&quot;/&gt;
-Clear selection
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;0&quot;/&gt;
-Show Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;65536&quot;/&gt;
-Show Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;131072&quot;/&gt;
-Show Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/mcr CharRef CharacterListBase&quot; text=&quot;196608&quot;/&gt;
-Show Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
-&lt;/$button&gt;
-
-Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
-
-Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
-
-Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
-
-Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
-
-@@font-family: &quot;Lucida Console&quot;, Courier, monospace;
-&lt;$list filter=&quot;[{$:/state/mcr CharRef LineGrouping}!match[]else[10]] &quot; variable=line_grouping&gt;
-&lt;$list filter=&quot;[[$:/state/mcr CharRef CharacterListBase]get[text]!match[]]&quot;&gt;
-&lt;$list filter=&quot;[range[512]subtract[1]multiply[128]add{$:/state/mcr CharRef CharacterListBase}]&quot; variable=cur_block&gt;
-&lt;h2&gt;&lt;&lt;cur_block&gt;&gt;&lt;/h2&gt;
-&lt;$list filter=&quot;[range[128]subtract[1]] +[add&lt;cur_block&gt;] &quot; variable=cur_code&gt;
-&lt;$macrocall $name=CharRef ur_code=&lt;&lt;cur_code&gt;&gt; ur_line_grouping=&lt;&lt;line_grouping&gt;&gt; /&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-
-</pre>
-</div>
-<div created="20201122113449363" modified="20201207001258327" tags="" title="TiddlyWiki\Video and Audio">
-<pre>* Title = mcr glbl_ext_av
-* Tag = `$:/tags/Macro`
-* Note: The paths are relative to the current website. You cannot load Video or Audio content from other websites due to browser restrictions.
-
-* Note: You can add attribute `poster=&quot;placeholder.png&quot; ` to the Video tag if you have a specific image you want instead of the video's first frame
+!!Tables
 
 ```
-\define glbl_ext_video(UrFolder,UrVideo,UrTime)
-&lt;video width=&quot;320&quot; height=&quot;180&quot;
-controls preload=&quot;metadata&quot;&gt;
-&lt;source src=&quot;$UrFolder$/$UrVideo$.mp4#t=$UrTime$&quot; type=
-&quot;video/mp4&quot;&gt;
-Your browser does not support the HTML 5 video tag.
-&lt;/video&gt;
-\end
-\define glbl_ext_audio(UrFolder,UrAudio,UrTime)
-&lt;audio controls preload=&quot;none&quot;&gt;
-&lt;source src=&quot;$UrFolder$/$UrAudio$.mp3#t=$UrTime$&quot; type=
-&quot;audio/mp3&quot;&gt;
-Your browser does not support the HTML 5 audio tag.
-&lt;/audio&gt;
-\end
+|!Cell1 |!Cell2 |
+|Cell3 |Cell3 |
 
-&lt;!--|v
-* Hard-coded to only use MP4 files
+|^top left |^ top center |^ top right|
+|middle left | middle center | middle right|
+|,bottom left |, bottom center |, bottom right|
 
-&lt;&lt;glbl_ext_video &quot;MyVideosSubFolder&quot; &quot;MyVideoFile&quot; &quot;00:01:00&quot;&gt;&gt;
 
-&lt;&lt;glbl_ext_video &quot;file:///C:/UrFolder/UrSubFolder&quot; &quot;UrFilenameNoExtension&quot; &quot;00:01:00&quot;&gt;&gt;
-^|--&gt;
-&lt;!--|v
-&lt;&lt;glbl_ext_audio &quot;MyAudioSubFolder&quot; &quot;MyAudioFile&quot; &quot;00:01:00&quot;&gt;&gt;
-^|--&gt;
+To merge a table cell with the one above, use the special cell text ~. To merge a cell with the one to its left use the text &lt;. To merge one to its right use &gt;. For example:
+
+|Cell1 |Cell2 |Cell3 |Cell4 |
+|Cell5 |Cell6 |Cell7 |&lt;|
+|Cell5 |~|Cell7 |Cell8 |
+|&gt;|Cell9 |Cell10 |Cell11 |
+
+assigns the CSS classes &quot;myclass&quot; and &quot;anotherClass&quot; to the table
+gives the table the caption &quot;This is a caption&quot;
+adds a header row of cells with the text &quot;Header&quot;
+adds a footer row of cells with the text &quot;Footer&quot;
+|myclass anotherClass|k
+|This is a caption |c
+|Cell1 |Cell2 |
+|Cell3 |Cell3 |
+|Header|Header|h
+|Footer|Footer|f
+```
 </pre>
-</div>
-<div created="20201114213433883" modified="20201114213445930" tags="" title="TiddlyWiki\View All notes">
-<pre>```
-&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
-&lt;hr&gt;
-&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
-{{||$:/core/ui/ViewTemplate/tags}}
-&lt;$transclude mode=&quot;block&quot;/&gt;
-&lt;/$list&gt;</pre>
-</div>
-<div created="20201126055955961" modified="20201206173127094" tags="" title="TiddlyWiki\Wikify Text">
-<pre>```
-&lt;$wikify name=str_text_out text=&quot;&amp;#65;&quot;&gt;
-A = &lt;&lt;str_text_out&gt;&gt;
-&lt;/$wikify&gt;
-
-&lt;$wikify name=str_text_out text=&quot;''bold font''&quot; output=html&gt;
-B = &lt;&lt;str_text_out&gt;&gt;
-&lt;/$wikify&gt;</pre>
 </div>
 <div created="20201123001257327" modified="20201123001301905" tags="DOC" title="TotalCommander">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
