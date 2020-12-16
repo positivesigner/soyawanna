@@ -1,0 +1,56 @@
+Dim strFILE_PATH = "UnicodeDataV13.txt"
+Dim strOUT_PATH = strFILE_PATH & ".json"
+Using stmOUT_FILE = New System.IO.StreamWriter(strOUT_PATH)
+	Dim qs = """"
+	Dim strESC_DQT = "\" & qs
+	stmOUT_FILE.Write("[{""created"":" & qs & Now().ToString("yyyyMMddHHmmssfff") & qs & ",""modified"":" & qs & Now().ToString("yyyyMMddHHmmssfff") & qs & "," &
+		qs & "title" & qs & ":" & qs & "Unicode Char Names" & qs & ",""type"":""application/json"",""text"":""{")
+	Using stmDATA = New System.IO.StreamReader(strFILE_PATH)
+		Dim LINCTR = 0
+		While stmDATA.EndOfStream = False
+			Dim strLINE = stmDATA.ReadLine()
+			Dim intFOUND_SPRTR = InStr(strLINE, ";")
+			
+			Dim strHEX = Mid(strLINE, 1, intFOUND_SPRTR - 1)
+			Dim intCHAR = Cint("&H" & strHEX)
+			Dim strCHAR = UCase(strHEX)
+			Dim strPREFIX = Left(strCHAR, 2)
+			If Len(strCHAR) <> 4 Then
+				strPREFIX = ""
+			End If
+			
+			If intCHAR < 32 Then
+			  strCHAR = ""
+			ElseIf intCHAR > 65534 OrElse
+			  strPREFIX = "D8" OrElse
+			  strPREFIX = "D9" OrElse
+			  strPREFIX = "DA" OrElse
+			  strPREFIX = "DB" OrElse
+			  strPREFIX = "DC" OrElse
+			  strPREFIX = "DD" OrElse
+			  strPREFIX = "DE" OrElse
+			  strPREFIX = "DF" Then
+				strCHAR = "\u" & strHEX
+			Else
+				strCHAR = CHRW(intCHAR)
+				If strCHAR = "\" Then
+					strCHAR = "\\\\"
+				ElseIf strCHAR = """" Then
+					strCHAR = "\\\" & """"
+				End If
+			End If
+
+			If strCHAR <> "" Then
+				LINCTR += 1
+				If LINCTR > 1 Then
+					stmOUT_FILE.Write(",")
+				End If
+				stmOUT_FILE.Write("\n    " & strESC_DQT & strCHAR & strESC_DQT & ":" & " " & strESC_DQT & strLINE.Replace("\", "\\").Replace(Chr(10), "\n").Replace(qs, strESC_DQT).Replace("<", "&lt;") & strESC_DQT)
+			End If
+		End While 'stmDATA
+	End Using 'stmDATA
+	
+	stmOUT_FILE.Write("\n}" & qs & "}]")
+End Using 'stmOUT_FILE
+
+RetVal = "QUIT"
