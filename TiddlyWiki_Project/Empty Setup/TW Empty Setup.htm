@@ -9798,7 +9798,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr glbl_ext]]</pre>
+# [[btn Delete notes]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10019,7 +10019,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div created="20201114065616798" modified="20201114111858866" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114061041767" modified="20201204114036357" title="$:/state/sidebar">
+<div created="20201114061041767" modified="20201215230557992" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114095228989" modified="20201114111427928" title="$:/state/tab--1963855381">
@@ -10028,7 +10028,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div created="20201114095219937" modified="20201121100300657" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201114051921184" modified="20201204114036357" title="$:/state/tab/sidebar--595412856">
+<div created="20201114051921184" modified="20201215230557992" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201114111350173" modified="20201114111416926" title="$:/state/tabs/controlpanel/toolbars-1345989671">
@@ -10037,7 +10037,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201204113538297" list="[[Notes Wiki]] [[Additional Features]] [[Additional Features\Display Note text lines]] [[Additional Features\List links to sub-articles]]" modified="20201204113756672" title="$:/StoryList">
+<div created="20201215230457595" list="[[Notes Wiki]] [[Additional Features]] [[Additional Features\Delete Existing Notes by Tag]]" modified="20201215230519645" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -10428,13 +10428,19 @@ Normal Font
 &lt;$image source={{!!img}} /&gt;
 </pre>
 </div>
-<div created="20201121094808914" img="" modified="20201204113726653" tags="ARTICLE" title="Additional Features\Delete Existing Notes by Tag">
+<div created="20201121094808914" img="" modified="20201215230556875" tags="ARTICLE" title="Additional Features\Delete Existing Notes by Tag">
 <pre>[New note]
 
 * Title = `btn Delete notes`
 * Main Body Text = 
 
 ```
+&lt;$button&gt;
+&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; text=&quot;&quot; /&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
+Clear ARTICLE and IMG notes, and DOC tags starting with `E`
+&lt;/$button&gt;
+
 &lt;$button&gt;
 &lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
@@ -10443,6 +10449,7 @@ Del ARTICLE and IMG notes, and DOC tags starting with `E`
 ```
 
 [Font Size note]
+
 * Add link
 
 ```
@@ -10862,8 +10869,14 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/ol&gt;
 </pre>
 </div>
-<div created="20201118045544465" modified="20201121115553339" tags="META" title="btn Delete notes">
+<div created="20201118045544465" modified="20201215230409755" tags="META" title="btn Delete notes">
 <pre>&lt;$button&gt;
+&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; text=&quot;&quot; /&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
+Clear ARTICLE and IMG notes, and DOC tags starting with `E`
+&lt;/$button&gt;
+
+&lt;$button&gt;
 &lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
 Del ARTICLE and IMG notes, and DOC tags starting with `E`

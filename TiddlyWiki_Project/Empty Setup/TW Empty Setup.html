@@ -2561,7 +2561,7 @@ Normal Font
 
 </button> 
 </span></span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">Additional Features\Delete Existing Notes by Tag</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>4th December 2020 at 3:37am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>15th December 2020 at 3:05pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"><span class="tc-tag-list-item">
 <span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
 fill:#333333;
@@ -2572,11 +2572,16 @@ ARTICLE
 </div>
 
 <div class="tc-tiddler-body tc-reveal"><p>[New note]</p><ul><li>Title = <code>btn Delete notes</code></li><li>Main Body Text = </li></ul><pre><code>&lt;$button&gt;
+&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; text=&quot;&quot; /&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
+Clear ARTICLE and IMG notes, and DOC tags starting with `E`
+&lt;/$button&gt;
+
+&lt;$button&gt;
 &lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
 &lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
 Del ARTICLE and IMG notes, and DOC tags starting with `E`
-&lt;/$button&gt;</code></pre><p>[Font Size note]
-* Add link</p><pre><code>[[btn Delete notes]]
+&lt;/$button&gt;</code></pre><p>[Font Size note]</p><ul><li>Add link</li></ul><pre><code>[[btn Delete notes]]
 </code></pre></div>
 
 

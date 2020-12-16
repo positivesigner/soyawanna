@@ -1,7 +1,0 @@
-<html lang="en"><div style="font-family:sans-serif;white-space:pre-wrap;"
->Sample
-
-```
-[template.src.txt] <a href="template.src.txt" target="_blank">_</a>
-<iframe src="template.src.txt" scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
-```

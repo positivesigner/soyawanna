@@ -349,6 +349,8 @@ Error message and password prompt
 
 <li>ext Unicode Block Planes</li>
 
+<li>ext Unicode Character Database</li>
+
 <li>ext Unicode Code Block List</li>
 
 <li>ext Unicode Input</li>
@@ -489,6 +491,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\Construct a Calendar</li>
 
+<li>TiddlyWiki\Data Tiddler</li>
+
 <li>TiddlyWiki\Date Part</li>
 
 <li>TiddlyWiki\Decimal To Hex</li>
@@ -517,7 +521,7 @@ Error message and password prompt
 
 <li>TiddlyWiki\Hard Line Breaks</li>
 
-<li>TiddlyWiki\Hex Codes Used</li>
+<li>TiddlyWiki\Hex Unicode Characters Used</li>
 
 <li>TiddlyWiki\iFrame</li>
 
@@ -561,6 +565,12 @@ Error message and password prompt
 
 <li>TiddlyWiki\Source Code Samples</li>
 
+<li>TiddlyWiki\Split Lines into Storage</li>
+
+<li>TiddlyWiki\Temp Table</li>
+
+<li>TiddlyWiki\Text Differences</li>
+
 <li>TiddlyWiki\Textbox field</li>
 
 <li>TiddlyWiki\TiddlySaver from Downloads</li>
@@ -587,6 +597,8 @@ Error message and password prompt
 
 <li>Unicode\Input on Windows</li>
 
+<li>Unicode\Latest Version</li>
+
 <li>VBNetCode</li>
 
 <li>VBNetCode\Checksum calculate</li>
@@ -608,6 +620,8 @@ Error message and password prompt
 <li>VBNetCode\File Size</li>
 
 <li>VBNetCode\Send Keys</li>
+
+<li>VBNetCode\Text file to JSON Lines</li>
 
 <li>VBNetCode\To Hex</li>
 
@@ -10161,7 +10175,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201215074259233" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201216100222741" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10173,7 +10187,7 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201215074259233" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201216100222742" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201128140218595" modified="20201128140247037" title="$:/state/TestText">
@@ -10185,7 +10199,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201215035347260" list="[[Code Samples]] JavaScriptBookmarklets JavaScript [[JavaScript\Run in HTML Document]] [[JavaScript\Invalid Variable Names]] [[JavaScript\This object]] [[JavaScript\Execute Nameless Function]] JavaScript\Labels" modified="20201215035347260" title="$:/StoryList">
+<div created="20201216093012290" list="[[Code Samples]] [[Recent Entries]] VBNetCode [[VBNetCode\Text file to JSON Lines]] TiddlyWiki [[TiddlyWiki\Split Lines into Storage]]" modified="20201216100054297" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11410,6 +11424,9 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20201214175945512" modified="20201214180012853" tags="EXT" title="ext Unicode Block Planes">
 <pre>[ext[Unicode Block Planes |https://en.wikipedia.org/wiki/Plane_(Unicode)]]</pre>
+</div>
+<div created="20201216014135949" modified="20201216014208650" tags="EXT" title="ext Unicode Character Database">
+<pre>[ext[Unicode Character Database]]</pre>
 </div>
 <div created="20201214175913438" modified="20201214175935516" tags="EXT" title="ext Unicode Code Block List">
 <pre>[ext[Unicode Code Block List | https://en.wikipedia.org/wiki/Unicode_block]]</pre>
@@ -16095,6 +16112,34 @@ $ur_num$&lt;br&gt;
 \end
 </pre>
 </div>
+<div created="20201216010731890" modified="20201216081431154" tags="" title="TiddlyWiki\Data Tiddler">
+<pre>Type = `application/x-tiddler-dictionary`
+
+```
+3:a
+2:b
+3:c
+```
+
+See list of unique indexes:
+
+```
+&lt;$list variable=cur_key filter=&quot;[[UrPK]indexes[]]&quot;&gt;&lt;&lt;cur_key&gt;&gt;: 
+&lt;$list variable=cur_val filter=&quot;[[UrPK]getindex&lt;cur_key&gt;]&quot;&gt;&lt;&lt;cur_val&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--cur_val--&gt;
+&lt;/$list&gt;&lt;!--cur_key--&gt;
+```
+
+Use one value (last one if an index is duplicated):
+
+```
+-{{UrPK##3}}-
+
+
+```
+
+[[VBNetCode\Text file to JSON Lines]]</pre>
+</div>
 <div created="20201115020219189" modified="20201115030858317" tags="" title="TiddlyWiki\Date Part">
 <pre>Tag = `$:/tags/Macro`
 
@@ -16532,7 +16577,7 @@ line four starts&lt;/pre&gt;`
 line four starts&lt;/pre&gt;
 </pre>
 </div>
-<div created="20201213231329924" modified="20201213231355309" tags="" title="TiddlyWiki\Hex Codes Used">
+<div created="20201213231329924" modified="20201215234722592" tags="" title="TiddlyWiki\Hex Unicode Characters Used">
 <pre>```
 \define dec_to_u_hex4()
 &lt;$list variable=cur_d4 filter=&quot;[[$(dec_num)$]divide[16]floor[]divide[16]floor[]divide[16]floor[]]&quot;
@@ -16552,11 +16597,11 @@ line four starts&lt;/pre&gt;
 --&gt;
 \end
 \define entry_hexcode(ur_char, ur_code_page)
-&lt;$list variable=cur_codepage filter=&quot;[[$ur_code_page$]!match[]else[0]multiply[256]]&quot;&gt;
-&lt;$list variable=dec_num filter=&quot;[range[256]add&lt;cur_codepage&gt;]&quot;&gt;
+&lt;$list variable=cur_codepage filter=&quot;&quot;&quot;[[$ur_code_page$]!match[]else[0]multiply[256]]&quot;&quot;&quot;&gt;
+&lt;$list variable=dec_num filter=&quot;&quot;&quot;[range[256]add&lt;cur_codepage&gt;]&quot;&quot;&quot;&gt;
 &lt;$wikify name=hex_unicode text=&lt;&lt;dec_to_u_hex4&gt;&gt; &gt;
-&lt;$list filter=&quot;[[$ur_char$]regexp&lt;hex_unicode&gt;]&quot; variable=match_text&gt;
--$ur_char$-&lt;&lt;hex_unicode&gt;&gt;-&lt;&lt;dec_num&gt;&gt;
+&lt;$list filter=&quot;&quot;&quot;[[$ur_char$]regexp&lt;hex_unicode&gt;]&quot;&quot;&quot; variable=match_text&gt;
+-$ur_char$-&lt;&lt;hex_unicode&gt;&gt;-&amp;amp;#&lt;&lt;dec_num&gt;&gt;;
 &lt;/$list&gt;&lt;!--match_text--&gt;
 &lt;/$wikify&gt;&lt;!--hex_unicode--&gt;
 &lt;/$list&gt;&lt;!--cur_unicode--&gt;
@@ -16578,7 +16623,15 @@ Reset
 &lt;/$button&gt;&lt;br&gt;
 
 
-&lt;$list variable=cur_char filter=&quot;[[$ur_pk$]get[text]split[]each:value[]sort[]]&quot;&gt;-&lt;&lt;cur_char&gt;&gt;-
+&lt;$list variable=cur_char filter=&quot;[[$ur_pk$]get[text]splitregexp[\u005D]count[]!match[1]!match[0]]&quot;&gt;-&amp;#x005D;-\u005D-&amp;amp;#93;
+&lt;br&gt;
+&lt;br&gt;
+&lt;/$list&gt;&lt;!--cur_char--&gt;
+&lt;$list variable=cur_char filter=&quot;[[$ur_pk$]get[text]splitregexp[\u0060]count[]!match[1]!match[0]]&quot;&gt;-&amp;#x0060;-\u0060-&amp;amp;#96;
+&lt;br&gt;
+&lt;br&gt;
+&lt;/$list&gt;&lt;!--cur_char--&gt;
+&lt;$list variable=cur_char filter=&quot;[[$ur_pk$]get[text]splitregexp[\u005D]join[]splitregexp[\u0060]join[]split[]each:value[]sort[]]&quot;&gt;-&lt;&lt;cur_char&gt;&gt;-
 &lt;$macrocall $name=entry_hexcode ur_code_page=&lt;&lt;code_page&gt;&gt; ur_char=&lt;&lt;cur_char&gt;&gt; /&gt;
 &lt;br&gt;
 &lt;br&gt;
@@ -17132,6 +17185,185 @@ section content
 * These lines show that the `$:/state/sidebar` Note is &quot;no&quot; to hide the sidebar, or &quot;yes&quot; show it
 </pre>
 </div>
+<div created="20201216071813116" modified="20201216093209909" tags="" title="TiddlyWiki\Split Lines into Storage">
+<pre>```
+\define ui(ur_pk)
+&lt;$wikify name=lf_char text=&quot;&amp;#x000A;&quot;&gt;
+&lt;$list
+variable=ttbLINE filter=&quot;&quot;&quot;[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbLINE]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=ttbPAGE filter=&quot;&quot;&quot;[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbPAGE]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=dest_count filter=&quot;&quot;&quot;[prefix&lt;ttbLINE&gt;fields:exclude[created title modified]count[]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=rec_count filter=&quot;&quot;&quot;[[$ur_pk$]get[text]splitregexp[\n]count[]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=rem_count filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[text]splitregexp[\n]count[]divide[100]trunc[]add[1]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=cur_pagek filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[pagek_seq]else[0]]&quot;&quot;&quot;&gt;
+
+Rem page count: &lt;&lt;rem_count&gt;&gt; | Current page: &lt;&lt;cur_pagek&gt;&gt; | &lt;$link to=&lt;&lt;ttbPAGE&gt;&gt; /&gt;&lt;br&gt;
+
+
+&lt;$list
+variable=&quot;display_snapshot_button&quot; filter=&quot;[&lt;ttbPAGE&gt;get[text]else[]!match[]]&quot;&gt;
+
+&lt;$list
+variable=&quot;display_split_button&quot; filter=&quot;[&lt;rem_count&gt;!match[0]]&quot;&gt;
+&lt;$button&gt;
+
+&lt;$list
+variable=new_line_pk filter=&quot;&quot;&quot;[&lt;ttbLINE&gt;addsuffix[-]addsuffix&lt;cur_pagek&gt;]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=cur_seq filter=&quot;&quot;&quot;[range[100]subtract[1]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=new_row_seq filter=&quot;&quot;&quot;[&lt;cur_pagek&gt;subtract[1]multiply[100]add&lt;cur_seq&gt;add[1]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=rec_line filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[text]splitregexp[\n]butfirst&lt;cur_seq&gt;first[]]&quot;&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_line_pk&gt;&gt; $field=&lt;&lt;new_row_seq&gt;&gt; $value=&lt;&lt;rec_line&gt;&gt;/&gt;
+&lt;/$list&gt;&lt;!--rec_line--&gt;
+&lt;/$list&gt;&lt;!--new_row_seq--&gt;
+&lt;/$list&gt;&lt;!--cur_seq--&gt;
+&lt;/$list&gt;&lt;!--new_line_pk--&gt;
+
+&lt;$list
+variable=rec_line filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[text]splitregexp[\n]butfirst[100]join&lt;lf_char&gt;]&quot;&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;text&quot; $value=&lt;&lt;rec_line&gt;&gt;/&gt;
+&lt;/$list&gt;&lt;!--rec_line--&gt;
+
+&lt;$list
+variable=&quot;next_page&quot; filter=&quot;[&lt;ttbPAGE&gt;get[pagek_seq]add[1]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;pagek_seq&quot; $value=&lt;&lt;next_page&gt;&gt;/&gt;&lt;/$list&gt;&lt;!--next_page--&gt;
+
+Split Chars
+&lt;/$button&gt;&lt;/$list&gt;&lt;!--display_split_button--&gt;&lt;/$list&gt;&lt;!--display_snapshot_button--&gt;&lt;$button
+style=&quot;margin-left:25px&quot;&gt;
+
+&lt;$list
+variable=del_line_pk filter=&quot;&quot;&quot;[prefix&lt;ttbLINE&gt;]&quot;&quot;&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;del_line_pk&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--del_line_pk--&gt;
+
+&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;pagek_seq&quot; $value=&quot;1&quot;/&gt;
+
+&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;text&quot; $value={{$ur_pk$}}/&gt;
+
+Clear Chars
+&lt;/$button&gt;
+
+&lt;$list
+variable=found_line_pk filter=&quot;&quot;&quot;[prefix&lt;ttbLINE&gt;]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=disp_line_pk filter=&quot;&quot;&quot;[&lt;found_line_pk&gt;removeprefix&lt;ttbLINE&gt;removeprefix[-]]&quot;&quot;&quot;&gt;
+&lt;$link to=&lt;&lt;found_line_pk&gt;&gt; &gt;&lt;&lt;disp_line_pk&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--disp_line_pk--&gt;
+&lt;/$list&gt;&lt;!--found_line_pk--&gt;
+
+Source line count: &lt;&lt;rec_count&gt;&gt;&lt;br&gt;
+
+Dest field count: &lt;&lt;dest_count&gt;&gt;
+
+&lt;/$list&gt;&lt;!--cur_pagek--&gt;
+&lt;/$list&gt;&lt;!--rem_count--&gt;
+&lt;/$list&gt;&lt;!--rec_count--&gt;
+&lt;/$list&gt;&lt;!--dest_count--&gt;
+&lt;/$list&gt;&lt;!--ttbPAGE--&gt;
+&lt;/$list&gt;&lt;!--ttbLINE--&gt;
+&lt;/$wikify&gt;&lt;!--lf_char--&gt;
+\end
+
+&lt;&lt;ui &quot;UrPK&quot;&gt;&gt;</pre>
+</div>
+<div created="20201216000417630" modified="20201216082528483" tags="" title="TiddlyWiki\Temp Table">
+<pre>```
+\define ui(ur_pk)
+&lt;$wikify name=lf_char text=&quot;&amp;#x000A;&quot;&gt;
+&lt;$list
+variable=ttbLINE filter=&quot;&quot;&quot;[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbLINE]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=ttbPAGE filter=&quot;&quot;&quot;[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbPAGE]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=dest_count filter=&quot;&quot;&quot;[prefix&lt;ttbLINE&gt;indexes[]count[]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=rec_count filter=&quot;&quot;&quot;[[$ur_pk$]get[text]splitregexp[\n]count[]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=rem_count filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[text]splitregexp[\n]count[]divide[100]trunc[]add[1]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=cur_pagek filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[pagek_seq]else[0]]&quot;&quot;&quot;&gt;
+
+Rem page count: &lt;&lt;rem_count&gt;&gt; | Current page: &lt;&lt;cur_pagek&gt;&gt; | &lt;$link to=&lt;&lt;ttbPAGE&gt;&gt; /&gt;&lt;br&gt;
+
+
+&lt;$list
+variable=&quot;display_snapshot_button&quot; filter=&quot;[&lt;ttbPAGE&gt;get[text]else[]!match[]]&quot;&gt;
+
+&lt;$list
+variable=&quot;display_split_button&quot; filter=&quot;[&lt;rem_count&gt;!match[0]]&quot;&gt;
+&lt;$button&gt;
+
+&lt;$list
+variable=new_line_pk filter=&quot;&quot;&quot;[&lt;ttbLINE&gt;addsuffix[-]addsuffix&lt;cur_pagek&gt;]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=cur_seq filter=&quot;&quot;&quot;[range[100]subtract[1]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=new_row_seq filter=&quot;&quot;&quot;[&lt;cur_pagek&gt;subtract[1]multiply[100]add&lt;cur_seq&gt;add[1]]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=rec_line filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[text]splitregexp[\n]butfirst&lt;cur_seq&gt;first[]]&quot;&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;ttbLINE&gt;&gt; $index=&lt;&lt;new_row_seq&gt;&gt; $value=&lt;&lt;rec_line&gt;&gt;/&gt;
+&lt;/$list&gt;&lt;!--rec_line--&gt;
+&lt;/$list&gt;&lt;!--new_row_seq--&gt;
+&lt;/$list&gt;&lt;!--cur_seq--&gt;
+&lt;/$list&gt;&lt;!--new_line_pk--&gt;
+
+&lt;$list
+variable=rec_line filter=&quot;&quot;&quot;[&lt;ttbPAGE&gt;get[text]splitregexp[\n]butfirst[100]join&lt;lf_char&gt;]&quot;&quot;&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;text&quot; $value=&lt;&lt;rec_line&gt;&gt;/&gt;
+&lt;/$list&gt;&lt;!--rec_line--&gt;
+
+&lt;$list
+variable=&quot;next_page&quot; filter=&quot;[&lt;ttbPAGE&gt;get[pagek_seq]add[1]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;pagek_seq&quot; $value=&lt;&lt;next_page&gt;&gt;/&gt;&lt;/$list&gt;&lt;!--next_page--&gt;
+
+Split Chars
+&lt;/$button&gt;&lt;/$list&gt;&lt;!--display_split_button--&gt;&lt;/$list&gt;&lt;!--display_snapshot_button--&gt;&lt;$button
+style=&quot;margin-left:200px&quot;&gt;
+
+&lt;$list
+variable=del_line_pk filter=&quot;&quot;&quot;[prefix&lt;ttbLINE&gt;]&quot;&quot;&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;del_line_pk&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--del_line_pk--&gt;
+
+&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;pagek_seq&quot; $value=&quot;1&quot;/&gt;
+
+&lt;$action-setfield $tiddler=&lt;&lt;ttbPAGE&gt;&gt; $field=&quot;text&quot; $value={{$ur_pk$}}/&gt;
+
+Clear Chars
+&lt;/$button&gt;
+
+&lt;$link to=&lt;&lt;ttbLINE&gt;&gt; /&gt;
+&lt;$list
+variable=found_line_pk filter=&quot;&quot;&quot;[prefix&lt;ttbLINE&gt;]&quot;&quot;&quot;&gt;
+&lt;$list
+variable=disp_line_pk filter=&quot;&quot;&quot;[&lt;found_line_pk&gt;removeprefix&lt;ttbLINE&gt;removeprefix[-]]&quot;&quot;&quot;&gt;
+&lt;$link to=&lt;&lt;found_line_pk&gt;&gt; &gt;&lt;&lt;disp_line_pk&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--disp_line_pk--&gt;
+&lt;/$list&gt;&lt;!--found_line_pk--&gt;
+
+Source line count: &lt;&lt;rec_count&gt;&gt;&lt;br&gt;
+
+Dest field count: &lt;&lt;dest_count&gt;&gt;
+
+&lt;/$list&gt;&lt;!--cur_pagek--&gt;
+&lt;/$list&gt;&lt;!--rem_count--&gt;
+&lt;/$list&gt;&lt;!--rec_count--&gt;
+&lt;/$list&gt;&lt;!--dest_count--&gt;
+&lt;/$list&gt;&lt;!--ttbPAGE--&gt;
+&lt;/$list&gt;&lt;!--ttbLINE--&gt;
+&lt;/$wikify&gt;&lt;!--lf_char--&gt;
+\end
+
+&lt;&lt;ui &quot;UrPK&quot;&gt;&gt;</pre>
+</div>
+<div created="20201216045457266" modified="20201216045527648" tags="" title="TiddlyWiki\Text Differences">
+<pre>```
+&lt;$diff-text source={{FirstTiddler}} dest={{SecondTiddler}}/&gt;</pre>
+</div>
 <div created="20201128140041887" modified="20201128141626498" tags="" title="TiddlyWiki\Textbox field">
 <pre>\define sample_data_e1()
 &lt;$edit-text tiddler=&quot;$:/state/TestText1&quot; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
@@ -17673,6 +17905,21 @@ Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA
 * Enter the hex value of the character you want.
 </pre>
 </div>
+<div created="20201216014118436" modified="20201216015300022" tags="" title="Unicode\Latest Version">
+<pre>&lt;&lt;ext &quot;Unicode Character Database&quot;&gt;&gt;
+
+All files for the most up-to-date version of the Unicode Character Database can be found at: http://www.unicode.org/Public/UCD/latest/.
+
+The latest text file databases are at https://www.unicode.org/Public/UCD/latest/ucd/. The latest set of text file databases is in a ZIP file at https://www.unicode.org/Public/UCD/latest/ucd/UCD.zip.
+
+The list of Unicode Code Blocks are in the text database https://www.unicode.org/Public/UCD/latest/ucd/Blocks.txt.
+
+There is a list of names for the Unicode Code Points at https://www.unicode.org/Public/UCD/latest/ucd/Index.txt. There same list is sorted in Code Point order at https://www.unicode.org/Public/UCD/latest/ucd/NameAliases.txt. Each hex code can have multiple names.
+
+The unique list of Unicode Code Points is at https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt. There is a character name and possibly an alternative name on each row.
+
+</pre>
+</div>
 <div created="20201120085755744" modified="20201120085758963" tags="DOC" title="VBNetCode">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
@@ -18120,6 +18367,79 @@ System.Windows.Forms.SendKeys.Send(&quot;%({TAB}{TAB})&quot;)
 The Windows key is not so easy to emulate.
 - Auto-It or Auto-Hotkey can do more complicated patterns
 - VB.Net can use PInvoke to have more capabilities</pre>
+</div>
+<div created="20201216081317267" modified="20201216100221724" tags="" title="VBNetCode\Text file to JSON Lines">
+<pre>This outputs a file that can be dragged into TiddlyWiki.
+
+```
+&lt;$list variable=cur_char filter=&quot;[[UrPK]get[text]splitregexp[\n]join[]split[]each:value[]!match[ ]sort[]]&quot;&gt;
+&lt;&lt;cur_char&gt;&gt;:
+&lt;$list variable=disp_name filter=&quot;[[Unicode Char Names]getindex&lt;cur_char&gt;else[missing]]&quot;&gt;
+&lt;&lt;disp_name&gt;&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;br&gt;
+&lt;/$list&gt;&lt;!--cur_char--&gt;
+
+[[Unicode Char Names]]
+```
+
+
+```
+Dim strFILE_PATH = &quot;UnicodeData.txt&quot;
+Dim strOUT_PATH = strFILE_PATH &amp; &quot;.json&quot;
+Using stmOUT_FILE = New System.IO.StreamWriter(strOUT_PATH)
+	Dim qs = &quot;&quot;&quot;&quot;
+	Dim strESC_DQT = &quot;\&quot; &amp; qs
+	stmOUT_FILE.Write(&quot;[{&quot;&quot;created&quot;&quot;:&quot; &amp; qs &amp; Now().ToString(&quot;yyyyMMddHHmmssfff&quot;) &amp; qs &amp; &quot;,&quot;&quot;modified&quot;&quot;:&quot; &amp; qs &amp; Now().ToString(&quot;yyyyMMddHHmmssfff&quot;) &amp; qs &amp; &quot;,&quot; &amp;
+		qs &amp; &quot;title&quot; &amp; qs &amp; &quot;:&quot; &amp; qs &amp; &quot;Unicode Char Names&quot; &amp; qs &amp; &quot;,&quot;&quot;type&quot;&quot;:&quot;&quot;application/json&quot;&quot;,&quot;&quot;text&quot;&quot;:&quot;&quot;{&quot;)
+	Using stmDATA = New System.IO.StreamReader(strFILE_PATH)
+		Dim LINCTR = 0
+		While stmDATA.EndOfStream = False
+			Dim strLINE = stmDATA.ReadLine()
+			Dim intFOUND_SPRTR = InStr(strLINE, &quot;;&quot;)
+			
+			Dim strHEX = Mid(strLINE, 1, intFOUND_SPRTR - 1)
+			Dim intCHAR = Cint(&quot;&amp;H&quot; &amp; strHEX)
+			Dim strCHAR = UCase(strHEX)
+			Dim strPREFIX = Left(strCHAR, 2)
+			If Len(strCHAR) &lt;&gt; 4 Then
+				strPREFIX = &quot;&quot;
+			End If
+			
+			If intCHAR &lt; 32 Then
+			  strCHAR = &quot;&quot;
+			ElseIf intCHAR &gt; 65534 OrElse
+			  strPREFIX = &quot;D8&quot; OrElse
+			  strPREFIX = &quot;D9&quot; OrElse
+			  strPREFIX = &quot;DA&quot; OrElse
+			  strPREFIX = &quot;DB&quot; OrElse
+			  strPREFIX = &quot;DC&quot; OrElse
+			  strPREFIX = &quot;DD&quot; OrElse
+			  strPREFIX = &quot;DE&quot; OrElse
+			  strPREFIX = &quot;DF&quot; Then
+				strCHAR = &quot;\u&quot; &amp; strHEX
+			Else
+				strCHAR = CHRW(intCHAR)
+				If strCHAR = &quot;\&quot; Then
+					strCHAR = &quot;\\\\&quot;
+				ElseIf strCHAR = &quot;&quot;&quot;&quot; Then
+					strCHAR = &quot;\\\&quot; &amp; &quot;&quot;&quot;&quot;
+				End If
+			End If
+
+			If strCHAR &lt;&gt; &quot;&quot; Then
+				LINCTR += 1
+				If LINCTR &gt; 1 Then
+					stmOUT_FILE.Write(&quot;,&quot;)
+				End If
+				stmOUT_FILE.Write(&quot;\n    &quot; &amp; strESC_DQT &amp; strCHAR &amp; strESC_DQT &amp; &quot;:&quot; &amp; &quot; &quot; &amp; strESC_DQT &amp; strLINE.Replace(&quot;\&quot;, &quot;\\&quot;).Replace(Chr(10), &quot;\n&quot;).Replace(qs, strESC_DQT).Replace(&quot;&lt;&quot;, &quot;&amp;lt;&quot;) &amp; strESC_DQT)
+			End If
+		End While 'stmDATA
+	End Using 'stmDATA
+	
+	stmOUT_FILE.Write(&quot;\n}&quot; &amp; qs &amp; &quot;}]&quot;)
+End Using 'stmOUT_FILE
+</pre>
 </div>
 <div created="20201120090305995" modified="20201120090345715" tags="" title="VBNetCode\To Hex">
 <pre>&quot;&quot;&quot;
