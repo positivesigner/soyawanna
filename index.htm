@@ -267,6 +267,8 @@ Error message and password prompt
 
 <li>AndroidVNC\RealVNC remote control Windows O/S</li>
 
+<li>AndroidVNC\Remote Control Android Device</li>
+
 <li>AndroidWebDav</li>
 
 <li>AndroidWebDav\BestDAV</li>
@@ -10175,7 +10177,7 @@ Error message and password prompt
 <div created="20201114130220372" modified="20201114130220372" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201114120733010" modified="20201216100222741" title="$:/state/sidebar">
+<div created="20201114120733010" modified="20201219061108242" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201114120757117" modified="20201114120757117" title="$:/state/tab--1963855381">
@@ -10187,7 +10189,7 @@ Error message and password prompt
 <div created="20201121095934080" modified="20201121095937062" title="$:/state/tab-2065006209">
 <pre>$:/core/ui/ControlPanel/Saving/General</pre>
 </div>
-<div created="20201114120733011" modified="20201216100222742" title="$:/state/tab/sidebar--595412856">
+<div created="20201114120733011" modified="20201219061108243" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20201128140218595" modified="20201128140247037" title="$:/state/TestText">
@@ -10199,7 +10201,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201216093012290" list="[[Code Samples]] [[Recent Entries]] VBNetCode [[VBNetCode\Text file to JSON Lines]] TiddlyWiki [[TiddlyWiki\Split Lines into Storage]]" modified="20201216100054297" title="$:/StoryList">
+<div created="20201219060812045" list="[[Code Samples]] AndroidVNC [[AndroidVNC\Remote Control Android Device]]" modified="20201219060812045" title="$:/StoryList">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json">
@@ -11000,6 +11002,15 @@ Android O/S
 - [Alt tab]
 - Use Ctrl-Esc to get to the Windows Start Menu and the Task Bar to change windows
 </pre>
+</div>
+<div created="20201219060815115" modified="20201219061105637" tags="" title="AndroidVNC\Remote Control Android Device">
+<pre>&quot;&quot;&quot;
+Install app AnyDesk by AnyDesk Software GmbH
+- https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid&amp;hl=en_US&amp;gl=US
+
+Install on both Android devices
+- The other installed devices will show when connected to the same WiFi network
+- Automatically figures out how to use the controlling Android device's touch screen</pre>
 </div>
 <div created="20201123015233167" modified="20201123015237752" tags="DOC" title="AndroidWebDav">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
@@ -15948,8 +15959,12 @@ Another way to display a Note's content is by using the triple-curly-brace inclu
 &lt;$codeblock code=&lt;&lt;sample_data_e5&gt;&gt;/&gt;
 </pre>
 </div>
-<div created="20201128135346756" modified="20201214032230075" tags="" title="TiddlyWiki\Compare Lines">
-<pre>Name = mcr glbl_compare_lines
+<div created="20201128135346756" modified="20201217082540712" tags="" title="TiddlyWiki\Compare Lines">
+<pre>```
+&lt;$diff-text source={{t1}} dest={{mcr glbl_section_disp}}/&gt;
+```
+
+Name = mcr glbl_compare_lines
 
 Tag = `$:/tags/Macro`
 
@@ -17104,7 +17119,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;currentTiddler&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; /&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20201206173035181" modified="20201214031036685" title="TiddlyWiki\Section Display">
+<div created="20201206173035181" modified="20201217082509012" title="TiddlyWiki\Section Display">
 <pre>Note name = `mcr glbl_section_disp`
 
 Tag = `$:/tags/Macro`
@@ -17126,7 +17141,9 @@ Tag = `$:/tags/Macro`
 &lt;&lt;str_text_out &gt;&gt;
 &lt;/$wikify&gt;
 
-
+&lt;$button style=&quot;float:right&quot; class=&quot;tc-btn-invisible&quot; set=&quot;$:/state/popup/$(currentTiddler)$-popup$ur_section_num$&quot; setTo=&quot;hide&quot;&gt;
+---
+&lt;/$button&gt;&lt;br&gt;
 &lt;/$reveal&gt;
 \end
 &lt;!--|v
