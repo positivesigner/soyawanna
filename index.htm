@@ -483,6 +483,8 @@ Error message and password prompt
 
 <li>TiddlyWiki\Construct a Calendar</li>
 
+<li>TiddlyWiki\Core Macro Definition</li>
+
 <li>TiddlyWiki\CSS Classes</li>
 
 <li>TiddlyWiki\Data Tiddler</li>
@@ -10654,19 +10656,19 @@ Error message and password prompt
 <div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20201226121435563" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20201226144211310" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20201226080846983" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201226064844310" modified="20201226121435563" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20201226144211311" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201226115202863" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Transclude Tip Field]] [[TiddlyWiki\WikiText Formatting]]" modified="20201226121330754" title="$:/StoryList">
+<div created="20201226141252526" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Core Macro Definition]]" modified="20201226143142172" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -16251,6 +16253,41 @@ $ur_num$&lt;br&gt;
 
 &lt;$macrocall $name=&quot;date_list_daydec&quot; ur_year_month=&quot;$ur_year$m$ur_month$&quot; ur_num=&lt;&lt;currentTiddler&gt;&gt; ur_cur_date=&lt;&lt;now YYYYm0MMd0DD&gt;&gt; /&gt;
 \end
+</pre>
+</div>
+<div created="20201226141838142" modified="20201226144210346" tags="" title="TiddlyWiki\Core Macro Definition">
+<pre>* Title = `mcr glbl_core_mcr_def`
+* Tag = `$:/tags/Macro`
+
+```
+\define glbl_core_mcr_def(ur_macro_name)
+&lt;$list variable=cur_pk filter=&quot;&quot;&quot;[[$:/core]get[text]split[define $ur_macro_name$(]butfirst[]split[\n\\end]first[]addprefix[define $ur_macro_name$(]addsuffix[\n\\end]split[\\]join[\]split[\&quot;]join[&quot;]split[\n]join[
+]]&quot;&quot;&quot;&gt;
+&lt;$codeblock code=&lt;&lt;cur_pk&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--cur_pk--&gt;
+\end
+```
+
+* Show all Core macro names and source code
+
+```
+&lt;$list variable=show_code_pk filter=&quot;[&lt;currentTiddler&gt;split[Draft of]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-checkShowCode]]&quot;&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&quot;text&quot; tiddler=&lt;&lt;show_code_pk&gt;&gt;&gt; Show Code&lt;/$checkbox&gt;
+
+&lt;$list variable=cur_def_text filter=&quot;[[$:/core]get[text]split[define ]!prefix[{]!prefix[the]sort[]]&quot;&gt;
+&lt;$list variable=cur_macro_name filter=&quot;[&lt;cur_def_text&gt;split[(]first[]]&quot;&gt;
+&lt;$list variable=cur_end_text filter=&quot;&quot;&quot;[&lt;cur_def_text&gt;split[\n\\end]first[]addprefix[define ]addsuffix[\n\\end]split[\\]join[\]split[\&quot;]join[&quot;]split[\n]join[
+]]&quot;&quot;&quot;&gt;
+
+!! &lt;&lt;cur_macro_name&gt;&gt;
+&lt;$list variable=cur_showcode_text filter=&quot;[&lt;show_code_pk&gt;get[text]match[yes]]&quot;&gt;&lt;$codeblock code=&lt;&lt;cur_end_text&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--cur_showcode_text--&gt;
+
+&lt;/$list&gt;&lt;!--cur_end_text--&gt;
+&lt;/$list&gt;&lt;!--cur_macro_name--&gt;
+&lt;/$list&gt;&lt;!--cur_def_text--&gt;
+&lt;/$list&gt;&lt;!--show_code_pk--&gt;
+```
 </pre>
 </div>
 <div created="20201223214133509" modified="20201226065145146" tags="" title="TiddlyWiki\CSS Classes">

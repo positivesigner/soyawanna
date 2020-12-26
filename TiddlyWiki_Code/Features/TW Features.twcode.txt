@@ -195,6 +195,245 @@ CSS Issues
 
 
 
+CSS Issues\DIV Background Color Gradient
+
+* Use the `<<background-linear-gradient "UrDirection, UrStartColor, UrEndColor" >>` macro to specify alternative browser-specific properties for a DIV Background-Image color gradient
+
+<<glbl_subtip_show "Sample StyleSheet">>
+<<glbl_subtip_show "Test Background Color Gradient">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "background-linear-gradient">>
+
+<<ext "CSS Background Gradient">>
+
+
+
+CSS Issues\DIV Background Color Gradient\Sample StyleSheet
+
+.sample_div_background_gradient {
+<<background-linear-gradient "to right, red , blue">>
+}
+
+
+
+CSS Issues\DIV Background Color Gradient\Test Background Color Gradient
+
+<div class="sample_div_background_gradient">In a box<br>
+<br>
+color gradient
+</div>
+
+
+
+
+CSS Issues\DIV Box Shadow
+
+* Use the `<<box-shadow "UrShadowPx" >>` macro to specify alternative browser-specific properties for a DIV Box Shadow size
+
+<<glbl_subtip_show "Sample StyleSheet">>
+<<glbl_subtip_show "Test DIV Box Shadow">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "box-shadow">>
+
+<<ext "CSS Box Shadow">>
+
+
+
+CSS Issues\DIV Box Shadow\Sample StyleSheet
+
+.sample_div_box_shadow {
+<<box-shadow "5px 10px #888888">>
+}
+
+
+
+CSS Issues\DIV Box Shadow\Test DIV Box Shadow
+
+Out of a box shadow
+
+<div class="sample_div_box_shadow">In a box<br>
+<br>
+shadow
+
+</div><br>
+<br>
+Way beyond a box shadow
+
+
+
+CSS Issues\DIV Transform Origin rotation
+
+* Use the `<<transform-origin "UrXAxisPct UrYAxisPct" >>` macro to specify alternative browser-specific properties for a DIV Transform-Origin rotation
+
+<<glbl_subtip_show "Sample StyleSheet">>
+<<glbl_subtip_show "Test Transform Origin rotate">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "transform-origin">>
+
+<<ext "CSS Transform Origin">>
+
+
+
+CSS Issues\DIV Transform Origin rotation\Sample StyleSheet
+
+.sample_div_transform_origin_rotate {
+<<transform-origin "20% 40%">>
+}
+
+div.sample_div_transform_origin_rotate {
+  transform: rotate(45deg);
+  width=400px;
+  position: absolute;
+}
+
+
+
+
+CSS Issues\DIV Transform Origin rotation\Test Transform Origin rotate
+
+<div class="sample_div_transform_origin_rotate" style="background-color:aqua">In a short box<br>
+<br>
+This box is rotated around an off-center point
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+CSS Issues\DIV Transition Resize Speed
+
+* Use the `<<transition "UrTransitionTime" >>` macro to specify alternative browser-specific properties for a DIV Transition resize speed
+
+<<glbl_subtip_show "Sample StyleSheet">>
+<<glbl_subtip_show "Test DIV Transition speed">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "transition">>
+
+<<ext "CSS Transition Speed">>
+
+
+
+CSS Issues\DIV Transition Resize Speed\Sample StyleSheet
+
+.sample_div_transition_speed {
+<<transition "width 2s">>
+}
+
+div.sample_div_transition_speed {
+  width: 100px;
+}
+
+div:hover.sample_div_transition_speed {
+  width: 300px;
+}
+
+
+
+CSS Issues\DIV Transition Resize Speed\Test DIV Transition speed
+
+<div class="sample_div_transition_speed" style="background-color:aqua">In a short box<br>
+<br>
+Hover mouse to grow box slowly
+</div>
+
+
+
+CSS Issues\IMG Filter
+
+* Use the `<<filter "UrFilterPct" >>` macro to specify alternative browser-specific properties for an IMG Filter percentage
+
+<<glbl_subtip_show "Sample StyleSheet">>
+<<glbl_subtip_show "Test IMG Filter Grayscale">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "filter">>
+
+<<ext "CSS Filter">>
+
+
+
+CSS Issues\IMG Filter\Sample StyleSheet
+
+.sample_img_filter_grayscale {
+<<filter "grayscale(100%)">>
+}
+
+
+
+CSS Issues\IMG Filter\Test IMG Filter Grayscale
+
+[img[img TestColor]]
+
+@@.sample_img_filter_grayscale
+[img[img TestColor]]
+@@
+
+[img[img TestColor]]
+
+
+
+
+CSS Issues\StyleSheets with Tip Macros
+
+```
+\rules only filteredtranscludeinline transcludeinline macrodef 
+```
+
+* Include the `\rules` line at the start of a Tip that will have or reference Tip macros
+** Note: The Tip content type must not be `text/css` in order for the macros to run
+!!
+* A stylesheet tiddler is processed such that it is first wikified and then the text portion of the ouput is extracted to apply as the CSS
+* Any HTML tags you will use in your stylesheet are thus ignored.
+
+<<glbl_subtip_show "Sample StyleSheet">>
+<<glbl_subtip_show "Test macro stylesheet">>
+
+---
+[[Using Stylesheets]]
+
+
+
+CSS Issues\StyleSheets with Tip Macros\Sample StyleSheet
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+\define test_css_style()
+	background: aqua;
+\end
+.macro_css_class {
+<<test_css_style>>
+}
+
+
+
+CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet
+
+The Tip Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.
+
+
+
 DivPop btn
 
 \define divpop_current(ur_ref)
@@ -347,6 +586,36 @@ DivPop.svg
      style="fill:#cccccc;stroke-width:4.36364" />
 </svg>
 
+
+
+
+ext CSS Background Gradient
+
+[ext[https://www.w3schools.com/cssref/func_linear-gradient.asp]]
+
+
+
+ext CSS Box Shadow
+
+[ext[https://www.w3schools.com/cssref/css3_pr_box-shadow.asp]]
+
+
+
+ext CSS Filter
+
+[ext[https://www.w3schools.com/cssref/css3_pr_filter.asp]]
+
+
+
+ext CSS Transform Origin
+
+[ext[https://www.w3schools.com/cssref/css3_pr_transform-origin.asp]]
+
+
+
+ext CSS Transition Speed
+
+[ext[https://www.w3schools.com/cssref/css3_pr_transition.asp]]
 
 
 
@@ -536,6 +805,12 @@ Remove COPY tag from all tips
 
 
 
+img TestColor
+
+iVBORw0KGgoAAAANSUhEUgAAAKQAAABFCAYAAADErU1mAAAIPElEQVR4Ae2dv28dRRDH86/kb0iFBEhIQMGvIgIBQqRAKIYSIadAMkIijelSEImOKkWKCCkNZSoaXuQUOFBYguDYz78dO7FjO04WfV/0PQ/j2fXd7V7esz1PGu29vbndvZnPzu7ee3d3JoQQer1emJ2dDffv3w9zc3Nhfn4+9Pv9gSwsLATI4uLiQJaWloKL26ArBs4QSA0jIWTFy8vLAbKysmLK6upqcHEb5DJQAYnIiKgoQZQAoqK1tbVDsr6+HlzcBqUYqIDUMCISSghR4YMHDyrZ2NgILm6D0gxUQDIyMioSRoKIijc3Nyt5+PBhcHEblGagAhKLFswXERkxNGsQUfGjR48GsrW1FVzcBl0wUAEJGBEdERkJIyIiQWTl29vbAfL48WMXt0FxBiogCSOiI+aKGkZCuLOzE6Ts7u4GF7dBKQYOAYnoiPkiI6MGkRXv7e0FF7dBaQYqIDl3ZHTEfBHDNIZmREQJ4pMnT4KL26ALBiogOXe0oqMF4/7+fnBxG5RmIAqkjo4IzegRsgFPnz4NLm6DkgwcAhKLGT1caxhlA549exZc3AZ1GZALYmu7AlKurgEkFzMYriWQDqPDVxc+S8+CUOYlgYRiDEirMs9zWI9iQMJnbdcCUs4dESF1pfjHkH/cAnUsYEEo8xoByeFaAlmnEa7jFqAFJHzWtgNJS3n6QixgQSjzjgRSL2iaRMe9jbthe/Z62PxrMqzf+Tqs9cbCWu+iy0jbYGzgK/gMvoMPS34kfNa2CaS8BtkGyJ2lW2Hjj28dvJEGr35ggC/h0xIfC0KZVxTI/a1/BtHQo2B9Zx8nWyFqwsc5HwmftV0MyN21331IPiERMd1JxgJ83fZjQSjzigD5HMaTGRXSzjm959wWSgmftZ0NJEK4L1ZOI5hjrYZvC0KZlw0k5hUeRU4jkBcH64WmQ7eEz9rOAhIrL4exPYy3rn0c3nrzpXDn5oVja8emq28LQuTdu3cvXL16NWQB2fTSDhxw7ty5pIx/+Ubo//Z5EQddu3I+tCkv1s4fvnm7SLvYiU8CkGCgyScG5O3bt8P4+Hh7IPc2prOdA2A+ef/V8Petz7LLopNlCoCaAIl2oD1WmxDFfvz+vaLtLA0kOvuV795JtnHq5qfho/OvJHWkDetsN7l43hmQW/9ezz6pUQKSMJaOgimHlgYSMKagBIzn3315oJNqV9N9+EWn7kcDibtdL1++PIiOWRFy88/8xUwKSOyTw7sFCqIW5mDU43xM53M/AIgZG+VbkTGmj3yrHrTbOgZ1sx1IEbl//flDcw7JzkF9npdVrs6LQSlh/OWnD8w26rLqfsfCtu5HA4mbCaempsKNGzfyhuznv023n9DjZGNAajjoIDn80sESMhgakNCQKEcew3ydsvwYTFof39lhZP0EVHceS5d5GjaWIdtCXVmX1SbmaSi7hBF1goW6Hw0kv2fPIUtce4ShdVSC0bWTcNI6vw5sdXRQNiGo63DqS2gIA8pAZGNZKV20T54rFnPoQBroWD7rtFIJJYfp0pHxoN6xujz+755+woh0ZIGMQaSjGGCQzjwwzkHUjpWldTXser/+bnUk6ljt1J2OurpewkuYqYc0VafUk9uEEh2kOxhh7xEAsoshm5GAcycrZVSi46ETA7MJkCjHAkE6mNupcnkO0IF+SlcDie/WOTMvBjbbJVMO04yOX118vZrKSL0S2yMxZHexqNHOrGMsRhU4Tc8XUzDIslkGYZf7rO1UufocUroWkLHOZbUjlidhxDYjZVdQ5ixqOGxnD9ldXfZJOTDmAOQzukio6pZFiDTQsfpSwycjN9uR0sU+CSA7Bs4lVvdR+RpG6ncJZc5lHwKJlfalS5dG78I4wWrqFIIACOkEbNcd5ggDQWIZVprSRbslZLHzYSeQusyr2zF022IwUq8rKEtcGJ+ZmQkTExPtgcStDE1/OqRhmFrRg06RjoI+gANg2I/v+NUEYLAsDQLyrTzqWynhsYDAPgk72q7nnTFQcZw+H+R9ceG1Q/lsg6wLbUV92Ge1m3nofJgzAkzm6ZRQ6vy230v9dIin701OTuYBmfvnCgtIGgYO4WSeqXSI3q8dbpUjj+d+nbJDsE6ZakgIj9SJ1aHbS8CsdhNsWa7VSXTbh/G91J8rMHRPT0/nAYmLT/73s4PLTMMAYph1NlnM8EIl54yxNOvfPqjE/6B7WoEc0T/oAkq/heH0QTmytzAwFD+H0u+7HuYQ+mLqPgY3eRFKvw32ZEdKzBmPzW2whBIpVl65l4ReTG8/2QCVsiF82XQ1LXmQ27HFDPPNRQ2fDwmlNk+uYAP8USrHEfgRfJSKBBLPh+Tj+PzpZ+xqnra1ACNhLD0yQjqQbU3vx1kWiIHI/EZA4oH3/sBSy8yeV8oCtYDU80gLSvmYPt/2Rzu3ZSAJJF6aFHvGuEPp0LWFLnVcBSRfnOSvBXHQUsB0ve8QkHyTl3xoqY6SfHkSV92e+suTSjEQBZKXfjhsSyh5GYhgeuqvmCvFQAWkv3zTX6aJQDNsqYDk+7L99cT+ymFcVRmWHAJSvmKO78zGfJKvmuMFTKYYyl3cBqUYqIDEQ38wbHO1jcUNVtwSSgkm5pYuboPSDFRALi4uBgzbnEti6MbL3DWYWOwATBe3QRcMVEAuLCyEFJQEk1ETkVMKQHVxG+QyUAHZ7/eDhhLDN+aUiJaMmIyaANTFbVCagQrIXq8XXNwGw2agArLUvzW8HLdAjgUcyBzr+bHFLeBAFjepF5hjAQcyx3p+bHELOJDFTeoF5ljAgcyxnh9b3AKtgTx79mxwcRuUZuA/iK6+hAiAEsUAAAAASUVORK5CYII=
+
+
+
 keyboard action FontLarge
 
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
@@ -586,6 +861,12 @@ $param="template ExportAllCode" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.
 </$list><!--save_as_file_name-->
 </$list><!--save_export_html-->
 
+
+
+
+Macro
+
+<<glbl_tagged_list>>
 
 
 
@@ -842,6 +1123,18 @@ mcr glbl_compare_lines
 
 
 
+mcr glbl_core_mcr_def
+
+\define glbl_core_mcr_def(ur_macro_name)
+<$list variable=cur_pk filter="""[[$:/core]get[text]split[define $ur_macro_name$(]butfirst[]split[\n\\end]first[]addprefix[define $ur_macro_name$(]addsuffix[\n\\end]split[\\]join[\]split[\"]join["]split[\n]join[
+]]""">
+<$codeblock code=<<cur_pk>> />
+</$list><!--cur_pk-->
+\end
+
+
+
+
 mcr glbl_ext
 
 \define ext(ur_extnote_pk)
@@ -949,6 +1242,53 @@ Reserved Names
 
 
 
+Search All Fields
+
+<$vars search_text_pk="$:/state/popup/SearchAllFields">
+<$list variable=show_code_pk filter="[<search_text_pk>addsuffix[-checkShowCode]]">
+<$list variable=skip_system_pk filter="[<search_text_pk>addsuffix[-checkSkipSystem]]">
+<$edit-text tiddler=<<search_text_pk>> field=text default="" placeholder="[no text yet]" autoHeight=yes tag=input/>
+<$checkbox default="no" unchecked="no" checked="yes" field="text" tiddler=<<show_code_pk>>> Show Code</$checkbox>
+<$checkbox default="yes" unchecked="no" checked="yes" field="text" tiddler=<<skip_system_pk>>> Skip System </$checkbox><br>
+<br>
+
+<$list variable=cur_search_text filter="[<search_text_pk>get[text]!match[]]">
+<$list variable=cur_showcode_text filter="[<show_code_pk>get[text]else[no]]">
+<$list variable=cur_skipsystem_text filter="[<skip_system_pk>get[text]else[yes]match[yes]count[]]">
+
+<!--Tip titles-->
+<$list variable=cur_pk filter="[regexp<cur_search_text>sort[]]">
+<$list variable=found_skipsystem filter="[<cur_skipsystem_text>] [<cur_pk>!is[system]count[]] +[sum[]match[1]]">
+
+<<cur_pk>>: <<cur_field>>
+</$list><!--found_skipsystem-->
+</$list><!--cur_pk-->
+
+<!--Tip fields-->
+<$list variable=cur_pk filter="[!regexp<cur_search_text>sort[]]">
+<$list variable=found_skipsystem filter="[<cur_pk>is[system]count[]multiply<cur_skipsystem_text>match[0]]">
+<$list variable=cur_field filter="[<cur_pk>fields[]]">
+<$list variable=found_field filter="[<cur_pk>get<cur_field>regexp<cur_search_text>]">
+
+<$link to=<<cur_pk>> />: <<cur_field>>
+<$list variable=disp_code filter="[<cur_showcode_text>match[yes]]">
+<$codeblock code=<<found_field>> />
+</$list><!--disp_code-->
+</$list><!--found_field-->
+</$list><!--cur_field-->
+
+</$list><!--found_skipsystem-->
+</$list><!--cur_pk-->
+
+</$list><!--cur_skipsystem_text-->
+</$list><!--cur_showcode_text-->
+</$list><!--cur_search_text-->
+</$list><!--skip_system_pk-->
+</$list><!--show_code_pk-->
+</$vars><!--search_text_pk-->
+
+
+
 Setting a favicon
 
 "favicons" are small icons that most browsers display to help users identify websites. Note that all browsers support bitmap images, but only certain modern browsers support SVG format icons.
@@ -982,6 +1322,37 @@ Setting a page background image
 
 Note that the palette ''DarkPhotos'' is provided to make the sidebar more readable on dark background images.
 
+
+
+
+
+Sizing
+
+<<glbl_tagged_list>>
+
+
+
+Stylesheet Macros
+
+The following core [[macros|Macros]] make it easy to specify alternative browser-specific properties when constructing a [[stylesheet|Cascading Style Sheets]] tiddler:
+
+;`<<box-shadow shadow>>`
+: for the `x-box-shadow` properties
+;`<<filter filter>>`
+: for the `x-filter` properties
+;`<<transition transition>>`
+: for the `x-transition` properties
+;`<<transform-origin origin>>`
+: for the `x-transition-origin` properties
+;`<<background-linear-gradient gradient>>`
+: for the `x-linear-gradient` values of the `background-image` property
+
+The following macros are documented separately:
+
+* <<.mlink colour>>
+* <<.mlink datauri>>
+
+All these macros are defined in the [[$:/core/macros/CSS]] tiddler.
 
 
 
@@ -1032,6 +1403,7 @@ Text Formatting\CSS Classes
 
 !! New Tip
 * Tag = `$:/tags/Stylesheet`
+* Content type = `text/css`
 * Body text =
 
 <<glbl_subtip_code "Test a_class_css">>
@@ -1121,6 +1493,110 @@ Tip Code
 
 
 
+Tip Code\Define a Tip-specific macro
+
+```
+\define UrMacroName(ur_macro_parm1, ur_macro_parm2) One-line macro
+
+\define UrMacroName(ur_macro_parm1, ur_macro_parm2)
+Macro with
+
+several lines
+\end
+
+\define UrMacroName(ur_macro_parm1 ur_macro_parm2)
+Macro parameter separator is optional
+\end
+
+\define UrMacroName()
+Parentheses are required, and there must NOT be any spaces between the macro name and the open parenthesis
+\end
+```
+
+* If a Tip has macro definitions and is tagged with `$:/tags/Macro`, you may use that Tip's macros within any other Tip code
+
+<<glbl_subtip_show "Sample local macro">>
+<<glbl_subtip_show "Sample global macro">>
+<<glbl_subtip_show "Test local and global macros">>
+
+---
+[[TW Pragma]]
+
+
+
+
+Tip Code\Define a Tip-specific macro\Sample global macro
+
+\define sample_global_macro()
+Some global sample text
+
+Note: This Tip has a `$:/tags/Macro tag`
+\end
+
+
+
+
+Tip Code\Define a Tip-specific macro\Sample local macro
+
+\define sample_tip_specific_macro()
+Some local sample text
+
+This Tip does not have a `$:/tags/Macro tag`
+\end
+<<sample_tip_specific_macro>>
+
+
+
+Tip Code\Define a Tip-specific macro\Test local and global macros
+
+<<sample_tip_specific_macro>>
+The tip-specific macro does not work.
+
+<<sample_global_macro>>
+
+
+
+Tip Code\Include Non-global macros
+
+```
+\import <filter-expression>
+```
+
+* If a Tip has macro definitions and is not tagged with `$:/tags/Macro`, you must import that Tip to use its macros
+
+<<glbl_subtip_code "Sample macro">>
+<<glbl_subtip_show "Test missing macro">>
+<<glbl_subtip_show "Test imported macro">>
+
+---
+[[TW Pragma]]
+
+
+
+
+Tip Code\Include Non-global macros\Sample macro
+
+\define test_macro()
+It is now: <<now>>
+\end
+
+
+
+Tip Code\Include Non-global macros\Test imported macro
+
+\import [[Tip Code\Include Non-global macros\Sample macro]]
+<<test_macro>>
+
+
+
+
+Tip Code\Include Non-global macros\Test missing macro
+
+<<test_macro>>
+No results here
+
+
+
 Tip Code\Tip-specific Interpreting Rules
 
 ```
@@ -1129,11 +1605,14 @@ Tip Code\Tip-specific Interpreting Rules
 
 * Place at the start of a Tip to keep the a Tip from parsing any code but macros and transclusion
 * This is useful in a CSS Template to keep special WikiText formatting codes from being parsed
+** Note: The CSS Template must not have Tip content type = `text/css` to be able to run macros
 
 <<glbl_subtip_show "Test CSS parsing rules">>
 
 ---
 [[Using Stylesheets]]
+
+[[TW Pragma]]
 
 <<ext "Wiki Parsing Rules">>
 
@@ -1158,6 +1637,34 @@ Tip Code\Tip-specific Whitespace rules
 
 ---
 [[TW Pragma]]
+
+
+
+Tip Code\Tip-specific Whitespace rules\Test notrim
+
+\whitespace notrim
+The whitespace before, ''between '' and after tags is '' kept,
+
+even on multiple lines,'' inside or outside of the tag.
+
+Starting a new line ''with an in-line tag'' still keeps
+
+multiple lines separated.
+
+
+
+
+Tip Code\Tip-specific Whitespace rules\Test trim
+
+\whitespace trim
+The whitespace before, ''between '' and after tags is '' trimmed,
+
+even on multiple lines,'' until you are out of the tag.
+
+Starting a new line ''with an in-line tag'' lets you keep
+
+multiple lines separated.
+
 
 
 
