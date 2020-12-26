@@ -185,7 +185,11 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/sidebar</li>
+
+<li>$:/state/tab-1749438307</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -267,6 +271,8 @@ Error message and password prompt
 
 <li>Download Empty Wiki</li>
 
+<li>Draft of 'Additional Features\See all Recently Changed Tips'</li>
+
 <li>Enter a program to show a list of Tips</li>
 
 <li>Enter the Save All Program</li>
@@ -331,6 +337,8 @@ Error message and password prompt
 
 <li>Save Status on every Tip</li>
 
+<li>Search All Fields</li>
+
 <li>template ExportAllCode</li>
 
 <li>template Home Button</li>
@@ -394,7 +402,7 @@ Error message and password prompt
 <div created="20201114071306644" modified="20201226040306581" tags="META" title="$:/config/shortcuts/save-all-changes">
 <pre>alt-S</pre>
 </div>
-<div created="20201226012300701" modified="20201226040306581" tags="META" title="$:/config/TextEditor/EnableToolbar">
+<div created="20201226012300701" modified="20201226094839134" tags="META" title="$:/config/TextEditor/EnableToolbar">
 <pre>no</pre>
 </div>
 <div created="20201226012253648" modified="20201226040306581" tags="META" title="$:/config/WikiParserRules/Inline/wikilink">
@@ -10322,16 +10330,22 @@ Error message and password prompt
 <div created="20201226040204057" modified="20201226040206216" title="$:/SiteTitle">
 <pre>Notes Wiki</pre>
 </div>
-<div created="20201226040229699" modified="20201226065548059" title="$:/state/sidebar">
+<div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
+<div created="20201226040229699" modified="20201226100525010" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
-<div created="20201226040229700" modified="20201226065548059" title="$:/state/tab/sidebar--595412856">
+<div created="20201226094801896" modified="20201226094801896" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Settings</pre>
+</div>
+<div created="20201226040229700" modified="20201226100525011" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201226065517200" list="$:/Import [[Notes Wiki]] [[Recent Entries]] [[Font Size]]" modified="20201226065519381" title="$:/StoryList">
+<div created="20201226094606435" list="[[Notes Wiki]] [[Additional Features]]" modified="20201226100438631" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10483,7 +10497,7 @@ Error message and password prompt
 &lt;$image source={{!!img}} /&gt;
 </pre>
 </div>
-<div created="20201114085731300" e1="See all Recently Changed Notes" e2="Change the Font Size" e3="Organize Notes" e4="Anchor a note to the Right Side of Window" e5="Home Notes Keyboard Shortcut" e6="Note Editor tweaks" e7="Save Directly to GitHub Repository" e8="Static HTML backlink" e9="Delete Existing Notes by Tag" ec10="View or Copy Note source code" ec11="Adding a Webpage Favicon" ec12="External Link organization" ec13="Image link opens Note" ec14="Display Note text lines" modified="20201226040306583" tags="DOC" title="Additional Features">
+<div created="20201114085731300" modified="20201226074727566" tags="DOC" title="Additional Features">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
 <div created="20201122091426341" img="" modified="20201226040306583" tags="ARTICLE" title="Additional Features\Adding a Webpage Favicon">
@@ -10498,89 +10512,43 @@ Error message and password prompt
 * Title = `$:/favicon.ico`
 </pre>
 </div>
-<div created="20201114094330570" img="" modified="20201226040306583" tags="ARTICLE" title="Additional Features\Anchor a Tip to the Right Side of Window">
+<div created="20201114094330570" img="" modified="20201226095013400" tags="ARTICLE" title="Additional Features\Anchor a Tip to the Right Side of Window">
 <pre>Copy the [[DivPop.svg]] link from here to your new Wiki File window
 
 * When a green bar appears across the top of the form, you can let go of the mouse dragging -&gt; Opens Tip
 
-[$:/Import Tip]
-
+!! $:/Import Tip
 * Click button Import -&gt; Changes view
 * Note: You can click on the `DivPop.svg` link to see the imported image
 
-[Control Panel]
-
+!! Control Panel
 * [Appearance tab, Theme Tweaks sub-tab, Options section]
 * Sidebar layout = `Fluid Story, Fixed Sidebar`
 * [Sizes section]
 * Sidebar width = 350px
 * Note: If you want a larger Sidebar width, make sure you change the `350px` in the code below to match your new width
 
-[New Tip]
-
+!! New Tip
 * Title = `DivPop glbl`
 * Tag = `$:/tags/BelowStory`
 * Main Body Text = 
 
-```
-&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
-&lt;div style=&quot;
-position: fixed;
-top: 0px;
-right: 0px;
-width: 350px;
-border: 3px solid;
-background: white;
-bottom: 0%;
-&quot;&gt;
-&lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
-close
-&lt;/$button&gt;
-&lt;$tiddler tiddler=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;$transclude mode=&quot;block&quot; /&gt;
-&lt;/$tiddler&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/$list&gt;
-```
+&lt;$codeblock code={{DivPop glbl}} /&gt;
 
-[New Tip]
-
+!! New Tip
 * Title = `DivPop btn`
 * Tag = `$:/tags/ViewToolbar`
 * Main Body Text = 
 
-```
-\define divpop_current(ur_ref)
-&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
-&lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
-{{DivPop.svg}}
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-text&gt;match[yes]]&quot;&gt;
-&lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text=&quot;Popup over Sidebar&quot;/&gt;&lt;/span&gt;
-&lt;/$list&gt;
-&lt;/$button&gt;
-\end
+&lt;$codeblock code={{DivPop btn}} /&gt;
 
-&lt;$list filter=&quot;[all[current]]&quot;&gt;
-&lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
-&lt;/$list&gt;
-```
-
-[Testing script]
-
+!! Testing script
 * You should see a button that looks like a right-arrow in the top-right corner after the Checkmark button
 * Click the button, and the story river should be shrunk to the left, and the Tip should be pinned on the right where the Sidebar is normally
 * Click the Close button at the top of the pinned Tip to get widen the story river again
 </pre>
 </div>
-<div created="20201114092536024" img="" modified="20201226040306583" tags="ARTICLE" title="Additional Features\Change the Font Size">
+<div created="20201114092536024" img="" modified="20201226100213973" tags="ARTICLE" title="Additional Features\Change the Font Size">
 <pre>[New Tip]
 
 * Title = `$:/config/ShortcutInfo/font-large`
@@ -10606,12 +10574,7 @@ close
 * Field-Value: `key` = `((font-large))`
 * Main Body Text =
 
-```
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;30px&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;25px&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;34px&quot;/&gt;
-```
+&lt;$codeblock code={{keyboard action FontLarge}} /&gt;
 
 [New Tip]
 
@@ -10620,12 +10583,7 @@ close
 * Field-Value: `key` = `((font-normal))`
 * Main Body Text =
 
-```
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;14px&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/lineheight&quot; text=&quot;20px&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize&quot; text=&quot;15px&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;24px&quot;/&gt;
-```
+&lt;$codeblock code={{keyboard action FontNormal}} /&gt;
 
 [New Tip]
 
@@ -10654,29 +10612,15 @@ Normal Font
 
 * Ctrl-Shift-Quote changes the font Larger
 * Ctrl-Shift-Comma changes the font back to normal
-
-&lt;$image source={{!!img}} /&gt;
 </pre>
 </div>
-<div created="20201121094808914" img="" modified="20201226040306583" tags="ARTICLE" title="Additional Features\Delete Existing Tips by Tag">
+<div created="20201121094808914" img="" modified="20201226095418724" tags="ARTICLE" title="Additional Features\Delete Existing Tips by Tag">
 <pre>[New Tip]
 
 * Title = `btn Delete Tips`
 * Main Body Text = 
 
-```
-&lt;$button&gt;
-&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; text=&quot;&quot; /&gt;&lt;/$list&gt;
-&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
-Clear ARTICLE and IMG Tips, and DOC tags starting with `E`
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
-Del ARTICLE and IMG Tips, and DOC tags starting with `E`
-&lt;/$button&gt;
-```
+&lt;$codeblock code={{btn Delete Tips}} /&gt;
 
 [Font Size Tip]
 
@@ -10728,7 +10672,7 @@ Del ARTICLE and IMG Tips, and DOC tags starting with `E`
 ```
 </pre>
 </div>
-<div created="20201114103049865" img="" modified="20201226040306583" tags="ARTICLE" title="Additional Features\Home Tips Keyboard Shortcut">
+<div created="20201114103049865" img="" modified="20201226095603634" tags="ARTICLE" title="Additional Features\Home Tips Keyboard Shortcut">
 <pre>The form opens with just the Main Index Tips shown. I prefer Alt-H to re-open the Main Index Tips while closing all other open Tips.
 
 [New Tip]
@@ -10747,10 +10691,7 @@ Del ARTICLE and IMG Tips, and DOC tags starting with `E`
 * Field-Value: `key` = `((home-tiddlers))`
 * Main Body Text = 
 
-```
-&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
-```
-
+&lt;$codeblock code={{keyboard action HomeTiddlers}} /&gt;
 </pre>
 </div>
 <div created="20201118045416305" modified="20201226040306584" tags="ARTICLE" title="Additional Features\Image link opens Tip">
@@ -10776,7 +10717,7 @@ Del ARTICLE and IMG Tips, and DOC tags starting with `E`
 ```
 </pre>
 </div>
-<div created="20201114102510288" img="" modified="20201226040306584" tags="ARTICLE" title="Additional Features\Organize Tips">
+<div created="20201114102510288" img="" modified="20201226095902481" tags="ARTICLE" title="Additional Features\Organize Tips">
 <pre>I prefer to put a tag on each Tip that I create. That way I can exclude my personal Tips from the HTML version export.
 
 * Meta-Tip / Generic Macros tag: META
@@ -10787,56 +10728,51 @@ Del ARTICLE and IMG Tips, and DOC tags starting with `E`
 * Article Images tag: IMG
 * Article Macros tag: MCR
 
-The &quot;Untagged&quot; list should be empty.
+The &quot;Untagged&quot; list should be empty or have a parent Tip that uses the `glbl_article_list` macro.
 
-[New Tip]
+!! New Tip
 
-* Title = View All Pages
+* Title = `View All Tips`
 * Main Body Text = 
 
-```
-&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
-&lt;hr&gt;
-&lt;h2&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/h2&gt;
-{{||$:/core/ui/ViewTemplate/tags}}
-&lt;$transclude mode=&quot;block&quot;/&gt;
-&lt;/$list&gt;
-```
+&lt;$codeblock code={{View All Tips}} /&gt;
+
+!! New Tip
+
+* Title = `View All Code`
+* Main Body Text = 
+
+&lt;$codeblock code={{View All Code}} /&gt;
 
 [Recent Entries Tip]
 
 * [Main Body text, at top]
 * Add link `[[View All Pages]]`
+* Add link `[[View All Code]]`
 </pre>
 </div>
-<div created="20201114114223980" img="" modified="20201226040306584" tags="ARTICLE" title="Additional Features\Save Directly to GitHub Repository">
-<pre>[https://github.com/]
-
+<div created="20201114114223980" img="" modified="20201226100009352" tags="ARTICLE" title="Additional Features\Save Directly to GitHub Repository">
+<pre>!! https://github.com/
 * Login
 * Click the top-right corner Profile menu, click the Settings option -&gt; Navigates page
 
-[https://github.com/settings/profile]
-
+!! https://github.com/settings/profile
 * Scroll down the left-side links, click the Developer Options option -&gt; Navigates page
 
-[https://github.com/settings/apps]
-
+!! https://github.com/settings/apps
 * In the left-side links, click the Personal Access Tokens option -&gt; Navigates page
 
-[https://github.com/settings/tokens]
-
+!! https://github.com/settings/tokens
 * Choose a token name from the record list -&gt; Navigates page
 
-[Example https://github.com/settings/tokens/123456789]
-
+!! Example https://github.com/settings/tokens/123456789
 * At the top, click button Regenerate Token
 * Copy the new token text to the clipboard
 
-[Wiki File $:/ControlPanel]
-
+!! Wiki File $:/ControlPanel
 * [Saving tab, General sub-tab]
 * optionbox Do not save changes automatically = set
-
+!!
 * [Saving tab, GitHub Saver sub-tab]
 * Username = `UrGitHubUserName`
 * Password, OAUTH Token = Paste from clipboard
@@ -10849,7 +10785,7 @@ The &quot;Untagged&quot; list should be empty.
 * Note: You will have to manually change the Path and Filename if you move or rename the Wiki File
 * Server API URL: `https://api.github.com`
 
-[Font Size Tip]
+!! Font Size Tip
 
 * Add button
 
@@ -10863,9 +10799,8 @@ Save Wiki to GitHub
 &lt;/$button&gt;
 </pre>
 </div>
-<div created="20201114085930181" img="" modified="20201226040306584" tags="ARTICLE" title="Additional Features\See all Recently Changed Tips">
-<pre>[Main Index Tip]
-
+<div created="20201114085930181" img="" modified="20201226100103958" tags="ARTICLE" title="Additional Features\See all Recently Changed Tips">
+<pre>!! Main Index Tip
 * [Main Body Text]
 * Add the following link code to the bottom
 
@@ -10878,48 +10813,24 @@ Save Wiki to GitHub
 * Click the Blue Line Link -&gt; Opens page
 
 
-[New Tip]
-
+!! New Tip
 * Note: Title = Recent Entries
 * Click the top-right corner button that looks like a Pencil to show the Tip Editor
 * Main Body Text = `&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;`
 * Close the editor
 * Note: This will show the 30 most recently changed Tip titles, grouped by date
-
-
-&lt;$image source={{!!img}} /&gt;
 </pre>
 </div>
-<div created="20201114123539291" img="" modified="20201226040306584" tags="ARTICLE" title="Additional Features\Static HTML backlink">
+<div created="20201114123539291" img="" modified="20201226100341880" tags="ARTICLE" title="Additional Features\Static HTML backlink">
 <pre>The custom save feature downloads two versions of the Wiki File. This macro will link the to files to each other.
 
-[New Tip]
-
+!! New Tip
 * Title = `ext TW Return`
 * Main Body Text = 
 
-```
-\define TW_Return(ur_url, ur_link_title)
-&lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;$ur_url$&quot;&gt; ($ur_link_title$)&lt;/a&gt;&lt;/div&gt;
-\end
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]]&quot;&gt;
-&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;TiddlyWiki view of website&quot; /&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]split[.htm]join[.html]]&quot;&gt;
-&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;Static HTML view of website&quot; /&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-```
+&lt;$codeblock code={{ext TW Return}} /&gt;
 
-[Main Index Tip]
-
+!! Main Index Tip
 * [At top of code]
 * Insert line `{{ext TW Return}}`
 * Note: The Static HTML and Wiki File pages will be linked to each other through the link at the top-right corner of the Main Index Tip</pre>
@@ -10974,137 +10885,13 @@ Save Wiki to GitHub
 * Note: You will have to re-open the Wiki File to see the Text Replacement bar in the Editor view
 </pre>
 </div>
-<div created="20201121095206741" img="" modified="20201226040306584" tags="ARTICLE" title="Additional Features\View or Copy Tip source code">
-<pre>[New Tip]
-
+<div created="20201121095206741" img="" modified="20201226100520753" tags="ARTICLE" title="Additional Features\View or Copy Tip source code">
+<pre>!! New Tip
 * Title = `mcr glbl_code_split`
 * Tags = `$:/tags/Macro`
 * Main Body Text = 
 
-```
-\define glbl_code_split_group(ur_tip_pk, ur_skip_count)
-&lt;$list filter=&quot;[{$ur_tip_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&amp;#x0022;&amp;#x0022;&amp;#x0022;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;
-&lt;/$list&gt;&lt;/$list&gt;
-\end
-\define glbl_code_split_count(ur_tip_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_split_group ur_tip_pk=&quot;$ur_tip_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-\end
-\define glbl_code_split_data()
-&lt;$macrocall $name=glbl_code_split_count ur_tip_pk=&lt;&lt;source_tip_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-\end
-\define glbl_code_split_next_group_disp(ur_rem_counter)
-&lt;$list filter=&quot;[{$ur_rem_counter$}subtract[1]]&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;
-\end
-\define glbl_code_split_disp(ur_source_tip_pk, ur_temp_tip_pk, ur_temp_remcounter_pk, ur_first_line_skip)
-Line Count: &lt;$list filter=&quot;[{$ur_source_tip_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-Rem to find: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-Source data: [[$ur_source_tip_pk$]]&lt;br&gt;
-\end
-\define glbl_code_split_combine()
-$(currentTiddler)$$(str_html_out)$
-\end
-\define glbl_code_split_init(ur_tip_pk, ur_first_line_skip)
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_tip_pk=&quot;$ur_tip_pk$&quot; temp_tip_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesOutput&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$list filter=&quot;[{$ur_tip_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]add[1]floor[]]&quot;&gt;
-      &lt;$button&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_tip_pk&gt;&gt; text=&quot;&quot; /&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        Reset destination edit field
-        &lt;/$button&gt;
-      &lt;/$list&gt;&lt;br&gt;
-	
-    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-\define glbl_code_split(ur_tip_pk, ur_first_line_skip)
-&lt;$macrocall $name=glbl_code_split_init ur_tip_pk=&quot;$ur_tip_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_tip_pk=&quot;$ur_tip_pk$&quot; temp_tip_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesOutput&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$macrocall $name=glbl_code_split_disp ur_source_tip_pk=&lt;&lt;source_tip_pk&gt;&gt; ur_temp_tip_pk=&lt;&lt;temp_tip_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-    &lt;$button&gt;
-      &lt;$wikify name=str_html_out text=&lt;&lt;glbl_code_split_data&gt;&gt; &gt;
-        &lt;$list filter=&quot;[&lt;temp_tip_pk&gt;get[text]else[]]&quot;&gt;&lt;$vars combine_html_out=&lt;&lt;glbl_code_split_combine&gt;&gt; &gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_tip_pk&gt;&gt; text=&lt;&lt;combine_html_out&gt;&gt; /&gt;
-         &lt;/$vars&gt;&lt;/$list&gt;
-        &lt;$macrocall $name=glbl_code_split_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; /&gt;
-        &lt;/$wikify&gt;
-      
-      Find next 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-
-    &lt;$edit-text tiddler=&lt;&lt;temp_tip_pk&gt;&gt; autoHeight=no /&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-\define glbl_code_disp_group(ur_tip_pk, ur_skip_count)
-&lt;$list filter=&quot;[{$ur_tip_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]&quot;&gt;&lt;$list filter=&quot;[&lt;currentTiddler&gt;splitregexp[\u0026]join[&amp;#x0026;]splitregexp[\u00A0]join[&amp;nbsp;]splitregexp[\u0009]join[&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;]splitregexp[\u0020]join[&amp;nbsp;]splitregexp[\u0027]join[&amp;#x0027;]splitregexp[\u002C]join[&amp;#x002C;]splitregexp[\u002D]join[&amp;#x002D;]splitregexp[\u002F]join[&amp;#x002F;]splitregexp[\u003A]join[&amp;#x003A;]splitregexp[\u003C]join[&amp;#x003C;]splitregexp[\u0040]join[&amp;#x0040;]splitregexp[\u005B]join[&amp;#x005B;]splitregexp[\u005C]join[&amp;#x005C;]splitregexp[\u005E]join[&amp;#x005E;]splitregexp[\u005F]join[&amp;#x005F;]splitregexp[\u0060]join[&amp;#x0060;]splitregexp[\u007B]join[&amp;#x007B;]splitregexp[\u007E]join[&amp;#x007E;]]&quot;&gt;&lt;&lt;currentTiddler&gt;&gt;&lt;br&gt;&lt;/$list&gt;&lt;/$list&gt;
-\end
-\define glbl_code_disp_count(ur_tip_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-&lt;$list filter=&quot;[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]&quot;&gt;&lt;$macrocall $name=glbl_code_disp_group ur_tip_pk=&quot;$ur_tip_pk$&quot; ur_skip_count=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-\end
-\define glbl_code_disp_data()
-&lt;$macrocall $name=glbl_code_disp_count ur_tip_pk=&lt;&lt;source_tip_pk&gt;&gt; ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_last_counter=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-\end
-\define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
-&lt;$list filter=&quot;[{$ur_rem_counter$}$ur_oper$[1]]&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-&lt;/$list&gt;
-\end
-\define glbl_code_disp_disp(ur_source_tip_pk, ur_temp_remcounter_pk, ur_first_line_skip)
-Line Count: &lt;$list filter=&quot;[{$ur_source_tip_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/$list&gt;&lt;br&gt;
-\end
-\define glbl_code_disp_init(ur_tip_pk, ur_first_line_skip)
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_tip_pk=&quot;$ur_tip_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$list filter=&quot;[{$ur_tip_pk$}splitregexp[\n]butfirst&lt;first_line_skip&gt;count[]divide[100]floor[]]&quot;&gt;
-      &lt;$button&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        &lt;$action-setfield $tiddler=&lt;&lt;temp_lastcounter_pk&gt;&gt; text=&lt;&lt;currentTiddler&gt;&gt; /&gt;
-        Reset destination edit field
-        &lt;/$button&gt;
-      &lt;/$list&gt;&lt;br&gt;
-	
-    &lt;$edit-text tiddler=&lt;&lt;temp_remcounter_pk&gt;&gt; autoHeight=yes tag=input /&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-\define glbl_code_disp(ur_tip_pk, ur_first_line_skip)
-&lt;$macrocall $name=glbl_code_disp_init ur_tip_pk=&quot;$ur_tip_pk$&quot; ur_first_line_skip=&quot;$ur_first_line_skip$&quot; /&gt;&lt;br&gt;
-[[$ur_tip_pk$]]&lt;br&gt;
-&lt;$list filter=&quot;[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]&quot;&gt;
-  &lt;$vars source_tip_pk=&quot;$ur_tip_pk$&quot; temp_remcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesRemCounter&quot; temp_lastcounter_pk=&quot;$:/state/popup/$ur_tip_pk$/HtmlEscapedLinesLastCounter&quot; first_line_skip=&lt;&lt;currentTiddler&gt;&gt; &gt;
-    &lt;$macrocall $name=glbl_code_disp_disp ur_source_tip_pk=&lt;&lt;source_tip_pk&gt;&gt; ur_temp_remcounter_pk=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_temp_lastcounter_pk=&lt;&lt;temp_lastcounter_pk&gt;&gt; ur_first_line_skip=&lt;&lt;first_line_skip&gt;&gt; /&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;subtract&quot; /&gt;
-      
-      Browse next 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-    &lt;$button&gt;
-      &lt;$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=&lt;&lt;temp_remcounter_pk&gt;&gt; ur_oper=&quot;add&quot; /&gt;
-      
-      Browse prev 100 lines
-      &lt;/$button&gt;&lt;br&gt;
-
-    &lt;&lt;glbl_code_disp_data&gt;&gt;
-    &lt;/$vars&gt;
-  &lt;/$list&gt;
-\end
-
-&lt;!--&lt;$macrocall $name=glbl_code_disp ur_tip_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
-
-&lt;!--&lt;&lt;glbl_code_disp &quot;WebNotes\Data 1 &gt;&gt;--&gt;
-
-&lt;!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.--&gt;
-
-&lt;!--[[WebNotes\Data]]--&gt;
-
-&lt;!--&lt;$macrocall $name=glbl_code_split ur_tip_pk=&quot;WebNotes\Data&quot; ur_first_line_skip=1 /&gt;--&gt;
+&lt;$codeblock code={{mcr glbl_code_split}} /&gt;
 </pre>
 </div>
 <div created="20201114053343651" e1="Download Empty Wiki" e2="Open Control Panel" e3="Change Title and Default Page Search" e4="Create new Tip" e5="Enter Tip Title" e6="Add a Tag Name" e7="Enter a program to show a list of Tips" e8="Close the Tip Editor" e9="Create a Keyboard Shortcut Label Tip for Save Changes" ec10="Create a Keyboard Shortcut Assignment Tip" ec11="Create a Keyboard Shortcut Program Tip" ec12="Add a Field-Value" ec13="Enter the Save All Program" level="1" modified="20201226040306584" tags="DOC" title="Basic Wiki Setup">
@@ -11119,17 +10906,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/ol&gt;
 </pre>
 </div>
-<div created="20201118045544465" modified="20201226040306584" tags="META" title="btn Delete Tips">
+<div created="20201118045544465" modified="20201226074803318" tags="META" title="btn Delete Tips">
 <pre>&lt;$button&gt;
-&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-setfield $tiddler=&lt;&lt;currentTiddler&gt;&gt; text=&quot;&quot; /&gt;&lt;/$list&gt;
-&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
-Clear ARTICLE and IMG notes, and DOC tags starting with `E`
-&lt;/$button&gt;
-
-&lt;$button&gt;
-&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-sendmessage $message=tm-delete-tiddler $param=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
-&lt;$list filter=&quot;[tag[DOC]]&quot; variable=doc_pk&gt;&lt;$list filter=&quot;[&lt;doc_pk&gt;fields[]prefix[e]]&quot; variable=field_pk2&gt;&lt;$action-deletefield $tiddler=&lt;&lt;doc_pk&gt;&gt; $field=&lt;&lt;field_pk2&gt;&gt; /&gt;&lt;/$list&gt;&lt;/$list&gt;
-Del ARTICLE and IMG notes, and DOC tags starting with `E`
+&lt;$list filter=&quot;[tag[ARTICLE]] [tag[IMG]]&quot;&gt;&lt;$action-deletetiddler $tiddler=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/$list&gt;
+Del ARTICLE and IMG notes
 &lt;/$button&gt;</pre>
 </div>
 <div created="20201114065200048" img="img Change Title and Default Page Search" modified="20201226040306585" tags="ARTICLE" title="Change Title and Default Page Search">
@@ -11359,6 +11139,28 @@ close
 * Click the top-right ''X'' button to close the Tip
 
 &lt;$image source={{!!img}} /&gt;
+</pre>
+</div>
+<div created="20201226100159729" modified="20201226100159729" title="Draft of 'Additional Features\See all Recently Changed Tips'">
+<pre>!! Main Index Tip
+* [Main Body Text]
+* Add the following link code to the bottom
+
+```
+[[___|Recent entries]]
+```
+
+* Close the editor
+* Note: This will show a short, blue line at the bottom of the Main Index Tip
+* Click the Blue Line Link -&gt; Opens page
+
+
+!! New Tip
+* Note: Title = Recent Entries
+* Click the top-right corner button that looks like a Pencil to show the Tip Editor
+* Main Body Text = `&lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;`
+* Close the editor
+* Note: This will show the 30 most recently changed Tip titles, grouped by date
 </pre>
 </div>
 <div created="20201114075423660" img="img List Links Filter" modified="20201226040306586" tags="ARTICLE" title="Enter a program to show a list of Tips">
@@ -11950,8 +11752,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div created="20201226025148520" modified="20201226040306587" tags="META" title="parm SkipSaveExportHTML">
 <pre></pre>
 </div>
-<div created="20201114092453491" modified="20201226040306587" tags="META" title="Recent Entries">
-<pre>[[View All Tips]]
+<div created="20201114092453491" modified="20201226094338943" tags="META" title="Recent Entries">
+<pre>[[Search All Fields]]
+
+[[View All Tips]]
 
 [[View All Code]]
 
@@ -11986,6 +11790,50 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$button&gt;&lt;/div&gt;
 ```
 </pre>
+</div>
+<div created="20201226094244599" modified="20201226094256057" tags="META" title="Search All Fields">
+<pre>&lt;$vars search_text_pk=&quot;$:/state/popup/SearchAllFields&quot;&gt;
+&lt;$list variable=show_code_pk filter=&quot;[&lt;search_text_pk&gt;addsuffix[-checkShowCode]]&quot;&gt;
+&lt;$list variable=skip_system_pk filter=&quot;[&lt;search_text_pk&gt;addsuffix[-checkSkipSystem]]&quot;&gt;
+&lt;$edit-text tiddler=&lt;&lt;search_text_pk&gt;&gt; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&quot;text&quot; tiddler=&lt;&lt;show_code_pk&gt;&gt;&gt; Show Code&lt;/$checkbox&gt;
+&lt;$checkbox default=&quot;yes&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&quot;text&quot; tiddler=&lt;&lt;skip_system_pk&gt;&gt;&gt; Skip System &lt;/$checkbox&gt;&lt;br&gt;
+&lt;br&gt;
+
+&lt;$list variable=cur_search_text filter=&quot;[&lt;search_text_pk&gt;get[text]!match[]]&quot;&gt;
+&lt;$list variable=cur_showcode_text filter=&quot;[&lt;show_code_pk&gt;get[text]else[no]]&quot;&gt;
+&lt;$list variable=cur_skipsystem_text filter=&quot;[&lt;skip_system_pk&gt;get[text]else[yes]match[yes]count[]]&quot;&gt;
+
+&lt;!--Tip titles--&gt;
+&lt;$list variable=cur_pk filter=&quot;[regexp&lt;cur_search_text&gt;sort[]]&quot;&gt;
+&lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_skipsystem_text&gt;] [&lt;cur_pk&gt;!is[system]count[]] +[sum[]match[1]]&quot;&gt;
+
+&lt;&lt;cur_pk&gt;&gt;: &lt;&lt;cur_field&gt;&gt;
+&lt;/$list&gt;&lt;!--found_skipsystem--&gt;
+&lt;/$list&gt;&lt;!--cur_pk--&gt;
+
+&lt;!--Tip fields--&gt;
+&lt;$list variable=cur_pk filter=&quot;[!regexp&lt;cur_search_text&gt;sort[]]&quot;&gt;
+&lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_pk&gt;is[system]count[]multiply&lt;cur_skipsystem_text&gt;match[0]]&quot;&gt;
+&lt;$list variable=cur_field filter=&quot;[&lt;cur_pk&gt;fields[]]&quot;&gt;
+&lt;$list variable=found_field filter=&quot;[&lt;cur_pk&gt;get&lt;cur_field&gt;regexp&lt;cur_search_text&gt;]&quot;&gt;
+
+&lt;$link to=&lt;&lt;cur_pk&gt;&gt; /&gt;: &lt;&lt;cur_field&gt;&gt;
+&lt;$list variable=disp_code filter=&quot;[&lt;cur_showcode_text&gt;match[yes]]&quot;&gt;
+&lt;$codeblock code=&lt;&lt;found_field&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--disp_code--&gt;
+&lt;/$list&gt;&lt;!--found_field--&gt;
+&lt;/$list&gt;&lt;!--cur_field--&gt;
+
+&lt;/$list&gt;&lt;!--found_skipsystem--&gt;
+&lt;/$list&gt;&lt;!--cur_pk--&gt;
+
+&lt;/$list&gt;&lt;!--cur_skipsystem_text--&gt;
+&lt;/$list&gt;&lt;!--cur_showcode_text--&gt;
+&lt;/$list&gt;&lt;!--cur_search_text--&gt;
+&lt;/$list&gt;&lt;!--skip_system_pk--&gt;
+&lt;/$list&gt;&lt;!--show_code_pk--&gt;
+&lt;/$vars&gt;&lt;!--search_text_pk--&gt;</pre>
 </div>
 <div created="20201226041128309" description="Export Code" extension="codetxt" modified="20201226042341669" tags="$:/tags/Exporter META" title="template ExportAllCode">
 <pre>\define renderContent()
