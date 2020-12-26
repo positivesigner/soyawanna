@@ -1,0 +1,1263 @@
+
+
+$:/config/MissingLinks
+
+no
+
+
+
+$:/config/Navigation/openLinkFromOutsideRiver
+
+bottom
+
+
+
+$:/config/Navigation/Permalinkview/CopyToClipboard
+
+no
+
+
+
+$:/config/ShortcutInfo/font-large
+
+
+
+$:/config/ShortcutInfo/font-normal
+
+
+
+$:/config/ShortcutInfo/home-tiddlers
+
+
+
+$:/config/ShortcutInfo/save-all-changes
+
+
+
+$:/config/shortcuts/font-large
+
+ctrl-shift-Quote
+
+
+
+$:/config/shortcuts/font-normal
+
+ctrl-shift-Comma
+
+
+
+$:/config/shortcuts/home-tiddlers
+
+alt-H
+
+
+
+$:/config/shortcuts/save-all-changes
+
+alt-S
+
+
+
+$:/config/TextEditor/EnableToolbar
+
+no
+
+
+
+$:/config/WikiParserRules/Inline/wikilink
+
+disable
+
+
+
+$:/DefaultTiddlers
+
+[all[tiddlers]tag[INDEX]sort[title]]
+
+
+
+
+$:/plugins/danielo515/searchNreplace
+
+{
+    "tiddlers": {
+        "$:/danielo515/modules/startup/replace.js": {
+            "text": "/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW >= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\"use strict\";\r\n\r\n// Export name and synchronous status\r\nexports.name = \"password\";\r\nexports.platforms = [\"browser\"];\r\nexports.after = [\"startup\"];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\"tm-replace\",function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getTiddlerText(event.paramObject.source) || \"\",\r\n      doGlobal = event.paramObject.global || \"yes\", // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \"no\" ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \"yes\",\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Tiddler to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\"text\",null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();",
+            "title": "$:/danielo515/modules/startup/replace.js",
+            "type": "application/javascript",
+            "module-type": "startup"
+        },
+        "$:/plugins/danielo515/searchNreplace/readme": {
+            "title": "$:/plugins/danielo515/searchNreplace/readme",
+            "text": "This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default tiddler's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n"
+        },
+        "$:/plugins/danielo515/searchNreplace/ui/controls": {
+            "created": "20150409175313556",
+            "list-after": "$:/core/ui/EditTemplate/tags",
+            "modified": "20150409182902159",
+            "tags": "$:/tags/EditTemplate",
+            "title": "$:/plugins/danielo515/searchNreplace/ui/controls",
+            "type": "text/vnd.tiddlywiki",
+            "text": "<div class=\"tc-edit-controls\">\n<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/EditControls]]\" variable=\"control\">\n<$transclude tiddler=<<control>>>\n</$list>\n</div>"
+        },
+        "$:/plugins/danielo515/searchNreplace/ui/controls/replace": {
+            "created": "20150409182035279",
+            "modified": "20150409182544663",
+            "tags": "$:/tags/EditControls",
+            "title": "$:/plugins/danielo515/searchNreplace/ui/controls/replace",
+            "type": "text/vnd.tiddlywiki",
+            "text": "<$edit-text tiddler=\"$:/state/searchNreplace/search\" tag=\"input\" default=\"\" placeholder=\"search\"/> <$edit-text tiddler=\"$:/state/searchNreplace/replace\" tag=\"input\" default=\"\" placeholder=\"replace\"/> <$button class=\"button button-tiny button-primary\">Replace\r\n<$action-sendmessage $message=\"tm-replace\" source=<<currentTiddler>> search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/>\r\n</$button>\r\n<$checkbox default=\"yes\" unchecked=\"no\" checked=\"yes\" field=\"text\" tiddler=\"$:/state/searchNreplace/global\">Global</$checkbox>\r\n<$checkbox default=\"no\" unchecked=\"no\" checked=\"yes\" field=\"text\" tiddler=\"$:/state/searchNreplace/regex\">Use regex</$checkbox>"
+        },
+        "$:/plugins/danielo515/searchNreplace/styles": {
+            "created": "20150409181359332",
+            "modified": "20150409182956438",
+            "tags": "$:/tags/Stylesheet",
+            "title": "$:/plugins/danielo515/searchNreplace/styles",
+            "type": "text/css",
+            "text": "  .tc-edit-controls {\n  border: 1px solid #cccccc;\n  border-top: 0px;\n  padding: 4px 8px 4px 8px;\n}"
+        }
+    }
+}
+
+
+
+$:/themes/tiddlywiki/vanilla/options/sidebarlayout
+
+fluid-fixed
+
+
+
+AndroidChromeBrowser
+
+<<glbl_article_list>>
+
+
+
+AndroidGit
+
+<<glbl_article_list>>
+
+
+
+AndroidMultipleUsers
+
+<<glbl_article_list>>
+
+
+
+AndroidProgramming
+
+<<glbl_article_list>>
+
+
+
+AndroidQLua
+
+<<glbl_article_list>>
+
+
+
+AndroidScreenshot
+
+<<glbl_article_list>>
+
+
+
+AndroidVNC
+
+<<glbl_article_list>>
+
+
+
+AndroidWebDav
+
+<<glbl_article_list>>
+
+
+
+btn Delete Tips
+
+<$button>
+<$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-sendmessage $message=tm-delete-tiddler $param=<<currentTiddler>> /></$list>
+<$list filter="[tag[DOC]]" variable=doc_pk><$list filter="[<doc_pk>fields[]prefix[e]]" variable=field_pk2><$action-deletefield $tiddler=<<doc_pk>> $field=<<field_pk2>> /></$list></$list>
+Del ARTICLE and IMG notes, and DOC tags starting with `E`
+</$button>
+
+
+
+ChromeBrowser
+
+<<glbl_article_list>>
+
+
+
+Code Samples
+
+{{ext TW Return}}
+
+<<list-links filter:"[tag[DOC]sort[title]]">>
+
+[[___|Recent Entries]]
+
+
+
+css alternating-rows
+
+.alternating-rows tr:nth-child(even) {background-color:white}
+.alternating-rows tr:nth-child(odd) {background-color:lightgrey}
+
+
+
+
+DivPop btn
+
+\define divpop_current(ur_ref)
+<$button class=<<tv-config-toolbar-class>> >
+<$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
+<$action-sendmessage $message="tm-close-tiddler" $param="pop_right"/>
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{DivPop.svg}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text"><$text text="Popup over Sidebar"/></span>
+</$list>
+</$button>
+\end
+
+<$list filter="[all[current]]">
+<$macrocall $name=divpop_current ur_ref=<<currentTiddler>> /> 
+</$list>
+
+
+
+DivPop glbl
+
+<$list filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
+<div style="
+position: fixed;
+top: 0px;
+right: 0px;
+width: 350px;
+border: 3px solid;
+background: white;
+bottom: 0%;
+">
+<div style="overflow-y: scroll; height: 100%;">
+<$button>
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+close
+</$button>
+<$tiddler tiddler=<<currentTiddler>> >
+<$transclude mode="block" />
+</$tiddler>
+</div>
+</div>
+</$list>
+
+
+
+
+DivPop.svg
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="PopupSidebar.svg"
+   id="svg52"
+   version="1.1"
+   height="22pt"
+   width="22pt"
+   viewBox="0 0 128 128"
+   class="tc-image-close-button tc-image-button">
+  <metadata
+     id="metadata58">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs56">
+    <inkscape:perspective
+       id="perspective60"
+       inkscape:persp3d-origin="64 : 36.371105 : 1"
+       inkscape:vp_z="128 : 43.054765 : 1"
+       inkscape:vp_y="0 : 313.29655 : 0"
+       inkscape:vp_x="0 : 43.054765 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:current-layer="svg52"
+     inkscape:window-maximized="0"
+     inkscape:window-y="27"
+     inkscape:window-x="61"
+     inkscape:cy="12.415296"
+     inkscape:cx="21.019608"
+     inkscape:zoom="8"
+     showgrid="false"
+     id="namedview54"
+     inkscape:window-height="480"
+     inkscape:window-width="820"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <g
+     id="g50"
+     fill-rule="evenodd" />
+  <rect
+     y="13.090909"
+     x="10.909091"
+     height="104.72727"
+     width="111.27273"
+     id="rect85"
+     style="fill:#cccccc;stroke-width:4.36364" />
+  <rect
+     y="19.636366"
+     x="19.09091"
+     height="89.454567"
+     width="95.454552"
+     id="rect92"
+     style="fill:#ffffff;stroke-width:4.36364" />
+  <rect
+     y="58.909092"
+     x="50.727272"
+     height="10.909091"
+     width="42.545452"
+     id="rect94"
+     style="fill:#cccccc;stroke-width:4.36364" />
+  <path
+     id="path96"
+     d="m 61.090909,34.363636 c 32.181818,24.545458 32.181818,24.545458 32.181818,24.545458 v 0"
+     style="fill:#cccccc;stroke:#cccccc;stroke-width:4.36364px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  <path
+     id="path98"
+     d="M 64.909091,95.999999 C 93.272727,69.818185 93.272727,69.818185 93.272727,69.818185"
+     style="fill:#b3b3b3;stroke:#cccccc;stroke-width:4.36364px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  <rect
+     y="16.90909"
+     x="86.727272"
+     height="94.909088"
+     width="8.181818"
+     id="rect100"
+     style="fill:#cccccc;stroke-width:4.36364" />
+</svg>
+
+
+
+
+Excel VBA
+
+<<glbl_article_list>>
+
+
+
+ext JavaScript Closures
+
+[ext[JavaScript Closures |http://blog.niftysnippets.org/2008/02/closures-are-not-complicated.html]]
+
+
+
+ext JavaScript Strict Mode
+
+[ext[JavaScript Strict Mode |https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode]]
+
+
+
+ext JavaScript This Parameter
+
+[ext[JavaScript This Parameter |http://blog.niftysnippets.org/2008/03/mythical-methods.html]]
+
+
+
+ext Regexp Filter with brackets
+
+[ext[https://tiddlywiki.narkive.com/T5403O4p/tw5-regexp-for-matching-a-tag-tiddlytweeter#post7]]
+
+
+
+ext Regular Expression Quantifiers
+
+[ext[https://www.rexegg.com/regex-quantifiers.html]]
+
+
+
+ext Shuffle List Entries
+
+[ext[TiddlyWiki_Code\Snapshot\mklauber TWPlugin Shuffle.txt.html]]
+
+
+
+ext SQLite Blob text
+
+https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite
+
+
+
+ext SQLite DB Browser
+
+https://sqlitebrowser.org/dl/
+
+
+
+ext SQLite Language functions
+
+https://sqlite.org/lang_corefunc.html
+
+
+
+ext SQLite schema information
+
+https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata
+
+
+
+ext SQLite Top 5 Records
+
+https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite
+
+
+
+ext Tiddly Wiki Home Button source code
+
+[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid]]
+
+
+
+ext TiddlyWiki Save Button source code
+
+[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid]]
+
+
+
+ext TiddlyWiki TopBar Menu
+
+[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid]]
+
+
+
+ext TW Addon Text Replace
+
+[ext[TiddlyWiki_Code\AddOns\Text Replace Bar.htm]]
+
+
+
+ext TW Create Javascript Plugin
+
+[ext[https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki]]
+
+
+
+ext TW Empty Setup
+
+[ext[TiddlyWiki_Project\Empty Setup\TW Empty Setup.htm]]
+
+
+
+ext TW Empty v5d01d22
+
+[ext[TiddlyWiki_Code\Snapshot\tw_empty_v5d01d23.html]]
+
+
+
+ext TW Manual
+
+[ext[TiddlyWiki_Code\Snapshot\TheBook - The TiddlyWiki Manual.txt.html]]
+
+
+
+ext TW Return
+
+\define TW_Return(ur_url, ur_link_title)
+<div style="float:right"><a href="$ur_url$"> ($ur_link_title$)</a></div>
+\end
+<$list filter="[<tv-config-toolbar-icons>match[no]]">
+<$list filter="[{$:/info/url/full}split[/]count[]subtract[1]]" variable=found_index>
+<$list filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]]">
+<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="TiddlyWiki view of website" />
+</$list>
+</$list>
+</$list>
+<$list filter="[<tv-config-toolbar-icons>!match[no]]">
+<$list filter="[{$:/info/url/full}split[/]count[]subtract[1]]" variable=found_index>
+<$list filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]split[.htm]join[.html]]">
+<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="Static HTML view of website" />
+</$list>
+</$list>
+</$list>
+
+
+
+
+ext TW Snapshot Review
+
+[ext[TiddlyWiki_Code\Snapshot\Browse Code tiddlywiki_v5d01d23pre-release.htm]]
+
+
+
+ext TW Snapshot v5d01d22
+
+[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23.html]]
+
+
+
+ext TW Snapshot v5d01d23 pre-release
+
+[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23pre-release.html]]
+
+
+
+ext Unicode Block 01
+
+[ext[Latin-1 Supplement Block |https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)]]
+
+
+
+ext Unicode Block Planes
+
+[ext[Unicode Block Planes |https://en.wikipedia.org/wiki/Plane_(Unicode)]]
+
+
+
+ext Unicode Character Database
+
+[ext[Unicode Character Database]]
+
+
+
+ext Unicode Code Block List
+
+[ext[Unicode Code Block List | https://en.wikipedia.org/wiki/Unicode_block]]
+
+
+
+ext Unicode Input
+
+[ext[Wikipedia Unicode Input |https://en.wikipedia.org/wiki/Unicode_input]]
+
+
+
+ext UnicodeInput App
+
+[ext[FileFormat.info UnicodeInput app |https://www.fileformat.info/tool/unicodeinput/index.htm]]
+
+
+
+FFMPeg
+
+<<glbl_article_list>>
+
+
+
+Font Size
+
+<$button>
+{{keyboard action FontLarge}}
+Big Font
+</$button>
+
+<$button>
+{{keyboard action FontNormal}}
+Normal Font
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-sendmessage $message="tm-save-wiki" />
+Save Wiki to GitHub
+</$button>
+
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strTIP_PK>
+<$button>
+<$list filter="[list[$:/StoryList]] -[<strTIP_PK>]" variable=strCLOSE_PK>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
+</$list>
+Close all other open Tips
+</$button>
+</$list>
+
+
+
+<$vars new_tip_entry_pk="$:/state/popup/NewTempTipPK">
+<$edit-text tiddler=<<new_tip_entry_pk>> field=text default="New Tip Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$link to=<<new_tip_entry_pk>> /> = -<$transclude tiddler=<<new_tip_entry_pk>> />-<br>
+
+<$list variable=new_tip filter="[<new_tip_entry_pk>get[text]!match[]]">
+<$vars compare_entry_pk="$:/state/popup/CompareTempTipPK">
+
+<$list variable=new_pk filter="[<new_tip>addprefix[$:/state/popup/]]">
+<$button>
+<$action-sendmessage $message="tm-new-tiddler" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
+Create Tip ''<<new_tip>>'' and Edit
+</$button><br>
+
+<$button>
+<$action-setfield $tiddler=<<new_pk>> text="yes"/>
+<$action-navigate $to=<<new_pk>>/>
+Create Tip ''<<new_tip>>'' and Show
+</$button><br>
+
+<$link to=<<new_pk>> /><br>
+
+<$button>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
+Close Tip: ''<<new_tip>>''
+</$button><br>
+
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strTIP_PK>
+<$button>
+<$list filter="[list[$:/StoryList]] -[<strTIP_PK>]" variable=strCLOSE_PK>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
+</$list>
+Close all other open Tips
+</$button>
+</$list><br>
+
+<$button>
+<$action-sendmessage $message="tm-delete-tiddler" $param=<<new_pk>> />
+Delete Tip: ''<<new_tip>>'' with confirmation
+</$button><br>
+
+<$button>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
+<$action-deletetiddler $tiddler=<<new_pk>> />
+Delete Tip: ''<<new_tip>>'' without confirmation
+</$button><br>
+
+<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Tip Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$list variable=compare_pk filter="[<compare_entry_pk>get[text]]">
+<$link to=<<compare_pk>> />
+<$list variable=compare_text filter="[<compare_pk>get[text]]">
+<$list variable=new_tip_text filter="[<new_pk>get[text]]">
+<$diff-text source=<<new_tip_text>> dest=<<compare_text>> />
+</$list><!--new_tip_text-->
+</$list><!--compare_text-->
+</$list><!--compare_pk-->
+
+</$list><!--new_pk-->
+</$vars><!--compare_entry_pk-->
+</$list><!--new_tip-->
+</$vars><!--new_tip_entry_pk-->
+
+
+!!Tips tagged with only $ prefixed tags
+
+<$list variable=cur_tip filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
+<$list variable=has_non_dprefixed_tag filter="[<cur_tip>tags[]!prefix[$]count[]match[0]]">
+
+<$link to=<<cur_tip>> />
+</$list><!--has_non_dprefixed_tag-->
+</$list><!--cur_tip-->
+
+
+!!Tips where has[tags] does not work
+
+<$list variable=cur_tip filter="[is[tiddler]]">
+<$list variable=has_tags_test filter="[<cur_tip>!has[tags]count[]] [<cur_tip>has[tags]count[]] +[sum[]match[0]]">
+
+<$link to=<<cur_tip>> />
+</$list><!--has_tags_test-->
+</$list><!--cur_tip-->
+
+!!Tips with no tags
+
+<$list variable=cur_tip filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
+<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]match[1]]">
+
+<$link to=<<cur_tip>> />
+</$list><!--has_parent_tip-->
+
+<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]!match[1]]">
+<$list variable=parent_tip_exists filter="[<cur_tip>split[\]first[]!is[tiddler]]">
+
+<$link to=<<cur_tip>> />
+</$list><!--parent_tip_exists-->
+</$list><!--has_parent_tip-->
+</$list><!--cur_tip-->
+
+
+
+<$button>
+<$list variable=cur_tip filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
+<$action-listops $tiddler=<<cur_tip>> $tags="+[append[COPY]]"/>
+</$list>
+<$list variable=cur_tip filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
+<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]!match[1]]">
+<$list variable=parent_tip_exists filter="[<cur_tip>split[\]first[]is[tiddler]]">
+<$action-listops $tiddler=<<cur_tip>> $tags="+[append[COPY]]"/>
+</$list><!--parent_tip_exists-->
+</$list><!--has_parent_tip-->
+</$list><!--cur_tip-->
+Append COPY tag to all tips that already have tags
+</$button><br>
+
+<$button>
+<$list variable=cur_tip filter="[tag[COPY]]">
+<$action-listops $tiddler=<<cur_tip>> $tags="+[remove[COPY]]"/>
+</$list>
+Remove COPY tag from all tips
+</$button><br>
+
+
+[[btn Delete Tips]]
+
+
+
+
+GitCLI
+
+<<glbl_article_list>>
+
+
+
+GitHubDesktop
+
+<<glbl_article_list>>
+
+
+
+GoogleContacts
+
+<<glbl_article_list>>
+
+
+
+GoogleGmail
+
+<<glbl_article_list>>
+
+
+
+GooglePlay
+
+<<glbl_article_list>>
+
+
+
+GooglePlusCodes
+
+<<glbl_article_list>>
+
+
+
+HTML CSS
+
+<<glbl_article_list>>
+
+
+
+Instapaper
+
+<<glbl_article_list>>
+
+
+
+IrfanView
+
+<<glbl_article_list>>
+
+
+
+JavaScript
+
+<<glbl_article_list>>
+
+
+
+JavaScriptBookmarklets
+
+<<glbl_article_list>>
+
+
+
+keyboard action FontLarge
+
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="30px"/>
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="25px"/>
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" text="34px"/>
+
+
+
+
+keyboard action FontNormal
+
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="14px"/>
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="20px"/>
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="15px"/>
+<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" text="24px"/>
+
+
+
+
+keyboard action HomeTiddlers
+
+<$action-sendmessage $message="tm-home"/>
+
+
+
+
+keyboard action SaveAllChanges
+
+\define ExportSaveAll(ur_filename, ur_stamp, ur_save_wiki_extension, ur_save_export_html)
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$$ur_save_wiki_extension$"
+/>
+<$list vairable=save_export_html filter="[[$ur_save_export_html$]match[1]]">
+<$action-sendmessage $message="tm-download-file"
+$param="$:/core/templates/exporters/StaticRiver" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
+exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+</$list><!--save_export_html-->
+<$action-sendmessage $message="tm-download-file"
+$param="template ExportAllCode" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.twcode.txt" />
+\end
+<$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[parm SkipSaveExportHTML]is[tiddler]count[]multiply[-1]] +[sum[]]">
+<$list variable=save_wiki_extension filter="[{$:/info/url/full}split[.]last[]addprefix[.]]">
+<$list variable=save_as_file_name filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
+<$macrocall $name="ExportSaveAll" ur_filename=<<save_as_file_name>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> ur_save_wiki_extension=<<save_wiki_extension>> ur_save_export_html=<<save_export_html>> />
+</$list><!--save_as_file_name-->
+</$list><!--save_export_html-->
+
+
+
+
+mcr glbl_article_list
+
+\define glbl_article_list()
+<ol>
+<$list filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\]]">
+<$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
+<li><$link to=<<currentTiddler>> /></li>
+</$list>
+</$list>
+</ol>
+\end
+
+
+
+
+
+mcr glbl_code_split
+
+\define glbl_code_block(ur_note_pk)
+[[$ur_note_pk$]]
+<$codeblock code={{$ur_note_pk$}} />
+\end
+\define glbl_code_linenum(ur_note_pk, ur_skip_count, ur_section_size, ur_disp_linenum)
+<div style="clear:both">[[$ur_note_pk$]]</div>
+<$list filter="[[$ur_skip_count$]!match[]else[0]]" variable=intSKIP_COUNT>
+<$list filter="[[$ur_note_pk$]get[text]splitregexp[\n]butfirst<intSKIP_COUNT>count[]]" variable=intLINE_COUNT>
+<$list filter="[[$ur_section_size$]!match[]!match[0]else<intLINE_COUNT>]" variable=intSECTION_SIZE>
+<$list filter="[range<intSECTION_SIZE>]" variable=intCUR_LINE>
+<$list filter="[<intCUR_LINE>subtract[1]]" variable=IntREMOVE_LINE>
+<$list filter="[[$ur_note_pk$]get[text]splitregexp[\n]butfirst<intSKIP_COUNT>butfirst<IntREMOVE_LINE>first[]]" variable=strCUR_LINE>
+<$list filter="[[$ur_disp_linenum$]!match[n]!match[0]]"><div style="float:left"><<intCUR_LINE>></div></$list>
+<$codeblock code=<<strCUR_LINE>> />
+</$list></$list></$list></$list></$list></$list>
+\end
+\define glbl_code_split_group(ur_note_pk, ur_skip_count)
+<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&#x0022;&#x0022;&#x0022;]]"><<currentTiddler>>
+</$list></$list>
+\end
+\define glbl_code_split_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_split_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+\end
+\define glbl_code_split_data()
+<$macrocall $name=glbl_code_split_count ur_note_pk=<<source_note_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+\end
+\define glbl_code_split_next_group_disp(ur_rem_counter)
+<$list filter="[{$ur_rem_counter$}subtract[1]]">
+<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+</$list>
+\end
+\define glbl_code_split_disp(ur_source_note_pk, ur_temp_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: <$list filter="[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]"></$list><br>
+Rem to find: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
+Source data: [[$ur_source_note_pk$]]<br>
+\end
+\define glbl_code_split_combine()
+$(currentTiddler)$$(str_html_out)$
+\end
+\define glbl_code_split_init(ur_note_pk, ur_first_line_skip)
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]add[1]floor[]]">
+      <$button>
+        <$action-setfield $tiddler=<<temp_note_pk>> text="" />
+        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
+        Reset destination edit field
+        </$button>
+      </$list><br>
+	
+    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
+    </$vars>
+  </$list>
+\end
+\define glbl_code_split(ur_note_pk, ur_first_line_skip)
+<$macrocall $name=glbl_code_split_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$macrocall $name=glbl_code_split_disp ur_source_note_pk=<<source_note_pk>> ur_temp_note_pk=<<temp_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+    <$button>
+      <$wikify name=str_html_out text=<<glbl_code_split_data>> >
+        <$list filter="[<temp_note_pk>get[text]else[]]"><$vars combine_html_out=<<glbl_code_split_combine>> >
+        <$action-setfield $tiddler=<<temp_note_pk>> text=<<combine_html_out>> />
+         </$vars></$list>
+        <$macrocall $name=glbl_code_split_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> />
+        </$wikify>
+      
+      Find next 100 lines
+      </$button><br>
+
+    <$edit-text tiddler=<<temp_note_pk>> autoHeight=no />
+    </$vars>
+  </$list>
+\end
+\define glbl_code_disp_group(ur_note_pk, ur_skip_count)
+<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentTiddler>><br></$list></$list>
+\end
+\define glbl_code_disp_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+\end
+\define glbl_code_disp_data()
+<$macrocall $name=glbl_code_disp_count ur_note_pk=<<source_note_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+\end
+\define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
+<$list filter="[{$ur_rem_counter$}$ur_oper$[1]]">
+<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+</$list>
+\end
+\define glbl_code_disp_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: <$list filter="[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]"></$list><br>
+Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
+\end
+\define glbl_code_disp_init(ur_note_pk, ur_first_line_skip)
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]floor[]]">
+      <$button>
+        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
+        Reset destination edit field
+        </$button>
+      </$list><br>
+	
+    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
+    </$vars>
+  </$list>
+\end
+\define glbl_code_disp(ur_note_pk, ur_first_line_skip)
+<$macrocall $name=glbl_code_disp_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
+[[$ur_note_pk$]]<br>
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$macrocall $name=glbl_code_disp_disp ur_source_note_pk=<<source_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+    <$button>
+      <$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="subtract" />
+      
+      Browse next 100 lines
+      </$button><br>
+    <$button>
+      <$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="add" />
+      
+      Browse prev 100 lines
+      </$button><br>
+
+    <<glbl_code_disp_data>>
+    </$vars>
+  </$list>
+\end
+
+<!--<$macrocall $name=glbl_code_disp ur_note_pk="WebNotes\Data" ur_first_line_skip=1 />-->
+
+<!--<<glbl_code_disp "WebNotes\Data 1 >>-->
+
+<!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.-->
+
+<!--[[WebNotes\Data]]-->
+
+<!--<$macrocall $name=glbl_code_split ur_note_pk="WebNotes\Data" ur_first_line_skip=1 />-->
+
+<!--<<glbl_code_block "UrNotePK">>-->
+
+<!--<<glbl_code_linenum "UrNotePK" 0 15 n>>-->
+
+
+
+mcr glbl_compare_lines
+
+\define glbl_compare_lines_results_table(ur_note_pk, ur_second_pk, ur_row_count)
+<table><tr>
+<th>''Line''</th>
+<th>Show text</th>
+<th>First Side<br>Second Side</th>
+</tr>
+<$list filter="[range<intSECOND_COUNT>subtract[1]]" variable="intCUR_ENTRY">
+<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst<intCUR_ENTRY>first[]]" variable="strFIRST_LINE">
+<$list filter="[{$ur_second_pk$}splitregexp[\n]butfirst<intCUR_ENTRY>first[]!match<strFIRST_LINE>]" variable="strSECOND_LINE">
+<tr>
+<td rowspan=2>
+
+!!<<intCUR_ENTRY>>
+</td>
+<td>
+<$button>
+<$action-setfield $tiddler="$:/state/CompareTextLine1" text=<<intCUR_ENTRY>>/>
+<$action-setfield $tiddler="$:/state/CompareTextSection1" text="""<$edit-text tiddler="$:/state/CompareTextLine1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
+<$list filter="[{$:/state/CompareTextLine1}!match[]else[0]]" variable=intSTART_LINE><$list filter="[<intSTART_LINE>subtract[1]]" variable=intPREV_LINE>
+<$list filter="[<intSTART_LINE>add[1]]" variable=intNEXT_LINE>
+<$button>
+<$action-setfield $tiddler="$:/state/CompareTextLine1" text=<<intPREV_LINE>>/>
+<<intPREV_LINE>>
+</$button>
+<$button>
+<$action-setfield $tiddler="$:/state/CompareTextLine1" text=<<intNEXT_LINE>>/>
+<<intNEXT_LINE>>
+</$button><br>[[$ur_note_pk$]]<br>
+<$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_note_pk$"  ur_skip_count=<<intSTART_LINE>> />
+</$list></$list></$list>""" />
+<$action-navigate $to="$:/state/CompareTextSection1"/>
+<<intCUR_ENTRY>>
+</$button>
+</td>
+<td><$codeblock code=<<strFIRST_LINE>> /></td>
+</tr>
+<tr>
+<td>
+<$button>
+<$action-setfield $tiddler="$:/state/CompareTextLine2" text=<<intCUR_ENTRY>>/>
+<$action-setfield $tiddler="$:/state/CompareTextSection2" text="""<$edit-text tiddler="$:/state/CompareTextLine2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
+<$list filter="[{$:/state/CompareTextLine2}!match[]else[0]]" variable=intSTART_LINE>
+<$list filter="[<intSTART_LINE>subtract[1]]" variable=intPREV_LINE>
+<$list filter="[<intSTART_LINE>add[1]]" variable=intNEXT_LINE>
+<$button>
+<$action-setfield $tiddler="$:/state/CompareTextLine2" text=<<intPREV_LINE>>/>
+<<intPREV_LINE>>
+</$button>
+<$button>
+<$action-setfield $tiddler="$:/state/CompareTextLine2" text=<<intNEXT_LINE>>/>
+<<intNEXT_LINE>>
+</$button><br>[[$ur_second_pk$]]<br>
+<$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_second_pk$"  ur_skip_count=<<intSTART_LINE>> />
+</$list></$list></$list>""" />
+<$action-navigate $to="$:/state/CompareTextSection2"/>
+<<intCUR_ENTRY>>
+</$button>
+</td>
+<td><$codeblock code=<<strSECOND_LINE>> /></td>
+</tr>
+</$list></$list></$list>
+</table>
+\end
+\define glbl_compare_lines(ur_note_pk, ur_second_pk)
+<$list filter="[{$ur_note_pk$}splitregexp[\n]count[]]" variable="intFIRST_COUNT">
+<$list filter="[{$ur_second_pk$}splitregexp[\n]count[]]" variable="intSECOND_COUNT">
+<$list filter="[{$ur_second_pk$}splitregexp[\n]count[]subtract<intFIRST_COUNT>]" variable="intSECOND_EXTRA">
+
+[[$ur_note_pk$]] line count: <<intFIRST_COUNT>>
+
+[[$ur_second_pk$]] line count: <<intSECOND_COUNT>>
+
+''$ur_second_pk$'' excess line count: ''<<intSECOND_EXTRA>>''
+
+<$macrocall $name=glbl_compare_lines_results_table ur_note_pk="$ur_note_pk$" ur_second_pk="$ur_second_pk$" ur_row_count=<<intSECOND_COUNT>> />
+</$list>
+</$list>
+</$list>
+\end
+
+<!--
+<$edit-text tiddler="$:/state/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text tiddler="$:/state/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+
+<<glbl_compare_lines "$:/state/CompareText1" "$:/state/CompareText2">>
+-->
+
+
+
+mcr glbl_ext
+
+\define ext(ur_extnote_pk)
+<$list filter="[[ext $ur_extnote_pk$]get[text]count[]match[0]]">Missing: [$ur_extnote_pk$]</$list>
+{{ext $ur_extnote_pk$}}<div style="float:right">[[->|ext $ur_extnote_pk$]]</div>
+\end
+
+
+
+
+MxClasses
+
+<<glbl_article_list>>
+
+
+
+Recent Entries
+
+[[View All Tips]]
+
+[[View All Code]]
+
+[[Font Size]]
+
+<<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+Regular Expressions
+
+<<glbl_article_list>>
+
+
+
+SQLite
+
+<<glbl_article_list>>
+
+
+
+template ExportAllCode
+
+\define renderContent()
+<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<hr>
+<h2><$link to=<<cur_tip_pk>> /></h2>
+<$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
+<$codeblock code=<<cur_tip_text>> />
+</$list><!--cur_tip_text-->
+</$list><!--cur_tip_pk-->
+\end
+<<renderContent>>
+
+
+
+template Home Button
+
+<div style="float:right;padding-left:30px;">
+{{$:/core/ui/TopBar/menu}}
+</div>
+
+<div style="float:right"><$button set="$:/state/sidebar" setTo="no" tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=<<tv-config-toolbar-class>>>
+<span class="tc-dirty-indicator">
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/core/images/home-button}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text"><$text text={{$:/language/Buttons/Home/Caption}}/></span>
+</$list>
+</span>
+<$action-sendmessage $message="tm-home"/>
+</$button></div>
+
+
+
+
+TiddlerMove
+
+<<glbl_article_list>>
+
+
+
+TiddlyWiki
+
+<<ext "TW Empty Setup">>
+
+<<ext "TW Addon Text Replace">>
+
+<<ext "TW Manual">>
+
+<<ext "TW Snapshot v5d01d22">>
+
+<<ext "TW Empty v5d01d22">>
+
+<<ext "TW Snapshot v5d01d23 pre-release">>
+
+<<ext "Shuffle List Entries">>
+
+<<ext "TW Snapshot Review">>
+
+<<ext "TW Create Javascript Plugin">>
+
+<<glbl_article_list>>
+
+
+
+TotalCommander
+
+<<glbl_article_list>>
+
+
+
+Unicode
+
+<<glbl_article_list>>
+
+
+
+VBNetCode
+
+<<glbl_article_list>>
+
+
+
+VBNetScript
+
+<<glbl_article_list>>
+
+
+
+View All Code
+
+<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<hr>
+<h2><$link to=<<cur_tip_pk>> /></h2>
+<$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
+<$codeblock code=<<cur_tip_text>> />
+</$list><!--cur_tip_text-->
+</$list><!--cur_tip_pk-->
+
+
+
+View All Tips
+
+<$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
+<hr>
+<h2><$link to=<<currentTiddler>> /></h2>
+{{||$:/core/ui/ViewTemplate/tags}}
+<$transclude mode="block"/>
+</$list>
+
+
+
+WindowsCLI
+
+<<glbl_article_list>>
+
+
+
+YouTube
+
+<<glbl_article_list>>
+

@@ -28,6 +28,7 @@ Namespace Mx
         Const strvLIT_USER_PROFILE_DOWNLOADS = "%USERPROFILE%\downloads"
         Const strLIT_STAR_DOT_HTM = "TWMove_*-stamp-*.htm"
         Const strLIT_STAR_DOT_HTML = "TWMove_*-stamp-*.html"
+        Const strLIT_STAR_DOT_TWCODETXT = "TWMove_*-stamp-*.twcode.txt"
 
         Public Shared Sub UITimer_to_Poll_FileDir_And_Move(ur_ret As Strap)
             ur_ret.d("QUIT")
@@ -77,6 +78,8 @@ Namespace Mx
             windows_fs_cart.InsList_From_Windows(userbowl_cart.SelKey(pollfolder_bowlname).v(enmUB.contents), strLIT_STAR_DOT_HTM, System.IO.SearchOption.TopDirectoryOnly)
             filemove_cart.Apply(windows_fs_cart)
             windows_fs_cart.InsList_From_Windows(userbowl_cart.SelKey(pollfolder_bowlname).v(enmUB.contents), strLIT_STAR_DOT_HTML, System.IO.SearchOption.TopDirectoryOnly)
+            filemove_cart.Apply(windows_fs_cart)
+            windows_fs_cart.InsList_From_Windows(userbowl_cart.SelKey(pollfolder_bowlname).v(enmUB.contents), strLIT_STAR_DOT_TWCODETXT, System.IO.SearchOption.TopDirectoryOnly)
             filemove_cart.Apply(windows_fs_cart)
             filemove_cart.Move_Files()
             Dim report_output_bowlname = userbowl_cart.Apply(filemove_cart)
@@ -192,7 +195,12 @@ Namespace Mx
                     Dim flnFILE_NAME = FileNamed().d(strFILE_PATH)
                     Dim strDEST_PATH = flnFILE_NAME.Name.Substring("TWMove_".Length).Replace("-colon-", ":").Replace("-fslash-", "\")
                     Dim intSTAMP = InStr(strDEST_PATH, "-stamp-")
-                    strDEST_PATH = Left(strDEST_PATH, intSTAMP - 1) & flnFILE_NAME.Ext
+					Dim strEXT = flnFILE_NAME.Ext
+					If EndingWithText(strFILE_PATH, ".twcode.txt") Then
+						strEXT = ".twcode" & strEXT
+					End If
+					
+                    strDEST_PATH = Left(strDEST_PATH, intSTAMP - 1) & strEXT
                     Me.Ins(
                         New rFileMove().
                         vt(enmFM.src_file_path, strFILE_PATH).
