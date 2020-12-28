@@ -217,6 +217,8 @@ Error message and password prompt
 
 <li>Colors</li>
 
+<li>colour Macro</li>
+
 <li>CSS</li>
 
 <li>CSS Issues</li>
@@ -245,11 +247,21 @@ Error message and password prompt
 
 <li>CSS Issues\DIV Transition Resize Speed\Test DIV Transition speed</li>
 
+<li>CSS Issues\IMG DataURI</li>
+
+<li>CSS Issues\IMG DataURI\Sample StyleSheet</li>
+
+<li>CSS Issues\IMG DataURI\Test IMG DataURI</li>
+
 <li>CSS Issues\IMG Filter</li>
 
 <li>CSS Issues\IMG Filter\Sample StyleSheet</li>
 
 <li>CSS Issues\IMG Filter\Test IMG Filter Grayscale</li>
+
+<li>CSS Issues\Page-element-named Color Codes</li>
+
+<li>CSS Issues\Page-element-named Color Codes\Test Named-Color Lookup</li>
 
 <li>CSS Issues\Style Precedence</li>
 
@@ -259,6 +271,8 @@ Error message and password prompt
 
 <li>CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet</li>
 
+<li>datauri Macro</li>
+
 <li>DivPop btn</li>
 
 <li>DivPop glbl</li>
@@ -266,6 +280,8 @@ Error message and password prompt
 <li>DivPop.svg</li>
 
 <li>ext CSS Background Gradient</li>
+
+<li>ext CSS Background Image Base64</li>
 
 <li>ext CSS Box Shadow</li>
 
@@ -280,6 +296,8 @@ Error message and password prompt
 <li>ext Wiki Parsing Rules</li>
 
 <li>Font Size</li>
+
+<li>img Sample Black and White Bars</li>
 
 <li>img TestColor</li>
 
@@ -10328,7 +10346,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[img TestColor]]</pre>
+# [[datauri Macro]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10383,19 +10401,19 @@ Error message and password prompt
 <div created="20201226111317031" modified="20201226111317031" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20201226153833650" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20201228101801727" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226111308637" modified="20201226111308637" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201226040229700" modified="20201226153833650" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20201228101801727" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201226140804386" list="$:/Import [[TiddlyWiki Features]] [[CSS Issues]] [[CSS Issues\DIV Box Shadow]] [[CSS Issues\DIV Box Shadow\Test DIV Box Shadow]] [[CSS Issues\DIV Background Color Gradient]]" modified="20201226153602883" title="$:/StoryList">
+<div created="20201228085001248" list="[[CSS Issues]]" modified="20201228101735701" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10534,6 +10552,19 @@ Del ARTICLE and IMG notes
 <div created="20201226114931454" modified="20201226115003384" tags="TOPIC" title="Colors">
 <pre>&lt;&lt;glbl_tagged_list&gt;&gt;</pre>
 </div>
+<div caption="colour" created="20150221154058000" modified="20201228090304119" tags="TW" title="colour Macro" type="text/vnd.tiddlywiki">
+<pre>The colour (or color) [[macro|Macros]] returns the [[CSS|Cascading Style Sheets]] value of one the colours in the current [[palette|ColourPalettes]].
+
+If no such entry exists in the current palette, the [[vanilla palette|$:/palettes/Vanilla]] is used instead. If no such entry exists in the vanilla palette, the system looks for a configuration tiddler with the title `$:/config/DefaultColourMappings/&lt;colour-name&gt;` and transcludes the colour from the text field. This enables to plugins to ship defaults for colours that are not present in the core palettes.
+
+!! Parameters
+
+;name
+: The name of the palette entry, e.g. `page-background`
+
+&lt;&lt;.macro-examples &quot;colour&quot;&gt;&gt;
+</pre>
+</div>
 <div created="20201226124957104" modified="20201226124959735" tags="TOPIC" title="CSS">
 <pre>&lt;&lt;glbl_tagged_list&gt;&gt;</pre>
 </div>
@@ -10668,6 +10699,37 @@ div:hover.sample_div_transition_speed {
 Hover mouse to grow box slowly
 &lt;/div&gt;</pre>
 </div>
+<div created="20201228095759463" modified="20201228101649520" tags="Macro CSS Colors" title="CSS Issues\IMG DataURI">
+<pre>* Use the `&lt;&lt;datauri &quot;UrImageTip&quot; &gt;&gt;` macro to get the Base64 encoding of an Image Tip formatted for use in a CSS uri reference
+
+&lt;&lt;glbl_subtip_code &quot;Sample StyleSheet&quot;&gt;&gt;
+&lt;&lt;glbl_subtip_show &quot;Test IMG DataURI&quot;&gt;&gt;
+
+---
+[[datauri Macro]]
+
+&lt;&lt;glbl_core_mcr_def &quot;datauri&quot;&gt;&gt;
+
+&lt;&lt;ext &quot;CSS Background Image Base64&quot;&gt;&gt;</pre>
+</div>
+<div created="20201228100145791" modified="20201228101524409" tags="[[Test Code]] $:/tags/Stylesheet" title="CSS Issues\IMG DataURI\Sample StyleSheet">
+<pre>.bg_img_striped {
+    background-image: url(&lt;$macrocall $name=datauri title=&quot;img Sample Black and White Bars&quot;  $output=&quot;text/plain&quot; /&gt;);
+    color:pink;
+}</pre>
+</div>
+<div created="20201228093044479" modified="20201228101755942" tags="[[Test Code]]" title="CSS Issues\IMG DataURI\Test IMG DataURI">
+<pre>[[img Sample Black and White Bars]]
+
+&lt;$wikify name=image_b64 text='&lt;&lt;datauri &quot;img Sample Black and White Bars&quot;&gt;&gt;' &gt;
+&lt;img src=&lt;&lt;image_b64&gt;&gt; /&gt;
+&lt;/$wikify&gt;
+
+&lt;div class=&quot;bg_img_striped&quot; &gt;
+Pink font over a black and white image repeated horizonally and extended vertically
+&lt;/div&gt;
+</pre>
+</div>
 <div created="20201226145602102" modified="20201226150430769" tags="Macro CSS Colors" title="CSS Issues\IMG Filter">
 <pre>* Use the `&lt;&lt;filter &quot;UrFilterPct&quot; &gt;&gt;` macro to specify alternative browser-specific properties for an IMG Filter percentage
 
@@ -10694,6 +10756,38 @@ Hover mouse to grow box slowly
 @@
 
 [img[img TestColor]]
+</pre>
+</div>
+<div created="20201228090039097" modified="20201228090737528" tags="Macro CSS Colors" title="CSS Issues\Page-element-named Color Codes">
+<pre>* Use the `&lt;&lt;colour &quot;UrNamedColor&quot; &gt;&gt;` or `&lt;&lt;color &quot;UrNamedColor&quot; &gt;&gt;` macros to retrieve the current Color Pallette Theme's HTML-ready (# prefixed) RGB color (hexacedicmal code) for a particular Page-element, like `page-background`.
+
+&lt;&lt;glbl_subtip_show &quot;Test Named-Color Lookup&quot;&gt;&gt;
+
+---
+[[colour Macro]]
+
+&lt;&lt;glbl_core_mcr_def &quot;colour&quot;&gt;&gt;
+
+&lt;&lt;glbl_core_mcr_def &quot;color&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20201228085051706" modified="20201228091054363" tags="[[Test Code]]" title="CSS Issues\Page-element-named Color Codes\Test Named-Color Lookup">
+<pre>&lt;$list variable=cur_theme filter=&quot;[[$:/palette]get[text]]&quot;&gt;
+
+Current Theme Pallete = &lt;&lt;cur_theme&gt;&gt;
+&lt;$list variable=count_color_names filter=&quot;[&lt;cur_theme&gt;indexes[]count[]]&quot;&gt;
+
+Count of Color Names = &lt;&lt;count_color_names&gt;&gt;
+&lt;/$list&gt;&lt;!--count_color_names--&gt;
+
+Color Names that start with ''P'':
+&lt;$list variable=cur_color_name filter=&quot;[&lt;cur_theme&gt;indexes[]prefix[p]]&quot;&gt;
+
+* &lt;&lt;cur_color_name&gt;&gt; = &lt;$macrocall $name=color name=&lt;&lt;cur_color_name&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--cur_color_name--&gt;
+
+&lt;/$list&gt;&lt;!--cur_theme--&gt;
+
 </pre>
 </div>
 <div created="20201226124123565" modified="20201226124416018" tags="" title="CSS Issues\Style Precedence">
@@ -10733,6 +10827,23 @@ Hover mouse to grow box slowly
 </div>
 <div created="20201226135404193" modified="20201226135616178" tags="[[Test Code]]" title="CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet">
 <pre>The Tip Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.</pre>
+</div>
+<div caption="datauri" created="20150221162212000" modified="20201228095857810" tags="TW" title="datauri Macro" type="text/vnd.tiddlywiki">
+<pre>The &lt;&lt;.def datauri&gt;&gt; [[macro|Macros]] returns a [[data URI|Data URI]] for the content of a tiddler.
+
+It is often used in [[stylesheet|Cascading Style Sheets]] tiddlers to reference things like inline images and fonts:
+
+&gt; `background: url(&lt;&lt;datauri &quot;Motovun Jack.jpg&quot;&gt;&gt;);`
+
+The data URI is automatically [[base64|Base64]]-encoded in the case of a non-text tiddler.
+
+!! Parameters
+
+;title
+: The title of a tiddler, such as an image
+
+&lt;&lt;.macro-examples &quot;datauri&quot;&gt;&gt;
+</pre>
 </div>
 <div created="20200418064445680" modified="20201226040306586" tags="$:/tags/ViewToolbar META" title="DivPop btn">
 <pre>\define divpop_current(ur_ref)
@@ -10882,6 +10993,9 @@ close
 </div>
 <div created="20201226153234637" modified="20201226153254140" tags="EXT" title="ext CSS Background Gradient">
 <pre>[ext[https://www.w3schools.com/cssref/func_linear-gradient.asp]]</pre>
+</div>
+<div created="20201228093053488" modified="20201228093125302" tags="EXT" title="ext CSS Background Image Base64">
+<pre>[ext[https://www.hongkiat.com/blog/css-encoded-image/]]</pre>
 </div>
 <div created="20201226145444468" modified="20201226145506167" tags="EXT" title="ext CSS Box Shadow">
 <pre>[ext[https://www.w3schools.com/cssref/css3_pr_box-shadow.asp]]</pre>
@@ -11071,6 +11185,9 @@ Remove COPY tag from all tips
 
 [[btn Delete Tips]]
 </pre>
+</div>
+<div created="20201228093508170" modified="20201228093532796" tags="IMG" title="img Sample Black and White Bars" type="image/png">
+<pre>iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVRoBe3UwQnAMAwDQO+/dEsmEBYkryv0Jz1sH5nvwTcz3/X/wRz3hziLMshiA9dZucjiGifqIpvXbrncKu4iLlLBySW00MpKqgRaaFVwcgkttLKSKoEWWhWcXEILraykSqCFVgUnl9BCKyupEmihVcHJJbTQykqqBFpoVXByCS20spIqgRZaFZxcQgutrKRKvKD1AwC3Uv9HYw/tAAAAAElFTkSuQmCC</pre>
 </div>
 <div created="20201226150148989" modified="20201226150149743" tags="IMG" title="img TestColor" type="image/png">
 <pre>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</pre>
@@ -11548,7 +11665,7 @@ Note that the palette ''DarkPhotos'' is provided to make the sidebar more readab
 <div created="20201226150909465" modified="20201226150912128" tags="TOPIC" title="Sizing">
 <pre>&lt;&lt;glbl_tagged_list&gt;&gt;</pre>
 </div>
-<div created="20150221181835000" modified="20201226144403717" tags="TW" title="Stylesheet Macros" type="text/vnd.tiddlywiki">
+<div created="20150221181835000" modified="20201228085235569" tags="TW" title="Stylesheet Macros" type="text/vnd.tiddlywiki">
 <pre>The following core [[macros|Macros]] make it easy to specify alternative browser-specific properties when constructing a [[stylesheet|Cascading Style Sheets]] tiddler:
 
 ;`&lt;&lt;box-shadow shadow&gt;&gt;`
@@ -11564,10 +11681,14 @@ Note that the palette ''DarkPhotos'' is provided to make the sidebar more readab
 
 The following macros are documented separately:
 
-* &lt;&lt;.mlink colour&gt;&gt;
-* &lt;&lt;.mlink datauri&gt;&gt;
+* colour
+* datauri
 
 All these macros are defined in the [[$:/core/macros/CSS]] tiddler.
+
+&lt;$list variable=cur_var filter=&quot;[[$:/core/macros/CSS]get[text]]&quot;&gt;
+&lt;$codeblock code=&lt;&lt;cur_var&gt;&gt; /&gt;
+&lt;/$list&gt;
 </pre>
 </div>
 <div created="20201226041128309" description="Export Code" extension="codetxt" modified="20201226042341669" tags="$:/tags/Exporter META" title="template ExportAllCode">

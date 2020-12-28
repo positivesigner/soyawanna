@@ -183,6 +183,22 @@ Colors
 
 
 
+colour Macro
+
+The colour (or color) [[macro|Macros]] returns the [[CSS|Cascading Style Sheets]] value of one the colours in the current [[palette|ColourPalettes]].
+
+If no such entry exists in the current palette, the [[vanilla palette|$:/palettes/Vanilla]] is used instead. If no such entry exists in the vanilla palette, the system looks for a configuration tiddler with the title `$:/config/DefaultColourMappings/<colour-name>` and transcludes the colour from the text field. This enables to plugins to ship defaults for colours that are not present in the core palettes.
+
+!! Parameters
+
+;name
+: The name of the palette entry, e.g. `page-background`
+
+<<.macro-examples "colour">>
+
+
+
+
 CSS
 
 <<glbl_tagged_list>>
@@ -359,6 +375,46 @@ Hover mouse to grow box slowly
 
 
 
+CSS Issues\IMG DataURI
+
+* Use the `<<datauri "UrImageTip" >>` macro to get the Base64 encoding of an Image Tip formatted for use in a CSS uri reference
+
+<<glbl_subtip_code "Sample StyleSheet">>
+<<glbl_subtip_show "Test IMG DataURI">>
+
+---
+[[datauri Macro]]
+
+<<glbl_core_mcr_def "datauri">>
+
+<<ext "CSS Background Image Base64">>
+
+
+
+CSS Issues\IMG DataURI\Sample StyleSheet
+
+.bg_img_striped {
+    background-image: url(<$macrocall $name=datauri title="img Sample Black and White Bars"  $output="text/plain" />);
+    color:pink;
+}
+
+
+
+CSS Issues\IMG DataURI\Test IMG DataURI
+
+[[img Sample Black and White Bars]]
+
+<$wikify name=image_b64 text='<<datauri "img Sample Black and White Bars">>' >
+<img src=<<image_b64>> />
+</$wikify>
+
+<div class="bg_img_striped" >
+Pink font over a black and white image repeated horizonally and extended vertically
+</div>
+
+
+
+
 CSS Issues\IMG Filter
 
 * Use the `<<filter "UrFilterPct" >>` macro to specify alternative browser-specific properties for an IMG Filter percentage
@@ -392,6 +448,44 @@ CSS Issues\IMG Filter\Test IMG Filter Grayscale
 @@
 
 [img[img TestColor]]
+
+
+
+
+CSS Issues\Page-element-named Color Codes
+
+* Use the `<<colour "UrNamedColor" >>` or `<<color "UrNamedColor" >>` macros to retrieve the current Color Pallette Theme's HTML-ready (# prefixed) RGB color (hexacedicmal code) for a particular Page-element, like `page-background`.
+
+<<glbl_subtip_show "Test Named-Color Lookup">>
+
+---
+[[colour Macro]]
+
+<<glbl_core_mcr_def "colour">>
+
+<<glbl_core_mcr_def "color">>
+
+
+
+
+CSS Issues\Page-element-named Color Codes\Test Named-Color Lookup
+
+<$list variable=cur_theme filter="[[$:/palette]get[text]]">
+
+Current Theme Pallete = <<cur_theme>>
+<$list variable=count_color_names filter="[<cur_theme>indexes[]count[]]">
+
+Count of Color Names = <<count_color_names>>
+</$list><!--count_color_names-->
+
+Color Names that start with ''P'':
+<$list variable=cur_color_name filter="[<cur_theme>indexes[]prefix[p]]">
+
+* <<cur_color_name>> = <$macrocall $name=color name=<<cur_color_name>> />
+</$list><!--cur_color_name-->
+
+</$list><!--cur_theme-->
+
 
 
 
@@ -431,6 +525,26 @@ CSS Issues\StyleSheets with Tip Macros\Sample StyleSheet
 CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet
 
 The Tip Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.
+
+
+
+datauri Macro
+
+The <<.def datauri>> [[macro|Macros]] returns a [[data URI|Data URI]] for the content of a tiddler.
+
+It is often used in [[stylesheet|Cascading Style Sheets]] tiddlers to reference things like inline images and fonts:
+
+> `background: url(<<datauri "Motovun Jack.jpg">>);`
+
+The data URI is automatically [[base64|Base64]]-encoded in the case of a non-text tiddler.
+
+!! Parameters
+
+;title
+: The title of a tiddler, such as an image
+
+<<.macro-examples "datauri">>
+
 
 
 
@@ -592,6 +706,12 @@ DivPop.svg
 ext CSS Background Gradient
 
 [ext[https://www.w3schools.com/cssref/func_linear-gradient.asp]]
+
+
+
+ext CSS Background Image Base64
+
+[ext[https://www.hongkiat.com/blog/css-encoded-image/]]
 
 
 
@@ -802,6 +922,12 @@ Remove COPY tag from all tips
 
 [[btn Delete Tips]]
 
+
+
+
+img Sample Black and White Bars
+
+iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVRoBe3UwQnAMAwDQO+/dEsmEBYkryv0Jz1sH5nvwTcz3/X/wRz3hziLMshiA9dZucjiGifqIpvXbrncKu4iLlLBySW00MpKqgRaaFVwcgkttLKSKoEWWhWcXEILraykSqCFVgUnl9BCKyupEmihVcHJJbTQykqqBFpoVXByCS20spIqgRZaFZxcQgutrKRKvKD1AwC3Uv9HYw/tAAAAAElFTkSuQmCC
 
 
 
@@ -1349,10 +1475,14 @@ The following core [[macros|Macros]] make it easy to specify alternative browser
 
 The following macros are documented separately:
 
-* <<.mlink colour>>
-* <<.mlink datauri>>
+* colour
+* datauri
 
 All these macros are defined in the [[$:/core/macros/CSS]] tiddler.
+
+<$list variable=cur_var filter="[[$:/core/macros/CSS]get[text]]">
+<$codeblock code=<<cur_var>> />
+</$list>
 
 
 
