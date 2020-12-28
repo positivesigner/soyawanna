@@ -1053,7 +1053,10 @@ Create Tip ''<<new_tip>>'' and Edit
 </$button><br>
 
 <$button>
-<$action-setfield $tiddler=<<new_pk>> text="yes"/>
+<$list variable=orig_tip_content filter="[<new_tip>get[text]addprefix[```
+]else[yes]]">
+<$action-setfield $tiddler=<<new_pk>> text=<<orig_tip_content>> />
+</$list>
 <$action-navigate $to=<<new_pk>>/>
 Create Tip ''<<new_tip>>'' and Show
 </$button><br>

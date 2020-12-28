@@ -10337,7 +10337,7 @@ Error message and password prompt
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20201227011932027" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20201228103056007" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10346,13 +10346,13 @@ Error message and password prompt
 <div created="20201226094801896" modified="20201226114249595" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20201226040229700" modified="20201227011932027" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20201228103056007" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201227011914181" list="[[Notes Wiki]] [[Recent Entries]] [[Font Size]]" modified="20201227011920030" title="$:/StoryList">
+<div created="20201228102718413" list="[[Notes Wiki]] [[Recent Entries]] [[Font Size]]" modified="20201228103042887" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -11248,7 +11248,7 @@ exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20200319102534436" modified="20201226065145142" tags="META" title="Font Size">
+<div created="20200319102534436" modified="20201228103035365" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
 Big Font
@@ -11292,7 +11292,10 @@ Create Tip ''&lt;&lt;new_tip&gt;&gt;'' and Edit
 &lt;/$button&gt;&lt;br&gt;
 
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;new_pk&gt;&gt; text=&quot;yes&quot;/&gt;
+&lt;$list variable=orig_tip_content filter=&quot;[&lt;new_tip&gt;get[text]addprefix[```
+]else[yes]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_pk&gt;&gt; text=&lt;&lt;orig_tip_content&gt;&gt; /&gt;
+&lt;/$list&gt;
 &lt;$action-navigate $to=&lt;&lt;new_pk&gt;&gt;/&gt;
 Create Tip ''&lt;&lt;new_tip&gt;&gt;'' and Show
 &lt;/$button&gt;&lt;br&gt;

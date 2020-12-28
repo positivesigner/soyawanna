@@ -175,8 +175,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/plugins/danielo515/searchNreplace</li>
@@ -271,6 +269,14 @@ Error message and password prompt
 
 <li>CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet</li>
 
+<li>CSS Issues\Tag-specific Tip Styles</li>
+
+<li>CSS Issues\Tag-specific Tip Styles\Sample StyleSheet</li>
+
+<li>CSS Issues\Tag-specific Tip Styles\Test Tag Styling</li>
+
+<li>Custom styles by data-tags</li>
+
 <li>datauri Macro</li>
 
 <li>DivPop btn</li>
@@ -278,6 +284,8 @@ Error message and password prompt
 <li>DivPop glbl</li>
 
 <li>DivPop.svg</li>
+
+<li>ext CSS Attribute Selector</li>
 
 <li>ext CSS Background Gradient</li>
 
@@ -10343,11 +10351,6 @@ Error message and password prompt
 <div created="20201225221559095" modified="20201226040306582" tags="META" title="$:/DefaultTiddlers">
 <pre>[all[tiddlers]tag[INDEX]sort[title]]</pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[datauri Macro]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10401,19 +10404,19 @@ Error message and password prompt
 <div created="20201226111317031" modified="20201226111317031" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20201228101801727" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20201228111138861" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226111308637" modified="20201226111308637" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201226040229700" modified="20201228101801727" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20201228111138861" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201228085001248" list="[[CSS Issues]]" modified="20201228101735701" title="$:/StoryList">
+<div list="[[TiddlyWiki Features]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10699,8 +10702,8 @@ div:hover.sample_div_transition_speed {
 Hover mouse to grow box slowly
 &lt;/div&gt;</pre>
 </div>
-<div created="20201228095759463" modified="20201228101649520" tags="Macro CSS Colors" title="CSS Issues\IMG DataURI">
-<pre>* Use the `&lt;&lt;datauri &quot;UrImageTip&quot; &gt;&gt;` macro to get the Base64 encoding of an Image Tip formatted for use in a CSS uri reference
+<div created="20201228095759463" modified="20201228101920678" tags="Macro CSS Colors" title="CSS Issues\IMG DataURI">
+<pre>* Use the `&lt;&lt;datauri &quot;UrImageTip&quot; &gt;&gt;` macro to get the Base64 encoding of a Tip Image formatted for use in a CSS uri reference
 
 &lt;&lt;glbl_subtip_code &quot;Sample StyleSheet&quot;&gt;&gt;
 &lt;&lt;glbl_subtip_show &quot;Test IMG DataURI&quot;&gt;&gt;
@@ -10790,7 +10793,7 @@ Color Names that start with ''P'':
 
 </pre>
 </div>
-<div created="20201226124123565" modified="20201226124416018" tags="" title="CSS Issues\Style Precedence">
+<div created="20201226124123565" modified="20201228104733583" tags="CSS" title="CSS Issues\Style Precedence">
 <pre>* CSS Precedence example:
 ** `html body.tc-body` is more specific than `body.tc-body`
 !!
@@ -10827,6 +10830,118 @@ Color Names that start with ''P'':
 </div>
 <div created="20201226135404193" modified="20201226135616178" tags="[[Test Code]]" title="CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet">
 <pre>The Tip Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.</pre>
+</div>
+<div created="20201228104738666" modified="20201228111125416" tags="CSS" title="CSS Issues\Tag-specific Tip Styles" type="">
+<pre>* It is possible to style HTML elements that have specific attributes or attribute values.
+* Create a Tip tagged with `data-tags-style`
+* Tag with `css-data-tags-test`
+* Fill with CSS Attribute Selectors that reference a Tip's tags
+
+&lt;&lt;glbl_subtip_code &quot;Sample StyleSheet&quot;&gt;&gt;
+&lt;&lt;glbl_subtip_show &quot;Test Tag Styling&quot;&gt;&gt;
+
+---
+[[Custom styles by data-tags]]
+
+&lt;&lt;ext &quot;CSS Attribute Selector&quot;&gt;&gt;</pre>
+</div>
+<div created="20201228105729998" modified="20201228110604737" tags="[[Test Code]] $:/tags/Stylesheet" title="CSS Issues\Tag-specific Tip Styles\Sample StyleSheet">
+<pre>[data-tags*=&quot;css-data-tags-test&quot;] {
+  border: 2px solid pink;
+}
+
+</pre>
+</div>
+<div created="20201228110002428" modified="20201228110908869" tags="css-data-tags-test [[Test Code]]" title="CSS Issues\Tag-specific Tip Styles\Test Tag Styling">
+<pre>[[This Tip |CSS Issues\Tag-specific Tip Styles\Test Tag Styling]] and any other tip tagged with `css-data-tags-test` has a pink border.
+
+Tag List:
+&lt;$list variable=cur_tag_name filter=&quot;[[CSS Issues\Tag-specific Tip Styles\Test Tag Styling]tags[]]&quot;&gt;
+
+* &lt;&lt;cur_tag_name&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_tag_name--&gt;
+</pre>
+</div>
+<div created="20170124132500000" modified="20201228105035721" tags="TW" title="Custom styles by data-tags" type="text/vnd.tiddlywiki">
+<pre>! Attribute: data-tags
+
+&lt;&lt;.from-version &quot;5.1.16&quot;&gt;&gt;
+
+The ~TiddlyWiki core adds several `attributes` to the rendered content. These make it possible to apply custom styles to tiddlers. 
+
+For example this tiddler is tagged: &lt;&lt;tag &quot;How to apply custom styles&quot;&gt;&gt; and &lt;&lt;tag &quot;example-test&quot;&gt;&gt; so the attribute looks like this: 
+
+```
+data-tags=&quot;[[How to apply custom styles]] example-test&quot;
+```
+
+''Important:'' Tiddler tags are ''not'' sorted so the order in the rendered output may be different!
+
+!! Examples
+
+The following CSS is defined in [[Custom data-styles]] and creates a pink border for all tiddlers (including this one) tagged with `example-test`.
+
+```
+[data-tags*=&quot;example-test&quot;] {
+  border: 2px solid pink;
+}
+```
+
+!!! Styling Stylesheets
+
+So to display tiddlers tagged: `data-tags-styles` in a decent way we can use the following code. (I could have used: `$:/tags/Stylesheet`, but that would affect all stylesheets in this wiki, which is not intended. amt ;)
+
+''Important:'' Don't forget to also specify `.tc-tiddler-body` or the whole tiddler, including the title, will be changed! see: [[Custom data-styles]]
+
+```
+[data-tags*=&quot;data-tags-styles&quot;] .tc-tiddler-body {
+  display: block;
+  padding: 14px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  padding: 0 3px 2px;
+  border-radius: 3px;
+  font-family: Monaco, Consolas, &quot;Lucida Console&quot;, &quot;DejaVu Sans Mono&quot;, monospace;
+}
+```
+
+!! Hard Linebreaks
+
+This mechanism may be handy for users who want to write prose text! See: [[Hard Linebreaks with CSS]]
+
+!! More Possibilities
+
+;[attr]
+:Represents an element with an attribute name of attr.
+
+;[attr=&quot;value&quot;]
+:Represents an element with an attribute name of attr and whose value is exactly &quot;value&quot;.
+
+;[attr~=&quot;value&quot;]
+:Represents an element with an attribute name of attr whose value is a whitespace-separated list of words, one of which is exactly &quot;value&quot;.
+
+;[attr|=&quot;value&quot;]
+:Represents an element with an attribute name of attr. Its value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D). It can be used for language subcode matches.
+
+;[attr^=&quot;value&quot;]
+:Represents an element with an attribute name of attr and whose first value is prefixed by &quot;value&quot;.
+
+;[attr$=&quot;value&quot;]
+:Represents an element with an attribute name of attr and whose last value is suffixed by &quot;value&quot;.
+
+;[attr*=&quot;value&quot;]
+:Represents an element with an attribute name of attr and whose value contains at least one occurrence of string &quot;value&quot; as substring.
+
+;[attr &quot;operator value&quot; i]
+:Adding an i (or I) before the closing bracket causes the value to be compared case-insensitively (for characters within the ASCII range). 
+
+Learn more at: [[Attribute selectors - CSS|https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors]] or [[CSS-Specification|https://www.w3.org/TR/CSS22/selector.html#attribute-selectors]]
+</pre>
 </div>
 <div caption="datauri" created="20150221162212000" modified="20201228095857810" tags="TW" title="datauri Macro" type="text/vnd.tiddlywiki">
 <pre>The &lt;&lt;.def datauri&gt;&gt; [[macro|Macros]] returns a [[data URI|Data URI]] for the content of a tiddler.
@@ -10991,6 +11106,9 @@ close
 &lt;/svg&gt;
 </pre>
 </div>
+<div created="20201228104615764" modified="20201228104645591" tags="EXT" title="ext CSS Attribute Selector">
+<pre>[ext[https://www.w3schools.com/css/css_attribute_selectors.asp]]</pre>
+</div>
 <div created="20201226153234637" modified="20201226153254140" tags="EXT" title="ext CSS Background Gradient">
 <pre>[ext[https://www.w3schools.com/cssref/func_linear-gradient.asp]]</pre>
 </div>
@@ -11032,7 +11150,7 @@ close
 <div created="20201226130117259" modified="20201226130149322" tags="EXT" title="ext Wiki Parsing Rules">
 <pre>[ext[https://github.com/Jermolene/TiddlyWiki5/blob/ffc0899f52b45ba2b5a5a20fb909dcc587e80b3e/core/modules/parsers/wikiparser/rules/rules.js]]</pre>
 </div>
-<div created="20200319102534436" modified="20201226065145142" tags="META" title="Font Size">
+<div created="20200319102534436" modified="20201228103035365" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
 Big Font
@@ -11076,7 +11194,10 @@ Create Tip ''&lt;&lt;new_tip&gt;&gt;'' and Edit
 &lt;/$button&gt;&lt;br&gt;
 
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;new_pk&gt;&gt; text=&quot;yes&quot;/&gt;
+&lt;$list variable=orig_tip_content filter=&quot;[&lt;new_tip&gt;get[text]addprefix[```
+]else[yes]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_pk&gt;&gt; text=&lt;&lt;orig_tip_content&gt;&gt; /&gt;
+&lt;/$list&gt;
 &lt;$action-navigate $to=&lt;&lt;new_pk&gt;&gt;/&gt;
 Create Tip ''&lt;&lt;new_tip&gt;&gt;'' and Show
 &lt;/$button&gt;&lt;br&gt;

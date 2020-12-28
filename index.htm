@@ -10656,19 +10656,19 @@ Error message and password prompt
 <div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20201226144211310" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20201228103214428" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20201226080846983" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201226064844310" modified="20201226144211311" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20201228103214428" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20201226141252526" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Core Macro Definition]]" modified="20201226143142172" title="$:/StoryList">
+<div created="20201228084900260" list="[[Code Samples]] TiddlyWiki [[TiddlyWiki\Wikify Text]] [[TiddlyWiki\Data Tiddler]]" modified="20201228094830447" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11895,7 +11895,7 @@ C:\UrPath\ffmpeg.exe -i &quot;C:\UrPath\UrFile.mp4&quot; -r 0.083 -s 320x180 &qu
 
 </pre>
 </div>
-<div created="20200319102534436" modified="20201226065145142" tags="META" title="Font Size">
+<div created="20200319102534436" modified="20201228103035365" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
 Big Font
@@ -11939,7 +11939,10 @@ Create Tip ''&lt;&lt;new_tip&gt;&gt;'' and Edit
 &lt;/$button&gt;&lt;br&gt;
 
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;new_pk&gt;&gt; text=&quot;yes&quot;/&gt;
+&lt;$list variable=orig_tip_content filter=&quot;[&lt;new_tip&gt;get[text]addprefix[```
+]else[yes]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_pk&gt;&gt; text=&lt;&lt;orig_tip_content&gt;&gt; /&gt;
+&lt;/$list&gt;
 &lt;$action-navigate $to=&lt;&lt;new_pk&gt;&gt;/&gt;
 Create Tip ''&lt;&lt;new_tip&gt;&gt;'' and Show
 &lt;/$button&gt;&lt;br&gt;
