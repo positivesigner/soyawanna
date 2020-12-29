@@ -175,12 +175,11 @@ AndroidWebDav
 
 
 
-btn Delete Tips
+btn Delete Cards
 
 <$button>
-<$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-sendmessage $message=tm-delete-tiddler $param=<<currentTiddler>> /></$list>
-<$list filter="[tag[DOC]]" variable=doc_pk><$list filter="[<doc_pk>fields[]prefix[e]]" variable=field_pk2><$action-deletefield $tiddler=<<doc_pk>> $field=<<field_pk2>> /></$list></$list>
-Del ARTICLE and IMG notes, and DOC tags starting with `E`
+<$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-deletetiddler $tiddler=<<currentTiddler>> /></$list>
+Del ARTICLE and IMG cards
 </$button>
 
 
@@ -593,142 +592,150 @@ Normal Font
 Save Wiki to GitHub
 </$button>
 
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strTIP_PK>
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
 <$button>
-<$list filter="[list[$:/StoryList]] -[<strTIP_PK>]" variable=strCLOSE_PK>
+<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
 </$list>
-Close all other open Tips
+Close all other open Cards
 </$button>
 </$list>
 
 
 
-<$vars new_tip_entry_pk="$:/state/popup/NewTempTipPK">
-<$edit-text tiddler=<<new_tip_entry_pk>> field=text default="New Tip Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
-<$link to=<<new_tip_entry_pk>> /> = -<$transclude tiddler=<<new_tip_entry_pk>> />-<br>
+<$vars new_card_entry_pk="$:/state/popup/NewTempCardPK">
+<$edit-text tiddler=<<new_card_entry_pk>> field=text default="New Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$link to=<<new_card_entry_pk>> /> = -<$transclude tiddler=<<new_card_entry_pk>> />-<br>
 
-<$list variable=new_tip filter="[<new_tip_entry_pk>get[text]!match[]]">
-<$vars compare_entry_pk="$:/state/popup/CompareTempTipPK">
+<$list variable=new_card filter="[<new_card_entry_pk>get[text]!match[]]">
+<$vars compare_entry_pk="$:/state/popup/CompareTempCardPK">
 
-<$list variable=new_pk filter="[<new_tip>addprefix[$:/state/popup/]]">
+<$list variable=new_pk filter="[<new_card>addprefix[$:/state/popup/]]">
 <$button>
 <$action-sendmessage $message="tm-new-tiddler" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
-Create Tip ''<<new_tip>>'' and Edit
+Create Card ''<<new_card>>'' and Edit
 </$button><br>
 
 <$button>
-<$list variable=orig_tip_content filter="[<new_tip>get[text]addprefix[```
-]else[yes]]">
-<$action-setfield $tiddler=<<new_pk>> text=<<orig_tip_content>> />
-</$list>
+<$wikify name=open_brackets text="&#91;&#91;">
+<$wikify name=close_brackets text="&#93;&#93;">
+<$list variable=orig_card_exists filter="[<new_card>is[tiddler]count[]match[1]split[1]join[empty card]else[card not created]]">
+<$list variable=orig_card_content filter="[<new_card>get[text]else<orig_card_exists>addprefix[```
+]addprefix[
+
+]addprefix<close_brackets>addprefix<new_card>addprefix<open_brackets>]">
+<$action-setfield $tiddler=<<new_pk>> text=<<orig_card_content>> />
+</$list><!--orig_card_content-->
+</$list><!--orig_card_exists-->
+</$wikify><!--close_brackets-->
+</$wikify><!--open_brackets-->
 <$action-navigate $to=<<new_pk>>/>
-Create Tip ''<<new_tip>>'' and Show
+Create Card ''<<new_card>>'' and Show
 </$button><br>
 
 <$link to=<<new_pk>> /><br>
 
 <$button>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
-Close Tip: ''<<new_tip>>''
+Close Card: ''<<new_card>>''
 </$button><br>
 
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strTIP_PK>
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
 <$button>
-<$list filter="[list[$:/StoryList]] -[<strTIP_PK>]" variable=strCLOSE_PK>
+<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
 </$list>
-Close all other open Tips
+Close all other open Cards
 </$button>
 </$list><br>
 
 <$button>
 <$action-sendmessage $message="tm-delete-tiddler" $param=<<new_pk>> />
-Delete Tip: ''<<new_tip>>'' with confirmation
+Delete Card: ''<<new_card>>'' with confirmation
 </$button><br>
 
 <$button>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
 <$action-deletetiddler $tiddler=<<new_pk>> />
-Delete Tip: ''<<new_tip>>'' without confirmation
+Delete Card: ''<<new_card>>'' without confirmation
 </$button><br>
 
-<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Tip Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
 <$list variable=compare_pk filter="[<compare_entry_pk>get[text]]">
 <$link to=<<compare_pk>> />
 <$list variable=compare_text filter="[<compare_pk>get[text]]">
-<$list variable=new_tip_text filter="[<new_pk>get[text]]">
-<$diff-text source=<<new_tip_text>> dest=<<compare_text>> />
-</$list><!--new_tip_text-->
+<$list variable=new_card_text filter="[<new_pk>get[text]]">
+<$diff-text source=<<new_card_text>> dest=<<compare_text>> />
+</$list><!--new_card_text-->
 </$list><!--compare_text-->
 </$list><!--compare_pk-->
 
 </$list><!--new_pk-->
 </$vars><!--compare_entry_pk-->
-</$list><!--new_tip-->
-</$vars><!--new_tip_entry_pk-->
+</$list><!--new_card-->
+</$vars><!--new_card_entry_pk-->
 
 
-!!Tips tagged with only $ prefixed tags
+!!Cards tagged with only $ prefixed tags
 
-<$list variable=cur_tip filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
-<$list variable=has_non_dprefixed_tag filter="[<cur_tip>tags[]!prefix[$]count[]match[0]]">
+<$list variable=cur_card filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
+<$list variable=has_non_dprefixed_tag filter="[<cur_card>tags[]!prefix[$]count[]match[0]]">
 
-<$link to=<<cur_tip>> />
+<$link to=<<cur_card>> />
 </$list><!--has_non_dprefixed_tag-->
-</$list><!--cur_tip-->
+</$list><!--cur_card-->
 
 
-!!Tips where has[tags] does not work
+!!Cards where has[tags] does not work
 
-<$list variable=cur_tip filter="[is[tiddler]]">
-<$list variable=has_tags_test filter="[<cur_tip>!has[tags]count[]] [<cur_tip>has[tags]count[]] +[sum[]match[0]]">
+<$list variable=cur_card filter="[is[tiddler]]">
+<$list variable=has_tags_test filter="[<cur_card>!has[tags]count[]] [<cur_card>has[tags]count[]] +[sum[]match[0]]">
 
-<$link to=<<cur_tip>> />
+<$link to=<<cur_card>> />
 </$list><!--has_tags_test-->
-</$list><!--cur_tip-->
+</$list><!--cur_card-->
 
-!!Tips with no tags
+!!Cards with no tags
 
-<$list variable=cur_tip filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
-<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]match[1]]">
+<$list variable=cur_card filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
+<$list variable=has_parent_card filter="[<cur_card>split[\]count[]match[1]]">
 
-<$link to=<<cur_tip>> />
-</$list><!--has_parent_tip-->
+<$link to=<<cur_card>> />
+</$list><!--has_parent_card-->
 
-<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]!match[1]]">
-<$list variable=parent_tip_exists filter="[<cur_tip>split[\]first[]!is[tiddler]]">
+<$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
+<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]!is[tiddler]]">
 
-<$link to=<<cur_tip>> />
-</$list><!--parent_tip_exists-->
-</$list><!--has_parent_tip-->
-</$list><!--cur_tip-->
+<$link to=<<cur_card>> />
+</$list><!--parent_card_exists-->
+</$list><!--has_parent_card-->
+</$list><!--cur_card-->
 
 
 
 <$button>
-<$list variable=cur_tip filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
-<$action-listops $tiddler=<<cur_tip>> $tags="+[append[COPY]]"/>
+<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
 </$list>
-<$list variable=cur_tip filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
-<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]!match[1]]">
-<$list variable=parent_tip_exists filter="[<cur_tip>split[\]first[]is[tiddler]]">
-<$action-listops $tiddler=<<cur_tip>> $tags="+[append[COPY]]"/>
-</$list><!--parent_tip_exists-->
-</$list><!--has_parent_tip-->
-</$list><!--cur_tip-->
-Append COPY tag to all tips that already have tags
+<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
+<$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
+<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]is[tiddler]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
+</$list><!--parent_card_exists-->
+</$list><!--has_parent_card-->
+</$list><!--cur_card-->
+Append COPY tag to all cards that already have tags
 </$button><br>
 
 <$button>
-<$list variable=cur_tip filter="[tag[COPY]]">
-<$action-listops $tiddler=<<cur_tip>> $tags="+[remove[COPY]]"/>
+<$list variable=cur_card filter="[tag[COPY]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[remove[COPY]]"/>
 </$list>
-Remove COPY tag from all tips
+Remove COPY tag from all cards
 </$button><br>
 
 
-[[btn Delete Tips]]
+[[btn Delete Cards]]
 
 
 
@@ -1125,7 +1132,9 @@ MxClasses
 
 Recent Entries
 
-[[View All Tips]]
+[[Search All Fields]]
+
+[[View All Cards]]
 
 [[View All Code]]
 
@@ -1151,19 +1160,19 @@ Search All Fields
 <$checkbox default="yes" unchecked="no" checked="yes" field="text" tiddler=<<skip_system_pk>>> Skip System </$checkbox><br>
 <br>
 
-<$list variable=cur_search_text filter="[<search_text_pk>get[text]!match[]]">
+<$list variable=cur_search_text filter="[<search_text_pk>get[text]addsuffix[(?i)]!match[]]">
 <$list variable=cur_showcode_text filter="[<show_code_pk>get[text]else[no]]">
 <$list variable=cur_skipsystem_text filter="[<skip_system_pk>get[text]else[yes]match[yes]count[]]">
 
-<!--Tip titles-->
+<!--Card titles-->
 <$list variable=cur_pk filter="[regexp<cur_search_text>sort[]]">
 <$list variable=found_skipsystem filter="[<cur_skipsystem_text>] [<cur_pk>!is[system]count[]] +[sum[]match[1]]">
 
-<<cur_pk>>: <<cur_field>>
+<$link to=<<cur_pk>> />: title
 </$list><!--found_skipsystem-->
 </$list><!--cur_pk-->
 
-<!--Tip fields-->
+<!--Card fields-->
 <$list variable=cur_pk filter="[!regexp<cur_search_text>sort[]]">
 <$list variable=found_skipsystem filter="[<cur_pk>is[system]count[]multiply<cur_skipsystem_text>match[0]]">
 <$list variable=cur_field filter="[<cur_pk>fields[]]">
@@ -1286,19 +1295,7 @@ VBNS Code
 
 
 
-View All Code
-
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
-<hr>
-<h2><$link to=<<cur_tip_pk>> /></h2>
-<$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
-<$codeblock code=<<cur_tip_text>> />
-</$list><!--cur_tip_text-->
-</$list><!--cur_tip_pk-->
-
-
-
-View All Tips
+View All Cards
 
 <$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
 <hr>
@@ -1306,6 +1303,18 @@ View All Tips
 {{||$:/core/ui/ViewTemplate/tags}}
 <$transclude mode="block"/>
 </$list>
+
+
+
+View All Code
+
+<$list variable=cur_card_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<hr>
+<h2><$link to=<<cur_card_pk>> /></h2>
+<$list variable=cur_card_text filter="[<cur_card_pk>get[text]]">
+<$codeblock code=<<cur_card_text>> />
+</$list><!--cur_card_text-->
+</$list><!--cur_card_pk-->
 
 
 

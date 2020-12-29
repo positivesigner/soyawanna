@@ -168,12 +168,193 @@ Borders
 
 
 
-btn Delete Tips
+btn Delete Cards
 
 <$button>
 <$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-deletetiddler $tiddler=<<currentTiddler>> /></$list>
-Del ARTICLE and IMG notes
+Del ARTICLE and IMG cards
 </$button>
+
+
+
+Card Code
+
+<<glbl_article_list>>
+
+
+
+Card Code\Card-specific Interpreting Rules
+
+```
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+```
+
+* Place at the start of a Card to keep the a Card from parsing any code but macros and transclusion
+* This is useful in a CSS Template to keep special WikiText formatting codes from being parsed
+** Note: The CSS Template must not have Card content type = `text/css` to be able to run macros
+
+<<glbl_subcard_show "Test CSS parsing rules">>
+
+---
+[[Using Stylesheets]]
+
+[[TW Pragma]]
+
+<<ext "Wiki Parsing Rules">>
+
+
+
+Card Code\Card-specific Interpreting Rules\Test CSS parsing rules
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+This would normally ''be bold font''. The WikiText parsing rules are excluded, so you can see the doubled-single quotes (') + (').
+
+
+
+Card Code\Card-specific macros
+
+```
+\define UrMacroName(ur_macro_parm1, ur_macro_parm2) One-line macro
+
+\define UrMacroName(ur_macro_parm1, ur_macro_parm2)
+Macro with
+
+several lines
+\end
+
+\define UrMacroName(ur_macro_parm1 ur_macro_parm2)
+Macro parameter separator is optional
+\end
+
+\define UrMacroName()
+Parentheses are required, and there must NOT be any spaces between the macro name and the open parenthesis
+\end
+```
+
+* If a Card has macro definitions and is tagged with `$:/tags/Macro`, you may use that Card's macros within any other Card code
+
+<<glbl_subcard_show "Sample local macro">>
+<<glbl_subcard_show "Sample global macro">>
+<<glbl_subcard_show "Test local and global macros">>
+
+---
+[[TW Pragma]]
+
+
+
+
+Card Code\Card-specific macros\Sample global macro
+
+\define sample_global_macro()
+Some global sample text
+
+Note: This Card has a `$:/tags/Macro tag`
+\end
+
+
+
+
+Card Code\Card-specific macros\Sample local macro
+
+\define sample_card_specific_macro()
+Some local sample text
+
+This Card does not have a `$:/tags/Macro tag`
+\end
+<<sample_card_specific_macro>>
+
+
+
+Card Code\Card-specific macros\Test local and global macros
+
+<<sample_card_specific_macro>>
+The card-specific macro does not work.
+
+<<sample_global_macro>>
+
+
+
+Card Code\Card-specific Whitespace rules
+
+`\whitespace trim` or `\whitespace notrim`
+
+* Place at the start of a Card to keep the Card from retaining any whitespace before, between and after any html coded tags
+* The default option is ''notrim''
+
+<<glbl_subcard_show "Test trim">>
+<<glbl_subcard_show "Test notrim">>
+
+---
+[[TW Pragma]]
+
+
+
+Card Code\Card-specific Whitespace rules\Test notrim
+
+\whitespace notrim
+The whitespace before, ''between '' and after tags is '' kept,
+
+even on multiple lines,'' inside or outside of the tag.
+
+Starting a new line ''with an in-line tag'' still keeps
+
+multiple lines separated.
+
+
+
+
+Card Code\Card-specific Whitespace rules\Test trim
+
+\whitespace trim
+The whitespace before, ''between '' and after tags is '' trimmed,
+
+even on multiple lines,'' until you are out of the tag.
+
+Starting a new line ''with an in-line tag'' lets you keep
+
+multiple lines separated.
+
+
+
+
+Card Code\Include Non-global macros
+
+```
+\import <filter-expression>
+```
+
+* If a Card has macro definitions and is not tagged with `$:/tags/Macro`, you must import that Card to use its macros
+
+<<glbl_subcard_code "Sample macro">>
+<<glbl_subcard_show "Test missing macro">>
+<<glbl_subcard_show "Test imported macro">>
+
+---
+[[TW Pragma]]
+
+
+
+
+Card Code\Include Non-global macros\Sample macro
+
+\define test_macro()
+It is now: <<now>>
+\end
+
+
+
+Card Code\Include Non-global macros\Test imported macro
+
+\import [[Card Code\Include Non-global macros\Sample macro]]
+<<test_macro>>
+
+
+
+
+Card Code\Include Non-global macros\Test missing macro
+
+<<test_macro>>
+No results here
 
 
 
@@ -215,8 +396,8 @@ CSS Issues\DIV Background Color Gradient
 
 * Use the `<<background-linear-gradient "UrDirection, UrStartColor, UrEndColor" >>` macro to specify alternative browser-specific properties for a DIV Background-Image color gradient
 
-<<glbl_subtip_show "Sample StyleSheet">>
-<<glbl_subtip_show "Test Background Color Gradient">>
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test Background Color Gradient">>
 
 ---
 [[Stylesheet Macros]]
@@ -249,8 +430,8 @@ CSS Issues\DIV Box Shadow
 
 * Use the `<<box-shadow "UrShadowPx" >>` macro to specify alternative browser-specific properties for a DIV Box Shadow size
 
-<<glbl_subtip_show "Sample StyleSheet">>
-<<glbl_subtip_show "Test DIV Box Shadow">>
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test DIV Box Shadow">>
 
 ---
 [[Stylesheet Macros]]
@@ -287,8 +468,8 @@ CSS Issues\DIV Transform Origin rotation
 
 * Use the `<<transform-origin "UrXAxisPct UrYAxisPct" >>` macro to specify alternative browser-specific properties for a DIV Transform-Origin rotation
 
-<<glbl_subtip_show "Sample StyleSheet">>
-<<glbl_subtip_show "Test Transform Origin rotate">>
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test Transform Origin rotate">>
 
 ---
 [[Stylesheet Macros]]
@@ -338,8 +519,8 @@ CSS Issues\DIV Transition Resize Speed
 
 * Use the `<<transition "UrTransitionTime" >>` macro to specify alternative browser-specific properties for a DIV Transition resize speed
 
-<<glbl_subtip_show "Sample StyleSheet">>
-<<glbl_subtip_show "Test DIV Transition speed">>
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test DIV Transition speed">>
 
 ---
 [[Stylesheet Macros]]
@@ -377,10 +558,10 @@ Hover mouse to grow box slowly
 
 CSS Issues\IMG DataURI
 
-* Use the `<<datauri "UrImageTip" >>` macro to get the Base64 encoding of a Tip Image formatted for use in a CSS uri reference
+* Use the `<<datauri "UrImageCard" >>` macro to get the Base64 encoding of a Card Image formatted for use in a CSS uri reference
 
-<<glbl_subtip_code "Sample StyleSheet">>
-<<glbl_subtip_show "Test IMG DataURI">>
+<<glbl_subcard_code "Sample StyleSheet">>
+<<glbl_subcard_show "Test IMG DataURI">>
 
 ---
 [[datauri Macro]]
@@ -419,8 +600,8 @@ CSS Issues\IMG Filter
 
 * Use the `<<filter "UrFilterPct" >>` macro to specify alternative browser-specific properties for an IMG Filter percentage
 
-<<glbl_subtip_show "Sample StyleSheet">>
-<<glbl_subtip_show "Test IMG Filter Grayscale">>
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test IMG Filter Grayscale">>
 
 ---
 [[Stylesheet Macros]]
@@ -456,7 +637,7 @@ CSS Issues\Page-element-named Color Codes
 
 * Use the `<<colour "UrNamedColor" >>` or `<<color "UrNamedColor" >>` macros to retrieve the current Color Pallette Theme's HTML-ready (# prefixed) RGB color (hexacedicmal code) for a particular Page-element, like `page-background`.
 
-<<glbl_subtip_show "Test Named-Color Lookup">>
+<<glbl_subcard_show "Test Named-Color Lookup">>
 
 ---
 [[colour Macro]]
@@ -502,27 +683,27 @@ CSS Issues\Style Precedence
 
 
 
-CSS Issues\StyleSheets with Tip Macros
+CSS Issues\StyleSheets with Card Macros
 
 ```
 \rules only filteredtranscludeinline transcludeinline macrodef 
 ```
 
-* Include the `\rules` line at the start of a Tip that will have or reference Tip macros
-** Note: The Tip content type must not be `text/css` in order for the macros to run
+* Include the `\rules` line at the start of a Card that will have or reference Card macros
+** Note: The Card content type must not be `text/css` in order for the macros to run
 !!
 * A stylesheet tiddler is processed such that it is first wikified and then the text portion of the ouput is extracted to apply as the CSS
 * Any HTML tags you will use in your stylesheet are thus ignored.
 
-<<glbl_subtip_show "Sample StyleSheet">>
-<<glbl_subtip_show "Test macro stylesheet">>
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test macro stylesheet">>
 
 ---
 [[Using Stylesheets]]
 
 
 
-CSS Issues\StyleSheets with Tip Macros\Sample StyleSheet
+CSS Issues\StyleSheets with Card Macros\Sample StyleSheet
 
 \rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
 \define test_css_style()
@@ -534,21 +715,21 @@ CSS Issues\StyleSheets with Tip Macros\Sample StyleSheet
 
 
 
-CSS Issues\StyleSheets with Tip Macros\Test macro stylesheet
+CSS Issues\StyleSheets with Card Macros\Test macro stylesheet
 
-The Tip Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.
+The Card Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.
 
 
 
-CSS Issues\Tag-specific Tip Styles
+CSS Issues\Tag-specific Card Styles
 
 * It is possible to style HTML elements that have specific attributes or attribute values.
-* Create a Tip tagged with `data-tags-style`
+* Create a Card tagged with `data-tags-style`
 * Tag with `css-data-tags-test`
-* Fill with CSS Attribute Selectors that reference a Tip's tags
+* Fill with CSS Attribute Selectors that reference a Card's tags
 
-<<glbl_subtip_code "Sample StyleSheet">>
-<<glbl_subtip_show "Test Tag Styling">>
+<<glbl_subcard_code "Sample StyleSheet">>
+<<glbl_subcard_show "Test Tag Styling">>
 
 ---
 [[Custom styles by data-tags]]
@@ -557,7 +738,7 @@ CSS Issues\Tag-specific Tip Styles
 
 
 
-CSS Issues\Tag-specific Tip Styles\Sample StyleSheet
+CSS Issues\Tag-specific Card Styles\Sample StyleSheet
 
 [data-tags*="css-data-tags-test"] {
   border: 2px solid pink;
@@ -567,12 +748,12 @@ CSS Issues\Tag-specific Tip Styles\Sample StyleSheet
 
 
 
-CSS Issues\Tag-specific Tip Styles\Test Tag Styling
+CSS Issues\Tag-specific Card Styles\Test Tag Styling
 
-[[This Tip |CSS Issues\Tag-specific Tip Styles\Test Tag Styling]] and any other tip tagged with `css-data-tags-test` has a pink border.
+[[This Card |CSS Issues\Tag-specific Card Styles\Test Tag Styling]] and any other card tagged with `css-data-tags-test` has a pink border.
 
 Tag List:
-<$list variable=cur_tag_name filter="[[CSS Issues\Tag-specific Tip Styles\Test Tag Styling]tags[]]">
+<$list variable=cur_tag_name filter="[[CSS Issues\Tag-specific Card Styles\Test Tag Styling]tags[]]">
 
 * <<cur_tag_name>>
 </$list><!--cur_tag_name-->
@@ -930,142 +1111,150 @@ Normal Font
 Save Wiki to GitHub
 </$button>
 
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strTIP_PK>
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
 <$button>
-<$list filter="[list[$:/StoryList]] -[<strTIP_PK>]" variable=strCLOSE_PK>
+<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
 </$list>
-Close all other open Tips
+Close all other open Cards
 </$button>
 </$list>
 
 
 
-<$vars new_tip_entry_pk="$:/state/popup/NewTempTipPK">
-<$edit-text tiddler=<<new_tip_entry_pk>> field=text default="New Tip Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
-<$link to=<<new_tip_entry_pk>> /> = -<$transclude tiddler=<<new_tip_entry_pk>> />-<br>
+<$vars new_card_entry_pk="$:/state/popup/NewTempCardPK">
+<$edit-text tiddler=<<new_card_entry_pk>> field=text default="New Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$link to=<<new_card_entry_pk>> /> = -<$transclude tiddler=<<new_card_entry_pk>> />-<br>
 
-<$list variable=new_tip filter="[<new_tip_entry_pk>get[text]!match[]]">
-<$vars compare_entry_pk="$:/state/popup/CompareTempTipPK">
+<$list variable=new_card filter="[<new_card_entry_pk>get[text]!match[]]">
+<$vars compare_entry_pk="$:/state/popup/CompareTempCardPK">
 
-<$list variable=new_pk filter="[<new_tip>addprefix[$:/state/popup/]]">
+<$list variable=new_pk filter="[<new_card>addprefix[$:/state/popup/]]">
 <$button>
 <$action-sendmessage $message="tm-new-tiddler" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
-Create Tip ''<<new_tip>>'' and Edit
+Create Card ''<<new_card>>'' and Edit
 </$button><br>
 
 <$button>
-<$list variable=orig_tip_content filter="[<new_tip>get[text]addprefix[```
-]else[yes]]">
-<$action-setfield $tiddler=<<new_pk>> text=<<orig_tip_content>> />
-</$list>
+<$wikify name=open_brackets text="&#91;&#91;">
+<$wikify name=close_brackets text="&#93;&#93;">
+<$list variable=orig_card_exists filter="[<new_card>is[tiddler]count[]match[1]split[1]join[empty card]else[card not created]]">
+<$list variable=orig_card_content filter="[<new_card>get[text]else<orig_card_exists>addprefix[```
+]addprefix[
+
+]addprefix<close_brackets>addprefix<new_card>addprefix<open_brackets>]">
+<$action-setfield $tiddler=<<new_pk>> text=<<orig_card_content>> />
+</$list><!--orig_card_content-->
+</$list><!--orig_card_exists-->
+</$wikify><!--close_brackets-->
+</$wikify><!--open_brackets-->
 <$action-navigate $to=<<new_pk>>/>
-Create Tip ''<<new_tip>>'' and Show
+Create Card ''<<new_card>>'' and Show
 </$button><br>
 
 <$link to=<<new_pk>> /><br>
 
 <$button>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
-Close Tip: ''<<new_tip>>''
+Close Card: ''<<new_card>>''
 </$button><br>
 
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strTIP_PK>
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
 <$button>
-<$list filter="[list[$:/StoryList]] -[<strTIP_PK>]" variable=strCLOSE_PK>
+<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
 </$list>
-Close all other open Tips
+Close all other open Cards
 </$button>
 </$list><br>
 
 <$button>
 <$action-sendmessage $message="tm-delete-tiddler" $param=<<new_pk>> />
-Delete Tip: ''<<new_tip>>'' with confirmation
+Delete Card: ''<<new_card>>'' with confirmation
 </$button><br>
 
 <$button>
 <$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
 <$action-deletetiddler $tiddler=<<new_pk>> />
-Delete Tip: ''<<new_tip>>'' without confirmation
+Delete Card: ''<<new_card>>'' without confirmation
 </$button><br>
 
-<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Tip Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
 <$list variable=compare_pk filter="[<compare_entry_pk>get[text]]">
 <$link to=<<compare_pk>> />
 <$list variable=compare_text filter="[<compare_pk>get[text]]">
-<$list variable=new_tip_text filter="[<new_pk>get[text]]">
-<$diff-text source=<<new_tip_text>> dest=<<compare_text>> />
-</$list><!--new_tip_text-->
+<$list variable=new_card_text filter="[<new_pk>get[text]]">
+<$diff-text source=<<new_card_text>> dest=<<compare_text>> />
+</$list><!--new_card_text-->
 </$list><!--compare_text-->
 </$list><!--compare_pk-->
 
 </$list><!--new_pk-->
 </$vars><!--compare_entry_pk-->
-</$list><!--new_tip-->
-</$vars><!--new_tip_entry_pk-->
+</$list><!--new_card-->
+</$vars><!--new_card_entry_pk-->
 
 
-!!Tips tagged with only $ prefixed tags
+!!Cards tagged with only $ prefixed tags
 
-<$list variable=cur_tip filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
-<$list variable=has_non_dprefixed_tag filter="[<cur_tip>tags[]!prefix[$]count[]match[0]]">
+<$list variable=cur_card filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
+<$list variable=has_non_dprefixed_tag filter="[<cur_card>tags[]!prefix[$]count[]match[0]]">
 
-<$link to=<<cur_tip>> />
+<$link to=<<cur_card>> />
 </$list><!--has_non_dprefixed_tag-->
-</$list><!--cur_tip-->
+</$list><!--cur_card-->
 
 
-!!Tips where has[tags] does not work
+!!Cards where has[tags] does not work
 
-<$list variable=cur_tip filter="[is[tiddler]]">
-<$list variable=has_tags_test filter="[<cur_tip>!has[tags]count[]] [<cur_tip>has[tags]count[]] +[sum[]match[0]]">
+<$list variable=cur_card filter="[is[tiddler]]">
+<$list variable=has_tags_test filter="[<cur_card>!has[tags]count[]] [<cur_card>has[tags]count[]] +[sum[]match[0]]">
 
-<$link to=<<cur_tip>> />
+<$link to=<<cur_card>> />
 </$list><!--has_tags_test-->
-</$list><!--cur_tip-->
+</$list><!--cur_card-->
 
-!!Tips with no tags
+!!Cards with no tags
 
-<$list variable=cur_tip filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
-<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]match[1]]">
+<$list variable=cur_card filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
+<$list variable=has_parent_card filter="[<cur_card>split[\]count[]match[1]]">
 
-<$link to=<<cur_tip>> />
-</$list><!--has_parent_tip-->
+<$link to=<<cur_card>> />
+</$list><!--has_parent_card-->
 
-<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]!match[1]]">
-<$list variable=parent_tip_exists filter="[<cur_tip>split[\]first[]!is[tiddler]]">
+<$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
+<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]!is[tiddler]]">
 
-<$link to=<<cur_tip>> />
-</$list><!--parent_tip_exists-->
-</$list><!--has_parent_tip-->
-</$list><!--cur_tip-->
+<$link to=<<cur_card>> />
+</$list><!--parent_card_exists-->
+</$list><!--has_parent_card-->
+</$list><!--cur_card-->
 
 
 
 <$button>
-<$list variable=cur_tip filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
-<$action-listops $tiddler=<<cur_tip>> $tags="+[append[COPY]]"/>
+<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
 </$list>
-<$list variable=cur_tip filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
-<$list variable=has_parent_tip filter="[<cur_tip>split[\]count[]!match[1]]">
-<$list variable=parent_tip_exists filter="[<cur_tip>split[\]first[]is[tiddler]]">
-<$action-listops $tiddler=<<cur_tip>> $tags="+[append[COPY]]"/>
-</$list><!--parent_tip_exists-->
-</$list><!--has_parent_tip-->
-</$list><!--cur_tip-->
-Append COPY tag to all tips that already have tags
+<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
+<$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
+<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]is[tiddler]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
+</$list><!--parent_card_exists-->
+</$list><!--has_parent_card-->
+</$list><!--cur_card-->
+Append COPY tag to all cards that already have tags
 </$button><br>
 
 <$button>
-<$list variable=cur_tip filter="[tag[COPY]]">
-<$action-listops $tiddler=<<cur_tip>> $tags="+[remove[COPY]]"/>
+<$list variable=cur_card filter="[tag[COPY]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[remove[COPY]]"/>
 </$list>
-Remove COPY tag from all tips
+Remove COPY tag from all cards
 </$button><br>
 
 
-[[btn Delete Tips]]
+[[btn Delete Cards]]
 
 
 
@@ -1427,22 +1616,22 @@ mcr glbl_image
 
 
 
-mcr glbl_subtip_code
+mcr glbl_subcard_code
 
-\define glbl_subtip_code(ur_subtip)
-<$list variable=subtip_pk filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\$ur_subtip$]]">
-<$list variable=subtip_wtext filter="[<subtip_pk>get[text]]">
-<div style="clear:both;float:right;"><$link to=<<subtip_pk>> >-></$link></div>
-<$codeblock code=<<subtip_wtext>> />
-</$list><!--subtip_wtext-->
-</$list><!--subtip_pk-->
+\define glbl_subcard_code(ur_subcard)
+<$list variable=subcard_pk filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\$ur_subcard$]]">
+<$list variable=subcard_wtext filter="[<subcard_pk>get[text]]">
+<div style="clear:both;float:right;"><$link to=<<subcard_pk>> >-></$link></div>
+<$codeblock code=<<subcard_wtext>> />
+</$list><!--subcard_wtext-->
+</$list><!--subcard_pk-->
 \end
-\define glbl_subtip_show(ur_subtip)
-<<glbl_subtip_code "$ur_subtip$">>
-<$list variable=subtip_pk filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\$ur_subtip$]]">
-<div style="clear:both;float:right;"><$link to=<<subtip_pk>> >-></$link></div>
-<$transclude mode="block" tiddler=<<subtip_pk>> />
-</$list><!--subtip_pk-->
+\define glbl_subcard_show(ur_subcard)
+<<glbl_subcard_code "$ur_subcard$">>
+<$list variable=subcard_pk filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\$ur_subcard$]]">
+<div style="clear:both;float:right;"><$link to=<<subcard_pk>> >-></$link></div>
+<$transclude mode="block" tiddler=<<subcard_pk>> />
+</$list><!--subcard_pk-->
 \end
 
 
@@ -1483,10 +1672,6 @@ Page Layout\Theme
 
 
 
-parm SkipSaveExportHTML
-
-
-
 Pragma
 
 <<glbl_tagged_list>>
@@ -1497,7 +1682,7 @@ Recent Entries
 
 [[Search All Fields]]
 
-[[View All Tips]]
+[[View All Cards]]
 
 [[View All Code]]
 
@@ -1523,19 +1708,19 @@ Search All Fields
 <$checkbox default="yes" unchecked="no" checked="yes" field="text" tiddler=<<skip_system_pk>>> Skip System </$checkbox><br>
 <br>
 
-<$list variable=cur_search_text filter="[<search_text_pk>get[text]!match[]]">
+<$list variable=cur_search_text filter="[<search_text_pk>get[text]addsuffix[(?i)]!match[]]">
 <$list variable=cur_showcode_text filter="[<show_code_pk>get[text]else[no]]">
 <$list variable=cur_skipsystem_text filter="[<skip_system_pk>get[text]else[yes]match[yes]count[]]">
 
-<!--Tip titles-->
+<!--Card titles-->
 <$list variable=cur_pk filter="[regexp<cur_search_text>sort[]]">
 <$list variable=found_skipsystem filter="[<cur_skipsystem_text>] [<cur_pk>!is[system]count[]] +[sum[]match[1]]">
 
-<<cur_pk>>: <<cur_field>>
+<$link to=<<cur_pk>> />: title
 </$list><!--found_skipsystem-->
 </$list><!--cur_pk-->
 
-<!--Tip fields-->
+<!--Card fields-->
 <$list variable=cur_pk filter="[!regexp<cur_search_text>sort[]]">
 <$list variable=found_skipsystem filter="[<cur_pk>is[system]count[]multiply<cur_skipsystem_text>match[0]]">
 <$list variable=cur_field filter="[<cur_pk>fields[]]">
@@ -1635,13 +1820,13 @@ All these macros are defined in the [[$:/core/macros/CSS]] tiddler.
 template ExportAllCode
 
 \define renderContent()
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_card_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
 <hr>
-<h2><$link to=<<cur_tip_pk>> /></h2>
-<$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
-<$codeblock code=<<cur_tip_text>> />
-</$list><!--cur_tip_text-->
-</$list><!--cur_tip_pk-->
+<h2><$link to=<<cur_card_pk>> /></h2>
+<$list variable=cur_card_text filter="[<cur_card_pk>get[text]]">
+<$codeblock code=<<cur_card_text>> />
+</$list><!--cur_card_text-->
+</$list><!--cur_card_pk-->
 \end
 <<renderContent>>
 
@@ -1676,17 +1861,17 @@ Text Formatting
 
 Text Formatting\CSS Classes
 
-!! New Tip
+!! New Card
 * Tag = `$:/tags/Stylesheet`
 * Content type = `text/css`
 * Body text =
 
-<<glbl_subtip_code "Test a_class_css">>
+<<glbl_subcard_code "Test a_class_css">>
 
 !! Usage
 * @''''@ syntax requires a class name to start with a period (''.'') and ''Not'' be followed by a semicolon ('';'')
 
-<<glbl_subtip_show "Test code apply class">>
+<<glbl_subcard_show "Test code apply class">>
 
 
 
@@ -1710,7 +1895,7 @@ Text Formatting\CSS in HTML
 Usage
 @@ syntax requires each css style-value pair be followed by a semicolon (;) and ''No'' spaces between the semicolon and the next style name
 
-<<glbl_subtip_show "Test code apply style-value">>
+<<glbl_subcard_show "Test code apply style-value">>
 
 
 
@@ -1719,9 +1904,9 @@ Text Formatting\CSS Span
 !! Usage
 * @''''@ syntax requires each css style-value pair be followed by a semicolon (;) and ''No'' spaces between the semicolon and the next style name
 
-<<glbl_subtip_show "Test code apply style-value">>
+<<glbl_subcard_show "Test code apply style-value">>
 
-<<glbl_subtip_show "Test code apply style block">>
+<<glbl_subcard_show "Test code apply style block">>
 
 
 
@@ -1759,187 +1944,6 @@ Topics:
 <<list-links filter:"[tag[TOPIC]!is[draft]sort[title]]">>
 
 [[___|Recent Entries]]
-
-
-
-Tip Code
-
-<<glbl_article_list>>
-
-
-
-Tip Code\Define a Tip-specific macro
-
-```
-\define UrMacroName(ur_macro_parm1, ur_macro_parm2) One-line macro
-
-\define UrMacroName(ur_macro_parm1, ur_macro_parm2)
-Macro with
-
-several lines
-\end
-
-\define UrMacroName(ur_macro_parm1 ur_macro_parm2)
-Macro parameter separator is optional
-\end
-
-\define UrMacroName()
-Parentheses are required, and there must NOT be any spaces between the macro name and the open parenthesis
-\end
-```
-
-* If a Tip has macro definitions and is tagged with `$:/tags/Macro`, you may use that Tip's macros within any other Tip code
-
-<<glbl_subtip_show "Sample local macro">>
-<<glbl_subtip_show "Sample global macro">>
-<<glbl_subtip_show "Test local and global macros">>
-
----
-[[TW Pragma]]
-
-
-
-
-Tip Code\Define a Tip-specific macro\Sample global macro
-
-\define sample_global_macro()
-Some global sample text
-
-Note: This Tip has a `$:/tags/Macro tag`
-\end
-
-
-
-
-Tip Code\Define a Tip-specific macro\Sample local macro
-
-\define sample_tip_specific_macro()
-Some local sample text
-
-This Tip does not have a `$:/tags/Macro tag`
-\end
-<<sample_tip_specific_macro>>
-
-
-
-Tip Code\Define a Tip-specific macro\Test local and global macros
-
-<<sample_tip_specific_macro>>
-The tip-specific macro does not work.
-
-<<sample_global_macro>>
-
-
-
-Tip Code\Include Non-global macros
-
-```
-\import <filter-expression>
-```
-
-* If a Tip has macro definitions and is not tagged with `$:/tags/Macro`, you must import that Tip to use its macros
-
-<<glbl_subtip_code "Sample macro">>
-<<glbl_subtip_show "Test missing macro">>
-<<glbl_subtip_show "Test imported macro">>
-
----
-[[TW Pragma]]
-
-
-
-
-Tip Code\Include Non-global macros\Sample macro
-
-\define test_macro()
-It is now: <<now>>
-\end
-
-
-
-Tip Code\Include Non-global macros\Test imported macro
-
-\import [[Tip Code\Include Non-global macros\Sample macro]]
-<<test_macro>>
-
-
-
-
-Tip Code\Include Non-global macros\Test missing macro
-
-<<test_macro>>
-No results here
-
-
-
-Tip Code\Tip-specific Interpreting Rules
-
-```
-\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
-```
-
-* Place at the start of a Tip to keep the a Tip from parsing any code but macros and transclusion
-* This is useful in a CSS Template to keep special WikiText formatting codes from being parsed
-** Note: The CSS Template must not have Tip content type = `text/css` to be able to run macros
-
-<<glbl_subtip_show "Test CSS parsing rules">>
-
----
-[[Using Stylesheets]]
-
-[[TW Pragma]]
-
-<<ext "Wiki Parsing Rules">>
-
-
-
-Tip Code\Tip-specific Interpreting Rules\Test CSS parsing rules
-
-\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
-This would normally ''be bold font''. The WikiText parsing rules are excluded, so you can see the doubled-single quotes (') + (').
-
-
-
-Tip Code\Tip-specific Whitespace rules
-
-`\whitespace trim` or `\whitespace notrim`
-
-* Place at the start of a Tip to keep the a Tip from keeping any whitespace before, between and after any html coded tags
-* The default option is ''notrim''
-
-<<glbl_subtip_show "Test trim">>
-<<glbl_subtip_show "Test notrim">>
-
----
-[[TW Pragma]]
-
-
-
-Tip Code\Tip-specific Whitespace rules\Test notrim
-
-\whitespace notrim
-The whitespace before, ''between '' and after tags is '' kept,
-
-even on multiple lines,'' inside or outside of the tag.
-
-Starting a new line ''with an in-line tag'' still keeps
-
-multiple lines separated.
-
-
-
-
-Tip Code\Tip-specific Whitespace rules\Test trim
-
-\whitespace trim
-The whitespace before, ''between '' and after tags is '' trimmed,
-
-even on multiple lines,'' until you are out of the tag.
-
-Starting a new line ''with an in-line tag'' lets you keep
-
-multiple lines separated.
-
 
 
 
@@ -2000,7 +2004,7 @@ body.tc-body {
 
 Custom stylesheets are applied independently from theme stylesheets. Therefore, it is often necessary for the css rules in your custom stylesheet to be more specific than those of the theme you want to override. For example, `html body.tc-body` is more specific than `body.tc-body`. 
 
-<<.tip "''You should always start with the least specific value that works!''<br><br>">>
+''You should always start with the least specific value that works!''
 
 ! Stylesheet Types
 
@@ -2036,19 +2040,7 @@ The ~TiddlyWiki core provides several [[global macros that are helpful in constr
 
 
 
-View All Code
-
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
-<hr>
-<h2><$link to=<<cur_tip_pk>> /></h2>
-<$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
-<$codeblock code=<<cur_tip_text>> />
-</$list><!--cur_tip_text-->
-</$list><!--cur_tip_pk-->
-
-
-
-View All Tips
+View All Cards
 
 <$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
 <hr>
@@ -2056,6 +2048,18 @@ View All Tips
 {{||$:/core/ui/ViewTemplate/tags}}
 <$transclude mode="block"/>
 </$list>
+
+
+
+View All Code
+
+<$list variable=cur_card_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<hr>
+<h2><$link to=<<cur_card_pk>> /></h2>
+<$list variable=cur_card_text filter="[<cur_card_pk>get[text]]">
+<$codeblock code=<<cur_card_text>> />
+</$list><!--cur_card_text-->
+</$list><!--cur_card_pk-->
 
 
 
