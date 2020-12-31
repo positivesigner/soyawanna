@@ -38,7 +38,7 @@ $:/config/ShortcutInfo/font-normal
 
 
 
-$:/config/ShortcutInfo/home-tiddlers
+$:/config/ShortcutInfo/home-cards
 
 
 
@@ -58,7 +58,7 @@ ctrl-shift-Comma
 
 
 
-$:/config/shortcuts/home-tiddlers
+$:/config/shortcuts/home-cards
 
 alt-H
 
@@ -82,25 +82,25 @@ disable
 
 
 
-$:/DefaultTiddlers
+$:/DefaultCards
 
-[all[tiddlers]tag[INDEX]sort[title]]
+[all[cards]tag[INDEX]sort[title]]
 
 
 
 $:/plugins/danielo515/searchNreplace
 
 {
-    "tiddlers": {
+    "cards": {
         "$:/danielo515/modules/startup/replace.js": {
-            "text": "/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW >= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\"use strict\";\r\n\r\n// Export name and synchronous status\r\nexports.name = \"password\";\r\nexports.platforms = [\"browser\"];\r\nexports.after = [\"startup\"];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\"tm-replace\",function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getTiddlerText(event.paramObject.source) || \"\",\r\n      doGlobal = event.paramObject.global || \"yes\", // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \"no\" ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \"yes\",\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Tiddler to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\"text\",null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();",
+            "text": "/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW >= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\"use strict\";\r\n\r\n// Export name and synchronous status\r\nexports.name = \"password\";\r\nexports.platforms = [\"browser\"];\r\nexports.after = [\"startup\"];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\"tm-replace\",function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getCardText(event.paramObject.source) || \"\",\r\n      doGlobal = event.paramObject.global || \"yes\", // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \"no\" ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \"yes\",\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Card to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\"text\",null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();",
             "title": "$:/danielo515/modules/startup/replace.js",
             "type": "application/javascript",
             "module-type": "startup"
         },
         "$:/plugins/danielo515/searchNreplace/readme": {
             "title": "$:/plugins/danielo515/searchNreplace/readme",
-            "text": "This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default tiddler's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n"
+            "text": "This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default card's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n"
         },
         "$:/plugins/danielo515/searchNreplace/ui/controls": {
             "created": "20150409175313556",
@@ -109,7 +109,7 @@ $:/plugins/danielo515/searchNreplace
             "tags": "$:/tags/EditTemplate",
             "title": "$:/plugins/danielo515/searchNreplace/ui/controls",
             "type": "text/vnd.tiddlywiki",
-            "text": "<div class=\"tc-edit-controls\">\n<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/EditControls]]\" variable=\"control\">\n<$transclude tiddler=<<control>>>\n</$list>\n</div>"
+            "text": "<div class=\"tc-edit-controls\">\n<$list filter=\"[all[shadows+cards]tag[$:/tags/EditControls]]\" variable=\"control\">\n<$transclude card=<<control>>>\n</$list>\n</div>"
         },
         "$:/plugins/danielo515/searchNreplace/ui/controls/replace": {
             "created": "20150409182035279",
@@ -117,7 +117,7 @@ $:/plugins/danielo515/searchNreplace
             "tags": "$:/tags/EditControls",
             "title": "$:/plugins/danielo515/searchNreplace/ui/controls/replace",
             "type": "text/vnd.tiddlywiki",
-            "text": "<$edit-text tiddler=\"$:/state/searchNreplace/search\" tag=\"input\" default=\"\" placeholder=\"search\"/> <$edit-text tiddler=\"$:/state/searchNreplace/replace\" tag=\"input\" default=\"\" placeholder=\"replace\"/> <$button class=\"button button-tiny button-primary\">Replace\r\n<$action-sendmessage $message=\"tm-replace\" source=<<currentTiddler>> search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/>\r\n</$button>\r\n<$checkbox default=\"yes\" unchecked=\"no\" checked=\"yes\" field=\"text\" tiddler=\"$:/state/searchNreplace/global\">Global</$checkbox>\r\n<$checkbox default=\"no\" unchecked=\"no\" checked=\"yes\" field=\"text\" tiddler=\"$:/state/searchNreplace/regex\">Use regex</$checkbox>"
+            "text": "<$edit-text card=\"$:/state/searchNreplace/search\" tag=\"input\" default=\"\" placeholder=\"search\"/> <$edit-text card=\"$:/state/searchNreplace/replace\" tag=\"input\" default=\"\" placeholder=\"replace\"/> <$button class=\"button button-tiny button-primary\">Replace\r\n<$action-sendmessage $message=\"tm-replace\" source=<<currentCard>> search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/>\r\n</$button>\r\n<$checkbox default=\"yes\" unchecked=\"no\" checked=\"yes\" field=\"text\" card=\"$:/state/searchNreplace/global\">Global</$checkbox>\r\n<$checkbox default=\"no\" unchecked=\"no\" checked=\"yes\" field=\"text\" card=\"$:/state/searchNreplace/regex\">Use regex</$checkbox>"
         },
         "$:/plugins/danielo515/searchNreplace/styles": {
             "created": "20150409181359332",
@@ -269,11 +269,11 @@ Additional Features\Card Editor tweaks
 * [Editor Toolbar section]
 * checkbox Show editor toolbar = clear
 !!
-* [Tiddler Opening Behaviour section]
+* [Card Opening Behaviour section]
 * Navigation from outside the story river section = `Open at the bottom of the story river`
 !!
 * [Wiki Links section]
-* checkbox Enable links to missing tiddlers = clear
+* checkbox Enable links to missing cards = clear
 !!
 * [Permalink/permaview Mode]
 * checkbox Copy permalink/permaview URL to clipboard = clear
@@ -284,14 +284,14 @@ Additional Features\Card Editor tweaks
 * [Sizes section for Normal Font]
 * Font size = 14px
 * Line height = 20px
-* Font size for tiddler body = 15px
-* Line height for tiddler body = 24px
+* Font size for card body = 15px
+* Line height for card body = 24px
 !!
 * [Sizes section for Large Font]
 * Font size = 24px
 * Line height = 30px
-* Font size for tiddler body = 25px
-* Line height for tiddler body = 34px
+* Font size for card body = 25px
+* Line height for card body = 34px
 !!
 * [Saving tab, General sub-tab, Autosave section]
 * radiobox Do not save changes automatically = set
@@ -411,8 +411,8 @@ Additional Features\Display Card text lines
 * Show the text lines of two Cards that have differences
 
 ```
-<$edit-text tiddler="$:/state/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
-<$edit-text tiddler="$:/state/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text card="$:/state/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text card="$:/state/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
 
 <<glbl_compare_lines "$:/state/CompareText1" "$:/state/CompareText2">>
 ```
@@ -448,21 +448,21 @@ The form opens with just the Main Index Cards shown. I prefer Alt-H to re-open t
 
 [New Card]
 
-* Title = `$:/config/ShortcutInfo/home-tiddlers`
+* Title = `$:/config/ShortcutInfo/home-cards`
 
 [New Card]
 
-* Title = `$:/config/shortcuts/home-tiddlers`
+* Title = `$:/config/shortcuts/home-cards`
 * Main Body Text = `alt-H`
 
 [New Card]
 
-* Title = `keyboard action HomeTiddlers`
+* Title = `keyboard action HomeCards`
 * Tag = `$:/tags/KeyboardShortcut`
-* Field-Value: `key` = `((home-tiddlers))`
+* Field-Value: `key` = `((home-cards))`
 * Main Body Text = 
 
-<$codeblock code={{keyboard action HomeTiddlers}} />
+<$codeblock code={{keyboard action HomeCards}} />
 
 
 
@@ -574,9 +574,9 @@ Additional Features\Save Directly to GitHub Repository
 
 ```
 <$button>
-<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
-<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-setfield $card="$:/state/sidebar" text="no"/>
+<$action-setfield $card="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $card="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
 <$action-sendmessage $message="tm-save-wiki" />
 Save Wiki to GitHub
 </$button>
@@ -641,8 +641,8 @@ Additional Features\View or Copy Card source code
 Basic Wiki Setup
 
 <ol>
-<$list filter="[<currentTiddler>fields[]prefix[e]sort[]]" variable=lookup_name>
-<$list filter="[<currentTiddler>get<lookup_name>]" variable=ref_note_pk>
+<$list filter="[<currentCard>fields[]prefix[e]sort[]]" variable=lookup_name>
+<$list filter="[<currentCard>get<lookup_name>]" variable=ref_note_pk>
 <$list filter="[<ref_note_pk>get[img]else[]]" variable=ref_img_pk>
 <li><$link to=<<ref_note_pk>> />@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;<$image width=200px source=<<ref_img_pk>> />@@<div style="clear:both;"></div></li>
 </$list>
@@ -656,7 +656,7 @@ Basic Wiki Setup
 btn Delete Cards
 
 <$button>
-<$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-deletetiddler $tiddler=<<currentTiddler>> /></$list>
+<$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-deletecard $card=<<currentCard>> /></$list>
 Del ARTICLE and IMG cards
 </$button>
 
@@ -669,7 +669,7 @@ Change Title and Default Page Search
 * [Info tab, Basic sub-tab]
 * Title of this TiddlyWiki = UrTitle
 * Subtitle = UrSubTitle
-* Default tiddlers = `[all[tiddlers]tag[INDEX]sort[title]]`
+* Default cards = `[all[cards]tag[INDEX]sort[title]]`
 
 <$image source={{!!img}} />
 
@@ -747,9 +747,9 @@ DivPop btn
 
 \define divpop_current(ur_ref)
 <$button class=<<tv-config-toolbar-class>> >
-<$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
-<$action-sendmessage $message="tm-close-tiddler" $param="pop_right"/>
+<$action-setfield $card="$:/state/sidebar" text="yes"/>
+<$action-setfield $card="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
+<$action-sendmessage $message="tm-close-card" $param="pop_right"/>
 <$list filter="[<tv-config-toolbar-icons>match[yes]]">
 {{DivPop.svg}}
 </$list>
@@ -760,14 +760,14 @@ DivPop btn
 \end
 
 <$list filter="[all[current]]">
-<$macrocall $name=divpop_current ur_ref=<<currentTiddler>> /> 
+<$macrocall $name=divpop_current ur_ref=<<currentCard>> /> 
 </$list>
 
 
 
 DivPop glbl
 
-<$list filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
+<$list filter="[{$:/state/popup/DivPopTitle}is[card]]">
 <div style="
 position: fixed;
 top: 0px;
@@ -779,13 +779,13 @@ bottom: 0%;
 ">
 <div style="overflow-y: scroll; height: 100%;">
 <$button>
-<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $card="$:/state/sidebar" text="no"/>
+<$action-setfield $card="$:/state/popup/DivPopTitle" text=""/>
 close
 </$button>
-<$tiddler tiddler=<<currentTiddler>> >
+<$card card=<<currentCard>> >
 <$transclude mode="block" />
-</$tiddler>
+</$card>
 </div>
 </div>
 </$list>
@@ -961,17 +961,17 @@ Enter the Save All Program
 
 ```
 \define ExportSaveAll(ur_filename ur_stamp)
-<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
-<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-setfield $card="$:/state/sidebar" text="no"/>
+<$action-setfield $card="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $card="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
 <$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.htm"
 />
 <$action-sendmessage $message="tm-download-file"
 $param="$:/core/templates/exporters/StaticRiver" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
-exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+exportFilter="""[all[cards]tag[INDEX]sort[title]][all[cards]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
 \end
 <$list filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
-<$macrocall $name="ExportSaveAll" ur_filename=<<currentTiddler>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> />
+<$macrocall $name="ExportSaveAll" ur_filename=<<currentCard>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> />
 </$list>
 ```
 
@@ -993,14 +993,14 @@ ext TW Return
 <$list filter="[<tv-config-toolbar-icons>match[no]]">
 <$list filter="[{$:/info/url/full}split[/]count[]subtract[1]]" variable=found_index>
 <$list filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]]">
-<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="TiddlyWiki view of website" />
+<$macrocall $name=TW_Return ur_url=<<currentCard>> ur_link_title="TiddlyWiki view of website" />
 </$list>
 </$list>
 </$list>
 <$list filter="[<tv-config-toolbar-icons>!match[no]]">
 <$list filter="[{$:/info/url/full}split[/]count[]subtract[1]]" variable=found_index>
 <$list filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]split[.htm]join[.html]]">
-<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="Static HTML view of website" />
+<$macrocall $name=TW_Return ur_url=<<currentCard>> ur_link_title="Static HTML view of website" />
 </$list>
 </$list>
 </$list>
@@ -1021,17 +1021,17 @@ Normal Font
 </$button>
 
 <$button>
-<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
-<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-setfield $card="$:/state/sidebar" text="no"/>
+<$action-setfield $card="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $card="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
 <$action-sendmessage $message="tm-save-wiki" />
 Save Wiki to GitHub
 </$button>
 
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
+<$list filter="[<currentCard>!prefix[Draft of]]" variable=strCARD_PK>
 <$button>
 <$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
+<$action-sendmessage $message="tm-close-card" $param=<<strCLOSE_PK>>/>
 </$list>
 Close all other open Cards
 </$button>
@@ -1040,27 +1040,27 @@ Close all other open Cards
 
 
 <$vars new_card_entry_pk="$:/state/popup/NewTempCardPK">
-<$edit-text tiddler=<<new_card_entry_pk>> field=text default="New Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
-<$link to=<<new_card_entry_pk>> /> = -<$transclude tiddler=<<new_card_entry_pk>> />-<br>
+<$edit-text card=<<new_card_entry_pk>> field=text default="New Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$link to=<<new_card_entry_pk>> /> = -<$transclude card=<<new_card_entry_pk>> />-<br>
 
 <$list variable=new_card filter="[<new_card_entry_pk>get[text]!match[]]">
 <$vars compare_entry_pk="$:/state/popup/CompareTempCardPK">
 
 <$list variable=new_pk filter="[<new_card>addprefix[$:/state/popup/]]">
 <$button>
-<$action-sendmessage $message="tm-new-tiddler" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
+<$action-sendmessage $message="tm-new-card" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
 Create Card ''<<new_card>>'' and Edit
 </$button><br>
 
 <$button>
 <$wikify name=open_brackets text="&#91;&#91;">
 <$wikify name=close_brackets text="&#93;&#93;">
-<$list variable=orig_card_exists filter="[<new_card>is[tiddler]count[]match[1]split[1]join[empty card]else[card not created]]">
+<$list variable=orig_card_exists filter="[<new_card>is[card]count[]match[1]split[1]join[empty card]else[card not created]]">
 <$list variable=orig_card_content filter="[<new_card>get[text]else<orig_card_exists>addprefix[```
 ]addprefix[
 
 ]addprefix<close_brackets>addprefix<new_card>addprefix<open_brackets>]">
-<$action-setfield $tiddler=<<new_pk>> text=<<orig_card_content>> />
+<$action-setfield $card=<<new_pk>> text=<<orig_card_content>> />
 </$list><!--orig_card_content-->
 </$list><!--orig_card_exists-->
 </$wikify><!--close_brackets-->
@@ -1072,31 +1072,31 @@ Create Card ''<<new_card>>'' and Show
 <$link to=<<new_pk>> /><br>
 
 <$button>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
+<$action-sendmessage $message="tm-close-card" $param=<<new_pk>> />
 Close Card: ''<<new_card>>''
 </$button><br>
 
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
+<$list filter="[<currentCard>!prefix[Draft of]]" variable=strCARD_PK>
 <$button>
 <$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
+<$action-sendmessage $message="tm-close-card" $param=<<strCLOSE_PK>>/>
 </$list>
 Close all other open Cards
 </$button>
 </$list><br>
 
 <$button>
-<$action-sendmessage $message="tm-delete-tiddler" $param=<<new_pk>> />
+<$action-sendmessage $message="tm-delete-card" $param=<<new_pk>> />
 Delete Card: ''<<new_card>>'' with confirmation
 </$button><br>
 
 <$button>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
-<$action-deletetiddler $tiddler=<<new_pk>> />
+<$action-sendmessage $message="tm-close-card" $param=<<new_pk>> />
+<$action-deletecard $card=<<new_pk>> />
 Delete Card: ''<<new_card>>'' without confirmation
 </$button><br>
 
-<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
+<$edit-text card=<<compare_entry_pk>> field=text default="Compare Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
 <$list variable=compare_pk filter="[<compare_entry_pk>get[text]]">
 <$link to=<<compare_pk>> />
 <$list variable=compare_text filter="[<compare_pk>get[text]]">
@@ -1114,7 +1114,7 @@ Delete Card: ''<<new_card>>'' without confirmation
 
 !!Cards tagged with only $ prefixed tags
 
-<$list variable=cur_card filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
+<$list variable=cur_card filter="[is[card]has[tags]!prefix[$:/state/]]">
 <$list variable=has_non_dprefixed_tag filter="[<cur_card>tags[]!prefix[$]count[]match[0]]">
 
 <$link to=<<cur_card>> />
@@ -1124,7 +1124,7 @@ Delete Card: ''<<new_card>>'' without confirmation
 
 !!Cards where has[tags] does not work
 
-<$list variable=cur_card filter="[is[tiddler]]">
+<$list variable=cur_card filter="[is[card]]">
 <$list variable=has_tags_test filter="[<cur_card>!has[tags]count[]] [<cur_card>has[tags]count[]] +[sum[]match[0]]">
 
 <$link to=<<cur_card>> />
@@ -1133,14 +1133,14 @@ Delete Card: ''<<new_card>>'' without confirmation
 
 !!Cards with no tags
 
-<$list variable=cur_card filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
+<$list variable=cur_card filter="[is[card]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
 <$list variable=has_parent_card filter="[<cur_card>split[\]count[]match[1]]">
 
 <$link to=<<cur_card>> />
 </$list><!--has_parent_card-->
 
 <$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
-<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]!is[tiddler]]">
+<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]!is[card]]">
 
 <$link to=<<cur_card>> />
 </$list><!--parent_card_exists-->
@@ -1150,13 +1150,13 @@ Delete Card: ''<<new_card>>'' without confirmation
 
 
 <$button>
-<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
-<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
+<$list variable=cur_card filter="[is[card]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
+<$action-listops $card=<<cur_card>> $tags="+[append[COPY]]"/>
 </$list>
-<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
+<$list variable=cur_card filter="[is[card]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
 <$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
-<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]is[tiddler]]">
-<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
+<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]is[card]]">
+<$action-listops $card=<<cur_card>> $tags="+[append[COPY]]"/>
 </$list><!--parent_card_exists-->
 </$list><!--has_parent_card-->
 </$list><!--cur_card-->
@@ -1165,7 +1165,7 @@ Append COPY tag to all cards that already have tags
 
 <$button>
 <$list variable=cur_card filter="[tag[COPY]]">
-<$action-listops $tiddler=<<cur_card>> $tags="+[remove[COPY]]"/>
+<$action-listops $card=<<cur_card>> $tags="+[remove[COPY]]"/>
 </$list>
 Remove COPY tag from all cards
 </$button><br>
@@ -1256,25 +1256,25 @@ iVBORw0KGgoAAAANSUhEUgAABZYAAAI0CAYAAACOHXxsAAAgAElEQVR4Aey997Mc1b2vff+M+/N7TtU9
 
 keyboard action FontLarge
 
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="30px"/>
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="25px"/>
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" text="34px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="30px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="25px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" text="34px"/>
 
 
 
 
 keyboard action FontNormal
 
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="14px"/>
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="20px"/>
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="15px"/>
-<$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" text="24px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="14px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="20px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="15px"/>
+<$action-setfield $card="$:/themes/tiddlywiki/vanilla/metrics/bodylineheight" text="24px"/>
 
 
 
 
-keyboard action HomeTiddlers
+keyboard action HomeCards
 
 <$action-sendmessage $message="tm-home"/>
 
@@ -1284,20 +1284,20 @@ keyboard action HomeTiddlers
 keyboard action SaveAllChanges
 
 \define ExportSaveAll(ur_filename, ur_stamp, ur_save_wiki_extension, ur_save_export_html)
-<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
-<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-setfield $card="$:/state/sidebar" text="no"/>
+<$action-setfield $card="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $card="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
 <$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$$ur_save_wiki_extension$"
 />
 <$list vairable=save_export_html filter="[[$ur_save_export_html$]match[1]]">
 <$action-sendmessage $message="tm-download-file"
 $param="$:/core/templates/exporters/StaticRiver" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
-exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+exportFilter="""[all[cards]tag[INDEX]sort[title]][all[cards]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
 </$list><!--save_export_html-->
 <$action-sendmessage $message="tm-download-file"
 $param="template ExportAllCode" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.twcode.txt" />
 \end
-<$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[parm SkipSaveExportHTML]is[tiddler]count[]multiply[-1]] +[sum[]]">
+<$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[parm SkipSaveExportHTML]is[card]count[]multiply[-1]] +[sum[]]">
 <$list variable=save_wiki_extension filter="[{$:/info/url/full}split[.]last[]addprefix[.]]">
 <$list variable=save_as_file_name filter="[{$:/info/url/full}suffix[.htm]split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
 <$macrocall $name="ExportSaveAll" ur_filename=<<save_as_file_name>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> ur_save_wiki_extension=<<save_wiki_extension>> ur_save_export_html=<<save_export_html>> />
@@ -1311,9 +1311,9 @@ mcr glbl_article_list
 
 \define glbl_article_list()
 <ol>
-<$list filter="[<currentTiddler>addsuffix[\]]">
-<$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
-<li><$link to=<<currentTiddler>> /></li>
+<$list filter="[<currentCard>addsuffix[\]]">
+<$list filter="[all[cards]prefix<currentCard>sort[]]">
+<li><$link to=<<currentCard>> /></li>
 </$list>
 </$list>
 </ol>
@@ -1340,18 +1340,18 @@ mcr glbl_code_split
 </$list></$list></$list></$list></$list></$list>
 \end
 \define glbl_code_split_group(ur_note_pk, ur_skip_count)
-<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&#x0022;&#x0022;&#x0022;]]"><<currentTiddler>>
+<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentCard>splitregexp[\u0026]join[&#x0026;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&#x0022;&#x0022;&#x0022;]]"><<currentCard>>
 </$list></$list>
 \end
 \define glbl_code_split_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_split_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_split_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentCard>> /></$list>
 \end
 \define glbl_code_split_data()
 <$macrocall $name=glbl_code_split_count ur_note_pk=<<source_note_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
 \end
 \define glbl_code_split_next_group_disp(ur_rem_counter)
 <$list filter="[{$ur_rem_counter$}subtract[1]]">
-<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+<$action-setfield $card=<<temp_remcounter_pk>> text=<<currentCard>> />
 </$list>
 \end
 \define glbl_code_split_disp(ur_source_note_pk, ur_temp_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
@@ -1360,33 +1360,33 @@ Rem to find: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
 Source data: [[$ur_source_note_pk$]]<br>
 \end
 \define glbl_code_split_combine()
-$(currentTiddler)$$(str_html_out)$
+$(currentCard)$$(str_html_out)$
 \end
 \define glbl_code_split_init(ur_note_pk, ur_first_line_skip)
 <$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
-  <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+  <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentCard>> >
     <$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]add[1]floor[]]">
       <$button>
-        <$action-setfield $tiddler=<<temp_note_pk>> text="" />
-        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
-        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
+        <$action-setfield $card=<<temp_note_pk>> text="" />
+        <$action-setfield $card=<<temp_remcounter_pk>> text=<<currentCard>> />
+        <$action-setfield $card=<<temp_lastcounter_pk>> text=<<currentCard>> />
         Reset destination edit field
         </$button>
       </$list><br>
 	
-    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
+    <$edit-text card=<<temp_remcounter_pk>> autoHeight=yes tag=input />
     </$vars>
   </$list>
 \end
 \define glbl_code_split(ur_note_pk, ur_first_line_skip)
 <$macrocall $name=glbl_code_split_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
 <$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
-  <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+  <$vars source_note_pk="$ur_note_pk$" temp_note_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentCard>> >
     <$macrocall $name=glbl_code_split_disp ur_source_note_pk=<<source_note_pk>> ur_temp_note_pk=<<temp_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
     <$button>
       <$wikify name=str_html_out text=<<glbl_code_split_data>> >
         <$list filter="[<temp_note_pk>get[text]else[]]"><$vars combine_html_out=<<glbl_code_split_combine>> >
-        <$action-setfield $tiddler=<<temp_note_pk>> text=<<combine_html_out>> />
+        <$action-setfield $card=<<temp_note_pk>> text=<<combine_html_out>> />
          </$vars></$list>
         <$macrocall $name=glbl_code_split_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> />
         </$wikify>
@@ -1394,22 +1394,22 @@ $(currentTiddler)$$(str_html_out)$
       Find next 100 lines
       </$button><br>
 
-    <$edit-text tiddler=<<temp_note_pk>> autoHeight=no />
+    <$edit-text card=<<temp_note_pk>> autoHeight=no />
     </$vars>
   </$list>
 \end
 \define glbl_code_disp_group(ur_note_pk, ur_skip_count)
-<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentTiddler>><br></$list></$list>
+<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentCard>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentCard>><br></$list></$list>
 \end
 \define glbl_code_disp_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentCard>> /></$list>
 \end
 \define glbl_code_disp_data()
 <$macrocall $name=glbl_code_disp_count ur_note_pk=<<source_note_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
 \end
 \define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
 <$list filter="[{$ur_rem_counter$}$ur_oper$[1]]">
-<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+<$action-setfield $card=<<temp_remcounter_pk>> text=<<currentCard>> />
 </$list>
 \end
 \define glbl_code_disp_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
@@ -1418,16 +1418,16 @@ Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
 \end
 \define glbl_code_disp_init(ur_note_pk, ur_first_line_skip)
 <$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
-  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentCard>> >
     <$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]floor[]]">
       <$button>
-        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
-        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
+        <$action-setfield $card=<<temp_remcounter_pk>> text=<<currentCard>> />
+        <$action-setfield $card=<<temp_lastcounter_pk>> text=<<currentCard>> />
         Reset destination edit field
         </$button>
       </$list><br>
 	
-    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
+    <$edit-text card=<<temp_remcounter_pk>> autoHeight=yes tag=input />
     </$vars>
   </$list>
 \end
@@ -1435,7 +1435,7 @@ Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
 <$macrocall $name=glbl_code_disp_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
 [[$ur_note_pk$]]<br>
 <$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
-  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentCard>> >
     <$macrocall $name=glbl_code_disp_disp ur_source_note_pk=<<source_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
     <$button>
       <$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="subtract" />
@@ -1487,16 +1487,16 @@ mcr glbl_compare_lines
 </td>
 <td>
 <$button>
-<$action-setfield $tiddler="$:/state/CompareTextLine1" text=<<intCUR_ENTRY>>/>
-<$action-setfield $tiddler="$:/state/CompareTextSection1" text="""<$edit-text tiddler="$:/state/CompareTextLine1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
+<$action-setfield $card="$:/state/CompareTextLine1" text=<<intCUR_ENTRY>>/>
+<$action-setfield $card="$:/state/CompareTextSection1" text="""<$edit-text card="$:/state/CompareTextLine1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
 <$list filter="[{$:/state/CompareTextLine1}!match[]else[0]]" variable=intSTART_LINE><$list filter="[<intSTART_LINE>subtract[1]]" variable=intPREV_LINE>
 <$list filter="[<intSTART_LINE>add[1]]" variable=intNEXT_LINE>
 <$button>
-<$action-setfield $tiddler="$:/state/CompareTextLine1" text=<<intPREV_LINE>>/>
+<$action-setfield $card="$:/state/CompareTextLine1" text=<<intPREV_LINE>>/>
 <<intPREV_LINE>>
 </$button>
 <$button>
-<$action-setfield $tiddler="$:/state/CompareTextLine1" text=<<intNEXT_LINE>>/>
+<$action-setfield $card="$:/state/CompareTextLine1" text=<<intNEXT_LINE>>/>
 <<intNEXT_LINE>>
 </$button><br>[[$ur_note_pk$]]<br>
 <$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_note_pk$"  ur_skip_count=<<intSTART_LINE>> />
@@ -1510,17 +1510,17 @@ mcr glbl_compare_lines
 <tr>
 <td>
 <$button>
-<$action-setfield $tiddler="$:/state/CompareTextLine2" text=<<intCUR_ENTRY>>/>
-<$action-setfield $tiddler="$:/state/CompareTextSection2" text="""<$edit-text tiddler="$:/state/CompareTextLine2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
+<$action-setfield $card="$:/state/CompareTextLine2" text=<<intCUR_ENTRY>>/>
+<$action-setfield $card="$:/state/CompareTextSection2" text="""<$edit-text card="$:/state/CompareTextLine2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
 <$list filter="[{$:/state/CompareTextLine2}!match[]else[0]]" variable=intSTART_LINE>
 <$list filter="[<intSTART_LINE>subtract[1]]" variable=intPREV_LINE>
 <$list filter="[<intSTART_LINE>add[1]]" variable=intNEXT_LINE>
 <$button>
-<$action-setfield $tiddler="$:/state/CompareTextLine2" text=<<intPREV_LINE>>/>
+<$action-setfield $card="$:/state/CompareTextLine2" text=<<intPREV_LINE>>/>
 <<intPREV_LINE>>
 </$button>
 <$button>
-<$action-setfield $tiddler="$:/state/CompareTextLine2" text=<<intNEXT_LINE>>/>
+<$action-setfield $card="$:/state/CompareTextLine2" text=<<intNEXT_LINE>>/>
 <<intNEXT_LINE>>
 </$button><br>[[$ur_second_pk$]]<br>
 <$macrocall $name=glbl_code_disp_group ur_note_pk="$ur_second_pk$"  ur_skip_count=<<intSTART_LINE>> />
@@ -1552,8 +1552,8 @@ mcr glbl_compare_lines
 \end
 
 <!--
-<$edit-text tiddler="$:/state/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
-<$edit-text tiddler="$:/state/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text card="$:/state/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text card="$:/state/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
 
 <<glbl_compare_lines "$:/state/CompareText1" "$:/state/CompareText2">>
 -->
@@ -1659,9 +1659,9 @@ Search All Fields
 <$vars search_text_pk="$:/state/popup/SearchAllFields">
 <$list variable=show_code_pk filter="[<search_text_pk>addsuffix[-checkShowCode]]">
 <$list variable=skip_system_pk filter="[<search_text_pk>addsuffix[-checkSkipSystem]]">
-<$edit-text tiddler=<<search_text_pk>> field=text default="" placeholder="[no text yet]" autoHeight=yes tag=input/>
-<$checkbox default="no" unchecked="no" checked="yes" field="text" tiddler=<<show_code_pk>>> Show Code</$checkbox>
-<$checkbox default="yes" unchecked="no" checked="yes" field="text" tiddler=<<skip_system_pk>>> Skip System </$checkbox><br>
+<$edit-text card=<<search_text_pk>> field=text default="" placeholder="[no text yet]" autoHeight=yes tag=input/>
+<$checkbox default="no" unchecked="no" checked="yes" field="text" card=<<show_code_pk>>> Show Code</$checkbox>
+<$checkbox default="yes" unchecked="no" checked="yes" field="text" card=<<skip_system_pk>>> Skip System </$checkbox><br>
 <br>
 
 <$list variable=cur_search_text filter="[<search_text_pk>get[text]addsuffix[(?i)]!match[]]">
@@ -1704,7 +1704,7 @@ Search All Fields
 template ExportAllCode
 
 \define renderContent()
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_tip_pk filter="[all[cards]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
 <hr>
 <h2><$link to=<<cur_tip_pk>> /></h2>
 <$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
@@ -1753,9 +1753,9 @@ Test the Alt-S Keyboard Shortcut
 
 View All Cards
 
-<$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
+<$list filter="[all[cards]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
 <hr>
-<h2><$link to=<<currentTiddler>> /></h2>
+<h2><$link to=<<currentCard>> /></h2>
 {{||$:/core/ui/ViewTemplate/tags}}
 <$transclude mode="block"/>
 </$list>
@@ -1764,7 +1764,7 @@ View All Cards
 
 View All Code
 
-<$list variable=cur_card_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_card_pk filter="[all[cards]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
 <hr>
 <h2><$link to=<<cur_card_pk>> /></h2>
 <$list variable=cur_card_text filter="[<cur_card_pk>get[text]]">

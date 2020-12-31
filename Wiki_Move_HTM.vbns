@@ -232,7 +232,6 @@ Namespace Mx
 						Dim strFILE_PATH = rowFILE.v(enmFM.src_file_path)
 						If strFILE_PATH.Length = intLEN Then
 							Dim strDEST_PATH = rowFILE.v(enmFM.dest_file_path)
-							MsgBox(strFILE_PATH)
 							glbl.gWindowsFS.Move(strFILE_PATH, strFILE_PATH & ".TDLY")
 							glbl.gWindowsFS.Delete(strDEST_PATH)
 							glbl.gWindowsFS.Move(strFILE_PATH & ".TDLY", strDEST_PATH)
