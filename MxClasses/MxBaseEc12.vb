@@ -510,7 +510,7 @@ Namespace Mx
         Public Shadows ReadOnly Property v() As String
             <System.Diagnostics.DebuggerHidden()>
             Get
-                v = Me.psdaLIST.Item(Me.Indexenm)
+                v = Me.psdaLIST.v_enm(Me.Indexenm)
             End Get
         End Property
     End Class 'SDACTR
@@ -1369,7 +1369,7 @@ Namespace Mx
                 ExtList = sdaDESC
                 sdaDESC.RemoveAt(0)
                 For Each ROWCTR In sdaDESC.kvp
-                    sdaDESC.Item(ROWCTR) = "." & sdaDESC.Item(ROWCTR)
+                    sdaDESC.v_b1(ROWCTR) = "." & sdaDESC.v_b1(ROWCTR)
                 Next ROWCTR
             End Function 'ExtList
 
