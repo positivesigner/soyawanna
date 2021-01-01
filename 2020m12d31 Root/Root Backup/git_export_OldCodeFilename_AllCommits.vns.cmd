@@ -1,6 +1,6 @@
-start "" SpProcDef\VBNetScript.exe %0 %1
+start "" MxClasses\VBNetScript.exe %0 %1
 exit
-SpProcDef\VBClass\MxBaseE3.vb
+MxClasses\MxBaseE13.vb
 Call Mx.GLog.LoadLog()
 RetVal = "QUIT"
 End Function
