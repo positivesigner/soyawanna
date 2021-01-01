@@ -1,6 +1,6 @@
-start "" PortableGit\VBNetScript.exe %0
+start "" SpProcDef\VBNetScript.exe %0 %1
 exit
-..\PortableGit\MxBaseE3.vb
+SpProcDef\VBClass\MxBaseE3.vb
 Call Mx.GLog.LoadLog()
 RetVal = "QUIT"
 End Function
@@ -66,13 +66,11 @@ Namespace Mx
         <System.Diagnostics.DebuggerHidden()> Public Function ToTSV() As String
             Dim stpRET = Strapd()
             For Each kvpVAL In Me.kvp
-                If kvpVAL.Indexenm <> eprCMT.full_unix_path Then
-                    If kvpVAL.Indexb1 > 1 Then
-                        stpRET.d(Constants.vbTab)
-                    End If
-                    
-                    stpRET.d(kvpVAL.v.Replace(Constants.vbTab, mt).Replace(Constants.vbCr, mt).Replace(Constants.vbLf, mt))
-                   End If
+                If kvpVAL.Indexb1 > 1 Then
+                    stpRET.d(Constants.vbTab)
+                End If
+
+                stpRET.d(kvpVAL.v.Replace(Constants.vbTab, mt).Replace(Constants.vbCr, mt).Replace(Constants.vbLf, mt))
             Next kvpVAL
 
             ToTSV = stpRET
@@ -96,28 +94,61 @@ Namespace Mx
 
     Public Class GLog
         Public Shared Sub LoadLog()
-            Dim strROOT_PATH = Mx.Class1.SourceFolder
-            Dim strGIT_PATH = System.Environment.ExpandEnvironmentVariables("..\PortableGit\cmd\git.exe")
-            Dim strLINES = MxText.CmdOutput(strGIT_PATH, String.Format("-C ""{0}"" --no-pager log --full-history --name-only", strROOT_PATH))
-            Dim sdaPLIST = prv.Parse_CommitFiles(strLINES)
-            Call GLog.Write_FileTable(sdaPLIST, strROOT_PATH)
-            MsgBox(String.Format("{0} files in log", sdaPLIST.Count.ToString), , "Git Log Export")
+            Dim strNOTICE_MSG = ""
+			Dim strROOT_GITFOLDER = Mx.Class1.SourceFolder
+            Dim strLOGQ_FOLDER = prv.Get_LogQFolder(strROOT_GITFOLDER)
+			Dim strUSER_FILENAME = InputBox("Enter whole or partial file name", "Old Code for Filename")
+            If HasText(strUSER_FILENAME) Then
+                Dim strGIT_PATH = System.Environment.ExpandEnvironmentVariables("C:\TJBF\zPortableInstalls\GitHubDesktopPortable\App\GitHubDesktop\app-2.3.1\resources\app\git\cmd\git.exe")
+                Dim strLINES = MxText.CmdOutput(strGIT_PATH, String.Format("-C ""{0}"" --no-pager log --full-history --name-only", strROOT_GITFOLDER))
+                Dim sdaPLIST = prv.Parse_CommitFiles(strLINES, strUSER_FILENAME)
+                If sdaPLIST.Count > 0 Then
+                    Call GLog.Export_DailyCommits(sdaPLIST, strGIT_PATH, strROOT_GITFOLDER, strLOGQ_FOLDER)
+                   End If
+                
+                strNOTICE_MSG = String.Format("{0} files in log", sdaPLIST.Count.ToString)
+               End If
+           
+           If strNOTICE_MSG <> "" Then
+            MsgBox(strNOTICE_MSG, , "Old Code of Filename")
+           End If
         End Sub 'LoadLog
-	
-        Public Shared Sub Write_FileTable(ur_cprop_list As Snlist(Of Commit_Prop), ur_root_path As String)
-			Dim strLOG_PATH = System.IO.Path.Combine(ur_root_path, System.IO.Path.GetFileName(ur_root_path) & s & "log.tsv")
-            Dim stmLOG_TSV = New System.IO.StreamWriter(strLOG_PATH, False, MxText.Std_FileEncoding)
-            For Each sdnCPROP In ur_cprop_list
-                stmLOG_TSV.WriteLine(sdnCPROP.ToTSV)
-            Next sdnCPROP
 
-            stmLOG_TSV.Close()
-        End Sub 'Write_FileTable
+        Public Shared Sub Export_DailyCommits(ur_cprop_list As Snlist(Of Commit_Prop), ur_git_path As String, ur_root_path As String, ur_logq_path As String)
+            For Each kvpCPROP In ur_cprop_list.kvp
+				Dim sdnCPROP = kvpCPROP.row
+				Dim strFULL_PATH = sdnCPROP.v(eprCMT.full_win_path)
+				Dim strCUR_DATE = sdnCPROP.v(eprCMT.commit_date)
+				Dim strOUTPUT_PATH = System.IO.Path.Combine(ur_logq_path, "Old Code" & s & strCUR_DATE & "\" & strFULL_PATH)
+				Dim strPARENT_DIR = System.IO.Path.GetDirectoryName(strOUTPUT_PATH)
+				If System.IO.Directory.Exists(strPARENT_DIR) = False Then
+					System.IO.Directory.CreateDirectory(strPARENT_DIR)
+				End If
+
+				Dim P As New System.Diagnostics.Process()
+				With 1 : Dim prcINFO = P.StartInfo
+					prcINFO.FileName = "cmd"
+					prcINFO.Arguments = String.Format("/c {0} -C ""{1}"" show {2}:""{3}"" > ""{4}""", ur_git_path, ur_root_path, sdnCPROP.v(eprCMT.commit_sha), sdnCPROP.v(eprCMT.full_unix_path), strOUTPUT_PATH)
+					prcINFO.UseShellExecute = False
+					prcINFO.RedirectStandardOutput = False
+					prcINFO.CreateNoWindow = True
+				End With 'prcINFO
+
+				P.Start()
+				P.WaitForExit()
+				Call System.IO.File.SetLastWriteTime(strOUTPUT_PATH, sdnCPROP.dteTIME_STAMP)
+            Next kvpCPROP
+        End Sub 'Export_DailyCommits
 
         Private Class prv
-            Public Shared Function Parse_CommitFiles(ur_commit_log_text As String) As Snlist(Of Commit_Prop)
+            Public Shared Function Get_LogQFolder(ur_git_folder As String) As String
+                Get_LogQFolder = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(ur_git_folder), "LogQ_" & System.IO.Path.GetFileName(ur_git_folder) & "_" & Now.ToString("yyyyMMddhhmmss") )
+            End Function
+            
+            Public Shared Function Parse_CommitFiles(ur_commit_log_text As String, ur_file_name As String) As Snlist(Of Commit_Prop)
                 Dim lstFILE_PROP = New Snlist(Of Commit_Prop)
                 Parse_CommitFiles = lstFILE_PROP
+				Dim strEXPORT_ONE_DAY = mt
                 Dim sdaTEXT = Sdata.Split(ur_commit_log_text.Replace(Chr(13), mt), Chr(10))
                 Dim sdnCOMMIT_PROP As Commit_Prop = Nothing
                 Dim sdnFILE_PROP As Commit_Prop = Nothing
@@ -159,11 +190,15 @@ Namespace Mx
 
                                 ElseIf strLINE <> "" Then
                                     If sdnCOMMIT_PROP IsNot Nothing Then
-                                        sdnFILE_PROP = sdnCOMMIT_PROP.ToCopy
-                                        sdnFILE_PROP.w(eprCMT.full_unix_path) = strLINE
-                                        sdnFILE_PROP.w(eprCMT.full_win_path) = strLINE.Replace("/", "\")
-                                        lstFILE_PROP.Add(sdnFILE_PROP)
-                                    End If
+                                        Dim intPOS = InStr(strLINE.ToUpper, ur_file_name.ToUpper)
+										If intPOS > 0 AndAlso
+                                           ContainingText(Mid(strLINE, intPOS), "/") = False Then
+											sdnFILE_PROP = sdnCOMMIT_PROP.ToCopy
+											sdnFILE_PROP.w(eprCMT.full_unix_path) = strLINE
+											sdnFILE_PROP.w(eprCMT.full_win_path) = strLINE.Replace("/", "\")
+											lstFILE_PROP.Add(sdnFILE_PROP)
+										End If
+                                    End If 'sdnCOMMIT_PROP
 
                                     intSTATE = enmST.file
                                 End If 'strLINE
@@ -218,6 +253,17 @@ Namespace Mx
                         Ret_Month = "12"
                 End Select
             End Function 'Ret_Month
+
+            Public Shared Function Ret_RootDateTime(ur_root_path As String) As String
+				Dim strRET_ROOT_DATETIME = mt
+				Dim strOLD_CODE = " Old Code "
+				Dim idxOLD_CODE = InStr(ur_root_path, strOLD_CODE)
+				If idxOLD_CODE > 0 Then
+					strRET_ROOT_DATETIME = Mid(ur_root_path, idxOLD_CODE + strOLD_CODE.Length).Replace("\", mt)
+                End If
+				
+                Ret_RootDateTime = strRET_ROOT_DATETIME
+            End Function 'Ret_RootDateTime
 
             Public Shared Function Ret_RootPath(ur_agr_list As String()) As String
                 Dim strROOT_PATH = ur_agr_list(ur_agr_list.Length - 1).Trim.Replace(qs, mt)
