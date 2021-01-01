@@ -1,6 +1,6 @@
-start "" "%~dp0\SpProcDef\MxClasses\VBNetScript.exe" /path=%0
+start "" "%~dp0\MxClasses\VBNetScript.exe" /path=%0
 exit
-SpProcDef\MxClasses\MxBaseEc13.vb
+MxClasses\MxBaseEc13.vb
 RetVal = Mx.Want.BranchCheckout_errhnd()
 End Function
 End Class
