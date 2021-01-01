@@ -26,9 +26,9 @@ Namespace Mx
     Public Class Want
         Const strLIT_WIKI_MOVE_5_SEC = "Wiki Move 5-Sec"
         Const strvLIT_USER_PROFILE_DOWNLOADS = "%USERPROFILE%\downloads"
-        Const strLIT_STAR_DOT_HTM = "TWMove_*-stamp-*.htm"
-        Const strLIT_STAR_DOT_HTML = "TWMove_*-stamp-*.html"
-        Const strLIT_STAR_DOT_TWCODETXT = "TWMove_*-stamp-*.twcode*.txt"
+        Const strLIT_STAR_DOT_HTM = "WikiMove_*-stamp-*.htm"
+        Const strLIT_STAR_DOT_HTML = "WikiMove_*-stamp-*.html"
+        Const strLIT_STAR_DOT_TWCODETXT = "WikiMove_*-stamp-*.twcode*.txt"
 
         Public Shared Sub UITimer_to_Poll_FileDir_And_Move(ur_ret As Strap)
             ur_ret.d("QUIT")
@@ -194,7 +194,7 @@ Namespace Mx
                 For Each strFILE_PATH In ur_windows_fs_cart.Sel_FileList
                     Dim flnFILE_NAME = FileNamed().d(strFILE_PATH)
 					Dim sdaEXT_LIST = flnFILE_NAME.ExtList
-					Dim strDEST_PATH_ENCODED_IN_NAME = flnFILE_NAME.Name.Substring("TWMove_".Length)
+					Dim strDEST_PATH_ENCODED_IN_NAME = flnFILE_NAME.Name.Substring("WikiMove_".Length)
                     Dim strDEST_PATH = strDEST_PATH_ENCODED_IN_NAME.Replace("-colon-", ":").Replace("-fslash-", "\")
                     Dim intSTAMP = InStr(strDEST_PATH, "-stamp-")
 					strDEST_PATH = Left(strDEST_PATH, intSTAMP - 1)

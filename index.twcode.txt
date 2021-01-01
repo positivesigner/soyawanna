@@ -839,15 +839,15 @@ keyboard action SaveAllChanges
 <$action-setfield $tiddler="$:/state/sidebar" text="no"/>
 <$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
 <$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
-<$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$$ur_save_wiki_extension$"
+<$action-sendmessage $message="tm-save-wiki" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$$ur_save_wiki_extension$"
 />
 <$list vairable=save_export_html filter="[[$ur_save_export_html$]match[1]]">
 <$action-sendmessage $message="tm-download-file"
-$param="$:/core/templates/exporters/StaticRiver" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
+$param="$:/core/templates/exporters/StaticRiver" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.html"
 exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
 </$list><!--save_export_html-->
 <$action-sendmessage $message="tm-download-file"
-$param="template ExportAllCode" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.twcode.txt" />
+$param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.twcode.txt" />
 \end
 <$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[parm SkipSaveExportHTML]is[tiddler]count[]multiply[-1]] +[sum[]]">
 <$list variable=save_wiki_extension filter="[{$:/info/url/full}split[.]last[]addprefix[.]]">
