@@ -566,6 +566,18 @@ ext UnicodeInput App
 
 
 
+ext VBNetScript.EXE
+
+[ext[VBNet_Project\VBNetscript\VBNetScript_EXE.zip]]
+
+
+
+ext VBNetScript.SLN
+
+[ext[VBNet_Project\VBNetscript\VBNetScript_Project.zip]]
+
+
+
 FFMPeg
 
 <<glbl_article_list>>
@@ -1283,7 +1295,7 @@ VBNetCode
 
 
 
-VBNetScript
+VBNetProject
 
 <<glbl_article_list>>
 
