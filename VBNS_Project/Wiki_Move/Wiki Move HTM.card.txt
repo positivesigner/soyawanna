@@ -1,5 +1,11 @@
 
 
+$:/config/AutoSave
+
+no
+
+
+
 $:/config/MissingLinks
 
 no
@@ -13,6 +19,12 @@ bottom
 
 
 $:/config/Navigation/Permalinkview/CopyToClipboard
+
+no
+
+
+
+$:/config/RelinkOnRename
 
 no
 
@@ -76,7 +88,6 @@ $:/DefaultTiddlers
 
 
 
-
 $:/plugins/danielo515/searchNreplace
 
 {
@@ -121,57 +132,33 @@ $:/plugins/danielo515/searchNreplace
 
 
 
+$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize
+
+15px
+
+
+
+$:/themes/tiddlywiki/vanilla/metrics/bodylineheight
+
+24px
+
+
+
+$:/themes/tiddlywiki/vanilla/metrics/fontsize
+
+14px
+
+
+
+$:/themes/tiddlywiki/vanilla/metrics/lineheight
+
+20px
+
+
+
 $:/themes/tiddlywiki/vanilla/options/sidebarlayout
 
 fluid-fixed
-
-
-
-AndroidChromeBrowser
-
-<<glbl_article_list>>
-
-
-
-AndroidGit
-
-<<glbl_article_list>>
-
-
-
-AndroidMultipleUsers
-
-<<glbl_article_list>>
-
-
-
-AndroidProgramming
-
-<<glbl_article_list>>
-
-
-
-AndroidQLua
-
-<<glbl_article_list>>
-
-
-
-AndroidScreenshot
-
-<<glbl_article_list>>
-
-
-
-AndroidVNC
-
-<<glbl_article_list>>
-
-
-
-AndroidWebDav
-
-<<glbl_article_list>>
 
 
 
@@ -184,27 +171,9 @@ Del ARTICLE and IMG cards
 
 
 
-ChromeBrowser
+Configuration Settings
 
 <<glbl_article_list>>
-
-
-
-Code Samples
-
-{{ext TW Return}}
-
-<<list-links filter:"[tag[DOC]sort[title]]">>
-
-[[___|Recent Entries]]
-
-
-
-css alternating-rows
-
-.alternating-rows tr:nth-child(even) {background-color:white}
-.alternating-rows tr:nth-child(odd) {background-color:lightgrey}
-
 
 
 
@@ -363,132 +332,6 @@ DivPop.svg
 
 
 
-Excel VBA
-
-<<glbl_article_list>>
-
-
-
-ext JavaScript Closures
-
-[ext[JavaScript Closures |http://blog.niftysnippets.org/2008/02/closures-are-not-complicated.html]]
-
-
-
-ext JavaScript Strict Mode
-
-[ext[JavaScript Strict Mode |https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode]]
-
-
-
-ext JavaScript This Parameter
-
-[ext[JavaScript This Parameter |http://blog.niftysnippets.org/2008/03/mythical-methods.html]]
-
-
-
-ext Regexp Filter with brackets
-
-[ext[https://tiddlywiki.narkive.com/T5403O4p/tw5-regexp-for-matching-a-tag-tiddlytweeter#post7]]
-
-
-
-ext Regular Expression Quantifiers
-
-[ext[https://www.rexegg.com/regex-quantifiers.html]]
-
-
-
-ext Shuffle List Entries
-
-[ext[TiddlyWiki_Code\Snapshot\mklauber TWPlugin Shuffle.txt.html]]
-
-
-
-ext SQLite Blob text
-
-https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite
-
-
-
-ext SQLite DB Browser
-
-https://sqlitebrowser.org/dl/
-
-
-
-ext SQLite Language functions
-
-https://sqlite.org/lang_corefunc.html
-
-
-
-ext SQLite schema information
-
-https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata
-
-
-
-ext SQLite Top 5 Records
-
-https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite
-
-
-
-ext Tiddly Wiki Home Button source code
-
-[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid]]
-
-
-
-ext TiddlyWiki Save Button source code
-
-[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid]]
-
-
-
-ext TiddlyWiki TopBar Menu
-
-[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid]]
-
-
-
-ext TW Addon Text Replace
-
-[ext[TiddlyWiki_Code\AddOns\Text Replace Bar.htm]]
-
-
-
-ext TW Create Javascript Plugin
-
-[ext[https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki]]
-
-
-
-ext TW Empty Setup
-
-[ext[TiddlyWiki_Project\Empty Setup\TW Empty Setup.htm]]
-
-
-
-ext TW Empty v5d01d22
-
-[ext[TiddlyWiki_Code\Snapshot\tw_empty_v5d01d23.html]]
-
-
-
-ext TW Features
-
-[ext[TiddlyWiki_Code\Features\TW Features.htm]]
-
-
-
-ext TW Manual
-
-[ext[TiddlyWiki_Code\Snapshot\TheBook - The TiddlyWiki Manual.txt.html]]
-
-
-
 ext TW Return
 
 \define TW_Return(ur_url, ur_link_title)
@@ -509,84 +352,6 @@ ext TW Return
 </$list>
 </$list>
 
-
-
-
-ext TW Snapshot Review
-
-[ext[TiddlyWiki_Code\Snapshot\Browse Code tiddlywiki_v5d01d23pre-release.htm]]
-
-
-
-ext TW Snapshot v5d01d22
-
-[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23.html]]
-
-
-
-ext TW Snapshot v5d01d23 pre-release
-
-[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23pre-release.html]]
-
-
-
-ext Unicode Block 01
-
-[ext[Latin-1 Supplement Block |https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)]]
-
-
-
-ext Unicode Block Planes
-
-[ext[Unicode Block Planes |https://en.wikipedia.org/wiki/Plane_(Unicode)]]
-
-
-
-ext Unicode Character Database
-
-[ext[Unicode Character Database]]
-
-
-
-ext Unicode Code Block List
-
-[ext[Unicode Code Block List | https://en.wikipedia.org/wiki/Unicode_block]]
-
-
-
-ext Unicode Input
-
-[ext[Wikipedia Unicode Input |https://en.wikipedia.org/wiki/Unicode_input]]
-
-
-
-ext UnicodeInput App
-
-[ext[FileFormat.info UnicodeInput app |https://www.fileformat.info/tool/unicodeinput/index.htm]]
-
-
-
-ext VBNetScript.EXE
-
-[ext[VBNet_Project\VBNetscript\VBNetScript_EXE.zip]]
-
-
-
-ext VBNetScript.SLN
-
-[ext[VBNet_Project\VBNetscript\VBNetScript_Project.zip]]
-
-
-
-ext Wiki Move HTM
-
-[ext[VBNS_Project\Wiki_Move\Wiki Move HTM.htm]]
-
-
-
-FFMPeg
-
-<<glbl_article_list>>
 
 
 
@@ -758,72 +523,6 @@ Remove COPY tag from all cards
 
 
 
-GitCLI
-
-<<glbl_article_list>>
-
-
-
-GitHubDesktop
-
-<<glbl_article_list>>
-
-
-
-GoogleContacts
-
-<<glbl_article_list>>
-
-
-
-GoogleGmail
-
-<<glbl_article_list>>
-
-
-
-GooglePlay
-
-<<glbl_article_list>>
-
-
-
-GooglePlusCodes
-
-<<glbl_article_list>>
-
-
-
-HTML CSS
-
-<<glbl_article_list>>
-
-
-
-Instapaper
-
-<<glbl_article_list>>
-
-
-
-IrfanView
-
-<<glbl_article_list>>
-
-
-
-JavaScript
-
-<<glbl_article_list>>
-
-
-
-JavaScriptBookmarklets
-
-<<glbl_article_list>>
-
-
-
 keyboard action FontLarge
 
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
@@ -877,19 +576,23 @@ $param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp
 
 
 
+Main Form Timer Action
+
+<<glbl_article_list>>
+
+
+
 mcr glbl_article_list
 
 \define glbl_article_list()
 <ol>
-<$list filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\]]">
+<$list filter="[<currentTiddler>addsuffix[\]]">
 <$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
 <li><$link to=<<currentTiddler>> /></li>
 </$list>
 </$list>
 </ol>
 \end
-
-
 
 
 
@@ -1142,9 +845,18 @@ mcr glbl_ext
 
 
 
-MxClasses
+mcr glbl_image
 
-<<glbl_article_list>>
+\define glbl_image_high(ur_image_pk, ur_size:200)
+<$link to="$ur_image_pk$">[img height=$ur_size$px [$ur_image_pk$]]</$link>
+\end
+\define glbl_image_wide(ur_image_pk, ur_size:500)
+<$link to="$ur_image_pk$">[img width=$ur_size$px [$ur_image_pk$]]</$link>
+\end
+
+
+
+parm SkipSaveExportHTML
 
 
 
@@ -1159,12 +871,6 @@ Recent Entries
 [[Font Size]]
 
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
-
-
-
-Regular Expressions
-
-<<glbl_article_list>>
 
 
 
@@ -1215,12 +921,6 @@ Search All Fields
 
 
 
-SQLite
-
-<<glbl_article_list>>
-
-
-
 template ExportAllCode
 
 \define renderContent()
@@ -1257,62 +957,6 @@ template Home Button
 
 
 
-TiddlyWiki
-
-<<ext "TW Empty Setup">>
-
-<<ext "TW Addon Text Replace">>
-
-<<ext "TW Features">>
-
-<<ext "TW Manual">>
-
-<<ext "TW Snapshot v5d01d22">>
-
-<<ext "TW Empty v5d01d22">>
-
-<<ext "TW Snapshot v5d01d23 pre-release">>
-
-<<ext "Shuffle List Entries">>
-
-<<ext "TW Snapshot Review">>
-
-<<ext "TW Create Javascript Plugin">>
-
-<<glbl_article_list>>
-
-
-
-TotalCommander
-
-<<glbl_article_list>>
-
-
-
-Unicode
-
-<<glbl_article_list>>
-
-
-
-VBNetCode
-
-<<glbl_article_list>>
-
-
-
-VBNetProject
-
-<<glbl_article_list>>
-
-
-
-VBNS Project
-
-<<glbl_article_list>>
-
-
-
 View All Cards
 
 <$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
@@ -1336,13 +980,11 @@ View All Code
 
 
 
-WindowsCLI
+Wiki Move HTM
 
-<<glbl_article_list>>
+{{ext TW Return}}
 
+<<list-links filter:"[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]">>
 
-
-YouTube
-
-<<glbl_article_list>>
+[[___|Recent Entries]]
 
