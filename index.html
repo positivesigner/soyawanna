@@ -14263,12 +14263,13 @@ End If 'strFOUND_RESULT</code></pre></div>
 
 </button> 
 </span></span><span><h2 class="tc-title">VBNetProject\MxBaseEc13</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>2nd January 2021 at 9:36am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>3rd January 2021 at 1:17am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
-<div class="tc-tiddler-body tc-reveal"><pre><code>Option Strict On
-Namespace Mx '2020m01d02
+<div class="tc-tiddler-body tc-reveal"><p>
+<a class="tc-tiddlylink-external" href="VBNet_Project/MxBase/MxBase%20Classes.html" rel="noopener noreferrer" target="_blank">VBNet_Project/MxBase/MxBase%20Classes.html</a><div style="float:right"><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ext%20MxBase%20Classes">-&gt;</a></div></p><pre><code>Option Strict On
+Namespace Mx '2020m01d03
     Public Module ConstVar
         Public Const mt = &quot;&quot;
         Public Const qs = &quot;&quot;&quot;&quot;
@@ -15960,6 +15961,8 @@ Namespace Mx '2020m01d02
                 Dim retPROCESS As New System.Diagnostics.Process()
                 With 1 : Dim prcINFO = retPROCESS.StartInfo
                     prcINFO.Verb = &quot;Open&quot;
+                    prcINFO.FileName = ur_exec_path
+                    prcINFO.Arguments = ur_exec_param
                     prcINFO.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal
                     prcINFO.UseShellExecute = True
                 End With 'prcINFO

@@ -291,6 +291,8 @@ Error message and password prompt
 
 <li>ext JavaScript This Parameter</li>
 
+<li>ext MxBase Classes</li>
+
 <li>ext Regexp Filter with brackets</li>
 
 <li>ext Regular Expression Quantifiers</li>
@@ -10607,7 +10609,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[View All Cards]]</pre>
+# [[Font Size]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10677,19 +10679,19 @@ Error message and password prompt
 <div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210103085355806" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210103091734890" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20201226080846983" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Settings</pre>
 </div>
-<div created="20201226064844310" modified="20210103085355806" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210103091734891" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210103085220228" list="[[Code Samples]] [[VBNS Project]] [[VBNS Project\~VersionUpd]]" modified="20210103085350049" title="$:/StoryList">
+<div created="20210103091709814" list="[[Code Samples]] VBNetProject VBNetProject\MxBaseEc13" modified="20210103091711310" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11781,6 +11783,9 @@ Make sure you put a space between the power operator (^) and the numbers
 <div created="20201215050509223" modified="20201226065145140" tags="EXT" title="ext JavaScript This Parameter">
 <pre>[ext[JavaScript This Parameter |http://blog.niftysnippets.org/2008/03/mythical-methods.html]]</pre>
 </div>
+<div created="20210103091640615" modified="20210103091702480" tags="EXT" title="ext MxBase Classes">
+<pre>[ext[VBNet_Project/MxBase/MxBase%20Classes.html]]</pre>
+</div>
 <div created="20201207022943460" modified="20201226065145140" tags="EXT" title="ext Regexp Filter with brackets">
 <pre>[ext[https://tiddlywiki.narkive.com/T5403O4p/tw5-regexp-for-matching-a-tag-tiddlytweeter#post7]]</pre>
 </div>
@@ -11924,7 +11929,7 @@ C:\UrPath\ffmpeg.exe -i &quot;C:\UrPath\UrFile.mp4&quot; -r 0.083 -s 320x180 &qu
 
 </pre>
 </div>
-<div created="20200319102534436" modified="20201229104442660" tags="META" title="Font Size">
+<div created="20200319102534436" modified="20210103091431883" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
 Big Font
@@ -12085,6 +12090,8 @@ Append COPY tag to all cards that already have tags
 Remove COPY tag from all cards
 &lt;/$button&gt;&lt;br&gt;
 
+
+[[parm SkipSaveExportHTML]]
 
 [[btn Delete Cards]]
 </pre>
@@ -19336,10 +19343,12 @@ End If 'strFOUND_RESULT
 ```
 </pre>
 </div>
-<div created="20210102101500873" modified="20210102173614582" tags="" title="VBNetProject\MxBaseEc13">
-<pre>```
+<div created="20210102101500873" modified="20210103091733622" tags="" title="VBNetProject\MxBaseEc13">
+<pre>&lt;&lt;ext &quot;MxBase Classes&quot;&gt;&gt;
+
+```
 Option Strict On
-Namespace Mx '2020m01d02
+Namespace Mx '2020m01d03
     Public Module ConstVar
         Public Const mt = &quot;&quot;
         Public Const qs = &quot;&quot;&quot;&quot;
@@ -21031,6 +21040,8 @@ Namespace Mx '2020m01d02
                 Dim retPROCESS As New System.Diagnostics.Process()
                 With 1 : Dim prcINFO = retPROCESS.StartInfo
                     prcINFO.Verb = &quot;Open&quot;
+                    prcINFO.FileName = ur_exec_path
+                    prcINFO.Arguments = ur_exec_param
                     prcINFO.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal
                     prcINFO.UseShellExecute = True
                 End With 'prcINFO

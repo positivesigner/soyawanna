@@ -1171,6 +1171,8 @@ Remove COPY tag from all cards
 </$button><br>
 
 
+[[parm SkipSaveExportHTML]]
+
 [[btn Delete Cards]]
 
 
