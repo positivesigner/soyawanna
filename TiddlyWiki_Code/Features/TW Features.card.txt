@@ -1,5 +1,11 @@
 
 
+$:/config/AutoSave
+
+no
+
+
+
 $:/config/MissingLinks
 
 no
@@ -13,6 +19,12 @@ bottom
 
 
 $:/config/Navigation/Permalinkview/CopyToClipboard
+
+no
+
+
+
+$:/config/RelinkOnRename
 
 no
 
@@ -76,7 +88,6 @@ $:/DefaultTiddlers
 
 
 
-
 $:/plugins/danielo515/searchNreplace
 
 {
@@ -121,57 +132,39 @@ $:/plugins/danielo515/searchNreplace
 
 
 
+$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize
+
+15px
+
+
+
+$:/themes/tiddlywiki/vanilla/metrics/bodylineheight
+
+24px
+
+
+
+$:/themes/tiddlywiki/vanilla/metrics/fontsize
+
+14px
+
+
+
+$:/themes/tiddlywiki/vanilla/metrics/lineheight
+
+20px
+
+
+
 $:/themes/tiddlywiki/vanilla/options/sidebarlayout
 
 fluid-fixed
 
 
 
-AndroidChromeBrowser
+Borders
 
-<<glbl_article_list>>
-
-
-
-AndroidGit
-
-<<glbl_article_list>>
-
-
-
-AndroidMultipleUsers
-
-<<glbl_article_list>>
-
-
-
-AndroidProgramming
-
-<<glbl_article_list>>
-
-
-
-AndroidQLua
-
-<<glbl_article_list>>
-
-
-
-AndroidScreenshot
-
-<<glbl_article_list>>
-
-
-
-AndroidVNC
-
-<<glbl_article_list>>
-
-
-
-AndroidWebDav
-
-<<glbl_article_list>>
+<<glbl_tagged_list>>
 
 
 
@@ -184,26 +177,690 @@ Del ARTICLE and IMG cards
 
 
 
-ChromeBrowser
+Card Code
 
 <<glbl_article_list>>
 
 
 
-Code Samples
+Card Code\Card-specific Interpreting Rules
 
-{{ext TW Return}}
+```
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+```
 
-<<list-links filter:"[tag[DOC]sort[title]]">>
+* Place at the start of a Card to keep the a Card from parsing any code but macros and transclusion
+* This is useful in a CSS Template to keep special WikiText formatting codes from being parsed
+** Note: The CSS Template must not have Card content type = `text/css` to be able to run macros
 
-[[___|Recent Entries]]
+<<glbl_subcard_show "Test CSS parsing rules">>
+
+---
+[[Using Stylesheets]]
+
+[[TW Pragma]]
+
+<<ext "Wiki Parsing Rules">>
 
 
 
-css alternating-rows
+Card Code\Card-specific Interpreting Rules\Test CSS parsing rules
 
-.alternating-rows tr:nth-child(even) {background-color:white}
-.alternating-rows tr:nth-child(odd) {background-color:lightgrey}
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+This would normally ''be bold font''. The WikiText parsing rules are excluded, so you can see the doubled-single quotes (') + (').
+
+
+
+Card Code\Card-specific macros
+
+```
+\define UrMacroName(ur_macro_parm1, ur_macro_parm2) One-line macro
+
+\define UrMacroName(ur_macro_parm1, ur_macro_parm2)
+Macro with
+
+several lines
+\end
+
+\define UrMacroName(ur_macro_parm1 ur_macro_parm2)
+Macro parameter separator is optional
+\end
+
+\define UrMacroName()
+Parentheses are required, and there must NOT be any spaces between the macro name and the open parenthesis
+\end
+```
+
+* If a Card has macro definitions and is tagged with `$:/tags/Macro`, you may use that Card's macros within any other Card code
+
+<<glbl_subcard_show "Sample local macro">>
+<<glbl_subcard_show "Sample global macro">>
+<<glbl_subcard_show "Test local and global macros">>
+
+---
+[[TW Pragma]]
+
+
+
+
+Card Code\Card-specific macros\Sample global macro
+
+\define sample_global_macro()
+Some global sample text
+
+Note: This Card has a `$:/tags/Macro tag`
+\end
+
+
+
+
+Card Code\Card-specific macros\Sample local macro
+
+\define sample_card_specific_macro()
+Some local sample text
+
+This Card does not have a `$:/tags/Macro tag`
+\end
+<<sample_card_specific_macro>>
+
+
+
+Card Code\Card-specific macros\Test local and global macros
+
+<<sample_card_specific_macro>>
+The card-specific macro does not work.
+
+<<sample_global_macro>>
+
+
+
+Card Code\Card-specific Whitespace rules
+
+`\whitespace trim` or `\whitespace notrim`
+
+* Place at the start of a Card to keep the Card from retaining any whitespace before, between and after any html coded tags
+* The default option is ''notrim''
+
+<<glbl_subcard_show "Test trim">>
+<<glbl_subcard_show "Test notrim">>
+
+---
+[[TW Pragma]]
+
+
+
+Card Code\Card-specific Whitespace rules\Test notrim
+
+\whitespace notrim
+The whitespace before, ''between '' and after tags is '' kept,
+
+even on multiple lines,'' inside or outside of the tag.
+
+Starting a new line ''with an in-line tag'' still keeps
+
+multiple lines separated.
+
+
+
+
+Card Code\Card-specific Whitespace rules\Test trim
+
+\whitespace trim
+The whitespace before, ''between '' and after tags is '' trimmed,
+
+even on multiple lines,'' until you are out of the tag.
+
+Starting a new line ''with an in-line tag'' lets you keep
+
+multiple lines separated.
+
+
+
+
+Card Code\Include Non-global macros
+
+```
+\import <filter-expression>
+```
+
+* If a Card has macro definitions and is not tagged with `$:/tags/Macro`, you must import that Card to use its macros
+
+<<glbl_subcard_code "Sample macro">>
+<<glbl_subcard_show "Test missing macro">>
+<<glbl_subcard_show "Test imported macro">>
+
+---
+[[TW Pragma]]
+
+
+
+
+Card Code\Include Non-global macros\Sample macro
+
+\define test_macro()
+It is now: <<now>>
+\end
+
+
+
+Card Code\Include Non-global macros\Test imported macro
+
+\import [[Card Code\Include Non-global macros\Sample macro]]
+<<test_macro>>
+
+
+
+
+Card Code\Include Non-global macros\Test missing macro
+
+<<test_macro>>
+No results here
+
+
+
+Colors
+
+<<glbl_tagged_list>>
+
+
+
+colour Macro
+
+The colour (or color) [[macro|Macros]] returns the [[CSS|Cascading Style Sheets]] value of one the colours in the current [[palette|ColourPalettes]].
+
+If no such entry exists in the current palette, the [[vanilla palette|$:/palettes/Vanilla]] is used instead. If no such entry exists in the vanilla palette, the system looks for a configuration tiddler with the title `$:/config/DefaultColourMappings/<colour-name>` and transcludes the colour from the text field. This enables to plugins to ship defaults for colours that are not present in the core palettes.
+
+!! Parameters
+
+;name
+: The name of the palette entry, e.g. `page-background`
+
+<<.macro-examples "colour">>
+
+
+
+
+CSS
+
+<<glbl_tagged_list>>
+
+
+
+CSS Issues
+
+<<glbl_article_list>>
+
+
+
+CSS Issues\DIV Background Color Gradient
+
+* Use the `<<background-linear-gradient "UrDirection, UrStartColor, UrEndColor" >>` macro to specify alternative browser-specific properties for a DIV Background-Image color gradient
+
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test Background Color Gradient">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "background-linear-gradient">>
+
+<<ext "CSS Background Gradient">>
+
+
+
+CSS Issues\DIV Background Color Gradient\Sample StyleSheet
+
+.sample_div_background_gradient {
+<<background-linear-gradient "to right, red , blue">>
+}
+
+
+
+CSS Issues\DIV Background Color Gradient\Test Background Color Gradient
+
+<div class="sample_div_background_gradient">In a box<br>
+<br>
+color gradient
+</div>
+
+
+
+
+CSS Issues\DIV Box Shadow
+
+* Use the `<<box-shadow "UrShadowPx" >>` macro to specify alternative browser-specific properties for a DIV Box Shadow size
+
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test DIV Box Shadow">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "box-shadow">>
+
+<<ext "CSS Box Shadow">>
+
+
+
+CSS Issues\DIV Box Shadow\Sample StyleSheet
+
+.sample_div_box_shadow {
+<<box-shadow "5px 10px #888888">>
+}
+
+
+
+CSS Issues\DIV Box Shadow\Test DIV Box Shadow
+
+Out of a box shadow
+
+<div class="sample_div_box_shadow">In a box<br>
+<br>
+shadow
+
+</div><br>
+<br>
+Way beyond a box shadow
+
+
+
+CSS Issues\DIV Transform Origin rotation
+
+* Use the `<<transform-origin "UrXAxisPct UrYAxisPct" >>` macro to specify alternative browser-specific properties for a DIV Transform-Origin rotation
+
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test Transform Origin rotate">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "transform-origin">>
+
+<<ext "CSS Transform Origin">>
+
+
+
+CSS Issues\DIV Transform Origin rotation\Sample StyleSheet
+
+.sample_div_transform_origin_rotate {
+<<transform-origin "20% 40%">>
+}
+
+div.sample_div_transform_origin_rotate {
+  transform: rotate(45deg);
+  width=400px;
+  position: absolute;
+}
+
+
+
+
+CSS Issues\DIV Transform Origin rotation\Test Transform Origin rotate
+
+<div class="sample_div_transform_origin_rotate" style="background-color:aqua">In a short box<br>
+<br>
+This box is rotated around an off-center point
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+CSS Issues\DIV Transition Resize Speed
+
+* Use the `<<transition "UrTransitionTime" >>` macro to specify alternative browser-specific properties for a DIV Transition resize speed
+
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test DIV Transition speed">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "transition">>
+
+<<ext "CSS Transition Speed">>
+
+
+
+CSS Issues\DIV Transition Resize Speed\Sample StyleSheet
+
+.sample_div_transition_speed {
+<<transition "width 2s">>
+}
+
+div.sample_div_transition_speed {
+  width: 100px;
+}
+
+div:hover.sample_div_transition_speed {
+  width: 300px;
+}
+
+
+
+CSS Issues\DIV Transition Resize Speed\Test DIV Transition speed
+
+<div class="sample_div_transition_speed" style="background-color:aqua">In a short box<br>
+<br>
+Hover mouse to grow box slowly
+</div>
+
+
+
+CSS Issues\IMG DataURI
+
+* Use the `<<datauri "UrImageCard" >>` macro to get the Base64 encoding of a Card Image formatted for use in a CSS uri reference
+
+<<glbl_subcard_code "Sample StyleSheet">>
+<<glbl_subcard_show "Test IMG DataURI">>
+
+---
+[[datauri Macro]]
+
+<<glbl_core_mcr_def "datauri">>
+
+<<ext "CSS Background Image Base64">>
+
+
+
+CSS Issues\IMG DataURI\Sample StyleSheet
+
+.bg_img_striped {
+    background-image: url(<$macrocall $name=datauri title="img Sample Black and White Bars"  $output="text/plain" />);
+    color:pink;
+}
+
+
+
+CSS Issues\IMG DataURI\Test IMG DataURI
+
+[[img Sample Black and White Bars]]
+
+<$wikify name=image_b64 text='<<datauri "img Sample Black and White Bars">>' >
+<img src=<<image_b64>> />
+</$wikify>
+
+<div class="bg_img_striped" >
+Pink font over a black and white image repeated horizonally and extended vertically
+</div>
+
+
+
+
+CSS Issues\IMG Filter
+
+* Use the `<<filter "UrFilterPct" >>` macro to specify alternative browser-specific properties for an IMG Filter percentage
+
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test IMG Filter Grayscale">>
+
+---
+[[Stylesheet Macros]]
+
+<<glbl_core_mcr_def "filter">>
+
+<<ext "CSS Filter">>
+
+
+
+CSS Issues\IMG Filter\Sample StyleSheet
+
+.sample_img_filter_grayscale {
+<<filter "grayscale(100%)">>
+}
+
+
+
+CSS Issues\IMG Filter\Test IMG Filter Grayscale
+
+[img[img TestColor]]
+
+@@.sample_img_filter_grayscale
+[img[img TestColor]]
+@@
+
+[img[img TestColor]]
+
+
+
+
+CSS Issues\Page-element-named Color Codes
+
+* Use the `<<colour "UrNamedColor" >>` or `<<color "UrNamedColor" >>` macros to retrieve the current Color Pallette Theme's HTML-ready (# prefixed) RGB color (hexacedicmal code) for a particular Page-element, like `page-background`.
+
+<<glbl_subcard_show "Test Named-Color Lookup">>
+
+---
+[[colour Macro]]
+
+<<glbl_core_mcr_def "colour">>
+
+<<glbl_core_mcr_def "color">>
+
+
+
+
+CSS Issues\Page-element-named Color Codes\Test Named-Color Lookup
+
+<$list variable=cur_theme filter="[[$:/palette]get[text]]">
+
+Current Theme Pallete = <<cur_theme>>
+<$list variable=count_color_names filter="[<cur_theme>indexes[]count[]]">
+
+Count of Color Names = <<count_color_names>>
+</$list><!--count_color_names-->
+
+Color Names that start with ''P'':
+<$list variable=cur_color_name filter="[<cur_theme>indexes[]prefix[p]]">
+
+* <<cur_color_name>> = <$macrocall $name=color name=<<cur_color_name>> />
+</$list><!--cur_color_name-->
+
+</$list><!--cur_theme-->
+
+
+
+
+
+CSS Issues\Style Precedence
+
+* CSS Precedence example:
+** `html body.tc-body` is more specific than `body.tc-body`
+!!
+* You should always start with the least specific value that works!
+
+---
+[[Using Stylesheets]]
+
+
+
+CSS Issues\StyleSheets with Card Macros
+
+```
+\rules only filteredtranscludeinline transcludeinline macrodef 
+```
+
+* Include the `\rules` line at the start of a Card that will have or reference Card macros
+** Note: The Card content type must not be `text/css` in order for the macros to run
+!!
+* A stylesheet tiddler is processed such that it is first wikified and then the text portion of the ouput is extracted to apply as the CSS
+* Any HTML tags you will use in your stylesheet are thus ignored.
+
+<<glbl_subcard_show "Sample StyleSheet">>
+<<glbl_subcard_show "Test macro stylesheet">>
+
+---
+[[Using Stylesheets]]
+
+
+
+CSS Issues\StyleSheets with Card Macros\Sample StyleSheet
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+\define test_css_style()
+	background: aqua;
+\end
+.macro_css_class {
+<<test_css_style>>
+}
+
+
+
+CSS Issues\StyleSheets with Card Macros\Test macro stylesheet
+
+The Card Macro-generated @@.macro_css_class StyleSheet@@ works with any CSS selector.
+
+
+
+CSS Issues\Tag-specific Card Styles
+
+* It is possible to style HTML elements that have specific attributes or attribute values.
+* Create a Card tagged with `data-tags-style`
+* Tag with `css-data-tags-test`
+* Fill with CSS Attribute Selectors that reference a Card's tags
+
+<<glbl_subcard_code "Sample StyleSheet">>
+<<glbl_subcard_show "Test Tag Styling">>
+
+---
+[[Custom styles by data-tags]]
+
+<<ext "CSS Attribute Selector">>
+
+
+
+CSS Issues\Tag-specific Card Styles\Sample StyleSheet
+
+[data-tags*="css-data-tags-test"] {
+  border: 2px solid pink;
+}
+
+
+
+
+
+CSS Issues\Tag-specific Card Styles\Test Tag Styling
+
+[[This Card |CSS Issues\Tag-specific Card Styles\Test Tag Styling]] and any other card tagged with `css-data-tags-test` has a pink border.
+
+Tag List:
+<$list variable=cur_tag_name filter="[[CSS Issues\Tag-specific Card Styles\Test Tag Styling]tags[]]">
+
+* <<cur_tag_name>>
+</$list><!--cur_tag_name-->
+
+
+
+
+Custom styles by data-tags
+
+! Attribute: data-tags
+
+<<.from-version "5.1.16">>
+
+The ~TiddlyWiki core adds several `attributes` to the rendered content. These make it possible to apply custom styles to tiddlers. 
+
+For example this tiddler is tagged: <<tag "How to apply custom styles">> and <<tag "example-test">> so the attribute looks like this: 
+
+```
+data-tags="[[How to apply custom styles]] example-test"
+```
+
+''Important:'' Tiddler tags are ''not'' sorted so the order in the rendered output may be different!
+
+!! Examples
+
+The following CSS is defined in [[Custom data-styles]] and creates a pink border for all tiddlers (including this one) tagged with `example-test`.
+
+```
+[data-tags*="example-test"] {
+  border: 2px solid pink;
+}
+```
+
+!!! Styling Stylesheets
+
+So to display tiddlers tagged: `data-tags-styles` in a decent way we can use the following code. (I could have used: `$:/tags/Stylesheet`, but that would affect all stylesheets in this wiki, which is not intended. amt ;)
+
+''Important:'' Don't forget to also specify `.tc-tiddler-body` or the whole tiddler, including the title, will be changed! see: [[Custom data-styles]]
+
+```
+[data-tags*="data-tags-styles"] .tc-tiddler-body {
+  display: block;
+  padding: 14px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  padding: 0 3px 2px;
+  border-radius: 3px;
+  font-family: Monaco, Consolas, "Lucida Console", "DejaVu Sans Mono", monospace;
+}
+```
+
+!! Hard Linebreaks
+
+This mechanism may be handy for users who want to write prose text! See: [[Hard Linebreaks with CSS]]
+
+!! More Possibilities
+
+;[attr]
+:Represents an element with an attribute name of attr.
+
+;[attr="value"]
+:Represents an element with an attribute name of attr and whose value is exactly "value".
+
+;[attr~="value"]
+:Represents an element with an attribute name of attr whose value is a whitespace-separated list of words, one of which is exactly "value".
+
+;[attr|="value"]
+:Represents an element with an attribute name of attr. Its value can be exactly “value” or can begin with “value” immediately followed by “-” (U+002D). It can be used for language subcode matches.
+
+;[attr^="value"]
+:Represents an element with an attribute name of attr and whose first value is prefixed by "value".
+
+;[attr$="value"]
+:Represents an element with an attribute name of attr and whose last value is suffixed by "value".
+
+;[attr*="value"]
+:Represents an element with an attribute name of attr and whose value contains at least one occurrence of string "value" as substring.
+
+;[attr "operator value" i]
+:Adding an i (or I) before the closing bracket causes the value to be compared case-insensitively (for characters within the ASCII range). 
+
+Learn more at: [[Attribute selectors - CSS|https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors]] or [[CSS-Specification|https://www.w3.org/TR/CSS22/selector.html#attribute-selectors]]
+
+
+
+
+datauri Macro
+
+The <<.def datauri>> [[macro|Macros]] returns a [[data URI|Data URI]] for the content of a tiddler.
+
+It is often used in [[stylesheet|Cascading Style Sheets]] tiddlers to reference things like inline images and fonts:
+
+> `background: url(<<datauri "Motovun Jack.jpg">>);`
+
+The data URI is automatically [[base64|Base64]]-encoded in the case of a non-text tiddler.
+
+!! Parameters
+
+;title
+: The title of a tiddler, such as an image
+
+<<.macro-examples "datauri">>
 
 
 
@@ -363,129 +1020,45 @@ DivPop.svg
 
 
 
-Excel VBA
+ext CSS Attribute Selector
 
-<<glbl_article_list>>
+[ext[https://www.w3schools.com/css/css_attribute_selectors.asp]]
 
 
 
-ext JavaScript Closures
+ext CSS Background Gradient
 
-[ext[JavaScript Closures |http://blog.niftysnippets.org/2008/02/closures-are-not-complicated.html]]
+[ext[https://www.w3schools.com/cssref/func_linear-gradient.asp]]
 
 
 
-ext JavaScript Strict Mode
+ext CSS Background Image Base64
 
-[ext[JavaScript Strict Mode |https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode]]
+[ext[https://www.hongkiat.com/blog/css-encoded-image/]]
 
 
 
-ext JavaScript This Parameter
+ext CSS Box Shadow
 
-[ext[JavaScript This Parameter |http://blog.niftysnippets.org/2008/03/mythical-methods.html]]
+[ext[https://www.w3schools.com/cssref/css3_pr_box-shadow.asp]]
 
 
 
-ext Regexp Filter with brackets
+ext CSS Filter
 
-[ext[https://tiddlywiki.narkive.com/T5403O4p/tw5-regexp-for-matching-a-tag-tiddlytweeter#post7]]
+[ext[https://www.w3schools.com/cssref/css3_pr_filter.asp]]
 
 
 
-ext Regular Expression Quantifiers
+ext CSS Transform Origin
 
-[ext[https://www.rexegg.com/regex-quantifiers.html]]
+[ext[https://www.w3schools.com/cssref/css3_pr_transform-origin.asp]]
 
 
 
-ext Shuffle List Entries
+ext CSS Transition Speed
 
-[ext[TiddlyWiki_Code\Snapshot\mklauber TWPlugin Shuffle.txt.html]]
-
-
-
-ext SQLite Blob text
-
-https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite
-
-
-
-ext SQLite DB Browser
-
-https://sqlitebrowser.org/dl/
-
-
-
-ext SQLite Language functions
-
-https://sqlite.org/lang_corefunc.html
-
-
-
-ext SQLite schema information
-
-https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata
-
-
-
-ext SQLite Top 5 Records
-
-https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite
-
-
-
-ext Tiddly Wiki Home Button source code
-
-[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid]]
-
-
-
-ext TiddlyWiki Save Button source code
-
-[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid]]
-
-
-
-ext TiddlyWiki TopBar Menu
-
-[ext[https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid]]
-
-
-
-ext TW Addon Text Replace
-
-[ext[TiddlyWiki_Code\AddOns\Text Replace Bar.htm]]
-
-
-
-ext TW Create Javascript Plugin
-
-[ext[https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki]]
-
-
-
-ext TW Empty Setup
-
-[ext[TiddlyWiki_Project\Empty Setup\TW Empty Setup.htm]]
-
-
-
-ext TW Empty v5d01d22
-
-[ext[TiddlyWiki_Code\Snapshot\tw_empty_v5d01d23.html]]
-
-
-
-ext TW Features
-
-[ext[TiddlyWiki_Code\Features\TW Features.htm]]
-
-
-
-ext TW Manual
-
-[ext[TiddlyWiki_Code\Snapshot\TheBook - The TiddlyWiki Manual.txt.html]]
+[ext[https://www.w3schools.com/cssref/css3_pr_transition.asp]]
 
 
 
@@ -512,75 +1085,9 @@ ext TW Return
 
 
 
-ext TW Snapshot Review
+ext Wiki Parsing Rules
 
-[ext[TiddlyWiki_Code\Snapshot\Browse Code tiddlywiki_v5d01d23pre-release.htm]]
-
-
-
-ext TW Snapshot v5d01d22
-
-[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23.html]]
-
-
-
-ext TW Snapshot v5d01d23 pre-release
-
-[ext[TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23pre-release.html]]
-
-
-
-ext Unicode Block 01
-
-[ext[Latin-1 Supplement Block |https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)]]
-
-
-
-ext Unicode Block Planes
-
-[ext[Unicode Block Planes |https://en.wikipedia.org/wiki/Plane_(Unicode)]]
-
-
-
-ext Unicode Character Database
-
-[ext[Unicode Character Database]]
-
-
-
-ext Unicode Code Block List
-
-[ext[Unicode Code Block List | https://en.wikipedia.org/wiki/Unicode_block]]
-
-
-
-ext Unicode Input
-
-[ext[Wikipedia Unicode Input |https://en.wikipedia.org/wiki/Unicode_input]]
-
-
-
-ext UnicodeInput App
-
-[ext[FileFormat.info UnicodeInput app |https://www.fileformat.info/tool/unicodeinput/index.htm]]
-
-
-
-ext VBNetScript.EXE
-
-[ext[VBNet_Project\VBNetscript\VBNetScript_EXE.zip]]
-
-
-
-ext VBNetScript.SLN
-
-[ext[VBNet_Project\VBNetscript\VBNetScript_Project.zip]]
-
-
-
-FFMPeg
-
-<<glbl_article_list>>
+[ext[https://github.com/Jermolene/TiddlyWiki5/blob/ffc0899f52b45ba2b5a5a20fb909dcc587e80b3e/core/modules/parsers/wikiparser/rules/rules.js]]
 
 
 
@@ -752,69 +1259,15 @@ Remove COPY tag from all cards
 
 
 
-GitCLI
+img Sample Black and White Bars
 
-<<glbl_article_list>>
-
-
-
-GitHubDesktop
-
-<<glbl_article_list>>
+iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAlklEQVRoBe3UwQnAMAwDQO+/dEsmEBYkryv0Jz1sH5nvwTcz3/X/wRz3hziLMshiA9dZucjiGifqIpvXbrncKu4iLlLBySW00MpKqgRaaFVwcgkttLKSKoEWWhWcXEILraykSqCFVgUnl9BCKyupEmihVcHJJbTQykqqBFpoVXByCS20spIqgRZaFZxcQgutrKRKvKD1AwC3Uv9HYw/tAAAAAElFTkSuQmCC
 
 
 
-GoogleContacts
+img TestColor
 
-<<glbl_article_list>>
-
-
-
-GoogleGmail
-
-<<glbl_article_list>>
-
-
-
-GooglePlay
-
-<<glbl_article_list>>
-
-
-
-GooglePlusCodes
-
-<<glbl_article_list>>
-
-
-
-HTML CSS
-
-<<glbl_article_list>>
-
-
-
-Instapaper
-
-<<glbl_article_list>>
-
-
-
-IrfanView
-
-<<glbl_article_list>>
-
-
-
-JavaScript
-
-<<glbl_article_list>>
-
-
-
-JavaScriptBookmarklets
-
-<<glbl_article_list>>
+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
 
 
 
@@ -859,7 +1312,7 @@ $param="$:/core/templates/exporters/StaticRiver" filename="WikiMove_$ur_filename
 exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
 </$list><!--save_export_html-->
 <$action-sendmessage $message="tm-download-file"
-$param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.twcode.txt" />
+$param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.card.txt" />
 \end
 <$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[parm SkipSaveExportHTML]is[tiddler]count[]multiply[-1]] +[sum[]]">
 <$list variable=save_wiki_extension filter="[{$:/info/url/full}split[.]last[]addprefix[.]]">
@@ -871,19 +1324,23 @@ $param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp
 
 
 
+Macro
+
+<<glbl_tagged_list>>
+
+
+
 mcr glbl_article_list
 
 \define glbl_article_list()
 <ol>
-<$list filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\]]">
-<$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
+<$list filter="[<currentTiddler>addsuffix[\]]">
+<$list filter="[all[tiddlers]prefix<currentTiddler>!tag[Test Code]sort[]]">
 <li><$link to=<<currentTiddler>> /></li>
 </$list>
 </$list>
 </ol>
 \end
-
-
 
 
 
@@ -1126,6 +1583,18 @@ mcr glbl_compare_lines
 
 
 
+mcr glbl_core_mcr_def
+
+\define glbl_core_mcr_def(ur_macro_name)
+<$list variable=cur_pk filter="""[[$:/core]get[text]split[define $ur_macro_name$(]butfirst[]split[\n\\end]first[]addprefix[define $ur_macro_name$(]addsuffix[\n\\end]split[\\]join[\]split[\"]join["]split[\n]join[
+]]""">
+<$codeblock code=<<cur_pk>> />
+</$list><!--cur_pk-->
+\end
+
+
+
+
 mcr glbl_ext
 
 \define ext(ur_extnote_pk)
@@ -1136,9 +1605,76 @@ mcr glbl_ext
 
 
 
-MxClasses
+mcr glbl_image
+
+\define glbl_image_high(ur_image_pk, ur_size:200)
+<$link to="$ur_image_pk$">[img height=$ur_size$px [$ur_image_pk$]]</$link>
+\end
+\define glbl_image_wide(ur_image_pk, ur_size:500)
+<$link to="$ur_image_pk$">[img width=$ur_size$px [$ur_image_pk$]]</$link>
+\end
+
+
+
+mcr glbl_subcard_code
+
+\define glbl_subcard_code(ur_subcard)
+<$list variable=subcard_pk filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\$ur_subcard$]]">
+<$list variable=subcard_wtext filter="[<subcard_pk>get[text]]">
+<div style="clear:both;float:right;"><$link to=<<subcard_pk>> >-></$link></div>
+<$codeblock code=<<subcard_wtext>> />
+</$list><!--subcard_wtext-->
+</$list><!--subcard_pk-->
+\end
+\define glbl_subcard_show(ur_subcard)
+<<glbl_subcard_code "$ur_subcard$">>
+<$list variable=subcard_pk filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\$ur_subcard$]]">
+<div style="clear:both;float:right;"><$link to=<<subcard_pk>> >-></$link></div>
+<$transclude mode="block" tiddler=<<subcard_pk>> />
+</$list><!--subcard_pk-->
+\end
+
+
+
+
+mcr glbl_tagged_list
+
+\define glbl_tagged_list()
+<$list variable=cur_pk filter="[tag<currentTiddler>]">
+
+!! <$link to=<<cur_pk>> />
+<$transclude mode="block" tiddler=<<cur_pk>> />
+</$list>
+\end
+
+
+
+
+Page Layout
 
 <<glbl_article_list>>
+
+
+
+Page Layout\Palette
+
+!! Control Panel
+* [Appearance tab, Palette sub-tab]
+* Select a Palette record to reformat page element colors
+
+
+
+Page Layout\Theme
+
+!! Control Panel
+* [Appearance tab, Theme sub-tab]
+* Select a Theme record to reformat page element borders
+
+
+
+Pragma
+
+<<glbl_tagged_list>>
 
 
 
@@ -1156,9 +1692,9 @@ Recent Entries
 
 
 
-Regular Expressions
+Reserved Names
 
-<<glbl_article_list>>
+<<glbl_tagged_list>>
 
 
 
@@ -1209,22 +1745,88 @@ Search All Fields
 
 
 
-SQLite
+Setting a favicon
 
-<<glbl_article_list>>
+"favicons" are small icons that most browsers display to help users identify websites. Note that all browsers support bitmap images, but only certain modern browsers support SVG format icons.
+
+! favicons in the Browser
+
+When TiddlyWiki starts up in the browser it looks for a tiddler called [[$:/favicon.ico]] and dynamically uses it as the favicon for the page. If you modify the image then the favicon changes instantly to reflect it.
+
+<<.from-version "5.1.23">> To set an external image as the favicon, assign the URL to the ''_canonical_uri'' field of the [[$:/favicon.ico]] tiddler.
+
+! favicons on the Server
+
+On the server, the ServerCommand will serve the tiddler [[$:/favicon.ico]] at the path `/favicon.ico`.
+
+
+
+
+
+
+Setting a page background image
+
+# Import your image as a tiddler (see [[Images in WikiText]])
+#* You can also use an [[external image|ExternalImages]]
+# Open the [[control panel|$:/ControlPanel]] <<.icon $:/core/images/options-button>> and switch to the ''Appearance''/''Theme Tweaks'' tab
+# Select your image from the dropdown labelled "Page background image"
+# Set "Page background image attachment" to "Fixed to window" to have the background stay stationary and the content to scroll over the top of it, or "Scroll with tiddlers" to have it move (note that the iPhone/iPad [[doesn't support the fixed setting|http://stackoverflow.com/a/20444219]] for performance reasons)
+# Set "Page background image size" as follows:
+#* ''Auto'' causes the background image to be tiled over the page background
+#* ''Cover'' causes the background image to be sized so that it completely covers the page. Some of the image may be clipped
+#* ''Contain'' causes the background image to be sized so that it fits within the page
+
+Note that the palette ''DarkPhotos'' is provided to make the sidebar more readable on dark background images.
+
+
+
+
+
+Sizing
+
+<<glbl_tagged_list>>
+
+
+
+Stylesheet Macros
+
+The following core [[macros|Macros]] make it easy to specify alternative browser-specific properties when constructing a [[stylesheet|Cascading Style Sheets]] tiddler:
+
+;`<<box-shadow shadow>>`
+: for the `x-box-shadow` properties
+;`<<filter filter>>`
+: for the `x-filter` properties
+;`<<transition transition>>`
+: for the `x-transition` properties
+;`<<transform-origin origin>>`
+: for the `x-transition-origin` properties
+;`<<background-linear-gradient gradient>>`
+: for the `x-linear-gradient` values of the `background-image` property
+
+The following macros are documented separately:
+
+* colour
+* datauri
+
+All these macros are defined in the [[$:/core/macros/CSS]] tiddler.
+
+<$list variable=cur_var filter="[[$:/core/macros/CSS]get[text]]">
+<$codeblock code=<<cur_var>> />
+</$list>
+
 
 
 
 template ExportAllCode
 
 \define renderContent()
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_card_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
 <hr>
-<h2><$link to=<<cur_tip_pk>> /></h2>
-<$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
-<$codeblock code=<<cur_tip_text>> />
-</$list><!--cur_tip_text-->
-</$list><!--cur_tip_pk-->
+<h2><$link to=<<cur_card_pk>> /></h2>
+<$list variable=cur_card_text filter="[<cur_card_pk>get[text]]">
+<$codeblock code=<<cur_card_text>> />
+</$list><!--cur_card_text-->
+</$list><!--cur_card_pk-->
 \end
 <<renderContent>>
 
@@ -1251,59 +1853,190 @@ template Home Button
 
 
 
-TiddlyWiki
-
-<<ext "TW Empty Setup">>
-
-<<ext "TW Addon Text Replace">>
-
-<<ext "TW Features">>
-
-<<ext "TW Manual">>
-
-<<ext "TW Snapshot v5d01d22">>
-
-<<ext "TW Empty v5d01d22">>
-
-<<ext "TW Snapshot v5d01d23 pre-release">>
-
-<<ext "Shuffle List Entries">>
-
-<<ext "TW Snapshot Review">>
-
-<<ext "TW Create Javascript Plugin">>
+Text Formatting
 
 <<glbl_article_list>>
 
 
 
-TotalCommander
+Text Formatting\CSS Classes
 
-<<glbl_article_list>>
+!! New Card
+* Tag = `$:/tags/Stylesheet`
+* Content type = `text/css`
+* Body text =
 
+<<glbl_subcard_code "Test a_class_css">>
 
+!! Usage
+* @''''@ syntax requires a class name to start with a period (''.'') and ''Not'' be followed by a semicolon ('';'')
 
-Unicode
-
-<<glbl_article_list>>
-
-
-
-VBNetCode
-
-<<glbl_article_list>>
+<<glbl_subcard_show "Test code apply class">>
 
 
 
-VBNetProject
 
-<<glbl_article_list>>
+Text Formatting\CSS Classes\Test a_class_css
+
+.a_css_class {
+	background: red;
+}
 
 
 
-VBNS Code
+Text Formatting\CSS Classes\Test code apply class
 
-<<glbl_article_list>>
+You can apply @@.a_css_class CSS styles @@ in-line with the text.
+
+
+
+Text Formatting\CSS in HTML
+
+Usage
+@@ syntax requires each css style-value pair be followed by a semicolon (;) and ''No'' spaces between the semicolon and the next style name
+
+<<glbl_subcard_show "Test code apply style-value">>
+
+
+
+Text Formatting\CSS Span
+
+!! Usage
+* @''''@ syntax requires each css style-value pair be followed by a semicolon (;) and ''No'' spaces between the semicolon and the next style name
+
+<<glbl_subcard_show "Test code apply style-value">>
+
+<<glbl_subcard_show "Test code apply style block">>
+
+
+
+Text Formatting\CSS Span\Test code apply style block
+
+You can apply CSS classes and styles:
+
+@@background-color:yellow;
+* Inline @''''@ syntax
+* Block @''''@ syntax
+* In html ''class'' attributes
+* In html ''style'' attributes
+@@
+
+
+
+
+
+Text Formatting\CSS Span\Test code apply style-value
+
+You can apply @@background-color:yellow; CSS styles @@ in-line with the text.
+
+
+
+TiddlyWiki Features
+
+{{ext TW Return}}
+
+Documents:
+
+<<list-links filter:"[tag[DOC]!is[draft]sort[title]]">>
+
+Topics:
+
+<<list-links filter:"[tag[TOPIC]!is[draft]sort[title]]">>
+
+[[___|Recent Entries]]
+
+
+
+TW Pragma
+
+A <<.def pragma>> is a special component of WikiText that provides control over the way the remaining text is parsed.
+
+Pragmas occupy lines that start with `\`. They can only appear at the start of the text, but blank lines are allowed between them. If a pragma line appears in the main body of the text, it is treated as if it was ordinary text.
+
+The following pragmas are available:
+
+;`\define`
+: for defining a [[macro|Macros]]
+;`\rules`
+: for adjusting the set of rules used to parse the text
+;`\whitespace trim` or `\whitespace notrim`
+: <<.from-version "5.1.15">> Control whether whitespace is trimmed from the start and end of text runs (the default is ''notrim''). This setting can be useful when the whitespace generated by linebreaks disturbs formatting
+;`\import <filter-expression>`
+: <<.from-version "5.1.18">> for importing macro definitions from tiddlers identified by a filter expression
+
+
+
+
+Using Stylesheets
+
+\define tv-config-toolbar-text() yes
+
+\define openCpTheme()
+<$action-setfield $tiddler="$:/state/tab-1749438307" $value="$:/core/ui/ControlPanel/Appearance"/>
+<$action-setfield $tiddler="$:/state/tab--1963855381" $value="$:/core/ui/ControlPanel/Theme"/>
+<$action-navigate $to="$:/ControlPanel"/>
+\end
+
+! Theme and Colorpalette
+
+The first steps to changing the appearance of ~TiddlyWiki are to choose and apply:
+
+* One of the available themes: <span class="tc-btn-standard"> {{$:/core/ui/Buttons/theme}} </span>
+* Modify the colour palette: <span class="tc-btn-standard"> {{$:/core/ui/Buttons/palette}} </span>
+* Experiment with the <$button actions=<<openCpTheme>> ><<.icon $:/core/images/options-button>> ControlPanel</$button>
+
+! Work with Stylesheets
+
+In addition to the control panel, custom styles can be defined by tagging a tiddler `$:/tags/Stylesheet`. Try creating a custom stylesheet now with the following content in order to change the page background colour to red:
+
+```
+body.tc-body {
+	background: red;
+}
+```
+
+!! Additional Resrouces
+
+* [[Cascading Style Sheets (CSS) at mozilla|https://developer.mozilla.org/en-US/docs/Web/CSS]]
+* [[Cascading Style Sheets (CSS) at w3scools|http://www.w3schools.com/css]]
+
+! Overriding Theme Settings
+
+Custom stylesheets are applied independently from theme stylesheets. Therefore, it is often necessary for the css rules in your custom stylesheet to be more specific than those of the theme you want to override. For example, `html body.tc-body` is more specific than `body.tc-body`. 
+
+''You should always start with the least specific value that works!''
+
+! Stylesheet Types
+
+Usually it is best to use the type `text/css` for stylesheets. This treats them as plain stylesheets, and ensures that ~TiddlyWiki doesn't apply any wiki processing to them.
+
+If you wish to use macros and transclusions in your stylesheets you should instead use the default WikiText type `text/vnd.tiddlywiki`. This allows full ~WikiText processing to be performed. Here is an example:
+
+```
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+
+body.tc-body pre {
+	<<box-shadow "inset 0 1px 0 #fff">>
+}
+```
+
+The `\rules` pragma at the top of the tiddler restricts the ~WikiText to just allow macros and transclusion. This avoids mistakenly triggering unwanted ~WikiText processing.
+
+A stylesheet tiddler is processed such that it is first wikified and then the text portion of the ouput is extracted to apply as the CSS. Any HTML tags you will use in your stylesheet are thus ignored. For example, HTML elements generated by the RevealWidget will not affect the output. As in the following example, you can wrap CSS rules in `<pre>` tags to display them as a codeblock without affecting processing, including handling the inner macro.
+
+```
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline html
+
+<pre>body.tc-body pre {
+	<<box-shadow "inset 0 1px 0 #fff">>
+}
+</pre>
+```
+
+!! Stylesheet Macros
+
+The ~TiddlyWiki core provides several [[global macros that are helpful in constructing stylesheets|Stylesheet Macros]].
+
 
 
 
@@ -1330,13 +2063,23 @@ View All Code
 
 
 
-WindowsCLI
+Web Browser Tab
 
 <<glbl_article_list>>
 
 
 
-YouTube
+Web Browser Tab\FavIcon
 
-<<glbl_article_list>>
+When TiddlyWiki starts up in the browser it looks for a tiddler called $:/favicon.ico and dynamically uses it as the favicon for the page. 
+
+---
+[[Setting a favicon]]
+
+
+
+
+Wiki Startup
+
+<<glbl_tagged_list>>
 

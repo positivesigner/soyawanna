@@ -1,17 +1,35 @@
-start "" "MxClasses\VBNetScript.exe" /path=%0
-exit
+@echo off
+@SET mx_dir=%CD%
+@SET countloops=20
+:mx_search
+@set /a countloops-=1
+@FOR %%i IN ("%mx_dir%") DO IF EXIST %%~si\MxClasses\VBNetScript.exe GOTO mx_found
+@FOR %%i IN ("%mx_dir%\..") DO SET mx_dir=%%~si
+@IF %countloops%==0 GOTO mx_max_loops
+@GOTO mx_search
+
+:mx_max_loops
+@ECHO Cannot find MxClasses\VBNetScript.exe within 20 parent directories
+@PAUSE
+@GOTO mx_end
+
+:mx_found
+@START "" "%mx_dir%\MxClasses\VBNetScript.exe" /path=%0
+
+:mx_end
+@EXIT
 MxClasses\DLL_WinForm2019m09d13\System.Drawing.dll
 MxClasses\DLL_WinForm2019m09d13\System.Windows.Forms.dll
-MxClasses\MxBaseEc12.vb
-RetVal = Mx.Want.UITimer_to_Poll_FileDir_And_Move_errhnd()
-End Function
+MxClasses\MxBaseEc13.vb
+RetVal = Mx.Want.UITimer_to_Poll_FileDir_And_Move_errhnd(System.Environment.CommandLine)
+End Function '2021m01d03
 End Class
 End Namespace
 
 'Namespace Mx
 '    Module subs
 '        Sub Main()
-'            Dim RetVal = Mx.Want.UITimer_to_Poll_FileDir_And_Move_errhnd()
+'            Dim RetVal = Mx.Want.UITimer_to_Poll_FileDir_And_Move_errhnd(System.Environment.CommandLine)
 '            If Mx.AreEqual(RetVal, "QUIT") = False Then MsgBox(RetVal)
 '        End Sub
 '    End Module 'subs
@@ -28,15 +46,15 @@ Namespace Mx
         Const strvLIT_USER_PROFILE_DOWNLOADS = "%USERPROFILE%\downloads"
         Const strLIT_STAR_DOT_HTM = "WikiMove_*-stamp-*.htm"
         Const strLIT_STAR_DOT_HTML = "WikiMove_*-stamp-*.html"
-        Const strLIT_STAR_DOT_TWCODETXT = "WikiMove_*-stamp-*.twcode*.txt"
+        Const strLIT_STAR_DOT_CARDTXT = "WikiMove_*-stamp-*.card*.txt"
 
         Public Shared Sub UITimer_to_Poll_FileDir_And_Move(ur_ret As Strap)
             ur_ret.d("QUIT")
             Dim userbowl_cart = Have.UserBowl
             Dim uiform_title_bowlname = enmUN.uiform_title
             Dim strUI_FORM_TITLE = strLIT_WIKI_MOVE_5_SEC
-            userbowl_cart.InsKey(uiform_title_bowlname, strUI_FORM_TITLE)
-            userbowl_cart.InsKey(enmUN.poll_folder, glbl.gEnvironment.ExpandEnvironmentVariables(strvLIT_USER_PROFILE_DOWNLOADS))
+            userbowl_cart.SelKey(uiform_title_bowlname).Contents = strUI_FORM_TITLE
+            userbowl_cart.SelKey(enmUN.poll_folder).Contents = glbl.gEnvironment.ExpandEnvironmentVariables(strvLIT_USER_PROFILE_DOWNLOADS)
             If glbl.gDiagnostics.IsRunningWindow(strUI_FORM_TITLE) Then
                 glbl.gInteraction.AppActivate(strUI_FORM_TITLE)
 
@@ -52,7 +70,8 @@ Namespace Mx
             End If 'gDiagnostics
         End Sub 'UITimer_to_Poll_FileDir_And_Move
 
-        Public Shared Function UITimer_to_Poll_FileDir_And_Move_errhnd() As Strap
+        Public Shared Function UITimer_to_Poll_FileDir_And_Move_errhnd(ur_commandline_text As String) As Strap
+            Have.CmdLineText = ur_commandline_text
             Dim stpRET = Strapd()
             UITimer_to_Poll_FileDir_And_Move_errhnd = stpRET
             stpRET.d("QUIT")
@@ -75,12 +94,9 @@ Namespace Mx
             Dim filemove_cart = Have.FileMove
             Call ur_ui_form.Display_FolderList()
             filemove_cart.DelAll()
-            windows_fs_cart.InsList_From_Windows(userbowl_cart.SelKey(pollfolder_bowlname).v(enmUB.contents), strLIT_STAR_DOT_HTM, System.IO.SearchOption.TopDirectoryOnly)
-            filemove_cart.Apply(windows_fs_cart)
-            windows_fs_cart.InsList_From_Windows(userbowl_cart.SelKey(pollfolder_bowlname).v(enmUB.contents), strLIT_STAR_DOT_HTML, System.IO.SearchOption.TopDirectoryOnly)
-            filemove_cart.Apply(windows_fs_cart)
-            windows_fs_cart.InsList_From_Windows(userbowl_cart.SelKey(pollfolder_bowlname).v(enmUB.contents), strLIT_STAR_DOT_TWCODETXT, System.IO.SearchOption.TopDirectoryOnly)
-            filemove_cart.Apply(windows_fs_cart)
+            filemove_cart.Apply(windows_fs_cart, userbowl_cart, pollfolder_bowlname, strLIT_STAR_DOT_HTM)
+            filemove_cart.Apply(windows_fs_cart, userbowl_cart, pollfolder_bowlname, strLIT_STAR_DOT_HTML)
+            filemove_cart.Apply(windows_fs_cart, userbowl_cart, pollfolder_bowlname, strLIT_STAR_DOT_CARDTXT)
             filemove_cart.Move_Files()
             Dim report_output_bowlname = userbowl_cart.Apply(filemove_cart)
             Dim strREPORT_OUTPUT = userbowl_cart.SelKey(report_output_bowlname).v(enmUB.contents)
@@ -190,24 +206,25 @@ Namespace Mx
 
     Public Class Have
         Partial Class sFileMove
-            Public Sub Apply(ur_windows_fs_cart As Have.sWindowsFS)
-                For Each strFILE_PATH In ur_windows_fs_cart.Sel_FileList
+            Public Sub Apply(ur_windows_fs_cart As Have.glblWindowsFS, ur_userbowl_cart As Have.sUserBowl, ur_poll_folder_bowlname As enmUN, ur_filespec As String)
+                Dim strPOLL_FOLDER = ur_userbowl_cart.SelKey(ur_poll_folder_bowlname).Contents
+                For Each strFILE_PATH In ur_windows_fs_cart.GetFiles(strPOLL_FOLDER, ur_filespec, System.IO.SearchOption.TopDirectoryOnly)
                     Dim flnFILE_NAME = FileNamed().d(strFILE_PATH)
-					Dim sdaEXT_LIST = flnFILE_NAME.ExtList
-					Dim strDEST_PATH_ENCODED_IN_NAME = flnFILE_NAME.Name.Substring("WikiMove_".Length)
+                    Dim sdaEXT_LIST = flnFILE_NAME.ExtList
+                    Dim strDEST_PATH_ENCODED_IN_NAME = flnFILE_NAME.Name.Substring("WikiMove_".Length)
                     Dim strDEST_PATH = strDEST_PATH_ENCODED_IN_NAME.Replace("-colon-", ":").Replace("-fslash-", "\")
                     Dim intSTAMP = InStr(strDEST_PATH, "-stamp-")
-					strDEST_PATH = Left(strDEST_PATH, intSTAMP - 1)
-					Dim strEXT = sdaEXT_LIST.Item(b0(sdaEXT_LIST.Count))
-					If sdaEXT_LIST.Count > 1 Then
-						Dim strEXT2 = sdaEXT_LIST.Item(b0(sdaEXT_LIST.Count - 1))
-						If AreEqual(strEXT, ".txt") AndAlso
-						  StartingWithText(strEXT2, ".twcode") Then
-							strEXT = ".twcode.txt"
-						End If
-					End If 'sdaEXT_LIST
-					
-					strDEST_PATH &= strEXT
+                    strDEST_PATH = Left(strDEST_PATH, intSTAMP - 1)
+                    Dim strEXT = sdaEXT_LIST.Item(b0(sdaEXT_LIST.Count))
+                    If sdaEXT_LIST.Count > 1 Then
+                        Dim strEXT2 = sdaEXT_LIST.Item(b0(sdaEXT_LIST.Count - 1))
+                        If AreEqual(strEXT, ".txt") AndAlso
+                          StartingWithText(strEXT2, ".card") Then
+                            strEXT = ".card.txt"
+                        End If
+                    End If 'sdaEXT_LIST
+
+                    strDEST_PATH &= strEXT
                     Me.Ins(
                         New rFileMove().
                         vt(enmFM.src_file_path, strFILE_PATH).
@@ -217,27 +234,27 @@ Namespace Mx
             End Sub 'Apply ur_windows_fs_cart
 
             Public Sub Move_Files()
-				Dim lstLEN = New System.Collections.Generic.List(Of Integer)
+                Dim lstLEN = New System.Collections.Generic.List(Of Integer)
                 For Each rowFILE In Me.SelAll
-					Dim strFILE_PATH = rowFILE.v(enmFM.src_file_path)
-					Dim intLEN = strFILE_PATH.Length
-					If lstLEN.Contains(intLEN) = False Then
-						lstLEN.Add(intLEN)
-					End If
-				Next rowFILE
-				
-				Call lstLEN.Sort()
-				For Each intLEN In lstLEN
-					For Each rowFILE In Me.SelAll
-						Dim strFILE_PATH = rowFILE.v(enmFM.src_file_path)
-						If strFILE_PATH.Length = intLEN Then
-							Dim strDEST_PATH = rowFILE.v(enmFM.dest_file_path)
-							glbl.gWindowsFS.Move(strFILE_PATH, strFILE_PATH & ".TDLY")
-							glbl.gWindowsFS.Delete(strDEST_PATH)
-							glbl.gWindowsFS.Move(strFILE_PATH & ".TDLY", strDEST_PATH)
-						End IF 'strFILE_PATH
-					Next rowFILE
-				Next intLEN
+                    Dim strFILE_PATH = rowFILE.v(enmFM.src_file_path)
+                    Dim intLEN = strFILE_PATH.Length
+                    If lstLEN.Contains(intLEN) = False Then
+                        lstLEN.Add(intLEN)
+                    End If
+                Next rowFILE
+
+                Call lstLEN.Sort()
+                For Each intLEN In lstLEN
+                    For Each rowFILE In Me.SelAll
+                        Dim strFILE_PATH = rowFILE.v(enmFM.src_file_path)
+                        If strFILE_PATH.Length = intLEN Then
+                            Dim strDEST_PATH = rowFILE.v(enmFM.dest_file_path)
+                            glbl.gWindowsFS.Move(strFILE_PATH, strFILE_PATH & ".TDLY")
+                            glbl.gWindowsFS.Delete(strDEST_PATH)
+                            glbl.gWindowsFS.Move(strFILE_PATH & ".TDLY", strDEST_PATH)
+                        End If 'strFILE_PATH
+                    Next rowFILE
+                Next intLEN
             End Sub 'Move_Files
         End Class 'sFileMove
 
@@ -258,16 +275,68 @@ Namespace Mx
 
 
     Partial Public Class Have
+        Private Shared envWindowsCboard As glblWindowsCboard
+        Private Shared envWindowsMsgBox As glblWindowsMsgBox
+        Private Shared envWindowsFS As glblWindowsFS
         Private Shared tblFileMove As sFileMove
         Private Shared tblUserBowl As sUserBowl
 
         <System.Diagnostics.DebuggerHidden()>
         Private Shared Sub Connect()
             If Have.tblUserBowl Is Nothing Then
+                Have.envWindowsCboard = New glblWindowsCboard
+                Have.envWindowsMsgBox = New glblWindowsMsgBox
+                Have.envWindowsFS = New glblWindowsFS
                 Have.tblFileMove = New sFileMove
                 Have.tblUserBowl = New sUserBowl
             End If 'sdaTCOL_NAME
         End Sub 'Connect
+    End Class 'Have
+
+    Partial Public Class Have
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shared Function WindowsCboard() As glblWindowsCboard
+            Call Have.Connect()
+            WindowsCboard = Have.envWindowsCboard
+        End Function
+
+        Public Class glblWindowsCboard
+            Public Function SetText(ur_text As String) As Integer
+                SetText = Mx.glbl.gCboard.SetText(ur_text)
+            End Function
+        End Class 'glblWindowsCboard
+    End Class 'Have
+
+    Partial Public Class Have
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shared Function WindowsMsgBox() As glblWindowsMsgBox
+            Call Have.Connect()
+            WindowsMsgBox = Have.envWindowsMsgBox
+        End Function
+
+        Public Class glblWindowsMsgBox
+            Public Function GetResult(ur_message As String, ur_title As String, ur_style As MsgBoxStyle) As MsgBoxResult
+                GetResult = Mx.glbl.gMsgBox.GetResult(ur_message, ur_style, ur_title)
+            End Function
+        End Class 'glblWindowsMsgBox
+    End Class 'Have
+
+    Partial Public Class Have
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shared Function WindowsFS() As glblWindowsFS
+            Call Have.Connect()
+            WindowsFS = Have.envWindowsFS
+        End Function
+
+        Public Class glblWindowsFS
+            Public Function GetFiles(ur_search_folder As String, ur_filespec As String, ur_recurse_option As System.IO.SearchOption) As String()
+                GetFiles = Mx.glbl.gWindowsFS.GetFiles(ur_search_folder, ur_filespec, ur_recurse_option)
+            End Function
+
+            Public Function ReadAllText(ur_file_path As String) As String
+                ReadAllText = Mx.glbl.gWindowsFS.ReadAllText(ur_file_path)
+            End Function
+        End Class 'glblWindowsFS
     End Class 'Have
 
     Public Class enmFM
@@ -361,12 +430,16 @@ Namespace Mx
     End Class
 
     Partial Public Class Have
+        Public Shared FirstConnect As Object
+        Public Shared CmdLineText As String
+
         <System.Diagnostics.DebuggerHidden()>
         Public Shared Function UserBowl() As sUserBowl
-            Dim bolFIRST_INIT = (Have.tblUserBowl Is Nothing)
+            Dim bolFIRST_INIT = (Have.FirstConnect Is Nothing)
             Call Have.Connect()
             UserBowl = Have.tblUserBowl
             If bolFIRST_INIT Then
+                Have.FirstConnect = "Done"
                 Call Have.tblUserBowl.InsFrom_Application()
                 'Have.tblUserBowl.InsKey(enmUN.cmdline_audit, "1")
                 Call Have.tblUserBowl.Cboard_CmdlineAudit()
@@ -386,153 +459,53 @@ Namespace Mx
                 vt = Me
                 Me.v(ur_enm) = ur_val
             End Function
+
+            Public Property Contents As String
+                <System.Diagnostics.DebuggerHidden()>
+                Get
+                    Contents = Me.v(enmUB.contents)
+                End Get
+                <System.Diagnostics.DebuggerHidden()>
+                Set(value As String)
+                    Me.v(enmUB.contents) = value
+                End Set
+            End Property 'Contents
         End Class 'rUserBowl
 
         Public Class sUserBowl
-            Private ttb As Objlist(Of rUserBowl)
-            Private PK As Objlist(Of enmUB)
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Sub New()
-                Me.ttb = New Objlist(Of rUserBowl)
-                Me.PK = New Objlist(Of enmUB)
-                Me.PK.Add(enmUB.bowl_name)
-            End Sub
+            Inherits Mx.TablePKEnum(Of enmUB, enmUN, rUserBowl)
 
             <System.Diagnostics.DebuggerHidden()>
             Public Sub Cboard_CmdlineAudit()
                 If HasText(Me.SelKey(enmUN.cmdline_audit).v(enmUB.contents)) Then
                     Dim strAUDIT = Me.ToString(True)
-                    Dim ins_msg = Have.MessageBox.Ins(
-                        New Have.rMessageBox().
-                            vt(enmMB.title, Me.SelKey(enmUN.app_name).v(enmUB.contents)).
-                            vt(enmMB.text, strAUDIT),
-                        MsgBoxStyle.OkCancel
+                    Dim enrUSER_INPUT = Have.WindowsMsgBox.GetResult(
+                        ur_title:=Me.SelKey(enmUN.app_name).v(enmUB.contents),
+                        ur_message:=strAUDIT,
+                        ur_style:=MsgBoxStyle.OkCancel
                         )
-                    If ins_msg.vUserResponse = MsgBoxResult.Ok Then
-                        Have.Clipboard.Ins(
-                            New Have.rClipboard().
-                            vt(enmCB.text, strAUDIT)
-                            )
+                    If enrUSER_INPUT = MsgBoxResult.Ok Then
+                        Have.WindowsCboard.SetText(strAUDIT)
                     End If
                 End If
             End Sub 'Cboard_CmdlineAudit
 
             <System.Diagnostics.DebuggerHidden()>
-            Public Function Ins(ur_from As rUserBowl) As rUserBowl
-                Ins = ur_from
-                Dim ttbSEL = Me
-                Dim stpPK_LIST = Strapd()
-                For Each keyPK In Me.PK
-                    Dim strCUR_KEY = ur_from.v(keyPK)
-                    If stpPK_LIST.Length > 0 Then stpPK_LIST.d(", ")
-                    stpPK_LIST.d(strCUR_KEY)
-                    If HasText(strCUR_KEY) = False Then
-                        Throw New System.Exception(Strapd().d(Me.GetType.Name).dS("PK value must have data:").dS(keyPK.name))
-                    Else
-                        ttbSEL = ttbSEL.Sel(keyPK, ur_from.v(keyPK))
-                    End If
-                Next keyPK
-
-                If ttbSEL.SelAll.Count > 0 Then
-                    Throw New System.Exception(Strapd().d(Me.GetType.Name).dS("must have unique PK values:").dS(stpPK_LIST.ToString))
-                Else
-                    Me.ttb.Add(ur_from)
-                End If
-            End Function 'Ins
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function InsKey(ur_key As enmUN, ur_val As String) As rUserBowl
-                Dim ret = Me.SelKey(ur_key)
-                InsKey = ret
-                If HasText(ret.v(enmUB.contents)) Then
-                    Throw New System.Exception("Cannot insert duplicate key for key: " & ur_key.name)
-                Else
-                    ret.vt(enmUB.contents, ur_val)
-                End If
-            End Function
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function InsKey(ur_key As enmUN, ur_val As enmUR) As rUserBowl
-                InsKey = Me.InsKey(ur_key, ur_val.name)
-            End Function 'InsKey
-
-            <System.Diagnostics.DebuggerHidden()>
             Public Function InsFrom_Application() As rUserBowl
                 Dim ret = New rUserBowl
                 InsFrom_Application = ret
-                Me.InsKey(enmUN.app_name, Mx.FileNamed().d(Mx.Class1.SourcePath).FileGroup)
-                Me.InsKey(enmUN.app_path, Mx.Class1.SourcePath)
-                Me.InsKey(enmUN.app_folder, Mx.Class1.SourceFolder)
+                Me.SelKey(enmUN.app_name).Contents = Mx.FileNamed().d(Mx.Class1.SourcePath).FileGroup
+                Me.SelKey(enmUN.app_path).Contents = Mx.Class1.SourcePath
+                Me.SelKey(enmUN.app_folder).Contents = Mx.Class1.SourceFolder
 
-                Dim arlCMD_RET = MxText.Cmdline_UB(Of enmUN, enmUB).CommandLine_UBParm(enmUB.bowl_name, enmUB.contents, System.Environment.CommandLine)
-                Me.InsKey(enmUN.cmdline_orig, qs & System.Environment.CommandLine.Replace(qs, qs & qs) & qs)
-                Me.InsKey(enmUN.cmdline_table, qs & arlCMD_RET.ttbCMD_PARM.ToString(True).Replace(qs, qs & qs) & qs)
+                Dim arlCMD_RET = MxText.Cmdline_UB(Of enmUN, enmUB).CommandLine_UBParm(enmUB.bowl_name, enmUB.contents, Have.CmdLineText)
+                Me.SelKey(enmUN.cmdline_orig).Contents = qs & Have.CmdLineText.Replace(qs, qs & qs) & qs
+                Me.SelKey(enmUN.cmdline_table).Contents = qs & arlCMD_RET.ttbCMD_PARM.ToString(True).Replace(qs, qs & qs) & qs
                 For Each rowFOUND In arlCMD_RET.ttbUB_PARM
-                    Me.Ins(
-                        New Have.rUserBowl().
-                        vt(enmUB.bowl_name, rowFOUND.v(enmUB.bowl_name)).
-                        vt(enmUB.contents, rowFOUND.v(enmUB.contents))
-                        )
+                    Me.Sel(enmUB.bowl_name, rowFOUND.v(enmUB.bowl_name)).SelFirst.Contents = rowFOUND.v(enmUB.contents)
                 Next
             End Function
 
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function Sel(ur_col As enmUB, ur_value As String) As sUserBowl
-                Dim retUB = New sUserBowl
-                Sel = retUB
-                For Each rowUB In Me.ttb
-                    If AreEqual(rowUB.v(ur_col), ur_value) Then
-                        retUB.Ins(rowUB)
-                    End If
-                Next
-            End Function 'Sel
-
-            Public ReadOnly Property SelAll() As Objlist(Of rUserBowl)
-                <System.Diagnostics.DebuggerHidden()>
-                Get
-                    SelAll = ttb
-                End Get
-            End Property 'SelAll
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function SelFirst() As rUserBowl
-                If Me.ttb.Count = 0 Then
-                    SelFirst = New rUserBowl()
-                Else
-                    SelFirst = Me.ttb.tr_b1(1)
-                End If
-            End Function
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function SelKey(ur_key As enmUN) As rUserBowl
-                Dim ret As rUserBowl = Nothing
-                Mx.TRow(Of enmUN).glbl.RefKeys()
-                Dim strUN = ur_key.name
-                For Each row In Me.ttb
-                    If AreEqual(row.v(enmUB.bowl_name), strUN) Then
-                        ret = row
-                        Exit For
-                    End If
-                Next
-
-                If ret Is Nothing Then
-                    ret = New rUserBowl
-                    Me.ttb.Add(
-                        ret.
-                        vt(enmUB.bowl_name, ur_key.name)
-                        )
-                End If
-
-                SelKey = ret
-            End Function 'SelKey
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Overloads Function ToString(ur_hdr As Boolean) As String
-                Dim stpRET = Strapd() : For Each kvpREC In Me.ttb.kvp
-                    stpRET.d(kvpREC.row.ToString((kvpREC.Indexb1 = 1) And ur_hdr))
-                Next kvpREC : ToString = stpRET
-            End Function 'ToString
             <System.Diagnostics.DebuggerHidden()>
             Public Function ToCbrd(ur_hdr As Boolean) As Integer
                 ToCbrd = Mx.glbl.gCboard.SetText(Me.ToString(ur_hdr))

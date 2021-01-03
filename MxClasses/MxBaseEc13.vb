@@ -1,5 +1,5 @@
 Option Strict On
-Namespace Mx
+Namespace Mx '2020m01d02
     Public Module ConstVar
         Public Const mt = ""
         Public Const qs = """"
@@ -894,7 +894,7 @@ Namespace Mx
             Private Shared Sub Init()
                 If sdjTCOL_KEY Is Nothing AndAlso
                   sdaTCOL_NAME Is Nothing Then
-                    Dim objTEST = New T
+                    Dim objTEST = GetType(T).GetFields()(0).GetValue(Nothing)
                 End If
 
                 If sdjTCOL_KEY Is Nothing AndAlso
