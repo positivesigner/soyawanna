@@ -1,0 +1,66 @@
+Thomas Stone - Dec 31, 2020, 6:20:23 PM
+
+Can anyone who understands the boot loader help me figure out why this rename would have worked for everything except the data-tiddlers? 
+
+I downloaded an empty version of TW and used Notepad++ to rename all the "tiddler", "Tiddler", and "TIDDLER" text to "card", "Card", and "CARD" respectively. It loaded and ran, but did not save the data-tiddlers (now data cards). I wanted to see if it was really that simple of a change.
+
+It worked fine except for re-saving the wiki file does not include any data-tiddlers. Thus the re-saved wiki file does not do anything on open. Specifically, I can see the filter="[is[system]]" does find find these four data-tiddlers when I load the standard code, and they are missing when I load the "card" version.
+
+$:/library/sjcl.js
+$:/boot/bootprefix.js
+$:/boot/boot.js
+$:/boot/boot.css
+
+I imagine they are actually being loaded because the rest of the program works. I tried stepping through the Javascript, and I just don't know the structures well enough to follow what's happening.
+
+
+jeremy...@gmail.com - 2:44 AM (yesterday) 
+
+Hi Thomas
+
+I created a similar script last year to experiment with things, but I’m also finding that it’s broken with more recent versions of TW.  I haven’t got time to experiment with it now, but I’ve attached the script below in case it’s helpful,
+
+Best wishes
+
+Jeremy
+
+#!/usr/bin/env node
+
+/*
+Use crude search and replace to change a TiddlyWiki file to use different vocabulary
+*/
+
+var sourceFilepath = process.argv[2],
+    destFilepath = process.argv[3];
+
+if(!sourceFilepath || !destFilepath) {
+    console.error("Missing filepaths");
+    process.exit(1);
+}
+
+var SUBSTITUTIONS = [
+    [/TIDDLYWIKI/g,"XEMEMEX"],
+    [/TiddlyWiki/g,"Xememex"],
+    [/tiddlywiki/g,"xememex"],
+    [/CARD/g,"BARD"],
+    [/Card/g,"Bard"],
+    [/card/g,"bard"],
+    [/TIDDLER/g,"CARD"],
+    [/Tiddler/g,"Card"],
+    [/tiddler/g,"card"],
+];
+
+var fs = require("fs"),
+    path = require("path");
+
+var text = fs.readFileSync(sourceFilepath,"utf8");
+
+SUBSTITUTIONS.forEach(function(substitution) {
+    text = text.replace(substitution[0],substitution[1]);
+});
+
+fs.writeFileSync(destFilepath,text,"utf8");
+
+--
+To view this discussion on the web visit https://groups.google.com/d/msgid/tiddlywiki/ae357651-a1be-4770-aa3c-4f24f00e9d35n%40googlegroups.com.
+
