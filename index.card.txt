@@ -369,6 +369,18 @@ Excel VBA
 
 
 
+ext DeveloperSettings HTM
+
+[ext[VBNet_Project\DeveloperSettings\Developer Settings App.html]]
+
+
+
+ext DeveloperSettings ZIP
+
+[ext[VBNet_Project\DeveloperSettings\DeveloperSettings.zip]]
+
+
+
 ext JavaScript Closures
 
 [ext[JavaScript Closures |http://blog.niftysnippets.org/2008/02/closures-are-not-complicated.html]]
@@ -468,12 +480,6 @@ ext TW Addon Text Replace
 ext TW Create Javascript Plugin
 
 [ext[https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki]]
-
-
-
-ext TW Empty Setup
-
-[ext[TiddlyWiki_Project\Empty Setup\TW Empty Setup.htm]]
 
 
 
@@ -581,6 +587,12 @@ ext VBNetScript.EXE
 ext VBNetScript.SLN
 
 [ext[VBNet_Project\VBNetscript\VBNetScript_Project.zip]]
+
+
+
+ext Wiki Empty Setup
+
+[ext[TiddlyWiki_Project\Empty Setup\Wiki Empty Setup.htm]]
 
 
 
@@ -1267,7 +1279,7 @@ template Home Button
 
 TiddlyWiki
 
-<<ext "TW Empty Setup">>
+<<ext "Wiki Empty Setup">>
 
 <<ext "TW Addon Text Replace">>
 
