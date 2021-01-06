@@ -1,0 +1,18 @@
+MCMDD
+-- MCM is fine; D must be less than C
+- [CMD] is not valid: A lower symbol followed by higher symbol must be followed by lower symbol than the first of the series.
+MDD
+-- D = 500, L = 50, V = 5; These may not be doubled
+- [DD] is not valid: Only the symbols [I, X, C, M] may be repeated.
+MCE
+-- E is not valid
+- [E] is not valid: Only the symbols [I, V, X, L, C, D, M] may be used in Roman numerals.
+MCIIII
+-- Maximum repetition is 3 characters
+- [IIIII] is not valid: A single symbol may not be repeated more than three times.
+MIC
+-- C must be ten times I to use I as a subtractor
+- [IC] is not valid: The lower symbol must be ten times less value than the following higher symbol.
+MLDV
+-- D is ten times L, but L may not be used as a subtractor
+- [LD] is not valid: Only the symbols [I, X, C, M] may be used as the lower symbol followed by a higher symbol.
