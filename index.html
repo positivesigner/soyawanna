@@ -16788,6 +16788,8 @@ DOC
 
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNS%20Project%5C~VersionUpd">VBNS Project\~VersionUpd</a></li>
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNS%20Project%5CExamples%20-%20Roman%20to%20Decimal">VBNS Project\Examples - Roman to Decimal</a></li>
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#VBNS%20Project%5CWiki_Move_HTM">VBNS Project\Wiki_Move_HTM</a></li>
 
 
@@ -17838,6 +17840,348 @@ Namespace Mx
             End Function
         End Class 'sUserBowl
     End Class 'UB, UN
+End Namespace 'Mx
+</code></pre></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div><div style="float:right;padding-left:30px;">
+
+
+<button aria-label="show sidebar" class="tc-btn-invisible tc-show-sidebar-btn" title="Show sidebar"><svg class="tc-image-chevron-left tc-image-button" height="22pt" viewBox="0 0 128 128" width="22pt"><g fill-rule="evenodd"><path d="M47.544 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L66.656 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.105 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.317-5.595z"></path><path d="M8.931 64.053c0-2.027.77-4.054 2.316-5.6l55.98-55.98a7.92 7.92 0 0111.196 0c3.085 3.086 3.092 8.105 0 11.196L28.041 64.05l50.382 50.382a7.92 7.92 0 010 11.195c-3.086 3.085-8.104 3.092-11.196 0l-55.98-55.98a7.892 7.892 0 01-2.316-5.595z"></path></g></svg></button>
+
+
+</div>
+
+<div style="float:right"><button aria-label="home" class="tc-btn-invisible" title="Open the default tiddlers">
+<span class="tc-dirty-indicator">
+
+
+</span>
+
+</button></div>
+
+</div>
+
+
+</a><a name="VBNS Project\Examples - Roman to Decimal">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="VBNS Project\Examples - Roman to Decimal"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+<button class="tc-btn-invisible tc-btn-DivPop%20btn">
+
+
+
+
+
+</button> 
+</span></span><span><h2 class="tc-title">VBNS Project\Examples - Roman to Decimal</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>6th January 2021 at 1:52am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>
+<a class="tc-tiddlylink-external" href="VBNet_Project\Examples\Roman_To_Decimal.zip" rel="noopener noreferrer" target="_blank">VBNet_Project\Examples\Roman_To_Decimal.zip</a><div style="float:right"><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#ext%20Roman%20to%20Decimal%20ZIP">-&gt;</a></div></p><pre><code>Namespace Mx
+	Public Class mb
+		Public Shared FirstExec As Object
+		Public Shared uinput As Microsoft.VisualBasic.MsgBoxResult
+
+		&lt;System.Diagnostics.DebuggerHidden()&gt;
+		Public Shared Sub ask(ur_text As String)
+			Call prv.Connect()
+			If mb.uinput &lt;&gt; MsgBoxResult.Cancel Then
+				mb.uinput = Microsoft.VisualBasic.MsgBox(ur_text, MsgBoxStyle.OkCancel, &quot;&quot;)
+			End If
+		End Sub 'ask
+
+		&lt;System.Diagnostics.DebuggerHidden()&gt;
+		Public Shared Function GetText(ur_question As String) As String
+			GetText = Microsoft.VisualBasic.InputBox(ur_question, &quot;&quot;)
+		End Function
+
+		&lt;System.Diagnostics.DebuggerHidden()&gt;
+		Public Shared Sub reset()
+			Call prv.Connect()
+			mb.uinput = MsgBoxResult.Ok
+		End Sub
+
+		Private Class prv
+			&lt;System.Diagnostics.DebuggerHidden()&gt;
+			Public Shared Sub Connect()
+				If mb.FirstExec Is Nothing Then
+					mb.uinput = MsgBoxResult.Ok
+					mb.FirstExec = &quot;done&quot;
+				End If
+			End Sub 'Connect
+		End Class 'prv
+	End Class 'mb
+
+	Public Class UserAction
+		Public Shared Function Roman_Numeral_Conversion_Report() As String
+			mb.reset()
+			Dim strRET_MSG = &quot;&quot;
+			Dim strNUMERAL = mb.GetText(&quot;Enter a Roman numeral&quot;)
+			Dim strDECIMAL = Assistant.Roman_Numeral_Conversion_Result(strNUMERAL)
+			strRET_MSG = strNUMERAL &amp; &quot; rom. = &quot; &amp; strDECIMAL &amp; &quot; dec.&quot;
+			Roman_Numeral_Conversion_Report = strRET_MSG
+		End Function 'Roman_Numeral_Conversion_Report
+	End Class 'UserAction
+
+	Public Class Assistant
+		Public Shared Function Roman_Numeral_Conversion_Result(ur_numeral As String) As String
+			Dim strRET_MSG = &quot;&quot;
+			Dim rmnNUMERAL = New Mx.glblRomanNumeral(ur_numeral)
+			strRET_MSG = rmnNUMERAL.Validation_Message
+			If strRET_MSG = &quot;&quot; Then
+				strRET_MSG = rmnNUMERAL.ToInteger.ToString
+			End If
+
+			Roman_Numeral_Conversion_Result = strRET_MSG
+		End Function 'Roman_Numeral_Conversion_Result
+	End Class 'Assistant
+
+	Public Class glblRomanNumeral
+		Private strpNumeral As String
+
+		Private Enum enmLH
+			low_or_high_number
+			high_number
+			low_number
+		End Enum
+
+		Private siaSymbol_Size As Mx.sia
+
+		&lt;System.Diagnostics.DebuggerHidden()&gt;
+		Public Sub New(ur_numeral As String)
+			Me.strpNumeral = ur_numeral.Trim.ToUpper
+			Me.siaSymbol_Size = prv.glbl_Symbol_Sizes()
+		End Sub
+
+		Public ReadOnly Property Numeral As String
+			&lt;System.Diagnostics.DebuggerHidden()&gt;
+			Get
+				Numeral = Me.strpNumeral
+			End Get
+		End Property 'Numeral
+
+		Public Function IsValid() As Boolean
+			IsValid = (Me.Validation_Message = &quot;&quot;)
+		End Function
+
+		Public Function Validation_Message() As String
+			Dim symbol_size_table = Me.siaSymbol_Size
+			Dim strBASE = Me.strpNumeral
+			Dim clrRET_STATE = New prv.Loop_Valid
+
+			For CHRCTR = 1 To strBASE.Length
+				Dim strCUR_CHAR = Mid(strBASE, CHRCTR, 1)
+				clrRET_STATE = prv.Loop_Return_Valid(clrRET_STATE, strCUR_CHAR, symbol_size_table)
+			Next CHRCTR
+
+			clrRET_STATE = prv.Loop_Return_Valid(clrRET_STATE, &quot;&quot;, symbol_size_table)
+
+			Validation_Message = clrRET_STATE.strNOTICE_MSG
+		End Function 'Validation_Message
+
+		Public Function ToInteger() As Integer
+			Dim symbol_size_table = Me.siaSymbol_Size
+			Dim strBASE = Me.strpNumeral
+			Dim clrRET_STATE = New prv.Loop_State
+			For CHRCTR = 1 To strBASE.Length
+				Dim strCUR_CHAR = Mid(strBASE, CHRCTR, 1)
+				Dim clPREV_STATE = clrRET_STATE
+				clrRET_STATE = prv.Loop_Return_State(clrRET_STATE, strCUR_CHAR, symbol_size_table)
+			Next CHRCTR
+
+			clrRET_STATE = prv.Loop_Return_State(clrRET_STATE, &quot;&quot;, symbol_size_table)
+
+			ToInteger = clrRET_STATE.intRET_NUM
+		End Function 'ToInteger
+
+		Private Class prv
+			&lt;System.Diagnostics.DebuggerHidden()&gt;
+			Public Shared Function glbl_Symbol_Sizes() As Mx.sia
+				Dim retSIA = New Mx.sia
+				glbl_Symbol_Sizes = retSIA
+				retSIA.Add(&quot;I&quot;, 1)
+				retSIA.Add(&quot;V&quot;, 5)
+				retSIA.Add(&quot;X&quot;, 10)
+				retSIA.Add(&quot;L&quot;, 50)
+				retSIA.Add(&quot;C&quot;, 100)
+				retSIA.Add(&quot;D&quot;, 500)
+				retSIA.Add(&quot;M&quot;, 1000)
+
+				glbl_Symbol_Sizes = retSIA
+			End Function 'glbl_Symbol_Sizes
+
+			Public Class Loop_State
+				Public enrSTATE As enmLH
+				Public strLOW_OR_HIGH_TEMP As String
+				Public intRET_NUM As Integer
+
+				&lt;System.Diagnostics.DebuggerHidden()&gt;
+				Public Sub New()
+					Me.enrSTATE = enmLH.high_number
+					Me.strLOW_OR_HIGH_TEMP = &quot;&quot;
+					Me.intRET_NUM = 0
+				End Sub 'New
+			End Class 'Loop_State
+
+			Public Class Loop_Valid
+				Public strVAL_FOUR As String
+				Public strVAL_THREE As String
+				Public strVAL_TWO As String
+				Public strVAL_ONE As String
+				Public intVAL_FOUR As Integer
+				Public intVAL_THREE As Integer
+				Public intVAL_TWO As Integer
+				Public intVAL_ONE As Integer
+				Public strNOTICE_MSG As String
+
+				&lt;System.Diagnostics.DebuggerHidden()&gt;
+				Public Sub New()
+					Call prvLoop_Valid.Reset_Symobls(Me)
+					Me.strNOTICE_MSG = &quot;&quot;
+				End Sub 'New
+
+				&lt;System.Diagnostics.DebuggerHidden()&gt;
+				Public Sub New(ur_state As prv.Loop_Valid, ur_new_symbol As String, ur_symbol_size As Mx.sia)
+					Me.strVAL_FOUR = ur_state.strVAL_THREE
+					Me.intVAL_FOUR = ur_state.intVAL_THREE
+					Me.strVAL_THREE = ur_state.strVAL_TWO
+					Me.intVAL_THREE = ur_state.intVAL_TWO
+					Me.strVAL_TWO = ur_state.strVAL_ONE
+					Me.intVAL_TWO = ur_state.intVAL_ONE
+					Me.strVAL_ONE = ur_new_symbol
+					Me.intVAL_ONE = prv.Numeral_To_Int(ur_symbol_size, ur_new_symbol)
+					Me.strNOTICE_MSG = ur_state.strNOTICE_MSG
+				End Sub 'New
+
+				&lt;System.Diagnostics.DebuggerHidden()&gt;
+				Public Sub Assign_NoticeMsg(ur_message As String)
+					If strNOTICE_MSG &lt;&gt; &quot;&quot; Then
+						strNOTICE_MSG &amp;= vbCrLf &amp; vbCrLf
+					End If
+
+					strNOTICE_MSG &amp;= ur_message
+					Call prvLoop_Valid.Reset_Symobls(Me)
+				End Sub 'Assign_NoticeMsg
+
+				Private Class prvLoop_Valid
+					Public Shared Sub Reset_Symobls(ur_state As prv.Loop_Valid)
+						ur_state.strVAL_FOUR = &quot;&quot;
+						ur_state.intVAL_FOUR = 0
+						ur_state.strVAL_THREE = &quot;&quot;
+						ur_state.intVAL_THREE = 0
+						ur_state.strVAL_TWO = &quot;&quot;
+						ur_state.intVAL_TWO = 0
+						ur_state.strVAL_ONE = &quot;&quot;
+						ur_state.intVAL_ONE = 0
+					End Sub 'Reset_Symobls
+				End Class 'prv
+			End Class 'Loop_Valid
+
+			Public Shared Function Loop_Return_Valid(ur_state As prv.Loop_Valid, ur_new_symbol As String, ur_symbol_size As Mx.sia) As prv.Loop_Valid
+				Dim retSTATE = New prv.Loop_Valid(ur_state, ur_new_symbol, ur_symbol_size)
+				Loop_Return_Valid = retSTATE
+				If retSTATE.strVAL_ONE &lt;&gt; &quot;&quot; Then
+					If retSTATE.intVAL_ONE = 0 Then
+						Dim strLIST = &quot;&quot;
+						For Each strENTRY In ur_symbol_size.Keys
+							If strLIST &lt;&gt; &quot;&quot; Then
+								strLIST &amp;= &quot;, &quot;
+							End If
+
+							strLIST &amp;= strENTRY
+						Next strENTRY
+
+						retSTATE.Assign_NoticeMsg(&quot;[&quot; &amp; retSTATE.strVAL_ONE &amp; &quot;] is not valid: Only the symbols [&quot; &amp; strLIST &amp; &quot;] may be used in Roman numerals.&quot;)
+
+					ElseIf retSTATE.strVAL_FOUR = retSTATE.strVAL_THREE AndAlso
+					  retSTATE.strVAL_FOUR = retSTATE.strVAL_TWO AndAlso
+					  retSTATE.strVAL_FOUR = retSTATE.strVAL_ONE Then
+						retSTATE.Assign_NoticeMsg(&quot;[&quot; &amp; retSTATE.strVAL_FOUR &amp; retSTATE.strVAL_THREE &amp; retSTATE.strVAL_TWO &amp; retSTATE.strVAL_ONE &amp; ur_new_symbol &amp; &quot;] is not valid: A single symbol may not be repeated more than three times.&quot;)
+
+					ElseIf retSTATE.strVAL_TWO = retSTATE.strVAL_ONE AndAlso
+					  Left(retSTATE.intVAL_ONE.ToString, 1) &lt;&gt; &quot;1&quot; Then
+						Dim strLIST = &quot;&quot;
+						For Each strENTRY In ur_symbol_size.Keys
+							Dim strENTRY_VAL = prv.Numeral_To_Int(ur_symbol_size, strENTRY).ToString
+							If Left(strENTRY_VAL, 1) = &quot;1&quot; Then
+								If strLIST &lt;&gt; &quot;&quot; Then
+									strLIST &amp;= &quot;, &quot;
+								End If
+
+								strLIST &amp;= strENTRY
+							End If
+						Next strENTRY
+
+						retSTATE.Assign_NoticeMsg(&quot;[&quot; &amp; retSTATE.strVAL_TWO &amp; retSTATE.strVAL_ONE &amp; &quot;] is not valid: Only the symbols [&quot; &amp; strLIST &amp; &quot;] may be repeated.&quot;)
+
+					ElseIf retSTATE.strVAL_TWO &lt;&gt; &quot;&quot; Then
+						If retSTATE.intVAL_ONE &gt; retSTATE.intVAL_TWO AndAlso
+						  Left(retSTATE.intVAL_ONE.ToString, 1) &lt;&gt; &quot;1&quot; Then
+							Dim strLIST = &quot;&quot;
+							For Each strENTRY In ur_symbol_size.Keys
+								Dim strENTRY_VAL = prv.Numeral_To_Int(ur_symbol_size, strENTRY).ToString
+								If Left(strENTRY_VAL, 1) = &quot;1&quot; Then
+									If strLIST &lt;&gt; &quot;&quot; Then
+										strLIST &amp;= &quot;, &quot;
+									End If
+
+									strLIST &amp;= strENTRY
+								End If
+							Next strENTRY
+
+							retSTATE.Assign_NoticeMsg(&quot;[&quot; &amp; retSTATE.strVAL_TWO &amp; retSTATE.strVAL_ONE &amp; &quot;] is not valid: Only the symbols [&quot; &amp; strLIST &amp; &quot;] may be used as the lower symbol followed by a higher symbol.&quot;)
+
+						ElseIf retSTATE.intVAL_ONE &gt; retSTATE.intVAL_TWO AndAlso
+						  retSTATE.intVAL_ONE &lt;&gt; retSTATE.intVAL_TWO * 10 Then
+							retSTATE.Assign_NoticeMsg(&quot;[&quot; &amp; retSTATE.strVAL_TWO &amp; retSTATE.strVAL_ONE &amp; &quot;] is not valid: The lower symbol must be ten times less value than the following higher symbol.&quot;)
+
+						ElseIf retSTATE.strVAL_THREE &lt;&gt; &quot;&quot; Then
+							If retSTATE.intVAL_TWO &gt; retSTATE.intVAL_ONE AndAlso
+							  retSTATE.intVAL_ONE &gt;= retSTATE.intVAL_THREE Then
+								retSTATE.Assign_NoticeMsg(&quot;[&quot; &amp; retSTATE.strVAL_THREE &amp; retSTATE.strVAL_TWO &amp; retSTATE.strVAL_ONE &amp; &quot;] is not valid: A lower symbol followed by higher symbol must be followed by lower symbol than the first of the series.&quot;)
+							End If
+						End If 'strVAL_THREE
+					End If 'strVAL_TWO
+				End If 'strVAL_ONE
+			End Function 'Loop_Return_Valid
+
+			Public Shared Function Loop_Return_State(ur_state As prv.Loop_State, ur_new_symbol As String, ur_symbol_size As Mx.sia) As prv.Loop_State
+				Dim retSTATE = New prv.Loop_State
+				Loop_Return_State = retSTATE
+
+				Dim intNEW_VALUE = prv.Numeral_To_Int(ur_symbol_size, ur_new_symbol)
+				Dim intLOW_OR_HIGH_VALUE = prv.Numeral_To_Int(ur_symbol_size, ur_state.strLOW_OR_HIGH_TEMP)
+				If ur_state.strLOW_OR_HIGH_TEMP = &quot;&quot; Then
+					retSTATE.intRET_NUM = ur_state.intRET_NUM
+					retSTATE.enrSTATE = enmLH.low_or_high_number
+					retSTATE.strLOW_OR_HIGH_TEMP = ur_new_symbol
+
+				ElseIf intNEW_VALUE &gt; intLOW_OR_HIGH_VALUE Then
+					retSTATE.intRET_NUM = ur_state.intRET_NUM + intNEW_VALUE - intLOW_OR_HIGH_VALUE
+					retSTATE.enrSTATE = enmLH.high_number
+					retSTATE.strLOW_OR_HIGH_TEMP = &quot;&quot;
+
+				Else
+					retSTATE.intRET_NUM = ur_state.intRET_NUM + intLOW_OR_HIGH_VALUE
+					retSTATE.enrSTATE = enmLH.low_number
+					retSTATE.strLOW_OR_HIGH_TEMP = ur_new_symbol
+				End If
+			End Function 'Loop_Return_State
+
+			&lt;System.Diagnostics.DebuggerHidden()&gt;
+			Public Shared Function Numeral_To_Int(ur_symbol_size As Mx.sia, ur_numeral As String) As Integer
+				Numeral_To_Int = 0
+				If ur_symbol_size.ContainsKey(ur_numeral) Then
+					Numeral_To_Int = ur_symbol_size.Item(ur_numeral)
+				End If
+			End Function 'Numeral_To_Int
+		End Class 'prv
+	End Class 'glblRomanNumeral
+
+	Public Class sia
+		Inherits System.Collections.Generic.Dictionary(Of String, Integer)
+	End Class
 End Namespace 'Mx
 </code></pre></div>
 
