@@ -88,6 +88,12 @@ $:/DefaultTiddlers
 
 
 
+$:/language/DefaultNewTiddlerTitle
+
+New Card
+
+
+
 $:/plugins/danielo515/searchNreplace
 
 {
@@ -670,6 +676,7 @@ Change Title and Default Page Search
 * Title of this TiddlyWiki = UrTitle
 * Subtitle = UrSubTitle
 * Default tiddlers = `[all[tiddlers]tag[INDEX]sort[title]]`
+* Title for new tiddlers = `New Card`
 
 <$image source={{!!img}} />
 

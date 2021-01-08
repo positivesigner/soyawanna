@@ -1,0 +1,23 @@
+From root index.htm
+
+[View All Cards]
+- updated filter
+
+[Tag pairs]
+- Include in basic setup 
+
+[mcr ext Macro]
+- updated display
+- Requires updating all the EXT cards to not use [ext[
+
+```
+\define calc_open_bracket()&#x005B;
+<$wikify name=lit_open_bracket text=<<calc_open_bracket>> >
+<$list variable=cur_title filter="[tag[EXT]sort[]]">
+<$list variable=filter_text_contents filter="[<cur_title>get[text]prefix<lit_open_bracket>]">
+
+<$link to=<<cur_title>> />
+</$list><!--filter_text_contents-->
+</$list><!--cur_title-->
+</$wikify><!--lit_open_bracket-->
+```

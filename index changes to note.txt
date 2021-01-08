@@ -1,0 +1,29 @@
+[Tag Pairs card]
+- Include in basic setup 
+
+[Recent Entries card]
+- Added link
+
+[Tag Audit Count card]
+- New card
+
+[Microsoft Remote Desktop card]
+- Add tutorial
+- Add link to Playstore app
+
+[AnyDesk Remote Desktop card]
+
+[TiddlyWiky\Filter for Brackets in text]
+- Add the below search program as sample code under TiddlyWiki section of using brackets in filters
+
+```
+\define calc_open_bracket()&#x005B;
+<$wikify name=lit_open_bracket text=<<calc_open_bracket>> >
+<$list variable=cur_title filter="[tag[EXT]sort[]]">
+<$list variable=filter_text_contents filter="[<cur_title>get[text]prefix<lit_open_bracket>]">
+
+<$link to=<<cur_title>> />
+</$list><!--filter_text_contents-->
+</$list><!--cur_title-->
+</$wikify><!--lit_open_bracket-->
+```
