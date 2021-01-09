@@ -175,8 +175,6 @@ Error message and password prompt
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
 
-<li>$:/plugins/danielo515/searchNreplace</li>
-
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -285,6 +283,8 @@ Error message and password prompt
 
 <li>Excel VBA\Power Exponent</li>
 
+<li>ext CodeAcademy DocType</li>
+
 <li>ext DeveloperSettings HTM</li>
 
 <li>ext DeveloperSettings ZIP</li>
@@ -293,11 +293,17 @@ Error message and password prompt
 
 <li>ext FileFormat.Info UnicodeInput.ZIP</li>
 
+<li>ext HTML.com DocType</li>
+
 <li>ext JavaScript Closures</li>
 
 <li>ext JavaScript Strict Mode</li>
 
 <li>ext JavaScript This Parameter</li>
+
+<li>ext JTFAssociates MOTW</li>
+
+<li>ext MetaTags.org Generator</li>
 
 <li>ext Microsoft RemoteDesktop Enable</li>
 
@@ -363,6 +369,8 @@ Error message and password prompt
 
 <li>ext W3.org HTML401 Profiles</li>
 
+<li>ext W3Schools DocType</li>
+
 <li>ext Wiki Empty Setup</li>
 
 <li>ext Wiki Move HTM</li>
@@ -411,9 +419,19 @@ Error message and password prompt
 
 <li>HTML CSS</li>
 
+<li>HTML CSS\Comment Declaration</li>
+
+<li>HTML CSS\Comment MOTW Declaration</li>
+
+<li>HTML CSS\Declare document Content type</li>
+
+<li>HTML CSS\DocType Declaration</li>
+
+<li>HTML CSS\Example META Tags</li>
+
 <li>HTML CSS\iFrame to Local HTML file</li>
 
-<li>HTML CSS\Meta Tags</li>
+<li>HTML CSS\Meta Tag Schema</li>
 
 <li>HTML CSS\Padding and Margin</li>
 
@@ -10649,47 +10667,6 @@ Error message and password prompt
 <div created="20210108075708187" modified="20210108075716624" tags="META" title="$:/language/DefaultNewTiddlerTitle">
 <pre>New Card</pre>
 </div>
-<div author="Danielo Rodriguez Rivero" bag="default" core-version="&gt;=5.1.4" created="20200302210551832" dependents="" description="searchNreplace for TiddlyWiki" list="readme" modified="20201226065145137" plugin-type="plugin" revision="0" tags="META" title="$:/plugins/danielo515/searchNreplace" type="application/json" version="1.2">
-<pre>{
-    &quot;tiddlers&quot;: {
-        &quot;$:/danielo515/modules/startup/replace.js&quot;: {
-            &quot;text&quot;: &quot;/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW &gt;= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\&quot;use strict\&quot;;\r\n\r\n// Export name and synchronous status\r\nexports.name = \&quot;password\&quot;;\r\nexports.platforms = [\&quot;browser\&quot;];\r\nexports.after = [\&quot;startup\&quot;];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\&quot;tm-replace\&quot;,function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getTiddlerText(event.paramObject.source) || \&quot;\&quot;,\r\n      doGlobal = event.paramObject.global || \&quot;yes\&quot;, // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \&quot;no\&quot; ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \&quot;yes\&quot;,\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Tiddler to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\&quot;text\&quot;,null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();&quot;,
-            &quot;title&quot;: &quot;$:/danielo515/modules/startup/replace.js&quot;,
-            &quot;type&quot;: &quot;application/javascript&quot;,
-            &quot;module-type&quot;: &quot;startup&quot;
-        },
-        &quot;$:/plugins/danielo515/searchNreplace/readme&quot;: {
-            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/readme&quot;,
-            &quot;text&quot;: &quot;This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default tiddler's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n&quot;
-        },
-        &quot;$:/plugins/danielo515/searchNreplace/ui/controls&quot;: {
-            &quot;created&quot;: &quot;20150409175313556&quot;,
-            &quot;list-after&quot;: &quot;$:/core/ui/EditTemplate/tags&quot;,
-            &quot;modified&quot;: &quot;20150409182902159&quot;,
-            &quot;tags&quot;: &quot;$:/tags/EditTemplate&quot;,
-            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/ui/controls&quot;,
-            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;div class=\&quot;tc-edit-controls\&quot;&gt;\n&lt;$list filter=\&quot;[all[shadows+tiddlers]tag[$:/tags/EditControls]]\&quot; variable=\&quot;control\&quot;&gt;\n&lt;$transclude tiddler=&lt;&lt;control&gt;&gt;&gt;\n&lt;/$list&gt;\n&lt;/div&gt;&quot;
-        },
-        &quot;$:/plugins/danielo515/searchNreplace/ui/controls/replace&quot;: {
-            &quot;created&quot;: &quot;20150409182035279&quot;,
-            &quot;modified&quot;: &quot;20150409182544663&quot;,
-            &quot;tags&quot;: &quot;$:/tags/EditControls&quot;,
-            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/ui/controls/replace&quot;,
-            &quot;type&quot;: &quot;text/vnd.tiddlywiki&quot;,
-            &quot;text&quot;: &quot;&lt;$edit-text tiddler=\&quot;$:/state/searchNreplace/search\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;search\&quot;/&gt; &lt;$edit-text tiddler=\&quot;$:/state/searchNreplace/replace\&quot; tag=\&quot;input\&quot; default=\&quot;\&quot; placeholder=\&quot;replace\&quot;/&gt; &lt;$button class=\&quot;button button-tiny button-primary\&quot;&gt;Replace\r\n&lt;$action-sendmessage $message=\&quot;tm-replace\&quot; source=&lt;&lt;currentTiddler&gt;&gt; search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/&gt;\r\n&lt;/$button&gt;\r\n&lt;$checkbox default=\&quot;yes\&quot; unchecked=\&quot;no\&quot; checked=\&quot;yes\&quot; field=\&quot;text\&quot; tiddler=\&quot;$:/state/searchNreplace/global\&quot;&gt;Global&lt;/$checkbox&gt;\r\n&lt;$checkbox default=\&quot;no\&quot; unchecked=\&quot;no\&quot; checked=\&quot;yes\&quot; field=\&quot;text\&quot; tiddler=\&quot;$:/state/searchNreplace/regex\&quot;&gt;Use regex&lt;/$checkbox&gt;&quot;
-        },
-        &quot;$:/plugins/danielo515/searchNreplace/styles&quot;: {
-            &quot;created&quot;: &quot;20150409181359332&quot;,
-            &quot;modified&quot;: &quot;20150409182956438&quot;,
-            &quot;tags&quot;: &quot;$:/tags/Stylesheet&quot;,
-            &quot;title&quot;: &quot;$:/plugins/danielo515/searchNreplace/styles&quot;,
-            &quot;type&quot;: &quot;text/css&quot;,
-            &quot;text&quot;: &quot;  .tc-edit-controls {\n  border: 1px solid #cccccc;\n  border-top: 0px;\n  padding: 4px 8px 4px 8px;\n}&quot;
-        }
-    }
-}</pre>
-</div>
 <div created="20201226064733294" modified="20201226064733294" title="$:/SiteSubtitle">
 <pre>Design and Usage</pre>
 </div>
@@ -10714,19 +10691,19 @@ Error message and password prompt
 <div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210109165307037" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210109175037164" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20210108075658903" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226064844310" modified="20210109165307038" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210109175037164" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210109165004388" list="[[Tag pairs]] [[Code Samples]] [[HTML CSS]] [[HTML CSS\Meta Tags]]" modified="20210109165004388" title="$:/StoryList">
+<div created="20210109170005832" list="[[Tag pairs]] [[HTML CSS\Meta Tag Schema]] [[Code Samples]] [[HTML CSS\Example META Tags]] [[HTML CSS\DocType Declaration]] [[HTML CSS\Comment MOTW Declaration]] [[HTML CSS\Declare document Content type]]" modified="20210109170005832" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11809,6 +11786,9 @@ Make sure you put a space between the power operator (^) and the numbers
 - Note: CalcResult = 32
 </pre>
 </div>
+<div created="20210109171553263" modified="20210109171606314" tags="EXT" title="ext CodeAcademy DocType">
+<pre>https://discuss.codecademy.com/t/why-we-type-before-doctype-what-is-the-role-of-in-doctype-html/60880/3</pre>
+</div>
 <div created="20210104061323484" modified="20210108094634229" tags="EXT" title="ext DeveloperSettings HTM">
 <pre>VBNet_Project\DeveloperSettings\Developer Settings App.html</pre>
 </div>
@@ -11821,6 +11801,9 @@ Make sure you put a space between the power operator (^) and the numbers
 <div created="20210108155315002" modified="20210108155338081" tags="EXT" title="ext FileFormat.Info UnicodeInput.ZIP">
 <pre>https://www.fileformat.info/tool/unicodeinput/unicodeinput.zip</pre>
 </div>
+<div created="20210109171358186" modified="20210109171408050" tags="EXT" title="ext HTML.com DocType">
+<pre>https://html.com/tags/doctype/</pre>
+</div>
 <div created="20201215052739076" modified="20210108094741991" tags="EXT" title="ext JavaScript Closures">
 <pre>http://blog.niftysnippets.org/2008/02/closures-are-not-complicated.html</pre>
 </div>
@@ -11829,6 +11812,12 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20201215050509223" modified="20210108100354524" tags="EXT" title="ext JavaScript This Parameter">
 <pre>http://blog.niftysnippets.org/2008/03/mythical-methods.html</pre>
+</div>
+<div created="20210109173725531" modified="20210109173834870" tags="EXT" title="ext JTFAssociates MOTW">
+<pre>https://jtfassociates.com/using-the-mark-of-the-web-motw/</pre>
+</div>
+<div created="20210109170124243" modified="20210109170149234" tags="ext" title="ext MetaTags.org Generator">
+<pre>https://www.metatags.org/all-meta-tags-overview/meta-name-generator/</pre>
 </div>
 <div created="20210108093141289" modified="20210108094349895" tags="EXT" title="ext Microsoft RemoteDesktop Enable">
 <pre>https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access</pre>
@@ -11942,6 +11931,9 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20210109165204297" modified="20210109165234070" tags="EXT" title="ext W3.org HTML401 Profiles">
 <pre>https://www.w3.org/TR/html401/struct/global.html#profiles</pre>
+</div>
+<div created="20210109170509899" modified="20210109170533179" tags="EXT" title="ext W3Schools DocType">
+<pre>https://www.w3schools.com/tags/tag_doctype.asp</pre>
 </div>
 <div created="20201130132103446" modified="20210108100422717" tags="EXT" title="ext Wiki Empty Setup">
 <pre>TiddlyWiki_Project\Empty Setup\Wiki Empty Setup.htm</pre>
@@ -12626,12 +12618,91 @@ If the 'Family' logins does not contain the account you want to access your shar
 <div created="20201206180823922" modified="20201226065145143" tags="DOC" title="HTML CSS">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
+<div created="20210109172252043" modified="20210109173759367" tags="HTMLCode Text" title="HTML CSS\Comment Declaration">
+<pre>!! HTML 5 document
+
+* Declaration Name = `--`
+* Content = unprocessed text, except for the character sequence double-hyphen close-tag ( `--&gt;` )
+* Note: HTML declarations are not tags, because the have an exclamation mark ( `!` ) before the declaration name / code
+* Note: XML documents have a requirement that a double-hyphen ( `--` ) must itself be doubled ( `----` ) when used in a comment declaration, but HTML 5 has no such requirement
+
+
+!! Sample code for HTML 5 Comment
+
+```
+&lt;!-- a text editor can see the comment text --&gt;
+```
+
+</pre>
+</div>
+<div created="20210109173708385" modified="20210109174913146" tags="HTMLCode Text Browser" title="HTML CSS\Comment MOTW Declaration">
+<pre>!! HTML document viewed in Internet Explorer
+
+* Comment text sequence:
+
+&lt;&lt;&lt;
+* `&lt;!--` and optional whitespace
+* `saved from url=(`
+* the number of characters in the URL string (including the trailing backslash)
+* `)`
+* the URL string
+* optional whitespace and `--&gt;`
+&lt;&lt;&lt;
+
+* HTML documents viewed in Internet Explorer show a warning message due to active content, or has a specifically crafted HTML Comment Declaration that names the root URL of the website it is being hosted on
+* Note: If this is for a new site, or if the domain is not known, you can use `about:internet` as a valid URL
+
+&lt;&lt;ext &quot;JTFAssociates MOTW&quot;&gt;&gt;
+
+!!Sample code
+
+```
+&lt;!-- saved from url=(0014)about:internet --&gt;
+```
+</pre>
+</div>
+<div created="20210109174947244" modified="20210109175036123" tags="HTMLCode Browser Text" title="HTML CSS\Declare document Content type">
+<pre></pre>
+</div>
+<div created="20210109170633728" modified="20210109171954043" tags="EXT" title="HTML CSS\DocType Declaration">
+<pre>!! HTML 5 document
+
+* Declaration Name = `DOCTYPE`
+* Content = `html`
+* Note: HTML declarations are not tags, because the have an exclamation mark ( `!` ) before the declaration name / code
+* Note: This should be the first non-whitespace characters in the document to be compliant with HTML standards
+* Note: HTML5 documents don't really need a DOCTYPE as there is no HTML5 DTD for browsers to refer to, but it is used in HTML5 to make sure the browser doesn’t switch into “quirks” mode and remains in full standards mode
+
+&lt;&lt;ext &quot;W3Schools DocType&quot;&gt;&gt;
+
+&lt;&lt;ext &quot;HTML.com DocType&quot;&gt;&gt;
+
+&lt;&lt;ext &quot;CodeAcademy DocType&quot;&gt;&gt;
+
+!! Sample code for HTML 5 declaration
+
+```
+&lt;!DOCTYPE html&gt;
+```
+
+</pre>
+</div>
+<div created="20210109170013701" modified="20210109170420029" tags="Browser HTMLCode AssignVariable" title="HTML CSS\Example META Tags">
+<pre>!! Named META Tags
+
+* Name = generator
+* Content = The name of the program you used to create your website
+* Automatically inserted by website-generating applications
+* People who don’t want anybody to know with which tool or program they created their website can remove this tag from the generated pages
+
+&lt;&lt;ext &quot;MetaTags.org Generator&quot;&gt;&gt;</pre>
+</div>
 <div created="20201115025304543" modified="20210108183213238" tags="HTMLCode FileSystem Extract" title="HTML CSS\iFrame to Local HTML file">
 <pre>```
 &lt;iframe src=&quot;UrPath\UrFile.html&quot; scrolling=yes style=&quot;border-style:none;height:75%;width:100%&quot; &gt;&lt;/iframe&gt;
 </pre>
 </div>
-<div created="20210109165006847" modified="20210109165304967" tags="HTMLCode AssignVariable Browser" title="HTML CSS\Meta Tags">
+<div created="20210109165006847" modified="20210109170031563" tags="HTMLCode AssignVariable Browser" title="HTML CSS\Meta Tag Schema">
 <pre>&lt;&lt;ext &quot;W3.org HTML401 Meta&quot;&gt;&gt;
 
 This specification does not define a set of legal meta data properties.
