@@ -359,6 +359,10 @@ Error message and password prompt
 
 <li>ext VBNetScript.SLN</li>
 
+<li>ext W3.org HTML401 Meta</li>
+
+<li>ext W3.org HTML401 Profiles</li>
+
 <li>ext Wiki Empty Setup</li>
 
 <li>ext Wiki Move HTM</li>
@@ -408,6 +412,8 @@ Error message and password prompt
 <li>HTML CSS</li>
 
 <li>HTML CSS\iFrame to Local HTML file</li>
+
+<li>HTML CSS\Meta Tags</li>
 
 <li>HTML CSS\Padding and Margin</li>
 
@@ -562,6 +568,8 @@ Error message and password prompt
 <li>TiddlyWiki\Import Macros</li>
 
 <li>TiddlyWiki\Javascript Calculation in Bookmarklet</li>
+
+<li>TiddlyWiki\Keep words together on one line</li>
 
 <li>TiddlyWiki\Keyboard Shortcut</li>
 
@@ -10706,19 +10714,19 @@ Error message and password prompt
 <div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210108192213973" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210109165307037" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20210108075658903" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226064844310" modified="20210108192213973" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210109165307038" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Tag pairs]] [[Code Samples]]" title="$:/StoryList">
+<div created="20210109165004388" list="[[Tag pairs]] [[Code Samples]] [[HTML CSS]] [[HTML CSS\Meta Tags]]" modified="20210109165004388" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11929,6 +11937,12 @@ Make sure you put a space between the power operator (^) and the numbers
 <div created="20210102100825984" modified="20210108100432795" tags="EXT" title="ext VBNetScript.SLN">
 <pre>VBNet_Project\VBNetscript\VBNetScript_Project.zip</pre>
 </div>
+<div created="20210109165104187" modified="20210109165141052" tags="EXT" title="ext W3.org HTML401 Meta">
+<pre>https://www.w3.org/TR/html401/struct/global.html#h-7.4.4</pre>
+</div>
+<div created="20210109165204297" modified="20210109165234070" tags="EXT" title="ext W3.org HTML401 Profiles">
+<pre>https://www.w3.org/TR/html401/struct/global.html#profiles</pre>
+</div>
 <div created="20201130132103446" modified="20210108100422717" tags="EXT" title="ext Wiki Empty Setup">
 <pre>TiddlyWiki_Project\Empty Setup\Wiki Empty Setup.htm</pre>
 </div>
@@ -12615,6 +12629,34 @@ If the 'Family' logins does not contain the account you want to access your shar
 <div created="20201115025304543" modified="20210108183213238" tags="HTMLCode FileSystem Extract" title="HTML CSS\iFrame to Local HTML file">
 <pre>```
 &lt;iframe src=&quot;UrPath\UrFile.html&quot; scrolling=yes style=&quot;border-style:none;height:75%;width:100%&quot; &gt;&lt;/iframe&gt;
+</pre>
+</div>
+<div created="20210109165006847" modified="20210109165304967" tags="HTMLCode AssignVariable Browser" title="HTML CSS\Meta Tags">
+<pre>&lt;&lt;ext &quot;W3.org HTML401 Meta&quot;&gt;&gt;
+
+This specification does not define a set of legal meta data properties.
+The meaning of a property and the set of legal values for that property should be defined in a reference lexicon called a profile.
+
+&lt;&lt;ext &quot;W3.org HTML401 Profiles&quot;&gt;&gt;
+
+The profile attribute of the HEAD specifies the location of a meta data profile.
+The value of the profile attribute is a URI.
+User agents may use this URI in two ways:
+
+* As a globally unique name.
+
+&lt;&lt;&lt;
+User agents may be able to recognize the name (without actually retrieving the profile) and perform some activity based on known conventions for that profile.
+For instance, search engines could provide an interface for searching through catalogs of HTML documents, where these documents all use the same profile for representing catalog entries.
+&lt;&lt;&lt;
+
+* As a link.
+
+&lt;&lt;&lt;
+User agents may dereference the URI and perform some activity based on the actual definitions within the profile (e.g., authorize the usage of the profile within the current HTML document).
+This specification does not define formats for profiles.
+&lt;&lt;&lt;
+
 </pre>
 </div>
 <div created="20201206180836234" modified="20210108190505157" tags="HTMLCode CSSCode Formatting" title="HTML CSS\Padding and Margin">
@@ -13571,7 +13613,7 @@ UPPER(field)
 
 SELECT * FROM Table_Name LIMIT 5;</pre>
 </div>
-<div created="20210108091437598" modified="20210108175323283" sort_ord="1" tags="INDEX" title="Tag pairs">
+<div created="20210108091437598" modified="20210109164904263" sort_ord="1" tags="INDEX" title="Tag pairs">
 <pre>\define tag_button(ur_field, ur_tag_name)
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;$ur_field$&quot; text=&quot;$ur_tag_name$&quot;/&gt;
@@ -13581,18 +13623,29 @@ SELECT * FROM Table_Name LIMIT 5;</pre>
 
 {{ext TW Return}}
 
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
+&lt;$list variable=on_twcard filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 &lt;$button&gt;
 &lt;$list variable=cur_temp_card filter=&quot;[prefix[$:/state/popup/tag_e]]&quot; &gt;
 &lt;$action-deletetiddler $tiddler=&lt;&lt;cur_temp_card&gt;&gt; /&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--cur_temp_card--&gt;
 Clear filters
-&lt;/$button&gt;
+&lt;/$button&gt;&lt;br&gt;
 
 &lt;$edit-text tiddler=&quot;$:/state/popup/tag_e1&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for tag 1]&quot; autoHeight=yes tag=input/&gt;
-&lt;$edit-text tiddler=&quot;$:/state/popup/tag_e2&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for tag 2]&quot; autoHeight=yes tag=input/&gt;
+&lt;$edit-text tiddler=&quot;$:/state/popup/tag_e2&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for tag 2]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 
-&lt;$list variable=tag_prefix_e1 filter=&quot;[[$:/state/popup/tag_e1]get[text]uppercase[]else[]]&quot;&gt;
+&lt;$list variable=tag_prefix_e1 filter=&quot;[[$:/state/popup/tag_e1]get[text]uppercase[]else[]match[]]&quot;&gt;
+&lt;$list variable=tag_e1 filter=&quot;[tags[]each:value[]!prefix[$:]sort[]]&quot;&gt;
+&lt;$list variable=all_caps_tage1 filter=&quot;[&lt;tag_e1&gt;uppercase[]]&quot;&gt;
+&lt;$list variable=filter_all_capse1 filter=&quot;[&lt;tag_e1&gt;!match&lt;all_caps_tage1&gt;]&quot;&gt;
+&lt;$list variable=card_count filter=&quot;[tag&lt;tag_e1&gt;count[]!match[0]]&quot;&gt;@@white-space:nowrap;&lt;$macrocall $name=tag_button ur_field=&quot;$:/state/popup/tag_e1&quot; ur_tag_name=&lt;&lt;tag_e1&gt;&gt; /&gt; ( &lt;&lt;card_count&gt;&gt; )@@
+&lt;/$list&gt;&lt;!--card_count--&gt;
+&lt;/$list&gt;&lt;!--filter_all_capse1--&gt;
+&lt;/$list&gt;&lt;!--all_caps_tage1--&gt;
+&lt;/$list&gt;&lt;!--tag_e1--&gt;
+&lt;/$list&gt;&lt;!--tag_prefix_e1--&gt;
+
+&lt;$list variable=tag_prefix_e1 filter=&quot;[[$:/state/popup/tag_e1]get[text]uppercase[]else[]!match[]]&quot;&gt;
 &lt;$list variable=tag_prefix_e2 filter=&quot;[[$:/state/popup/tag_e2]get[text]uppercase[]else[]]&quot;&gt;
 &lt;$list variable=tag_e1 filter=&quot;[tags[]each:value[]!prefix[$:]sort[]]&quot;&gt;
 &lt;$list variable=all_caps_tage1 filter=&quot;[&lt;tag_e1&gt;uppercase[]]&quot;&gt;
@@ -13606,7 +13659,7 @@ Clear filters
 
 &lt;$macrocall $name=tag_button ur_field=&quot;$:/state/popup/tag_e1&quot; ur_tag_name=&lt;&lt;tag_e1&gt;&gt; /&gt; &lt;$macrocall $name=tag_button ur_field=&quot;$:/state/popup/tag_e2&quot; ur_tag_name=&lt;&lt;tag_e2&gt;&gt; /&gt; (&lt;&lt;card_count&gt;&gt;)
 
-&lt;$list variable=filter_prefix_entered filter=&quot;[&lt;tag_prefix_e1&gt;] [&lt;tag_prefix_e2&gt;] +[each:value[]!match[]]&quot;&gt;
+&lt;$list variable=filter_prefix_entered filter=&quot;[&lt;tag_prefix_e1&gt;] [&lt;tag_prefix_e2&gt;] +[each:value[]!match[]count[]!match[0]]&quot;&gt;
 &lt;$list variable=link_title filter=&quot;[tag&lt;tag_e1&gt;tag&lt;tag_e2&gt;]&quot;&gt;
 
 &lt;&lt;&lt;
@@ -13625,8 +13678,7 @@ Clear filters
 &lt;/$list&gt;&lt;!--tag_e1--&gt;
 &lt;/$list&gt;&lt;!--tag_prefix_e2--&gt;
 &lt;/$list&gt;&lt;!--tag_prefix_e1--&gt;
-&lt;/$list&gt;
-
+&lt;/$list&gt;&lt;!--on_twcard--&gt;
 
 [[___|Recent Entries]]</pre>
 </div>
@@ -14934,6 +14986,38 @@ Link an image in a Tiddler with 500px width
 &lt;!--|v
 &lt;&lt;glbl_copyto_js_bookmarklet &quot;&quot;&quot;parseInt(&quot;FF&quot;,16).toString(10);&quot;&quot;&quot;&gt;&gt;
 ^|--&gt;
+</pre>
+</div>
+<div created="20210109164038012" modified="20210109164744941" tags="TWCard Text Formatting" title="TiddlyWiki\Keep words together on one line">
+<pre>!! Use CSS white-space tag
+
+* The CSS `white-space:nowrap;` disables normal text wrapping
+* This is useful when you have several smaller phrases that should not be separated visually onto different lines
+* Note: This can make the line extend past the edge of the browser window, requiring scrolling to see the rest
+
+!!Sample Code that can split phrases
+
+```
+A code line (1) A code line (2) A code line (3) A code line (4) A code line (5) A code line (6) A code line (7) A code line (8) A code line (9) A code line (10) A code line (11) A code line (12) A code line (13) A code line (14)
+```
+
+&lt;&lt;&lt;
+Results:
+
+A code line (1) A code line (2) A code line (3) A code line (4) A code line (5) A code line (6) A code line (7) A code line (8) A code line (9) A code line (10) A code line (11) A code line (12) A code line (13) A code line (14)
+&lt;&lt;&lt;
+
+!!Sample Code that can keeps short phrases together
+
+```
+@@white-space:nowrap;A code line (1)@@ @@white-space:nowrap;A code line (2)@@ @@white-space:nowrap;A code line (3)@@ @@white-space:nowrap;A code line (4)@@ @@white-space:nowrap;A code line (5)@@ @@white-space:nowrap;A code line (6)@@ @@white-space:nowrap;A code line (7)@@ @@white-space:nowrap;A code line (8)@@ @@white-space:nowrap;A code line (9)@@ @@white-space:nowrap;A code line (10)@@ @@white-space:nowrap;A code line (11)@@ @@white-space:nowrap;A code line (12)@@ @@white-space:nowrap;A code line (13)@@ @@white-space:nowrap;A code line (14)@@
+```
+
+&lt;&lt;&lt;
+Results:
+
+@@white-space:nowrap;A code line (1)@@ @@white-space:nowrap;A code line (2)@@ @@white-space:nowrap;A code line (3)@@ @@white-space:nowrap;A code line (4)@@ @@white-space:nowrap;A code line (5)@@ @@white-space:nowrap;A code line (6)@@ @@white-space:nowrap;A code line (7)@@ @@white-space:nowrap;A code line (8)@@ @@white-space:nowrap;A code line (9)@@ @@white-space:nowrap;A code line (10)@@ @@white-space:nowrap;A code line (11)@@ @@white-space:nowrap;A code line (12)@@ @@white-space:nowrap;A code line (13)@@ @@white-space:nowrap;A code line (14)@@
+&lt;&lt;&lt;
 </pre>
 </div>
 <div created="20201122112942511" modified="20210108182841093" tags="TWCard CodeLibrary UserAction" title="TiddlyWiki\Keyboard Shortcut">
