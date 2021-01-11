@@ -1172,6 +1172,12 @@ Make sure you put a space between the power operator (^) and the numbers
 
 
 
+ext Apple.com Safari Meta tags
+
+https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+
+
+
 ext CodeAcademy DocType
 
 https://discuss.codecademy.com/t/why-we-type-before-doctype-what-is-the-role-of-in-doctype-html/60880/3
@@ -1199,6 +1205,12 @@ https://www.fileformat.info/tool/unicodeinput/index.htm
 ext FileFormat.Info UnicodeInput.ZIP
 
 https://www.fileformat.info/tool/unicodeinput/unicodeinput.zip
+
+
+
+ext GoogleDevelopers FullScreen web app
+
+https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
 
 
 
@@ -1232,6 +1244,12 @@ https://jtfassociates.com/using-the-mark-of-the-web-motw/
 
 
 
+ext MathiasBynens Rel Icon
+
+https://mathiasbynens.be/notes/rel-shortcut-icon
+
+
+
 ext MetaTags.org Generator
 
 https://www.metatags.org/all-meta-tags-overview/meta-name-generator/
@@ -1244,9 +1262,21 @@ https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/c
 
 
 
+ext Mozilla.org META tags
+
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name
+
+
+
 ext MxBase Classes
 
 VBNet_Project/MxBase/MxBase%20Classes.html
+
+
+
+ext PSU.edu LangTag
+
+https://accessibility.psu.edu/foreignlanguages/langtaghtml/
 
 
 
@@ -1301,6 +1331,12 @@ https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata
 ext SQLite Top 5 Records
 
 https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite
+
+
+
+ext StackOverflow Meta UA-Compatible
+
+https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do#:~:text=The%20X%2DUA%2DCompatible%20meta%20tag%20allows%20web%20authors%20to,meta%20tag%20in%20certain%20circumstances.
 
 
 
@@ -1450,6 +1486,24 @@ https://www.w3.org/TR/html401/struct/global.html#profiles
 ext W3Schools DocType
 
 https://www.w3schools.com/tags/tag_doctype.asp
+
+
+
+ext W3Schools Head tag
+
+https://www.w3schools.com/tags/tag_head.asp
+
+
+
+ext W3Schools Meta HTTP-EQUIV
+
+https://www.w3schools.com/tags/att_meta_http_equiv.asp
+
+
+
+ext WHATWg.org Link Icon
+
+https://html.spec.whatwg.org/multipage/links.html#rel-icon
 
 
 
@@ -2257,6 +2311,98 @@ HTML CSS\Comment MOTW Declaration
 
 
 
+HTML CSS\Compatibility Meta tags
+
+!! Declare compatibility version of Microsoft Internet Explorer web browser
+
+* tag name = `meta`
+* `http-equiv` attr = `X-UA-Compatible`
+* `content` attr = `IE=Edge` or (`IE=11`, `IE=EmulateIE11`, and similar version number pairs)
+* Note: Use this tag if you need features specific to an older version of IE like IE9 or IE8
+* Note: If you only support the latest browsers (IE11 and/or Edge) then this tag will not affect the web page's behavior until another version is created
+
+<<<
+Internet Explorer begins interpreting markup using the latest version. When Internet Explorer encounters the X-UA-Compatible META tag it starts over using the designated version's engine. This is a performance hit because the browser must stop and restart analyzing the content.
+<<<
+
+<<ext "StackOverflow Meta UA-Compatible">>
+
+!! Sample code
+
+```
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+```
+
+<<<
+`content="IE=Edge" ` mode tells Internet Explorer to display content in the highest mode available. With Internet Explorer 9, this is equivalent to IE9 mode. If a future release of Internet Explorer supported a higher compatibility mode, pages set to edge mode would appear in the highest mode supported by that version. Those same pages would still appear in IE9 mode when viewed with Internet Explorer 9.
+<<<
+
+!! Specify web application runs in full-screen mode on Apple devices
+
+* tag name = `meta`
+* `name` attr = `apple-mobile-web-app-capable`
+* `content` attr = `yes`
+* Note: The default behavior is to use Safari to display web content
+* Note: You can determine whether a webpage is displayed in full-screen mode using the window.navigator.standalone Boolean JavaScript property
+
+<<ext "Apple.com Safari Meta tags">>
+
+!! Sample code
+
+<<<
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<<<
+
+!! Specify the Full Screen's status bar style on Apple devices
+
+* tag name = `meta`
+* `name` attr = `apple-mobile-web-app-status-bar-style`
+* `content` attr = `default`, `black`, `black-translucent`
+* Note: If set to black-translucent, the web content is displayed on the entire screen, partially obscured by the status bar
+* Note: This meta tag has no effect unless you first specify full-screen mode as described in apple-apple-mobile-web-app-capable
+
+<<ext "Apple.com Safari Meta tags">>
+
+!! Sample code
+
+```
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+```
+
+!! Leave original formatting of telephone-number formatted strings 
+
+* tag name = `meta`
+* `name` attr = `format-detection`
+* `content` attr = `telephone=no`
+* Note: By default, Safari on iOS detects any string formatted like a phone number and makes it a link that calls the number
+
+<<ext "Apple.com Safari Meta tags">>
+
+!! Sample code
+
+```
+<meta name="format-detection" content="telephone=no" />
+```
+
+!! Specify web application runs in full-screen mode on Apple devices
+
+* tag name = `meta`
+* `name` attr = `mobile-web-app-capable`
+* content = `yes`
+* Note: This tells the browser to launch the page fullscreen when the user has added it to the home screen
+* Note: A better option is to use the Web App Manifest for Chrome, Opera, Firefox, and Samsung browsers
+
+<<ext "GoogleDevelopers FullScreen web app">>
+
+!! Sample code
+
+```
+<meta name="mobile-web-app-capable" content="yes"/>
+```
+
+
+
+
 HTML CSS\Declare document Content type
 
 
@@ -2287,16 +2433,39 @@ HTML CSS\DocType Declaration
 
 
 
-HTML CSS\Example META Tags
+HTML CSS\Head section
 
-!! Named META Tags
+!! Set metadata values for interpreting document contents
+* The &lt;head> element is a container for metadata (data about data) and is placed between the &lt;html> tag and the &lt;body> tag
+* Metadata describes how to interpret and format the HTML document stored within the &lt;body> tag
 
-* Name = generator
-* Content = The name of the program you used to create your website
-* Automatically inserted by website-generating applications
-* People who don’t want anybody to know with which tool or program they created their website can remove this tag from the generated pages
+<<ext "W3Schools Head tag">>
 
-<<ext "MetaTags.org Generator">>
+!! Sample code
+
+```
+<head>
+  <title>UrTitle</title>
+</head>
+```
+
+
+
+
+HTML CSS\HTTP-EQUIV Document Type
+
+!! Simulate an HTTP Respsonse header
+
+* The http-equiv attribute value `content-type` provides an HTTP header specifying that the character encoding for the document is in the content attribute
+
+<<ext "W3Schools Meta HTTP-EQUIV">>
+
+!! Sample code
+
+```
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+```
+
 
 
 
@@ -2304,6 +2473,94 @@ HTML CSS\iFrame to Local HTML file
 
 ```
 <iframe src="UrPath\UrFile.html" scrolling=yes style="border-style:none;height:75%;width:100%" ></iframe>
+
+
+
+
+HTML CSS\Language attribute on tags
+
+!! Allow screen-reader to identify the page's default language and / or accent
+
+* tag name = any
+* `lang` attr = an ISO-639 Language code
+* The official W3C recommendation is to declare the primary language for each Web page with a &lt;...lang => attribute in the &lt;html> tag
+* Note: The LANG tag (i.e. the lang="" attribute) is designed to signal screen readers pronunciation engines to switch to another language or accent
+
+<<ext "PSU.edu LangTag">>
+
+!! Sample code
+
+```
+<html lang="en-GB">
+```
+
+
+
+
+HTML CSS\META Tag names
+
+!! Identify tool or program used to create the website
+
+* tag name = `META`
+* `name` attr = `generator`
+* `content` attr = The name of the program you used to create your website
+* Note: This tag is automatically inserted by website-generating applications
+* Note :People who don’t want to advertise which tool or program they used to create the website can remove this tag from the generated pages
+
+<<ext "MetaTags.org Generator">>
+
+!! Sample code
+
+```
+<meta name="generator" content="UrProgramTitle" />
+```
+
+!! Identifies the name of the application running in the web page
+
+* tag name = `META`
+* name attr = `application-name`
+* `content` attr = The application that is dynamically supplying content for the current web page
+* Note: isolated web pages shouldn't define an application-name
+
+<<ext "Mozilla.org META tags">>
+
+```
+<meta name="application-name" content="UrApplicationTitle" />
+```
+
+!! Supply hints about the size of the initial size of the viewport
+
+* tag name = `META`
+* `name` attr = viewport'
+* `content` attr = comma-separated list of equates
+* Note: This is used by mobile devices only
+* Note: The default values may vary between devices and browsers
+* Note: Disabling zooming capabilities by setting user-scalable to a value of no prevents people experiencing low vision conditions from being able to read and understand page content
+
+<<<
+* width = ( A positive integer number ) or ( the text `device-width` )
+* height = ( A positive integer) or ( the text `device-height` )
+* initial-scale = A positive number between 0.0 and 10.0
+* maximum-scale = A positive number between 0.0 and 10.0
+* minimum-scale = A positive number between 0.0 and 10.0
+* user-scalable = `yes`, `no`
+* viewport-fit = `auto', 'contain`, `cover`
+<<<
+
+<<ext "Mozilla.org META tags">>
+
+!! Sample code
+
+```
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+!! Include developer or company information in document
+
+* tag name = `meta`
+* `name` attr = `copyright`, `ur_app_name-version`
+* `content` attr = Any text data
+* Note: This information is not used by the browser
 
 
 
@@ -2367,6 +2624,29 @@ HTML using class
 <tr><td>hi</td></tr>
 <tr><td>hi</td></tr>
 <tr><td>hi</td></tr>
+
+
+
+
+HTML CSS\Website icon
+
+!! Show an icon next to the Website Name
+
+* tag name = `link`
+* `rel` attr = `icon`, `shortcut icon`
+* `href` attr = Website icon filename, relative path, or full path
+* Note: The favicon is loaded as soon as the browsers parses the link rel="icon" declaration, or after the page is loaded when the link is not found
+* Note: The icon keyword may be preceded by the keyword "shortcut". If the "shortcut" keyword is present, the rel attribute's entire value must be an ASCII case-insensitive match for the string "shortcut icon" (with a single U+0020 SPACE character between the tokens and no other ASCII whitespace).
+
+<<ext "MathiasBynens Rel Icon">>
+
+<<ext "WHATWg.org Link Icon">>
+
+!! Sample code
+
+```
+<link rel="shortcut icon" href="favicon.ico">
+```
 
 
 
@@ -3415,6 +3695,7 @@ Tag pairs
 \define tag_button(ur_field, ur_tag_name)
 <$button>
 <$action-setfield $tiddler="$ur_field$" text="$ur_tag_name$"/>
+<$action-navigate $to="Tag pairs"/>
 <<tag-pill "$ur_tag_name$">>
 </$button>
 \end
@@ -3477,6 +3758,8 @@ Clear filters
 </$list><!--tag_prefix_e2-->
 </$list><!--tag_prefix_e1-->
 </$list><!--on_twcard-->
+
+[[Search All Code |View All Code]]
 
 [[___|Recent Entries]]
 
