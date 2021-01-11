@@ -1268,6 +1268,18 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name
 
 
 
+ext MozillaDeveloper CSS Comment
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Comments
+
+
+
+ext MozillaDeveloper Strict mode
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+
+
+
 ext MxBase Classes
 
 VBNet_Project/MxBase/MxBase%20Classes.html
@@ -1304,6 +1316,12 @@ TiddlyWiki_Code\Snapshot\mklauber TWPlugin Shuffle.txt.html
 
 
 
+ext SitePoint Exports Node.JS
+
+https://www.sitepoint.com/understanding-module-exports-exports-node-js/
+
+
+
 ext SQLite Blob text
 
 https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite
@@ -1331,6 +1349,18 @@ https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata
 ext SQLite Top 5 Records
 
 https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite
+
+
+
+ext StackOverflow CSS location
+
+https://stackoverflow.com/questions/1642212/whats-the-difference-if-i-put-css-file-inside-head-or-body
+
+
+
+ext StackOverflow Hide Parent Show Child tag
+
+https://stackoverflow.com/questions/12956937/display-html-child-element-when-parent-element-is-displaynone
 
 
 
@@ -1498,6 +1528,12 @@ https://www.w3schools.com/tags/tag_head.asp
 ext W3Schools Meta HTTP-EQUIV
 
 https://www.w3schools.com/tags/att_meta_http_equiv.asp
+
+
+
+ext W3Schools NoScript tag
+
+https://www.w3schools.com/tags/tag_noscript.asp
 
 
 
@@ -2403,6 +2439,46 @@ Internet Explorer begins interpreting markup using the latest version. When Inte
 
 
 
+HTML CSS\CSS Style definitions
+
+!! Place a CSS style-sheet in the HTML document
+
+* tag name = `style`
+* `type` attr = `text/css`
+* Note: The most recent versions of the HTML spec now permits the &lt;style> tag within body elements
+* Note: Putting CSS in body means it is loaded later and the browser starts drawing the interface faster
+* Note: Putting CSS in body can decrease page performance due to possible reflows/repaints once the browser hits styles further down in the page tree
+
+<<ext "StackOverflow CSS location">>
+
+!! Sample code
+
+```
+<style type="text/css">
+```
+
+!! Place a comment inside of a CSS style-sheet
+
+* Start CSS comment text with forward-slash asterisk ( `/*` )
+* End CSS comment text with asterisk forward-slash ( `*/` )
+
+<<ext "MozillaDeveloper CSS Comment">>
+
+!! Sample code
+
+```
+<style type="text/css">/*
+Comment text
+*/
+
+.ur_class_name {
+  width: 50%;
+}
+</style>
+```
+
+
+
 HTML CSS\Declare document Content type
 
 
@@ -2449,6 +2525,19 @@ HTML CSS\Head section
 </head>
 ```
 
+
+
+
+HTML CSS\Hide content
+
+!! Hide content until user action
+
+* CSS style name = `display`
+* value = `none`
+* Note: The entire tag and sub-tag structure is hidden
+* Note: To hide the root tag and show a child tag, use CSS styles `visibility: hidden` and `visibility: visible`, though the parent markup will still take up screen real estate
+
+<<ext "StackOverflow Hide Parent Show Child tag">>
 
 
 
@@ -2592,6 +2681,27 @@ User agents may dereference the URI and perform some activity based on the actua
 This specification does not define formats for profiles.
 <<<
 
+
+
+
+
+HTML CSS\Noscript alternate content
+
+!! Add content when viewed with JavaScript-disabled browsers
+
+* tag name = `noscript`
+* Note: The tag contents are displayed to users that have disabled scripts in their browser or have a browser that doesn't support user action event scripting
+
+<<ext "W3Schools NoScript tag">>
+
+!! Sample code
+
+```
+</noscript>
+<!--Javascript-disabled browser additional content-->
+</noscript>
+<!--Ordinary content-->
+```
 
 
 
@@ -2774,6 +2884,31 @@ JavaScript
 
 
 
+JavaScript\Comment text
+
+!! Place a comment text block inside of a JavaScript program
+
+* tag name = `script`
+* `type` attr = `text/javascript`
+* Start JavaScript comment text block with forward-slash asterisk ( `/*` )
+* End comment text with asterisk forward-slash ( `*/` )
+* Start JavaScript comment text line with two forward-slashes ( `//` )
+
+!! Sample code
+
+```
+<style type="text/javascript">/*
+Comment text
+*/
+
+.ur_class_name {
+  width: 50%;
+}
+</style>
+```
+
+
+
 JavaScript\Execute Nameless Function
 
 ```
@@ -2783,6 +2918,17 @@ JavaScript\Execute Nameless Function
         }
     )();
 
+
+
+
+JavaScript\Exports object
+
+!! Determine if running under Node.JS
+
+* Initially at least, `exports` is a reference to `module.exports`
+* If you assign anything to `module.exports`, `exports` is not no longer a reference to it, and exports loses all its power
+
+<<ext "SitePoint Exports Node.JS">>
 
 
 
@@ -2876,6 +3022,26 @@ for (let i = 0; i < 5; i++) {
 
 
 
+JavaScript\Logical And/Or
+
+If a value can be converted to true, the value is so-called truthy. If a value can be converted to false, the value is so-called falsy.
+
+Examples of expressions that can be converted to false are:
+
+* null
+* NaN
+* 0
+* empty string ( ` "" ` or ` '' ` ) or empty template literal ( &#x0060;&#x0060; )
+* undefined
+
+The logical OR expression is evaluated left to right, and first truthy returned expression stops evaluation of the remaining expressions
+
+The && operator is executed before the || operator
+
+Note: If you use this operator to provide a default value to some variable, be aware that any falsy value will not be used. If you only need to filter out null or undefined, consider using the nullish coalescing operator ( ` ?? ` )
+
+
+
 JavaScript\Multi-line string
 
 It's not a multiline string, it's a one line string split over multiple lines of code that make up a single statement.
@@ -2921,6 +3087,51 @@ alert('hi';
       </script>
     </body>
   </html>
+
+
+
+
+JavaScript\Strict Mode
+
+!! Show strict mode compilation errors on specific scripts or functions
+
+* First statement in script or function: 'use strict'; or "use strict";
+* Note: Strict mode applies to entire scripts or to individual functions, not individual block statements enclosed in {} braces within a function
+* Note: Strict mode code and non-strict mode code can coexist, so scripts can opt into strict mode incrementally
+* Note: The entire contents of JavaScript modules are automatically in strict mode, with no statement needed to initiate it
+
+<<ext "MozillaDeveloper Strict mode">>
+
+!! Sample data
+
+```
+"use strict";
+mistypeVariable = 17;
+```
+
+<<<
+Result in Developer Tools, Javascript Console:
+
+```
+Uncaught ReferenceError: mistypeVariable is not defined
+    at UrFile.html:UrLineNumber
+```
+<<<
+
+```
+<script type="module">
+mistypeVariable = 17;
+</script>
+```
+
+<<<
+Result:
+
+```
+Uncaught ReferenceError: mistypeVariable is not defined
+    at UrFile.html:UrLine
+```
+<<<
 
 
 
@@ -2990,6 +3201,26 @@ call.internal_var1 = undefined
 ```
 
 The use of the call object is implicit, because once the call object is created, it's put at the top of the scope chain for the duration of the function call.
+
+
+
+JavaScript\TypeOf Name
+
+!! Get string representing object type
+
+* typeof always returns a string
+* Note: typeof operator takes precedence over string concatenation ( ` + ` )
+* Note: type a let or const variable in a block before they are declared will throw a ReferenceError
+
+* Undefined, undeclared variable, or unassigned variable = "undefined"
+* Boolean(1), !!(1) = "boolean"
+* Number('321') , Infinity, NaN = "number"
+* Bigint, 321n = "bigint"
+* String = "string"
+* Symbol = "symbol"
+* Function() {}, class UrClassName {},  = "function"
+* null, object, {ur_prop_name: ur_prop_value}, [ur_val1, ur_val2, ur_val3], new Date(), /regex/ = "object"
+
 
 
 
@@ -3800,6 +4031,7 @@ template ExportAllCode
 
 template Home Button
 
+<$list variable=on_twcard filter="[<tv-config-toolbar-icons>!match[no]]">
 <div style="float:right;padding-left:30px;">
 {{$:/core/ui/TopBar/menu}}
 </div>
@@ -3815,7 +4047,7 @@ template Home Button
 </span>
 <$action-sendmessage $message="tm-home"/>
 </$button></div>
-
+</$list><!--on_twcard-->
 
 
 
@@ -5037,6 +5269,17 @@ line four starts</pre>
 
 
 
+TiddlyWiki\Hidden on Static File
+
+!! Hide section when exported to static HTML file
+
+```
+<$list filter="[<tv-config-toolbar-icons>match[no]]">
+```
+
+
+
+
 TiddlyWiki\iFrame
 
 Use an iFrame to run JavaScript in a TiddlyWiki
@@ -5107,6 +5350,64 @@ alert(strTEXT);"/>
 <div style="float:right">[ext[_ |$ur_pk$.txt.html]]</div>
 <iframe src='$ur_pk$.txt.html' scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
 \end
+
+
+
+
+TiddlyWiki\Ignore WikiText formatting
+
+!! Use the TextWidget to ignore WikiText formatting
+
+* widget name = `$text`
+* `text` attr = <$text text="`still black colored text`" />
+
+!! Sample code
+
+```
+<$text text="`still black colored text`" />
+```
+
+<<<
+Results:
+
+<$text text="`still black colored text`" />
+<<<
+!! Use the Rules card pragma to ignore WikiText formatting
+
+* [New card]
+* Put `\rules only` at the top of the card text
+
+!! Sample code
+
+```
+\rules only
+`still black colored text`
+```
+
+<<<
+Results:
+
+<$text text="`still black colored text`" />
+<<<
+
+!! Use the Card Datatype to ignore WikiText formatting
+
+* [New card]
+* `type` field = `text/plain`
+
+!! Sample code
+
+```
+`still black colored text`
+```
+
+<<<
+Results:
+
+```
+`still black colored text`
+```
+<<<
 
 
 

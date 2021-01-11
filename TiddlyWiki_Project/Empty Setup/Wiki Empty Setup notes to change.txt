@@ -21,3 +21,21 @@ From root index.htm
 </$list><!--cur_title-->
 </$wikify><!--lit_open_bracket-->
 ```
+
+[remove standard keyboard shortcuts]
+- Ctl-S and Win-S keyboard shortcuts for Save action
+
+[New exporter]
+- template ExportAsText
+
+[template ExportAllCode]
+- change field `extension` to `.card.txt`
+
+
+*** DESIRED ***
+
+[template Home]
+- Add another button to navigate to the top of the current card
+
+[template ExportAsText]
+- Figure out how to export a Wikified version of the card content as text
