@@ -481,14 +481,23 @@ Remove COPY tag from all cards
 
 
 
+HTML Document Search
+
+<$list variable=found_line_path filter="[get[line-path]sort[]]">
+<$list variable=filter_root_path filter="[<found_line_path>split[-]count[1]match[1]]">
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=yes />
+</$list><!--filter_root_path-->
+</$list><!--found_line_path-->
+
+
+
 HTML Document Text
 
-<$list variable=cur_field filter="[prefix[User Action\]fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]each:value[]sort[]]">
-<$list variable=found_card filter="[prefix[User Action\]has<cur_field>sort[]]">
-<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> ur_parent_card=<<found_card>> /><br>
-</$list><!--found_card-->
-</$list><!--cur_field-->
-
+<$list variable=found_line_path filter="[get[line-path]sort[]]">
+<$list variable=filter_root_path filter="[<found_line_path>split[-]count[1]match[1]]">
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=no />
+</$list><!--filter_root_path-->
+</$list><!--found_line_path-->
 
 
 
@@ -806,7 +815,48 @@ mcr glbl_disp_field
 </$list><!--cur_entry-->
 </$list><!--parent_card-->
 \end
+\define glbl_disp_next_level(ur_prefix)
+<$list variable=cur_field filter="[<currentTiddler>fields[]prefix[ln-$ur_prefix$]]">
+<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
+</$list><!--cur_field-->
+<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
+<$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix[ln-$ur_prefix$]sort[]]">
+<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
+<$list variable=next_card filter="[line-path<next_line_branch>sort[]]">
 
+* <$link to=<<next_card>> />
+</$list><!--next_card-->
+</$list><!--next_line_branch-->
+</$list><!--cur_line_branch-->
+</$list><!--cur_line_path-->
+\end
+\define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
+<$list variable=filter_level_max filter="[[$next_level$]!match[10]]">
+<$list variable=cur_line_card filter="[line-path[$ur_root_path$]sort[]]">
+<$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
+<$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
+<$list variable=filter_disp_link filter="[[$ur_disp_link$]lowercase[]match[yes]]">
+<$link to=<<cur_line_card>> ><<cur_line_branch>> -></$link>
+</$list><!--filter_disp_link-->
+<$macrocall $name=glbl_disp_field ur_field=<<cur_line_branch>> ur_parent_card=<<cur_line_card>> /><br>
+</$list><!--filter_skip_e0-->
+<$list variable=next_line_branch filter="[<cur_line_branch>addprefix[$ur_root_path$]sort[]]">
+<$list variable=next_level filter="[[$ur_level$]add[1]]">
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<next_line_branch>> ur_level=<<next_level>> ur_disp_link="$ur_disp_link$" />
+</$list><!--next_level-->
+</$list><!--next_line_branch-->
+</$list><!--cur_line_branch-->
+</$list><!--cur_line_card-->
+</$list><!--filter_level_max-->
+\end
+\define glbl_disp_subtree()
+<hr>
+<$list variable=found_line_num filter="[<currentTiddler>fields[]prefix[ln-]]">
+<$list variable=found_line_path filter="[<currentTiddler>get[line-path]addsuffix<found_line_num>]">
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=yes />
+</$list><!--found_line_path-->
+</$list><!--found_line_num-->
+\end
 
 
 
