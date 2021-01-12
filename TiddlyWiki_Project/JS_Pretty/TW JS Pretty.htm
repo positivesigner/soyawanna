@@ -10340,7 +10340,7 @@ Error message and password prompt
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210112142149868" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210112143438239" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10349,13 +10349,13 @@ Error message and password prompt
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210112142149869" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210112143438239" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210112132159264" list="[[TW JS Pretty]] [[User Action]] [[User Action\ec58 Hold all document text and formatting in BODY tag]] [[User Action\ec62 Hold all static styles in a DIV tag]] [[User Action\ec63 Hold the Boot.CSS Style classes in a Style tag]] [[User Action\e5-ec58-ed138 Static No-script Content]]" modified="20210112140936996" title="$:/StoryList">
+<div created="20210112132159264" list="[[TW JS Pretty]] [[User Action]] [[User Action\ed133 tc-password-wrapper for input css code]] [[User Action\ec58 Hold all document text and formatting in BODY tag]] [[User Action\ec62 Hold all static styles in a DIV tag]] [[User Action\ec63 Hold the Boot.CSS Style classes in a Style tag]] [[User Action\ed132 CSS Class tc-password-wrapper for input]] [[User Action\e5-ec58-ed138 Static No-script Content]] [[mcr glbl_disp_field]]" modified="20210112143413202" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -11130,7 +11130,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
 --&gt;</pre>
 </div>
-<div created="20210111053249444" modified="20210112140451737" tags="$:/tags/Macro MCR" title="mcr glbl_disp_field">
+<div created="20210111053249444" modified="20210112143335017" tags="$:/tags/Macro MCR" title="mcr glbl_disp_field">
 <pre>\define glbl_disp_field(ur_field, ur_parent_card)
 &lt;$list variable=parent_card filter=&quot;[[$ur_parent_card$]!match[]else&lt;currentTiddler&gt;]&quot;&gt;
 &lt;$list variable=cur_entry filter=&quot;[&lt;parent_card&gt;get[$ur_field$]]&quot;&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;
@@ -11168,22 +11168,27 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--cur_prefix--&gt;
 &lt;/$list&gt;&lt;!--cur_line_path--&gt;
 &lt;$list variable=disp_subtree filter=&quot;[[$ur_prefix$]match[]]&quot;&gt;
-&lt;&lt;glbl_disp_subtree&gt;&gt;
+&lt;&lt;glbl_disp_subtree &quot;card&quot;&gt;&gt;
+&lt;&lt;glbl_disp_subtree &quot;yes&quot;&gt;&gt;
 &lt;/$list&gt;&lt;!--disp_subtree--&gt;
 \end
 \define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
 &lt;$list variable=filter_level_max filter=&quot;[[$next_level$]!match[10]]&quot;&gt;
 &lt;$list variable=cur_line_card filter=&quot;[line-path[$ur_root_path$]sort[]]&quot;&gt;
 &lt;$list variable=disp_card_link filter=&quot;[[$ur_disp_link$]lowercase[]match[card]]&quot;&gt;
-&lt;$list variable=indent_count filter=&quot;[[-&gt;]pad[$ur_level$],[-&gt;]]&quot;&gt;
-&lt;&lt;indent_count&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;
+&lt;$list variable=indent_count filter=&quot;[[$ur_level$]multiply[2]]&quot;&gt;
+&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;
+&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--indent_arrows--&gt;
 &lt;/$list&gt;&lt;!--indent_count--&gt;
 &lt;/$list&gt;&lt;!--disp_card_link--&gt;
 &lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;
 &lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;
 &lt;$list variable=disp_branch_link filter=&quot;[[$ur_disp_link$]lowercase[]match[yes]]&quot;&gt;
-&lt;$list variable=indent_count filter=&quot;[[-&gt;]pad[$ur_level$],[-&gt;]]&quot;&gt;
-&lt;&lt;indent_count&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;
+&lt;$list variable=indent_count filter=&quot;[[$ur_level$]multiply[2]]&quot;&gt;
+&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;
+&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--indent_arrows--&gt;
 &lt;/$list&gt;&lt;!--indent_count--&gt;
 &lt;/$list&gt;&lt;!--disp_branch_link--&gt;
 &lt;$list variable=disp_doc_contents filter=&quot;[[$ur_disp_link$]lowercase[]!match[card]]&quot;&gt;
@@ -11199,11 +11204,11 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--cur_line_card--&gt;
 &lt;/$list&gt;&lt;!--filter_level_max--&gt;
 \end
-\define glbl_disp_subtree()
+\define glbl_disp_subtree(ur_disp_link)
 &lt;hr&gt;
 &lt;$list variable=found_line_num filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[ln-]]&quot;&gt;
 &lt;$list variable=found_line_path filter=&quot;[&lt;currentTiddler&gt;get[line-path]addsuffix&lt;found_line_num&gt;]&quot;&gt;
-&lt;$macrocall $name=glbl_recurse_code_level ur_root_path=&lt;&lt;found_line_path&gt;&gt; ur_level=1 ur_disp_link=yes /&gt;
+&lt;$macrocall $name=glbl_recurse_code_level ur_root_path=&lt;&lt;found_line_path&gt;&gt; ur_level=1 ur_disp_link=&quot;$ur_disp_link$&quot; /&gt;
 &lt;/$list&gt;&lt;!--found_line_path--&gt;
 &lt;/$list&gt;&lt;!--found_line_num--&gt;
 \end</pre>
@@ -11712,7 +11717,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <pre>&lt;&lt;glbl_disp_next_level&gt;&gt;
 </pre>
 </div>
-<div created="20210112142113685" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63ln-ed126" ln-ed133="	width: 100%;" modified="20210112142138217" tags="" title="User Action\ed133 tc-password-wrapper for input css code">
+<div created="20210112142113685" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63ln-ed132" ln-ed133="	width: 100%;" modified="20210112143423812" tags="" title="User Action\ed133 tc-password-wrapper for input css code">
 <pre>&lt;&lt;glbl_disp_next_level&gt;&gt;
 </pre>
 </div>

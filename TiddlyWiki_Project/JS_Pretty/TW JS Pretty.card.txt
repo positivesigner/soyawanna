@@ -856,22 +856,27 @@ mcr glbl_disp_field
 </$list><!--cur_prefix-->
 </$list><!--cur_line_path-->
 <$list variable=disp_subtree filter="[[$ur_prefix$]match[]]">
-<<glbl_disp_subtree>>
+<<glbl_disp_subtree "card">>
+<<glbl_disp_subtree "yes">>
 </$list><!--disp_subtree-->
 \end
 \define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
 <$list variable=filter_level_max filter="[[$next_level$]!match[10]]">
 <$list variable=cur_line_card filter="[line-path[$ur_root_path$]sort[]]">
 <$list variable=disp_card_link filter="[[$ur_disp_link$]lowercase[]match[card]]">
-<$list variable=indent_count filter="[[->]pad[$ur_level$],[->]]">
-<<indent_count>> <$link to=<<cur_line_card>> /><br>
+<$list variable=indent_count filter="[[$ur_level$]multiply[2]]">
+<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
+<<indent_arrows>> <$link to=<<cur_line_card>> /><br>
+</$list><!--indent_arrows-->
 </$list><!--indent_count-->
 </$list><!--disp_card_link-->
 <$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
 <$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
 <$list variable=disp_branch_link filter="[[$ur_disp_link$]lowercase[]match[yes]]">
-<$list variable=indent_count filter="[[->]pad[$ur_level$],[->]]">
-<<indent_count>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
+<$list variable=indent_count filter="[[$ur_level$]multiply[2]]">
+<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
+<<indent_arrows>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
+</$list><!--indent_arrows-->
 </$list><!--indent_count-->
 </$list><!--disp_branch_link-->
 <$list variable=disp_doc_contents filter="[[$ur_disp_link$]lowercase[]!match[card]]">
@@ -887,11 +892,11 @@ mcr glbl_disp_field
 </$list><!--cur_line_card-->
 </$list><!--filter_level_max-->
 \end
-\define glbl_disp_subtree()
+\define glbl_disp_subtree(ur_disp_link)
 <hr>
 <$list variable=found_line_num filter="[<currentTiddler>fields[]prefix[ln-]]">
 <$list variable=found_line_path filter="[<currentTiddler>get[line-path]addsuffix<found_line_num>]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=yes />
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
 </$list><!--found_line_path-->
 </$list><!--found_line_num-->
 \end
