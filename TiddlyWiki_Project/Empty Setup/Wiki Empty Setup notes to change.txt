@@ -25,9 +25,6 @@ From root index.htm
 [remove standard keyboard shortcuts]
 - Ctl-S and Win-S keyboard shortcuts for Save action
 
-[New exporter]
-- template ExportAsText
-
 [template ExportAllCode]
 - change field `extension` to `.card.txt`
 
@@ -46,6 +43,9 @@ From root index.htm
 - Will have a macro with the original card as a parameter
 - Shows current card tags, code, and fields, button to export as text
 - Code window has Edit button to hide code block and show edit text box, find/replace text boxes and button
+
+[card top-right export options]
+- rename "Export Code" to "Export All Code"
 
 [template ExportAsText]
 - Figure out how to export a Wikified version of the card content as text

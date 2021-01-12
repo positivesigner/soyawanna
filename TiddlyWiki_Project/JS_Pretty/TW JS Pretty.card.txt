@@ -842,7 +842,7 @@ mcr glbl_disp_field
 </$list><!--disp_parent_link-->
 <$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
 <$list variable=cur_prefix filter="[<currentTiddler>fields[]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]prefix[$ur_prefix$]addprefix[ln-]sort[]]">
-<$list variable=cur_field filter="[<currentTiddler>fields[]prefix<cur_prefix>]">
+<$list variable=cur_field filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
 <$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
 </$list><!--cur_field-->
 <$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
