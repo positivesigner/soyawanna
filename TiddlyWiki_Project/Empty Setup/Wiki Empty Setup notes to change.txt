@@ -37,6 +37,10 @@ From root index.htm
 [template Home]
 - Add another button to navigate to the top of the current card
 
+[card pin button]
+- include close button and link back to original card at top and bottom
+
+
 [card top-right buttons]
 - Add button to create temp card
 - Will have a macro with the original card as a parameter
