@@ -36,6 +36,11 @@ From root index.htm
 
 [template Home]
 - Add another button to navigate to the top of the current card
+- Add another button to create temp card that shows current card code and
+  has find/replace text boxes and button
 
 [template ExportAsText]
 - Figure out how to export a Wikified version of the card content as text
+
+[editor previe]
+- Change shortcut Alt-P to show or hide preview pane even without the editor icons

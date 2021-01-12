@@ -481,6 +481,16 @@ Remove COPY tag from all cards
 
 
 
+HTML Document Actions
+
+<$list variable=found_line_path filter="[get[line-path]sort[]]">
+<$list variable=filter_root_path filter="[<found_line_path>split[-]count[1]match[1]]">
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=card />
+</$list><!--filter_root_path-->
+</$list><!--found_line_path-->
+
+
+
 HTML Document Search
 
 <$list variable=found_line_path filter="[get[line-path]sort[]]">
@@ -833,12 +843,21 @@ mcr glbl_disp_field
 \define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
 <$list variable=filter_level_max filter="[[$next_level$]!match[10]]">
 <$list variable=cur_line_card filter="[line-path[$ur_root_path$]sort[]]">
+<$list variable=disp_card_link filter="[[$ur_disp_link$]lowercase[]match[card]]">
+<$list variable=indent_count filter="[[->]pad[$ur_level$],[->]]">
+<<indent_count>> <$link to=<<cur_line_card>> /><br>
+</$list><!--indent_count-->
+</$list><!--disp_card_link-->
 <$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
 <$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
-<$list variable=filter_disp_link filter="[[$ur_disp_link$]lowercase[]match[yes]]">
-<$link to=<<cur_line_card>> ><<cur_line_branch>> -></$link>
-</$list><!--filter_disp_link-->
+<$list variable=disp_branch_link filter="[[$ur_disp_link$]lowercase[]match[yes]]">
+<$list variable=indent_count filter="[[->]pad[$ur_level$],[->]]">
+<<indent_count>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
+</$list><!--indent_count-->
+</$list><!--disp_branch_link-->
+<$list variable=disp_doc_contents filter="[[$ur_disp_link$]lowercase[]!match[card]]">
 <$macrocall $name=glbl_disp_field ur_field=<<cur_line_branch>> ur_parent_card=<<cur_line_card>> /><br>
+</$list><!--disp_doc_contents-->
 </$list><!--filter_skip_e0-->
 <$list variable=next_line_branch filter="[<cur_line_branch>addprefix[$ur_root_path$]sort[]]">
 <$list variable=next_level filter="[[$ur_level$]add[1]]">

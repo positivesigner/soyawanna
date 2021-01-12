@@ -229,6 +229,8 @@ Error message and password prompt
 
 <li>Font Size</li>
 
+<li>HTML Document Actions</li>
+
 <li>HTML Document Search</li>
 
 <li>HTML Document Text</li>
@@ -278,10 +280,6 @@ Error message and password prompt
 <li>User Action\e5 Hold all contents in HTML tag</li>
 
 <li>User Action\e5-e0 Identify document default language / accent through HTML tag</li>
-
-<li>User Action\e5-ec58-ec62 Static Styles</li>
-
-<li>User Action\e5-ec58-ec62-ec63 Boot.CSS</li>
 
 <li>User Action\e5-ec58-ed138 Static No-script Content</li>
 
@@ -344,6 +342,22 @@ Error message and password prompt
 <li>User Action\ec58-e0 Setup the default CSS styles for all document elements</li>
 
 <li>User Action\ec59 Notify about Raw markup section at start of BODY tag</li>
+
+<li>User Action\ec62 Hold all static styles in a DIV tag</li>
+
+<li>User Action\ec63 Hold the Boot.CSS Style classes in a Style tag</li>
+
+<li>User Action\ec71 CSS Class tc-error-form</li>
+
+<li>User Action\ec72 tc-error-form css code</li>
+
+<li>User Action\ec85 CSS Class tc-error-form for h1</li>
+
+<li>User Action\ec86 tc-error-form for h1 css codes</li>
+
+<li>User Action\ec89 CSS Class tc-error-prompt</li>
+
+<li>User Action\ec90 tc-error-prompt css code</li>
 
 <li>User Action\efc14e667 Notify about Raw markup section at end of BODY tag</li>
 
@@ -10300,7 +10314,7 @@ Error message and password prompt
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210111213405359" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210112125932138" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10309,13 +10323,13 @@ Error message and password prompt
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210111213405359" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210112125932139" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210111205827260" list="[[TW JS Pretty]] [[HTML Document Search]] [[User Action\e6 Hold all document format information in HEAD tag]] [[User Action\ec58 Hold all document text and formatting in BODY tag]] [[User Action]] [[mcr glbl_disp_field]]" modified="20210111212522523" title="$:/StoryList">
+<div created="20210111205827260" list="[[TW JS Pretty]] [[HTML Document Search]] [[User Action]] [[User Action\ec63 Hold the Boot.CSS Style classes in a Style tag]] [[User Action\ec71 CSS Class tc-error-form]] [[HTML Document Actions]]" modified="20210112125929397" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -10784,6 +10798,13 @@ Remove COPY tag from all cards
 [[btn Delete Cards]]
 </pre>
 </div>
+<div created="20210112123755304" modified="20210112123808026" tags="DOC" title="HTML Document Actions">
+<pre>&lt;$list variable=found_line_path filter=&quot;[get[line-path]sort[]]&quot;&gt;
+&lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[1]match[1]]&quot;&gt;
+&lt;$macrocall $name=glbl_recurse_code_level ur_root_path=&lt;&lt;found_line_path&gt;&gt; ur_level=1 ur_disp_link=card /&gt;
+&lt;/$list&gt;&lt;!--filter_root_path--&gt;
+&lt;/$list&gt;&lt;!--found_line_path--&gt;</pre>
+</div>
 <div created="20210111160858329" modified="20210111204350770" tags="DOC" title="HTML Document Search">
 <pre>&lt;$list variable=found_line_path filter=&quot;[get[line-path]sort[]]&quot;&gt;
 &lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[1]match[1]]&quot;&gt;
@@ -11083,7 +11104,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
 --&gt;</pre>
 </div>
-<div created="20210111053249444" modified="20210111213348210" tags="$:/tags/Macro MCR" title="mcr glbl_disp_field">
+<div created="20210111053249444" modified="20210112124427514" tags="$:/tags/Macro MCR" title="mcr glbl_disp_field">
 <pre>\define glbl_disp_field(ur_field, ur_parent_card)
 &lt;$list variable=parent_card filter=&quot;[[$ur_parent_card$]!match[]else&lt;currentTiddler&gt;]&quot;&gt;
 &lt;$list variable=cur_entry filter=&quot;[&lt;parent_card&gt;get[$ur_field$]]&quot;&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;
@@ -11108,12 +11129,21 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 \define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
 &lt;$list variable=filter_level_max filter=&quot;[[$next_level$]!match[10]]&quot;&gt;
 &lt;$list variable=cur_line_card filter=&quot;[line-path[$ur_root_path$]sort[]]&quot;&gt;
+&lt;$list variable=disp_card_link filter=&quot;[[$ur_disp_link$]lowercase[]match[card]]&quot;&gt;
+&lt;$list variable=indent_count filter=&quot;[[-&gt;]pad[$ur_level$],[-&gt;]]&quot;&gt;
+&lt;&lt;indent_count&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--indent_count--&gt;
+&lt;/$list&gt;&lt;!--disp_card_link--&gt;
 &lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;
 &lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;
-&lt;$list variable=filter_disp_link filter=&quot;[[$ur_disp_link$]lowercase[]match[yes]]&quot;&gt;
-&lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt; -&gt;&lt;/$link&gt;
-&lt;/$list&gt;&lt;!--filter_disp_link--&gt;
+&lt;$list variable=disp_branch_link filter=&quot;[[$ur_disp_link$]lowercase[]match[yes]]&quot;&gt;
+&lt;$list variable=indent_count filter=&quot;[[-&gt;]pad[$ur_level$],[-&gt;]]&quot;&gt;
+&lt;&lt;indent_count&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--indent_count--&gt;
+&lt;/$list&gt;&lt;!--disp_branch_link--&gt;
+&lt;$list variable=disp_doc_contents filter=&quot;[[$ur_disp_link$]lowercase[]!match[card]]&quot;&gt;
 &lt;$macrocall $name=glbl_disp_field ur_field=&lt;&lt;cur_line_branch&gt;&gt; ur_parent_card=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--disp_doc_contents--&gt;
 &lt;/$list&gt;&lt;!--filter_skip_e0--&gt;
 &lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix[$ur_root_path$]sort[]]&quot;&gt;
 &lt;$list variable=next_level filter=&quot;[[$ur_level$]add[1]]&quot;&gt;
@@ -11271,53 +11301,6 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 </div>
 <div created="20210111162225719" line-path="e0ln-e0ln-e5" ln-e0="lang=&quot;en-GB&quot;&gt;" modified="20210111201624505" tags="" title="User Action\e5-e0 Identify document default language / accent through HTML tag">
 <pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
-</pre>
-</div>
-<div created="20210111071846426" e5-ec58-ec62-e1="&lt;!--~~ Static styles ~~--&gt;" e5-ec58-ec62-e2="&lt;div id=&quot;styleArea&quot;&gt;" e5-ec58-ec62-z1="&lt;/div&gt;" modified="20210111091402101" tags="" title="User Action\e5-ec58-ec62 Static Styles">
-<pre>!! Hold all static styles in a DIV tag
-
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-e2&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-z1&gt;&gt;
-
-!! Include stylesheets
-
-&lt;$list variable=sub_card filter=&quot;[prefix[User Action\e5-ec58-ec62-]]&quot;&gt;
-
-* &lt;$link to=&lt;&lt;sub_card&gt;&gt; /&gt;
-&lt;/$list&gt;
-</pre>
-</div>
-<div created="20210111072146542" e5-ec58-ec62-ec63-e1="&lt;style data-tiddler-title=&quot;$:/boot/boot.css&quot; data-tiddler-type=&quot;text/css&quot; type=&quot;text/css&quot;&gt;" e5-ec58-ec62-ec63-e2="/* Basic styles used before we boot up the parsing engine */" e5-ec58-ec62-ec63-ec67="/* Error message and password prompt */" e5-ec58-ec62-ec63-ec71=".tc-error-form { 	font-family: sans-serif; 	color: #fff; 	z-index: 20000; 	position: fixed; 	background-color: rgb(255, 75, 75); 	border: 8px solid rgb(255, 0, 0); 	border-radius: 8px; 	width: 50%; 	margin-left: 25%; 	margin-top: 4em; 	padding: 0 2em 1em 2em; }" e5-ec58-ec62-ec63-ec85=".tc-error-form h1 { 	text-align: center; }" e5-ec58-ec62-ec63-ec89=".tc-error-prompt { 	text-align: center; 	color: #000; }" e5-ec58-ec62-ec63-ec94=".tc-error-message { 	overflow: auto; 	max-height: 40em; 	padding-right: 1em; 	margin: 1em 0; 	white-space: pre-line; }" e5-ec58-ec62-ec63-ed102=".tc-password-wrapper {     font-family: sans-serif; 	z-index: 20000; 	position: fixed; 	text-align: center; 	width: 200px; 	top: 4em; 	left: 50%; 	margin-left: -144px; /* - width/2 - paddingHorz/2 - border */ 	padding: 16px 16px 16px 16px; 	border-radius: 8px; }" e5-ec58-ec62-ec63-ed115=".tc-password-wrapper { 	color: #000; 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); 	background-color: rgb(197, 235, 183); 	border: 8px solid rgb(164, 197, 152); }" e5-ec58-ec62-ec63-ed122=".tc-password-wrapper form { 	text-align: left; }" e5-ec58-ec62-ec63-ed126=".tc-password-wrapper h1 { 	font-size: 16px; 	line-height: 20px; 	padding-bottom: 16px; }" e5-ec58-ec62-ec63-ed132=".tc-password-wrapper input { 	width: 100%; }" e5-ec58-ec62-ec63-z1="&lt;/style&gt;" modified="20210111073239975" tags="" title="User Action\e5-ec58-ec62-ec63 Boot.CSS">
-<pre>!! Hold the Boot.CSS Style classes in a Style tag
-
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-e1&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-z1&gt;&gt;
-
-!! CSS Class tc-error-form
-
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ec71&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ec85&gt;&gt;
-
-!! CSS Class tc-error-prompt
-
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ec89&gt;&gt;
-
-!! CSS Class tc-error-message
-
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ec89&gt;&gt;
-
-!! CSS Class tc-password-wrapper
-
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed102&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed115&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed122&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed126&gt;&gt;
-* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed132&gt;&gt;
-
-&lt;$list variable=sub_card filter=&quot;[prefix[User Action\e5-ec58-ec62-ec63-]]&quot;&gt;
-
-* &lt;$link to=&lt;&lt;sub_card&gt;&gt; /&gt;
-&lt;/$list&gt;
 </pre>
 </div>
 <div created="20210111073320410" e5-ec58-ed138-e1="&lt;!--~~ Static content for Google and browsers without JavaScript ~~--&gt;" e5-ec58-ed138-e2="&lt;noscript&gt;" e5-ec58-ed138-z1="&lt;/noscript&gt;" modified="20210111073836798" tags="" title="User Action\e5-ec58-ed138 Static No-script Content">
@@ -11593,7 +11576,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
 </pre>
 </div>
-<div created="20210111061854577" line-path="e0ln-e0ln-e5" ln-ec58="&lt;body" ln-z1="&lt;/body&gt;" modified="20210111205718365" tags="" title="User Action\ec58 Hold all document text and formatting in BODY tag">
+<div created="20210111061854577" line-path="e0ln-e0ln-e5" ln-ec58="&lt;body" ln-z1="&lt;/body&gt;" modified="20210112122826632" tags="" title="User Action\ec58 Hold all document text and formatting in BODY tag">
 <pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
 &lt;&lt;glbl_disp_next_level z&gt;&gt;
 </pre>
@@ -11602,11 +11585,71 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
 </pre>
 </div>
-<div created="20210111205841741" line-path="e0ln-e0ln-e5ln-e6" ln-ec59="&lt;!--~~ Raw markup for the top of the body section ~~--&gt;" modified="20210111205909472" tags="" title="User Action\ec59 Notify about Raw markup section at start of BODY tag">
+<div created="20210111205841741" line-path="e0ln-e0ln-e5ln-ec58" ln-ec59="&lt;!--~~ Raw markup for the top of the body section ~~--&gt;" modified="20210112122822489" tags="" title="User Action\ec59 Notify about Raw markup section at start of BODY tag">
 <pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
 </pre>
 </div>
-<div created="20210111205921217" line-path="e0ln-e0ln-e5ln-e6" ln-fc14e667="&lt;!--~~ Raw markup for the bottom of the body section ~~--&gt;" ln-fc14e668="" modified="20210111210100210" tags="" title="User Action\efc14e667 Notify about Raw markup section at end of BODY tag">
+<div created="20210111071846426" line-path="e0ln-e0ln-e5ln-ec58" ln-ec60="" ln-ec61="&lt;!--~~ Static styles ~~--&gt;" ln-ec62="&lt;div id=&quot;styleArea&quot;&gt;" ln-z1="&lt;/div&gt;" modified="20210112123130762" tags="" title="User Action\ec62 Hold all static styles in a DIV tag">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+&lt;&lt;glbl_disp_next_level z&gt;&gt;
+</pre>
+</div>
+<div created="20210111072146542" line-path="e0ln-e0ln-e5ln-ec58ln-ec62" ln-ec63="&lt;style data-tiddler-title=&quot;$:/boot/boot.css&quot; data-tiddler-type=&quot;text/css&quot; type=&quot;text/css&quot;&gt;" ln-z1="&lt;/style&gt;" modified="20210112125248228" tags="" title="User Action\ec63 Hold the Boot.CSS Style classes in a Style tag">
+<pre>!! Hold the Boot.CSS Style classes in a Style tag
+
+&lt;&lt;glbl_disp_next_level e&gt;&gt;
+&lt;&lt;glbl_disp_next_level z&gt;&gt;
+
+!! CSS Class tc-error-prompt
+
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ec89&gt;&gt;
+
+!! CSS Class tc-error-message
+
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ec89&gt;&gt;
+
+!! CSS Class tc-password-wrapper
+
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed102&gt;&gt;
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed115&gt;&gt;
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed122&gt;&gt;
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed126&gt;&gt;
+* &lt;&lt;glbl_disp_field e5-ec58-ec62-ec63-ed132&gt;&gt;
+
+&lt;$list variable=sub_card filter=&quot;[prefix[User Action\e5-ec58-ec62-ec63-]]&quot;&gt;
+
+* &lt;$link to=&lt;&lt;sub_card&gt;&gt; /&gt;
+&lt;/$list&gt;
+</pre>
+</div>
+<div created="20210112124712568" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63" ln-e0="/* Basic styles used before we boot up the parsing engine */" ln-ec66="" ln-ec67="/* Error message and password prompt */" ln-ec70="" ln-ec71=".tc-error-form {" ln-z1="}" modified="20210112124951614" tags="" title="User Action\ec71 CSS Class tc-error-form">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+&lt;&lt;glbl_disp_next_level z&gt;&gt;
+</pre>
+</div>
+<div created="20210112124954335" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63ln-ec71" ln-ec72="	font-family: sans-serif;" ln-ec73="	color: #fff;" ln-ec74="	z-index: 20000;" ln-ec75="	position: fixed;" ln-ec76="	background-color: rgb(255, 75, 75);" ln-ec77="	border: 8px solid rgb(255, 0, 0);" ln-ec78="	border-radius: 8px;" ln-ec79="	width: 50%;" ln-ec80="	margin-left: 25%;" ln-ec81="	margin-top: 4em;" ln-ec82="	padding: 0 2em 1em 2em;" modified="20210112125714315" tags="" title="User Action\ec72 tc-error-form css code">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+</pre>
+</div>
+<div created="20210112125322544" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63" ln-ec84="" ln-ec85=".tc-error-form h1 {" ln-z1="}" modified="20210112125454431" tags="" title="User Action\ec85 CSS Class tc-error-form for h1">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+&lt;&lt;glbl_disp_next_level z&gt;&gt;
+</pre>
+</div>
+<div created="20210112125501622" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63ln-ec85" ln-ec86="	text-align: center;" modified="20210112125545531" tags="" title="User Action\ec86 tc-error-form for h1 css codes">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+</pre>
+</div>
+<div created="20210112125622172" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63" ln-ec88="" ln-ec89=".tc-error-prompt {" ln-z1="}" modified="20210112125813438" tags="" title="User Action\ec89 CSS Class tc-error-prompt">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+&lt;&lt;glbl_disp_next_level z&gt;&gt;
+</pre>
+</div>
+<div created="20210112125822315" line-path="e0ln-e0ln-e5ln-ec58ln-ec62ln-ec63ln-ec89" ln-ec90="	text-align: center;" ln-ec91="	color: #000;" modified="20210112125909430" tags="" title="User Action\ec90 tc-error-prompt css code">
+<pre>&lt;&lt;glbl_disp_next_level e&gt;&gt;
+</pre>
+</div>
+<div created="20210111205921217" line-path="e0ln-e0ln-e5ln-ec58" ln-fc14e667="&lt;!--~~ Raw markup for the bottom of the body section ~~--&gt;" ln-fc14e668="" modified="20210112122804052" tags="" title="User Action\efc14e667 Notify about Raw markup section at end of BODY tag">
 <pre>&lt;&lt;glbl_disp_next_level f&gt;&gt;
 </pre>
 </div>
