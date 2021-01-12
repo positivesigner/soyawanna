@@ -825,14 +825,8 @@ mcr glbl_disp_field
 </$list><!--cur_entry-->
 </$list><!--parent_card-->
 \end
-\define glbl_disp_next_level(ur_prefix)
-<$list variable=filter_child_link filter="[[$ur_prefix$]!match[]]">
-<$list variable=cur_field filter="[<currentTiddler>fields[]prefix[ln-$ur_prefix$]]">
-<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
-</$list><!--filter_child_link-->
-</$list><!--cur_field-->
+\define glbl_disp_parent_link()
 <$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
-<$list variable=filter_parent_link filter="[[$ur_prefix$]match[]]">
 <$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
 <$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
 <$list variable=parent_card filter="[line-path<parent_line_path>has<parent_branch>]">
@@ -840,8 +834,18 @@ mcr glbl_disp_field
 </$list><!--parent_card-->
 </$list><!--parent_branch-->
 </$list><!--parent_line_path-->
-</$list><!--filter_parent_link-->
-<$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix[ln-$ur_prefix$]sort[]]">
+</$list><!--cur_line_path-->
+\end
+\define glbl_disp_next_level(ur_prefix)
+<$list variable=disp_parent_link filter="[[$ur_prefix$]match[]]">
+<<glbl_disp_parent_link>><br>
+</$list><!--disp_parent_link-->
+<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
+<$list variable=cur_prefix filter="[<currentTiddler>fields[]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]prefix[$ur_prefix$]addprefix[ln-]sort[]]">
+<$list variable=cur_field filter="[<currentTiddler>fields[]prefix<cur_prefix>]">
+<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
+</$list><!--cur_field-->
+<$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
 <$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
 <$list variable=next_card filter="[line-path<next_line_branch>sort[]]">
 
@@ -849,7 +853,11 @@ mcr glbl_disp_field
 </$list><!--next_card-->
 </$list><!--next_line_branch-->
 </$list><!--cur_line_branch-->
+</$list><!--cur_prefix-->
 </$list><!--cur_line_path-->
+<$list variable=disp_subtree filter="[[$ur_prefix$]match[]]">
+<<glbl_disp_subtree>>
+</$list><!--disp_subtree-->
 \end
 \define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
 <$list variable=filter_level_max filter="[[$next_level$]!match[10]]">
