@@ -1412,6 +1412,12 @@ TiddlyWiki_Code\Features\TW Features.htm
 
 
 
+ext TW JS Pretty
+
+TiddlyWiki_Project\JS_Pretty\TW JS Pretty.htm
+
+
+
 ext TW Manual
 
 TiddlyWiki_Code\Snapshot\TheBook - The TiddlyWiki Manual.txt.html
@@ -4052,26 +4058,6 @@ template Home Button
 
 
 TiddlyWiki
-
-<<ext "Wiki Empty Setup">>
-
-<<ext "TW Addon Text Replace">>
-
-<<ext "TW Features">>
-
-<<ext "TW Manual">>
-
-<<ext "TW Snapshot v5d01d23">>
-
-<<ext "TW Empty v5d01d23">>
-
-<<ext "TW Snapshot v5d01d23 pre-release">>
-
-<<ext "Shuffle List Entries">>
-
-<<ext "TW Snapshot Review">>
-
-<<ext "TW Create Javascript Plugin">>
 
 <<glbl_article_list>>
 
@@ -6964,6 +6950,33 @@ Note: You can also create a Browser shortcut to a local folder
 
 [Android Desktop icons]
 - Note: The icon was added to the desktop automatically
+
+
+
+
+TW Project
+
+<<ext "Wiki Empty Setup">>
+
+<<ext "TW Addon Text Replace">>
+
+<<ext "TW Features">>
+
+<<ext "TW Manual">>
+
+<<ext "TW Snapshot v5d01d23">>
+
+<<ext "TW Empty v5d01d23">>
+
+<<ext "TW Snapshot v5d01d23 pre-release">>
+
+<<ext "Shuffle List Entries">>
+
+<<ext "TW Snapshot Review">>
+
+<<ext "TW Create Javascript Plugin">>
+
+<<ext "TW JS Pretty">>
 
 
 
