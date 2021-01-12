@@ -1,3 +1,5 @@
 Configuration has a list of file names to search for deployments
 Each deployment location should have the same version
 If not, show list of differences.
+
+TWCard entries check against master file for a specific list of cards
