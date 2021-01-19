@@ -966,10 +966,10 @@ css alternating-rows
 
 DivPop btn
 
-\define divpop_current(ur_ref)
+<$list variable=cur_card filter="[all[current]]">
 <$button class=<<tv-config-toolbar-class>> >
 <$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=<<cur_card>>/>
 <$action-sendmessage $message="tm-close-tiddler" $param="pop_right"/>
 <$list filter="[<tv-config-toolbar-icons>match[yes]]">
 {{DivPop.svg}}
@@ -978,17 +978,13 @@ DivPop btn
 <span class="tc-btn-text"><$text text="Popup over Sidebar"/></span>
 </$list>
 </$button>
-\end
-
-<$list filter="[all[current]]">
-<$macrocall $name=divpop_current ur_ref=<<currentTiddler>> /> 
 </$list>
 
 
 
 DivPop glbl
 
-<$list filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
+<$list variable=cur_divpop_card filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
 <div style="
 position: fixed;
 top: 0px;
@@ -1004,9 +1000,17 @@ bottom: 0%;
 <$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
 close
 </$button>
-<$tiddler tiddler=<<currentTiddler>> >
+&nbsp;&nbsp;&nbsp;<$reveal type="match" state="$:/state/popup/$ur_pk$" text="show"><$button set="$:/state/popup/$ur_pk$" setTo="hide">show</$button>&nbsp;&nbsp;&nbsp;<$link to=<<cur_divpop_card>> ><<cur_divpop_card>>
+</$link>
+<$list variable=cur_text filter="[<cur_divpop_card>get[text]]">
+<$codeblock code=<<cur_text>> /></$list>
+</$reveal>
+<$reveal type="nomatch" state="$:/state/popup/$ur_pk$" text="show"><$button set="$:/state/popup/$ur_pk$" setTo="show">code</$button>&nbsp;&nbsp;&nbsp;<$link to=<<cur_divpop_card>> ><<cur_divpop_card>>
+</$link>
+<$tiddler tiddler=<<cur_divpop_card>> >
 <$transclude mode="block" />
 </$tiddler>
+</$reveal>
 </div>
 </div>
 </$list>
@@ -3953,9 +3957,6 @@ Tag pairs
 Clear filters
 </$button><br>
 
-Tag Search: <$edit-text tiddler="$:/state/popup/tag_e1" field=text default="" placeholder="[Type to search for tag 1]" autoHeight=yes tag=input/>
-<$edit-text tiddler="$:/state/popup/tag_e2" field=text default="" placeholder="[Type to search for tag 2]" autoHeight=yes tag=input/><br>
-<br>
 Text search: <$edit-text tiddler="$:/state/popup/text_input_e1" field=text default="" placeholder="[Type to search for text 1]" autoHeight=yes tag=input/>
 <$edit-text tiddler="$:/state/popup/text_input_e2" field=text default="" placeholder="[Type to search for text 2]" autoHeight=yes tag=input/>
 <$button>
@@ -4088,7 +4089,7 @@ Tags Count Audit
 template ExportAllCode
 
 \define renderContent()
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]] [!prefix[$]!has[draft.of]!has[tags]!prefix[undefined]] +[sort[title]]">
 <hr>
 <h2><$link to=<<cur_tip_pk>> /></h2>
 <$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">

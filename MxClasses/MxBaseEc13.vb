@@ -1,5 +1,5 @@
 Option Strict On
-Namespace Mx '2020m01d03
+Namespace Mx '2020m01d13
     Public Module ConstVar
         Public Const mt = ""
         Public Const qs = """"
@@ -102,18 +102,18 @@ Namespace Mx '2020m01d03
                 pstpNOTICE_MSG.dLine().dLine()
             End If
 
-            pstpNOTICE_MSG.dLine(ur_exception.Message)
-            pstpNOTICE_MSG.dLine(Strapd().d("Error in @r1.@r2").r1(ur_methodbase.DeclaringType.Name).r2(ur_methodbase.Name).dS("(status: @r1)").r1(ur_procedure_status))
+            pstpNOTICE_MSG.dLineNB(ur_exception.Message)
+            pstpNOTICE_MSG.dLineNB(Strapd().d("Error in @r1.@r2").r1(ur_methodbase.DeclaringType.Name).r2(ur_methodbase.Name).dS("(status: @r1)").r1(ur_procedure_status))
         End Sub 'dError_Data
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub dError_Stack(ur_exception As System.Exception)
             Dim hr As Integer = System.Runtime.InteropServices.Marshal.GetHRForException(ur_exception)
-            pstpNOTICE_MSG.dLine(ur_exception.GetType.ToString & "(0x" & hr.ToString("X8") & "): " & ur_exception.Message & System.Environment.NewLine & ur_exception.StackTrace & System.Environment.NewLine)
+            pstpNOTICE_MSG.dLineNB(ur_exception.GetType.ToString & "(0x" & hr.ToString("X8") & "): " & ur_exception.Message & System.Environment.NewLine & ur_exception.StackTrace & System.Environment.NewLine)
             Dim st = New System.Diagnostics.StackTrace(ur_exception, True)
             For Each objFRAME In st.GetFrames
                 If objFRAME.GetFileLineNumber() > 0 Then
-                    pstpNOTICE_MSG.dLine("Line:" & objFRAME.GetFileLineNumber() & " Filename: " & System.IO.Path.GetFileName(objFRAME.GetFileName) & System.Environment.NewLine)
+                    pstpNOTICE_MSG.dLineNB("Line:" & objFRAME.GetFileLineNumber() & " Filename: " & System.IO.Path.GetFileName(objFRAME.GetFileName) & System.Environment.NewLine)
                 End If
             Next objFRAME
         End Sub 'dError_Stack
@@ -643,13 +643,29 @@ Namespace Mx '2020m01d03
         End Function 'dCSVList
 
         <System.Diagnostics.DebuggerHidden()>
+        Public Function dLineNB(Optional ur_text As String = "") As Strap
+            dLineNB = Me.dSprtrNB(vbCrLf, ur_text)
+        End Function 'dLineNB
+
+        <System.Diagnostics.DebuggerHidden()>
         Public Function dLine(Optional ur_text As String = "") As Strap
             dLine = Me.dSprtr(vbCrLf, ur_text)
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
-        Public Function dS(ur_text As String) As Strap
-            dS = Me.dSprtr(s, ur_text)
+        Public Function dS(Optional ur_text As String = "") As Strap
+            dS = Me
+            Me.pstbTEXT.Append(s).Append(ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dSNB(Optional ur_text As String = "") As Strap
+            dSNB = Me
+            If Me.HasText Then
+                Me.pstbTEXT.Append(s)
+            End If
+
+            Me.pstbTEXT.Append(ur_text)
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
@@ -657,6 +673,16 @@ Namespace Mx '2020m01d03
             dSprtr = Me
             Me.pstbTEXT.Append(ur_sprtr).Append(ur_text)
         End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dSprtrNB(ur_sprtr As String, ur_text As String) As Strap
+            dSprtrNB = Me
+            If Me.HasText Then
+                Me.pstbTEXT.Append(ur_sprtr)
+            End If
+
+            Me.pstbTEXT.Append(ur_text)
+        End Function 'dSprtrNB
 
         <System.Diagnostics.DebuggerHidden()>
         Public Function gCopy(ur_text As String) As Strap
@@ -1037,6 +1063,9 @@ Namespace Mx '2020m01d03
         Public Class Cmdline_UB(Of T As {New, bitBASE}, W As {New, bitBASE})
             <System.Diagnostics.DebuggerHidden()>
             Public Shared Function CommandLine_UBParm(ur_ub_key As W, ur_ub_val As W, ur_source_text As String, ParamArray ur_default_field_list() As T) As sCMD_RET
+                'Adding bitBASE fields to the CommandLine_UBParm parameters will have their name assigned the first few non-prefixed fields
+                'They are just file paths but without /parameter_name=
+                '(VBNetScript.exe UrFilePath\UrFileName.ext) would have VBNetScript.exe assigned the first default field name, and UrFilePath\UrFileName.ex assigned the second default field name
                 CommandLine_UBParm = prv.CommandLine_UBParm(ur_ub_key, ur_ub_val, ur_source_text, ur_default_field_list)
             End Function
 
@@ -1306,7 +1335,7 @@ Namespace Mx '2020m01d03
                     End If
 
                     ur_parm_val.Clear()
-                End Function
+                End Function 'Flush_Parameter
 
                 <System.Diagnostics.DebuggerHidden()>
                 Private Shared Function gChunkType(ur_char As Char) As enmCMD_RET
@@ -1587,12 +1616,6 @@ Namespace Mx '2020m01d03
                     sdaPATH.Add(objFILE)
                 Next objFILE
             End Function 'PathList
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function wAssemblyDir(ur_assembly_info As Microsoft.VisualBasic.ApplicationServices.AssemblyInfo) As FileName
-                wAssemblyDir = Me
-                Me.FilePath = ur_assembly_info.DirectoryPath.Replace("\bin\Debug", mt)
-            End Function 'wAssemblyDir
 
             <System.Diagnostics.DebuggerHidden()>
             Public Function wClear() As FileName
@@ -2036,6 +2059,20 @@ Namespace Mx '2020m01d03
         End Function 'DelAll
 
         <System.Diagnostics.DebuggerHidden()>
+        Public Function DelKey(ParamArray ur_key() As String) As TablePKStr(Of E, T)
+            DelKey = Me
+            Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_key)
+            Call Me.ttb.Remove(strPK_KEY_COMBINED)
+        End Function 'DelKey
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function Del(ur_row As T) As TablePKStr(Of E, T)
+            Del = Me
+            Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_row)
+            Call Me.ttb.Remove(strPK_KEY_COMBINED)
+        End Function 'DelKey
+
+        <System.Diagnostics.DebuggerHidden()>
         Public Function Ins(ur_row As T) As T
             Ins = ur_row
             Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_row)
@@ -2233,7 +2270,7 @@ Namespace Mx '2020m01d03
 
                 Dim stpPK_KEY_COMBINED = Strapd()
                 For KEYCTR = 1 To intPK_KEYS
-                    If KEYCTR = 1 Then stpPK_KEY_COMBINED.d(vbTab)
+                    If KEYCTR > 1 Then stpPK_KEY_COMBINED.d(vbTab)
                     stpPK_KEY_COMBINED.d(ur_key(b0(KEYCTR)).ToUpper)
                 Next
 

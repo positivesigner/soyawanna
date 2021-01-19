@@ -175,6 +175,8 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
+<li>$:/Import</li>
+
 <li>$:/isEncrypted</li>
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
@@ -10753,6 +10755,11 @@ Error message and password prompt
 [tag[INDEX]!has[sort_ord]sort[title]]
 </pre>
 </div>
+<div status="complete" title="$:/Import">
+<pre>The following tiddlers were imported:
+
+# [[template ExportAllCode]]</pre>
+</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10786,19 +10793,19 @@ Error message and password prompt
 <div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210113153609805" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210119071849170" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20210111033126475" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
-<div created="20201226064844310" modified="20210113153609806" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210119071849171" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210113151950148" list="[[Tag pairs]] [[Code Samples]]" modified="20210113152741724" title="$:/StoryList">
+<div created="20210119045609509" list="$:/Import [[Tag pairs]] [[TiddlyWiki\Data Tiddler]] [[VBNetCode\Text file to JSON Lines]] [[Code Samples]]" modified="20210119045620489" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11694,11 +11701,11 @@ C:\TJBF\zPortableInstalls\Chrome\Data\profile\Default\*Cache\
 .alternating-rows tr:nth-child(odd) {background-color:lightgrey}
 </pre>
 </div>
-<div created="20200418064445680" modified="20201226065145140" tags="$:/tags/ViewToolbar META" title="DivPop btn">
-<pre>\define divpop_current(ur_ref)
+<div created="20200418064445680" modified="20210119034729150" tags="$:/tags/ViewToolbar META" title="DivPop btn">
+<pre>&lt;$list variable=cur_card filter=&quot;[all[current]]&quot;&gt;
 &lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;yes&quot;/&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;$ur_ref$&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&lt;&lt;cur_card&gt;&gt;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-close-tiddler&quot; $param=&quot;pop_right&quot;/&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
 {{DivPop.svg}}
@@ -11707,14 +11714,10 @@ C:\TJBF\zPortableInstalls\Chrome\Data\profile\Default\*Cache\
 &lt;span class=&quot;tc-btn-text&quot;&gt;&lt;$text text=&quot;Popup over Sidebar&quot;/&gt;&lt;/span&gt;
 &lt;/$list&gt;
 &lt;/$button&gt;
-\end
-
-&lt;$list filter=&quot;[all[current]]&quot;&gt;
-&lt;$macrocall $name=divpop_current ur_ref=&lt;&lt;currentTiddler&gt;&gt; /&gt; 
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200418110049404" modified="20201226065145140" tags="$:/tags/BelowStory META" title="DivPop glbl">
-<pre>&lt;$list filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
+<div created="20200418110049404" modified="20210119040744696" tags="$:/tags/BelowStory META" title="DivPop glbl">
+<pre>&lt;$list variable=cur_divpop_card filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
 &lt;div style=&quot;
 position: fixed;
 top: 0px;
@@ -11730,9 +11733,17 @@ bottom: 0%;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 close
 &lt;/$button&gt;
-&lt;$tiddler tiddler=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/popup/$ur_pk$&quot; text=&quot;show&quot;&gt;&lt;$button set=&quot;$:/state/popup/$ur_pk$&quot; setTo=&quot;hide&quot;&gt;show&lt;/$button&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$link to=&lt;&lt;cur_divpop_card&gt;&gt; &gt;&lt;&lt;cur_divpop_card&gt;&gt;
+&lt;/$link&gt;
+&lt;$list variable=cur_text filter=&quot;[&lt;cur_divpop_card&gt;get[text]]&quot;&gt;
+&lt;$codeblock code=&lt;&lt;cur_text&gt;&gt; /&gt;&lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/popup/$ur_pk$&quot; text=&quot;show&quot;&gt;&lt;$button set=&quot;$:/state/popup/$ur_pk$&quot; setTo=&quot;show&quot;&gt;code&lt;/$button&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$link to=&lt;&lt;cur_divpop_card&gt;&gt; &gt;&lt;&lt;cur_divpop_card&gt;&gt;
+&lt;/$link&gt;
+&lt;$tiddler tiddler=&lt;&lt;cur_divpop_card&gt;&gt; &gt;
 &lt;$transclude mode=&quot;block&quot; /&gt;
 &lt;/$tiddler&gt;
+&lt;/$reveal&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$list&gt;
@@ -14209,7 +14220,7 @@ UPPER(field)
 
 SELECT * FROM Table_Name LIMIT 5;</pre>
 </div>
-<div created="20210108091437598" modified="20210113153608987" sort_ord="1" tags="INDEX" title="Tag pairs">
+<div created="20210108091437598" modified="20210119040834762" sort_ord="1" tags="INDEX" title="Tag pairs">
 <pre>\define tag_button(ur_field, ur_tag_name)
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;$ur_field$&quot; text=&quot;$ur_tag_name$&quot;/&gt;
@@ -14234,9 +14245,6 @@ SELECT * FROM Table_Name LIMIT 5;</pre>
 Clear filters
 &lt;/$button&gt;&lt;br&gt;
 
-Tag Search: &lt;$edit-text tiddler=&quot;$:/state/popup/tag_e1&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for tag 1]&quot; autoHeight=yes tag=input/&gt;
-&lt;$edit-text tiddler=&quot;$:/state/popup/tag_e2&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for tag 2]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
-&lt;br&gt;
 Text search: &lt;$edit-text tiddler=&quot;$:/state/popup/text_input_e1&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for text 1]&quot; autoHeight=yes tag=input/&gt;
 &lt;$edit-text tiddler=&quot;$:/state/popup/text_input_e2&quot; field=text default=&quot;&quot; placeholder=&quot;[Type to search for text 2]&quot; autoHeight=yes tag=input/&gt;
 &lt;$button&gt;
@@ -14361,9 +14369,9 @@ Search text
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 </pre>
 </div>
-<div created="20201226041128309" description="Export Code" extension="codetxt" modified="20201226065145145" tags="$:/tags/Exporter META" title="template ExportAllCode">
+<div created="20201226041128309" description="Export Code" extension="codetxt" modified="20210119044100617" tags="$:/tags/Exporter META" title="template ExportAllCode">
 <pre>\define renderContent()
-&lt;$list variable=cur_tip_pk filter=&quot;[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;$list variable=cur_tip_pk filter=&quot;[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]] [!prefix[$]!has[draft.of]!has[tags]!prefix[undefined]] +[sort[title]]&quot;&gt;
 &lt;hr&gt;
 &lt;h2&gt;&lt;$link to=&lt;&lt;cur_tip_pk&gt;&gt; /&gt;&lt;/h2&gt;
 &lt;$list variable=cur_tip_text filter=&quot;[&lt;cur_tip_pk&gt;get[text]]&quot;&gt;
