@@ -12567,7 +12567,7 @@ View All Cards
 
 View All Code
 
-<$list variable=cur_card_pk filter="[!has[draft.of]!prefix[undefined]!prefix[$:]sort[title]]">
+<$list variable=cur_card_pk filter="[!has[draft.of]!prefix[undefined]!prefix[$]] [prefix[$]!has[draft.of]has[tags]] +[sort[title]]">
 <hr>
 <h2><$link to=<<cur_card_pk>> /></h2>
 <$list variable=cur_card_tags filter="[<cur_card_pk>tags[]]">

@@ -1072,9 +1072,12 @@ View All Cards
 
 View All Code
 
-<$list variable=cur_card_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_card_pk filter="[!has[draft.of]!prefix[undefined]!prefix[$]] [prefix[$]!has[draft.of]has[tags]] +[sort[title]]">
 <hr>
 <h2><$link to=<<cur_card_pk>> /></h2>
+<$list variable=cur_card_tags filter="[<cur_card_pk>tags[]]">
+<<cur_card_tags>> 
+</$list><!--cur_card_text-->
 <$list variable=cur_card_text filter="[<cur_card_pk>get[text]]">
 <$codeblock code=<<cur_card_text>> />
 </$list><!--cur_card_text-->
