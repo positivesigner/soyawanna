@@ -185,6 +185,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/dropdown/keyboardshortcut/preview-286565879</li>
+
 <li>$:/state/dropdown/keyboardshortcut/save-all-changes-286565879</li>
 
 <li>$:/state/dropdown/keyboardshortcut/save-wiki-286565879</li>
@@ -318,6 +320,8 @@ Error message and password prompt
 <li>ext MathiasBynens Rel Icon</li>
 
 <li>ext MetaTags.org Generator</li>
+
+<li>ext Microsoft DotNet Char ConvertToUTF32</li>
 
 <li>ext Microsoft RemoteDesktop Enable</li>
 
@@ -542,6 +546,8 @@ Error message and password prompt
 <li>keyboard action FontNormal</li>
 
 <li>keyboard action HomeTiddlers</li>
+
+<li>keyboard action Preview</li>
 
 <li>keyboard action SaveAllChanges</li>
 
@@ -780,6 +786,8 @@ Error message and password prompt
 <li>VBNetCode\Text file to JSON Lines</li>
 
 <li>VBNetCode\To Hex</li>
+
+<li>VBNetCode\Unicode Code Point</li>
 
 <li>VBNetCode\UserBowl example</li>
 
@@ -10772,6 +10780,9 @@ Error message and password prompt
 <div created="20201226064729191" modified="20201226064729191" title="$:/SiteTitle">
 <pre>Code Samples</pre>
 </div>
+<div created="20210119101953452" modified="20210119101953452" title="$:/state/dropdown/keyboardshortcut/preview-286565879">
+<pre>open</pre>
+</div>
 <div created="20201226064917274" modified="20201226064918319" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
 <pre>close</pre>
 </div>
@@ -10790,22 +10801,22 @@ Error message and password prompt
 <div created="20201226084816776" modified="20210108155916584" title="$:/state/searchNreplace/search">
 <pre></pre>
 </div>
-<div created="20201226080855668" modified="20201226080855669" title="$:/state/showeditpreview">
+<div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210119075453565" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210119105409367" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226064903165" modified="20210111033126475" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
-<div created="20201226064844310" modified="20210119075453565" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210119105409368" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210119075338322" list="[[Tag pairs]] [[Recent Entries]] [[View All Code]] [[Code Samples]]" modified="20210119075340740" title="$:/StoryList">
+<div created="20210119104951230" list="[[Tag pairs]] [[Code Samples]] VBNetCode [[VBNetCode\Unicode Code Point]]" modified="20210119104955088" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -11933,6 +11944,9 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20210109170124243" modified="20210109170149234" tags="ext" title="ext MetaTags.org Generator">
 <pre>https://www.metatags.org/all-meta-tags-overview/meta-name-generator/</pre>
+</div>
+<div created="20210119105027338" modified="20210119105052174" tags="EXT" title="ext Microsoft DotNet Char ConvertToUTF32">
+<pre>https://docs.microsoft.com/en-us/dotnet/api/system.char.converttoutf32?view=net-5.0#System_Char_ConvertToUtf32_System_String_System_Int32_</pre>
 </div>
 <div created="20210108093141289" modified="20210108094349895" tags="EXT" title="ext Microsoft RemoteDesktop Enable">
 <pre>https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access</pre>
@@ -13643,6 +13657,12 @@ avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);i
 </div>
 <div created="20200314150100178" key="((home-tiddlers))" modified="20201226065145144" tags="$:/tags/KeyboardShortcut META" title="keyboard action HomeTiddlers">
 <pre>&lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
+</pre>
+</div>
+<div created="20210119102302901" key="((preview))" modified="20210119102517584" tags="$:/tags/KeyboardShortcut META" title="keyboard action Preview">
+<pre>&lt;$list filter=&quot;[[$:/state/showeditpreview]get[text]!match[yes]]&quot;&gt;&lt;$action-setfield $tiddler=&quot;$:/state/showeditpreview&quot; text=&quot;yes&quot;/&gt;&lt;/$list&gt;
+&lt;$list filter=&quot;[[$:/state/showeditpreview]get[text]match[yes]]&quot;&gt;&lt;$action-setfield $tiddler=&quot;$:/state/showeditpreview&quot; text=&quot;no&quot;/&gt;&lt;/$list&gt;
+
 </pre>
 </div>
 <div created="20201114070625406" key="((save-all-changes))" modified="20210103080833093" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveAllChanges">
@@ -17908,6 +17928,24 @@ Dim strTEXT = &quot;FF&quot;
 Dim strHEX_CODE = &quot;&amp;H&quot; &amp; strTEXT
 Dim intNUMBER = CInt(strHEX_CODE)
 MsgBox(intNUMBER) -&gt; 255
+</pre>
+</div>
+<div created="20210119105005042" modified="20210119105406451" tags="" title="VBNetCode\Unicode Code Point">
+<pre>&lt;&lt;ext &quot;Microsoft DotNet Char ConvertToUTF32&quot;&gt;&gt;
+
+* Note: The index can be any character in the string
+
+```
+retval = char.ConvertToUtf32(s:=&quot;A&quot;, index:=0).Tostring
+```
+
+&lt;&lt;&lt;
+Result:
+
+```
+65
+```
+&lt;&lt;&lt;
 </pre>
 </div>
 <div created="20210102175148916" modified="20210108185012952" tags="CodeLibrary Extract VBCode" title="VBNetCode\UserBowl example">

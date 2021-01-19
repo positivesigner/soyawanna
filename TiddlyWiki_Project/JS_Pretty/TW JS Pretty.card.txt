@@ -311,6 +311,32 @@ ext TW Return
 
 
 
+fix -z1 and -e1
+
+<$list variable=cur_card filter="[all[tiddlers]has[line-path]]">
+
+<$list variable=cur_zfield_name filter="[<cur_card>fields[]prefix[ln-z]]">
+
+<$link to=<<cur_card>> />
+<<cur_zfield_name>><br>
+
+</$list><!--cur_zfield_name-->
+
+<$list variable=cur_field_name filter="[<cur_card>fields[]prefix[ln-]]">
+
+<$list variable=split_field filter="[<cur_field_name>split[-]count[]!match[2]]">
+
+-''''-''''-''''- <$link to=<<cur_card>> />
+<<cur_field_name>><br>
+
+</$list><!--cur_field_name-->
+
+</$list><!--cur_field_name-->
+</$list><!--cur_card-->
+
+
+
+
 Font Size
 
 <$button>
@@ -534,6 +560,15 @@ keyboard action FontNormal
 keyboard action HomeTiddlers
 
 <$action-sendmessage $message="tm-home"/>
+
+
+
+
+keyboard action Preview
+
+<$list filter="[[$:/state/showeditpreview]get[text]!match[yes]]"><$action-setfield $tiddler="$:/state/showeditpreview" text="yes"/></$list>
+<$list filter="[[$:/state/showeditpreview]get[text]match[yes]]"><$action-setfield $tiddler="$:/state/showeditpreview" text="no"/></$list>
+
 
 
 
@@ -820,10 +855,10 @@ mcr glbl_compare_lines
 mcr glbl_disp_field
 
 \define glbl_disp_field(ur_field, ur_parent_card)
-<$list variable=parent_card filter="[[$ur_parent_card$]!match[]else<currentTiddler>]">
-<$list variable=cur_entry filter="[<parent_card>get[$ur_field$]]"><$text text=<<cur_entry>> />
+<$list variable=line_num filter="[[$ur_field$]split[ln-]butfirst[]first[]]">
+<$list variable=cur_entry filter="[[empty.htm]get<line_num>]"><$text text=<<cur_entry>> />
 </$list><!--cur_entry-->
-</$list><!--parent_card-->
+</$list><!--line_num-->
 \end
 \define glbl_disp_parent_link()
 <$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
@@ -1039,6 +1074,8 @@ TW JS Pretty
 {{ext TW Return}}
 
 <<list-links filter:"[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]">>
+
+* [[empty.htm]]
 
 [[___|Recent Entries]]
 

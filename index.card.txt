@@ -1260,6 +1260,12 @@ https://www.metatags.org/all-meta-tags-overview/meta-name-generator/
 
 
 
+ext Microsoft DotNet Char ConvertToUTF32
+
+https://docs.microsoft.com/en-us/dotnet/api/system.char.converttoutf32?view=net-5.0#System_Char_ConvertToUtf32_System_String_System_Int32_
+
+
+
 ext Microsoft RemoteDesktop Enable
 
 https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access
@@ -3301,6 +3307,15 @@ keyboard action FontNormal
 keyboard action HomeTiddlers
 
 <$action-sendmessage $message="tm-home"/>
+
+
+
+
+keyboard action Preview
+
+<$list filter="[[$:/state/showeditpreview]get[text]!match[yes]]"><$action-setfield $tiddler="$:/state/showeditpreview" text="yes"/></$list>
+<$list filter="[[$:/state/showeditpreview]get[text]match[yes]]"><$action-setfield $tiddler="$:/state/showeditpreview" text="no"/></$list>
+
 
 
 
@@ -7923,6 +7938,27 @@ Dim strTEXT = "FF"
 Dim strHEX_CODE = "&H" & strTEXT
 Dim intNUMBER = CInt(strHEX_CODE)
 MsgBox(intNUMBER) -> 255
+
+
+
+
+VBNetCode\Unicode Code Point
+
+<<ext "Microsoft DotNet Char ConvertToUTF32">>
+
+* Note: The index can be any character in the string
+
+```
+retval = char.ConvertToUtf32(s:="A", index:=0).Tostring
+```
+
+<<<
+Result:
+
+```
+65
+```
+<<<
 
 
 
