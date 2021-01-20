@@ -267,6 +267,10 @@ Error message and password prompt
 
 <li>Video Books</li>
 
+<li>Video Books\de</li>
+
+<li>Video Books\de-01</li>
+
 <li>Video Books\ex</li>
 
 <li>Video Books\ex-01</li>
@@ -276,6 +280,18 @@ Error message and password prompt
 <li>Video Books\ge-01</li>
 
 <li>Video Books\ge-02</li>
+
+<li>Video Books\jos</li>
+
+<li>Video Books\jos-01</li>
+
+<li>Video Books\le</li>
+
+<li>Video Books\le-01</li>
+
+<li>Video Books\nu</li>
+
+<li>Video Books\nu-01</li>
 
 <li>View All Cards</li>
 
@@ -10299,7 +10315,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210120184933830" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210120190728516" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10308,13 +10324,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210120184933831" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210120190728516" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210120184928518" list="[[ASL Bible Videos]] [[Video Books\ge-01]]" modified="20210120184928519" title="$:/StoryList">
+<div created="20210120185142197" list="[[ASL Bible Videos]] [[Video Books\jos]] [[Video Books\jos-01]]" modified="20210120190458292" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -10444,7 +10460,7 @@ return &quot;&quot;;
 <div created="20201114100602184" modified="20201226040306582" tags="META" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20201114051300267" modified="20210120184637349" tags="INDEX" title="ASL Bible Videos">
+<div created="20201114051300267" modified="20210120190438479" tags="INDEX" title="ASL Bible Videos">
 <pre>\define show_video()
 &lt;video width=&quot;480&quot; height=&quot;360&quot;
 controls preload=&quot;metadata&quot;&gt;
@@ -10459,6 +10475,9 @@ Your browser does not support the HTML 5 video tag.
 
 &lt;$list variable=playback_file filter=&quot;[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]]&quot;&gt;
 &lt;$list variable=playback_time filter=&quot;[[$:/state/popup/video_time]get[text]!match[]else[00:00:00]]&quot;&gt;
+
+&lt;&lt;playback_file&gt;&gt;
+
 &lt;&lt;show_video&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_file--&gt;
 &lt;/$list&gt;&lt;!--playback_time--&gt;
@@ -10968,7 +10987,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/ol&gt;
 \end</pre>
 </div>
-<div created="20210120175329269" modified="20210120184859433" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
+<div created="20210120175329269" modified="20210120185411204" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
 <pre>\define glbl_book_field(ur_card)
 &lt;$list variable=cur_book_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[book-seq]]&quot;&gt;
 &lt;$list variable=cur_book_abbrv filter=&quot;[&lt;cur_book_card&gt;split[\]last[]split[']first[]]&quot;&gt;
@@ -11006,6 +11025,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--cur_book_card--&gt;
 \end
 \define glbl_chapter_field(ur_card)
+&lt;$edit-text tiddler=&quot;$:/state/popup/temp_time&quot; field=text default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;
 &lt;$list variable=cur_chapter_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]&quot;&gt;
 &lt;$list variable=cur_chapter_parentcard filter=&quot;[&lt;cur_chapter_card&gt;split[-]first[]]&quot;&gt;
 &lt;$list variable=cur_chapter_seq filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
@@ -11370,6 +11390,12 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--clc_prefix--&gt;
 </pre>
 </div>
+<div book-seq="05" created="20210120185856443" maxres-suffix="_r720P.m4v" modified="20210120185907042" tags="" title="Video Books\de" video-prefix="nwt_05_De_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210120185916208" modified="20210120190110663" tags="" title="Video Books\de-01" v01="00:00:09" v02="00:00:41">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
 <div book-seq="02" created="20210120174418351" maxres-suffix="_r720P.m4v" modified="20210120180138950" tags="" title="Video Books\ex" video-prefix="nwt_02_Ex_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
@@ -11383,6 +11409,24 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div chapter-seq="02" created="20210120181437686" modified="20210120181506228" tags="" title="Video Books\ge-02" v01="00:00:02" v02="00:00:09.4">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="06" created="20210120190220632" maxres-suffix="_r720P.mp4" modified="20210120190508722" tags="" title="Video Books\jos" video-prefix="nwt_06_Jos_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210120190304455" modified="20210120190558490" tags="" title="Video Books\jos-01" v01="00:00:10" v02="00:00:22">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="03" created="20210120185029372" maxres-suffix="_r480P.m4v" modified="20210120185057032" tags="" title="Video Books\le" video-prefix="nwt_03_Le_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210120185104161" modified="20210120185240793" tags="" title="Video Books\le-01" v01="00:00:12" v02="00:00:26">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="04" created="20210120185516394" maxres-suffix="_r720P.m4v" modified="20210120185530283" tags="" title="Video Books\nu" video-prefix="nwt_04_Nu_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210120185542357" modified="20210120185748761" tags="" title="Video Books\nu-01" v01="00:00:15" v02="00:00:31">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div created="20200405112008513" modified="20201229110659683" tags="META" title="View All Cards">
