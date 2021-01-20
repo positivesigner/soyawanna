@@ -185,8 +185,8 @@ Your browser does not support the HTML 5 video tag.
 <$list variable=playback_file filter="[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]]">
 <$list variable=playback_time filter="[[$:/state/popup/video_time]get[text]!match[]else[00:00:00]]">
 <<show_video>>
-</$list>
-</$list>
+</$list><!--playback_file-->
+</$list><!--playback_time-->
 
 <$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.5"/>x0.5</$button>
 <$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.75"/>x0.75</$button>
@@ -200,94 +200,95 @@ Current Speed = 1.0x
 <<script>>
 <script>window.rate = 1.0; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[0.5]]">
 Current Speed = 0.5x
 <<script>>
 <script>window.rate = 0.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[0.75]]">
 Current Speed = 0.75x
 <<script>>
 <script>window.rate = 0.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.25]]">
 Current Speed = 1.25x
 <<script>>
 <script>window.rate = 1.25; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.5]]">
 Current Speed = 1.5x
 <<script>>
 <script>window.rate = 1.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.75]]">
 Current Speed = 1.75x
 <<script>>
 <script>window.rate = 1.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--playback_speed-->
 
 <!--ge, ex, ...-->
-<$list variable=cur_book_seq filter="[is[current]fields[]prefix[book-seq-]]">
-<$list variable=cur_book_abbrv filter="[is[current]get<cur_book_seq>]">
-<$list variable=cur_video_field filter="[<cur_book_abbrv>addsuffix[-video]]">
-<$list variable=cur_file_prefix filter="[is[current]get<cur_video_field>]">
-<$list variable=cur_vid_maxres filter="[<cur_book_abbrv>addsuffix[-maxres]]">
-<$list variable=cur_file_suffix filter="[is[current]get<cur_vid_maxres>]">
-<$list variable=cur_file_name filter="[<cur_file_prefix>addsuffix[01]addsuffix<cur_file_suffix>]">
+<$link to="Video Books">_''''_''''_</$link>
+<$list variable=cur_book_seq filter="[has[book-seq]get[book-seq]sort[]]">
+<$list variable=cur_book_card filter="[book-seq<cur_book_seq>]">
+<$list variable=cur_book_abbrv filter="[<cur_book_card>split[\]last[]]">
+<$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
+<$list variable=cur_maxres_suffix filter="[<cur_book_card>get[maxres-suffix]]">
+<$list variable=first_chapter filter="[[01]]">
+<$list variable=cur_file_name filter="[<cur_video_prefix>addsuffix<first_chapter>addsuffix<cur_maxres_suffix>]">
 <$button>
-<$action-setfield $tiddler="$:/state/popup/book_abbrv" text=<<cur_book_abbrv>> />
-<$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>> /><<cur_book_abbrv>></$button>
+<$action-setfield $tiddler="$:/state/popup/book_card" text=<<cur_book_card>> />
+<$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>> /><$action-setfield $tiddler="$:/state/popup/video_time" text="" />
+<$action-setfield $tiddler="$:/state/popup/chapter_card" text=<<first_chapter>> />
+<<cur_book_abbrv>></$button>
 </$list><!--cur_file_name-->
-</$list><!--cur_file_suffix-->
-</$list><!--cur_vid_maxres-->
-</$list><!--cur_file_prefix-->
-</$list><!--cur_video_field-->
+</$list><!--first_chapter-->
+</$list><!--cur_maxres_suffix-->
+</$list><!--cur_video_prefix-->
 </$list><!--cur_book_abbrv-->
+</$list><!--cur_book_card-->
 </$list><!--cur_book_seq-->
 
 <!--ch.01, ch.02, ...-->
-<$list variable=cur_book_abbrv filter="[[$:/state/popup/book_abbrv]get[text]]">
-<$list variable=cur_ch_prefix filter="[<cur_book_abbrv>addsuffix[-ch-]sort[]]">
-<$list variable=cur_ch_entry filter="[is[current]fields[]prefix<cur_ch_prefix>]">
-<$list variable=cur_vid_prefix filter="[<cur_book_abbrv>addsuffix[-video]]">
-<$list variable=cur_vid_maxres filter="[<cur_book_abbrv>addsuffix[-maxres]]">
-<$list variable=cur_file_prefix filter="[is[current]get<cur_vid_prefix>]">
-<$list variable=cur_file_suffix filter="[is[current]get<cur_vid_maxres>]">
-<$list variable=cur_file_num filter="[is[current]get<cur_ch_entry>]">
-<$list variable=cur_ch_label filter="[<cur_file_num>addprefix[ch.]]">
-<$list variable=cur_file_name filter="[<cur_file_prefix>addsuffix<cur_file_num>addsuffix<cur_file_suffix>]">
-<$button><$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>>/><$action-setfield $tiddler="$:/state/popup/ch_num" text=<<cur_file_num>>/><<cur_ch_label>></$button>
+<$list variable=cur_book_card filter="[[$:/state/popup/book_card]get[text]]">
+<$link to=<<cur_book_card>> >_''''_''''_</$link>
+<$list variable=cur_ch_prefix filter="[<cur_book_card>addsuffix[-]]">
+<$list variable=cur_chapter_card filter="[prefix<cur_ch_prefix>sort[]]">
+<$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
+<$list variable=cur_maxres_suffix filter="[<cur_book_card>get[maxres-suffix]]">
+<$list variable=cur_chapter_num filter="[<cur_chapter_card>get[chapter-seq]]">
+<$list variable=cur_file_name filter="[<cur_video_prefix>addsuffix<cur_chapter_num>addsuffix<cur_maxres_suffix>]">
+<$button>
+<$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>>/>
+<$action-setfield $tiddler="$:/state/popup/chapter_card" text=<<cur_chapter_card>>/>
+<$action-setfield $tiddler="$:/state/popup/video_time" text="" />
+ch.<<cur_chapter_num>></$button>
 </$list><!--cur_file_name-->
-</$list><!--cur_ch_label-->
-</$list><!--cur_file_num-->
-</$list><!--cur_file_suffix-->
-</$list><!--cur_file_prefix-->
-</$list><!--cur_vid_maxres-->
-</$list><!--cur_book_field-->
-</$list><!--cur_ch_entry-->
+</$list><!--cur_chapter_num-->
+</$list><!--cur_maxres_suffix-->
+</$list><!--cur_video_prefix-->
+</$list><!--cur_chapter_card-->
 </$list><!--cur_ch_prefix-->
-</$list><!--cur_book_abbrv-->
+</$list><!--cur_book_card-->
 
 <!--vs.01, vs.02, ...-->
-<$list variable=cur_book_abbrv filter="[[$:/state/popup/book_abbrv]get[text]]">
-<$list variable=cur_ch_num filter="[[$:/state/popup/ch_num]get[text]]">
-<$list variable=cur_verse_prefix filter="[<cur_book_abbrv>addsuffix[-]addsuffix<cur_ch_num>addsuffix[v]]">
-<$list variable=cur_verse_entry filter="[is[current]fields[]prefix<cur_verse_prefix>]">
-<$list variable=cur_verse_num filter="[<cur_verse_entry>split[v]last[]]">
-<$list variable=cur_verse_time filter="[is[current]get<cur_verse_entry>]">
-<$button><$action-setfield $tiddler="$:/state/popup/video_time" text=<<cur_verse_time>>/>vs.<<cur_verse_num>></$button>
+<$list variable=cur_chapter_card filter="[[$:/state/popup/chapter_card]get[text]]">
+<$link to=<<cur_chapter_card>> >_''''_''''_</$link>
+<$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
+<$list variable=cur_verse_num filter="[<cur_verse_field>split[v]last[]]">
+<$list variable=cur_verse_time filter="[<cur_chapter_card>get<cur_verse_field>]">
+<$button>
+<$action-setfield $tiddler="$:/state/popup/video_time" text=<<cur_verse_time>>/>
+vs.<<cur_verse_num>></$button>
 </$list><!--cur_verse_time-->
 </$list><!--cur_verse_num-->
-</$list><!--cur_verse_entry-->
-</$list><!--cur_verse_prefix-->
-</$list><!--cur_ch_num-->
-</$list><!--cur_book_abbrv-->
+</$list><!--cur_verse_field-->
+</$list><!--cur_chapter_card-->
 
 
 <$list filter="[[$:/state/popup/video_time]get[text]!match[]]">
@@ -730,6 +731,63 @@ mcr glbl_article_list
 
 
 
+mcr glbl_book_field
+
+\define glbl_book_field(ur_card)
+<$list variable=cur_book_card filter="[[$ur_card$]!match[]else[$(currentTiddler)$]has[book-seq]]">
+<$list variable=cur_book_abbrv filter="[<cur_book_card>split[\]last[]split[']first[]]">
+<$list variable=cur_book_parentcard filter="[<cur_book_card>split[\]first[]]">
+
+<$link to=<<cur_book_card>> >''Book: <<cur_book_abbrv>>''</$link> - <$link to=<<cur_book_parentcard>> />
+<$list variable=cur_book_seq filter="[<cur_book_card>get[book-seq]]">
+
+* Book Seq: <<cur_book_seq>>
+
+<$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
+
+* Video prefix: <<cur_video_prefix>>
+
+<$list variable=cur_maxres_suffix filter="[<cur_book_card>get[maxres-suffix]]">
+
+* Max-res suffix: <<cur_maxres_suffix>>
+
+<<<
+<$list variable=cur_chapter_prefix filter="[<cur_book_card>addsuffix[-]]">
+<$list variable=cur_chapter_card filter="[prefix<cur_chapter_prefix>has[chapter-seq]]">
+<$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">
+
+<$link to=<<cur_chapter_card>> >''Chapter Seq: <<cur_chapter_seq>>''</$link>
+</$list><!--cur_chapter_seq-->
+</$list><!--cur_chapter_card-->
+</$list><!--cur_chapter_prefix-->
+
+<<<
+</$list><!--cur_maxres_suffix-->
+</$list><!--cur_video_prefix-->
+</$list><!--cur_book_seq-->
+</$list><!--cur_book_parentcard-->
+</$list><!--cur_book_abbrv-->
+</$list><!--cur_book_card-->
+\end
+\define glbl_chapter_field(ur_card)
+<$list variable=cur_chapter_card filter="[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]">
+<$list variable=cur_chapter_parentcard filter="[<cur_chapter_card>split[-]first[]]">
+<$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">
+
+<$link to=<<cur_chapter_card>> >''Chapter Seq: <<cur_chapter_seq>>''</$link> - <$link to=<<cur_chapter_parentcard>> />
+<$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
+<$list variable=cur_verse_seq filter="[<cur_verse_field>split[v]last[]]">
+
+* Verse <<cur_verse_seq>> @ <$edit-text tiddler=<<cur_chapter_card>> field=<<cur_verse_field>> default="00:00:00" autoHeight=yes tag=input/>
+</$list><!--cur_verse_seq-->
+</$list><!--cur_verse_field-->
+</$list><!--cur_chapter_seq-->
+</$list><!--cur_chapter_parentcard-->
+</$list><!--cur_chapter_card-->
+\end
+
+
+
 mcr glbl_code_split
 
 \define glbl_code_block(ur_note_pk)
@@ -1087,6 +1145,21 @@ template Home Button
 </span>
 <$action-sendmessage $message="tm-home"/>
 </$button></div>
+
+
+
+
+Video Books
+
+{{ext TW Return}}
+
+<$list variable=cur_book_seq filter="[has[book-seq]get[book-seq]sort[]]">
+<$list variable=cur_book_card filter="[book-seq<cur_book_seq>]">
+
+<$macrocall $name=glbl_book_field ur_card=<<cur_book_card>> />
+
+</$list><!--cur_book_card-->
+</$list><!--clc_prefix-->
 
 
 

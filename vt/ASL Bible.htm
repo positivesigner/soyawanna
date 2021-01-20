@@ -229,8 +229,6 @@ Error message and password prompt
 
 <li>DivPop.svg</li>
 
-<li>Draft of 'New Card'</li>
-
 <li>ext TW Return</li>
 
 <li>Font Size</li>
@@ -246,6 +244,8 @@ Error message and password prompt
 <li>keyboard action SaveAllChanges</li>
 
 <li>mcr glbl_article_list</li>
+
+<li>mcr glbl_book_field</li>
 
 <li>mcr glbl_code_split</li>
 
@@ -264,6 +264,18 @@ Error message and password prompt
 <li>template ExportAllCode</li>
 
 <li>template Home Button</li>
+
+<li>Video Books</li>
+
+<li>Video Books\ex</li>
+
+<li>Video Books\ex-01</li>
+
+<li>Video Books\ge</li>
+
+<li>Video Books\ge-01</li>
+
+<li>Video Books\ge-02</li>
 
 <li>View All Cards</li>
 
@@ -10287,7 +10299,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210120110151823" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210120184933830" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10296,13 +10308,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210120110151823" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210120184933831" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[ASL Bible Videos]]" title="$:/StoryList">
+<div created="20210120184928518" list="[[ASL Bible Videos]] [[Video Books\ge-01]]" modified="20210120184928519" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -10432,7 +10444,7 @@ return &quot;&quot;;
 <div created="20201114100602184" modified="20201226040306582" tags="META" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div book-seq-01="ge" book-seq-02="ex" created="20201114051300267" ex-01v01="00:00:08.5" ex-01v02="00:00:22" ex-ch-01="01" ex-maxres="_r720P.m4v" ex-video="nwt_02_Ex_ASL_" ge-01v01="00:00:10" ge-01v02="00:00:30" ge-02v01="00:00:02" ge-02v02="00:00:09.4" ge-ch-01="01" ge-ch-02="02" ge-maxres="_r480P.m4v" ge-video="nwt_01_Ge_ASL_" modified="20210120110149617" tags="INDEX" title="ASL Bible Videos">
+<div created="20201114051300267" modified="20210120184637349" tags="INDEX" title="ASL Bible Videos">
 <pre>\define show_video()
 &lt;video width=&quot;480&quot; height=&quot;360&quot;
 controls preload=&quot;metadata&quot;&gt;
@@ -10448,8 +10460,8 @@ Your browser does not support the HTML 5 video tag.
 &lt;$list variable=playback_file filter=&quot;[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]]&quot;&gt;
 &lt;$list variable=playback_time filter=&quot;[[$:/state/popup/video_time]get[text]!match[]else[00:00:00]]&quot;&gt;
 &lt;&lt;show_video&gt;&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_file--&gt;
+&lt;/$list&gt;&lt;!--playback_time--&gt;
 
 &lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.5&quot;/&gt;x0.5&lt;/$button&gt;
 &lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.75&quot;/&gt;x0.75&lt;/$button&gt;
@@ -10463,94 +10475,95 @@ Current Speed = 1.0x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.0; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[0.5]]&quot;&gt;
 Current Speed = 0.5x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 0.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[0.75]]&quot;&gt;
 Current Speed = 0.75x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 0.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.25]]&quot;&gt;
 Current Speed = 1.25x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.25; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.5]]&quot;&gt;
 Current Speed = 1.5x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.75]]&quot;&gt;
 Current Speed = 1.75x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--playback_speed--&gt;
 
 &lt;!--ge, ex, ...--&gt;
-&lt;$list variable=cur_book_seq filter=&quot;[is[current]fields[]prefix[book-seq-]]&quot;&gt;
-&lt;$list variable=cur_book_abbrv filter=&quot;[is[current]get&lt;cur_book_seq&gt;]&quot;&gt;
-&lt;$list variable=cur_video_field filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-video]]&quot;&gt;
-&lt;$list variable=cur_file_prefix filter=&quot;[is[current]get&lt;cur_video_field&gt;]&quot;&gt;
-&lt;$list variable=cur_vid_maxres filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-maxres]]&quot;&gt;
-&lt;$list variable=cur_file_suffix filter=&quot;[is[current]get&lt;cur_vid_maxres&gt;]&quot;&gt;
-&lt;$list variable=cur_file_name filter=&quot;[&lt;cur_file_prefix&gt;addsuffix[01]addsuffix&lt;cur_file_suffix&gt;]&quot;&gt;
+&lt;$link to=&quot;Video Books&quot;&gt;_''''_''''_&lt;/$link&gt;
+&lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
+&lt;$list variable=cur_book_card filter=&quot;[book-seq&lt;cur_book_seq&gt;]&quot;&gt;
+&lt;$list variable=cur_book_abbrv filter=&quot;[&lt;cur_book_card&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=cur_video_prefix filter=&quot;[&lt;cur_book_card&gt;get[video-prefix]]&quot;&gt;
+&lt;$list variable=cur_maxres_suffix filter=&quot;[&lt;cur_book_card&gt;get[maxres-suffix]]&quot;&gt;
+&lt;$list variable=first_chapter filter=&quot;[[01]]&quot;&gt;
+&lt;$list variable=cur_file_name filter=&quot;[&lt;cur_video_prefix&gt;addsuffix&lt;first_chapter&gt;addsuffix&lt;cur_maxres_suffix&gt;]&quot;&gt;
 &lt;$button&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/book_abbrv&quot; text=&lt;&lt;cur_book_abbrv&gt;&gt; /&gt;
-&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt; /&gt;&lt;&lt;cur_book_abbrv&gt;&gt;&lt;/$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/book_card&quot; text=&lt;&lt;cur_book_card&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt; /&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/chapter_card&quot; text=&lt;&lt;first_chapter&gt;&gt; /&gt;
+&lt;&lt;cur_book_abbrv&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_file_name--&gt;
-&lt;/$list&gt;&lt;!--cur_file_suffix--&gt;
-&lt;/$list&gt;&lt;!--cur_vid_maxres--&gt;
-&lt;/$list&gt;&lt;!--cur_file_prefix--&gt;
-&lt;/$list&gt;&lt;!--cur_video_field--&gt;
+&lt;/$list&gt;&lt;!--first_chapter--&gt;
+&lt;/$list&gt;&lt;!--cur_maxres_suffix--&gt;
+&lt;/$list&gt;&lt;!--cur_video_prefix--&gt;
 &lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+&lt;/$list&gt;&lt;!--cur_book_card--&gt;
 &lt;/$list&gt;&lt;!--cur_book_seq--&gt;
 
 &lt;!--ch.01, ch.02, ...--&gt;
-&lt;$list variable=cur_book_abbrv filter=&quot;[[$:/state/popup/book_abbrv]get[text]]&quot;&gt;
-&lt;$list variable=cur_ch_prefix filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-ch-]sort[]]&quot;&gt;
-&lt;$list variable=cur_ch_entry filter=&quot;[is[current]fields[]prefix&lt;cur_ch_prefix&gt;]&quot;&gt;
-&lt;$list variable=cur_vid_prefix filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-video]]&quot;&gt;
-&lt;$list variable=cur_vid_maxres filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-maxres]]&quot;&gt;
-&lt;$list variable=cur_file_prefix filter=&quot;[is[current]get&lt;cur_vid_prefix&gt;]&quot;&gt;
-&lt;$list variable=cur_file_suffix filter=&quot;[is[current]get&lt;cur_vid_maxres&gt;]&quot;&gt;
-&lt;$list variable=cur_file_num filter=&quot;[is[current]get&lt;cur_ch_entry&gt;]&quot;&gt;
-&lt;$list variable=cur_ch_label filter=&quot;[&lt;cur_file_num&gt;addprefix[ch.]]&quot;&gt;
-&lt;$list variable=cur_file_name filter=&quot;[&lt;cur_file_prefix&gt;addsuffix&lt;cur_file_num&gt;addsuffix&lt;cur_file_suffix&gt;]&quot;&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt;/&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/ch_num&quot; text=&lt;&lt;cur_file_num&gt;&gt;/&gt;&lt;&lt;cur_ch_label&gt;&gt;&lt;/$button&gt;
+&lt;$list variable=cur_book_card filter=&quot;[[$:/state/popup/book_card]get[text]]&quot;&gt;
+&lt;$link to=&lt;&lt;cur_book_card&gt;&gt; &gt;_''''_''''_&lt;/$link&gt;
+&lt;$list variable=cur_ch_prefix filter=&quot;[&lt;cur_book_card&gt;addsuffix[-]]&quot;&gt;
+&lt;$list variable=cur_chapter_card filter=&quot;[prefix&lt;cur_ch_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=cur_video_prefix filter=&quot;[&lt;cur_book_card&gt;get[video-prefix]]&quot;&gt;
+&lt;$list variable=cur_maxres_suffix filter=&quot;[&lt;cur_book_card&gt;get[maxres-suffix]]&quot;&gt;
+&lt;$list variable=cur_chapter_num filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
+&lt;$list variable=cur_file_name filter=&quot;[&lt;cur_video_prefix&gt;addsuffix&lt;cur_chapter_num&gt;addsuffix&lt;cur_maxres_suffix&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/chapter_card&quot; text=&lt;&lt;cur_chapter_card&gt;&gt;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;&quot; /&gt;
+ch.&lt;&lt;cur_chapter_num&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_file_name--&gt;
-&lt;/$list&gt;&lt;!--cur_ch_label--&gt;
-&lt;/$list&gt;&lt;!--cur_file_num--&gt;
-&lt;/$list&gt;&lt;!--cur_file_suffix--&gt;
-&lt;/$list&gt;&lt;!--cur_file_prefix--&gt;
-&lt;/$list&gt;&lt;!--cur_vid_maxres--&gt;
-&lt;/$list&gt;&lt;!--cur_book_field--&gt;
-&lt;/$list&gt;&lt;!--cur_ch_entry--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_num--&gt;
+&lt;/$list&gt;&lt;!--cur_maxres_suffix--&gt;
+&lt;/$list&gt;&lt;!--cur_video_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 &lt;/$list&gt;&lt;!--cur_ch_prefix--&gt;
-&lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+&lt;/$list&gt;&lt;!--cur_book_card--&gt;
 
 &lt;!--vs.01, vs.02, ...--&gt;
-&lt;$list variable=cur_book_abbrv filter=&quot;[[$:/state/popup/book_abbrv]get[text]]&quot;&gt;
-&lt;$list variable=cur_ch_num filter=&quot;[[$:/state/popup/ch_num]get[text]]&quot;&gt;
-&lt;$list variable=cur_verse_prefix filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-]addsuffix&lt;cur_ch_num&gt;addsuffix[v]]&quot;&gt;
-&lt;$list variable=cur_verse_entry filter=&quot;[is[current]fields[]prefix&lt;cur_verse_prefix&gt;]&quot;&gt;
-&lt;$list variable=cur_verse_num filter=&quot;[&lt;cur_verse_entry&gt;split[v]last[]]&quot;&gt;
-&lt;$list variable=cur_verse_time filter=&quot;[is[current]get&lt;cur_verse_entry&gt;]&quot;&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&lt;&lt;cur_verse_time&gt;&gt;/&gt;vs.&lt;&lt;cur_verse_num&gt;&gt;&lt;/$button&gt;
+&lt;$list variable=cur_chapter_card filter=&quot;[[$:/state/popup/chapter_card]get[text]]&quot;&gt;
+&lt;$link to=&lt;&lt;cur_chapter_card&gt;&gt; &gt;_''''_''''_&lt;/$link&gt;
+&lt;$list variable=cur_verse_field filter=&quot;[&lt;cur_chapter_card&gt;fields[]prefix[v]sort[]]&quot;&gt;
+&lt;$list variable=cur_verse_num filter=&quot;[&lt;cur_verse_field&gt;split[v]last[]]&quot;&gt;
+&lt;$list variable=cur_verse_time filter=&quot;[&lt;cur_chapter_card&gt;get&lt;cur_verse_field&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&lt;&lt;cur_verse_time&gt;&gt;/&gt;
+vs.&lt;&lt;cur_verse_num&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_verse_time--&gt;
 &lt;/$list&gt;&lt;!--cur_verse_num--&gt;
-&lt;/$list&gt;&lt;!--cur_verse_entry--&gt;
-&lt;/$list&gt;&lt;!--cur_verse_prefix--&gt;
-&lt;/$list&gt;&lt;!--cur_ch_num--&gt;
-&lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_field--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 
 
 &lt;$list filter=&quot;[[$:/state/popup/video_time]get[text]!match[]]&quot;&gt;
@@ -10712,9 +10725,6 @@ close
      style=&quot;fill:#cccccc;stroke-width:4.36364&quot; /&gt;
 &lt;/svg&gt;
 </pre>
-</div>
-<div created="20210120093733473" draft.of="New Card" draft.title="New Card" modified="20210120093845489" tags="" title="Draft of 'New Card'">
-<pre>var vid_time = document.querySelector('[title=$:/state/popup/video_time]');</pre>
 </div>
 <div created="20201114124116532" modified="20201226040306586" tags="META" title="ext TW Return">
 <pre>\define TW_Return(ur_url, ur_link_title)
@@ -10956,6 +10966,60 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;
 &lt;/$list&gt;
 &lt;/ol&gt;
+\end</pre>
+</div>
+<div created="20210120175329269" modified="20210120184859433" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
+<pre>\define glbl_book_field(ur_card)
+&lt;$list variable=cur_book_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[book-seq]]&quot;&gt;
+&lt;$list variable=cur_book_abbrv filter=&quot;[&lt;cur_book_card&gt;split[\]last[]split[']first[]]&quot;&gt;
+&lt;$list variable=cur_book_parentcard filter=&quot;[&lt;cur_book_card&gt;split[\]first[]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;cur_book_card&gt;&gt; &gt;''Book: &lt;&lt;cur_book_abbrv&gt;&gt;''&lt;/$link&gt; - &lt;$link to=&lt;&lt;cur_book_parentcard&gt;&gt; /&gt;
+&lt;$list variable=cur_book_seq filter=&quot;[&lt;cur_book_card&gt;get[book-seq]]&quot;&gt;
+
+* Book Seq: &lt;&lt;cur_book_seq&gt;&gt;
+
+&lt;$list variable=cur_video_prefix filter=&quot;[&lt;cur_book_card&gt;get[video-prefix]]&quot;&gt;
+
+* Video prefix: &lt;&lt;cur_video_prefix&gt;&gt;
+
+&lt;$list variable=cur_maxres_suffix filter=&quot;[&lt;cur_book_card&gt;get[maxres-suffix]]&quot;&gt;
+
+* Max-res suffix: &lt;&lt;cur_maxres_suffix&gt;&gt;
+
+&lt;&lt;&lt;
+&lt;$list variable=cur_chapter_prefix filter=&quot;[&lt;cur_book_card&gt;addsuffix[-]]&quot;&gt;
+&lt;$list variable=cur_chapter_card filter=&quot;[prefix&lt;cur_chapter_prefix&gt;has[chapter-seq]]&quot;&gt;
+&lt;$list variable=cur_chapter_seq filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;cur_chapter_card&gt;&gt; &gt;''Chapter Seq: &lt;&lt;cur_chapter_seq&gt;&gt;''&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_seq--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_prefix--&gt;
+
+&lt;&lt;&lt;
+&lt;/$list&gt;&lt;!--cur_maxres_suffix--&gt;
+&lt;/$list&gt;&lt;!--cur_video_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_book_seq--&gt;
+&lt;/$list&gt;&lt;!--cur_book_parentcard--&gt;
+&lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+&lt;/$list&gt;&lt;!--cur_book_card--&gt;
+\end
+\define glbl_chapter_field(ur_card)
+&lt;$list variable=cur_chapter_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]&quot;&gt;
+&lt;$list variable=cur_chapter_parentcard filter=&quot;[&lt;cur_chapter_card&gt;split[-]first[]]&quot;&gt;
+&lt;$list variable=cur_chapter_seq filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;cur_chapter_card&gt;&gt; &gt;''Chapter Seq: &lt;&lt;cur_chapter_seq&gt;&gt;''&lt;/$link&gt; - &lt;$link to=&lt;&lt;cur_chapter_parentcard&gt;&gt; /&gt;
+&lt;$list variable=cur_verse_field filter=&quot;[&lt;cur_chapter_card&gt;fields[]prefix[v]sort[]]&quot;&gt;
+&lt;$list variable=cur_verse_seq filter=&quot;[&lt;cur_verse_field&gt;split[v]last[]]&quot;&gt;
+
+* Verse &lt;&lt;cur_verse_seq&gt;&gt; @ &lt;$edit-text tiddler=&lt;&lt;cur_chapter_card&gt;&gt; field=&lt;&lt;cur_verse_field&gt;&gt; default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;
+&lt;/$list&gt;&lt;!--cur_verse_seq--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_field--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_seq--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_parentcard--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 \end</pre>
 </div>
 <div created="20201128162437302" modified="20201226040306587" tags="$:/tags/Macro META" title="mcr glbl_code_split">
@@ -11293,6 +11357,33 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
+</div>
+<div created="20210120165200765" modified="20210120181551780" tags="INDEX" title="Video Books" video-url-prefix="https://download-a.akamaihd.net/files/media_publication/42/">
+<pre>{{ext TW Return}}
+
+&lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
+&lt;$list variable=cur_book_card filter=&quot;[book-seq&lt;cur_book_seq&gt;]&quot;&gt;
+
+&lt;$macrocall $name=glbl_book_field ur_card=&lt;&lt;cur_book_card&gt;&gt; /&gt;
+
+&lt;/$list&gt;&lt;!--cur_book_card--&gt;
+&lt;/$list&gt;&lt;!--clc_prefix--&gt;
+</pre>
+</div>
+<div book-seq="02" created="20210120174418351" maxres-suffix="_r720P.m4v" modified="20210120180138950" tags="" title="Video Books\ex" video-prefix="nwt_02_Ex_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210120181509732" modified="20210120181528822" tags="" title="Video Books\ex-01" v01="00:00:08.5" v02="00:00:22">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="01" created="20210120171158658" maxres-suffix="_r480P.m4v" modified="20210120175444145" tags="" title="Video Books\ge" video-prefix="nwt_01_Ge_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210120172644489" modified="20210120181426129" tags="" title="Video Books\ge-01" v01="00:00:10" v02="00:00:30">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="02" created="20210120181437686" modified="20210120181506228" tags="" title="Video Books\ge-02" v01="00:00:02" v02="00:00:09.4">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div created="20200405112008513" modified="20201229110659683" tags="META" title="View All Cards">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
