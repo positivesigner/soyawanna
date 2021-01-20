@@ -1,0 +1,9 @@
+[chrome://apps/ page]
+- Click icon Web Server -> Opens window
+
+[Web Server for Chrome popup window]
+- Note: checkbox Web Server STARTED = set
+- Click button CHOOSE FOLDER -> Opens dialog
+- Choose hard drive folder with HTML files -> Closes dialog
+- Note: Web Server URL = http://127.0.0.1:8887
+
