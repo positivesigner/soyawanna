@@ -11753,9 +11753,13 @@ End Namespace 'Mx
 
 
 
-VBNS Project\Examples - Roman to Decimal
+VBNS Project\Roman to Decimal
 
 <<ext "Roman to Decimal ZIP">>
+
+* Asks for a Roman Numeral
+* Returns a decimal number or an error with the invalid sequence and the broken rule
+
 ```
 Namespace Mx
 	Public Class mb
