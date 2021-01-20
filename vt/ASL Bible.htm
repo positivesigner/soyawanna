@@ -10287,7 +10287,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210120095539485" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210120110151823" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10296,7 +10296,7 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210120095539485" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210120110151823" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -10432,7 +10432,7 @@ return &quot;&quot;;
 <div created="20201114100602184" modified="20201226040306582" tags="META" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20201114051300267" modified="20210120095538402" tags="INDEX" title="ASL Bible Videos">
+<div book-seq-01="ge" book-seq-02="ex" created="20201114051300267" ex-01v01="00:00:08.5" ex-01v02="00:00:22" ex-ch-01="01" ex-maxres="_r720P.m4v" ex-video="nwt_02_Ex_ASL_" ge-01v01="00:00:10" ge-01v02="00:00:30" ge-02v01="00:00:02" ge-02v02="00:00:09.4" ge-ch-01="01" ge-ch-02="02" ge-maxres="_r480P.m4v" ge-video="nwt_01_Ge_ASL_" modified="20210120110149617" tags="INDEX" title="ASL Bible Videos">
 <pre>\define show_video()
 &lt;video width=&quot;480&quot; height=&quot;360&quot;
 controls preload=&quot;metadata&quot;&gt;
@@ -10495,36 +10495,69 @@ Current Speed = 1.75x
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;
 
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&quot;nwt_01_Ge_ASL_01_r480P.m4v&quot;/&gt;ch.1&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&quot;nwt_01_Ge_ASL_02_r480P.m4v&quot;/&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;00:00:02&quot;/&gt;ch.2&lt;/$button&gt;
+&lt;!--ge, ex, ...--&gt;
+&lt;$list variable=cur_book_seq filter=&quot;[is[current]fields[]prefix[book-seq-]]&quot;&gt;
+&lt;$list variable=cur_book_abbrv filter=&quot;[is[current]get&lt;cur_book_seq&gt;]&quot;&gt;
+&lt;$list variable=cur_video_field filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-video]]&quot;&gt;
+&lt;$list variable=cur_file_prefix filter=&quot;[is[current]get&lt;cur_video_field&gt;]&quot;&gt;
+&lt;$list variable=cur_vid_maxres filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-maxres]]&quot;&gt;
+&lt;$list variable=cur_file_suffix filter=&quot;[is[current]get&lt;cur_vid_maxres&gt;]&quot;&gt;
+&lt;$list variable=cur_file_name filter=&quot;[&lt;cur_file_prefix&gt;addsuffix[01]addsuffix&lt;cur_file_suffix&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/book_abbrv&quot; text=&lt;&lt;cur_book_abbrv&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt; /&gt;&lt;&lt;cur_book_abbrv&gt;&gt;&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--cur_file_name--&gt;
+&lt;/$list&gt;&lt;!--cur_file_suffix--&gt;
+&lt;/$list&gt;&lt;!--cur_vid_maxres--&gt;
+&lt;/$list&gt;&lt;!--cur_file_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_video_field--&gt;
+&lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+&lt;/$list&gt;&lt;!--cur_book_seq--&gt;
 
-&lt;$list variable=playback_file filter=&quot;[[$:/state/popup/video_file]get[text]match[nwt_01_Ge_ASL_01_r480P.m4v]]&quot;&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;00:00:10&quot;/&gt;vs.1&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;00:00:30&quot;/&gt;vs.2&lt;/$button&gt;
-&lt;/$list&gt;
-&lt;$list variable=playback_file filter=&quot;[[$:/state/popup/video_file]get[text]match[nwt_01_Ge_ASL_02_r480P.m4v]]&quot;&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;00:00:02&quot;/&gt;vs.1&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&quot;00:00:09.4&quot;/&gt;vs.2&lt;/$button&gt;
-&lt;/$list&gt;
+&lt;!--ch.01, ch.02, ...--&gt;
+&lt;$list variable=cur_book_abbrv filter=&quot;[[$:/state/popup/book_abbrv]get[text]]&quot;&gt;
+&lt;$list variable=cur_ch_prefix filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-ch-]sort[]]&quot;&gt;
+&lt;$list variable=cur_ch_entry filter=&quot;[is[current]fields[]prefix&lt;cur_ch_prefix&gt;]&quot;&gt;
+&lt;$list variable=cur_vid_prefix filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-video]]&quot;&gt;
+&lt;$list variable=cur_vid_maxres filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-maxres]]&quot;&gt;
+&lt;$list variable=cur_file_prefix filter=&quot;[is[current]get&lt;cur_vid_prefix&gt;]&quot;&gt;
+&lt;$list variable=cur_file_suffix filter=&quot;[is[current]get&lt;cur_vid_maxres&gt;]&quot;&gt;
+&lt;$list variable=cur_file_num filter=&quot;[is[current]get&lt;cur_ch_entry&gt;]&quot;&gt;
+&lt;$list variable=cur_ch_label filter=&quot;[&lt;cur_file_num&gt;addprefix[ch.]]&quot;&gt;
+&lt;$list variable=cur_file_name filter=&quot;[&lt;cur_file_prefix&gt;addsuffix&lt;cur_file_num&gt;addsuffix&lt;cur_file_suffix&gt;]&quot;&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt;/&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/ch_num&quot; text=&lt;&lt;cur_file_num&gt;&gt;/&gt;&lt;&lt;cur_ch_label&gt;&gt;&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--cur_file_name--&gt;
+&lt;/$list&gt;&lt;!--cur_ch_label--&gt;
+&lt;/$list&gt;&lt;!--cur_file_num--&gt;
+&lt;/$list&gt;&lt;!--cur_file_suffix--&gt;
+&lt;/$list&gt;&lt;!--cur_file_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_vid_maxres--&gt;
+&lt;/$list&gt;&lt;!--cur_book_field--&gt;
+&lt;/$list&gt;&lt;!--cur_ch_entry--&gt;
+&lt;/$list&gt;&lt;!--cur_ch_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+
+&lt;!--vs.01, vs.02, ...--&gt;
+&lt;$list variable=cur_book_abbrv filter=&quot;[[$:/state/popup/book_abbrv]get[text]]&quot;&gt;
+&lt;$list variable=cur_ch_num filter=&quot;[[$:/state/popup/ch_num]get[text]]&quot;&gt;
+&lt;$list variable=cur_verse_prefix filter=&quot;[&lt;cur_book_abbrv&gt;addsuffix[-]addsuffix&lt;cur_ch_num&gt;addsuffix[v]]&quot;&gt;
+&lt;$list variable=cur_verse_entry filter=&quot;[is[current]fields[]prefix&lt;cur_verse_prefix&gt;]&quot;&gt;
+&lt;$list variable=cur_verse_num filter=&quot;[&lt;cur_verse_entry&gt;split[v]last[]]&quot;&gt;
+&lt;$list variable=cur_verse_time filter=&quot;[is[current]get&lt;cur_verse_entry&gt;]&quot;&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&lt;&lt;cur_verse_time&gt;&gt;/&gt;vs.&lt;&lt;cur_verse_num&gt;&gt;&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--cur_verse_time--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_num--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_entry--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_ch_num--&gt;
+&lt;/$list&gt;&lt;!--cur_book_abbrv--&gt;
+
 
 &lt;$list filter=&quot;[[$:/state/popup/video_time]get[text]!match[]]&quot;&gt;
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;
-
-
-```
-https://www.chipwreck.de/blog/2010/03/01/html-5-video-dom-attributes-and-events/
-
-document.querySelector('video').playbackRate = 0.5;
-startTime = 0.0
-duration = 0.0
-src = &quot;&quot;
-poster = &quot;&quot;
-videoWidth = 480, videoHeight = 360
-
-```
 
 [[___|Recent Entries]]</pre>
 </div>
