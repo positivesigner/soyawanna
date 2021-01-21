@@ -10564,7 +10564,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210121230644229" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210121232220959" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10573,13 +10573,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210121230644229" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210121232220959" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210121205916682" list="[[ASL Bible Videos]] [[Video Books\1ti]] [[Video Books\1ti-01]] [[Video Books\2ti]] [[Video Books\2ti-01]] [[Video Books\tit]] [[Video Books\tit-01]] [[Video Books\phm]] [[Video Books\phm-01]] [[Video Books\heb]] [[Video Books\heb-01]] [[Video Books\jas]] [[Video Books\jas-01]] [[Video Books\1pe]] [[Video Books\1pe-01]] [[Video Books\2pe]] [[Video Books\2pe-01]] [[Video Books\1jo]] [[Video Books\1jo-01]] [[Video Books\2jo]] [[Video Books\2jo-01]] [[Video Books\3jo]] [[Video Books\3jo-01]] [[Video Books\jude]] [[Video Books\jude-01]] [[Video Books\re]] [[Video Books\re-01]]" modified="20210121215312893" title="$:/StoryList">
+<div created="20210121205916682" list="[[ASL Bible Videos]] [[Video Books\re]] [[Video Books\re-01]] [[mcr glbl_book_field]]" modified="20210121230937701" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -11435,7 +11435,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/ol&gt;
 \end</pre>
 </div>
-<div created="20210120175329269" modified="20210121210849189" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
+<div created="20210120175329269" modified="20210121230952587" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
 <pre>\define glbl_book_field(ur_card)
 &lt;$list variable=cur_book_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[book-seq]]&quot;&gt;
 &lt;$list variable=cur_book_abbrv filter=&quot;[&lt;cur_book_card&gt;split[\]last[]split[']first[]]&quot;&gt;
@@ -11475,7 +11475,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--cur_book_card--&gt;
 \end
 \define glbl_chapter_field(ur_card)
-&lt;$edit-text tiddler=&quot;$:/state/popup/temp_time&quot; field=text default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;
+&lt;!--&lt;$edit-text tiddler=&quot;$:/state/popup/temp_time&quot; field=text default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;--&gt;
 &lt;$list variable=cur_chapter_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]&quot;&gt;
 &lt;$list variable=cur_chapter_parentcard filter=&quot;[&lt;cur_chapter_card&gt;split[-]first[]]&quot;&gt;
 &lt;$list variable=cur_chapter_seq filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
@@ -11912,10 +11912,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121220938395" modified="20210121225753490" tags="" title="Video Books\1co-01" v01="00:00:10.5" v02="00:00:26">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="62" created="20210121221727917" maxres-suffix="_r720P.m4v" modified="20210121221738043" tags="" title="Video Books\1jo" video-prefix="nwt_62_1Jo_ASL_">
+<div book-seq="62" created="20210121221727917" maxres-suffix="_r720P.mp4" modified="20210121231635858" tags="" title="Video Books\1jo" video-prefix="nwt_62_1Jo_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221741509" modified="20210121221744195" tags="" title="Video Books\1jo-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221741509" modified="20210121231724021" tags="" title="Video Books\1jo-01" v01="00:00:10.5" v02="00:00:25.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="11" created="20210121212838857" maxres-suffix="_r720P.mp4" modified="20210121212901804" tags="" title="Video Books\1ki" video-prefix="nwt_11_1Ki_ASL_">
@@ -11924,10 +11924,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121212907069" modified="20210121213033393" tags="" title="Video Books\1ki-01" v01="00:00:11" v02="00:00:21.25">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="60" created="20210121221637244" maxres-suffix="_r720P.m4v" modified="20210121221645997" tags="" title="Video Books\1pe" video-prefix="nwt_60_1Pe_ASL_">
+<div book-seq="60" created="20210121221637244" maxres-suffix="_r720P.mp4" modified="20210121231416277" tags="" title="Video Books\1pe" video-prefix="nwt_60_1Pe_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221650636" modified="20210121221653536" tags="" title="Video Books\1pe-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221650636" modified="20210121231505756" tags="" title="Video Books\1pe-01" v01="00:00:09.5" v02="00:00:37.25">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="09" created="20210121203950079" maxres-suffix="_r720P.mp4" modified="20210121204007382" tags="" title="Video Books\1sa" video-prefix="nwt_09_1Sa_ASL_">
@@ -11960,10 +11960,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121221034734" modified="20210121225911766" tags="" title="Video Books\2co-01" v01="00:00:11.25" v02="00:00:30.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="63" created="20210121221753792" maxres-suffix="_r720P.m4v" modified="20210121221801881" tags="" title="Video Books\2jo" video-prefix="nwt_63_2Jo_ASL_">
+<div book-seq="63" created="20210121221753792" maxres-suffix="_r720P.mp4" modified="20210121231747406" tags="" title="Video Books\2jo" video-prefix="nwt_63_2Jo_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221808846" modified="20210121221811093" tags="" title="Video Books\2jo-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221808846" modified="20210121231838743" tags="" title="Video Books\2jo-01" v01="00:00:10" v02="00:00:29">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="12" created="20210121213158807" maxres-suffix="_r720P.mp4" modified="20210121213207908" tags="" title="Video Books\2ki" video-prefix="nwt_12_2Ki_ASL_">
@@ -11972,10 +11972,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121213214274" modified="20210121213253926" tags="" title="Video Books\2ki-01" v01="00:00:11" v02="00:00:18.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="61" created="20210121221703366" maxres-suffix="_r720P.m4v" modified="20210121221710884" tags="" title="Video Books\2pe" video-prefix="nwt_61_2Pe_ASL_">
+<div book-seq="61" created="20210121221703366" maxres-suffix="_r720P.mp4" modified="20210121231533823" tags="" title="Video Books\2pe" video-prefix="nwt_61_2Pe_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221715125" modified="20210121221717420" tags="" title="Video Books\2pe-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221715125" modified="20210121231614528" tags="" title="Video Books\2pe-01" v01="00:00:09.5" v02="00:00:42.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="10" created="20210121205929370" maxres-suffix="_r720P.mp4" modified="20210121205941252" tags="" title="Video Books\2sa" video-prefix="nwt_10_2Sa_ASL_">
@@ -11990,16 +11990,16 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121221332213" modified="20210121230544893" tags="" title="Video Books\2th-01" v01="00:00:13.5" v02="00:00:35">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="55" created="20210121221404872" maxres-suffix="_r720P.m4v" modified="20210121221413627" tags="" title="Video Books\2ti" video-prefix="nwt_55_2Ti_ASL_">
+<div book-seq="55" created="20210121221404872" maxres-suffix="_r720P.mp4" modified="20210121230715419" tags="" title="Video Books\2ti" video-prefix="nwt_55_2Ti_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221417631" modified="20210121221419950" tags="" title="Video Books\2ti-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221417631" modified="20210121230758431" tags="" title="Video Books\2ti-01" v01="00:00:11.5" v02="00:00:27.75">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="64" created="20210121221820668" maxres-suffix="_r720P.m4v" modified="20210121221829285" tags="" title="Video Books\3jo" video-prefix="nwt_64_3Jo_ASL_">
+<div book-seq="64" created="20210121221820668" maxres-suffix="_r720P.mp4" modified="20210121231859409" tags="" title="Video Books\3jo" video-prefix="nwt_64_3Jo_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221833303" modified="20210121221836339" tags="" title="Video Books\3jo-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221833303" modified="20210121231937803" tags="" title="Video Books\3jo-01" v01="00:00:10" v02="00:00:19">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="44" created="20210121220821657" maxres-suffix="_r480P.m4v" modified="20210121220832525" tags="" title="Video Books\ac" video-prefix="nwt_44_Ac_ASL_">
@@ -12101,10 +12101,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121220229774" modified="20210121224558513" tags="" title="Video Books\hag-01" v01="00:00:08.25" v02="00:00:41.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="58" created="20210121221536168" maxres-suffix="_r720P.m4v" modified="20210121221547927" tags="" title="Video Books\heb" video-prefix="nwt_58_Heb_ASL_">
+<div book-seq="58" created="20210121221536168" maxres-suffix="_r720P.mp4" modified="20210121231129357" tags="" title="Video Books\heb" video-prefix="nwt_58_Heb_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221551718" modified="20210121221553809" tags="" title="Video Books\heb-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221551718" modified="20210121231234307" tags="" title="Video Books\heb-01" v01="00:00:10.75" v02="00:00:25.25">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="28" created="20210121215658829" maxres-suffix="_r720P.mp4" modified="20210121223313643" tags="" title="Video Books\ho" video-prefix="nwt_28_Ho_ASL_">
@@ -12119,10 +12119,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121215456597" modified="20210121222422956" tags="" title="Video Books\isa-01" v01="00:00:09.5" v02="00:00:36.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="59" created="20210121221607154" maxres-suffix="_r720P.m4v" modified="20210121221616870" tags="" title="Video Books\jas" video-prefix="nwt_59_Jas_ASL_">
+<div book-seq="59" created="20210121221607154" maxres-suffix="_r720P.mp4" modified="20210121231250968" tags="" title="Video Books\jas" video-prefix="nwt_59_Jas_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221623443" modified="20210121221625865" tags="" title="Video Books\jas-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221623443" modified="20210121231348018" tags="" title="Video Books\jas-01" v01="00:00:08.75" v02="00:00:22.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="24" created="20210121215507792" maxres-suffix="_r720P.mp4" modified="20210121222505519" tags="" title="Video Books\jer" video-prefix="nwt_24_Jer_ASL_">
@@ -12167,10 +12167,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210120190304455" modified="20210120190558490" tags="" title="Video Books\jos-01" v01="00:00:10" v02="00:00:22">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="65" created="20210121221846372" maxres-suffix="_r720P.m4v" modified="20210121221857917" tags="" title="Video Books\jude" video-prefix="nwt_65_Jude_ASL_">
+<div book-seq="65" created="20210121221846372" maxres-suffix="_r720P.mp4" modified="20210121231958304" tags="" title="Video Books\jude" video-prefix="nwt_65_Jude_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221901686" modified="20210121221905624" tags="" title="Video Books\jude-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221901686" modified="20210121232051300" tags="" title="Video Books\jude-01" v01="00:00:07.75" v02="00:00:29">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="25" created="20210121215529233" maxres-suffix="_r720P.m4v" modified="20210121215536736" tags="" title="Video Books\la" video-prefix="nwt_25_La_ASL_">
@@ -12239,10 +12239,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121215938726" modified="20210121223806368" tags="" title="Video Books\ob-01" v01="00:00:12.5" v02="00:00:38">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="57" created="20210121221457434" maxres-suffix="_r720P.m4v" modified="20210121221508855" tags="" title="Video Books\phm" video-prefix="nwt_57_Phm_ASL_">
+<div book-seq="57" created="20210121221457434" maxres-suffix="_r720P.mp4" modified="20210121231028250" tags="" title="Video Books\phm" video-prefix="nwt_57_Phm_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221517506" modified="20210121221521860" tags="" title="Video Books\phm-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221517506" modified="20210121231111026" tags="" title="Video Books\phm-01" v01="00:00:09.5" v02="00:00:24.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="50" created="20210121221143526" maxres-suffix="_r480P.m4v" modified="20210121221151122" tags="" title="Video Books\php" video-prefix="nwt_50_Php_ASL_">
@@ -12263,10 +12263,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121214916215" modified="20210121215006610" tags="" title="Video Books\ps-01" v01="00:00:24.5" v02="00:00:54">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="66" created="20210121221919087" maxres-suffix="_r720P.m4v" modified="20210121221928181" tags="" title="Video Books\re" video-prefix="nwt_66_Re_ASL_">
+<div book-seq="66" created="20210121221919087" maxres-suffix="_r720P.mp4" modified="20210121232111776" tags="" title="Video Books\re" video-prefix="nwt_66_Re_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221932174" modified="20210121221934987" tags="" title="Video Books\re-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221932174" modified="20210121232214519" tags="" title="Video Books\re-01" v01="00:00:12.25" v02="00:00:37.75">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="45" created="20210121220853425" maxres-suffix="_r720P.mp4" modified="20210121225621260" tags="" title="Video Books\ro" video-prefix="nwt_45_Ro_ASL_">
@@ -12281,10 +12281,10 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="01" created="20210121203808997" modified="20210121203905861" tags="" title="Video Books\ru-01" v01="00:00:09" v02="00:00:35">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div book-seq="56" created="20210121221430515" maxres-suffix="_r720P.m4v" modified="20210121221438738" tags="" title="Video Books\tit" video-prefix="nwt_56_Tit_ASL_">
+<div book-seq="56" created="20210121221430515" maxres-suffix="_r720P.mp4" modified="20210121230817950" tags="" title="Video Books\tit" video-prefix="nwt_56_Tit_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210121221442541" modified="20210121221447355" tags="" title="Video Books\tit-01" v01="00:00:12.25" v02="00:00:25.5">
+<div chapter-seq="01" created="20210121221442541" modified="20210121230920555" tags="" title="Video Books\tit-01" v01="00:00:07.5" v02="00:00:22.25">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="38" created="20210121220244323" maxres-suffix="_r720P.mp4" modified="20210121224620560" tags="" title="Video Books\zec" video-prefix="nwt_38_Zec_ASL_">
