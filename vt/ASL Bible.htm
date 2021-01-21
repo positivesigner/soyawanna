@@ -10315,7 +10315,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210120190728516" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210121021750379" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10324,13 +10324,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210120190728516" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210121021750380" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210120185142197" list="[[ASL Bible Videos]] [[Video Books\jos]] [[Video Books\jos-01]]" modified="20210120190458292" title="$:/StoryList">
+<div created="20210120185142197" list="[[ASL Bible Videos]] [[Video Books]]" modified="20210121021235688" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -10460,8 +10460,10 @@ return &quot;&quot;;
 <div created="20201114100602184" modified="20201226040306582" tags="META" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20201114051300267" modified="20210120190438479" tags="INDEX" title="ASL Bible Videos">
+<div created="20201114051300267" modified="20210121021749368" tags="INDEX" title="ASL Bible Videos">
 <pre>\define show_video()
+$(playback_file)$
+
 &lt;video width=&quot;480&quot; height=&quot;360&quot;
 controls preload=&quot;metadata&quot;&gt;
 &lt;source src=&quot;$(playback_file)$#t=$(playback_time)$&quot; type=
@@ -10473,14 +10475,21 @@ Your browser does not support the HTML 5 video tag.
 
 {{ext TW Return}}
 
-&lt;$list variable=playback_file filter=&quot;[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]]&quot;&gt;
+&lt;$list variable=cur_video_time filter=&quot;[[$:/state/popup/video_time]get[text]else[]]&quot;&gt;
+&lt;$list variable=cur_chapter_card filter=&quot;[[$:/state/popup/chapter_card]get[text]else[]]&quot;&gt;
+&lt;$list variable=video_url_preifx filter=&quot;[[Video Books]get[video-url-prefix]else[]]&quot;&gt;
+&lt;$list variable=count_local_page filter=&quot;[{$:/info/url/full}split[file:///]count[]subtract[1]split[1]join[]]&quot;&gt;
+&lt;$list variable=found_url_preifx filter=&quot;[&lt;count_local_page&gt;match[]else&lt;video_url_preifx&gt;]&quot;&gt;
+&lt;$list variable=playback_file filter=&quot;[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]addprefix&lt;found_url_preifx&gt;]&quot;&gt;
 &lt;$list variable=playback_time filter=&quot;[[$:/state/popup/video_time]get[text]!match[]else[00:00:00]]&quot;&gt;
 
-&lt;&lt;playback_file&gt;&gt;
-
 &lt;&lt;show_video&gt;&gt;
-&lt;/$list&gt;&lt;!--playback_file--&gt;
 &lt;/$list&gt;&lt;!--playback_time--&gt;
+&lt;/$list&gt;&lt;!--playback_file--&gt;
+&lt;/$list&gt;&lt;!--found_url_preifx--&gt;
+&lt;/$list&gt;&lt;!--count_local_page--&gt;
+&lt;/$list&gt;&lt;!--video_url_preifx--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 
 &lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.5&quot;/&gt;x0.5&lt;/$button&gt;
 &lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.75&quot;/&gt;x0.75&lt;/$button&gt;
@@ -10492,39 +10501,41 @@ Your browser does not support the HTML 5 video tag.
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[]match[]]&quot;&gt;
 Current Speed = 1.0x
 &lt;&lt;script&gt;&gt;
-&lt;script&gt;window.rate = 1.0; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
+&lt;script&gt;window.rate = 1.0; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[0.5]]&quot;&gt;
 Current Speed = 0.5x
 &lt;&lt;script&gt;&gt;
-&lt;script&gt;window.rate = 0.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
+&lt;script&gt;window.rate = 0.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[0.75]]&quot;&gt;
 Current Speed = 0.75x
 &lt;&lt;script&gt;&gt;
-&lt;script&gt;window.rate = 0.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
+&lt;script&gt;window.rate = 0.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.25]]&quot;&gt;
 Current Speed = 1.25x
 &lt;&lt;script&gt;&gt;
-&lt;script&gt;window.rate = 1.25; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
+&lt;script&gt;window.rate = 1.25; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.5]]&quot;&gt;
 Current Speed = 1.5x
 &lt;&lt;script&gt;&gt;
-&lt;script&gt;window.rate = 1.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
+&lt;script&gt;window.rate = 1.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.75]]&quot;&gt;
 Current Speed = 1.75x
 &lt;&lt;script&gt;&gt;
-&lt;script&gt;window.rate = 1.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
+&lt;script&gt;window.rate = 1.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
+
+&lt;/$list&gt;&lt;!--cur_video_time--&gt;
 
 &lt;!--ge, ex, ...--&gt;
 &lt;$link to=&quot;Video Books&quot;&gt;_''''_''''_&lt;/$link&gt;
@@ -10585,11 +10596,11 @@ vs.&lt;&lt;cur_verse_num&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 
 
-&lt;$list filter=&quot;[[$:/state/popup/video_time]get[text]!match[]]&quot;&gt;
+&lt;$list variable=cur_video_time filter=&quot;[[$:/state/popup/video_time]get[text]!match[]]&quot;&gt;
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--cur_video_time--&gt;
 
 [[___|Recent Entries]]</pre>
 </div>
@@ -11378,7 +11389,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20210120165200765" modified="20210120181551780" tags="INDEX" title="Video Books" video-url-prefix="https://download-a.akamaihd.net/files/media_publication/42/">
+<div created="20210120165200765" modified="20210121021628125" tags="INDEX" title="Video Books" video-url-prefix="">
 <pre>{{ext TW Return}}
 
 &lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
@@ -11399,16 +11410,16 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div book-seq="02" created="20210120174418351" maxres-suffix="_r720P.m4v" modified="20210120180138950" tags="" title="Video Books\ex" video-prefix="nwt_02_Ex_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210120181509732" modified="20210120181528822" tags="" title="Video Books\ex-01" v01="00:00:08.5" v02="00:00:22">
+<div chapter-seq="01" created="20210120181509732" modified="20210121021106338" tags="" title="Video Books\ex-01" v01="00:00:08.5" v02="00:00:22">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="01" created="20210120171158658" maxres-suffix="_r480P.m4v" modified="20210120175444145" tags="" title="Video Books\ge" video-prefix="nwt_01_Ge_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="01" created="20210120172644489" modified="20210120181426129" tags="" title="Video Books\ge-01" v01="00:00:10" v02="00:00:30">
+<div chapter-seq="01" created="20210120172644489" modified="20210121021044739" tags="" title="Video Books\ge-01" v01="00:00:10" v02="00:00:30">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
-<div chapter-seq="02" created="20210120181437686" modified="20210120181506228" tags="" title="Video Books\ge-02" v01="00:00:02" v02="00:00:09.4">
+<div chapter-seq="02" created="20210120181437686" modified="20210121021055843" tags="" title="Video Books\ge-02" v01="00:00:02" v02="00:00:09.4">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="06" created="20210120190220632" maxres-suffix="_r720P.mp4" modified="20210120190508722" tags="" title="Video Books\jos" video-prefix="nwt_06_Jos_ASL_">

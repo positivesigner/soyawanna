@@ -171,6 +171,8 @@ fluid-fixed
 ASL Bible Videos
 
 \define show_video()
+$(playback_file)$
+
 <video width="480" height="360"
 controls preload="metadata">
 <source src="$(playback_file)$#t=$(playback_time)$" type=
@@ -182,14 +184,21 @@ Your browser does not support the HTML 5 video tag.
 
 {{ext TW Return}}
 
-<$list variable=playback_file filter="[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]]">
+<$list variable=cur_video_time filter="[[$:/state/popup/video_time]get[text]else[]]">
+<$list variable=cur_chapter_card filter="[[$:/state/popup/chapter_card]get[text]else[]]">
+<$list variable=video_url_preifx filter="[[Video Books]get[video-url-prefix]else[]]">
+<$list variable=count_local_page filter="[{$:/info/url/full}split[file:///]count[]subtract[1]split[1]join[]]">
+<$list variable=found_url_preifx filter="[<count_local_page>match[]else<video_url_preifx>]">
+<$list variable=playback_file filter="[[$:/state/popup/video_file]get[text]!match[]else[nwt_01_Ge_ASL_01_r480P.m4v]addprefix<found_url_preifx>]">
 <$list variable=playback_time filter="[[$:/state/popup/video_time]get[text]!match[]else[00:00:00]]">
 
-<<playback_file>>
-
 <<show_video>>
-</$list><!--playback_file-->
 </$list><!--playback_time-->
+</$list><!--playback_file-->
+</$list><!--found_url_preifx-->
+</$list><!--count_local_page-->
+</$list><!--video_url_preifx-->
+</$list><!--cur_chapter_card-->
 
 <$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.5"/>x0.5</$button>
 <$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.75"/>x0.75</$button>
@@ -201,39 +210,41 @@ Your browser does not support the HTML 5 video tag.
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[]match[]]">
 Current Speed = 1.0x
 <<script>>
-<script>window.rate = 1.0; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
+<script>window.rate = 1.0; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[0.5]]">
 Current Speed = 0.5x
 <<script>>
-<script>window.rate = 0.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
+<script>window.rate = 0.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[0.75]]">
 Current Speed = 0.75x
 <<script>>
-<script>window.rate = 0.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
+<script>window.rate = 0.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.25]]">
 Current Speed = 1.25x
 <<script>>
-<script>window.rate = 1.25; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
+<script>window.rate = 1.25; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.5]]">
 Current Speed = 1.5x
 <<script>>
-<script>window.rate = 1.5; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
+<script>window.rate = 1.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.75]]">
 Current Speed = 1.75x
 <<script>>
-<script>window.rate = 1.75; var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
+<script>window.rate = 1.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
+
+</$list><!--cur_video_time-->
 
 <!--ge, ex, ...-->
 <$link to="Video Books">_''''_''''_</$link>
@@ -294,11 +305,11 @@ vs.<<cur_verse_num>></$button>
 </$list><!--cur_chapter_card-->
 
 
-<$list filter="[[$:/state/popup/video_time]get[text]!match[]]">
+<$list variable=cur_video_time filter="[[$:/state/popup/video_time]get[text]!match[]]">
 <<script>>
 <script>var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
-</$list>
+</$list><!--cur_video_time-->
 
 [[___|Recent Entries]]
 
