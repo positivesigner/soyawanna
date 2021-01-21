@@ -233,6 +233,8 @@ Error message and password prompt
 
 <li>ext TW Return</li>
 
+<li>Favorites</li>
+
 <li>Font Size</li>
 
 <li>ge-de</li>
@@ -271,6 +273,30 @@ Error message and password prompt
 
 <li>Video Books</li>
 
+<li>Video Books\1ch</li>
+
+<li>Video Books\1ch-01</li>
+
+<li>Video Books\1ki</li>
+
+<li>Video Books\1ki-01</li>
+
+<li>Video Books\1sa</li>
+
+<li>Video Books\1sa-01</li>
+
+<li>Video Books\2ch</li>
+
+<li>Video Books\2ch-01</li>
+
+<li>Video Books\2ki</li>
+
+<li>Video Books\2ki-01</li>
+
+<li>Video Books\2sa</li>
+
+<li>Video Books\2sa-01</li>
+
 <li>Video Books\de</li>
 
 <li>Video Books\de-01</li>
@@ -285,6 +311,10 @@ Error message and password prompt
 
 <li>Video Books\ge-02</li>
 
+<li>Video Books\jg</li>
+
+<li>Video Books\jg-01</li>
+
 <li>Video Books\jos</li>
 
 <li>Video Books\jos-01</li>
@@ -296,6 +326,10 @@ Error message and password prompt
 <li>Video Books\nu</li>
 
 <li>Video Books\nu-01</li>
+
+<li>Video Books\ru</li>
+
+<li>Video Books\ru-01</li>
 
 <li>View All Cards</li>
 
@@ -10322,7 +10356,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210121202828927" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210121213734891" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10331,13 +10365,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210121202828927" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210121213734891" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="$:/Import [[ASL Bible Videos]]" title="$:/StoryList">
+<div created="20210121205916682" list="[[ASL Bible Videos]] [[Video Books\1ch-01]] [[Video Books\2ch-01]]" modified="20210121213647443" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -10467,7 +10501,7 @@ return &quot;&quot;;
 <div created="20201114100602184" modified="20201226040306582" tags="META" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20201114051300267" modified="20210121183235191" tags="INDEX" title="ASL Bible Videos">
+<div created="20201114051300267" modified="20210121205242355" tags="INDEX" title="ASL Bible Videos" video-card="main">
 <pre>\define show_video()
 &lt;video style=&quot;margin-top:-20px&quot; width=&quot;$(video_wide)$&quot; height=&quot;$(video_tall)$&quot;
 controls preload=&quot;metadata&quot;&gt;
@@ -10968,6 +11002,9 @@ close
 &lt;/$list&gt;
 </pre>
 </div>
+<div caption-ge-01-01="God created heavens, earth" created="20210121195401174" link-ge-01-01="Video Books\ge-01-v01" modified="20210121212453684" tags="INDEX" title="Favorites">
+<pre>&lt;&lt;glbl_navigate_book&gt;&gt;</pre>
+</div>
 <div created="20200319102534436" modified="20210103091431883" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
@@ -11190,7 +11227,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/ol&gt;
 \end</pre>
 </div>
-<div created="20210120175329269" modified="20210121191252984" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
+<div created="20210120175329269" modified="20210121210849189" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
 <pre>\define glbl_book_field(ur_card)
 &lt;$list variable=cur_book_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[book-seq]]&quot;&gt;
 &lt;$list variable=cur_book_abbrv filter=&quot;[&lt;cur_book_card&gt;split[\]last[]split[']first[]]&quot;&gt;
@@ -11213,7 +11250,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;$list variable=cur_chapter_prefix filter=&quot;[&lt;cur_book_card&gt;addsuffix[-]]&quot;&gt;
 &lt;$list variable=cur_chapter_card filter=&quot;[prefix&lt;cur_chapter_prefix&gt;has[chapter-seq]]&quot;&gt;
 &lt;$list variable=cur_chapter_seq filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
-&lt;$list variable=cur_chapter_title filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-title]]&quot;&gt;
+&lt;$list variable=cur_chapter_title filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-title]else[]]&quot;&gt;
 
 &lt;$link to=&lt;&lt;cur_chapter_card&gt;&gt; &gt;''Chapter Seq: &lt;&lt;cur_chapter_seq&gt;&gt;''&lt;/$link&gt; &lt;&lt;cur_chapter_title&gt;&gt;
 &lt;/$list&gt;&lt;!--cur_chapter_title--&gt;
@@ -11239,7 +11276,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;$list variable=cur_verse_field filter=&quot;[&lt;cur_chapter_card&gt;fields[]prefix[v]sort[]]&quot;&gt;
 &lt;$list variable=cur_verse_seq filter=&quot;[&lt;cur_verse_field&gt;split[v]last[]]&quot;&gt;
 
-* Verse &lt;&lt;cur_verse_seq&gt;&gt; @ &lt;$edit-text tiddler=&lt;&lt;cur_chapter_card&gt;&gt; field=&lt;&lt;cur_verse_field&gt;&gt; default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;
+* Verse &lt;&lt;cur_verse_seq&gt;&gt; @ &lt;$edit-text tiddler=&lt;&lt;cur_chapter_card&gt;&gt; field=&lt;&lt;cur_verse_field&gt;&gt; default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;&lt;$macrocall $name=glbl_navigate_verse ur_card=&lt;&lt;cur_chapter_card&gt;&gt; ur_verse_field=&lt;&lt;cur_verse_field&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--cur_verse_seq--&gt;
 &lt;/$list&gt;&lt;!--cur_verse_field--&gt;
 &lt;/$list&gt;&lt;!--cur_chapter_seq--&gt;
@@ -11495,11 +11532,30 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img width=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
 \end</pre>
 </div>
-<div created="20210121202720445" modified="20210121202810424" tags="MCR $:/tags/Macro" title="mcr glbl_navigate_book">
+<div created="20210121202720445" modified="20210121212722769" tags="MCR $:/tags/Macro" title="mcr glbl_navigate_book">
 <pre>\define glbl_navigate_book()
-&lt;$list variable=cur_date_field filter=&quot;[is[current]fields[]]&quot;&gt;
+&lt;$list variable=cur_date_field filter=&quot;[is[current]fields[]prefix[link-]sort[]]&quot;&gt;
+&lt;$list variable=cur_date_label filter=&quot;[&lt;cur_date_field&gt;split[-]butfirst[]join[-]]&quot;&gt;
+&lt;$list variable=cur_date_caption_field filter=&quot;[&lt;cur_date_label&gt;addprefix[caption-]]&quot;&gt;
+&lt;$list variable=cur_date_caption filter=&quot;[is[current]get&lt;cur_date_caption_field&gt;else&lt;cur_date_label&gt;]&quot;&gt;
 &lt;$list variable=cur_verse_card filter=&quot;[is[current]get&lt;cur_date_field&gt;]&quot;&gt;
 &lt;$list variable=cur_verse_field filter=&quot;[&lt;cur_verse_card&gt;split[-]last[]]&quot;&gt;
+&lt;$list variable=cur_chapter_card filter=&quot;[&lt;cur_verse_card&gt;split[-]butlast[]join[-]]&quot;&gt;
+&lt;$list variable=cur_book_chapter filter=&quot;[&lt;cur_chapter_card&gt;split[\]last[]]&quot;&gt;
+
+&lt;$macrocall $name=glbl_navigate_verse ur_card=&lt;&lt;cur_chapter_card&gt;&gt; ur_verse_field=&lt;&lt;cur_verse_field&gt;&gt; ur_caption=&lt;&lt;cur_date_caption&gt;&gt; /&gt;
+&lt;&lt;cur_book_chapter&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_book_chapter--&gt;
+&lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_field--&gt;
+&lt;/$list&gt;&lt;!--cur_verse_card--&gt;
+&lt;/$list&gt;&lt;!--cur_date_caption_field--&gt;
+&lt;/$list&gt;&lt;!--cur_date_field--&gt;
+\end
+\define glbl_navigate_verse(ur_card, ur_verse_field, ur_caption)
+&lt;$list variable=cur_caption filter=&quot;[[$ur_caption$]!match[]else[Show]]&quot;&gt;
+&lt;$list variable=cur_verse_card filter=&quot;[[$ur_card$-$ur_verse_field$]]&quot;&gt;
+&lt;$list variable=cur_verse_field filter=&quot;[[$ur_verse_field$]]&quot;&gt;
 &lt;$list variable=cur_chapter_card filter=&quot;[&lt;cur_verse_card&gt;split[-]butlast[]join[-]]&quot;&gt;
 &lt;$list variable=cur_book_chapter filter=&quot;[&lt;cur_chapter_card&gt;split[\]last[]]&quot;&gt;
 &lt;$list variable=cur_verse_time filter=&quot;[&lt;cur_chapter_card&gt;get&lt;cur_verse_field&gt;]&quot;&gt;
@@ -11510,15 +11566,19 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;$list variable=cur_video_prefix filter=&quot;[&lt;cur_book_card&gt;get[video-prefix]]&quot;&gt;
 &lt;$list variable=cur_maxres_suffix filter=&quot;[&lt;cur_book_card&gt;get[maxres-suffix]]&quot;&gt;
 &lt;$list variable=cur_file_name filter=&quot;[&lt;cur_video_prefix&gt;addsuffix&lt;cur_chapter_num&gt;addsuffix&lt;cur_maxres_suffix&gt;]&quot;&gt;
-
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/book_card&quot; text=&lt;&lt;cur_book_card&gt;&gt; /&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/video_file&quot; text=&lt;&lt;cur_file_name&gt;&gt; /&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/video_time&quot; text=&lt;&lt;cur_verse_time&gt;&gt;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/verse_card&quot; text=&lt;&lt;cur_verse_script_card&gt;&gt;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/chapter_card&quot; text=&lt;&lt;cur_chapter_card&gt;&gt; /&gt;
-&lt;$action-navigate $to=&quot;ASL Publication Videos&quot; /&gt;
-&lt;&lt;cur_date_field&gt;&gt;&lt;/$button&gt; &lt;&lt;cur_book_chapter&gt;&gt;
+&lt;$list variable=video_card filter=&quot;[has[video-card]]&quot;&gt;
+&lt;$list variable=filter_main_video_card filter=&quot;[get[video-card]match[main]]&quot;&gt;
+&lt;$action-navigate $to=&lt;&lt;video_card&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--filter_main_video_card--&gt;
+&lt;/$list&gt;&lt;!--video_card--&gt;
+
+&lt;&lt;cur_caption&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_file_name--&gt;
 &lt;/$list&gt;&lt;!--cur_maxres_suffix--&gt;
 &lt;/$list&gt;&lt;!--cur_video_prefix--&gt;
@@ -11531,7 +11591,7 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 &lt;/$list&gt;&lt;!--cur_verse_field--&gt;
 &lt;/$list&gt;&lt;!--cur_verse_card--&gt;
-&lt;/$list&gt;&lt;!--cur_date_field--&gt;
+&lt;/$list&gt;&lt;!--cur_caption--&gt;
 \end
 </pre>
 </div>
@@ -11632,6 +11692,42 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--clc_prefix--&gt;
 </pre>
 </div>
+<div book-seq="13" created="20210121213323678" maxres-suffix="_r720P.mp4" modified="20210121213400994" tags="" title="Video Books\1ch" video-prefix="nwt_13_1Ch_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121213410873" modified="20210121213512780" tags="" title="Video Books\1ch-01" v01="00:00:08" v02="00:00:13.5">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="11" created="20210121212838857" maxres-suffix="_r720P.mp4" modified="20210121212901804" tags="" title="Video Books\1ki" video-prefix="nwt_11_1Ki_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121212907069" modified="20210121213033393" tags="" title="Video Books\1ki-01" v01="00:00:11" v02="00:00:21.25">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="09" created="20210121203950079" maxres-suffix="_r720P.mp4" modified="20210121204007382" tags="" title="Video Books\1sa" video-prefix="nwt_09_1Sa_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121204013051" modified="20210121205521513" tags="" title="Video Books\1sa-01" v01="00:00:08.5" v02="00:00:29">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="14" created="20210121213705896" maxres-suffix="_r720P.mp4" modified="20210121213716999" tags="" title="Video Books\2ch" video-prefix="nwt_14_2Ch_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121213725583" modified="20210121213733795" tags="" title="Video Books\2ch-01" v01="00:00:08" v02="00:00:13.5">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="12" created="20210121213158807" maxres-suffix="_r720P.mp4" modified="20210121213207908" tags="" title="Video Books\2ki" video-prefix="nwt_12_2Ki_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121213214274" modified="20210121213253926" tags="" title="Video Books\2ki-01" v01="00:00:11" v02="00:00:18.5">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="10" created="20210121205929370" maxres-suffix="_r720P.mp4" modified="20210121205941252" tags="" title="Video Books\2sa" video-prefix="nwt_10_2Sa_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121210005201" modified="20210121211242262" tags="" title="Video Books\2sa-01" v01="00:00:09.5" v02="00:00:29">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
 <div book-seq="05" created="20210120185856443" maxres-suffix="_r720P.m4v" modified="20210120185907042" tags="" title="Video Books\de" video-prefix="nwt_05_De_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
@@ -11653,6 +11749,12 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div chapter-seq="02" created="20210120181437686" modified="20210121021055843" tags="" title="Video Books\ge-02" v01="00:00:02" v02="00:00:09.4">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
+<div book-seq="07" created="20210121203115526" maxres-suffix="_r720P.mp4" modified="20210121203133203" tags="" title="Video Books\jg" video-prefix="nwt_07_Jg_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121203532696" modified="20210121203706334" tags="" title="Video Books\jg-01" v01="00:00:08" v02="00:00:21.25">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
 <div book-seq="06" created="20210120190220632" maxres-suffix="_r720P.mp4" modified="20210120190508722" tags="" title="Video Books\jos" video-prefix="nwt_06_Jos_ASL_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
@@ -11669,6 +11771,12 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
 <div chapter-seq="01" created="20210120185542357" modified="20210120185748761" tags="" title="Video Books\nu-01" v01="00:00:15" v02="00:00:31">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div book-seq="08" created="20210121203744314" maxres-suffix="_r720P.mp4" modified="20210121203756948" tags="" title="Video Books\ru" video-prefix="nwt_08_Ru_ASL_">
+<pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="01" created="20210121203808997" modified="20210121203905861" tags="" title="Video Books\ru-01" v01="00:00:09" v02="00:00:35">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div created="20200405112008513" modified="20201229110659683" tags="META" title="View All Cards">

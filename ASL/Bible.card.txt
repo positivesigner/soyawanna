@@ -687,6 +687,12 @@ ext TW Return
 
 
 
+Favorites
+
+<<glbl_navigate_book>>
+
+
+
 Font Size
 
 <$button>
@@ -954,7 +960,7 @@ mcr glbl_book_field
 <$list variable=cur_chapter_prefix filter="[<cur_book_card>addsuffix[-]]">
 <$list variable=cur_chapter_card filter="[prefix<cur_chapter_prefix>has[chapter-seq]]">
 <$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">
-<$list variable=cur_chapter_title filter="[<cur_chapter_card>get[chapter-title]]">
+<$list variable=cur_chapter_title filter="[<cur_chapter_card>get[chapter-title]else[]]">
 
 <$link to=<<cur_chapter_card>> >''Chapter Seq: <<cur_chapter_seq>>''</$link> <<cur_chapter_title>>
 </$list><!--cur_chapter_title-->
@@ -980,7 +986,7 @@ mcr glbl_book_field
 <$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
 <$list variable=cur_verse_seq filter="[<cur_verse_field>split[v]last[]]">
 
-* Verse <<cur_verse_seq>> @ <$edit-text tiddler=<<cur_chapter_card>> field=<<cur_verse_field>> default="00:00:00" autoHeight=yes tag=input/>
+* Verse <<cur_verse_seq>> @ <$edit-text tiddler=<<cur_chapter_card>> field=<<cur_verse_field>> default="00:00:00" autoHeight=yes tag=input/><$macrocall $name=glbl_navigate_verse ur_card=<<cur_chapter_card>> ur_verse_field=<<cur_verse_field>> />
 </$list><!--cur_verse_seq-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_chapter_seq-->
@@ -1253,9 +1259,28 @@ mcr glbl_image
 mcr glbl_navigate_book
 
 \define glbl_navigate_book()
-<$list variable=cur_date_field filter="[is[current]fields[]]">
+<$list variable=cur_date_field filter="[is[current]fields[]prefix[link-]sort[]]">
+<$list variable=cur_date_label filter="[<cur_date_field>split[-]butfirst[]join[-]]">
+<$list variable=cur_date_caption_field filter="[<cur_date_label>addprefix[caption-]]">
+<$list variable=cur_date_caption filter="[is[current]get<cur_date_caption_field>else<cur_date_label>]">
 <$list variable=cur_verse_card filter="[is[current]get<cur_date_field>]">
 <$list variable=cur_verse_field filter="[<cur_verse_card>split[-]last[]]">
+<$list variable=cur_chapter_card filter="[<cur_verse_card>split[-]butlast[]join[-]]">
+<$list variable=cur_book_chapter filter="[<cur_chapter_card>split[\]last[]]">
+
+<$macrocall $name=glbl_navigate_verse ur_card=<<cur_chapter_card>> ur_verse_field=<<cur_verse_field>> ur_caption=<<cur_date_caption>> />
+<<cur_book_chapter>>
+</$list><!--cur_book_chapter-->
+</$list><!--cur_chapter_card-->
+</$list><!--cur_verse_field-->
+</$list><!--cur_verse_card-->
+</$list><!--cur_date_caption_field-->
+</$list><!--cur_date_field-->
+\end
+\define glbl_navigate_verse(ur_card, ur_verse_field, ur_caption)
+<$list variable=cur_caption filter="[[$ur_caption$]!match[]else[Show]]">
+<$list variable=cur_verse_card filter="[[$ur_card$-$ur_verse_field$]]">
+<$list variable=cur_verse_field filter="[[$ur_verse_field$]]">
 <$list variable=cur_chapter_card filter="[<cur_verse_card>split[-]butlast[]join[-]]">
 <$list variable=cur_book_chapter filter="[<cur_chapter_card>split[\]last[]]">
 <$list variable=cur_verse_time filter="[<cur_chapter_card>get<cur_verse_field>]">
@@ -1266,15 +1291,19 @@ mcr glbl_navigate_book
 <$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
 <$list variable=cur_maxres_suffix filter="[<cur_book_card>get[maxres-suffix]]">
 <$list variable=cur_file_name filter="[<cur_video_prefix>addsuffix<cur_chapter_num>addsuffix<cur_maxres_suffix>]">
-
 <$button>
 <$action-setfield $tiddler="$:/state/popup/book_card" text=<<cur_book_card>> />
 <$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>> />
 <$action-setfield $tiddler="$:/state/popup/video_time" text=<<cur_verse_time>>/>
 <$action-setfield $tiddler="$:/state/popup/verse_card" text=<<cur_verse_script_card>>/>
 <$action-setfield $tiddler="$:/state/popup/chapter_card" text=<<cur_chapter_card>> />
-<$action-navigate $to="ASL Publication Videos" />
-<<cur_date_field>></$button> <<cur_book_chapter>>
+<$list variable=video_card filter="[has[video-card]]">
+<$list variable=filter_main_video_card filter="[get[video-card]match[main]]">
+<$action-navigate $to=<<video_card>> />
+</$list><!--filter_main_video_card-->
+</$list><!--video_card-->
+
+<<cur_caption>></$button>
 </$list><!--cur_file_name-->
 </$list><!--cur_maxres_suffix-->
 </$list><!--cur_video_prefix-->
@@ -1287,7 +1316,7 @@ mcr glbl_navigate_book
 </$list><!--cur_chapter_card-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_verse_card-->
-</$list><!--cur_date_field-->
+</$list><!--cur_caption-->
 \end
 
 
