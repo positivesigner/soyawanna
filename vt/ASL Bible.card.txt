@@ -204,7 +204,7 @@ $(playback_file)$
 </$list><!--video_size-->
 </$list><!--cur_chapter_card-->
 
-Wide: <$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="auto"/>
+<!--Wide: <$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="auto"/>
 <$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[auto]]">
 ''auto''
 </$list>
@@ -252,49 +252,49 @@ auto
 1280p
 </$list>
 </$button>
-
+-->
 Tall: <$button><$action-setfield $tiddler="$:/state/popup/video_size" text="240p"/>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[240p]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]match[240p]]">
 ''240p''
 </$list>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[240p]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]!match[240p]]">
 240p
 </$list>
 </$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="320p"/>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[320p]]">
-''320p''
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="360p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]match[360p]]">
+''360p''
 </$list>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[320p]]">
-320p
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]!match[360p]]">
+360p
 </$list>
 </$button>
 <$button><$action-setfield $tiddler="$:/state/popup/video_size" text="480p"/>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[480p]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]match[480p]]">
 ''480p''
 </$list>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[480p]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]!match[480p]]">
 480p
 </$list>
 </$button>
 <$button><$action-setfield $tiddler="$:/state/popup/video_size" text="600p"/>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[600p]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]match[600p]]">
 ''600p''
 </$list>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[600p]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]!match[600p]]">
 600p
 </$list>
 </$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="768p"/>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[768p]]">
-''768p''
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="720p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]match[720p]]">
+''720p''
 </$list>
-<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[768p]]">
-768p
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]!match[720p]]">
+720p
 </$list>
 </$button><br>
 
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.5"/>
+Speed: <$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.5"/>
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[0.5]]">
 ''x0.5''
 </$list>
@@ -392,6 +392,7 @@ x1.75
 <$button>
 <$action-setfield $tiddler="$:/state/popup/book_card" text=<<cur_book_card>> />
 <$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>> /><$action-setfield $tiddler="$:/state/popup/video_time" text="" />
+<$action-setfield $tiddler="$:/state/popup/verse_card" text="" />
 <$action-setfield $tiddler="$:/state/popup/chapter_card" text=<<first_chapter>> />
 <<cur_book_abbrv>></$button>
 </$list><!--cur_file_name-->
@@ -416,6 +417,7 @@ x1.75
 <$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>>/>
 <$action-setfield $tiddler="$:/state/popup/chapter_card" text=<<cur_chapter_card>>/>
 <$action-setfield $tiddler="$:/state/popup/video_time" text="" />
+<$action-setfield $tiddler="$:/state/popup/verse_card" text="" />
 ch.<<cur_chapter_num>> <<cur_chapter_title>></$button>
 </$list><!--cur_file_name-->
 </$list><!--cur_chapter_num-->
@@ -434,16 +436,33 @@ ch.<<cur_chapter_num>> <<cur_chapter_title>></$button>
 <$list variable=cur_verse_num filter="[<cur_verse_field>split[v]last[]]">
 <$list variable=cur_verse_captionfield filter="[[caption-]addsuffix<cur_verse_field>]">
 <$list variable=cur_verse_caption filter="[<cur_chapter_card>get<cur_verse_captionfield>else[]]">
+<$list variable=cur_verse_script_card filter="[<cur_chapter_card>addsuffix[-]addsuffix<cur_verse_field>else[]]">
 <$list variable=cur_verse_time filter="[<cur_chapter_card>get<cur_verse_field>]">
 <$button>
 <$action-setfield $tiddler="$:/state/popup/video_time" text=<<cur_verse_time>>/>
+<$action-setfield $tiddler="$:/state/popup/verse_card" text=<<cur_verse_script_card>>/>
 vs.<<cur_verse_num>> <<cur_verse_caption>></$button>
 </$list><!--cur_verse_time-->
+</$list><!--cur_verse_script_card-->
 </$list><!--cur_verse_caption-->
 </$list><!--cur_verse_captionfield-->
 </$list><!--cur_verse_num-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_chapter_card-->
+
+<$list variable=cur_verse_card filter="[[$:/state/popup/verse_card]get[text]]">
+<$list variable=cur_verse_num filter="[<cur_verse_card>split[-]last[]]">
+
+''<$link to=<<cur_verse_card>> ><<cur_verse_num>></$link>''
+
+<$list variable=cur_verse_script filter="[<cur_verse_card>get[text]]">
+
+<<<
+<<cur_verse_script>>
+<<<
+</$list><!--cur_verse_script-->
+</$list><!--cur_verse_num-->
+</$list><!--cur_verse_card-->
 <br>
 <br>
 <br>
