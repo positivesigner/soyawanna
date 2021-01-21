@@ -171,21 +171,21 @@ fluid-fixed
 ASL Bible Videos
 
 \define show_video()
-$(playback_file)$
-
-<video width="480" height="360"
+<video style="margin-top:-20px" width="auto" height="$(video_tall)$"
 controls preload="metadata">
 <source src="$(playback_file)$#t=$(playback_time)$" type=
 "video/mp4">
  <track label="English" kind="subtitles" srclang="en" src="nwt_01_Ge_ASL_01_r480P.vtt.txt" default>
 Your browser does not support the HTML 5 video tag.
-</video>
+</video><br>
+$(playback_file)$
 \end
 
-{{ext TW Return}}
-
+<div style="float:left">
 <$list variable=cur_video_time filter="[[$:/state/popup/video_time]get[text]else[]]">
 <$list variable=cur_chapter_card filter="[[$:/state/popup/chapter_card]get[text]else[]]">
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]]">
+<$list variable=video_tall filter="[<video_size>split[p]first[]]">
 <$list variable=video_url_preifx filter="[[Video Books]get[video-url-prefix]else[]]">
 <$list variable=count_local_page filter="[{$:/info/url/full}split[file:///]count[]subtract[1]split[1]join[]]">
 <$list variable=found_url_preifx filter="[<count_local_page>match[]else<video_url_preifx>]">
@@ -198,55 +198,138 @@ Your browser does not support the HTML 5 video tag.
 </$list><!--found_url_preifx-->
 </$list><!--count_local_page-->
 </$list><!--video_url_preifx-->
+</$list><!--video_tall-->
+</$list><!--video_size-->
 </$list><!--cur_chapter_card-->
 
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.5"/>x0.5</$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.75"/>x0.75</$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text=""/>x1.0</$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="1.25"/>x1.25</$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="1.5"/>x1.5</$button>
-<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="1.75"/>x1.75</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="240p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[240p]]">
+''240p''
+</$list>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[240p]]">
+240p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="320p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[320p]]">
+''320p''
+</$list>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[320p]]">
+320p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="480p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[480p]]">
+''480p''
+</$list>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[480p]]">
+480p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="600p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[600p]]">
+''600p''
+</$list>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[600p]]">
+600p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="768p"/>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[768p]]">
+''768p''
+</$list>
+<$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]!match[768p]]">
+768p
+</$list>
+</$button><br>
+
+<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.5"/>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[0.5]]">
+''x0.5''
+</$list>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[0.5]]">
+x0.5
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="0.75"/>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[0.75]]">
+''x0.75''
+</$list>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[0.75]]">
+x0.75
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text=""/>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.0]]">
+''x1.0''
+</$list>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.0]]">
+x1.0
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="1.25"/>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.25]]">
+''x1.25''
+</$list>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.25]]">
+x1.25
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="1.5"/>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.5]]">
+''x1.5''
+</$list>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.5]]">
+x1.5
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_playback_speed" text="1.75"/>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.75]]">
+''x1.75''
+</$list>
+<$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.75]]">
+x1.75
+</$list>
+</$button>
 
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]else[]match[]]">
-Current Speed = 1.0x
 <<script>>
 <script>window.rate = 1.0; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[0.5]]">
-Current Speed = 0.5x
 <<script>>
 <script>window.rate = 0.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[0.75]]">
-Current Speed = 0.75x
 <<script>>
 <script>window.rate = 0.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.25]]">
-Current Speed = 1.25x
 <<script>>
 <script>window.rate = 1.25; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.5]]">
-Current Speed = 1.5x
 <<script>>
 <script>window.rate = 1.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 <$list variable=playback_speed filter="[[$:/state/popup/video_playback_speed]get[text]match[1.75]]">
-Current Speed = 1.75x
 <<script>>
 <script>window.rate = 1.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}</script>
 <<script 0>>
 </$list><!--playback_speed-->
 
 </$list><!--cur_video_time-->
+<br>
+<br>
+</div><!--float:left-->
 
 <!--ge, ex, ...-->
+&nbsp;
 <$link to="Video Books">_''''_''''_</$link>
 <$list variable=cur_book_seq filter="[has[book-seq]get[book-seq]sort[]]">
 <$list variable=cur_book_card filter="[book-seq<cur_book_seq>]">
@@ -269,6 +352,7 @@ Current Speed = 1.75x
 </$list><!--cur_book_seq-->
 
 <!--ch.01, ch.02, ...-->
+&nbsp;
 <$list variable=cur_book_card filter="[[$:/state/popup/book_card]get[text]]">
 <$link to=<<cur_book_card>> >_''''_''''_</$link>
 <$list variable=cur_ch_prefix filter="[<cur_book_card>addsuffix[-]]">
@@ -291,6 +375,7 @@ ch.<<cur_chapter_num>></$button>
 </$list><!--cur_book_card-->
 
 <!--vs.01, vs.02, ...-->
+&nbsp;
 <$list variable=cur_chapter_card filter="[[$:/state/popup/chapter_card]get[text]]">
 <$link to=<<cur_chapter_card>> >_''''_''''_</$link>
 <$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
@@ -303,6 +388,22 @@ vs.<<cur_verse_num>></$button>
 </$list><!--cur_verse_num-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_chapter_card-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 <$list variable=cur_video_time filter="[[$:/state/popup/video_time]get[text]!match[]]">
@@ -310,6 +411,8 @@ vs.<<cur_verse_num>></$button>
 <script>var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();</script>
 <<script 0>>
 </$list><!--cur_video_time-->
+
+{{ext TW Return}}
 
 [[___|Recent Entries]]
 
@@ -1160,21 +1263,6 @@ template Home Button
 </span>
 <$action-sendmessage $message="tm-home"/>
 </$button></div>
-
-
-
-
-Video Books
-
-{{ext TW Return}}
-
-<$list variable=cur_book_seq filter="[has[book-seq]get[book-seq]sort[]]">
-<$list variable=cur_book_card filter="[book-seq<cur_book_seq>]">
-
-<$macrocall $name=glbl_book_field ur_card=<<cur_book_card>> />
-
-</$list><!--cur_book_card-->
-</$list><!--clc_prefix-->
 
 
 

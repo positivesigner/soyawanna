@@ -10315,7 +10315,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210121021750379" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210121033828718" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10324,13 +10324,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210121021750380" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210121033828719" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210120185142197" list="[[ASL Bible Videos]] [[Video Books]]" modified="20210121021235688" title="$:/StoryList">
+<div list="[[ASL Bible Videos]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -10460,23 +10460,23 @@ return &quot;&quot;;
 <div created="20201114100602184" modified="20201226040306582" tags="META" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20201114051300267" modified="20210121021749368" tags="INDEX" title="ASL Bible Videos">
+<div created="20201114051300267" modified="20210121033753955" tags="INDEX" title="ASL Bible Videos">
 <pre>\define show_video()
-$(playback_file)$
-
-&lt;video width=&quot;480&quot; height=&quot;360&quot;
+&lt;video style=&quot;margin-top:-20px&quot; width=&quot;auto&quot; height=&quot;$(video_tall)$&quot;
 controls preload=&quot;metadata&quot;&gt;
 &lt;source src=&quot;$(playback_file)$#t=$(playback_time)$&quot; type=
 &quot;video/mp4&quot;&gt;
  &lt;track label=&quot;English&quot; kind=&quot;subtitles&quot; srclang=&quot;en&quot; src=&quot;nwt_01_Ge_ASL_01_r480P.vtt.txt&quot; default&gt;
 Your browser does not support the HTML 5 video tag.
-&lt;/video&gt;
+&lt;/video&gt;&lt;br&gt;
+$(playback_file)$
 \end
 
-{{ext TW Return}}
-
+&lt;div style=&quot;float:left&quot;&gt;
 &lt;$list variable=cur_video_time filter=&quot;[[$:/state/popup/video_time]get[text]else[]]&quot;&gt;
 &lt;$list variable=cur_chapter_card filter=&quot;[[$:/state/popup/chapter_card]get[text]else[]]&quot;&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[360p]]&quot;&gt;
+&lt;$list variable=video_tall filter=&quot;[&lt;video_size&gt;split[p]first[]]&quot;&gt;
 &lt;$list variable=video_url_preifx filter=&quot;[[Video Books]get[video-url-prefix]else[]]&quot;&gt;
 &lt;$list variable=count_local_page filter=&quot;[{$:/info/url/full}split[file:///]count[]subtract[1]split[1]join[]]&quot;&gt;
 &lt;$list variable=found_url_preifx filter=&quot;[&lt;count_local_page&gt;match[]else&lt;video_url_preifx&gt;]&quot;&gt;
@@ -10489,55 +10489,138 @@ Your browser does not support the HTML 5 video tag.
 &lt;/$list&gt;&lt;!--found_url_preifx--&gt;
 &lt;/$list&gt;&lt;!--count_local_page--&gt;
 &lt;/$list&gt;&lt;!--video_url_preifx--&gt;
+&lt;/$list&gt;&lt;!--video_tall--&gt;
+&lt;/$list&gt;&lt;!--video_size--&gt;
 &lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
 
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.5&quot;/&gt;x0.5&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.75&quot;/&gt;x0.75&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;&quot;/&gt;x1.0&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;1.25&quot;/&gt;x1.25&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;1.5&quot;/&gt;x1.5&lt;/$button&gt;
-&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;1.75&quot;/&gt;x1.75&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_size&quot; text=&quot;240p&quot;/&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]match[240p]]&quot;&gt;
+''240p''
+&lt;/$list&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]!match[240p]]&quot;&gt;
+240p
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_size&quot; text=&quot;320p&quot;/&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]match[320p]]&quot;&gt;
+''320p''
+&lt;/$list&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]!match[320p]]&quot;&gt;
+320p
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_size&quot; text=&quot;480p&quot;/&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]match[480p]]&quot;&gt;
+''480p''
+&lt;/$list&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]!match[480p]]&quot;&gt;
+480p
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_size&quot; text=&quot;600p&quot;/&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]match[600p]]&quot;&gt;
+''600p''
+&lt;/$list&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]!match[600p]]&quot;&gt;
+600p
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_size&quot; text=&quot;768p&quot;/&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]match[768p]]&quot;&gt;
+''768p''
+&lt;/$list&gt;
+&lt;$list variable=video_size filter=&quot;[[$:/state/popup/video_size]get[text]else[320p]!match[768p]]&quot;&gt;
+768p
+&lt;/$list&gt;
+&lt;/$button&gt;&lt;br&gt;
+
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.5&quot;/&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[0.5]]&quot;&gt;
+''x0.5''
+&lt;/$list&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[0.5]]&quot;&gt;
+x0.5
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;0.75&quot;/&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[0.75]]&quot;&gt;
+''x0.75''
+&lt;/$list&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[0.75]]&quot;&gt;
+x0.75
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;&quot;/&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.0]]&quot;&gt;
+''x1.0''
+&lt;/$list&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.0]]&quot;&gt;
+x1.0
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;1.25&quot;/&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.25]]&quot;&gt;
+''x1.25''
+&lt;/$list&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.25]]&quot;&gt;
+x1.25
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;1.5&quot;/&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.5]]&quot;&gt;
+''x1.5''
+&lt;/$list&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.5]]&quot;&gt;
+x1.5
+&lt;/$list&gt;
+&lt;/$button&gt;
+&lt;$button&gt;&lt;$action-setfield $tiddler=&quot;$:/state/popup/video_playback_speed&quot; text=&quot;1.75&quot;/&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]match[1.75]]&quot;&gt;
+''x1.75''
+&lt;/$list&gt;
+&lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[1.0]!match[1.75]]&quot;&gt;
+x1.75
+&lt;/$list&gt;
+&lt;/$button&gt;
 
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]else[]match[]]&quot;&gt;
-Current Speed = 1.0x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.0; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[0.5]]&quot;&gt;
-Current Speed = 0.5x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 0.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[0.75]]&quot;&gt;
-Current Speed = 0.75x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 0.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.25]]&quot;&gt;
-Current Speed = 1.25x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.25; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.5]]&quot;&gt;
-Current Speed = 1.5x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.5; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 &lt;$list variable=playback_speed filter=&quot;[[$:/state/popup/video_playback_speed]get[text]match[1.75]]&quot;&gt;
-Current Speed = 1.75x
 &lt;&lt;script&gt;&gt;
 &lt;script&gt;window.rate = 1.75; var vid = document.querySelector('video'); if (vid !== null) {vid.playbackRate = window.rate; vid.play();}&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--playback_speed--&gt;
 
 &lt;/$list&gt;&lt;!--cur_video_time--&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;/div&gt;&lt;!--float:left--&gt;
 
 &lt;!--ge, ex, ...--&gt;
+&amp;nbsp;
 &lt;$link to=&quot;Video Books&quot;&gt;_''''_''''_&lt;/$link&gt;
 &lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
 &lt;$list variable=cur_book_card filter=&quot;[book-seq&lt;cur_book_seq&gt;]&quot;&gt;
@@ -10560,6 +10643,7 @@ Current Speed = 1.75x
 &lt;/$list&gt;&lt;!--cur_book_seq--&gt;
 
 &lt;!--ch.01, ch.02, ...--&gt;
+&amp;nbsp;
 &lt;$list variable=cur_book_card filter=&quot;[[$:/state/popup/book_card]get[text]]&quot;&gt;
 &lt;$link to=&lt;&lt;cur_book_card&gt;&gt; &gt;_''''_''''_&lt;/$link&gt;
 &lt;$list variable=cur_ch_prefix filter=&quot;[&lt;cur_book_card&gt;addsuffix[-]]&quot;&gt;
@@ -10582,6 +10666,7 @@ ch.&lt;&lt;cur_chapter_num&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_book_card--&gt;
 
 &lt;!--vs.01, vs.02, ...--&gt;
+&amp;nbsp;
 &lt;$list variable=cur_chapter_card filter=&quot;[[$:/state/popup/chapter_card]get[text]]&quot;&gt;
 &lt;$link to=&lt;&lt;cur_chapter_card&gt;&gt; &gt;_''''_''''_&lt;/$link&gt;
 &lt;$list variable=cur_verse_field filter=&quot;[&lt;cur_chapter_card&gt;fields[]prefix[v]sort[]]&quot;&gt;
@@ -10594,6 +10679,22 @@ vs.&lt;&lt;cur_verse_num&gt;&gt;&lt;/$button&gt;
 &lt;/$list&gt;&lt;!--cur_verse_num--&gt;
 &lt;/$list&gt;&lt;!--cur_verse_field--&gt;
 &lt;/$list&gt;&lt;!--cur_chapter_card--&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
 
 
 &lt;$list variable=cur_video_time filter=&quot;[[$:/state/popup/video_time]get[text]!match[]]&quot;&gt;
@@ -10601,6 +10702,8 @@ vs.&lt;&lt;cur_verse_num&gt;&gt;&lt;/$button&gt;
 &lt;script&gt;var vid = document.querySelector('video'); vid.playbackRate = window.rate; vid.play();&lt;/script&gt;
 &lt;&lt;script 0&gt;&gt;
 &lt;/$list&gt;&lt;!--cur_video_time--&gt;
+
+{{ext TW Return}}
 
 [[___|Recent Entries]]</pre>
 </div>
@@ -11389,10 +11492,8 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20210120165200765" modified="20210121021628125" tags="INDEX" title="Video Books" video-url-prefix="">
-<pre>{{ext TW Return}}
-
-&lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
+<div created="20210120165200765" modified="20210121033820347" tags="" title="Video Books" video-url-prefix="">
+<pre>&lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
 &lt;$list variable=cur_book_card filter=&quot;[book-seq&lt;cur_book_seq&gt;]&quot;&gt;
 
 &lt;$macrocall $name=glbl_book_field ur_card=&lt;&lt;cur_book_card&gt;&gt; /&gt;
