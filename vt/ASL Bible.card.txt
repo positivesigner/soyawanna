@@ -171,7 +171,7 @@ fluid-fixed
 ASL Bible Videos
 
 \define show_video()
-<video style="margin-top:-20px" width="auto" height="$(video_tall)$"
+<video style="margin-top:-20px" width="$(video_wide)$" height="$(video_tall)$"
 controls preload="metadata">
 <source src="$(playback_file)$#t=$(playback_time)$" type=
 "video/mp4">
@@ -185,7 +185,8 @@ $(playback_file)$
 <$list variable=cur_video_time filter="[[$:/state/popup/video_time]get[text]else[]]">
 <$list variable=cur_chapter_card filter="[[$:/state/popup/chapter_card]get[text]else[]]">
 <$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[360p]]">
-<$list variable=video_tall filter="[<video_size>split[p]first[]]">
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]split[p]first[]]">
+<$list variable=video_tall filter="[<video_size>split[p]first[]else[360p]]">
 <$list variable=video_url_preifx filter="[[Video Books]get[video-url-prefix]else[]]">
 <$list variable=count_local_page filter="[{$:/info/url/full}split[file:///]count[]subtract[1]split[1]join[]]">
 <$list variable=found_url_preifx filter="[<count_local_page>match[]else<video_url_preifx>]">
@@ -198,11 +199,61 @@ $(playback_file)$
 </$list><!--found_url_preifx-->
 </$list><!--count_local_page-->
 </$list><!--video_url_preifx-->
+</$list><!--video_wide-->
 </$list><!--video_tall-->
 </$list><!--video_size-->
 </$list><!--cur_chapter_card-->
 
-<$button><$action-setfield $tiddler="$:/state/popup/video_size" text="240p"/>
+Wide: <$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="auto"/>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[auto]]">
+''auto''
+</$list>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]!match[auto]]">
+auto
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="360p"/>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[360p]]">
+''360p''
+</$list>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]!match[360p]]">
+360p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="480p"/>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[480p]]">
+''480p''
+</$list>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]!match[480p]]">
+480p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="720p"/>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[720p]]">
+''720p''
+</$list>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]!match[720p]]">
+720p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="1080p"/>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[1080p]]">
+''1080p''
+</$list>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]!match[1080p]]">
+1080p
+</$list>
+</$button>
+<$button><$action-setfield $tiddler="$:/state/popup/video_wide" text="1280p"/>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]match[1280p]]">
+''1280p''
+</$list>
+<$list variable=video_wide filter="[[$:/state/popup/video_wide]get[text]else[auto]!match[1280p]]">
+1280p
+</$list>
+</$button>
+
+Tall: <$button><$action-setfield $tiddler="$:/state/popup/video_size" text="240p"/>
 <$list variable=video_size filter="[[$:/state/popup/video_size]get[text]else[320p]match[240p]]">
 ''240p''
 </$list>
@@ -357,7 +408,7 @@ x1.75
 <$link to=<<cur_book_card>> >_''''_''''_</$link>
 <$list variable=cur_ch_prefix filter="[<cur_book_card>addsuffix[-]]">
 <$list variable=cur_chapter_card filter="[prefix<cur_ch_prefix>sort[]]">
-<$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
+<$list variable=cur_chapter_title filter="[<cur_chapter_card>get[chapter-title]else[]]"><$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
 <$list variable=cur_maxres_suffix filter="[<cur_book_card>get[maxres-suffix]]">
 <$list variable=cur_chapter_num filter="[<cur_chapter_card>get[chapter-seq]]">
 <$list variable=cur_file_name filter="[<cur_video_prefix>addsuffix<cur_chapter_num>addsuffix<cur_maxres_suffix>]">
@@ -365,11 +416,12 @@ x1.75
 <$action-setfield $tiddler="$:/state/popup/video_file" text=<<cur_file_name>>/>
 <$action-setfield $tiddler="$:/state/popup/chapter_card" text=<<cur_chapter_card>>/>
 <$action-setfield $tiddler="$:/state/popup/video_time" text="" />
-ch.<<cur_chapter_num>></$button>
+ch.<<cur_chapter_num>> <<cur_chapter_title>></$button>
 </$list><!--cur_file_name-->
 </$list><!--cur_chapter_num-->
 </$list><!--cur_maxres_suffix-->
 </$list><!--cur_video_prefix-->
+</$list><!--cur_chapter_title-->
 </$list><!--cur_chapter_card-->
 </$list><!--cur_ch_prefix-->
 </$list><!--cur_book_card-->
@@ -380,11 +432,15 @@ ch.<<cur_chapter_num>></$button>
 <$link to=<<cur_chapter_card>> >_''''_''''_</$link>
 <$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
 <$list variable=cur_verse_num filter="[<cur_verse_field>split[v]last[]]">
+<$list variable=cur_verse_captionfield filter="[[caption-]addsuffix<cur_verse_field>]">
+<$list variable=cur_verse_caption filter="[<cur_chapter_card>get<cur_verse_captionfield>else[]]">
 <$list variable=cur_verse_time filter="[<cur_chapter_card>get<cur_verse_field>]">
 <$button>
 <$action-setfield $tiddler="$:/state/popup/video_time" text=<<cur_verse_time>>/>
-vs.<<cur_verse_num>></$button>
+vs.<<cur_verse_num>> <<cur_verse_caption>></$button>
 </$list><!--cur_verse_time-->
+</$list><!--cur_verse_caption-->
+</$list><!--cur_verse_captionfield-->
 </$list><!--cur_verse_num-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_chapter_card-->
@@ -429,10 +485,10 @@ Del ARTICLE and IMG cards
 
 DivPop btn
 
-\define divpop_current(ur_ref)
+<$list variable=cur_card filter="[all[current]]">
 <$button class=<<tv-config-toolbar-class>> >
 <$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=<<cur_card>>/>
 <$action-sendmessage $message="tm-close-tiddler" $param="pop_right"/>
 <$list filter="[<tv-config-toolbar-icons>match[yes]]">
 {{DivPop.svg}}
@@ -441,17 +497,13 @@ DivPop btn
 <span class="tc-btn-text"><$text text="Popup over Sidebar"/></span>
 </$list>
 </$button>
-\end
-
-<$list filter="[all[current]]">
-<$macrocall $name=divpop_current ur_ref=<<currentTiddler>> /> 
 </$list>
 
 
 
 DivPop glbl
 
-<$list filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
+<$list variable=cur_divpop_card filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
 <div style="
 position: fixed;
 top: 0px;
@@ -467,9 +519,17 @@ bottom: 0%;
 <$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
 close
 </$button>
-<$tiddler tiddler=<<currentTiddler>> >
+&nbsp;&nbsp;&nbsp;<$reveal type="match" state="$:/state/popup/$ur_pk$" text="show"><$button set="$:/state/popup/$ur_pk$" setTo="hide">show</$button>&nbsp;&nbsp;&nbsp;<$link to=<<cur_divpop_card>> ><<cur_divpop_card>>
+</$link>
+<$list variable=cur_text filter="[<cur_divpop_card>get[text]]">
+<$codeblock code=<<cur_text>> /></$list>
+</$reveal>
+<$reveal type="nomatch" state="$:/state/popup/$ur_pk$" text="show"><$button set="$:/state/popup/$ur_pk$" setTo="show">code</$button>&nbsp;&nbsp;&nbsp;<$link to=<<cur_divpop_card>> ><<cur_divpop_card>>
+</$link>
+<$tiddler tiddler=<<cur_divpop_card>> >
 <$transclude mode="block" />
 </$tiddler>
+</$reveal>
 </div>
 </div>
 </$list>
