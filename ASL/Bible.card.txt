@@ -977,7 +977,6 @@ mcr glbl_book_field
 </$list><!--cur_book_card-->
 \end
 \define glbl_chapter_field(ur_card)
-<!--<$edit-text tiddler="$:/state/popup/temp_time" field=text default="00:00:00" autoHeight=yes tag=input/>-->
 <$list variable=cur_chapter_card filter="[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]">
 <$list variable=cur_chapter_parentcard filter="[<cur_chapter_card>split[-]first[]]">
 <$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">

@@ -977,7 +977,6 @@ mcr glbl_book_field
 </$list><!--cur_book_card-->
 \end
 \define glbl_chapter_field(ur_card)
-<$edit-text tiddler="$:/state/popup/temp_time" field=text default="00:00:00" autoHeight=yes tag=input/>
 <$list variable=cur_chapter_card filter="[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]">
 <$list variable=cur_chapter_parentcard filter="[<cur_chapter_card>split[-]first[]]">
 <$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">
@@ -986,7 +985,7 @@ mcr glbl_book_field
 <$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
 <$list variable=cur_verse_seq filter="[<cur_verse_field>split[v]last[]]">
 
-* Verse <<cur_verse_seq>> @ <$edit-text tiddler=<<cur_chapter_card>> field=<<cur_verse_field>> default="00:00:00" autoHeight=yes tag=input/>
+* Verse <<cur_verse_seq>> @ <$edit-text tiddler=<<cur_chapter_card>> field=<<cur_verse_field>> default="00:00:00" autoHeight=yes tag=input/><$macrocall $name=glbl_navigate_verse ur_card=<<cur_chapter_card>> ur_verse_field=<<cur_verse_field>> />
 </$list><!--cur_verse_seq-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_chapter_seq-->

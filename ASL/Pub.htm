@@ -273,9 +273,57 @@ Error message and password prompt
 
 <li>Video Books\mwb_202101</li>
 
+<li>Video Books\mwb_202101-01</li>
+
+<li>Video Books\mwb_202101-02</li>
+
+<li>Video Books\mwb_202101-03</li>
+
+<li>Video Books\mwb_202101-04</li>
+
+<li>Video Books\mwb_202101-05</li>
+
+<li>Video Books\mwb_202101-06</li>
+
+<li>Video Books\mwb_202101-07</li>
+
+<li>Video Books\mwb_202101-08</li>
+
+<li>Video Books\mwb_202101-09</li>
+
+<li>Video Books\mwb_202101-10</li>
+
 <li>Video Books\mwb_202101-11</li>
 
 <li>Video Books\mwb_202101-11-v01</li>
+
+<li>Video Books\mwb_202101-12</li>
+
+<li>Video Books\mwb_202101-13</li>
+
+<li>Video Books\mwb_202101-14</li>
+
+<li>Video Books\mwb_202101-15</li>
+
+<li>Video Books\mwb_202101-16</li>
+
+<li>Video Books\mwb_202101-17</li>
+
+<li>Video Books\mwb_202101-18</li>
+
+<li>Video Books\mwb_202101-19</li>
+
+<li>Video Books\mwb_202101-20</li>
+
+<li>Video Books\mwb_202101-21</li>
+
+<li>Video Books\mwb_202101-22</li>
+
+<li>Video Books\mwb_202101-23</li>
+
+<li>Video Books\mwb_202101-24</li>
+
+<li>Video Books\mwb_202101-25</li>
 
 <li>Video Books\w_201911</li>
 
@@ -10255,7 +10303,7 @@ return &quot;&quot;;
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[mcr glbl_navigate_book]]</pre>
+# [[mcr glbl_book_field]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -10313,7 +10361,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210121235747947" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210122012657516" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10322,13 +10370,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210121235747947" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210122012657516" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210121235739330" list="[[ASL Publication Videos]] [[Video Books]] [[Daily Text 2021]]" modified="20210121235739330" title="$:/StoryList">
+<div created="20210122011705162" list="[[ASL Publication Videos]] [[Video Books\mwb_202101-11]] [[Daily Text 2021]] [[Video Books\mwb_202101-01]] [[Video Books\mwb_202101-02]] [[Video Books\mwb_202101-03]] [[Video Books\mwb_202101-04]] [[Video Books\mwb_202101-05]] [[Video Books\mwb_202101-06]] [[Video Books\mwb_202101-07]] [[Video Books\mwb_202101-08]] [[Video Books\mwb_202101-09]] [[Video Books\mwb_202101-10]] [[Video Books\mwb_202101-12]] [[Video Books\mwb_202101-13]] [[Video Books\mwb_202101-14]] [[Video Books\mwb_202101-15]] [[Video Books\mwb_202101-16]] [[Video Books\mwb_202101-17]] [[Video Books\mwb_202101-18]] [[Video Books\mwb_202101-19]] [[Video Books\mwb_202101-20]] [[Video Books\mwb_202101-21]] [[Video Books\mwb_202101-22]] [[Video Books\mwb_202101-23]] [[Video Books\mwb_202101-24]] [[Video Books\mwb_202101-25]]" modified="20210122011705162" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -11184,7 +11232,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/ol&gt;
 \end</pre>
 </div>
-<div created="20210120175329269" modified="20210121203406824" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
+<div created="20210120175329269" modified="20210122012640550" tags="MCR $:/tags/Macro" title="mcr glbl_book_field">
 <pre>\define glbl_book_field(ur_card)
 &lt;$list variable=cur_book_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[book-seq]]&quot;&gt;
 &lt;$list variable=cur_book_abbrv filter=&quot;[&lt;cur_book_card&gt;split[\]last[]split[']first[]]&quot;&gt;
@@ -11224,7 +11272,6 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--cur_book_card--&gt;
 \end
 \define glbl_chapter_field(ur_card)
-&lt;$edit-text tiddler=&quot;$:/state/popup/temp_time&quot; field=text default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;
 &lt;$list variable=cur_chapter_card filter=&quot;[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]&quot;&gt;
 &lt;$list variable=cur_chapter_parentcard filter=&quot;[&lt;cur_chapter_card&gt;split[-]first[]]&quot;&gt;
 &lt;$list variable=cur_chapter_seq filter=&quot;[&lt;cur_chapter_card&gt;get[chapter-seq]]&quot;&gt;
@@ -11233,7 +11280,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;$list variable=cur_verse_field filter=&quot;[&lt;cur_chapter_card&gt;fields[]prefix[v]sort[]]&quot;&gt;
 &lt;$list variable=cur_verse_seq filter=&quot;[&lt;cur_verse_field&gt;split[v]last[]]&quot;&gt;
 
-* Verse &lt;&lt;cur_verse_seq&gt;&gt; @ &lt;$edit-text tiddler=&lt;&lt;cur_chapter_card&gt;&gt; field=&lt;&lt;cur_verse_field&gt;&gt; default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;
+* Verse &lt;&lt;cur_verse_seq&gt;&gt; @ &lt;$edit-text tiddler=&lt;&lt;cur_chapter_card&gt;&gt; field=&lt;&lt;cur_verse_field&gt;&gt; default=&quot;00:00:00&quot; autoHeight=yes tag=input/&gt;&lt;$macrocall $name=glbl_navigate_verse ur_card=&lt;&lt;cur_chapter_card&gt;&gt; ur_verse_field=&lt;&lt;cur_verse_field&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--cur_verse_seq--&gt;
 &lt;/$list&gt;&lt;!--cur_verse_field--&gt;
 &lt;/$list&gt;&lt;!--cur_chapter_seq--&gt;
@@ -11652,11 +11699,83 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 <div book-seq="mwb_202101" created="20210120171158658" maxres-suffix="_r720P.mp4" modified="20210121022709385" tags="" title="Video Books\mwb_202101" video-prefix="mwb_ASL_202101_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
 </div>
+<div chapter-seq="01" chapter-title="Our Christian" created="20210122011910434" modified="20210122012016640" tags="" title="Video Books\mwb_202101-01" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="02" chapter-title="Jan 4-10" created="20210122012001217" modified="20210122012004603" tags="" title="Video Books\mwb_202101-02" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="03" chapter-title="Maintain" created="20210122012023357" modified="20210122012030833" tags="" title="Video Books\mwb_202101-03" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="04" chapter-title="Parents" created="20210122012036227" modified="20210122012040615" tags="" title="Video Books\mwb_202101-04" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="05" chapter-title="Jan 11-17" created="20210122012045812" modified="20210122012054171" tags="" title="Video Books\mwb_202101-05" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="06" chapter-title="Jehovah" created="20210122012057119" modified="20210122012104904" tags="" title="Video Books\mwb_202101-06" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="07" chapter-title="Safeguard" created="20210122012107670" modified="20210122012119957" tags="" title="Video Books\mwb_202101-07" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="08" chapter-title="Jan 18-24" created="20210122012125121" modified="20210122012132916" tags="" title="Video Books\mwb_202101-08" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="09" chapter-title="Seasonal" created="20210122012135077" modified="20210122012142760" tags="" title="Video Books\mwb_202101-09" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="10" chapter-title="Annual" created="20210122012153402" modified="20210122012200815" tags="" title="Video Books\mwb_202101-10" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
 <div caption-v01="luC\ rfl\ lnUp ln\" caption-v02="lUB lCiU lnUp ln\" caption-v03="lUB lulnU\" chapter-seq="11" chapter-title="Jan 25-31" created="20210120181437686" modified="20210121184656680" tags="" title="Video Books\mwb_202101-11" v01="00:00:07" v02="00:00:11" v03="00:00:24.5">
 <pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div created="20210121043536965" modified="20210121043642092" tags="" title="Video Books\mwb_202101-11-v01">
 <pre>fnU\hvA</pre>
+</div>
+<div chapter-seq="12" chapter-title="The Jubille" created="20210122012203348" modified="20210122012209941" tags="" title="Video Books\mwb_202101-12" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="13" chapter-title="Future" created="20210122012212527" modified="20210122012220910" tags="" title="Video Books\mwb_202101-13" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="14" chapter-title="Feb 1-7" created="20210122012223495" modified="20210122012232484" tags="" title="Video Books\mwb_202101-14" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="15" chapter-title="How to" created="20210122012235254" modified="20210122012242691" tags="" title="Video Books\mwb_202101-15" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="16" chapter-title="Choose" created="20210122012244906" modified="20210122012251274" tags="" title="Video Books\mwb_202101-16" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="17" chapter-title="Feb 8-14" created="20210122012253727" modified="20210122012303301" tags="" title="Video Books\mwb_202101-17" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="18" chapter-title="Jehovah" created="20210122012306181" modified="20210122012312210" tags="" title="Video Books\mwb_202101-18" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="19" chapter-title="Organized" created="20210122012315237" modified="20210122012335083" tags="" title="Video Books\mwb_202101-19" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="20" chapter-title="Feb 15-21" created="20210122012338119" modified="20210122012347086" tags="" title="Video Books\mwb_202101-20" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="21" chapter-title="The Service" created="20210122012349381" modified="20210122012356232" tags="" title="Video Books\mwb_202101-21" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="22" chapter-title="Feb 22-28" created="20210122012358885" modified="20210122012409482" tags="" title="Video Books\mwb_202101-22" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="23" chapter-title="How Can" created="20210122012412353" modified="20210122012419596" tags="" title="Video Books\mwb_202101-23" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="24" chapter-title="Will You" created="20210122012422005" modified="20210122012428778" tags="" title="Video Books\mwb_202101-24" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
+</div>
+<div chapter-seq="25" chapter-title="Sample" created="20210122012434246" modified="20210122012440601" tags="" title="Video Books\mwb_202101-25" v01="00:00:07" v02="00:00:11">
+<pre>&lt;&lt;glbl_chapter_field&gt;&gt;</pre>
 </div>
 <div book-seq="w_201911" created="20210121185132570" maxres-suffix="_r720P.mp4" modified="20210121185234458" tags="" title="Video Books\w_201911" video-prefix="w_ASL_201911_">
 <pre>&lt;&lt;glbl_book_field&gt;&gt;</pre>
