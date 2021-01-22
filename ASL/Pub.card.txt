@@ -436,7 +436,7 @@ ch.<<cur_chapter_num>> <<cur_chapter_title>></$button>
 <$list variable=cur_chapter_card filter="[[$:/state/popup/chapter_card]get[text]]">
 <$link to=<<cur_chapter_card>> >_''''_''''_</$link>
 <$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
-<$list variable=cur_verse_num filter="[<cur_verse_field>split[v]last[]]">
+<$list variable=cur_verse_num filter="[<cur_verse_field>removeprefix[v]]">
 <$list variable=cur_verse_captionfield filter="[[caption-]addsuffix<cur_verse_field>]">
 <$list variable=cur_verse_caption filter="[<cur_chapter_card>get<cur_verse_captionfield>else[]]">
 <$list variable=cur_verse_script_card filter="[<cur_chapter_card>addsuffix[-]addsuffix<cur_verse_field>else[]]">
@@ -943,7 +943,7 @@ mcr glbl_book_field
 <$list variable=cur_book_abbrv filter="[<cur_book_card>split[\]last[]split[']first[]]">
 <$list variable=cur_book_parentcard filter="[<cur_book_card>split[\]first[]]">
 
-<$link to=<<cur_book_card>> >''Book: <<cur_book_abbrv>>''</$link> - <$link to=<<cur_book_parentcard>> />
+''Book: <<cur_book_abbrv>>'' - <$link to=<<cur_book_parentcard>> />
 <$list variable=cur_book_seq filter="[<cur_book_card>get[book-seq]]">
 
 * Book Seq: <<cur_book_seq>>
@@ -958,7 +958,7 @@ mcr glbl_book_field
 
 <<<
 <$list variable=cur_chapter_prefix filter="[<cur_book_card>addsuffix[-]]">
-<$list variable=cur_chapter_card filter="[prefix<cur_chapter_prefix>has[chapter-seq]]">
+<$list variable=cur_chapter_card filter="[prefix<cur_chapter_prefix>has[chapter-seq]sort[]]">
 <$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">
 <$list variable=cur_chapter_title filter="[<cur_chapter_card>get[chapter-title]else[]]">
 
@@ -978,18 +978,22 @@ mcr glbl_book_field
 \end
 \define glbl_chapter_field(ur_card)
 <$list variable=cur_chapter_card filter="[[$ur_card$]!match[]else[$(currentTiddler)$]has[chapter-seq]]">
-<$list variable=cur_chapter_parentcard filter="[<cur_chapter_card>split[-]first[]]">
+<$list variable=cur_book_card filter="[<cur_chapter_card>split[-]first[]]">
 <$list variable=cur_chapter_seq filter="[<cur_chapter_card>get[chapter-seq]]">
 
-<$link to=<<cur_chapter_card>> >''Chapter Seq: <<cur_chapter_seq>>''</$link> - <$link to=<<cur_chapter_parentcard>> />
+''Chapter Seq: <<cur_chapter_seq>>'' - <$link to=<<cur_book_card>> />
+<$list variable=cur_chapter_title filter="[<cur_chapter_card>get[chapter-title]]">
+
+* <<cur_chapter_title>>
+</$list><!--cur_chapter_title-->
 <$list variable=cur_verse_field filter="[<cur_chapter_card>fields[]prefix[v]sort[]]">
-<$list variable=cur_verse_seq filter="[<cur_verse_field>split[v]last[]]">
+<$list variable=cur_verse_seq filter="[<cur_verse_field>removeprefix[v]]">
 
 * Verse <<cur_verse_seq>> @ <$edit-text tiddler=<<cur_chapter_card>> field=<<cur_verse_field>> default="00:00:00" autoHeight=yes tag=input/><$macrocall $name=glbl_navigate_verse ur_card=<<cur_chapter_card>> ur_verse_field=<<cur_verse_field>> />
 </$list><!--cur_verse_seq-->
 </$list><!--cur_verse_field-->
 </$list><!--cur_chapter_seq-->
-</$list><!--cur_chapter_parentcard-->
+</$list><!--cur_book_card-->
 </$list><!--cur_chapter_card-->
 \end
 
