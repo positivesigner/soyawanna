@@ -518,7 +518,7 @@ Copy chapter
 <br>
 
 <$edit-text tiddler="$:/state/popup/orig_number" field="text" default="" autoHeight=yes tag=input/>
-<$link to=<<root_card>> /> - <<dest_card>>
+<$link to=<<root_card>> /> - <$link to=<<dest_card>> />
 <br>
 
 <$edit-text tiddler="$:/state/popup/dest_number" field="text" default="" autoHeight=yes tag=input/>
