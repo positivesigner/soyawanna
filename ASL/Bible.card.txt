@@ -505,6 +505,14 @@ Del ARTICLE and IMG cards
 
 
 
+CLAM
+
+<<glbl_dt_ddd>>
+
+<<glbl_article_list>>
+
+
+
 Copy chapter
 
 <$list variable=root_book filter="[[$:/state/popup/copy_book]get[text]else[]]">
@@ -551,6 +559,14 @@ Create record
 </$list><!--root_card-->
 </$list><!--root_prefix-->
 
+
+
+
+Daily Text
+
+<<glbl_dt_ddd>>
+
+<<glbl_article_list>>
 
 
 
@@ -733,12 +749,6 @@ ext TW Return
 </$list>
 </$list>
 
-
-
-
-Favorites
-
-<<glbl_navigate_book>>
 
 
 
@@ -1287,6 +1297,18 @@ mcr glbl_compare_lines
 
 
 
+mcr glbl_dt_ddd
+
+\define glbl_dt_ddd()
+<div style="clear:right;float:right;background-color:aquamarine;"><<now "YYYYm0MMd0DD DDD pm0hh12\m0mm">></div>
+<$list filter="[<currentTiddler>split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]">
+<$view field="title" format="date" template="[UTC]DDD" />
+</$list>
+\end
+
+
+
+
 mcr glbl_ext
 
 \define ext(ur_extnote_pk)
@@ -1310,8 +1332,8 @@ mcr glbl_image
 
 mcr glbl_navigate_book
 
-\define glbl_navigate_book()
-<$list variable=cur_date_field filter="[is[current]fields[]prefix[link-]sort[]]">
+\define glbl_navigate_book(ur_field_name)
+<$list variable=cur_date_field filter="[is[current]fields[]prefix[link-]prefix[$ur_field_name$]sort[]]">
 <$list variable=cur_date_label filter="[<cur_date_field>split[-]butfirst[]join[-]]">
 <$list variable=cur_date_caption_field filter="[<cur_date_label>addprefix[caption-]]">
 <$list variable=cur_date_caption filter="[is[current]get<cur_date_caption_field>else<cur_date_label>]">
@@ -1333,12 +1355,12 @@ mcr glbl_navigate_book
 <$list variable=cur_caption filter="[[$ur_caption$]!match[]else[Show]]">
 <$list variable=cur_verse_card filter="[[$ur_card$-$ur_verse_field$]]">
 <$list variable=cur_verse_field filter="[[$ur_verse_field$]]">
-<$list variable=cur_chapter_card filter="[<cur_verse_card>split[-]butlast[]join[-]]">
+<$list variable=cur_chapter_card filter="[<cur_verse_card>split[-v]butlast[]join[-v]]">
 <$list variable=cur_book_chapter filter="[<cur_chapter_card>split[\]last[]]">
 <$list variable=cur_verse_time filter="[<cur_chapter_card>get<cur_verse_field>]">
 <$list variable=cur_verse_script_card filter="[<cur_chapter_card>addsuffix[-]addsuffix<cur_verse_field>else[]]">
 <$list variable=cur_chapter_num filter="[<cur_chapter_card>split[-]last[]]">
-<$list variable=cur_book_card filter="[<cur_chapter_card>split[-]butlast[]join[-]]">
+<$list variable=cur_book_card filter="[<cur_chapter_card>split[-]butlast[]join[v-]]">
 <$list variable=cur_book_abbrv filter="[<cur_book_card>split[\]last[]]">
 <$list variable=cur_video_prefix filter="[<cur_book_card>get[video-prefix]]">
 <$list variable=cur_maxres_suffix filter="[<cur_book_card>get[maxres-suffix]]">
@@ -1495,4 +1517,12 @@ View All Code
 <$codeblock code=<<cur_card_text>> />
 </$list><!--cur_card_text-->
 </$list><!--cur_card_pk-->
+
+
+
+Watchtower Study
+
+<<glbl_dt_ddd>>
+
+<<glbl_article_list>>
 
