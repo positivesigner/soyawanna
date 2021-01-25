@@ -12820,7 +12820,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210123224559947" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210125002733894" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -12829,13 +12829,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210123224559947" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210125002733894" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[ASL Bible Videos]] CLAM [[Daily Text]] [[Watchtower Study]]" title="$:/StoryList">
+<div created="20210125001855579" list="[[ASL Bible Videos]] [[Video Books]] CLAM [[Daily Text]] [[Watchtower Study]]" modified="20210125001855579" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -14232,13 +14232,26 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
 </div>
-<div created="20210120165200765" hosted-url-prefix="video/" local-url-prefix="file:///C:/TJBF/Blob_VID/2021m01%20ASL/video/" modified="20210121235719385" tags="" title="Video Books">
+<div created="20210120165200765" hosted-url-prefix="video/" local-url-prefix="file:///C:/TJBF/Blob_VID/2021m01%20ASL/video/" modified="20210125002731810" tags="" title="Video Books">
 <pre>&lt;$list variable=cur_book_seq filter=&quot;[has[book-seq]get[book-seq]sort[]]&quot;&gt;
 &lt;$list variable=cur_book_card filter=&quot;[book-seq&lt;cur_book_seq&gt;]&quot;&gt;
 
 &lt;$link to=&lt;&lt;cur_book_card&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--cur_book_card--&gt;
 &lt;/$list&gt;&lt;!--clc_prefix--&gt;
+
+&lt;$list variable=cur_card filter=&quot;[is[current]]&quot;&gt;
+&lt;$list variable=new_url filter=&quot;[[10.0.0.4:8080/Download/video/]]&quot;&gt;
+&lt;$list variable=new_prefix filter=&quot;[&lt;new_url&gt;addprefix[http://]]&quot;&gt;
+&lt;$list variable=filter_prefix_match filter=&quot;[&lt;cur_card&gt;get[hosted-url-prefix]!match&lt;new_prefix&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;cur_card&gt;&gt; hosted-url-prefix=&lt;&lt;new_prefix&gt;&gt; /&gt;
+hosted URL prefix = &lt;&lt;new_url&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--filter_prefix_match--&gt;
+&lt;/$list&gt;&lt;!--new_prefix--&gt;
+&lt;/$list&gt;&lt;!--new_url--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
 </pre>
 </div>
 <div book-seq="13" created="20210121213323678" maxres-suffix="_r720P.mp4" modified="20210121213400994" tags="" title="Video Books\1ch" video-prefix="nwt_13_1Ch_ASL_">
