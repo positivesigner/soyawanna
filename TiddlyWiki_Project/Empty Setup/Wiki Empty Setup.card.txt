@@ -94,50 +94,6 @@ New Card
 
 
 
-$:/plugins/danielo515/searchNreplace
-
-{
-    "tiddlers": {
-        "$:/danielo515/modules/startup/replace.js": {
-            "text": "/*\\\r\ntitle: $:/danielo515/modules/startup/replace.js\r\ntype: application/javascript\r\nmodule-type: startup\r\nSearch and replace text\r\n\r\nRequires TW >= 5.1.4\r\n\r\n\\*/\r\n(function(){\r\n\r\n/*jslint node: true, browser: true */\r\n/*global $tw: false */\r\n\"use strict\";\r\n\r\n// Export name and synchronous status\r\nexports.name = \"password\";\r\nexports.platforms = [\"browser\"];\r\nexports.after = [\"startup\"];\r\nexports.synchronous = true;\r\n\r\nexports.startup = function() {\r\n  $tw.rootWidget.addEventListener(\"tm-replace\",function(event){\r\n  console.log(JSON.stringify(event));\r\n  var text=$tw.wiki.getTiddlerText(event.paramObject.source) || \"\",\r\n      doGlobal = event.paramObject.global || \"yes\", // by default do global search and replace\r\n      modifiers = ( doGlobal.toLowerCase() === \"no\" ? '' : 'g'),\r\n      doRegex= event.paramObject.regex === \"yes\",\r\n      regex = new RegExp(doRegex ? event.paramObject.search : $tw.utils.escapeRegExp(event.paramObject.search), modifiers),\r\n      //Tiddler to store the result, if not provided use the source\r\n      destination = event.paramObject.destination || event.paramObject.source;\r\n      $tw.wiki.setText(destination,\"text\",null,text.replace(regex,event.paramObject.replace));\r\n\r\n  });\r\n};\r\n\r\n})();",
-            "title": "$:/danielo515/modules/startup/replace.js",
-            "type": "application/javascript",
-            "module-type": "startup"
-        },
-        "$:/plugins/danielo515/searchNreplace/readme": {
-            "title": "$:/plugins/danielo515/searchNreplace/readme",
-            "text": "This is searchNreplace plugin for ~TiddlyWiki.\r\nIt provides an additional controls bar on the default tiddler's editor. Currently it only allows you to search and replace text.\n\n!!Basic usage\r\n# Put what you want to replace in the first field. This is the ''search string''.\r\n# Put what you want to put in place of the search string in the second field.\r\n# Select if you want to do want replace all occurrences by checking the global checkbox.\r\n# Click the replace button.\n\n!!Using regular expressions\r\nSince version 1.2 you are able to use reuglar expressions. To do so just check the `Use regex` checkbox. This allows you to powerfull search and replacements.\n\nYou can also use references on your replace string. Use `$1`...`$N` notation to reference capturing groups.\n\nFor example, if you have a list like this\n\n```\r\nA 10\r\nB 02\r\nC 20\r\nD 35\r\n```\n\nand you want to invert the values, use the following parameters:\r\n* ''search'': `(\\w) (\\d+)`\r\n* ''replace'': `$2 $1`\r\nThis will put what you have captured in the second ''capturing group'' first and the first one in the second place.\n\nThe regular expressions should be valid javascript regular expressions.\n\n!!Requirements\r\nIt ''requires'' at least TW5 core to 5.1.4 or newer.\r\n"
-        },
-        "$:/plugins/danielo515/searchNreplace/ui/controls": {
-            "created": "20150409175313556",
-            "list-after": "$:/core/ui/EditTemplate/tags",
-            "modified": "20150409182902159",
-            "tags": "$:/tags/EditTemplate",
-            "title": "$:/plugins/danielo515/searchNreplace/ui/controls",
-            "type": "text/vnd.tiddlywiki",
-            "text": "<div class=\"tc-edit-controls\">\n<$list filter=\"[all[shadows+tiddlers]tag[$:/tags/EditControls]]\" variable=\"control\">\n<$transclude tiddler=<<control>>>\n</$list>\n</div>"
-        },
-        "$:/plugins/danielo515/searchNreplace/ui/controls/replace": {
-            "created": "20150409182035279",
-            "modified": "20150409182544663",
-            "tags": "$:/tags/EditControls",
-            "title": "$:/plugins/danielo515/searchNreplace/ui/controls/replace",
-            "type": "text/vnd.tiddlywiki",
-            "text": "<$edit-text tiddler=\"$:/state/searchNreplace/search\" tag=\"input\" default=\"\" placeholder=\"search\"/> <$edit-text tiddler=\"$:/state/searchNreplace/replace\" tag=\"input\" default=\"\" placeholder=\"replace\"/> <$button class=\"button button-tiny button-primary\">Replace\r\n<$action-sendmessage $message=\"tm-replace\" source=<<currentTiddler>> search={{$:/state/searchNreplace/search}} replace={{$:/state/searchNreplace/replace}} global={{$:/state/searchNreplace/global}}\r\nregex={{$:/state/searchNreplace/regex}}/>\r\n</$button>\r\n<$checkbox default=\"yes\" unchecked=\"no\" checked=\"yes\" field=\"text\" tiddler=\"$:/state/searchNreplace/global\">Global</$checkbox>\r\n<$checkbox default=\"no\" unchecked=\"no\" checked=\"yes\" field=\"text\" tiddler=\"$:/state/searchNreplace/regex\">Use regex</$checkbox>"
-        },
-        "$:/plugins/danielo515/searchNreplace/styles": {
-            "created": "20150409181359332",
-            "modified": "20150409182956438",
-            "tags": "$:/tags/Stylesheet",
-            "title": "$:/plugins/danielo515/searchNreplace/styles",
-            "type": "text/css",
-            "text": "  .tc-edit-controls {\n  border: 1px solid #cccccc;\n  border-top: 0px;\n  padding: 4px 8px 4px 8px;\n}"
-        }
-    }
-}
-
-
-
 $:/themes/tiddlywiki/vanilla/metrics/bodyfontsize
 
 15px
