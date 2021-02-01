@@ -149,7 +149,16 @@ ASLSJ Words
 
 aslsj-syll
 
-<<glbl_article_list "-">>
+<$list variable=subcard_prefix filter="[is[current]addsuffix[-]]">
+<$list variable=cur_subcard filter="[prefix<subcard_prefix>]">
+
+<$link to=<<cur_subcard>> />
+
+<$list template="tmlpt field-aslsj-part" filter="[<cur_subcard>]"
+/>
+</$list><!--cur_subcard-->
+</$list><!--subcard_prefix-->
+
 
 
 
@@ -510,12 +519,6 @@ Remove COPY tag from all cards
 
 
 
-ge1
-
-<<glbl_article_list>>
-
-
-
 glbl_aslsj_word
 
 \define qq(ur_txt)
@@ -864,6 +867,12 @@ mcr glbl_image
 
 
 
+nwt-ge01
+
+<<glbl_article_list>>
+
+
+
 parm SkipSaveExportHTML
 
 
@@ -973,16 +982,16 @@ template Home Button
 
 tmlpt field-aslsj-part
 
-<$list variable=cur_aslsj_card filter="[all[current]has[aslsj-part]]">
-<$list variable=cur_aslsj_part filter="[<cur_aslsj_card>get[aslsj-part]]">
-<$list variable=cur_eng_gloss filter="[<cur_aslsj_card>get[eng-gloss]else[]]">
-<$list variable=cur_ref_aslsj_card filter="[<cur_aslsj_card>get[ref-aslsj-card]else[]]">
+<$list variable=cur_aslsj_word_card filter="[all[current]has[aslsj-part]]">
+<$list variable=cur_aslsj_part filter="[<cur_aslsj_word_card>get[aslsj-part]]">
+<$list variable=cur_eng_gloss filter="[<cur_aslsj_word_card>get[eng-gloss]else[]]">
+<$list variable=cur_ref_aslsj_card filter="[<cur_aslsj_word_card>get[ref-aslsj-card]else[]]">
 
-ASLSJ Part = <<cur_aslsj_part>>
+* ASLSJ Part = <<cur_aslsj_part>>
 <$list variable=found_ref_aslsj_card filter="[<cur_ref_aslsj_card>match[]]">
 <$list variable=found_eng_gloss filter="[<cur_eng_gloss>!match[]else[(missing-eng-gloss)]]">
 
-* <<found_eng_gloss>>
+* Gloss = <<found_eng_gloss>>
 </$list><!--found_eng_gloss-->
 </$list><!--found_ref_aslsj_card-->
 <$list variable=missing_ref_aslsj_card filter="[<cur_ref_aslsj_card>!match[]]">
@@ -990,27 +999,37 @@ ASLSJ Part = <<cur_aslsj_part>>
 <$link to=<<cur_ref_aslsj_card>> />
 <$list variable=found_ref_eng_gloss filter="[<cur_ref_aslsj_card>get[eng-gloss]!match[]else[(missing-ref-gloss)]]">
 
-* <<found_ref_eng_gloss>>
+* Gloss = <<found_ref_eng_gloss>>
 </$list><!--found_ref_eng_gloss-->
 </$list><!--missing_ref_aslsj_card-->
-<$list variable=cur_aslsj_syll filter="[<cur_aslsj_card>fields[]prefix[aslsj-syll-]]">
-<$list variable=cur_syll_card filter="[<cur_aslsj_card>get<cur_aslsj_syll>addprefix[aslsj-syll-]]">
-<$list variable=found_syll_card filter="[<cur_syll_card>!has<title>]">
+<$list variable=cur_aslsj_syll filter="[<cur_aslsj_word_card>fields[]prefix[aslsj-syll-]sort[]]">
+<$list variable=cur_syll_card filter="[<cur_aslsj_word_card>get<cur_aslsj_syll>addprefix[aslsj-syll-]]">
+<$list variable=missing_syll_card filter="[<cur_syll_card>!has[title]]">
 
 * (-<<cur_syll_card>>-missing)
-</$list><!--found_syll_card-->
+</$list><!--missing_syll_card-->
+<$list variable=found_syll_abbrv filter="[<cur_syll_card>has[title]split[-]last[]]">
+
+* <$link to=<<cur_syll_card>> ><<found_syll_abbrv>></$link>
+</$list><!--found_syll_abbrv-->
 </$list><!--cur_syll_card-->
 </$list><!--cur_aslsj_syll-->
 </$list><!--cur_ref_aslsj_card-->
 </$list><!--cur_eng_gloss-->
 </$list><!--cur_aslsj_part-->
-</$list><!--cur_aslsj_card-->
-<$list variable=cur_syll_card filter="[all[current]prefix[aslsj-syll-]]">
-<$list variable=cur_syll_part filter="[<cur_syll_card>fields[]prefix[syll-part-]]">
-<$list variable=cur_syllpart_card filter="[<cur_syll_card>get<cur_syll_part>addprefix[syll-part-]else[]]">
+</$list><!--cur_aslsj_word_card-->
+<$list variable=cur_aslsj_syll_card filter="[all[current]prefix[aslsj-syll-]sort[]]">
+<$list variable=found_aslsj_syll_gloss filter="[<cur_aslsj_syll_card>get[syll-gloss]!match[]else[(missing-syll-gloss)]]">
+
+* Gloss = <<found_aslsj_syll_gloss>>
+</$list><!--found_aslsj_syll_gloss-->
+<$list variable=cur_syll_part filter="[<cur_aslsj_syll_card>fields[]prefix[syll-part-]sort[]]">
+<$list variable=cur_syllpart_card filter="[<cur_aslsj_syll_card>get<cur_syll_part>addprefix[syll-part-]else[]]">
 <$list variable=found_syllpart_card filter="[<cur_syllpart_card>has[title]]">
 
-<$transclude tiddler=<<cur_syllpart_card>> mode=block />
+* <$link to=<<cur_syllpart_card>> /><$list variable=found_syllpart_gloss filter="[<cur_syllpart_card>get[syllpart-gloss]]">
+- <<found_syllpart_gloss>>
+</$list><!--found_syllpart_card-->
 </$list><!--found_syllpart_card-->
 <$list variable=missing_syllpart_card filter="[<cur_syllpart_card>!has[title]]">
 
@@ -1018,7 +1037,24 @@ ASLSJ Part = <<cur_aslsj_part>>
 </$list><!--missing_syllpart_card-->
 </$list><!--cur_syllpart_card-->
 </$list><!--cur_syll_part-->
-</$list><!--cur_syll_card-->
+</$list><!--cur_aslsj_syll_card-->
+<$list variable=cur_syllpart_card filter="[all[current]prefix[syll-part-]sort[]]">
+<$list variable=cur_syll_part filter="[<cur_syllpart_card>removeprefix[syll-part-]]">
+
+<$list variable=cur_syllpart_gloss filter="[<cur_syllpart_card>get[syllpart-gloss]else[(missing-gloss)]]">
+
+* ''<<cur_syll_part>>'' = <<cur_syllpart_gloss>>
+</$list><!--cur_syllpart_gloss-->
+<$list variable=cur_aslsj_syll_card filter="[prefix[aslsj-syll-]sort[]]">
+<$list variable=contains_aslsj_syll filter="[<cur_aslsj_syll_card>split[-]last[]split<cur_syll_part>count[]!match[1]]">
+<$list variable=cur_eng_gloss filter="[<cur_aslsj_syll_card>get[syll-gloss]]">
+
+* Used in <$link to=<<cur_aslsj_syll_card>> /> as <<cur_eng_gloss>>
+</$list><!--cur_eng_gloss-->
+</$list><!--contains_aslsj_syll-->
+</$list><!--cur_aslsj_syll_card-->
+</$list><!--cur_syll_part-->
+</$list><!--cur_syllpart_card-->
 
 
 
