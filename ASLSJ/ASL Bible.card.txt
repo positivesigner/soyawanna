@@ -592,11 +592,17 @@ mcr glbl_aslsj_gloss
 
 \define glbl_aslsj_gloss()
 <$list variable=gloss_flag_card filter="[<currentTiddler>addprefix[$:/state/popup/gloss-]]">
-<$list variable=cur_gloss_flag filter="[<gloss_flag_card>get[text]match[eng]else[]]">
-<$list filter="[<cur_gloss_flag>!match[]]">
+<$list variable=cur_gloss_flag filter="[<gloss_flag_card>get[text]else[]]">
+<$list filter="[<cur_gloss_flag>match[link]]">
 <$button>
 <$action-setfield $tiddler=<<gloss_flag_card>> text=""/>
 View as ASLSJ
+</$button>
+</$list>
+<$list filter="[<cur_gloss_flag>match[eng]]">
+<$button>
+<$action-setfield $tiddler=<<gloss_flag_card>> text="link"/>
+View as Word Link
 </$button>
 </$list>
 <$list filter="[<cur_gloss_flag>match[]]">
@@ -608,19 +614,16 @@ View as Eng Gloss
 </$list><!--cur_gloss_flag-->
 </$list><!--gloss_flag_card-->
 \end
-
-
-
-
-mcr glbl_aslsj_word
-
 \define qq(ur_txt)
 <$list variable=cur_gloss_flag filter="[[$:/state/popup/gloss-$(currentTiddler)$]get[text]else[]]">
 <$list variable=aslsj_word_card filter="[[$ur_txt$]has[title]else[(-$ur_txt$-missing)]]">
 <$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[]]">
 <<aslsj_word_card>>
 </$list><!--filter_aslsj_word-->
-<$list variable=filter_eng_gloss filter="[<cur_gloss_flag>!match[]]">
+<$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[link]]">
+<$link to=<<aslsj_word_card>> />
+</$list><!--filter_aslsj_word-->
+<$list variable=filter_eng_gloss filter="[<cur_gloss_flag>match[eng]]">
 <$list variable=cur_eng_gloss filter="[<aslsj_word_card>get[eng-gloss]else[]]">
 <$list variable=found_eng_gloss filter="[<cur_eng_gloss>!match[]]">
 <<found_eng_gloss>>
