@@ -618,7 +618,7 @@ View as Eng Gloss
 <$list variable=cur_gloss_flag filter="[[$:/state/popup/gloss-$(currentTiddler)$]get[text]else[]]">
 <$list variable=aslsj_word_card filter="[[$ur_txt$]has[title]else[(-$ur_txt$-missing)]]">
 <$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[]]">
-<<aslsj_word_card>>
+<$text text=<<aslsj_word_card>> />
 </$list><!--filter_aslsj_word-->
 <$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[link]]">
 <$link to=<<aslsj_word_card>> />
@@ -634,7 +634,7 @@ View as Eng Gloss
 <<found_ref_eng_gloss>>
 </$list><!--found_ref_eng_gloss-->
 <$list variable=missing_ref_eng_gloss filter="[<cur_ref_eng_gloss>match[]]">
-(-$ur_txt$-gloss-missing)
+(-<$text text="$ur_txt$" />-gloss-missing)
 </$list><!--missing_ref_eng_gloss-->
 </$list><!--cur_ref_eng_gloss-->
 </$list><!--missing_local_eng_gloss-->
@@ -643,6 +643,10 @@ View as Eng Gloss
 </$list><!--aslsj_word_card-->
 </$list><!--cur_gloss_flag-->
 \end
+\define vs(ur_num)
+^^''$ur_num$''^^ 
+\end
+
 
 
 
