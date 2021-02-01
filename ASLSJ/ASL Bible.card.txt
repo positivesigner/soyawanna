@@ -136,7 +136,7 @@ ASLSJ Bible
 
 ASLSJ Words
 
-<$list variable=cur_aslsj_word_card filter="[has[aslsj-part]]">
+<$list variable=cur_aslsj_word_card filter="[has[aslsj-part]sort[title]]">
 
 <$link to=<<cur_aslsj_word_card>> />
 
@@ -996,10 +996,7 @@ tmlpt field-aslsj-part
 </$list><!--found_ref_aslsj_card-->
 <$list variable=missing_ref_aslsj_card filter="[<cur_ref_aslsj_card>!match[]]">
 
-<$link to=<<cur_ref_aslsj_card>> />
-<$list variable=found_ref_eng_gloss filter="[<cur_ref_aslsj_card>get[eng-gloss]!match[]else[(missing-ref-gloss)]]">
-
-* Gloss = <<found_ref_eng_gloss>>
+> <$link to=<<cur_ref_aslsj_card>> /><$list variable=found_ref_eng_gloss filter="[<cur_ref_aslsj_card>get[eng-gloss]!match[]else[(missing-ref-gloss)]]"> = <<found_ref_eng_gloss>>
 </$list><!--found_ref_eng_gloss-->
 </$list><!--missing_ref_aslsj_card-->
 <$list variable=cur_aslsj_syll filter="[<cur_aslsj_word_card>fields[]prefix[aslsj-syll-]sort[]]">
