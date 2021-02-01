@@ -150,7 +150,7 @@ ASLSJ Words
 aslsj-syll
 
 <$list variable=subcard_prefix filter="[is[current]addsuffix[-]]">
-<$list variable=cur_subcard filter="[prefix<subcard_prefix>]">
+<$list variable=cur_subcard filter="[prefix<subcard_prefix>sort[]]">
 
 <$link to=<<cur_subcard>> />
 
@@ -979,7 +979,15 @@ Search All Fields
 
 syll-part
 
-<<glbl_article_list "-">>
+<$list variable=subcard_prefix filter="[is[current]addsuffix[-]]">
+<$list variable=cur_subcard filter="[prefix<subcard_prefix>sort[]]">
+
+<$link to=<<cur_subcard>> /> - <$list variable=cur_syllpart_gloss filter="[<cur_subcard>get[syllpart-gloss]]">
+<<cur_syllpart_gloss>>
+</$list><!--cur_subcard-->
+</$list><!--cur_subcard-->
+</$list><!--subcard_prefix-->
+
 
 
 
