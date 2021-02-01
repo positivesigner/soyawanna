@@ -519,25 +519,6 @@ Remove COPY tag from all cards
 
 
 
-glbl_aslsj_word
-
-\define qq(ur_txt)
-<$list variable=cur_gloss_flag filter="[[$:/state/popup/gloss-$(currentTiddler)$]get[text]else[]]">
-<$list variable=aslsj_word_card filter="[[$ur_txt$]has[title]else[(-$ur_txt$-missing)]]">
-<$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[]]">
-<<aslsj_word_card>>
-</$list><!--filter_aslsj_word-->
-<$list variable=filter_eng_gloss filter="[<cur_gloss_flag>!match[]]">
-<$list variable=found_eng_gloss filter="[<aslsj_word_card>get[eng-gloss]!match[]else[$ur_txt$-gloss-missing]]">
-<<found_eng_gloss>>
-</$list><!--found_eng_gloss-->
-</$list><!--filter_eng_gloss-->
-</$list><!--aslsj_word_card-->
-</$list><!--cur_gloss_flag-->
-\end
-
-
-
 keyboard action FontLarge
 
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
@@ -603,6 +584,61 @@ mcr glbl_article_list
 </$list><!--subcard_prefix-->
 </ol>
 </$list><!--cur_sprtr-->
+\end
+
+
+
+mcr glbl_aslsj_gloss
+
+\define glbl_aslsj_gloss()
+<$list variable=gloss_flag_card filter="[<currentTiddler>addprefix[$:/state/popup/gloss-]]">
+<$list variable=cur_gloss_flag filter="[<gloss_flag_card>get[text]match[eng]else[]]">
+<$list filter="[<cur_gloss_flag>!match[]]">
+<$button>
+<$action-setfield $tiddler=<<gloss_flag_card>> text=""/>
+View as ASLSJ
+</$button>
+</$list>
+<$list filter="[<cur_gloss_flag>match[]]">
+<$button>
+<$action-setfield $tiddler=<<gloss_flag_card>> text="eng"/>
+View as Eng Gloss
+</$button>
+</$list>
+</$list><!--cur_gloss_flag-->
+</$list><!--gloss_flag_card-->
+\end
+
+
+
+
+mcr glbl_aslsj_word
+
+\define qq(ur_txt)
+<$list variable=cur_gloss_flag filter="[[$:/state/popup/gloss-$(currentTiddler)$]get[text]else[]]">
+<$list variable=aslsj_word_card filter="[[$ur_txt$]has[title]else[(-$ur_txt$-missing)]]">
+<$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[]]">
+<<aslsj_word_card>>
+</$list><!--filter_aslsj_word-->
+<$list variable=filter_eng_gloss filter="[<cur_gloss_flag>!match[]]">
+<$list variable=cur_eng_gloss filter="[<aslsj_word_card>get[eng-gloss]else[]]">
+<$list variable=found_eng_gloss filter="[<cur_eng_gloss>!match[]]">
+<<found_eng_gloss>>
+</$list><!--found_eng_gloss-->
+<$list variable=missing_local_eng_gloss filter="[<cur_eng_gloss>match[]]">
+<$list variable=cur_ref_eng_gloss filter="[<aslsj_word_card>get[ref-aslsj-card]get[eng-gloss]else[]]">
+<$list variable=found_ref_eng_gloss filter="[<cur_ref_eng_gloss>!match[]]">
+<<found_ref_eng_gloss>>
+</$list><!--found_ref_eng_gloss-->
+<$list variable=missing_ref_eng_gloss filter="[<cur_ref_eng_gloss>match[]]">
+(-$ur_txt$-gloss-missing)
+</$list><!--missing_ref_eng_gloss-->
+</$list><!--cur_ref_eng_gloss-->
+</$list><!--missing_local_eng_gloss-->
+</$list><!--cur_eng_gloss-->
+</$list><!--filter_eng_gloss-->
+</$list><!--aslsj_word_card-->
+</$list><!--cur_gloss_flag-->
 \end
 
 
