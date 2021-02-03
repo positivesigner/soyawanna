@@ -12820,7 +12820,7 @@ return &quot;&quot;;
 <div created="20201226094827007" modified="20201226094827007" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210201042445209" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210203015224333" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -12829,13 +12829,13 @@ return &quot;&quot;;
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210201042445209" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210203015224333" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210201041617773" list="[[ASL Bible Videos]] [[Video Books\ge-01]]" modified="20210201041617773" title="$:/StoryList">
+<div created="20210203015143750" list="[[ASL Bible Videos]] CLAM [[Daily Text]] [[Watchtower Study]] [[template ExportAllCode]]" modified="20210203015143750" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -14202,9 +14202,9 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--show_code_pk--&gt;
 &lt;/$vars&gt;&lt;!--search_text_pk--&gt;</pre>
 </div>
-<div created="20201226041128309" description="Export Code" extension="codetxt" modified="20201226042341669" tags="$:/tags/Exporter META" title="template ExportAllCode">
+<div created="20201226041128309" description="Export Code" extension="codetxt" modified="20210203015213336" tags="$:/tags/Exporter META" title="template ExportAllCode">
 <pre>\define renderContent()
-&lt;$list variable=cur_tip_pk filter=&quot;[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
+&lt;$list variable=cur_tip_pk filter=&quot;[all[tiddlers]!has[draft.of]!is[image]has[tags]!prefix[undefined]] [!prefix[$]!has[draft.of]!is[image]!has[tags]!prefix[undefined]] +[sort[title]]&quot;&gt;
 &lt;hr&gt;
 &lt;h2&gt;&lt;$link to=&lt;&lt;cur_tip_pk&gt;&gt; /&gt;&lt;/h2&gt;
 &lt;$list variable=cur_tip_text filter=&quot;[&lt;cur_tip_pk&gt;get[text]]&quot;&gt;
@@ -14212,7 +14212,8 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;/$list&gt;&lt;!--cur_tip_text--&gt;
 &lt;/$list&gt;&lt;!--cur_tip_pk--&gt;
 \end
-&lt;&lt;renderContent&gt;&gt;</pre>
+&lt;&lt;renderContent&gt;&gt;
+</pre>
 </div>
 <div created="20200115095609017" modified="20201226040306587" tags="$:/tags/ViewTemplate META" title="template Home Button">
 <pre>&lt;div style=&quot;float:right;padding-left:30px;&quot;&gt;

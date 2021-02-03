@@ -1,5 +1,21 @@
 
 
+:>
+
+
+
+:>^
+
+
+
+^<:
+
+
+
+<:
+
+
+
 $:/config/AutoSave
 
 no
@@ -162,6 +178,178 @@ aslsj-syll
 
 
 
+aslsj-syll-:>
+
+
+
+aslsj-syll-:>^
+
+
+
+aslsj-syll-\
+
+
+
+aslsj-syll-^<:
+
+
+
+aslsj-syll-<:
+
+
+
+aslsj-syll-~
+
+
+
+aslsj-syll-B<b
+
+
+
+aslsj-syll-Bvb
+
+
+
+aslsj-syll-C
+
+
+
+aslsj-syll-C^
+
+
+
+aslsj-syll-fn
+
+
+
+aslsj-syll-fuf
+
+
+
+aslsj-syll-hv
+
+
+
+aslsj-syll-iU
+
+
+
+aslsj-syll-iU\
+
+
+
+aslsj-syll-J<j
+
+
+
+aslsj-syll-K^
+
+
+
+aslsj-syll-l
+
+
+
+aslsj-syll-lfl
+
+
+
+aslsj-syll-ln
+
+
+
+aslsj-syll-lul
+
+
+
+aslsj-syll-lulln
+
+
+
+aslsj-syll-n
+
+
+
+aslsj-syll-o
+
+
+
+aslsj-syll-oA
+
+
+
+aslsj-syll-p
+
+
+
+aslsj-syll-q
+
+
+
+aslsj-syll-q^
+
+
+
+aslsj-syll-q^v
+
+
+
+aslsj-syll-q<
+
+
+
+aslsj-syll-q>
+
+
+
+aslsj-syll-qD
+
+
+
+aslsj-syll-qv
+
+
+
+aslsj-syll-rf
+
+
+
+aslsj-syll-U
+
+
+
+aslsj-syll-U\
+
+
+
+aslsj-syll-v<:
+
+
+
+aslsj-syll-W
+
+
+
+aslsj-syll-x
+
+
+
+aslsj-syll-z
+
+
+
+aslsj-syll-z<
+
+
+
+aslsj-syll-zS
+
+
+
+aslsj-syll-zSvs
+
+
+
 btn Delete Cards
 
 <$button>
@@ -221,111 +409,6 @@ close
 
 
 
-DivPop.svg
-
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="PopupSidebar.svg"
-   id="svg52"
-   version="1.1"
-   height="22pt"
-   width="22pt"
-   viewBox="0 0 128 128"
-   class="tc-image-close-button tc-image-button">
-  <metadata
-     id="metadata58">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs56">
-    <inkscape:perspective
-       id="perspective60"
-       inkscape:persp3d-origin="64 : 36.371105 : 1"
-       inkscape:vp_z="128 : 43.054765 : 1"
-       inkscape:vp_y="0 : 313.29655 : 0"
-       inkscape:vp_x="0 : 43.054765 : 1"
-       sodipodi:type="inkscape:persp3d" />
-  </defs>
-  <sodipodi:namedview
-     inkscape:current-layer="svg52"
-     inkscape:window-maximized="0"
-     inkscape:window-y="27"
-     inkscape:window-x="61"
-     inkscape:cy="12.415296"
-     inkscape:cx="21.019608"
-     inkscape:zoom="8"
-     showgrid="false"
-     id="namedview54"
-     inkscape:window-height="480"
-     inkscape:window-width="820"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0"
-     guidetolerance="10"
-     gridtolerance="10"
-     objecttolerance="10"
-     borderopacity="1"
-     bordercolor="#666666"
-     pagecolor="#ffffff" />
-  <g
-     id="g50"
-     fill-rule="evenodd" />
-  <rect
-     y="13.090909"
-     x="10.909091"
-     height="104.72727"
-     width="111.27273"
-     id="rect85"
-     style="fill:#cccccc;stroke-width:4.36364" />
-  <rect
-     y="19.636366"
-     x="19.09091"
-     height="89.454567"
-     width="95.454552"
-     id="rect92"
-     style="fill:#ffffff;stroke-width:4.36364" />
-  <rect
-     y="58.909092"
-     x="50.727272"
-     height="10.909091"
-     width="42.545452"
-     id="rect94"
-     style="fill:#cccccc;stroke-width:4.36364" />
-  <path
-     id="path96"
-     d="m 61.090909,34.363636 c 32.181818,24.545458 32.181818,24.545458 32.181818,24.545458 v 0"
-     style="fill:#cccccc;stroke:#cccccc;stroke-width:4.36364px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-  <path
-     id="path98"
-     d="M 64.909091,95.999999 C 93.272727,69.818185 93.272727,69.818185 93.272727,69.818185"
-     style="fill:#b3b3b3;stroke:#cccccc;stroke-width:4.36364px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-  <rect
-     y="16.90909"
-     x="86.727272"
-     height="94.909088"
-     width="8.181818"
-     id="rect100"
-     style="fill:#cccccc;stroke-width:4.36364" />
-</svg>
-
-
-
-
 ext TW Return
 
 \define TW_Return(ur_url, ur_link_title)
@@ -346,6 +429,10 @@ ext TW Return
 </$list>
 </$list>
 
+
+
+
+fnUq^
 
 
 
@@ -519,6 +606,22 @@ Remove COPY tag from all cards
 
 
 
+fuf\J<jq>~x fuf\q^
+
+
+
+fufK^iUqv
+
+
+
+fufUB<bx fufiU\B<b
+
+
+
+fufUo~zS
+
+
+
 keyboard action FontLarge
 
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
@@ -572,6 +675,50 @@ $param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp
 
 
 
+lC^iUq<
+
+
+
+lflCUq>
+
+
+
+lniU\oA
+
+
+
+lulC\qvzS
+
+
+
+LulC\qvzS
+
+
+
+lulCU\q<~zSvs
+
+
+
+luliU\oz
+
+
+
+luliU\q<z
+
+
+
+lullnC\qDz
+
+
+
+lW\hv
+
+
+
+LW\hv
+
+
+
 mcr glbl_article_list
 
 \define glbl_article_list(ur_sprtr)
@@ -593,10 +740,10 @@ mcr glbl_aslsj_gloss
 \define glbl_aslsj_gloss()
 <$list variable=gloss_flag_card filter="[<currentTiddler>addprefix[$:/state/popup/gloss-]]">
 <$list variable=cur_gloss_flag filter="[<gloss_flag_card>get[text]else[]]">
-<$list filter="[<cur_gloss_flag>match[link]]">
+<$list filter="[<cur_gloss_flag>match[]]">
 <$button>
-<$action-setfield $tiddler=<<gloss_flag_card>> text=""/>
-View as ASLSJ
+<$action-setfield $tiddler=<<gloss_flag_card>> text="eng"/>
+View as Eng Gloss
 </$button>
 </$list>
 <$list filter="[<cur_gloss_flag>match[eng]]">
@@ -605,10 +752,16 @@ View as ASLSJ
 View as Word Link
 </$button>
 </$list>
-<$list filter="[<cur_gloss_flag>match[]]">
+<$list filter="[<cur_gloss_flag>match[link]]">
 <$button>
-<$action-setfield $tiddler=<<gloss_flag_card>> text="eng"/>
-View as Eng Gloss
+<$action-setfield $tiddler=<<gloss_flag_card>> text="img"/>
+View as Syllable Images
+</$button>
+</$list>
+<$list filter="[<cur_gloss_flag>match[img]]">
+<$button>
+<$action-setfield $tiddler=<<gloss_flag_card>> text=""/>
+View as ASLSJ
 </$button>
 </$list>
 </$list><!--cur_gloss_flag-->
@@ -622,6 +775,14 @@ View as Eng Gloss
 </$list><!--filter_aslsj_word-->
 <$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[link]]">
 <$link to=<<aslsj_word_card>> />
+</$list><!--filter_aslsj_word-->
+<$list variable=filter_aslsj_word filter="[<cur_gloss_flag>match[img]]">
+<$list variable=cur_aslsj_syll filter="[<aslsj_word_card>fields[]prefix[aslsj-syll-]sort[]]">
+<$list variable=cur_aslsj_syll_card filter="[<aslsj_word_card>get<cur_aslsj_syll>addprefix[img aslsj-syll-]]">
+<$list variable=found_aslsj_syll_card filter="[<cur_aslsj_syll_card>has[title]]"><$macrocall $name=si ur_card=<<cur_aslsj_syll_card>> /></$list><!--found_aslsj_syll_card-->
+<$list variable=missing_aslsj_syll_card filter="[<cur_aslsj_syll_card>!has[title]]">(-<<cur_aslsj_syll_card>>-missing)</$list><!--missing_aslsj_syll_card-->
+</$list><!--cur_aslsj_syll_card-->
+</$list><!--cur_aslsj_syll--> &nbsp;
 </$list><!--filter_aslsj_word-->
 <$list variable=filter_eng_gloss filter="[<cur_gloss_flag>match[eng]]">
 <$list variable=cur_eng_gloss filter="[<aslsj_word_card>get[eng-gloss]else[]]">
@@ -642,6 +803,9 @@ View as Eng Gloss
 </$list><!--filter_eng_gloss-->
 </$list><!--aslsj_word_card-->
 </$list><!--cur_gloss_flag-->
+\end
+\define si(ur_card)
+[img height=25px [$ur_card$]]
 \end
 \define vs(ur_num)
 ^^''$ur_num$''^^ 
@@ -910,13 +1074,50 @@ mcr glbl_image
 
 
 
+niUBvboA
+
+
+
 nwt-ge01
 
 <<glbl_article_list>>
 
 
 
+nwt-ge01\v01-v08
+
+<<glbl_aslsj_gloss>>
+
+<<qq ":>">> <<qq "LulC\qvzS">> ! <<qq "lniU\oA">>, <<qq "q">> <<qq "luliU\q<z">>?
+
+( LulClnolul< )
+
+<<vs 1>> <<qq ":>">> <<qq "LulC\qvzS">> ! <<qq "<:">> <<qq "lflCUq>">>.
+
+<<qq ":>^">> <<qq "lW\hv">> <<qq "<:">> "<<qq "q">>, <<qq "q^v">>." <<qq "^<:">> <<qq "niUBvboA">> <<qq "z<">> ! <<qq "fuf\J<jq>~x fuf\q^">> <<qq "z<">> <<qq "rfUq^zS">> <<qq "z<">> ! <<qq "lulCU\q<~zSvs">> !, <<qq "q^v">>. <<qq "v<:">> <<qq "niUBvboA">> <<qq "pnU\ lflU\Bvbz">> <<qq "fuf\J<jq>~x fuf\q^">> <<qq "q^v">>.
+
+<<vs 2>> <<qq "v<:">> <<qq "fnUq^">> <<qq "lC^iUq<">> !, <<qq "q^v">>. <<qq "v<:">> <<qq "lullnC\qDz">> <<qq "fufUB<bx fufiU\B<b">> <<qq "fufUo~zS">> !, <<qq "q">> <<qq "luliU\oz">> <<qq "q^v">>.
+
+<<qq ":>^">> <<qq "LW\hv">> <<qq "fufK^iUqv">> <<qq "v<:">> <<qq "rfWUq^f">> ! <<qq "fufUo\~zS">> !, <<qq "q^v">>.
+
+<<vs 3>>
+
+
+
+
 parm SkipSaveExportHTML
+
+
+
+pnU\ lflU\Bvbz
+
+
+
+q
+
+
+
+q^v
 
 
 
@@ -931,6 +1132,10 @@ Recent Entries
 [[Font Size]]
 
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+rfUq^zS
 
 
 
@@ -995,10 +1200,130 @@ syll-part
 
 
 
+syll-part-:
+
+
+
+syll-part-\
+
+
+
+syll-part-^
+
+
+
+syll-part-<
+
+
+
+syll-part->
+
+
+
+syll-part-~
+
+
+
+syll-part-A
+
+
+
+syll-part-B
+
+
+
+syll-part-b
+
+
+
+syll-part-C
+
+
+
+syll-part-f
+
+
+
+syll-part-h
+
+
+
+syll-part-i
+
+
+
+syll-part-J
+
+
+
+syll-part-j
+
+
+
+syll-part-K
+
+
+
+syll-part-l
+
+
+
+syll-part-n
+
+
+
+syll-part-o
+
+
+
+syll-part-p
+
+
+
+syll-part-q
+
+
+
+syll-part-r
+
+
+
+syll-part-S
+
+
+
+syll-part-s
+
+
+
+syll-part-u
+
+
+
+syll-part-U
+
+
+
+syll-part-v
+
+
+
+syll-part-W
+
+
+
+syll-part-x
+
+
+
+syll-part-z
+
+
+
 template ExportAllCode
 
 \define renderContent()
-<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]">
+<$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]!is[image]has[tags]!prefix[undefined]] [!prefix[$]!has[draft.of]!is[image]!has[tags]!prefix[undefined]] +[sort[title]]">
 <hr>
 <h2><$link to=<<cur_tip_pk>> /></h2>
 <$list variable=cur_tip_text filter="[<cur_tip_pk>get[text]]">
@@ -1007,6 +1332,7 @@ template ExportAllCode
 </$list><!--cur_tip_pk-->
 \end
 <<renderContent>>
+
 
 
 
@@ -1107,6 +1433,10 @@ tmlpt field-aslsj-part
 
 
 
+v<:
+
+
+
 View All Cards
 
 <$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
@@ -1127,4 +1457,8 @@ View All Code
 <$codeblock code=<<cur_card_text>> />
 </$list><!--cur_card_text-->
 </$list><!--cur_card_pk-->
+
+
+
+z<
 
