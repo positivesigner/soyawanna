@@ -296,6 +296,25 @@ DivPop.svg
 
 
 
+empty.htm Actions
+
+<<gtree_disp_tree_cards "empty.htm">>
+
+
+
+
+empty.htm Text
+
+<<gtree_disp_tree_text "empty.htm">>
+
+
+
+empty.htm Tree
+
+<<gtree_disp_tree_links "empty.htm">>
+
+
+
 ext TW Return
 
 \define TW_Return(ur_url, ur_link_title)
@@ -517,25 +536,6 @@ Remove COPY tag from all cards
 
 [[btn Delete Cards]]
 
-
-
-
-HTML Document Actions
-
-<<glbl_ref_disp_tree_cards>>
-
-
-
-
-HTML Document Text
-
-<<glbl_ref_disp_tree_text>>
-
-
-
-HTML Document Tree
-
-<<glbl_ref_disp_tree_links>>
 
 
 
@@ -854,112 +854,6 @@ mcr glbl_compare_lines
 
 
 
-mcr glbl_disp_field
-
-\define glbl_disp_field(ur_field, ur_parent_card)
-<$list variable=line_num filter="[[$ur_field$]split[ln-]butfirst[]first[]]">
-<$list variable=cur_entry filter="[[empty.htm]get<line_num>]"><$text text=<<cur_entry>> />
-</$list><!--cur_entry-->
-</$list><!--line_num-->
-\end
-\define glbl_disp_parent_link()
-<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
-<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
-<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
-<$list variable=parent_card filter="[line-path<parent_line_path>has<parent_branch>]">
-<$link to=<<parent_card>> /><br>
-</$list><!--parent_card-->
-</$list><!--parent_branch-->
-</$list><!--parent_line_path-->
-</$list><!--cur_line_path-->
-\end
-\define glbl_disp_next_level(ur_prefix)
-<$list variable=disp_parent_link filter="[[$ur_prefix$]match[]]">
-<<glbl_disp_parent_link>><br>
-</$list><!--disp_parent_link-->
-<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
-<$list variable=cur_prefix filter="[<currentTiddler>fields[]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]prefix[$ur_prefix$]addprefix[ln-]sort[]]">
-<$list variable=cur_field filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
-<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
-</$list><!--cur_field-->
-<$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
-<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
-<$list variable=next_card filter="[line-path<next_line_branch>sort[]]">
-
-* <$link to=<<next_card>> />
-</$list><!--next_card-->
-</$list><!--next_line_branch-->
-</$list><!--cur_line_branch-->
-</$list><!--cur_prefix-->
-</$list><!--cur_line_path-->
-<$list variable=disp_subtree filter="[[$ur_prefix$]match[]]">
-<<glbl_disp_subtree "card">>
-<<glbl_disp_subtree "yes">>
-</$list><!--disp_subtree-->
-\end
-\define glbl_recurse_code_level(ur_root_path, ur_level, ur_disp_link)
-<$list variable=filter_level_max filter="[[$next_level$]!match[10]]">
-<$list variable=cur_line_card filter="[line-path[$ur_root_path$]sort[]]">
-<$list variable=disp_card_link filter="[[$ur_disp_link$]lowercase[]match[card]]">
-<$list variable=indent_count filter="[[$ur_level$]multiply[2]]">
-<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
-<<indent_arrows>> <$link to=<<cur_line_card>> /><br>
-</$list><!--indent_arrows-->
-</$list><!--indent_count-->
-</$list><!--disp_card_link-->
-<$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
-<$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
-<$list variable=disp_branch_link filter="[[$ur_disp_link$]lowercase[]match[yes]]">
-<$list variable=indent_count filter="[[$ur_level$]multiply[2]]">
-<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
-<<indent_arrows>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
-</$list><!--indent_arrows-->
-</$list><!--indent_count-->
-</$list><!--disp_branch_link-->
-<$list variable=disp_doc_contents filter="[[$ur_disp_link$]lowercase[]!match[card]]">
-<$macrocall $name=glbl_disp_field ur_field=<<cur_line_branch>> ur_parent_card=<<cur_line_card>> /><br>
-</$list><!--disp_doc_contents-->
-</$list><!--filter_skip_e0-->
-<$list variable=next_line_branch filter="[<cur_line_branch>addprefix[$ur_root_path$]sort[]]">
-<$list variable=next_level filter="[[$ur_level$]add[1]]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<next_line_branch>> ur_level=<<next_level>> ur_disp_link="$ur_disp_link$" />
-</$list><!--next_level-->
-</$list><!--next_line_branch-->
-</$list><!--cur_line_branch-->
-</$list><!--cur_line_card-->
-</$list><!--filter_level_max-->
-\end
-\define glbl_disp_subtree(ur_disp_link)
-<hr>
-<$list variable=found_line_num filter="[<currentTiddler>fields[]prefix[ln-]]">
-<$list variable=found_line_path filter="[<currentTiddler>get[line-path]addsuffix<found_line_num>]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
-</$list><!--found_line_path-->
-</$list><!--found_line_num-->
-\end
-\define glbl_ref_disp_root_tree(ur_disp_link)
-<$list variable=filter_root_path filter="[<found_line_path>split[-]count[]match[1]]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
-</$list><!--filter_root_path-->
-\end
-\define glbl_ref_each_linepath_sorted(ur_disp_link)
-<$list variable=found_line_path filter="[get[line-path]sort[]]">
-<<glbl_ref_disp_root_tree "$ur_disp_link$">>
-</$list><!--found_line_path-->
-\end
-\define glbl_ref_disp_tree_cards(ur_disp_link)
-<<glbl_ref_each_linepath_sorted "card">>
-\end
-\define glbl_ref_disp_tree_links(ur_disp_link)
-<<glbl_ref_each_linepath_sorted "yes">>
-\end
-\define glbl_ref_disp_tree_text(ur_disp_link)
-<<glbl_ref_each_linepath_sorted "no">>
-\end
-
-
-
-
 mcr glbl_ext
 
 \define ext(ur_extnote_pk)
@@ -981,6 +875,176 @@ mcr glbl_image
 
 
 
+mcr gtree_disp_field
+
+\define gtree_disp_tree_cards(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link="card">
+<<gtree_ref_disp_root_tree>>
+</$vars>[[|-disp_link]]
+</$list>[[|-ttb_prefix]]
+</$list>[[|-ttb_card]]
+[[|-gtree_disp_tree_cards]]
+\end
+
+\define gtree_disp_tree_links(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link="yes">
+<<gtree_ref_disp_root_tree>>
+</$vars>[[|-disp_link]]
+</$list>[[|-ttb_prefix]]
+</$list>[[|-ttb_card]]
+[[|-gtree_disp_tree_links]]
+\end
+
+\define gtree_disp_tree_text(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link="no">
+<<gtree_ref_disp_root_tree>>
+</$vars>[[|-disp_link]]
+</$list>[[|-ttb_prefix]]
+</$list>[[|-ttb_card]]
+[[|-gtree_disp_tree_text]]
+\end
+
+\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link)
+<$list variable=found_line_path filter="[prefix<ttb_prefix>get[line-path]sort[]]">
+<$list variable=filter_root_path filter="[<found_line_path>split[-]count[]match[1]]">
+<$vars
+  cur_root_path=<<found_line_path>>
+  cur_level_seq=1 >
+<<gtree_ref_recurse_code_level>>
+</$vars>[[|-cur_root_path, cur_level_seq]]
+</$list>[[|-filter_root_path]]
+</$list>[[|-found_line_path]]
+[[|-gtree_ref_disp_root_tree]]
+\end
+
+\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq)
+<$list variable=filter_level_max filter="[<cur_level_seq>!match[10]]">
+<$list variable=cur_line_card filter="[prefix<ttb_prefix>line-path<cur_root_path>sort[]]">
+<<gtree_ref_disp_card_entry>>
+<<gtree_ref_each_line_branch>>
+</$list>[[|-cur_line_card]]
+</$list>[[|-filter_level_max]]
+[[|-gtree_ref_recurse_code_level]]
+\end
+
+\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card)
+<$list variable=disp_card_link filter="[<disp_link>lowercase[]match[card]]">
+<$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
+<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
+<<indent_arrows>> <$link to=<<cur_line_card>> /><br>
+</$list>[[|-indent_arrows]]
+</$list>[[|-indent_count]]
+</$list>[[|-disp_card_link]]
+[[|-gtree_ref_disp_card_entry]]
+\end
+
+\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card)
+<$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
+<$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
+<<gtree_ref_disp_link_entry>>
+<<gtree_ref_disp_doc_contents>>
+</$list>[[|-filter_skip_e0]]
+<<gtree_ref_disp_next_line_branch>>
+</$list>[[|-cur_line_branch]]
+[[|-gtree_ref_each_line_branch]]
+\end
+
+\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+<$list variable=disp_branch_link filter="[<disp_link>lowercase[]match[yes]]">
+<$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
+<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
+<<indent_arrows>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
+</$list>[[|-indent_arrows]]
+</$list>[[|-indent_count]]
+</$list>[[|-disp_branch_link]]
+[[|-gtree_ref_disp_link_entry]]
+\end
+
+\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+<$list variable=disp_doc_contents filter="[<disp_link>lowercase[]!match[card]]">
+<$macrocall $name=glbl_disp_field ur_field=<<cur_line_branch>> /><br>
+</$list>[[|-disp_doc_contents]]
+[[|-gtree_ref_disp_doc_contents]]
+\end
+
+\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_root_path>sort[]]">
+<$list variable=next_level filter="[<cur_level_seq>add[1]]">
+<$vars cur_root_path=<<next_line_branch>> cur_level_seq=<<next_level>> >
+<<gtree_ref_recurse_code_level>>
+</$vars>[[|-cur_root_path, cur_level_seq]]
+</$list>[[|-next_level]]
+</$list>[[|-next_line_branch]]
+[[|-gtree_ref_disp_next_line_branch]]
+\end
+
+\define glbl_disp_field(ur_field, ttb_card)
+<$list variable=cur_card_ttb filter="[is[current]split[\]first[]]">
+<$list variable=found_ttb_card filter="[<ttb_card>!match[]else<cur_card_ttb>]">
+<$list variable=line_num filter="[[$ur_field$]split[ln-]butfirst[]first[]]">
+<$list variable=cur_entry filter="[<found_ttb_card>get<line_num>]"
+><$text text=<<cur_entry>> />
+</$list>[[|-cur_entry]]
+</$list>[[|-line_num]]
+</$list>[[|-found_ttb_card]]
+</$list>[[|-cur_card_ttb]]
+\end
+
+\define glbl_disp_parent_link()
+<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
+<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
+<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
+<$list variable=parent_card filter="[line-path<parent_line_path>has<parent_branch>]">
+<$link to=<<parent_card>> /><br>
+</$list>[[|-parent_card]]
+</$list>[[|-parent_branch]]
+</$list>[[|-parent_line_path]]
+</$list>[[|-cur_line_path]]
+\end
+
+\define glbl_disp_next_level(ur_prefix)
+<$list variable=disp_parent_link filter="[[$ur_prefix$]match[]]">
+<<glbl_disp_parent_link>><br>
+</$list>[[|-disp_parent_link]]
+<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
+<$list variable=cur_prefix filter="[<currentTiddler>fields[]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]prefix[$ur_prefix$]addprefix[ln-]sort[]]">
+<$list variable=cur_field filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
+<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
+</$list>[[|-cur_field]]
+<$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
+<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
+<$list variable=next_card filter="[line-path<next_line_branch>sort[]]">
+
+* <$link to=<<next_card>> />
+</$list>[[|-next_card]]
+</$list>[[|-next_line_branch]]
+</$list>[[|-cur_line_branch]]
+</$list>[[|-cur_prefix]]
+</$list>[[|-cur_line_path]]
+<$list variable=disp_subtree filter="[[$ur_prefix$]match[]]">
+<<glbl_disp_subtree "card">>
+<<glbl_disp_subtree "yes">>
+</$list>[[|-disp_subtree]]
+\end
+
+\define glbl_disp_subtree(ur_disp_link)
+<hr>
+<$list variable=found_line_num filter="[<currentTiddler>fields[]prefix[ln-]]">
+<$list variable=found_line_path filter="[<currentTiddler>get[line-path]addsuffix<found_line_num>]">
+<$macrocall $name=gtree_ref_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
+</$list>[[|-found_line_path]]
+</$list>[[|-found_line_num]]
+\end
+
+
+
+
 parm SkipSaveExportHTML
 
 
@@ -999,107 +1063,22 @@ Recent Entries
 
 
 
-Sample Code
+Sample Code Actions
 
-<!--
-\define ttb_store_vars()
-<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
-<<user_filter_card>>
-<<user_filter_vars>>
-</$list>[[|-ttb_card]]
-\end
-\define user_filter_card()
-<$edit-text tiddler=<<ttb_card>> field=prefix_text placeholder="[no text yet]" autoHeight=yes tag=input/>
-<$list variable=prefix_text filter="[<ttb_card>get[prefix_text]else[]]">
-<$button>
-<$action-setfield $tiddler=<<ttb_card>> filter_prefix=<<prefix_text>> />
-<$action-deletefield $tiddler=<<ttb_card>> $field=selected_card />
-List cards
-</$button>
-</$list>[[|-prefix_text]]
-\end
-\define user_filter_vars()
-<$list variable=card_prefix filter="[<ttb_card>get[filter_prefix]addprefix[(?i)^]]">
-<$list variable=card_first filter="[regexp<card_prefix>sort[]first[]else[]]">
+<<gtree_disp_tree_cards "Sample Code">>
 
-<<user_select_card>>
-<<user_selected_vars>>
-</$list>[[|-card_first]]
-</$list>[[|-card_prefix]]
-\end
-\define user_select_card()
-<$select tiddler=<<ttb_card>> field=selected_card default=<<card_first>> >
-<$list variable=cur_card filter="[regexp<card_prefix>sort[]]">
-<option value=<<cur_card>>><<cur_card>></option>
-</$list>[[|-cur_card]]
-</$select>
-<span style="margin-left:20px;" /><$checkbox default="0" unchecked="1" checked="0" tiddler=<<ttb_card>> field="include_last_line" ><span style="margin-left:5px;" />Include Last Line</$checkbox>
-\end
-\define user_selected_vars()
-<$list variable=source_card filter="[<ttb_card>get[selected_card]else<card_first>]">
-<$list variable=include_last_line filter="[<ttb_card>get[include_last_line]else[0]]">
-<<text_parse_vars>>
-</$list>[[|-include_last_line]]
-</$list>[[|-source_card]]
-\end
-\define text_parse_vars()
-<$wikify name=lit_cr text="&#13;">
-<$wikify name=lit_lf text="&#10;">
-<<selcard_summary>>
-</$wikify>[[|-lit_lf]]
-</$wikify>[[|-lit_cr]]
-\end
-\define selcard_summary()
-<$link to=<<source_card>> />
 
-<$list variable=cur_field filter="[<source_card>fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]">
-Found fields: <<cur_field>>
-</$list>
 
-<$list variable=doc_text filter="[<source_card>get[text]split<lit_cr>join[]]">
-<$list variable=line_count filter="[<doc_text>split<lit_lf>count[]subtract[1]!match[0]subtract[1]!match[0]subtract<include_last_line>!match[0]]">
-Found lines: <<line_count>>
 
-<<user_button_overwrite>>
-</$list>[[|-line_count]]
-</$list>[[|-doc_text]]
-\end
-\define user_button_overwrite()
-<$button>
-<<clear_current_fields>>
-<<list_line_labels>>
-Overwrite text fields
-</$button>
-\end
-\define clear_current_fields()
-<$list variable=cur_field filter="[<source_card>fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
-<$action-deletefield $tiddler=<<source_card>> $field=<<cur_field>> />
-</$list>
-\end
-\define list_line_labels()
-<$list variable=linctr filter="[range<line_count>]">
-<$list variable=line_num_e filter="[<linctr>split[]last[3]join[]]">
-<$list variable=line_num_f filter="[<linctr>split[]butlast[3]last[3]join[]else[]]">
-<$list variable=line_title_e_prefix filter="[<line_num_e>split[]count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]">
-<$list variable=line_title_f_prefix filter="[<line_num_f>split[]!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]">
-<$list variable=line_title_e_suffix filter="[<line_title_f_prefix>match[]then<line_title_e_prefix>else[e]]">
-<$list variable=line_title filter="[<line_title_f_prefix>addsuffix<line_num_f>addsuffix<line_title_e_suffix>addsuffix<line_num_e>]">
-<<assign_line_field>>
-</$list>[[|-line_title]]
-</$list>[[|-line_title_e_suffix]]
-</$list>[[|-line_title_f_prefix]]
-</$list>[[|-line_title_e_prefix]]
-</$list>[[|-line_num_f]]
-</$list>[[|-line_num_e]]
-</$list>[[|-linctr]]
-\end
-\define assign_line_field()
-<$list variable=cur_line filter="[<doc_text>split<lit_lf>butfirst<linctr>first[]]">
-<$action-setfield $tiddler=<<source_card>> $field=<<line_title>> $value=<<cur_line>>/>
-</$list>[[|-cur_line]]
-\end
-<<ttb_store_vars>>
--->
+Sample Code Text
+
+<<gtree_disp_tree_text "Sample Code">>
+
+
+
+Sample Code Tree
+
+<<gtree_disp_tree_links "Sample Code">>
 
 
 
@@ -1252,6 +1231,14 @@ Overwrite text fields
 
 
 
+template e1 tree
+
+<$list filter="[is[current]has:field[e1]]">
+<<glbl_article_list>>
+</$list>
+
+
+
 template ExportAllCode
 
 \define renderContent()
@@ -1312,14 +1299,9 @@ TW JS Pretty
 <<list-links filter:"[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]">>
 
 * [[empty.htm]]
+* [[Sample Code]]
 
 [[___|Recent Entries]]
-
-
-
-User Action
-
-<<glbl_article_list>>
 
 
 
