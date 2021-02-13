@@ -157,7 +157,7 @@ DivPop btn
 
 DivPop glbl
 
-<$list filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
+<$list variable=cur_divpop_card filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
 <div style="
 position: fixed;
 top: 0px;
@@ -173,9 +173,17 @@ bottom: 0%;
 <$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
 close
 </$button>
-<$tiddler tiddler=<<currentTiddler>> >
+&nbsp;&nbsp;&nbsp;<$reveal type="match" state="$:/state/popup/$ur_pk$" text="show"><$button set="$:/state/popup/$ur_pk$" setTo="hide">show</$button>&nbsp;&nbsp;&nbsp;<$link to=<<cur_divpop_card>> ><<cur_divpop_card>>
+</$link>
+<$list variable=cur_text filter="[<cur_divpop_card>get[text]]">
+<$codeblock code=<<cur_text>> /></$list>
+</$reveal>
+<$reveal type="nomatch" state="$:/state/popup/$ur_pk$" text="show"><$button set="$:/state/popup/$ur_pk$" setTo="show">code</$button>&nbsp;&nbsp;&nbsp;<$link to=<<cur_divpop_card>> ><<cur_divpop_card>>
+</$link>
+<$tiddler tiddler=<<cur_divpop_card>> >
 <$transclude mode="block" />
 </$tiddler>
+</$reveal>
 </div>
 </div>
 </$list>
@@ -313,26 +321,31 @@ ext TW Return
 
 fix -z1 and -e1
 
-<$list variable=cur_card filter="[all[tiddlers]has[line-path]]">
-
+\define disp_lnz_subcards()
 <$list variable=cur_zfield_name filter="[<cur_card>fields[]prefix[ln-z]]">
 
 <$link to=<<cur_card>> />
 <<cur_zfield_name>><br>
 
 </$list><!--cur_zfield_name-->
-
+\end
+\define disp_ln_lvl3_subcards()
 <$list variable=cur_field_name filter="[<cur_card>fields[]prefix[ln-]]">
-
 <$list variable=split_field filter="[<cur_field_name>split[-]count[]!match[2]]">
 
 -''''-''''-''''- <$link to=<<cur_card>> />
 <<cur_field_name>><br>
 
+</$list><!--split_field-->
 </$list><!--cur_field_name-->
-
-</$list><!--cur_field_name-->
+\end
+\define each_card_has_linepath()
+<$list variable=cur_card filter="[has[line-path]]">
+<<disp_lnz_subcards>>
+<<disp_ln_lvl3_subcards>>
 </$list><!--cur_card-->
+\end
+<<each_card_has_linepath>>
 
 
 
@@ -509,31 +522,20 @@ Remove COPY tag from all cards
 
 HTML Document Actions
 
-<$list variable=found_line_path filter="[get[line-path]sort[]]">
-<$list variable=filter_root_path filter="[<found_line_path>split[-]count[1]match[1]]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=card />
-</$list><!--filter_root_path-->
-</$list><!--found_line_path-->
+<<glbl_ref_disp_tree_cards>>
 
-
-
-HTML Document Search
-
-<$list variable=found_line_path filter="[get[line-path]sort[]]">
-<$list variable=filter_root_path filter="[<found_line_path>split[-]count[1]match[1]]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=yes />
-</$list><!--filter_root_path-->
-</$list><!--found_line_path-->
 
 
 
 HTML Document Text
 
-<$list variable=found_line_path filter="[get[line-path]sort[]]">
-<$list variable=filter_root_path filter="[<found_line_path>split[-]count[1]match[1]]">
-<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link=no />
-</$list><!--filter_root_path-->
-</$list><!--found_line_path-->
+<<glbl_ref_disp_tree_text>>
+
+
+
+HTML Document Tree
+
+<<glbl_ref_disp_tree_links>>
 
 
 
@@ -935,6 +937,26 @@ mcr glbl_disp_field
 </$list><!--found_line_path-->
 </$list><!--found_line_num-->
 \end
+\define glbl_ref_disp_root_tree(ur_disp_link)
+<$list variable=filter_root_path filter="[<found_line_path>split[-]count[]match[1]]">
+<$macrocall $name=glbl_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
+</$list><!--filter_root_path-->
+\end
+\define glbl_ref_each_linepath_sorted(ur_disp_link)
+<$list variable=found_line_path filter="[get[line-path]sort[]]">
+<<glbl_ref_disp_root_tree "$ur_disp_link$">>
+</$list><!--found_line_path-->
+\end
+\define glbl_ref_disp_tree_cards(ur_disp_link)
+<<glbl_ref_each_linepath_sorted "card">>
+\end
+\define glbl_ref_disp_tree_links(ur_disp_link)
+<<glbl_ref_each_linepath_sorted "yes">>
+\end
+\define glbl_ref_disp_tree_text(ur_disp_link)
+<<glbl_ref_each_linepath_sorted "no">>
+\end
+
 
 
 
@@ -974,6 +996,1085 @@ Recent Entries
 [[Font Size]]
 
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+Sample Code
+
+<!--
+\define input_vars()
+<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
+</$list>[[|-ttb_card]]
+\end
+
+<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
+<$edit-text tiddler=<<ttb_card>> field=prefix_text placeholder="[no text yet]" autoHeight=yes tag=input/>
+<$list variable=prefix_text filter="[<ttb_card>get[prefix_text]else[]]">
+<$button>
+<$action-setfield $tiddler=<<ttb_card>> filter_prefix=<<prefix_text>> />
+<$action-deletefield $tiddler=<<ttb_card>> $field=selected_card />
+List cards
+</$button>
+</$list>[[|-prefix_text]]
+
+<$list variable=card_prefix filter="[<ttb_card>get[filter_prefix]addprefix[(?i)^]]">
+<$list variable=card_first filter="[regexp<card_prefix>sort[]first[]else[]]">
+
+<$select tiddler=<<ttb_card>> field=selected_card default=<<card_first>> >
+<$list variable=cur_card filter="[regexp<card_prefix>sort[]]">
+<option value=<<cur_card>>><<cur_card>></option>
+</$list>[[|-cur_card]]
+</$select>
+<span style="margin-left:20px;" /><$checkbox default="0" unchecked="1" checked="0" tiddler=<<ttb_card>> field="include_last_line" ><span style="margin-left:5px;" />Include Last Line</$checkbox>
+
+<$list variable=source_card filter="[<ttb_card>get[selected_card]else<card_first>]">
+<$list variable=include_last_line filter="[<ttb_card>get[include_last_line]else[0]]">
+<$wikify name=lit_cr text="&#13;">
+<$wikify name=lit_lf text="&#10;">
+<$link to=<<source_card>> />
+
+<$list variable=cur_field filter="[<source_card>fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]">
+Found fields: <<cur_field>>
+</$list>
+
+<$list variable=doc_text filter="[<source_card>get[text]split<lit_cr>join[]]">
+<$list variable=line_count filter="[<doc_text>split<lit_lf>count[]subtract[1]!match[0]subtract[1]!match[0]subtract<include_last_line>!match[0]]">
+Found lines: <<line_count>>
+
+<$button>
+<$list variable=cur_field filter="[<source_card>fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
+<$action-deletefield $tiddler=<<source_card>> $field=<<cur_field>> />
+</$list>
+<$list variable=linctr filter="[range<line_count>]">
+<$list variable=line_num_e filter="[<linctr>split<lit_lf>last[3]join[]]">
+<$list variable=line_num_f filter="[<linctr>split<lit_lf>butlast[3]last[3]join[]else[]]">
+<$list variable=line_title_e_prefix filter="[<line_num_e>count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]">
+<$list variable=line_title_f_prefix filter="[<line_num_f>!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]">
+<$list variable=line_title_e_suffix filter="[<line_title_f_prefix>match[]then<line_title_e_prefix>else[e]]">
+<$list variable=line_title filter="[<line_title_f_prefix>addsuffix<line_num_f>addsuffix<line_title_e_suffix>addsuffix<line_num_e>]">
+<$list variable=cur_line filter="[<doc_text>split<lit_lf>butfirst<linctr>first[]]">
+<$action-setfield $tiddler=<<source_card>> $field=<<line_title>> $value=<<cur_line>>/>
+</$list>[[|-cur_line]]
+</$list>[[|-line_title]]
+</$list>[[|-line_title_e_suffix]]
+</$list>[[|-line_title_f_prefix]]
+</$list>[[|-line_title_e_prefix]]
+</$list>[[|-line_num_f]]
+</$list>[[|-line_num_e]]
+</$list>[[|-linctr]]
+Overwrite text fields
+</$button>
+</$list>[[|-line_count]]
+</$list>[[|-doc_text]]
+</$wikify>[[|-lit_lf]]
+</$wikify>[[|-lit_cr]]
+</$list>[[|-include_last_line]]
+</$list>[[|-source_card]]
+</$list>[[|-card_first]]
+</$list>[[|-card_prefix]]
+</$list>[[|-ttb_card]]
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+-->
+
 
 
 
@@ -1024,6 +2125,83 @@ Search All Fields
 
 
 
+Split Code
+
+\define input_vars()
+<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
+</$list>[[|-ttb_card]]
+\end
+
+<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
+<$edit-text tiddler=<<ttb_card>> field=prefix_text placeholder="[no text yet]" autoHeight=yes tag=input/>
+<$list variable=prefix_text filter="[<ttb_card>get[prefix_text]else[]]">
+<$button>
+<$action-setfield $tiddler=<<ttb_card>> filter_prefix=<<prefix_text>> />
+<$action-deletefield $tiddler=<<ttb_card>> $field=selected_card />
+List cards
+</$button>
+</$list>[[|-prefix_text]]
+
+<$list variable=card_prefix filter="[<ttb_card>get[filter_prefix]addprefix[(?i)^]]">
+<$list variable=card_first filter="[regexp<card_prefix>sort[]first[]else[]]">
+
+<$select tiddler=<<ttb_card>> field=selected_card default=<<card_first>> >
+<$list variable=cur_card filter="[regexp<card_prefix>sort[]]">
+<option value=<<cur_card>>><<cur_card>></option>
+</$list>[[|-cur_card]]
+</$select>
+<span style="margin-left:20px;" /><$checkbox default="0" unchecked="1" checked="0" tiddler=<<ttb_card>> field="include_last_line" ><span style="margin-left:5px;" />Include Last Line</$checkbox>
+
+<$list variable=source_card filter="[<ttb_card>get[selected_card]else<card_first>]">
+<$list variable=include_last_line filter="[<ttb_card>get[include_last_line]else[0]]">
+<$wikify name=lit_cr text="&#13;">
+<$wikify name=lit_lf text="&#10;">
+<$link to=<<source_card>> />
+
+<$list variable=cur_field filter="[<source_card>fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]">
+Found fields: <<cur_field>>
+</$list>
+
+<$list variable=doc_text filter="[<source_card>get[text]split<lit_cr>join[]]">
+<$list variable=line_count filter="[<doc_text>split<lit_lf>count[]subtract[1]!match[0]subtract[1]!match[0]subtract<include_last_line>!match[0]]">
+Found lines: <<line_count>>
+
+<$button>
+<$list variable=cur_field filter="[<source_card>fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
+<$action-deletefield $tiddler=<<source_card>> $field=<<cur_field>> />
+</$list>
+<$list variable=linctr filter="[range<line_count>]">
+<$list variable=line_num_e filter="[<linctr>split[]last[3]join[]]">
+<$list variable=line_num_f filter="[<linctr>split[]butlast[3]last[3]join[]else[]]">
+<$list variable=line_title_e_prefix filter="[<line_num_e>split[]count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]">
+<$list variable=line_title_f_prefix filter="[<line_num_f>split[]!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]">
+<$list variable=line_title_e_suffix filter="[<line_title_f_prefix>match[]then<line_title_e_prefix>else[e]]">
+<$list variable=line_title filter="[<line_title_f_prefix>addsuffix<line_num_f>addsuffix<line_title_e_suffix>addsuffix<line_num_e>]">
+<$list variable=cur_line filter="[<doc_text>split<lit_lf>butfirst<linctr>first[]]">
+<$action-setfield $tiddler=<<source_card>> $field=<<line_title>> $value=<<cur_line>>/>
+</$list>[[|-cur_line]]
+</$list>[[|-line_title]]
+</$list>[[|-line_title_e_suffix]]
+</$list>[[|-line_title_f_prefix]]
+</$list>[[|-line_title_e_prefix]]
+</$list>[[|-line_num_f]]
+</$list>[[|-line_num_e]]
+</$list>[[|-linctr]]
+Overwrite text fields
+</$button>
+</$list>[[|-line_count]]
+</$list>[[|-doc_text]]
+</$wikify>[[|-lit_lf]]
+</$wikify>[[|-lit_cr]]
+</$list>[[|-include_last_line]]
+</$list>[[|-source_card]]
+</$list>[[|-card_first]]
+</$list>[[|-card_prefix]]
+</$list>[[|-ttb_card]]
+
+
+
+
 template ExportAllCode
 
 \define renderContent()
@@ -1066,6 +2244,14 @@ template Home Button
 <$action-sendmessage $message="tm-home"/>
 </$button></div>
 
+
+
+
+template LinePath
+
+<$list filter="[is[current]has[line-path]]">
+<<glbl_disp_next_level>>
+</$list>
 
 
 

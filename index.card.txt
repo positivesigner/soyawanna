@@ -1191,6 +1191,12 @@ VBNet_Project/MxBase/MxBase%20Classes.html
 
 
 
+ext Project Check app
+
+TiddlyWiki_Project\Checkapp\Checkapp.htm
+
+
+
 ext PSU.edu LangTag
 
 https://accessibility.psu.edu/foreignlanguages/langtaghtml/
@@ -6935,6 +6941,14 @@ TW Project
 
 <<glbl_article_list>>
 
+
+
+
+TW Project\Check app
+
+<<ext "Project Check app">>
+
+Goal: Find food by aisle
 
 
 
