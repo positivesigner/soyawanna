@@ -882,10 +882,10 @@ mcr gtree_disp_field
 <$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
 <$vars disp_link="card">
 <<gtree_ref_disp_root_tree>>
-</$vars>[[|-disp_link]]
-</$list>[[|-ttb_prefix]]
-</$list>[[|-ttb_card]]
-[[|-gtree_disp_tree_cards]]
+</$vars><!--disp_link-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_disp_tree_cards-->
 \end
 
 \define gtree_disp_tree_links(ur_ttb_card)
@@ -893,10 +893,10 @@ mcr gtree_disp_field
 <$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
 <$vars disp_link="yes">
 <<gtree_ref_disp_root_tree>>
-</$vars>[[|-disp_link]]
-</$list>[[|-ttb_prefix]]
-</$list>[[|-ttb_card]]
-[[|-gtree_disp_tree_links]]
+</$vars><!--disp_link-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_disp_tree_links-->
 \end
 
 \define gtree_disp_tree_text(ur_ttb_card)
@@ -904,10 +904,10 @@ mcr gtree_disp_field
 <$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
 <$vars disp_link="no">
 <<gtree_ref_disp_root_tree>>
-</$vars>[[|-disp_link]]
-</$list>[[|-ttb_prefix]]
-</$list>[[|-ttb_card]]
-[[|-gtree_disp_tree_text]]
+</$vars><!--disp_link-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_disp_tree_text-->
 \end
 
 \define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link)
@@ -917,10 +917,10 @@ mcr gtree_disp_field
   cur_root_path=<<found_line_path>>
   cur_level_seq=1 >
 <<gtree_ref_recurse_code_level>>
-</$vars>[[|-cur_root_path, cur_level_seq]]
-</$list>[[|-filter_root_path]]
-</$list>[[|-found_line_path]]
-[[|-gtree_ref_disp_root_tree]]
+</$vars><!--cur_root_path, cur_level_seq-->
+</$list><!--filter_root_path-->
+</$list><!--found_line_path-->
+<!--gtree_ref_disp_root_tree-->
 \end
 
 \define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq)
@@ -928,9 +928,9 @@ mcr gtree_disp_field
 <$list variable=cur_line_card filter="[prefix<ttb_prefix>line-path<cur_root_path>sort[]]">
 <<gtree_ref_disp_card_entry>>
 <<gtree_ref_each_line_branch>>
-</$list>[[|-cur_line_card]]
-</$list>[[|-filter_level_max]]
-[[|-gtree_ref_recurse_code_level]]
+</$list><!--cur_line_card-->
+</$list><!--filter_level_max-->
+<!--gtree_ref_recurse_code_level-->
 \end
 
 \define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card)
@@ -938,10 +938,10 @@ mcr gtree_disp_field
 <$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
 <$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
 <<indent_arrows>> <$link to=<<cur_line_card>> /><br>
-</$list>[[|-indent_arrows]]
-</$list>[[|-indent_count]]
-</$list>[[|-disp_card_link]]
-[[|-gtree_ref_disp_card_entry]]
+</$list><!--indent_arrows-->
+</$list><!--indent_count-->
+</$list><!--disp_card_link-->
+<!--gtree_ref_disp_card_entry-->
 \end
 
 \define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card)
@@ -949,10 +949,10 @@ mcr gtree_disp_field
 <$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
 <<gtree_ref_disp_link_entry>>
 <<gtree_ref_disp_doc_contents>>
-</$list>[[|-filter_skip_e0]]
+</$list><!--filter_skip_e0-->
 <<gtree_ref_disp_next_line_branch>>
-</$list>[[|-cur_line_branch]]
-[[|-gtree_ref_each_line_branch]]
+</$list><!--cur_line_branch-->
+<!--gtree_ref_each_line_branch-->
 \end
 
 \define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
@@ -960,17 +960,19 @@ mcr gtree_disp_field
 <$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
 <$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
 <<indent_arrows>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
-</$list>[[|-indent_arrows]]
-</$list>[[|-indent_count]]
-</$list>[[|-disp_branch_link]]
-[[|-gtree_ref_disp_link_entry]]
+</$list><!--indent_arrows-->
+</$list><!--indent_count-->
+</$list><!--disp_branch_link-->
+<!--gtree_ref_disp_link_entry-->
 \end
 
 \define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
 <$list variable=disp_doc_contents filter="[<disp_link>lowercase[]!match[card]]">
-<$macrocall $name=glbl_disp_field ur_field=<<cur_line_branch>> /><br>
-</$list>[[|-disp_doc_contents]]
-[[|-gtree_ref_disp_doc_contents]]
+<$vars cur_field=<<cur_line_branch>> >
+<<gtree_ref_disp_field>><br>
+</$vars><!--cur_field-->
+</$list><!--disp_doc_contents-->
+<!--gtree_ref_disp_doc_contents-->
 \end
 
 \define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
@@ -978,59 +980,58 @@ mcr gtree_disp_field
 <$list variable=next_level filter="[<cur_level_seq>add[1]]">
 <$vars cur_root_path=<<next_line_branch>> cur_level_seq=<<next_level>> >
 <<gtree_ref_recurse_code_level>>
-</$vars>[[|-cur_root_path, cur_level_seq]]
-</$list>[[|-next_level]]
-</$list>[[|-next_line_branch]]
-[[|-gtree_ref_disp_next_line_branch]]
+</$vars><!--cur_root_path, cur_level_seq-->
+</$list><!--next_level-->
+</$list><!--next_line_branch-->
+<!--gtree_ref_disp_next_line_branch-->
 \end
 
-\define glbl_disp_field(ur_field, ttb_card)
-<$list variable=cur_card_ttb filter="[is[current]split[\]first[]]">
-<$list variable=found_ttb_card filter="[<ttb_card>!match[]else<cur_card_ttb>]">
-<$list variable=line_num filter="[[$ur_field$]split[ln-]butfirst[]first[]]">
-<$list variable=cur_entry filter="[<found_ttb_card>get<line_num>]"
+\define gtree_ref_disp_field(ttb_card, cur_field)
+<$list variable=line_num filter="[<cur_field>removeprefix[ln-]]">
+<$list variable=cur_entry filter="[<ttb_card>get<line_num>]"
 ><$text text=<<cur_entry>> />
-</$list>[[|-cur_entry]]
-</$list>[[|-line_num]]
-</$list>[[|-found_ttb_card]]
-</$list>[[|-cur_card_ttb]]
+</$list><!--cur_entry-->
+</$list><!--line_num-->
+<!--gtree_ref_disp_field-->
 \end
 
-\define glbl_disp_parent_link()
-<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
-<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
-<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
-<$list variable=parent_card filter="[line-path<parent_line_path>has<parent_branch>]">
-<$link to=<<parent_card>> /><br>
-</$list>[[|-parent_card]]
-</$list>[[|-parent_branch]]
-</$list>[[|-parent_line_path]]
-</$list>[[|-cur_line_path]]
-\end
-
-\define glbl_disp_next_level(ur_prefix)
-<$list variable=disp_parent_link filter="[[$ur_prefix$]match[]]">
-<<glbl_disp_parent_link>><br>
-</$list>[[|-disp_parent_link]]
-<$list variable=cur_line_path filter="[<currentTiddler>get[line-path]]">
-<$list variable=cur_prefix filter="[<currentTiddler>fields[]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]prefix[$ur_prefix$]addprefix[ln-]sort[]]">
-<$list variable=cur_field filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
-<$macrocall $name=glbl_disp_field ur_field=<<cur_field>> /><br>
-</$list>[[|-cur_field]]
-<$list variable=cur_line_branch filter="[<currentTiddler>fields[]prefix<cur_prefix>sort[]]">
+\define gtree_disp_next_level()
+<$list variable=cur_card filter="[is[current]]">
+<$list variable=ttb_prefix filter="[<cur_card>split[\]first[]addsuffix[\]]">
+<<gtree_ref_disp_parent_link>><br>
+<$list variable=cur_line_path filter="[<cur_card>get[line-path]]">
+<$list variable=cur_prefix filter="[<cur_card>fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]">
+<$list variable=cur_field filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
+<<gtree_ref_disp_field>><br>
+</$list><!--cur_field-->
+<$list variable=cur_line_branch filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
 <$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
 <$list variable=next_card filter="[line-path<next_line_branch>sort[]]">
 
 * <$link to=<<next_card>> />
-</$list>[[|-next_card]]
-</$list>[[|-next_line_branch]]
-</$list>[[|-cur_line_branch]]
-</$list>[[|-cur_prefix]]
-</$list>[[|-cur_line_path]]
-<$list variable=disp_subtree filter="[[$ur_prefix$]match[]]">
+</$list><!--next_card-->
+</$list><!--next_line_branch-->
+</$list><!--cur_line_branch-->
+</$list><!--cur_prefix-->
+</$list><!--cur_line_path-->
+</$list><!--ttb_prefix-->
 <<glbl_disp_subtree "card">>
 <<glbl_disp_subtree "yes">>
-</$list>[[|-disp_subtree]]
+</$list><!--cur_card-->
+<!--gtree_disp_next_level-->
+\end
+
+\define gtree_ref_disp_parent_link(ttb_prefix)
+<$list variable=cur_line_path filter="[is[current]get[line-path]]">
+<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
+<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
+<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>]">
+<$link to=<<parent_card>> /><br>
+</$list><!--parent_card-->
+</$list><!--parent_branch-->
+</$list><!--parent_line_path-->
+</$list><!--cur_line_path-->
+<!--gtree_ref_disp_parent_link-->
 \end
 
 \define glbl_disp_subtree(ur_disp_link)
@@ -1038,10 +1039,18 @@ mcr gtree_disp_field
 <$list variable=found_line_num filter="[<currentTiddler>fields[]prefix[ln-]]">
 <$list variable=found_line_path filter="[<currentTiddler>get[line-path]addsuffix<found_line_num>]">
 <$macrocall $name=gtree_ref_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
-</$list>[[|-found_line_path]]
-</$list>[[|-found_line_num]]
+</$list><!--found_line_path-->
+</$list><!--found_line_num-->
 \end
 
+
+
+
+New Card
+
+<$list variable=cur_card filter="[is[current]]">
+
+</$list><$o cur_card/>
 
 
 
@@ -1287,7 +1296,7 @@ template Home Button
 template LinePath
 
 <$list filter="[is[current]has[line-path]]">
-<<glbl_disp_next_level>>
+<<gtree_disp_next_level>>
 </$list>
 
 
@@ -1325,4 +1334,25 @@ View All Code
 <$codeblock code=<<cur_card_text>> />
 </$list><!--cur_card_text-->
 </$list><!--cur_card_pk-->
+
+
+
+widget o comment
+
+/*\
+
+Do nothing widget
+
+\*/
+(function(){
+
+/*jslint node: true, browser: true */
+/*global $tw: false */
+"use strict";
+
+var Widget = require("$:/core/modules/widgets/widget.js").widget;
+
+exports.o = Widget;
+
+})();
 
