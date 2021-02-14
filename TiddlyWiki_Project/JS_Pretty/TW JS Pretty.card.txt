@@ -996,14 +996,52 @@ mcr gtree_disp_field
 \end
 
 \define gtree_disp_next_level()
-<$list variable=cur_card filter="[is[current]]">
-<$list variable=ttb_prefix filter="[<cur_card>split[\]first[]addsuffix[\]]">
-<<gtree_ref_disp_parent_link>><br>
+<$list variable=cur_card filter="[<currentTiddler>]">
+<$list variable=ttb_card filter="[<cur_card>split[\]first[]]">
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]">
 <$list variable=cur_line_path filter="[<cur_card>get[line-path]]">
+<<gtree_ref_disp_parent_link>><br>
+<<gtree_ref_each_line_prefix>>
+<$vars disp_link=card>
+<<gtree_ref_disp_subtree>>
+</$vars><!--disp_link-->
+<$vars disp_link=yes>
+<<gtree_ref_disp_subtree>>
+</$vars><!--disp_link-->
+</$list><!--cur_line_path-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+</$list><!--cur_card-->
+<!--gtree_disp_next_level-->
+\end
+
+\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
+<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
+<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
+<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>]">
+<$link to=<<parent_card>> /><br>
+</$list><!--parent_card-->
+</$list><!--parent_branch-->
+</$list><!--parent_line_path-->
+<!--gtree_ref_disp_parent_link-->
+\end
+
+\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path)
 <$list variable=cur_prefix filter="[<cur_card>fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]">
+<<gtree_ref_disp_line_prefix_group>>
+<<gtree_ref_disp_next_line_branch_cards>>
+</$list><!--cur_prefix-->
+<!--gtree_ref_each_line_prefix-->
+\end
+
+\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
 <$list variable=cur_field filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
 <<gtree_ref_disp_field>><br>
 </$list><!--cur_field-->
+<!--gtree_ref_disp_line_prefix_group-->
+\end
+
+\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
 <$list variable=cur_line_branch filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
 <$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
 <$list variable=next_card filter="[line-path<next_line_branch>sort[]]">
@@ -1012,45 +1050,21 @@ mcr gtree_disp_field
 </$list><!--next_card-->
 </$list><!--next_line_branch-->
 </$list><!--cur_line_branch-->
-</$list><!--cur_prefix-->
-</$list><!--cur_line_path-->
-</$list><!--ttb_prefix-->
-<<glbl_disp_subtree "card">>
-<<glbl_disp_subtree "yes">>
-</$list><!--cur_card-->
-<!--gtree_disp_next_level-->
+<!--gtree_ref_disp_next_line_branch_cards-->
 \end
 
-\define gtree_ref_disp_parent_link(ttb_prefix)
-<$list variable=cur_line_path filter="[is[current]get[line-path]]">
-<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
-<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
-<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>]">
-<$link to=<<parent_card>> /><br>
-</$list><!--parent_card-->
-</$list><!--parent_branch-->
-</$list><!--parent_line_path-->
-</$list><!--cur_line_path-->
-<!--gtree_ref_disp_parent_link-->
-\end
-
-\define glbl_disp_subtree(ur_disp_link)
+\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)
 <hr>
-<$list variable=found_line_num filter="[<currentTiddler>fields[]prefix[ln-]]">
-<$list variable=found_line_path filter="[<currentTiddler>get[line-path]addsuffix<found_line_num>]">
-<$macrocall $name=gtree_ref_recurse_code_level ur_root_path=<<found_line_path>> ur_level=1 ur_disp_link="$ur_disp_link$" />
+<$list variable=found_line_num filter="[<cur_card>fields[]prefix[ln-]]">
+<$list variable=found_line_path filter="[<cur_line_path>addsuffix<found_line_num>]">
+<$vars cur_root_path=<<found_line_path>> cur_level_seq=1 >
+<<gtree_ref_recurse_code_level>>
+</$vars><!--cur_root_path, cur_level_seq
 </$list><!--found_line_path-->
 </$list><!--found_line_num-->
+<!--gtree_ref_disp_subtree-->
 \end
 
-
-
-
-New Card
-
-<$list variable=cur_card filter="[is[current]]">
-
-</$list><$o cur_card/>
 
 
 
