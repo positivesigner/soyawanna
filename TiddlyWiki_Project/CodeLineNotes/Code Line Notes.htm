@@ -517,8 +517,6 @@ Error message and password prompt
 
 <li>Recent Entries</li>
 
-<li>request gcmpr</li>
-
 <li>request gtree</li>
 
 <li>Sample Code</li>
@@ -11151,7 +11149,7 @@ Overwrite text fields
 <div created="20201226094827007" modified="20210119110128971" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210215144311155" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210215144405189" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20210215113844884" title="$:/state/tab--1963855381">
@@ -11166,7 +11164,7 @@ Overwrite text fields
 <div created="20210215111534095" modified="20210215120332387" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Explorer</pre>
 </div>
-<div created="20201226040229700" modified="20210215144311155" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210215144405190" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20210215112306844" modified="20210215112306844" title="$:/state/tree/$:/positivesigner/">
@@ -11181,7 +11179,7 @@ Overwrite text fields
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210215144129732" list="[[Code Line Notes]] [[request gcmpr]] [[$:/positivesigner/gcmpr/mcr gcmpr_compare_card]] [[$:/state/popup/gcmpr/$:/positivesigner/gcmpr/mcr gcmpr_compare_card]] [[request gtree]]" modified="20210215144215476" title="$:/StoryList">
+<div created="20210215144129732" list="[[Code Line Notes]] [[request gtree]]" modified="20210215144215476" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210215053322854" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/delete $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/open-window $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close $:/core/ui/Buttons/fold-others $:/core/ui/Buttons/fold" modified="20210215054430364" title="$:/tags/ViewToolbar">
@@ -12366,57 +12364,6 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 [[Font Size]]
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
-</div>
-<div created="20210215120152856" e2="yes" e3="yes" e4="yes" e5="yes" e6="yes" e7="yes" e8="yes" e9="yes" ec10="yes" ec11="yes" ec12="yes" ec13="yes" ec14="yes" ec15="yes" ec16="yes" ec20="yes" ec21="yes" modified="20210215144204810" tags="INDEX" title="request gcmpr">
-<pre>!!How to
-
-* external link to #textarea card
-
-&lt;&lt;&lt;
-!!Sample Code card
-* Top-right card menu, click link Compare to Textbox -&gt; Opens card
-
-!!compare card
-* Note: There is no external link to same file's #textarea card
-''''** AFTER FIX **
-
-&lt;&lt;&lt;&lt;&lt;&lt;
-&lt;&lt;glbl_chk &quot;ec10&quot;&gt;&gt;  Note: There is an external link to same file's #textarea card
-&lt;&lt;glbl_chk &quot;ec11&quot;&gt;&gt;  Click link -&gt; Opens tab
-
-!!New tab
-&lt;&lt;glbl_chk &quot;ec12&quot;&gt;&gt;  Note: There is a Filename textbox
-&lt;&lt;glbl_chk &quot;ec13&quot;&gt;&gt;  When you edit the Filename textbox, a button to create new temp card shows
-&lt;&lt;glbl_chk &quot;ec14&quot;&gt;&gt;  Note: The card has rows and cols input fields, defaulting to 40 rows, 80 cols
-&lt;&lt;glbl_chk &quot;ec15&quot;&gt;&gt;  Note: Increase / decrease buttons for each rows and cols that change the number by 10
-&lt;&lt;glbl_chk &quot;ec16&quot;&gt;&gt;  (Later I can add some preset size buttons)
-&lt;&lt;&lt;&lt;&lt;&lt;
-&lt;&lt;&lt;
-
-
-[[$:/positivesigner/gcmpr/mcr gcmpr_compare_card]]
-
-&lt;&lt;glbl_chk &quot;e2&quot;&gt;&gt; [gcmpr_textarea_new]
-&lt;&lt;glbl_chk &quot;e3&quot;&gt;&gt; New macro
-&lt;&lt;glbl_chk &quot;e4&quot;&gt;&gt; It shows a Filename textbox
-&lt;&lt;glbl_chk &quot;e5&quot;&gt;&gt; When you edit the Filename textbox, it shows a button for New Textbox which creates a new card with the same Filename, rows, and cols as this card
-&lt;&lt;glbl_chk &quot;e6&quot;&gt;&gt; The default #rows = 40, and the default #cols is 80
-&lt;&lt;glbl_chk &quot;e7&quot;&gt;&gt; Next to the #rows and #cols, there are buttons for increase/decrease by 10
-!
-&lt;&lt;glbl_chk &quot;ec20&quot;&gt;&gt; [gcmpr_textarea_new macro]
-&lt;&lt;glbl_chk &quot;ec21&quot;&gt;&gt; After bottom $edit-text field, make. external link to [[$:/positivesigner/gcmpr/textarea]]
-
-[[$:/positivesigner/gcmpr/textarea]]
-
-&lt;&lt;glbl_chk &quot;e8&quot;&gt;&gt; New card
-&lt;&lt;glbl_chk &quot;e9&quot;&gt;&gt; runs macro [gcmpr_textarea_new]
-
-!!Tech ref
-
-* textarea rows cols
-* [compare card]
-* calls macro [gcmpr_compare_card]
-</pre>
 </div>
 <div created="20210215124653623" modified="20210215125759331" tags="INDEX" title="request gtree">
 <pre>[[$:/positivesigner/gtree/mcr gtree_disp_field]]

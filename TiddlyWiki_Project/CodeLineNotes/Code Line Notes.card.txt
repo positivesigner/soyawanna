@@ -1525,60 +1525,6 @@ Recent Entries
 
 
 
-request gcmpr
-
-!!How to
-
-* external link to #textarea card
-
-<<<
-!!Sample Code card
-* Top-right card menu, click link Compare to Textbox -> Opens card
-
-!!compare card
-* Note: There is no external link to same file's #textarea card
-''''** AFTER FIX **
-
-<<<<<<
-<<glbl_chk "ec10">>  Note: There is an external link to same file's #textarea card
-<<glbl_chk "ec11">>  Click link -> Opens tab
-
-!!New tab
-<<glbl_chk "ec12">>  Note: There is a Filename textbox
-<<glbl_chk "ec13">>  When you edit the Filename textbox, a button to create new temp card shows
-<<glbl_chk "ec14">>  Note: The card has rows and cols input fields, defaulting to 40 rows, 80 cols
-<<glbl_chk "ec15">>  Note: Increase / decrease buttons for each rows and cols that change the number by 10
-<<glbl_chk "ec16">>  (Later I can add some preset size buttons)
-<<<<<<
-<<<
-
-
-[[$:/positivesigner/gcmpr/mcr gcmpr_compare_card]]
-
-<<glbl_chk "e2">> [gcmpr_textarea_new]
-<<glbl_chk "e3">> New macro
-<<glbl_chk "e4">> It shows a Filename textbox
-<<glbl_chk "e5">> When you edit the Filename textbox, it shows a button for New Textbox which creates a new card with the same Filename, rows, and cols as this card
-<<glbl_chk "e6">> The default #rows = 40, and the default #cols is 80
-<<glbl_chk "e7">> Next to the #rows and #cols, there are buttons for increase/decrease by 10
-!
-<<glbl_chk "ec20">> [gcmpr_textarea_new macro]
-<<glbl_chk "ec21">> After bottom $edit-text field, make. external link to [[$:/positivesigner/gcmpr/textarea]]
-
-[[$:/positivesigner/gcmpr/textarea]]
-
-<<glbl_chk "e8">> New card
-<<glbl_chk "e9">> runs macro [gcmpr_textarea_new]
-
-!!Tech ref
-
-* textarea rows cols
-* [compare card]
-* calls macro [gcmpr_compare_card]
-
-
-
-
 request gtree
 
 [[$:/positivesigner/gtree/mcr gtree_disp_field]]
