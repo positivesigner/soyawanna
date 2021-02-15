@@ -519,6 +519,28 @@ Daily Text
 
 <<glbl_article_list>>
 
+<$vars enr_cur_line="cur_line" enr_text="text" cur_card="Daily Text\2021 Comments" >
+<$button>
+<$list variable=next_line filter="[<cur_card>get<enr_cur_line>!match[]else[0]subtract[1]]">
+<$action-setfield $tiddler=<<cur_card>> $field=<<enr_cur_line>> $value=<<next_line>>/>
+</$list><!--next_line-->
+Prev Line
+</$button>
+<$button>
+<$list variable=next_line filter="[<cur_card>get<enr_cur_line>!match[]else[0]add[1]]">
+<$action-setfield $tiddler=<<cur_card>> $field=<<enr_cur_line>> $value=<<next_line>>/>
+</$list><!--next_line-->
+Next Line
+</$button>
+<$list variable=val_cur_line filter="[<cur_card>get<enr_cur_line>!match[]else[0]]">
+<$list variable=cur_line filter="[<cur_card>get<enr_text>split[
+]butfirst<val_cur_line>first[20]]">
+
+<<cur_line>>
+</$list><!--cur_line-->
+</$list><!--val_cur_line-->
+</$vars><!--enr_cur_line, enr_text, cur_card-->
+
 
 
 DivPop btn
