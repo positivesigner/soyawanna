@@ -94,14 +94,105 @@ New Card
 
 
 
-$:/positivesigner/btn gcmpr card
+$:/positivesigner/gcmpr
+
+
+
+$:/positivesigner/gcmpr/btn gcmpr card
 
 <<gcmpr_btn_cmp_current>> 
 
 
 
 
-$:/positivesigner/gcmpr
+$:/positivesigner/gcmpr/mcr gcmpr_compare_card
+
+\define gcmpr_compare_card(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]">
+<$list variable=compare_card filter="[<ttb_card>addprefix[$:/state/popup/compare-card/]]">
+<$link to=<<ttb_card>> />
+<<gcmpr_ref_edit_source_text>>
+<<gcmpr_ref_copy_over_ttb_card>>
+<br>
+<$link to=<<compare_card>> />
+<<gcmpr_ref_replace_comment_endings>>
+<<gcmpr_ref_disp_diff_text>>
+<$edit-text autoHeight=no tiddler=<<compare_card>> tag=textarea default="" />
+</$list><!--compare_card-->
+</$list><!--ttb_card-->
+<!--gcmpr_compare_card-->
+\end
+
+\define gcmpr_ref_edit_source_text(ttb_card, compare_card)
+<$vars enr_text="text" >
+<$list variable=source_text filter="[<ttb_card>get<enr_text>else[]]">
+<$button>
+<$action-setfield $tiddler=<<compare_card>> text=<<source_text>> />
+Edit Source
+</$button>
+</$list><!--source_text-->
+</$vars><!--enr_text-->
+<!--gcmpr_ref_edit_source_text-->
+\end
+
+\define gcmpr_ref_copy_over_ttb_card(ttb_card, compare_card)
+<$vars enr_text="text" >
+<$list variable=compare_text filter="[<compare_card>get<enr_text>else[]]">
+<$button>
+<$action-setfield $tiddler=<<ttb_card>> text=<<compare_text>> />
+Copy over
+</$button>
+</$list><!--compare_text-->
+</$vars><!--enr_text-->
+<!--gcmpr_ref_copy_over_ttb_card-->
+\end
+
+\define gcmpr_ref_replace_comment_endings(ttb_card, compare_card)
+<$button>
+<$vars comment_flag="--" lit_exclm="!" lit_lt="<" lit_gt=">" enr_text="text" >
+<$wikify name=lit_lf text="&#10;">
+<$list variable=comment_open_text filter="[<lit_lt>addsuffix<lit_exclm>addsuffix<comment_flag>]">
+<$list variable=comment_close_text filter="[<comment_flag>addsuffix<lit_gt>]">
+<$list variable=comment_close_replace filter="[<comment_flag>addsuffix<lit_exclm>addsuffix<lit_gt>]">
+<$list variable=replace_text filter="[<compare_card>get<enr_text>split<comment_close_text>join<comment_close_replace>addprefix<lit_lf>addprefix<comment_open_text>addsuffix<lit_lf>addsuffix<comment_close_text>]">
+<$action-setfield $tiddler=<<compare_card>> text=<<replace_text>> />
+</$list><!--replace_text-->
+</$list><!--comment_close_replace-->
+</$list><!--comment_close_text-->
+</$list><!--comment_open_text-->
+</$wikify>
+</$vars><!--comment_flag, lit_exclm, lit_lt, lit_gt-->
+Replace comment endings
+</$button><br>
+<!--gcmpr_ref_replace_comment_endings-->
+\end
+
+\define gcmpr_ref_disp_diff_text()
+<$list variable=val_ttb_card filter="[<ttb_card>get[text]!match[]]">
+<$list variable=val_compare_card filter="[<compare_card>get[text]!match[]]">
+<$diff-text source=<<val_ttb_card>> dest=<<val_compare_card>> />
+</$list><!--val_compare_card-->
+</$list><!--val_ttb_card-->
+<!--gcmpr_ref_disp_diff_text-->
+\end
+
+\define gcmpr_btn_cmp_current()
+<$list variable=cur_card filter="[all[current]]">
+<$list variable=dest_card filter="[<cur_card>addprefix[$:/state/popup/gcmpr/]]">
+<$vars lit_lt="<" lit_gt=">" lit_s=" " lit_qs='"' macro_name="gcmpr_compare_card" enr_text="text" >
+<$list variable=macro_call_text filter="[<lit_lt>addsuffix<lit_lt>addsuffix<macro_name>addsuffix<lit_s>addsuffix<lit_qs>addsuffix<cur_card>addsuffix<lit_qs>addsuffix<lit_gt>addsuffix<lit_gt>]">
+<$button class=<<tv-config-toolbar-class>> >
+<$action-setfield $tiddler=<<dest_card>> text=<<macro_call_text>> />
+<$action-navigate $to=<<dest_card>> />
+Compare to Textbox
+</$button>
+</$list><!--macro_call_text-->
+</$vars><!--lit_lt-->
+</$list><!--dest_card-->
+</$list><!--cur_card-->
+<!--gcmpr_btn_cmp_current-->
+\end
+
 
 
 
@@ -562,83 +653,6 @@ $:/positivesigner/gtree/template LinePath
 <$list filter="[is[current]has[line-path]]">
 <<gtree_disp_next_level>>
 </$list>
-
-
-
-$:/positivesigner/mcr gcmpr_compare_card
-
-\define gcmpr_compare_card(ur_ttb_card)
-<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]">
-<$list variable=compare_card filter="[<ttb_card>addprefix[$:/state/popup/compare-card/]]">
-<$link to=<<ttb_card>> />
-<<gcmpr_ref_copy_over_ttb_card>>
-<br>
-<$link to=<<compare_card>> />
-<<gcmpr_ref_replace_comment_endings>>
-<<gcmpr_ref_disp_diff_text>>
-<$edit-text autoHeight=no tiddler=<<compare_card>> tag=textarea default="" />
-</$list><!--compare_card-->
-</$list><!--ttb_card-->
-<!--gcmpr_compare_card-->
-\end
-
-\define gcmpr_ref_copy_over_ttb_card(ttb_card, compare_card)
-<$vars enr_text="text" >
-<$list variable=compare_text filter="[<compare_card>get<enr_text>]">
-<$button>
-<$action-setfield $tiddler=<<ttb_card>> text=<<compare_text>> />
-Copy over 
-</$button>
-</$list><!--compare_text-->
-</$vars><!--enr_text-->
-\end
-
-\define gcmpr_ref_replace_comment_endings(ttb_card, compare_card)
-<$button>
-<$vars comment_flag="--" lit_exclm="!" lit_lt="<" lit_gt=">" enr_text="text" >
-<$wikify name=lit_lf text="&#10;">
-<$list variable=comment_open_text filter="[<lit_lt>addsuffix<lit_exclm>addsuffix<comment_flag>]">
-<$list variable=comment_close_text filter="[<comment_flag>addsuffix<lit_gt>]">
-<$list variable=comment_close_replace filter="[<comment_flag>addsuffix<lit_exclm>addsuffix<lit_gt>]">
-<$list variable=replace_text filter="[<compare_card>get<enr_text>split<comment_close_text>join<comment_close_replace>addprefix<lit_lf>addprefix<comment_open_text>addsuffix<lit_lf>addsuffix<comment_close_text>]">
-<$action-setfield $tiddler=<<compare_card>> text=<<replace_text>> />
-</$list><!--replace_text-->
-</$list><!--comment_close_replace-->
-</$list><!--comment_close_text-->
-</$list><!--comment_open_text-->
-</$wikify>
-</$vars><!--comment_flag, lit_exclm, lit_lt, lit_gt-->
-Replace comment endings
-</$button><br>
-<!--gcmpr_ref_replace_comment_endings-->
-\end
-
-\define gcmpr_ref_disp_diff_text()
-<$list variable=val_ttb_card filter="[<ttb_card>get[text]!match[]]">
-<$list variable=val_compare_card filter="[<compare_card>get[text]!match[]]">
-<$diff-text source=<<val_ttb_card>> dest=<<val_compare_card>> />
-</$list><!--val_compare_card-->
-</$list><!--val_ttb_card-->
-<!--gcmpr_ref_disp_diff_text-->
-\end
-
-\define gcmpr_btn_cmp_current()
-<$list variable=cur_card filter="[all[current]]">
-<$list variable=dest_card filter="[<cur_card>addprefix[$:/state/popup/gcmpr/]]">
-<$vars lit_lt="<" lit_gt=">" lit_s=" " lit_qs='"' macro_name="gcmpr_compare_card" enr_text="text" >
-<$list variable=macro_call_text filter="[<lit_lt>addsuffix<lit_lt>addsuffix<macro_name>addsuffix<lit_s>addsuffix<lit_qs>addsuffix<cur_card>addsuffix<lit_qs>addsuffix<lit_gt>addsuffix<lit_gt>]">
-<$button class=<<tv-config-toolbar-class>> >
-<$action-setfield $tiddler=<<dest_card>> text=<<macro_call_text>> />
-<$action-navigate $to=<<dest_card>> />
-cmp
-</$button>
-</$list><!--macro_call_text-->
-</$vars><!--lit_lt-->
-</$list><!--dest_card-->
-</$list><!--cur_card-->
-<!--gcmpr_btn_cmp_current-->
-\end
-
 
 
 
@@ -1399,6 +1413,37 @@ Recent Entries
 [[Font Size]]
 
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+request
+
+<<<
+!!gcmpr
+* copy source text to textbox
+
+<<<
+!!Sample Code card
+* Top-right card menu, click link Compare to Textbox -> Opens card
+
+!!compare card
+* Note: The source card link is shown as [Sample Code]
+* Note: There is no button [Copy Source Text to Textbox] after the source card link
+''''** AFTER FIX **
+
+<<<<<<
+* Note: There is a button [Copy Source Text to Textbox] after the source card link
+* Click button -> Updates textbox
+* Note: The textbox has the same text as the source card
+* Note: The differences report states "0 differences found"
+<<<<<<
+<<<
+!
+* external link to same file's #textarea card
+* The card has rows and cols input fields, defaulting to 40 rows, 80 cols
+* Increase / decrease buttons for each rows and cols that change the number by 10
+* Later I can add some preset size buttons
+
 
 
 
