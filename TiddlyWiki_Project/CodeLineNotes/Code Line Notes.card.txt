@@ -196,6 +196,10 @@ Compare to Textbox
 
 
 
+$:/positivesigner/gcmpr/textarea
+
+
+
 $:/positivesigner/gtree
 
 
@@ -1416,34 +1420,181 @@ Recent Entries
 
 
 
-request
+request gcmpr
 
-<<<
-!!gcmpr
-* copy source text to textbox
+!!How to
+
+* external link to #textarea card
 
 <<<
 !!Sample Code card
 * Top-right card menu, click link Compare to Textbox -> Opens card
 
 !!compare card
-* Note: The source card link is shown as [Sample Code]
-* Note: There is no button [Copy Source Text to Textbox] after the source card link
+* Note: There is no external link to same file's #textarea card
 ''''** AFTER FIX **
 
 <<<<<<
-* Note: There is a button [Copy Source Text to Textbox] after the source card link
-* Click button -> Updates textbox
-* Note: The textbox has the same text as the source card
-* Note: The differences report states "0 differences found"
+* Note: There is an external link to same file's #textarea card
+* Click link -> Opens tab
+
+!!New tab
+* Note: There is a Filename textbox
+* When you edit the Filename textbox, a button to create new temp card shows
+* Note: The card has rows and cols input fields, defaulting to 40 rows, 80 cols
+* Note: Increase / decrease buttons for each rows and cols that change the number by 10
+* (Later I can add some preset size buttons)
 <<<<<<
 <<<
-!
-* external link to same file's #textarea card
-* The card has rows and cols input fields, defaulting to 40 rows, 80 cols
-* Increase / decrease buttons for each rows and cols that change the number by 10
-* Later I can add some preset size buttons
 
+
+[[$:/positivesigner/gcmpr/mcr gcmpr_compare_card]]
+
+* [gcmpr_textarea_new]
+* New macro
+* It shows a Filename textbox
+* When you edit the Filename textbox, it shows a button for New Textbox which creates a new card with the same Filename, rows, and cols as this card
+* The default #rows = 40, and the default #cols is 80
+* Next to the #rows and #cols, there are buttons for increase/decrease by 10
+
+[[$:/positivesigner/gcmpr/textarea]]
+
+* New card
+* runs macro [gcmpr_textarea_new]
+
+!!Tech ref
+
+* textarea rows cols
+* 
+
+
+
+request gcmpr textarea
+
+<$vars enr_text="text" enr_new_filename="new_filename" enr_rows="rows" enr_cols="cols" enr_disp_btn_incr_decr="disp_btn_incr_decr" lit_state_popup_prefix="$:/state/popup/gcmpr_textarea/" cur_card=<<currentTiddler>> >
+<$list variable=temp_card filter="[<cur_card>addprefix<lit_state_popup_prefix>]">
+New file name:
+@@margin-left:5px;
+<$edit-text tiddler=<<temp_card>> field=new_filename placeholder="" autoHeight=yes tag=input/>
+@@
+<$list variable=val_disp_btn_incr_decr filter="[<temp_card>get<enr_disp_btn_incr_decr>!match[]else[]]">
+<$list variable=val_rows filter="[<temp_card>get<enr_rows>!match[]!match[0]else[40]]">
+<$list variable=val_cols filter="[<temp_card>get<enr_cols>!match[]!match[0]else[80]]">
+<$list variable=val_new_filename filter="[<temp_card>get<enr_new_filename>!match[]]">
+<$list variable=new_card filter="[<val_new_filename>addprefix<lit_state_popup_prefix>]">
+<$list variable=new_temp_card filter="[<new_card>addprefix<lit_state_popup_prefix>]">
+<$list variable=filter_newcard_not_exists filter="[<new_card>!is[tiddler]]">
+<$button>
+<$list variable=cur_card_text filter="[<cur_card>get<enr_text>]">
+<$action-setfield $tiddler=<<new_card>> $field=<<enr_text>> $value=<<cur_card_text>> />
+</$list><!--cur_card_text-->
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_new_filename>> $value=<<val_new_filename>> />
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_rows>> $value=<<val_rows>> />
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_cols>> $value=<<val_cols>> />
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_disp_btn_incr_decr>> $value=<<val_disp_btn_incr_decr>> />
+<$action-navigate $to=<<new_card>> />
+New card
+</$button>
+</$list><!--filter_newcard_not_exists-->
+</$list><!--new_temp_card-->
+</$list><!--new_card-->
+</$list><!--val_new_filename-->
+
+<br>
+<$list variable=filter_disp_buttons filter="[<val_disp_btn_incr_decr>!match[]]">
+@@margin-right:20px;
+<$button>
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_disp_btn_incr_decr>> $value="" />
+Show Resize buttons
+</$button>
+@@
+</$list><!--filter_disp_buttons-->
+Rows: <<val_rows>>
+<$list variable=filter_disp_buttons filter="[<val_disp_btn_incr_decr>match[]]">
+<$button>
+<$list variable=val_new_rows filter="[<val_rows>add[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_rows>> $value=<<val_new_rows>> 
+/>
+</$list><!--val_new_rows-->
++
+</$button>
+<$list variable=filter_zero_rows filter="[<val_rows>!match[0]]">
+<$button>
+<$list variable=val_new_rows filter="[<val_rows>subtract[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_rows>> $value=<<val_new_rows>> />
+</$list><!--val_new_rows-->
+-
+</$button>
+</$list><!--filter_zero_rows-->
+</$list><!--filter_disp_buttons-->
+Cols: <<val_cols>>
+<$list variable=filter_disp_buttons filter="[<val_disp_btn_incr_decr>match[]]">
+<$button>
+<$list variable=val_new_cols filter="[<val_cols>add[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_cols>> $value=<<val_new_cols>> />
+</$list><!--val_new_cols-->
++
+</$button>
+<$list variable=filter_zero_cols filter="[<val_cols>!match[0]]">
+<$button>
+<$list variable=val_new_cols filter="[<val_cols>subtract[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_cols>> $value=<<val_new_cols>> />
+</$list><!--val_new_cols-->
+-
+</$button>
+@@margin-left:20px;
+<$button>
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_disp_btn_incr_decr>> $value="hide" />
+Hide resize buttons
+</$button>
+@@
+</$list><!--filter_disp_buttons-->
+</$list><!--filter_zero_cols-->
+<br>
+<textarea rows=<<val_rows>> cols=<<val_cols>> />
+</$list><!--val_cols-->
+</$list><!--val_rows-->
+</$list><!--val_disp_btn_incr_decr-->
+</$list><!--temp_card-->
+</$vars><!--enr_new_filename-->
+
+
+
+
+request gtree
+
+[[$:/positivesigner/gtree/mcr gtree_disp_field]]
+
+* Copy in glbl_article_list as gtree_article_list
+
+<<<
+!! gtree_ref_disp_line_prefix_group
+
+* [Top of macro]
+* When disp_leading match[], show smallest ln-* field name
+!
+* [Bottom of macro]
+* When disp_leading !match[], show largest ln-* field name
+
+<<<
+
+[[$:/positivesigner/gtree/template LinePath]]
+
+* Show first and last line numbers
+
+[[$:/positivesigner/gtree/template e1 tree]]
+
+* Change ref glbl_article_list to gtree_article_list
+
+!!Tech ref
+
+* template line-path
+* L1 mcr gtree_disp_next_level
+* L2 mcr gtree_ref_disp_parent_link
+* L2 mcr gtree_ref_each_line_prefix
+* L3 mcr gtree_ref_disp_line_prefix_group
+* L3 mcr gtree_ref_disp_next_line_branch_cards
+* L3 mcr gtree_ref_disp_line_prefix_group
 
 
 

@@ -191,6 +191,8 @@ Error message and password prompt
 
 <li>$:/positivesigner/gcmpr/mcr gcmpr_compare_card</li>
 
+<li>$:/positivesigner/gcmpr/textarea</li>
+
 <li>$:/positivesigner/gtree</li>
 
 <li>$:/positivesigner/gtree/mcr gtree_disp_field</li>
@@ -487,6 +489,8 @@ Error message and password prompt
 
 <li>ext TW Return</li>
 
+<li>Filter error: Missing [ in filter expression</li>
+
 <li>Font Size</li>
 
 <li>keyboard action FontLarge</li>
@@ -513,7 +517,11 @@ Error message and password prompt
 
 <li>Recent Entries</li>
 
-<li>request</li>
+<li>request gcmpr</li>
+
+<li>request gcmpr textarea</li>
+
+<li>request gtree</li>
 
 <li>Sample Code</li>
 
@@ -10577,6 +10585,9 @@ Compare to Textbox
 \end
 </pre>
 </div>
+<div created="20210215125903946" modified="20210215130156456" tags="$:/positivesigner/gcmpr" title="$:/positivesigner/gcmpr/textarea">
+<pre></pre>
+</div>
 <div color="#6a6887" created="20210215112801401" modified="20210215112836745" tags="$:/positivesigner/gtree" title="$:/positivesigner/gtree">
 <pre></pre>
 </div>
@@ -11039,7 +11050,7 @@ Overwrite text fields
 <div created="20201226094827007" modified="20210119110128971" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210215123840119" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210215141122299" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20210215113844884" title="$:/state/tab--1963855381">
@@ -11054,7 +11065,7 @@ Overwrite text fields
 <div created="20210215111534095" modified="20210215120332387" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Explorer</pre>
 </div>
-<div created="20201226040229700" modified="20210215123840119" title="$:/state/tab/sidebar--595412856">
+<div created="20201226040229700" modified="20210215141122299" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div created="20210215112306844" modified="20210215112306844" title="$:/state/tree/$:/positivesigner/">
@@ -11069,7 +11080,7 @@ Overwrite text fields
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210215120650190" list="[[Code Line Notes]] [[Sample Code]] request" modified="20210215122620030" title="$:/StoryList">
+<div created="20210215140943245" list="[[Code Line Notes]] [[request gcmpr]] [[request gcmpr textarea]] [[request gtree]]" modified="20210215140943246" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210215053322854" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/delete $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/open-window $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close $:/core/ui/Buttons/fold-others $:/core/ui/Buttons/fold" modified="20210215054430364" title="$:/tags/ViewToolbar">
@@ -11764,6 +11775,9 @@ close
 &lt;/$list&gt;
 </pre>
 </div>
+<div cols="170" created="20210215133050958" disp_btn_incr_decr="hide" modified="20210215134335459" rows="20" title="Filter error: Missing [ in filter expression">
+<pre></pre>
+</div>
 <div created="20200319102534436" modified="20210214133800627" tags="META" title="Font Size">
 <pre>&lt;$button&gt;
 {{keyboard action FontLarge}}
@@ -12252,33 +12266,174 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20210215120152856" modified="20210215123839005" tags="INDEX" title="request">
-<pre>&lt;&lt;&lt;
-!!gcmpr
-* copy source text to textbox
+<div created="20210215120152856" modified="20210215131147432" tags="INDEX" title="request gcmpr">
+<pre>!!How to
+
+* external link to #textarea card
 
 &lt;&lt;&lt;
 !!Sample Code card
 * Top-right card menu, click link Compare to Textbox -&gt; Opens card
 
 !!compare card
-* Note: The source card link is shown as [Sample Code]
-* Note: There is no button [Copy Source Text to Textbox] after the source card link
+* Note: There is no external link to same file's #textarea card
 ''''** AFTER FIX **
 
 &lt;&lt;&lt;&lt;&lt;&lt;
-* Note: There is a button [Copy Source Text to Textbox] after the source card link
-* Click button -&gt; Updates textbox
-* Note: The textbox has the same text as the source card
-* Note: The differences report states &quot;0 differences found&quot;
+* Note: There is an external link to same file's #textarea card
+* Click link -&gt; Opens tab
+
+!!New tab
+* Note: There is a Filename textbox
+* When you edit the Filename textbox, a button to create new temp card shows
+* Note: The card has rows and cols input fields, defaulting to 40 rows, 80 cols
+* Note: Increase / decrease buttons for each rows and cols that change the number by 10
+* (Later I can add some preset size buttons)
 &lt;&lt;&lt;&lt;&lt;&lt;
 &lt;&lt;&lt;
-!
-* external link to same file's #textarea card
-* The card has rows and cols input fields, defaulting to 40 rows, 80 cols
-* Increase / decrease buttons for each rows and cols that change the number by 10
-* Later I can add some preset size buttons
+
+
+[[$:/positivesigner/gcmpr/mcr gcmpr_compare_card]]
+
+* [gcmpr_textarea_new]
+* New macro
+* It shows a Filename textbox
+* When you edit the Filename textbox, it shows a button for New Textbox which creates a new card with the same Filename, rows, and cols as this card
+* The default #rows = 40, and the default #cols is 80
+* Next to the #rows and #cols, there are buttons for increase/decrease by 10
+
+[[$:/positivesigner/gcmpr/textarea]]
+
+* New card
+* runs macro [gcmpr_textarea_new]
+
+!!Tech ref
+
+* textarea rows cols
+* </pre>
+</div>
+<div created="20210215131310133" modified="20210215141120575" tags="INDEX" title="request gcmpr textarea">
+<pre>&lt;$vars enr_text=&quot;text&quot; enr_new_filename=&quot;new_filename&quot; enr_rows=&quot;rows&quot; enr_cols=&quot;cols&quot; enr_disp_btn_incr_decr=&quot;disp_btn_incr_decr&quot; lit_state_popup_prefix=&quot;$:/state/popup/gcmpr_textarea/&quot; cur_card=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;$list variable=temp_card filter=&quot;[&lt;cur_card&gt;addprefix&lt;lit_state_popup_prefix&gt;]&quot;&gt;
+New file name:
+@@margin-left:5px;
+&lt;$edit-text tiddler=&lt;&lt;temp_card&gt;&gt; field=new_filename placeholder=&quot;&quot; autoHeight=yes tag=input/&gt;
+@@
+&lt;$list variable=val_disp_btn_incr_decr filter=&quot;[&lt;temp_card&gt;get&lt;enr_disp_btn_incr_decr&gt;!match[]else[]]&quot;&gt;
+&lt;$list variable=val_rows filter=&quot;[&lt;temp_card&gt;get&lt;enr_rows&gt;!match[]!match[0]else[40]]&quot;&gt;
+&lt;$list variable=val_cols filter=&quot;[&lt;temp_card&gt;get&lt;enr_cols&gt;!match[]!match[0]else[80]]&quot;&gt;
+&lt;$list variable=val_new_filename filter=&quot;[&lt;temp_card&gt;get&lt;enr_new_filename&gt;!match[]]&quot;&gt;
+&lt;$list variable=new_card filter=&quot;[&lt;val_new_filename&gt;addprefix&lt;lit_state_popup_prefix&gt;]&quot;&gt;
+&lt;$list variable=new_temp_card filter=&quot;[&lt;new_card&gt;addprefix&lt;lit_state_popup_prefix&gt;]&quot;&gt;
+&lt;$list variable=filter_newcard_not_exists filter=&quot;[&lt;new_card&gt;!is[tiddler]]&quot;&gt;
+&lt;$button&gt;
+&lt;$list variable=cur_card_text filter=&quot;[&lt;cur_card&gt;get&lt;enr_text&gt;]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_card&gt;&gt; $field=&lt;&lt;enr_text&gt;&gt; $value=&lt;&lt;cur_card_text&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--cur_card_text--&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_temp_card&gt;&gt; $field=&lt;&lt;enr_new_filename&gt;&gt; $value=&lt;&lt;val_new_filename&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_temp_card&gt;&gt; $field=&lt;&lt;enr_rows&gt;&gt; $value=&lt;&lt;val_rows&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_temp_card&gt;&gt; $field=&lt;&lt;enr_cols&gt;&gt; $value=&lt;&lt;val_cols&gt;&gt; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;new_temp_card&gt;&gt; $field=&lt;&lt;enr_disp_btn_incr_decr&gt;&gt; $value=&lt;&lt;val_disp_btn_incr_decr&gt;&gt; /&gt;
+&lt;$action-navigate $to=&lt;&lt;new_card&gt;&gt; /&gt;
+New card
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--filter_newcard_not_exists--&gt;
+&lt;/$list&gt;&lt;!--new_temp_card--&gt;
+&lt;/$list&gt;&lt;!--new_card--&gt;
+&lt;/$list&gt;&lt;!--val_new_filename--&gt;
+
+&lt;br&gt;
+&lt;$list variable=filter_disp_buttons filter=&quot;[&lt;val_disp_btn_incr_decr&gt;!match[]]&quot;&gt;
+@@margin-right:20px;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_card&gt;&gt; $field=&lt;&lt;enr_disp_btn_incr_decr&gt;&gt; $value=&quot;&quot; /&gt;
+Show Resize buttons
+&lt;/$button&gt;
+@@
+&lt;/$list&gt;&lt;!--filter_disp_buttons--&gt;
+Rows: &lt;&lt;val_rows&gt;&gt;
+&lt;$list variable=filter_disp_buttons filter=&quot;[&lt;val_disp_btn_incr_decr&gt;match[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$list variable=val_new_rows filter=&quot;[&lt;val_rows&gt;add[10]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_card&gt;&gt; $field=&lt;&lt;enr_rows&gt;&gt; $value=&lt;&lt;val_new_rows&gt;&gt; 
+/&gt;
+&lt;/$list&gt;&lt;!--val_new_rows--&gt;
++
+&lt;/$button&gt;
+&lt;$list variable=filter_zero_rows filter=&quot;[&lt;val_rows&gt;!match[0]]&quot;&gt;
+&lt;$button&gt;
+&lt;$list variable=val_new_rows filter=&quot;[&lt;val_rows&gt;subtract[10]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_card&gt;&gt; $field=&lt;&lt;enr_rows&gt;&gt; $value=&lt;&lt;val_new_rows&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--val_new_rows--&gt;
+-
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--filter_zero_rows--&gt;
+&lt;/$list&gt;&lt;!--filter_disp_buttons--&gt;
+Cols: &lt;&lt;val_cols&gt;&gt;
+&lt;$list variable=filter_disp_buttons filter=&quot;[&lt;val_disp_btn_incr_decr&gt;match[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$list variable=val_new_cols filter=&quot;[&lt;val_cols&gt;add[10]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_card&gt;&gt; $field=&lt;&lt;enr_cols&gt;&gt; $value=&lt;&lt;val_new_cols&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--val_new_cols--&gt;
++
+&lt;/$button&gt;
+&lt;$list variable=filter_zero_cols filter=&quot;[&lt;val_cols&gt;!match[0]]&quot;&gt;
+&lt;$button&gt;
+&lt;$list variable=val_new_cols filter=&quot;[&lt;val_cols&gt;subtract[10]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_card&gt;&gt; $field=&lt;&lt;enr_cols&gt;&gt; $value=&lt;&lt;val_new_cols&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--val_new_cols--&gt;
+-
+&lt;/$button&gt;
+@@margin-left:20px;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;temp_card&gt;&gt; $field=&lt;&lt;enr_disp_btn_incr_decr&gt;&gt; $value=&quot;hide&quot; /&gt;
+Hide resize buttons
+&lt;/$button&gt;
+@@
+&lt;/$list&gt;&lt;!--filter_disp_buttons--&gt;
+&lt;/$list&gt;&lt;!--filter_zero_cols--&gt;
+&lt;br&gt;
+&lt;textarea rows=&lt;&lt;val_rows&gt;&gt; cols=&lt;&lt;val_cols&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--val_cols--&gt;
+&lt;/$list&gt;&lt;!--val_rows--&gt;
+&lt;/$list&gt;&lt;!--val_disp_btn_incr_decr--&gt;
+&lt;/$list&gt;&lt;!--temp_card--&gt;
+&lt;/$vars&gt;&lt;!--enr_new_filename--&gt;
 </pre>
+</div>
+<div created="20210215124653623" modified="20210215125759331" tags="INDEX" title="request gtree">
+<pre>[[$:/positivesigner/gtree/mcr gtree_disp_field]]
+
+* Copy in glbl_article_list as gtree_article_list
+
+&lt;&lt;&lt;
+!! gtree_ref_disp_line_prefix_group
+
+* [Top of macro]
+* When disp_leading match[], show smallest ln-* field name
+!
+* [Bottom of macro]
+* When disp_leading !match[], show largest ln-* field name
+
+&lt;&lt;&lt;
+
+[[$:/positivesigner/gtree/template LinePath]]
+
+* Show first and last line numbers
+
+[[$:/positivesigner/gtree/template e1 tree]]
+
+* Change ref glbl_article_list to gtree_article_list
+
+!!Tech ref
+
+* template line-path
+* L1 mcr gtree_disp_next_level
+* L2 mcr gtree_ref_disp_parent_link
+* L2 mcr gtree_ref_each_line_prefix
+* L3 mcr gtree_ref_disp_line_prefix_group
+* L3 mcr gtree_ref_disp_next_line_branch_cards
+* L3 mcr gtree_ref_disp_line_prefix_group</pre>
 </div>
 <div created="20210213102712935" e1="\define gtree_disp_tree_cards(ur_ttb_card)" e2="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" e3="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" e4="&lt;$vars disp_link=card enr_line_path=line-path&gt;" e5="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" e6="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" e7="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" e8="&lt;/$list&gt;&lt;!--ttb_card--&gt;" e9="&lt;!--gtree_disp_tree_cards--&gt;" ec10="\end" ec11="" ec12="\define gtree_disp_tree_links(ur_ttb_card)" ec13="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ec14="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ec15="&lt;$vars disp_link=yes enr_line_path=line-path&gt;" ec16="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" ec17="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" ec18="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ec19="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ec20="&lt;!--gtree_disp_tree_links--&gt;" ec21="\end" ec22="" ec23="\define gtree_disp_tree_text(ur_ttb_card)" ec24="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ec25="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ec26="&lt;$vars disp_link=no enr_line_path=line-path&gt;" ec27="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" ec28="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" ec29="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ec30="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ec31="&lt;!--gtree_disp_tree_text--&gt;" ec32="\end" ec33="" ec34="\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)" ec35="&lt;$list variable=found_line_path filter=&quot;[prefix&lt;ttb_prefix&gt;get&lt;enr_line_path&gt;sort[]]&quot;&gt;" ec36="&lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[]match[1]]&quot;&gt;" ec37="&lt;$vars" ec38="  cur_root_path=&lt;&lt;found_line_path&gt;&gt;" ec39="  cur_level_seq=1 &gt;" ec40="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ec41="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ec42="&lt;/$list&gt;&lt;!--filter_root_path--&gt;" ec43="&lt;/$list&gt;&lt;!--found_line_path--&gt;" ec44="&lt;!--gtree_ref_disp_root_tree--&gt;" ec45="\end" ec46="" ec47="\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)" ec48="&lt;$list variable=filter_level_max filter=&quot;[&lt;cur_level_seq&gt;!match[10]]&quot;&gt;" ec49="&lt;$list variable=cur_line_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;cur_root_path&gt;sort[]]&quot;&gt;" ec50="&lt;&lt;gtree_ref_disp_card_entry&gt;&gt;" ec51="&lt;&lt;gtree_ref_each_line_branch&gt;&gt;" ec52="&lt;/$list&gt;&lt;!--cur_line_card--&gt;" ec53="&lt;/$list&gt;&lt;!--filter_level_max--&gt;" ec54="&lt;!--gtree_ref_recurse_code_level--&gt;" ec55="\end" ec56="" ec57="\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)" ec58="&lt;$list variable=disp_card_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[card]]&quot;&gt;" ec59="&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;" ec60="&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;" ec61="&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;" ec62="&lt;/$list&gt;&lt;!--indent_arrows--&gt;" ec63="&lt;/$list&gt;&lt;!--indent_count--&gt;" ec64="&lt;/$list&gt;&lt;!--disp_card_link--&gt;" ec65="&lt;!--gtree_ref_disp_card_entry--&gt;" ec66="\end" ec67="" ec68="\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)" ec69="&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;" ec70="&lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;" ec71="&lt;&lt;gtree_ref_disp_link_entry&gt;&gt;" ec72="&lt;&lt;gtree_ref_disp_doc_contents&gt;&gt;" ec73="&lt;/$list&gt;&lt;!--filter_skip_e0--&gt;" ec74="&lt;&lt;gtree_ref_disp_next_line_branch&gt;&gt;" ec75="&lt;/$list&gt;&lt;!--cur_line_branch--&gt;" ec76="&lt;!--gtree_ref_each_line_branch--&gt;" ec77="\end" ec78="" ec79="\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ec80="&lt;$list variable=disp_branch_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[yes]]&quot;&gt;" ec81="&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;" ec82="&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;" ec83="&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;" ec84="&lt;/$list&gt;&lt;!--indent_arrows--&gt;" ec85="&lt;/$list&gt;&lt;!--indent_count--&gt;" ec86="&lt;/$list&gt;&lt;!--disp_branch_link--&gt;" ec87="&lt;!--gtree_ref_disp_link_entry--&gt;" ec88="\end" ec89="" ec90="\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ec91="&lt;$list variable=disp_doc_contents filter=&quot;[&lt;disp_link&gt;lowercase[]!match[card]]&quot;&gt;" ec92="&lt;$vars cur_field=&lt;&lt;cur_line_branch&gt;&gt; &gt;" ec93="&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;" ec94="&lt;/$vars&gt;&lt;!--cur_field--&gt;" ec95="&lt;/$list&gt;&lt;!--disp_doc_contents--&gt;" ec96="&lt;!--gtree_ref_disp_doc_contents--&gt;" ec97="\end" ec98="" ec99="\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ed100="&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_root_path&gt;sort[]]&quot;&gt;" ed101="&lt;$list variable=next_level filter=&quot;[&lt;cur_level_seq&gt;add[1]]&quot;&gt;" ed102="&lt;$vars cur_root_path=&lt;&lt;next_line_branch&gt;&gt; cur_level_seq=&lt;&lt;next_level&gt;&gt; &gt;" ed103="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ed104="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ed105="&lt;/$list&gt;&lt;!--next_level--&gt;" ed106="&lt;/$list&gt;&lt;!--next_line_branch--&gt;" ed107="&lt;!--gtree_ref_disp_next_line_branch--&gt;" ed108="\end" ed109="" ed110="\define gtree_ref_disp_field(ttb_card, cur_field)" ed111="&lt;$list variable=line_num filter=&quot;[&lt;cur_field&gt;removeprefix[ln-]]&quot;&gt;" ed112="&lt;$list variable=cur_entry filter=&quot;[&lt;ttb_card&gt;get&lt;line_num&gt;]&quot;" ed113="&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;" ed114="&lt;/$list&gt;&lt;!--cur_entry--&gt;" ed115="&lt;/$list&gt;&lt;!--line_num--&gt;" ed116="&lt;!--gtree_ref_disp_field--&gt;" ed117="\end" ed118="" ed119="\define gtree_disp_next_level()" ed120="&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;" ed121="&lt;$list variable=ttb_card filter=&quot;[&lt;cur_card&gt;split[\]first[]]&quot;&gt;" ed122="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;" ed123="&lt;$vars enr_line_path=line-path&gt;" ed124="&lt;$list variable=cur_line_path filter=&quot;[&lt;cur_card&gt;get&lt;enr_line_path&gt;]&quot;&gt;" ed125="&lt;&lt;gtree_ref_disp_parent_link&gt;&gt;&lt;br&gt;" ed126="&lt;&lt;gtree_ref_each_line_prefix&gt;&gt;" ed127="&lt;$vars disp_link=card&gt;" ed128="&lt;&lt;gtree_ref_disp_subtree&gt;&gt;" ed129="&lt;/$vars&gt;&lt;!--disp_link--&gt;" ed130="&lt;$vars disp_link=yes&gt;" ed131="&lt;&lt;gtree_ref_disp_subtree&gt;&gt;" ed132="&lt;/$vars&gt;&lt;!--disp_link--&gt;" ed133="&lt;/$list&gt;&lt;!--cur_line_path--&gt;" ed134="&lt;/$vars&gt;&lt;!--enr_line_path--&gt;" ed135="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ed136="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed137="&lt;/$list&gt;&lt;!--cur_card--&gt;" ed138="&lt;!--gtree_disp_next_level--&gt;" ed139="\end" ed140="" ed141="\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)" ed142="&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]]&quot;&gt;" ed143="&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]]&quot;&gt;" ed144="&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;]&quot;&gt;" ed145="&lt;$link to=&lt;&lt;parent_card&gt;&gt; /&gt;&lt;br&gt;" ed146="&lt;/$list&gt;&lt;!--parent_card--&gt;" ed147="&lt;/$list&gt;&lt;!--parent_branch--&gt;" ed148="&lt;/$list&gt;&lt;!--parent_line_path--&gt;" ed149="&lt;!--gtree_ref_disp_parent_link--&gt;" ed150="\end" ed151="" ed152="\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path)" ed153="&lt;$list variable=cur_prefix filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]&quot;&gt;" ed154="&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;" ed155="&lt;&lt;gtree_ref_disp_next_line_branch_cards&gt;&gt;" ed156="&lt;/$list&gt;&lt;!--cur_prefix--&gt;" ed157="&lt;!--gtree_ref_each_line_prefix--&gt;" ed158="\end" ed159="" ed160="\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)" ed161="&lt;$list variable=cur_field filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;" ed162="&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;" ed163="&lt;/$list&gt;&lt;!--cur_field--&gt;" ed164="&lt;!--gtree_ref_disp_line_prefix_group--&gt;" ed165="\end" ed166="" ed167="\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)" ed168="&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;" ed169="&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_line_path&gt;]&quot;&gt;" ed170="&lt;$list variable=next_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;next_line_branch&gt;sort[]]&quot;&gt;" ed171="" ed172="* &lt;$link to=&lt;&lt;next_card&gt;&gt; /&gt;" ed173="&lt;/$list&gt;&lt;!--next_card--&gt;" ed174="&lt;/$list&gt;&lt;!--next_line_branch--&gt;" ed175="&lt;/$list&gt;&lt;!--cur_line_branch--&gt;" ed176="&lt;!--gtree_ref_disp_next_line_branch_cards--&gt;" ed177="\end" ed178="" ed179="\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)" ed180="&lt;hr&gt;" ed181="&lt;$list variable=found_line_num filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;" ed182="&lt;$list variable=found_line_path filter=&quot;[&lt;cur_line_path&gt;addsuffix&lt;found_line_num&gt;]&quot;&gt;" ed183="&lt;$vars cur_root_path=&lt;&lt;found_line_path&gt;&gt; cur_level_seq=1 &gt;" ed184="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ed185="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ed186="&lt;/$list&gt;&lt;!--found_line_path--&gt;" ed187="&lt;/$list&gt;&lt;!--found_line_num--&gt;" ed188="&lt;!--gtree_ref_disp_subtree--&gt;" ed189="\end" ed190="" ed191="\define gtree_audit_lne_lnz(ur_ttb_card)" ed192="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ed193="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ed194="&lt;$vars disp_link=card enr_line_path=line-path&gt;" ed195="&lt;$list variable=cur_card filter=&quot;[prefix&lt;ttb_prefix&gt;has&lt;enr_line_path&gt;]&quot;&gt;" ed196="&lt;&lt;gtree_ref_disp_lnz_subcards&gt;&gt;" ed197="&lt;&lt;gtree_ref_disp_ln_lvl3_subcards&gt;&gt;" ed198="&lt;/$list&gt;&lt;!--cur_card--&gt;" ed199="&lt;/$vars&gt;&lt;!--enr_line_path--&gt;" ed200="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ed201="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed202="&lt;!--gtree_audit_lne_lnz--&gt;" ed203="\end" ed204="" ed205="\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)" ed206="&lt;$list variable=cur_zfield_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-z]]&quot;&gt;" ed207="" ed208="&lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;" ed209="&lt;&lt;cur_zfield_name&gt;&gt;&lt;br&gt;" ed210="" ed211="&lt;/$list&gt;&lt;!--cur_zfield_name--&gt;" ed212="&lt;!--gtree_ref_disp_lnz_subcards--&gt;" ed213="\end" ed214="" ed215="\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)" ed216="&lt;$list variable=cur_field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;" ed217="&lt;$list variable=split_field filter=&quot;[&lt;cur_field_name&gt;split[-]count[]!match[2]]&quot;&gt;" ed218="" ed219="&lt;$text text=&quot;----&quot; /&gt; &lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;" ed220="&lt;&lt;cur_field_name&gt;&gt;&lt;br&gt;" ed221="" ed222="&lt;/$list&gt;&lt;!--split_field--&gt;" ed223="&lt;/$list&gt;&lt;!--cur_field_name--&gt;" ed224="&lt;!--gtree_ref_disp_ln_lvl3_subcards--&gt;" ed225="\end" ed226="" ed227="\define gtree_disp_ttb_lines(ur_ttb_card)" ed228="&lt;$vars exclude_created=&quot;[!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;" ed229="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ed230="&lt;$list variable=cur_field filter=&quot;[&lt;ttb_card&gt;fields[]filter&lt;exclude_created&gt;sort[]]&quot;&gt;" ed231="&lt;$list variable=field_val filter=&quot;[&lt;ttb_card&gt;get&lt;cur_field&gt;else[]]&quot;&gt;" ed232="&lt;&lt;cur_field&gt;&gt; &lt;$text text=&lt;&lt;field_val&gt;&gt; /&gt;&lt;br&gt;" ed233="&lt;/$list&gt;&lt;!--field_val--&gt;" ed234="&lt;/$list&gt;&lt;!--cur_field--&gt;" ed235="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed236="&lt;/$vars&gt;&lt;!--exclude_created--&gt;" ed237="\end" modified="20210215042807009" tags="DOC" title="Sample Code">
 <pre>&lt;!--
