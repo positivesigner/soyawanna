@@ -179,6 +179,20 @@ Error message and password prompt
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
 
+<li>$:/positivesigner/btn gcmpr card</li>
+
+<li>$:/positivesigner/gcmpr</li>
+
+<li>$:/positivesigner/gtree</li>
+
+<li>$:/positivesigner/gtree/mcr gtree_disp_field</li>
+
+<li>$:/positivesigner/gtree/template e1 tree</li>
+
+<li>$:/positivesigner/gtree/template LinePath</li>
+
+<li>$:/positivesigner/mcr gcmpr_compare_card</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -193,11 +207,17 @@ Error message and password prompt
 
 <li>$:/state/tab-1749438307</li>
 
+<li>$:/state/tab/moresidebar-1850697562</li>
+
 <li>$:/state/tab/sidebar--595412856</li>
+
+<li>$:/state/tree/$:/positivesigner/</li>
 
 <li>$:/status/RequireReloadDueToPluginChange</li>
 
 <li>$:/StoryList</li>
+
+<li>$:/tags/ViewToolbar</li>
 
 <li>$:/theme</li>
 
@@ -477,8 +497,6 @@ Error message and password prompt
 
 <li>mcr glbl_image</li>
 
-<li>mcr gtree_disp_field</li>
-
 <li>parm SkipSaveExportHTML</li>
 
 <li>Recent Entries</li>
@@ -497,15 +515,11 @@ Error message and password prompt
 
 <li>Split Code</li>
 
-<li>template e1 tree</li>
-
 <li>template ExportAllCode</li>
 
 <li>template ExportAsText</li>
 
 <li>template Home Button</li>
-
-<li>template LinePath</li>
 
 <li>View All Cards</li>
 
@@ -10445,6 +10459,537 @@ Error message and password prompt
 <div created="20210108075437679" modified="20210108075632927" tags="META" title="$:/language/DefaultNewTiddlerTitle">
 <pre>New Card</pre>
 </div>
+<div created="20210215053242107" modified="20210215112345599" tags="$:/tags/ViewToolbar $:/positivesigner/gcmpr" title="$:/positivesigner/btn gcmpr card">
+<pre>&lt;&lt;gcmpr_btn_cmp_current&gt;&gt; 
+</pre>
+</div>
+<div color="#423fde" created="20210215111759702" modified="20210215111843997" tags="$:/positivesigner/gcmpr" title="$:/positivesigner/gcmpr">
+<pre></pre>
+</div>
+<div color="#6a6887" created="20210215112801401" modified="20210215112836745" tags="$:/positivesigner/gtree" title="$:/positivesigner/gtree">
+<pre></pre>
+</div>
+<div created="20210111053249444" modified="20210215112848890" tags="$:/tags/Macro $:/positivesigner/gtree" title="$:/positivesigner/gtree/mcr gtree_disp_field">
+<pre>\define gtree_disp_tree_cards(ur_ttb_card)
+&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
+&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
+&lt;$vars disp_link=card enr_line_path=line-path&gt;
+&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;
+&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;!--gtree_disp_tree_cards--&gt;
+\end
+
+\define gtree_disp_tree_links(ur_ttb_card)
+&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
+&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
+&lt;$vars disp_link=yes enr_line_path=line-path&gt;
+&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;
+&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;!--gtree_disp_tree_links--&gt;
+\end
+
+\define gtree_disp_tree_text(ur_ttb_card)
+&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
+&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
+&lt;$vars disp_link=no enr_line_path=line-path&gt;
+&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;
+&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;!--gtree_disp_tree_text--&gt;
+\end
+
+\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)
+&lt;$list variable=found_line_path filter=&quot;[prefix&lt;ttb_prefix&gt;get&lt;enr_line_path&gt;sort[]]&quot;&gt;
+&lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[]match[1]]&quot;&gt;
+&lt;$vars
+  cur_root_path=&lt;&lt;found_line_path&gt;&gt;
+  cur_level_seq=1 &gt;
+&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;
+&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;
+&lt;/$list&gt;&lt;!--filter_root_path--&gt;
+&lt;/$list&gt;&lt;!--found_line_path--&gt;
+&lt;!--gtree_ref_disp_root_tree--&gt;
+\end
+
+\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)
+&lt;$list variable=filter_level_max filter=&quot;[&lt;cur_level_seq&gt;!match[10]]&quot;&gt;
+&lt;$list variable=cur_line_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;cur_root_path&gt;sort[]]&quot;&gt;
+&lt;&lt;gtree_ref_disp_card_entry&gt;&gt;
+&lt;&lt;gtree_ref_each_line_branch&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_line_card--&gt;
+&lt;/$list&gt;&lt;!--filter_level_max--&gt;
+&lt;!--gtree_ref_recurse_code_level--&gt;
+\end
+
+\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
+&lt;$list variable=disp_card_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[card]]&quot;&gt;
+&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;
+&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;
+&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--indent_arrows--&gt;
+&lt;/$list&gt;&lt;!--indent_count--&gt;
+&lt;/$list&gt;&lt;!--disp_card_link--&gt;
+&lt;!--gtree_ref_disp_card_entry--&gt;
+\end
+
+\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
+&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;
+&lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;
+&lt;&lt;gtree_ref_disp_link_entry&gt;&gt;
+&lt;&lt;gtree_ref_disp_doc_contents&gt;&gt;
+&lt;/$list&gt;&lt;!--filter_skip_e0--&gt;
+&lt;&lt;gtree_ref_disp_next_line_branch&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_line_branch--&gt;
+&lt;!--gtree_ref_each_line_branch--&gt;
+\end
+
+\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+&lt;$list variable=disp_branch_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[yes]]&quot;&gt;
+&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;
+&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;
+&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--indent_arrows--&gt;
+&lt;/$list&gt;&lt;!--indent_count--&gt;
+&lt;/$list&gt;&lt;!--disp_branch_link--&gt;
+&lt;!--gtree_ref_disp_link_entry--&gt;
+\end
+
+\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+&lt;$list variable=disp_doc_contents filter=&quot;[&lt;disp_link&gt;lowercase[]!match[card]]&quot;&gt;
+&lt;$vars cur_field=&lt;&lt;cur_line_branch&gt;&gt; &gt;
+&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;
+&lt;/$vars&gt;&lt;!--cur_field--&gt;
+&lt;/$list&gt;&lt;!--disp_doc_contents--&gt;
+&lt;!--gtree_ref_disp_doc_contents--&gt;
+\end
+
+\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_root_path&gt;sort[]]&quot;&gt;
+&lt;$list variable=next_level filter=&quot;[&lt;cur_level_seq&gt;add[1]]&quot;&gt;
+&lt;$vars cur_root_path=&lt;&lt;next_line_branch&gt;&gt; cur_level_seq=&lt;&lt;next_level&gt;&gt; &gt;
+&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;
+&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;
+&lt;/$list&gt;&lt;!--next_level--&gt;
+&lt;/$list&gt;&lt;!--next_line_branch--&gt;
+&lt;!--gtree_ref_disp_next_line_branch--&gt;
+\end
+
+\define gtree_ref_disp_field(ttb_card, cur_field)
+&lt;$list variable=line_num filter=&quot;[&lt;cur_field&gt;removeprefix[ln-]]&quot;&gt;
+&lt;$list variable=cur_entry filter=&quot;[&lt;ttb_card&gt;get&lt;line_num&gt;]&quot;
+&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--cur_entry--&gt;
+&lt;/$list&gt;&lt;!--line_num--&gt;
+&lt;!--gtree_ref_disp_field--&gt;
+\end
+
+\define gtree_disp_next_level()
+&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$list variable=ttb_card filter=&quot;[&lt;cur_card&gt;split[\]first[]]&quot;&gt;
+&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;
+&lt;$vars enr_line_path=line-path&gt;
+&lt;$list variable=cur_line_path filter=&quot;[&lt;cur_card&gt;get&lt;enr_line_path&gt;]&quot;&gt;
+&lt;&lt;gtree_ref_disp_parent_link&gt;&gt;&lt;br&gt;
+&lt;&lt;gtree_ref_each_line_prefix&gt;&gt;
+&lt;$vars disp_link=card&gt;
+&lt;&lt;gtree_ref_disp_subtree&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_link--&gt;
+&lt;$vars disp_link=yes&gt;
+&lt;&lt;gtree_ref_disp_subtree&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_link--&gt;
+&lt;/$list&gt;&lt;!--cur_line_path--&gt;
+&lt;/$vars&gt;&lt;!--enr_line_path--&gt;
+&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;!--gtree_disp_next_level--&gt;
+\end
+
+\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
+&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]else[ln-]]&quot;&gt;
+&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]else[ln-]]&quot;&gt;
+&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;else&lt;ttb_card&gt;]&quot;&gt;
+&lt;$link to=&lt;&lt;parent_card&gt;&gt; /&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--parent_card--&gt;
+&lt;/$list&gt;&lt;!--parent_branch--&gt;
+&lt;/$list&gt;&lt;!--parent_line_path--&gt;
+&lt;!--gtree_ref_disp_parent_link--&gt;
+\end
+
+\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_section)
+&lt;$list variable=cur_prefix filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]&quot;&gt;
+&lt;$vars disp_section=leading&gt;
+&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_section--&gt;
+&lt;&lt;gtree_ref_disp_next_line_branch_cards&gt;&gt;
+&lt;$vars disp_section=trailing&gt;
+&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_section--&gt;
+&lt;/$list&gt;&lt;!--cur_prefix--&gt;
+&lt;!--gtree_ref_each_line_prefix--&gt;
+\end
+
+\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix, disp_section)
+&lt;$list variable=disp_leading filter=&quot;[&lt;disp_section&gt;match[leading]then[]else[!]]&quot;&gt;
+&lt;$vars test_prefix=&quot;[&quot; test_suffix=&quot;match[]]&quot;&gt;
+&lt;$list variable=include_section filter=&quot;[&lt;test_prefix&gt;addsuffix&lt;disp_leading&gt;addsuffix&lt;test_suffix&gt;]&quot;&gt;
+&lt;$list variable=cur_field filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=found_section filter=&quot;[&lt;cur_card&gt;get&lt;cur_field&gt;!match[]else[]filter&lt;include_section&gt;]&quot;&gt;
+&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--found_section--&gt;
+&lt;/$list&gt;&lt;!--cur_field--&gt;
+&lt;/$list&gt;&lt;!--include_section--&gt;
+&lt;/$vars&gt;&lt;!--test_prefix, test_suffix--&gt;
+&lt;/$list&gt;&lt;!--disp_leading--&gt;
+&lt;!--gtree_ref_disp_line_prefix_group--&gt;
+\end
+
+\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
+&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_line_path&gt;]&quot;&gt;
+&lt;$list variable=next_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;next_line_branch&gt;sort[]]&quot;&gt;
+
+* &lt;$link to=&lt;&lt;next_card&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--next_card--&gt;
+&lt;/$list&gt;&lt;!--next_line_branch--&gt;
+&lt;/$list&gt;&lt;!--cur_line_branch--&gt;
+&lt;!--gtree_ref_disp_next_line_branch_cards--&gt;
+\end
+
+\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)
+&lt;hr&gt;
+&lt;$list variable=found_line_num filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;
+&lt;$list variable=found_line_path filter=&quot;[&lt;cur_line_path&gt;addsuffix&lt;found_line_num&gt;]&quot;&gt;
+&lt;$vars cur_root_path=&lt;&lt;found_line_path&gt;&gt; cur_level_seq=1 &gt;
+&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;
+&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;
+&lt;/$list&gt;&lt;!--found_line_path--&gt;
+&lt;/$list&gt;&lt;!--found_line_num--&gt;
+&lt;!--gtree_ref_disp_subtree--&gt;
+\end
+
+\define gtree_audit_lne_lnz(ur_ttb_card)
+&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
+&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
+&lt;$vars disp_link=card enr_line_path=line-path&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;ttb_prefix&gt;has&lt;enr_line_path&gt;]&quot;&gt;
+&lt;&lt;gtree_ref_disp_lnz_subcards&gt;&gt;
+&lt;&lt;gtree_ref_disp_ln_lvl3_subcards&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$vars&gt;&lt;!--enr_line_path--&gt;
+&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;!--gtree_audit_lne_lnz--&gt;
+\end
+
+\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)
+&lt;$list variable=cur_zfield_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-z]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;
+&lt;&lt;cur_zfield_name&gt;&gt;&lt;br&gt;
+
+&lt;/$list&gt;&lt;!--cur_zfield_name--&gt;
+&lt;!--gtree_ref_disp_lnz_subcards--&gt;
+\end
+
+\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)
+&lt;$list variable=cur_field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;
+&lt;$list variable=split_field filter=&quot;[&lt;cur_field_name&gt;split[-]count[]!match[2]]&quot;&gt;
+
+&lt;$text text=&quot;----&quot; /&gt; &lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;
+&lt;&lt;cur_field_name&gt;&gt;&lt;br&gt;
+
+&lt;/$list&gt;&lt;!--split_field--&gt;
+&lt;/$list&gt;&lt;!--cur_field_name--&gt;
+&lt;!--gtree_ref_disp_ln_lvl3_subcards--&gt;
+\end
+
+\define gtree_disp_ttb_lines(ur_ttb_card)
+&lt;$vars exclude_created=&quot;[!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;
+&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
+&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_field filter=&quot;[&lt;ttb_card&gt;fields[]filter&lt;exclude_created&gt;sort[]]&quot;&gt;
+&lt;$list variable=field_val filter=&quot;[&lt;ttb_card&gt;get&lt;cur_field&gt;else[]]&quot;&gt;
+&lt;&lt;gtree_ref_disp_assigned_field&gt;&gt;
+&lt;/$list&gt;&lt;!--field_val--&gt;
+&lt;/$list&gt;&lt;!--cur_field--&gt;
+&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;/$vars&gt;&lt;!--exclude_created--&gt;
+&lt;!--gtree_disp_ttb_lines--&gt;
+\end
+
+\define gtree_ref_disp_assigned_field(ttb_card, ttb_prefix, cur_field, field_val)
+&lt;$list variable=assigned_field filter=&quot;[&lt;cur_field&gt;addprefix[ln-]]&quot;&gt;
+&lt;$list variable=assigned_card filter=&quot;[prefix&lt;ttb_prefix&gt;has:field&lt;assigned_field&gt;else[]]&quot;&gt;
+&lt;$list variable=link_field filter=&quot;[&lt;assigned_card&gt;!match[]]&quot;&gt;
+&lt;$link to=&lt;&lt;assigned_card&gt;&gt; &gt;&lt;&lt;cur_field&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--link_field--&gt;
+&lt;$list variable=bold_field filter=&quot;[&lt;assigned_card&gt;match[]]&quot;&gt;
+''&lt;&lt;cur_field&gt;&gt;''
+&lt;/$list&gt;&lt;!--bold_field--&gt;
+&lt;/$list&gt;&lt;!--assigned_card--&gt;
+&lt;/$list&gt;&lt;!--assigned_field--&gt;
+&lt;$text text=&lt;&lt;field_val&gt;&gt; /&gt;&lt;br&gt;
+&lt;!--gtree_ref_disp_assigned_field--&gt;
+\end
+
+\define gtree_ttb_store_vars()
+&lt;$list variable=ttb_card filter=&quot;[[$:/state/popup/SplitCodeSearch]]&quot;&gt;
+&lt;&lt;gtree_ref_user_filter_card&gt;&gt;
+&lt;&lt;gtree_ref_user_filter_vars&gt;&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;!--ttb_store_vars--&gt;
+\end
+
+\define gtree_ref_user_filter_card(ttb_card)
+&lt;$edit-text tiddler=&lt;&lt;ttb_card&gt;&gt; field=prefix_text placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
+&lt;$list variable=prefix_text filter=&quot;[&lt;ttb_card&gt;get[prefix_text]else[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;ttb_card&gt;&gt; filter_prefix=&lt;&lt;prefix_text&gt;&gt; /&gt;
+&lt;$action-deletefield $tiddler=&lt;&lt;ttb_card&gt;&gt; $field=selected_card /&gt;
+List cards
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--prefix_text--&gt;
+&lt;!--gtree_ref_user_filter_card--&gt;
+\end
+
+\define gtree_ref_user_filter_vars(ttb_card)
+&lt;$list variable=card_prefix filter=&quot;[&lt;ttb_card&gt;get[filter_prefix]addprefix[(?i)^]]&quot;&gt;
+&lt;$list variable=card_first filter=&quot;[regexp&lt;card_prefix&gt;sort[]first[]else[]]&quot;&gt;
+
+&lt;&lt;gtree_ref_user_select_card&gt;&gt;
+&lt;&lt;gtree_ref_user_selected_vars&gt;&gt;
+&lt;/$list&gt;&lt;!--card_first--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
+&lt;!--gtree_ref_user_filter_vars--&gt;
+\end
+
+\define gtree_ref_user_select_card(ttb_card, card_prefix, card_first)
+&lt;$select tiddler=&lt;&lt;ttb_card&gt;&gt; field=selected_card default=&lt;&lt;card_first&gt;&gt; &gt;
+&lt;$list variable=cur_card filter=&quot;[regexp&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;option value=&lt;&lt;cur_card&gt;&gt;&gt;&lt;&lt;cur_card&gt;&gt;&lt;/option&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$select&gt;
+&lt;span style=&quot;margin-left:20px;&quot; /&gt;&lt;$checkbox default=&quot;0&quot; unchecked=&quot;1&quot; checked=&quot;0&quot; tiddler=&lt;&lt;ttb_card&gt;&gt; field=&quot;include_last_line&quot; &gt;&lt;span style=&quot;margin-left:5px;&quot; /&gt;Include Last Line&lt;/$checkbox&gt;
+&lt;!--gtree_ref_user_select_card--&gt;
+\end
+
+\define gtree_ref_user_selected_vars(ttb_card, card_prefix, card_first)
+&lt;$list variable=source_card filter=&quot;[&lt;ttb_card&gt;get[selected_card]else&lt;card_first&gt;]&quot;&gt;
+&lt;$list variable=include_last_line filter=&quot;[&lt;ttb_card&gt;get[include_last_line]else[0]]&quot;&gt;
+&lt;&lt;gtree_ref_text_parse_vars&gt;&gt;
+&lt;/$list&gt;&lt;!--include_last_line--&gt;
+&lt;/$list&gt;&lt;!--source_card--&gt;
+&lt;!--gtree_ref_user_selected_vars--&gt;
+\end
+
+\define gtree_ref_text_parse_vars(ttb_card, card_prefix, card_first, source_card, include_last_line)
+&lt;$wikify name=lit_cr text=&quot;&amp;#13;&quot;&gt;
+&lt;$wikify name=lit_lf text=&quot;&amp;#10;&quot;&gt;
+&lt;&lt;gtree_ref_selcard_summary&gt;&gt;
+&lt;/$wikify&gt;&lt;!--lit_lf--&gt;
+&lt;/$wikify&gt;&lt;!--lit_cr--&gt;
+&lt;!--gtree_ref_text_parse_vars--&gt;
+\end
+
+\define gtree_ref_selcard_summary(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf)
+&lt;$link to=&lt;&lt;source_card&gt;&gt; /&gt;
+
+&lt;$list variable=cur_field filter=&quot;[&lt;source_card&gt;fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]&quot;&gt;
+Found fields: &lt;&lt;cur_field&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_field--&gt;
+
+&lt;$vars lit_gt=&quot;&gt;&quot;&gt;
+&lt;$list variable=comment_close_holder filter=&quot;[[--!]addsuffix&lt;lit_gt&gt;]&quot;&gt;
+&lt;$list variable=comment_close_replace filter=&quot;[[--]addsuffix&lt;lit_gt&gt;]&quot;&gt;
+&lt;$list variable=doc_text filter=&quot;[&lt;source_card&gt;get[text]split&lt;lit_cr&gt;join[]split&lt;comment_close_holder&gt;join&lt;comment_close_replace&gt;]&quot;&gt;
+&lt;$list variable=line_count filter=&quot;[&lt;doc_text&gt;split&lt;lit_lf&gt;count[]subtract[1]!match[0]subtract[1]!match[0]subtract&lt;include_last_line&gt;!match[0]]&quot;&gt;
+Found lines: &lt;&lt;line_count&gt;&gt;
+
+&lt;&lt;gtree_ref_user_button_overwrite&gt;&gt;
+&lt;/$list&gt;&lt;!--line_count--&gt;
+&lt;/$list&gt;&lt;!--doc_text--&gt;
+&lt;/$list&gt;&lt;!--comment_close_replace--&gt;
+&lt;/$list&gt;&lt;!--comment_close_holder--&gt;
+&lt;/$vars&gt;&lt;!--lit_gt--&gt;
+&lt;!--gtree_ref_selcard_summary--&gt;
+\end
+
+\define gtree_ref_user_button_overwrite(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
+&lt;$button&gt;
+&lt;&lt;gtree_ref_clear_current_fields&gt;&gt;
+&lt;&lt;gtree_ref_list_line_labels&gt;&gt;
+Overwrite text fields
+&lt;/$button&gt;
+&lt;!--gtree_ref_user_button_overwrite--&gt;
+\end
+
+\define gtree_ref_clear_current_fields(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
+&lt;$list variable=cur_field filter=&quot;[&lt;source_card&gt;fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;
+&lt;$action-deletefield $tiddler=&lt;&lt;source_card&gt;&gt; $field=&lt;&lt;cur_field&gt;&gt; /&gt;
+&lt;/$list&gt;
+&lt;!--gtree_ref_clear_current_fields--&gt;
+\end
+
+\define gtree_ref_list_line_labels(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
+&lt;$list variable=linctr filter=&quot;[range&lt;line_count&gt;]&quot;&gt;
+&lt;$list variable=line_num_e filter=&quot;[&lt;linctr&gt;split[]last[3]join[]]&quot;&gt;
+&lt;$list variable=line_num_f filter=&quot;[&lt;linctr&gt;split[]butlast[3]last[3]join[]else[]]&quot;&gt;
+&lt;$list variable=line_title_e_prefix filter=&quot;[&lt;line_num_e&gt;split[]count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]&quot;&gt;
+&lt;$list variable=line_title_f_prefix filter=&quot;[&lt;line_num_f&gt;split[]!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]&quot;&gt;
+&lt;$list variable=line_title_e_suffix filter=&quot;[&lt;line_title_f_prefix&gt;match[]then&lt;line_title_e_prefix&gt;else[e]]&quot;&gt;
+&lt;$list variable=line_title filter=&quot;[&lt;line_title_f_prefix&gt;addsuffix&lt;line_num_f&gt;addsuffix&lt;line_title_e_suffix&gt;addsuffix&lt;line_num_e&gt;]&quot;&gt;
+&lt;&lt;gtree_ref_assign_line_field&gt;&gt;
+&lt;/$list&gt;&lt;!--line_title--&gt;
+&lt;/$list&gt;&lt;!--line_title_e_suffix--&gt;
+&lt;/$list&gt;&lt;!--line_title_f_prefix--&gt;
+&lt;/$list&gt;&lt;!--line_title_e_prefix--&gt;
+&lt;/$list&gt;&lt;!--line_num_f--&gt;
+&lt;/$list&gt;&lt;!--line_num_e--&gt;
+&lt;/$list&gt;&lt;!--linctr--&gt;
+&lt;!--gtree_ref_list_line_labels--&gt;
+\end
+
+\define gtree_ref_assign_line_field(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count, linctr, line_title)
+&lt;$list variable=cur_line_nth filter=&quot;[&lt;linctr&gt;add[1]]&quot;&gt;
+&lt;$list variable=cur_line_text filter=&quot;[&lt;doc_text&gt;split&lt;lit_lf&gt;nth&lt;cur_line_nth&gt;]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;source_card&gt;&gt; $field=&lt;&lt;line_title&gt;&gt; $value=&lt;&lt;cur_line_text&gt;&gt;/&gt;
+&lt;/$list&gt;&lt;!--cur_line_text--&gt;
+&lt;/$list&gt;&lt;!--cur_line_nth--&gt;
+&lt;!--gtree_ref_assign_line_field--&gt;
+\end
+
+\define gtree_btn_disp_tree_options()
+&lt;$list variable=ttb_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$vars lit_lt=&quot;&lt;&quot; lit_gt=&quot;&gt;&quot; lit_s=&quot; &quot; lit_qs='&quot;' lit_fslash=&quot;/&quot; lit_state_popup=&quot;$:/state/popup/&quot;&gt;
+&lt;$vars macro_name=gtree_disp_tree_cards button_title=&quot;Show Actions tree&quot;&gt;
+&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
+&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
+
+&lt;$vars macro_name=gtree_audit_lne_lnz button_title=&quot;Show Audit list&quot;&gt;
+&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
+&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
+
+&lt;$vars macro_name=gtree_disp_ttb_lines button_title=&quot;Show Lines list&quot;&gt;
+&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
+&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
+
+&lt;$vars macro_name=gtree_disp_tree_text button_title=&quot;Show Text list&quot;&gt;
+&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
+&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
+
+&lt;$vars macro_name=gtree_disp_tree_links button_title=&quot;Show Lines tree&quot;&gt;
+&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
+&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
+
+&lt;/$vars&gt;&lt;!--lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+\end
+
+\define gtree_ref_button_tree_option(ttb_card, lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup, macro_name, button_title)
+&lt;$list variable=dest_card filter=&quot;[&lt;ttb_card&gt;addprefix&lt;lit_fslash&gt;addprefix&lt;macro_name&gt;addprefix&lt;lit_state_popup&gt;]&quot;&gt;
+&lt;$list variable=new_card_content filter=&quot;[&lt;macro_name&gt;addprefix&lt;lit_lt&gt;addprefix&lt;lit_lt&gt;addsuffix&lt;lit_s&gt;addsuffix&lt;lit_qs&gt;addsuffix&lt;ttb_card&gt;addsuffix&lt;lit_qs&gt;addsuffix&lt;lit_gt&gt;addsuffix&lt;lit_gt&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;dest_card&gt;&gt; text=&lt;&lt;new_card_content&gt;&gt;/&gt;
+&lt;$action-navigate $to=&lt;&lt;dest_card&gt;&gt; /&gt;
+&lt;&lt;button_title&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--new_card_content--&gt;
+&lt;/$list&gt;&lt;!--dest_card--&gt;
+\end
+</pre>
+</div>
+<div created="20210213151014971" list-after="$:/core/ui/ViewTemplate/tags" modified="20210215113212350" tags="$:/tags/ViewTemplate $:/positivesigner/gtree" title="$:/positivesigner/gtree/template e1 tree">
+<pre>&lt;$list variable=ttb_card filter=&quot;[&lt;currentTiddler&gt;has:field[e1]]&quot;&gt;
+&lt;&lt;gtree_btn_disp_tree_options&gt;&gt;
+&lt;&lt;glbl_article_list&gt;&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;</pre>
+</div>
+<div created="20210213091855085" list-after="$:/core/ui/ViewTemplate/tags" modified="20210215113202326" tags="$:/tags/ViewTemplate $:/positivesigner/gtree" title="$:/positivesigner/gtree/template LinePath">
+<pre>&lt;$list filter=&quot;[is[current]has[line-path]]&quot;&gt;
+&lt;&lt;gtree_disp_next_level&gt;&gt;
+&lt;/$list&gt;</pre>
+</div>
+<div created="20210215032519812" modified="20210215112540829" tags="$:/tags/Macro $:/positivesigner/gcmpr" title="$:/positivesigner/mcr gcmpr_compare_card">
+<pre>\define gcmpr_compare_card(ur_ttb_card)
+&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot;&gt;
+&lt;$list variable=compare_card filter=&quot;[&lt;ttb_card&gt;addprefix[$:/state/popup/compare-card/]]&quot;&gt;
+&lt;$link to=&lt;&lt;ttb_card&gt;&gt; /&gt;
+&lt;&lt;gcmpr_ref_copy_over_ttb_card&gt;&gt;
+&lt;br&gt;
+&lt;$link to=&lt;&lt;compare_card&gt;&gt; /&gt;
+&lt;&lt;gcmpr_ref_replace_comment_endings&gt;&gt;
+&lt;&lt;gcmpr_ref_disp_diff_text&gt;&gt;
+&lt;$edit-text autoHeight=no tiddler=&lt;&lt;compare_card&gt;&gt; tag=textarea default=&quot;&quot; /&gt;
+&lt;/$list&gt;&lt;!--compare_card--&gt;
+&lt;/$list&gt;&lt;!--ttb_card--&gt;
+&lt;!--gcmpr_compare_card--&gt;
+\end
+
+\define gcmpr_ref_copy_over_ttb_card(ttb_card, compare_card)
+&lt;$vars enr_text=&quot;text&quot; &gt;
+&lt;$list variable=compare_text filter=&quot;[&lt;compare_card&gt;get&lt;enr_text&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;ttb_card&gt;&gt; text=&lt;&lt;compare_text&gt;&gt; /&gt;
+Copy over 
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--compare_text--&gt;
+&lt;/$vars&gt;&lt;!--enr_text--&gt;
+\end
+
+\define gcmpr_ref_replace_comment_endings(ttb_card, compare_card)
+&lt;$button&gt;
+&lt;$vars comment_flag=&quot;--&quot; lit_exclm=&quot;!&quot; lit_lt=&quot;&lt;&quot; lit_gt=&quot;&gt;&quot; enr_text=&quot;text&quot; &gt;
+&lt;$wikify name=lit_lf text=&quot;&amp;#10;&quot;&gt;
+&lt;$list variable=comment_open_text filter=&quot;[&lt;lit_lt&gt;addsuffix&lt;lit_exclm&gt;addsuffix&lt;comment_flag&gt;]&quot;&gt;
+&lt;$list variable=comment_close_text filter=&quot;[&lt;comment_flag&gt;addsuffix&lt;lit_gt&gt;]&quot;&gt;
+&lt;$list variable=comment_close_replace filter=&quot;[&lt;comment_flag&gt;addsuffix&lt;lit_exclm&gt;addsuffix&lt;lit_gt&gt;]&quot;&gt;
+&lt;$list variable=replace_text filter=&quot;[&lt;compare_card&gt;get&lt;enr_text&gt;split&lt;comment_close_text&gt;join&lt;comment_close_replace&gt;addprefix&lt;lit_lf&gt;addprefix&lt;comment_open_text&gt;addsuffix&lt;lit_lf&gt;addsuffix&lt;comment_close_text&gt;]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;compare_card&gt;&gt; text=&lt;&lt;replace_text&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--replace_text--&gt;
+&lt;/$list&gt;&lt;!--comment_close_replace--&gt;
+&lt;/$list&gt;&lt;!--comment_close_text--&gt;
+&lt;/$list&gt;&lt;!--comment_open_text--&gt;
+&lt;/$wikify&gt;
+&lt;/$vars&gt;&lt;!--comment_flag, lit_exclm, lit_lt, lit_gt--&gt;
+Replace comment endings
+&lt;/$button&gt;&lt;br&gt;
+&lt;!--gcmpr_ref_replace_comment_endings--&gt;
+\end
+
+\define gcmpr_ref_disp_diff_text()
+&lt;$list variable=val_ttb_card filter=&quot;[&lt;ttb_card&gt;get[text]!match[]]&quot;&gt;
+&lt;$list variable=val_compare_card filter=&quot;[&lt;compare_card&gt;get[text]!match[]]&quot;&gt;
+&lt;$diff-text source=&lt;&lt;val_ttb_card&gt;&gt; dest=&lt;&lt;val_compare_card&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--val_compare_card--&gt;
+&lt;/$list&gt;&lt;!--val_ttb_card--&gt;
+&lt;!--gcmpr_ref_disp_diff_text--&gt;
+\end
+
+\define gcmpr_btn_cmp_current()
+&lt;$list variable=cur_card filter=&quot;[all[current]]&quot;&gt;
+&lt;$list variable=dest_card filter=&quot;[&lt;cur_card&gt;addprefix[$:/state/popup/gcmpr/]]&quot;&gt;
+&lt;$vars lit_lt=&quot;&lt;&quot; lit_gt=&quot;&gt;&quot; lit_s=&quot; &quot; lit_qs='&quot;' macro_name=&quot;gcmpr_compare_card&quot; enr_text=&quot;text&quot; &gt;
+&lt;$list variable=macro_call_text filter=&quot;[&lt;lit_lt&gt;addsuffix&lt;lit_lt&gt;addsuffix&lt;macro_name&gt;addsuffix&lt;lit_s&gt;addsuffix&lt;lit_qs&gt;addsuffix&lt;cur_card&gt;addsuffix&lt;lit_qs&gt;addsuffix&lt;lit_gt&gt;addsuffix&lt;lit_gt&gt;]&quot;&gt;
+&lt;$button class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
+&lt;$action-setfield $tiddler=&lt;&lt;dest_card&gt;&gt; text=&lt;&lt;macro_call_text&gt;&gt; /&gt;
+&lt;$action-navigate $to=&lt;&lt;dest_card&gt;&gt; /&gt;
+cmp
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--macro_call_text--&gt;
+&lt;/$vars&gt;&lt;!--lit_lt--&gt;
+&lt;/$list&gt;&lt;!--dest_card--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;!--gcmpr_btn_cmp_current--&gt;
+\end
+</pre>
+</div>
 <div created="20201226040210962" modified="20210214133058703" title="$:/SiteSubtitle">
 <pre>Formatting</pre>
 </div>
@@ -10457,7 +11002,7 @@ Error message and password prompt
 <div created="20201226094827007" modified="20210119110128971" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226040229699" modified="20210214142518489" title="$:/state/sidebar">
+<div created="20201226040229699" modified="20210215113529002" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20201226114443739" modified="20201226114615520" title="$:/state/tab--1963855381">
@@ -10466,13 +11011,22 @@ Error message and password prompt
 <div created="20201226094801896" modified="20210103091312320" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226040229700" modified="20210214142518489" title="$:/state/tab/sidebar--595412856">
+<div created="20210215111534095" modified="20210215112410342" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/Tags</pre>
+</div>
+<div created="20201226040229700" modified="20210215113529002" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
+</div>
+<div created="20210215112306844" modified="20210215112306844" title="$:/state/tree/$:/positivesigner/">
+<pre>show</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210214141312462" list="[[Code Line Notes]] [[Sample Code]] [[Sample Code\e5 show tree cards]] [[Sample Code\e0 Code Line Notes macro definitions]] [[Sample Code\e1 Macro show action card links]] [[Sample Code\e2 Hold table name, sub-card prefix, disp_link]] [[mcr gtree_disp_field]]" modified="20210214142144374" title="$:/StoryList">
+<div created="20210215112634343" list="[[Code Line Notes]] [[Sample Code]] [[$:/state/popup/gcmpr/Sample Code]]" modified="20210215113401053" title="$:/StoryList">
+<pre></pre>
+</div>
+<div created="20210215053322854" list="$:/core/ui/Buttons/more-tiddler-actions $:/core/ui/Buttons/info $:/core/ui/Buttons/new-here $:/core/ui/Buttons/new-journal-here $:/core/ui/Buttons/clone $:/core/ui/Buttons/export-tiddler $:/core/ui/Buttons/edit $:/core/ui/Buttons/delete $:/core/ui/Buttons/permalink $:/core/ui/Buttons/permaview $:/core/ui/Buttons/open-window $:/core/ui/Buttons/close-others $:/core/ui/Buttons/close $:/core/ui/Buttons/fold-others $:/core/ui/Buttons/fold" modified="20210215054430364" title="$:/tags/ViewToolbar">
 <pre></pre>
 </div>
 <div created="20201226114254558" modified="20201226114440522" title="$:/theme">
@@ -11638,442 +12192,6 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;$link to=&quot;$ur_image_pk$&quot;&gt;[img width=$ur_size$px [$ur_image_pk$]]&lt;/$link&gt;
 \end</pre>
 </div>
-<div created="20210111053249444" modified="20210214142510778" tags="$:/tags/Macro MCR GTREE" title="mcr gtree_disp_field">
-<pre>\define gtree_disp_tree_cards(ur_ttb_card)
-&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
-&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
-&lt;$vars disp_link=card enr_line_path=line-path&gt;
-&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;
-&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;!--gtree_disp_tree_cards--&gt;
-\end
-
-\define gtree_disp_tree_links(ur_ttb_card)
-&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
-&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
-&lt;$vars disp_link=yes enr_line_path=line-path&gt;
-&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;
-&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;!--gtree_disp_tree_links--&gt;
-\end
-
-\define gtree_disp_tree_text(ur_ttb_card)
-&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
-&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
-&lt;$vars disp_link=no enr_line_path=line-path&gt;
-&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;
-&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;!--gtree_disp_tree_text--&gt;
-\end
-
-\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)
-&lt;$list variable=found_line_path filter=&quot;[prefix&lt;ttb_prefix&gt;get&lt;enr_line_path&gt;sort[]]&quot;&gt;
-&lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[]match[1]]&quot;&gt;
-&lt;$vars
-  cur_root_path=&lt;&lt;found_line_path&gt;&gt;
-  cur_level_seq=1 &gt;
-&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;
-&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;
-&lt;/$list&gt;&lt;!--filter_root_path--&gt;
-&lt;/$list&gt;&lt;!--found_line_path--&gt;
-&lt;!--gtree_ref_disp_root_tree--&gt;
-\end
-
-\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)
-&lt;$list variable=filter_level_max filter=&quot;[&lt;cur_level_seq&gt;!match[10]]&quot;&gt;
-&lt;$list variable=cur_line_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;cur_root_path&gt;sort[]]&quot;&gt;
-&lt;&lt;gtree_ref_disp_card_entry&gt;&gt;
-&lt;&lt;gtree_ref_each_line_branch&gt;&gt;
-&lt;/$list&gt;&lt;!--cur_line_card--&gt;
-&lt;/$list&gt;&lt;!--filter_level_max--&gt;
-&lt;!--gtree_ref_recurse_code_level--&gt;
-\end
-
-\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
-&lt;$list variable=disp_card_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[card]]&quot;&gt;
-&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;
-&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;
-&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;
-&lt;/$list&gt;&lt;!--indent_arrows--&gt;
-&lt;/$list&gt;&lt;!--indent_count--&gt;
-&lt;/$list&gt;&lt;!--disp_card_link--&gt;
-&lt;!--gtree_ref_disp_card_entry--&gt;
-\end
-
-\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
-&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;
-&lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;
-&lt;&lt;gtree_ref_disp_link_entry&gt;&gt;
-&lt;&lt;gtree_ref_disp_doc_contents&gt;&gt;
-&lt;/$list&gt;&lt;!--filter_skip_e0--&gt;
-&lt;&lt;gtree_ref_disp_next_line_branch&gt;&gt;
-&lt;/$list&gt;&lt;!--cur_line_branch--&gt;
-&lt;!--gtree_ref_each_line_branch--&gt;
-\end
-
-\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
-&lt;$list variable=disp_branch_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[yes]]&quot;&gt;
-&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;
-&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;
-&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;
-&lt;/$list&gt;&lt;!--indent_arrows--&gt;
-&lt;/$list&gt;&lt;!--indent_count--&gt;
-&lt;/$list&gt;&lt;!--disp_branch_link--&gt;
-&lt;!--gtree_ref_disp_link_entry--&gt;
-\end
-
-\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
-&lt;$list variable=disp_doc_contents filter=&quot;[&lt;disp_link&gt;lowercase[]!match[card]]&quot;&gt;
-&lt;$vars cur_field=&lt;&lt;cur_line_branch&gt;&gt; &gt;
-&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;
-&lt;/$vars&gt;&lt;!--cur_field--&gt;
-&lt;/$list&gt;&lt;!--disp_doc_contents--&gt;
-&lt;!--gtree_ref_disp_doc_contents--&gt;
-\end
-
-\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
-&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_root_path&gt;sort[]]&quot;&gt;
-&lt;$list variable=next_level filter=&quot;[&lt;cur_level_seq&gt;add[1]]&quot;&gt;
-&lt;$vars cur_root_path=&lt;&lt;next_line_branch&gt;&gt; cur_level_seq=&lt;&lt;next_level&gt;&gt; &gt;
-&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;
-&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;
-&lt;/$list&gt;&lt;!--next_level--&gt;
-&lt;/$list&gt;&lt;!--next_line_branch--&gt;
-&lt;!--gtree_ref_disp_next_line_branch--&gt;
-\end
-
-\define gtree_ref_disp_field(ttb_card, cur_field)
-&lt;$list variable=line_num filter=&quot;[&lt;cur_field&gt;removeprefix[ln-]]&quot;&gt;
-&lt;$list variable=cur_entry filter=&quot;[&lt;ttb_card&gt;get&lt;line_num&gt;]&quot;
-&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;
-&lt;/$list&gt;&lt;!--cur_entry--&gt;
-&lt;/$list&gt;&lt;!--line_num--&gt;
-&lt;!--gtree_ref_disp_field--&gt;
-\end
-
-\define gtree_disp_next_level()
-&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
-&lt;$list variable=ttb_card filter=&quot;[&lt;cur_card&gt;split[\]first[]]&quot;&gt;
-&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;
-&lt;$vars enr_line_path=line-path&gt;
-&lt;$list variable=cur_line_path filter=&quot;[&lt;cur_card&gt;get&lt;enr_line_path&gt;]&quot;&gt;
-&lt;&lt;gtree_ref_disp_parent_link&gt;&gt;&lt;br&gt;
-&lt;&lt;gtree_ref_each_line_prefix&gt;&gt;
-&lt;$vars disp_link=card&gt;
-&lt;&lt;gtree_ref_disp_subtree&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_link--&gt;
-&lt;$vars disp_link=yes&gt;
-&lt;&lt;gtree_ref_disp_subtree&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_link--&gt;
-&lt;/$list&gt;&lt;!--cur_line_path--&gt;
-&lt;/$vars&gt;&lt;!--enr_line_path--&gt;
-&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-&lt;!--gtree_disp_next_level--&gt;
-\end
-
-\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
-&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]else[ln-]]&quot;&gt;
-&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]else[ln-]]&quot;&gt;
-&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;else&lt;ttb_card&gt;]&quot;&gt;
-&lt;$link to=&lt;&lt;parent_card&gt;&gt; /&gt;&lt;br&gt;
-&lt;/$list&gt;&lt;!--parent_card--&gt;
-&lt;/$list&gt;&lt;!--parent_branch--&gt;
-&lt;/$list&gt;&lt;!--parent_line_path--&gt;
-&lt;!--gtree_ref_disp_parent_link--&gt;
-\end
-
-\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_section)
-&lt;$list variable=cur_prefix filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]&quot;&gt;
-&lt;$vars disp_section=leading&gt;
-&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_section--&gt;
-&lt;&lt;gtree_ref_disp_next_line_branch_cards&gt;&gt;
-&lt;$vars disp_section=trailing&gt;
-&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;
-&lt;/$vars&gt;&lt;!--disp_section--&gt;
-&lt;/$list&gt;&lt;!--cur_prefix--&gt;
-&lt;!--gtree_ref_each_line_prefix--&gt;
-\end
-
-\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix, disp_section)
-&lt;$list variable=disp_leading filter=&quot;[&lt;disp_section&gt;match[leading]then[]else[!]]&quot;&gt;
-&lt;$vars test_prefix=&quot;[&quot; test_suffix=&quot;match[]]&quot;&gt;
-&lt;$list variable=include_section filter=&quot;[&lt;test_prefix&gt;addsuffix&lt;disp_leading&gt;addsuffix&lt;test_suffix&gt;]&quot;&gt;
-&lt;$list variable=cur_field filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;
-&lt;$list variable=found_section filter=&quot;[&lt;cur_card&gt;get&lt;cur_field&gt;!match[]else[]filter&lt;include_section&gt;]&quot;&gt;
-&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;
-&lt;/$list&gt;&lt;!--found_section--&gt;
-&lt;/$list&gt;&lt;!--cur_field--&gt;
-&lt;/$list&gt;&lt;!--include_section--&gt;
-&lt;/$vars&gt;&lt;!--test_prefix, test_suffix--&gt;
-&lt;/$list&gt;&lt;!--disp_leading--&gt;
-&lt;!--gtree_ref_disp_line_prefix_group--&gt;
-\end
-
-\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
-&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;
-&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_line_path&gt;]&quot;&gt;
-&lt;$list variable=next_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;next_line_branch&gt;sort[]]&quot;&gt;
-
-* &lt;$link to=&lt;&lt;next_card&gt;&gt; /&gt;
-&lt;/$list&gt;&lt;!--next_card--&gt;
-&lt;/$list&gt;&lt;!--next_line_branch--&gt;
-&lt;/$list&gt;&lt;!--cur_line_branch--&gt;
-&lt;!--gtree_ref_disp_next_line_branch_cards--&gt;
-\end
-
-\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)
-&lt;hr&gt;
-&lt;$list variable=found_line_num filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;
-&lt;$list variable=found_line_path filter=&quot;[&lt;cur_line_path&gt;addsuffix&lt;found_line_num&gt;]&quot;&gt;
-&lt;$vars cur_root_path=&lt;&lt;found_line_path&gt;&gt; cur_level_seq=1 &gt;
-&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;
-&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;
-&lt;/$list&gt;&lt;!--found_line_path--&gt;
-&lt;/$list&gt;&lt;!--found_line_num--&gt;
-&lt;!--gtree_ref_disp_subtree--&gt;
-\end
-
-\define gtree_audit_lne_lnz(ur_ttb_card)
-&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
-&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;
-&lt;$vars disp_link=card enr_line_path=line-path&gt;
-&lt;$list variable=cur_card filter=&quot;[prefix&lt;ttb_prefix&gt;has&lt;enr_line_path&gt;]&quot;&gt;
-&lt;&lt;gtree_ref_disp_lnz_subcards&gt;&gt;
-&lt;&lt;gtree_ref_disp_ln_lvl3_subcards&gt;&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-&lt;/$vars&gt;&lt;!--enr_line_path--&gt;
-&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;!--gtree_audit_lne_lnz--&gt;
-\end
-
-\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)
-&lt;$list variable=cur_zfield_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-z]]&quot;&gt;
-
-&lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;
-&lt;&lt;cur_zfield_name&gt;&gt;&lt;br&gt;
-
-&lt;/$list&gt;&lt;!--cur_zfield_name--&gt;
-&lt;!--gtree_ref_disp_lnz_subcards--&gt;
-\end
-
-\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)
-&lt;$list variable=cur_field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;
-&lt;$list variable=split_field filter=&quot;[&lt;cur_field_name&gt;split[-]count[]!match[2]]&quot;&gt;
-
-&lt;$text text=&quot;----&quot; /&gt; &lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;
-&lt;&lt;cur_field_name&gt;&gt;&lt;br&gt;
-
-&lt;/$list&gt;&lt;!--split_field--&gt;
-&lt;/$list&gt;&lt;!--cur_field_name--&gt;
-&lt;!--gtree_ref_disp_ln_lvl3_subcards--&gt;
-\end
-
-\define gtree_disp_ttb_lines(ur_ttb_card)
-&lt;$vars exclude_created=&quot;[!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;
-&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
-&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;
-&lt;$list variable=cur_field filter=&quot;[&lt;ttb_card&gt;fields[]filter&lt;exclude_created&gt;sort[]]&quot;&gt;
-&lt;$list variable=field_val filter=&quot;[&lt;ttb_card&gt;get&lt;cur_field&gt;else[]]&quot;&gt;
-&lt;&lt;gtree_ref_disp_assigned_field&gt;&gt;
-&lt;/$list&gt;&lt;!--field_val--&gt;
-&lt;/$list&gt;&lt;!--cur_field--&gt;
-&lt;/$list&gt;&lt;!--ttb_prefix--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;/$vars&gt;&lt;!--exclude_created--&gt;
-&lt;!--gtree_disp_ttb_lines--&gt;
-\end
-
-\define gtree_ref_disp_assigned_field(ttb_card, ttb_prefix, cur_field, field_val)
-&lt;$list variable=assigned_field filter=&quot;[&lt;cur_field&gt;addprefix[ln-]]&quot;&gt;
-&lt;$list variable=assigned_card filter=&quot;[prefix&lt;ttb_prefix&gt;has:field&lt;assigned_field&gt;else[]]&quot;&gt;
-&lt;$list variable=link_field filter=&quot;[&lt;assigned_card&gt;!match[]]&quot;&gt;
-&lt;$link to=&lt;&lt;assigned_card&gt;&gt; &gt;&lt;&lt;cur_field&gt;&gt;&lt;/$link&gt;
-&lt;/$list&gt;&lt;!--link_field--&gt;
-&lt;$list variable=bold_field filter=&quot;[&lt;assigned_card&gt;match[]]&quot;&gt;
-''&lt;&lt;cur_field&gt;&gt;''
-&lt;/$list&gt;&lt;!--bold_field--&gt;
-&lt;/$list&gt;&lt;!--assigned_card--&gt;
-&lt;/$list&gt;&lt;!--assigned_field--&gt;
-&lt;$text text=&lt;&lt;field_val&gt;&gt; /&gt;&lt;br&gt;
-&lt;!--gtree_ref_disp_assigned_field--&gt;
-\end
-
-\define gtree_ttb_store_vars()
-&lt;$list variable=ttb_card filter=&quot;[[$:/state/popup/SplitCodeSearch]]&quot;&gt;
-&lt;&lt;gtree_ref_user_filter_card&gt;&gt;
-&lt;&lt;gtree_ref_user_filter_vars&gt;&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-&lt;!--ttb_store_vars--&gt;
-\end
-
-\define gtree_ref_user_filter_card(ttb_card)
-&lt;$edit-text tiddler=&lt;&lt;ttb_card&gt;&gt; field=prefix_text placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
-&lt;$list variable=prefix_text filter=&quot;[&lt;ttb_card&gt;get[prefix_text]else[]]&quot;&gt;
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;ttb_card&gt;&gt; filter_prefix=&lt;&lt;prefix_text&gt;&gt; /&gt;
-&lt;$action-deletefield $tiddler=&lt;&lt;ttb_card&gt;&gt; $field=selected_card /&gt;
-List cards
-&lt;/$button&gt;
-&lt;/$list&gt;&lt;!--prefix_text--&gt;
-&lt;!--gtree_ref_user_filter_card--&gt;
-\end
-
-\define gtree_ref_user_filter_vars(ttb_card)
-&lt;$list variable=card_prefix filter=&quot;[&lt;ttb_card&gt;get[filter_prefix]addprefix[(?i)^]]&quot;&gt;
-&lt;$list variable=card_first filter=&quot;[regexp&lt;card_prefix&gt;sort[]first[]else[]]&quot;&gt;
-
-&lt;&lt;gtree_ref_user_select_card&gt;&gt;
-&lt;&lt;gtree_ref_user_selected_vars&gt;&gt;
-&lt;/$list&gt;&lt;!--card_first--&gt;
-&lt;/$list&gt;&lt;!--card_prefix--&gt;
-&lt;!--gtree_ref_user_filter_vars--&gt;
-\end
-
-\define gtree_ref_user_select_card(ttb_card, card_prefix, card_first)
-&lt;$select tiddler=&lt;&lt;ttb_card&gt;&gt; field=selected_card default=&lt;&lt;card_first&gt;&gt; &gt;
-&lt;$list variable=cur_card filter=&quot;[regexp&lt;card_prefix&gt;sort[]]&quot;&gt;
-&lt;option value=&lt;&lt;cur_card&gt;&gt;&gt;&lt;&lt;cur_card&gt;&gt;&lt;/option&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-&lt;/$select&gt;
-&lt;span style=&quot;margin-left:20px;&quot; /&gt;&lt;$checkbox default=&quot;0&quot; unchecked=&quot;1&quot; checked=&quot;0&quot; tiddler=&lt;&lt;ttb_card&gt;&gt; field=&quot;include_last_line&quot; &gt;&lt;span style=&quot;margin-left:5px;&quot; /&gt;Include Last Line&lt;/$checkbox&gt;
-&lt;!--gtree_ref_user_select_card--&gt;
-\end
-
-\define gtree_ref_user_selected_vars(ttb_card, card_prefix, card_first)
-&lt;$list variable=source_card filter=&quot;[&lt;ttb_card&gt;get[selected_card]else&lt;card_first&gt;]&quot;&gt;
-&lt;$list variable=include_last_line filter=&quot;[&lt;ttb_card&gt;get[include_last_line]else[0]]&quot;&gt;
-&lt;&lt;gtree_ref_text_parse_vars&gt;&gt;
-&lt;/$list&gt;&lt;!--include_last_line--&gt;
-&lt;/$list&gt;&lt;!--source_card--&gt;
-&lt;!--gtree_ref_user_selected_vars--&gt;
-\end
-
-\define gtree_ref_text_parse_vars(ttb_card, card_prefix, card_first, source_card, include_last_line)
-&lt;$wikify name=lit_cr text=&quot;&amp;#13;&quot;&gt;
-&lt;$wikify name=lit_lf text=&quot;&amp;#10;&quot;&gt;
-&lt;&lt;gtree_ref_selcard_summary&gt;&gt;
-&lt;/$wikify&gt;&lt;!--lit_lf--&gt;
-&lt;/$wikify&gt;&lt;!--lit_cr--&gt;
-&lt;!--gtree_ref_text_parse_vars--&gt;
-\end
-
-\define gtree_ref_selcard_summary(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf)
-&lt;$link to=&lt;&lt;source_card&gt;&gt; /&gt;
-
-&lt;$list variable=cur_field filter=&quot;[&lt;source_card&gt;fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]&quot;&gt;
-Found fields: &lt;&lt;cur_field&gt;&gt;
-&lt;/$list&gt;&lt;!--cur_field--&gt;
-
-&lt;$vars lit_gt=&quot;&gt;&quot;&gt;
-&lt;$list variable=comment_close_holder filter=&quot;[[--!]addsuffix&lt;lit_gt&gt;]&quot;&gt;
-&lt;$list variable=comment_close_replace filter=&quot;[[--]addsuffix&lt;lit_gt&gt;]&quot;&gt;
-&lt;$list variable=doc_text filter=&quot;[&lt;source_card&gt;get[text]split&lt;lit_cr&gt;join[]split&lt;comment_close_holder&gt;join&lt;comment_close_replace&gt;]&quot;&gt;
-&lt;$list variable=line_count filter=&quot;[&lt;doc_text&gt;split&lt;lit_lf&gt;count[]subtract[1]!match[0]subtract[1]!match[0]subtract&lt;include_last_line&gt;!match[0]]&quot;&gt;
-Found lines: &lt;&lt;line_count&gt;&gt;
-
-&lt;&lt;gtree_ref_user_button_overwrite&gt;&gt;
-&lt;/$list&gt;&lt;!--line_count--&gt;
-&lt;/$list&gt;&lt;!--doc_text--&gt;
-&lt;/$list&gt;&lt;!--comment_close_replace--&gt;
-&lt;/$list&gt;&lt;!--comment_close_holder--&gt;
-&lt;/$vars&gt;&lt;!--lit_gt--&gt;
-&lt;!--gtree_ref_selcard_summary--&gt;
-\end
-
-\define gtree_ref_user_button_overwrite(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
-&lt;$button&gt;
-&lt;&lt;gtree_ref_clear_current_fields&gt;&gt;
-&lt;&lt;gtree_ref_list_line_labels&gt;&gt;
-Overwrite text fields
-&lt;/$button&gt;
-&lt;!--gtree_ref_user_button_overwrite--&gt;
-\end
-
-\define gtree_ref_clear_current_fields(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
-&lt;$list variable=cur_field filter=&quot;[&lt;source_card&gt;fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;
-&lt;$action-deletefield $tiddler=&lt;&lt;source_card&gt;&gt; $field=&lt;&lt;cur_field&gt;&gt; /&gt;
-&lt;/$list&gt;
-&lt;!--gtree_ref_clear_current_fields--&gt;
-\end
-
-\define gtree_ref_list_line_labels(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
-&lt;$list variable=linctr filter=&quot;[range&lt;line_count&gt;]&quot;&gt;
-&lt;$list variable=line_num_e filter=&quot;[&lt;linctr&gt;split[]last[3]join[]]&quot;&gt;
-&lt;$list variable=line_num_f filter=&quot;[&lt;linctr&gt;split[]butlast[3]last[3]join[]else[]]&quot;&gt;
-&lt;$list variable=line_title_e_prefix filter=&quot;[&lt;line_num_e&gt;split[]count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]&quot;&gt;
-&lt;$list variable=line_title_f_prefix filter=&quot;[&lt;line_num_f&gt;split[]!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]&quot;&gt;
-&lt;$list variable=line_title_e_suffix filter=&quot;[&lt;line_title_f_prefix&gt;match[]then&lt;line_title_e_prefix&gt;else[e]]&quot;&gt;
-&lt;$list variable=line_title filter=&quot;[&lt;line_title_f_prefix&gt;addsuffix&lt;line_num_f&gt;addsuffix&lt;line_title_e_suffix&gt;addsuffix&lt;line_num_e&gt;]&quot;&gt;
-&lt;&lt;gtree_ref_assign_line_field&gt;&gt;
-&lt;/$list&gt;&lt;!--line_title--&gt;
-&lt;/$list&gt;&lt;!--line_title_e_suffix--&gt;
-&lt;/$list&gt;&lt;!--line_title_f_prefix--&gt;
-&lt;/$list&gt;&lt;!--line_title_e_prefix--&gt;
-&lt;/$list&gt;&lt;!--line_num_f--&gt;
-&lt;/$list&gt;&lt;!--line_num_e--&gt;
-&lt;/$list&gt;&lt;!--linctr--&gt;
-&lt;!--gtree_ref_list_line_labels--&gt;
-\end
-
-\define gtree_ref_assign_line_field(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count, linctr, line_title)
-&lt;$list variable=cur_line_nth filter=&quot;[&lt;linctr&gt;add[1]]&quot;&gt;
-&lt;$list variable=cur_line_text filter=&quot;[&lt;doc_text&gt;split&lt;lit_lf&gt;nth&lt;cur_line_nth&gt;]&quot;&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;source_card&gt;&gt; $field=&lt;&lt;line_title&gt;&gt; $value=&lt;&lt;cur_line_text&gt;&gt;/&gt;
-&lt;/$list&gt;&lt;!--cur_line_text--&gt;
-&lt;/$list&gt;&lt;!--cur_line_nth--&gt;
-&lt;!--gtree_ref_assign_line_field--&gt;
-\end
-
-\define gtree_btn_disp_tree_options()
-&lt;$list variable=ttb_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
-&lt;$vars lit_lt=&quot;&lt;&quot; lit_gt=&quot;&gt;&quot; lit_s=&quot; &quot; lit_qs='&quot;' lit_fslash=&quot;/&quot; lit_state_popup=&quot;$:/state/popup/&quot;&gt;
-&lt;$vars macro_name=gtree_disp_tree_cards button_title=&quot;Show Actions tree&quot;&gt;
-&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
-&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
-
-&lt;$vars macro_name=gtree_audit_lne_lnz button_title=&quot;Show Audit list&quot;&gt;
-&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
-&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
-
-&lt;$vars macro_name=gtree_disp_ttb_lines button_title=&quot;Show Lines list&quot;&gt;
-&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
-&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
-
-&lt;$vars macro_name=gtree_disp_tree_text button_title=&quot;Show Text list&quot;&gt;
-&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
-&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
-
-&lt;$vars macro_name=gtree_disp_tree_links button_title=&quot;Show Lines tree&quot;&gt;
-&lt;&lt;gtree_ref_button_tree_option&gt;&gt;
-&lt;/$vars&gt;&lt;!--macro_name, button_title--&gt;
-
-&lt;/$vars&gt;&lt;!--lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup--&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;
-\end
-
-\define gtree_ref_button_tree_option(ttb_card, lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup, macro_name, button_title)
-&lt;$list variable=dest_card filter=&quot;[&lt;ttb_card&gt;addprefix&lt;lit_fslash&gt;addprefix&lt;macro_name&gt;addprefix&lt;lit_state_popup&gt;]&quot;&gt;
-&lt;$list variable=new_card_content filter=&quot;[&lt;macro_name&gt;addprefix&lt;lit_lt&gt;addprefix&lt;lit_lt&gt;addsuffix&lt;lit_s&gt;addsuffix&lt;lit_qs&gt;addsuffix&lt;ttb_card&gt;addsuffix&lt;lit_qs&gt;addsuffix&lt;lit_gt&gt;addsuffix&lt;lit_gt&gt;]&quot;&gt;
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;dest_card&gt;&gt; text=&lt;&lt;new_card_content&gt;&gt;/&gt;
-&lt;$action-navigate $to=&lt;&lt;dest_card&gt;&gt; /&gt;
-&lt;&lt;button_title&gt;&gt;
-&lt;/$button&gt;
-&lt;/$list&gt;&lt;!--new_card_content--&gt;
-&lt;/$list&gt;&lt;!--dest_card--&gt;
-\end
-</pre>
-</div>
 <div created="20201226025148520" modified="20201226040306587" tags="META" title="parm SkipSaveExportHTML">
 <pre></pre>
 </div>
@@ -12088,7 +12206,7 @@ Overwrite text fields
 
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;</pre>
 </div>
-<div created="20210213102712935" e1="\define gtree_disp_tree_cards(ur_ttb_card)" e2="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" e3="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" e4="&lt;$vars disp_link=card enr_line_path=line-path&gt;" e5="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" e6="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" e7="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" e8="&lt;/$list&gt;&lt;!--ttb_card--&gt;" e9="&lt;!--gtree_disp_tree_cards--&gt;" ec10="\end" ec11="" ec12="\define gtree_disp_tree_links(ur_ttb_card)" ec13="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ec14="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ec15="&lt;$vars disp_link=yes enr_line_path=line-path&gt;" ec16="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" ec17="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" ec18="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ec19="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ec20="&lt;!--gtree_disp_tree_links--&gt;" ec21="\end" ec22="" ec23="\define gtree_disp_tree_text(ur_ttb_card)" ec24="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ec25="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ec26="&lt;$vars disp_link=no enr_line_path=line-path&gt;" ec27="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" ec28="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" ec29="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ec30="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ec31="&lt;!--gtree_disp_tree_text--&gt;" ec32="\end" ec33="" ec34="\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)" ec35="&lt;$list variable=found_line_path filter=&quot;[prefix&lt;ttb_prefix&gt;get&lt;enr_line_path&gt;sort[]]&quot;&gt;" ec36="&lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[]match[1]]&quot;&gt;" ec37="&lt;$vars" ec38="  cur_root_path=&lt;&lt;found_line_path&gt;&gt;" ec39="  cur_level_seq=1 &gt;" ec40="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ec41="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ec42="&lt;/$list&gt;&lt;!--filter_root_path--&gt;" ec43="&lt;/$list&gt;&lt;!--found_line_path--&gt;" ec44="&lt;!--gtree_ref_disp_root_tree--&gt;" ec45="\end" ec46="" ec47="\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)" ec48="&lt;$list variable=filter_level_max filter=&quot;[&lt;cur_level_seq&gt;!match[10]]&quot;&gt;" ec49="&lt;$list variable=cur_line_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;cur_root_path&gt;sort[]]&quot;&gt;" ec50="&lt;&lt;gtree_ref_disp_card_entry&gt;&gt;" ec51="&lt;&lt;gtree_ref_each_line_branch&gt;&gt;" ec52="&lt;/$list&gt;&lt;!--cur_line_card--&gt;" ec53="&lt;/$list&gt;&lt;!--filter_level_max--&gt;" ec54="&lt;!--gtree_ref_recurse_code_level--&gt;" ec55="\end" ec56="" ec57="\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)" ec58="&lt;$list variable=disp_card_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[card]]&quot;&gt;" ec59="&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;" ec60="&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;" ec61="&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;" ec62="&lt;/$list&gt;&lt;!--indent_arrows--&gt;" ec63="&lt;/$list&gt;&lt;!--indent_count--&gt;" ec64="&lt;/$list&gt;&lt;!--disp_card_link--&gt;" ec65="&lt;!--gtree_ref_disp_card_entry--&gt;" ec66="\end" ec67="" ec68="\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)" ec69="&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;" ec70="&lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;" ec71="&lt;&lt;gtree_ref_disp_link_entry&gt;&gt;" ec72="&lt;&lt;gtree_ref_disp_doc_contents&gt;&gt;" ec73="&lt;/$list&gt;&lt;!--filter_skip_e0--&gt;" ec74="&lt;&lt;gtree_ref_disp_next_line_branch&gt;&gt;" ec75="&lt;/$list&gt;&lt;!--cur_line_branch--&gt;" ec76="&lt;!--gtree_ref_each_line_branch--&gt;" ec77="\end" ec78="" ec79="\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ec80="&lt;$list variable=disp_branch_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[yes]]&quot;&gt;" ec81="&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;" ec82="&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;" ec83="&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;" ec84="&lt;/$list&gt;&lt;!--indent_arrows--&gt;" ec85="&lt;/$list&gt;&lt;!--indent_count--&gt;" ec86="&lt;/$list&gt;&lt;!--disp_branch_link--&gt;" ec87="&lt;!--gtree_ref_disp_link_entry--&gt;" ec88="\end" ec89="" ec90="\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ec91="&lt;$list variable=disp_doc_contents filter=&quot;[&lt;disp_link&gt;lowercase[]!match[card]]&quot;&gt;" ec92="&lt;$vars cur_field=&lt;&lt;cur_line_branch&gt;&gt; &gt;" ec93="&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;" ec94="&lt;/$vars&gt;&lt;!--cur_field--&gt;" ec95="&lt;/$list&gt;&lt;!--disp_doc_contents--&gt;" ec96="&lt;!--gtree_ref_disp_doc_contents--&gt;" ec97="\end" ec98="" ec99="\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ed100="&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_root_path&gt;sort[]]&quot;&gt;" ed101="&lt;$list variable=next_level filter=&quot;[&lt;cur_level_seq&gt;add[1]]&quot;&gt;" ed102="&lt;$vars cur_root_path=&lt;&lt;next_line_branch&gt;&gt; cur_level_seq=&lt;&lt;next_level&gt;&gt; &gt;" ed103="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ed104="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ed105="&lt;/$list&gt;&lt;!--next_level--&gt;" ed106="&lt;/$list&gt;&lt;!--next_line_branch--&gt;" ed107="&lt;!--gtree_ref_disp_next_line_branch--&gt;" ed108="\end" ed109="" ed110="\define gtree_ref_disp_field(ttb_card, cur_field)" ed111="&lt;$list variable=line_num filter=&quot;[&lt;cur_field&gt;removeprefix[ln-]]&quot;&gt;" ed112="&lt;$list variable=cur_entry filter=&quot;[&lt;ttb_card&gt;get&lt;line_num&gt;]&quot;" ed113="&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;" ed114="&lt;/$list&gt;&lt;!--cur_entry--&gt;" ed115="&lt;/$list&gt;&lt;!--line_num--&gt;" ed116="&lt;!--gtree_ref_disp_field--&gt;" ed117="\end" ed118="" ed119="\define gtree_disp_next_level()" ed120="&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;" ed121="&lt;$list variable=ttb_card filter=&quot;[&lt;cur_card&gt;split[\]first[]]&quot;&gt;" ed122="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;" ed123="&lt;$vars enr_line_path=line-path&gt;" ed124="&lt;$list variable=cur_line_path filter=&quot;[&lt;cur_card&gt;get&lt;enr_line_path&gt;]&quot;&gt;" ed125="&lt;&lt;gtree_ref_disp_parent_link&gt;&gt;&lt;br&gt;" ed126="&lt;&lt;gtree_ref_each_line_prefix&gt;&gt;" ed127="&lt;$vars disp_link=card&gt;" ed128="&lt;&lt;gtree_ref_disp_subtree&gt;&gt;" ed129="&lt;/$vars&gt;&lt;!--disp_link--&gt;" ed130="&lt;$vars disp_link=yes&gt;" ed131="&lt;&lt;gtree_ref_disp_subtree&gt;&gt;" ed132="&lt;/$vars&gt;&lt;!--disp_link--&gt;" ed133="&lt;/$list&gt;&lt;!--cur_line_path--&gt;" ed134="&lt;/$vars&gt;&lt;!--enr_line_path--&gt;" ed135="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ed136="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed137="&lt;/$list&gt;&lt;!--cur_card--&gt;" ed138="&lt;!--gtree_disp_next_level--&gt;" ed139="\end" ed140="" ed141="\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)" ed142="&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]]&quot;&gt;" ed143="&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]]&quot;&gt;" ed144="&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;]&quot;&gt;" ed145="&lt;$link to=&lt;&lt;parent_card&gt;&gt; /&gt;&lt;br&gt;" ed146="&lt;/$list&gt;&lt;!--parent_card--&gt;" ed147="&lt;/$list&gt;&lt;!--parent_branch--&gt;" ed148="&lt;/$list&gt;&lt;!--parent_line_path--&gt;" ed149="&lt;!--gtree_ref_disp_parent_link--&gt;" ed150="\end" ed151="" ed152="\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path)" ed153="&lt;$list variable=cur_prefix filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]&quot;&gt;" ed154="&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;" ed155="&lt;&lt;gtree_ref_disp_next_line_branch_cards&gt;&gt;" ed156="&lt;/$list&gt;&lt;!--cur_prefix--&gt;" ed157="&lt;!--gtree_ref_each_line_prefix--&gt;" ed158="\end" ed159="" ed160="\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)" ed161="&lt;$list variable=cur_field filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;" ed162="&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;" ed163="&lt;/$list&gt;&lt;!--cur_field--&gt;" ed164="&lt;!--gtree_ref_disp_line_prefix_group--&gt;" ed165="\end" ed166="" ed167="\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)" ed168="&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;" ed169="&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_line_path&gt;]&quot;&gt;" ed170="&lt;$list variable=next_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;next_line_branch&gt;sort[]]&quot;&gt;" ed171="" ed172="* &lt;$link to=&lt;&lt;next_card&gt;&gt; /&gt;" ed173="&lt;/$list&gt;&lt;!--next_card--&gt;" ed174="&lt;/$list&gt;&lt;!--next_line_branch--&gt;" ed175="&lt;/$list&gt;&lt;!--cur_line_branch--&gt;" ed176="&lt;!--gtree_ref_disp_next_line_branch_cards--&gt;" ed177="\end" ed178="" ed179="\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)" ed180="&lt;hr&gt;" ed181="&lt;$list variable=found_line_num filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;" ed182="&lt;$list variable=found_line_path filter=&quot;[&lt;cur_line_path&gt;addsuffix&lt;found_line_num&gt;]&quot;&gt;" ed183="&lt;$vars cur_root_path=&lt;&lt;found_line_path&gt;&gt; cur_level_seq=1 &gt;" ed184="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ed185="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ed186="&lt;/$list&gt;&lt;!--found_line_path--&gt;" ed187="&lt;/$list&gt;&lt;!--found_line_num--&gt;" ed188="&lt;!--gtree_ref_disp_subtree--&gt;" ed189="\end" ed190="" ed191="\define gtree_audit_lne_lnz(ur_ttb_card)" ed192="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ed193="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ed194="&lt;$vars disp_link=card enr_line_path=line-path&gt;" ed195="&lt;$list variable=cur_card filter=&quot;[prefix&lt;ttb_prefix&gt;has&lt;enr_line_path&gt;]&quot;&gt;" ed196="&lt;&lt;gtree_ref_disp_lnz_subcards&gt;&gt;" ed197="&lt;&lt;gtree_ref_disp_ln_lvl3_subcards&gt;&gt;" ed198="&lt;/$list&gt;&lt;!--cur_card--&gt;" ed199="&lt;/$vars&gt;&lt;!--enr_line_path--&gt;" ed200="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ed201="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed202="&lt;!--gtree_audit_lne_lnz--&gt;" ed203="\end" ed204="" ed205="\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)" ed206="&lt;$list variable=cur_zfield_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-z]]&quot;&gt;" ed207="" ed208="&lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;" ed209="&lt;&lt;cur_zfield_name&gt;&gt;&lt;br&gt;" ed210="" ed211="&lt;/$list&gt;&lt;!--cur_zfield_name--&gt;" ed212="&lt;!--gtree_ref_disp_lnz_subcards--&gt;" ed213="\end" ed214="" ed215="\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)" ed216="&lt;$list variable=cur_field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;" ed217="&lt;$list variable=split_field filter=&quot;[&lt;cur_field_name&gt;split[-]count[]!match[2]]&quot;&gt;" ed218="" ed219="&lt;$text text=&quot;----&quot; /&gt; &lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;" ed220="&lt;&lt;cur_field_name&gt;&gt;&lt;br&gt;" ed221="" ed222="&lt;/$list&gt;&lt;!--split_field--&gt;" ed223="&lt;/$list&gt;&lt;!--cur_field_name--&gt;" ed224="&lt;!--gtree_ref_disp_ln_lvl3_subcards--&gt;" ed225="\end" ed226="" ed227="\define gtree_disp_ttb_lines(ur_ttb_card)" ed228="&lt;$vars exclude_created=&quot;[!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;" ed229="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ed230="&lt;$list variable=cur_field filter=&quot;[&lt;ttb_card&gt;fields[]filter&lt;exclude_created&gt;sort[]]&quot;&gt;" ed231="&lt;$list variable=field_val filter=&quot;[&lt;ttb_card&gt;get&lt;cur_field&gt;else[]]&quot;&gt;" ed232="&lt;&lt;cur_field&gt;&gt; &lt;$text text=&lt;&lt;field_val&gt;&gt; /&gt;&lt;br&gt;" ed233="&lt;/$list&gt;&lt;!--field_val--&gt;" ed234="&lt;/$list&gt;&lt;!--cur_field--&gt;" ed235="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed236="&lt;/$vars&gt;&lt;!--exclude_created--&gt;" ed237="\end" modified="20210214132459001" tags="DOC" title="Sample Code">
+<div created="20210213102712935" e1="\define gtree_disp_tree_cards(ur_ttb_card)" e2="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" e3="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" e4="&lt;$vars disp_link=card enr_line_path=line-path&gt;" e5="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" e6="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" e7="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" e8="&lt;/$list&gt;&lt;!--ttb_card--&gt;" e9="&lt;!--gtree_disp_tree_cards--&gt;" ec10="\end" ec11="" ec12="\define gtree_disp_tree_links(ur_ttb_card)" ec13="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ec14="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ec15="&lt;$vars disp_link=yes enr_line_path=line-path&gt;" ec16="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" ec17="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" ec18="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ec19="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ec20="&lt;!--gtree_disp_tree_links--&gt;" ec21="\end" ec22="" ec23="\define gtree_disp_tree_text(ur_ttb_card)" ec24="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ec25="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ec26="&lt;$vars disp_link=no enr_line_path=line-path&gt;" ec27="&lt;&lt;gtree_ref_disp_root_tree&gt;&gt;" ec28="&lt;/$vars&gt;&lt;!--disp_link, enr_line_path--&gt;" ec29="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ec30="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ec31="&lt;!--gtree_disp_tree_text--&gt;" ec32="\end" ec33="" ec34="\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)" ec35="&lt;$list variable=found_line_path filter=&quot;[prefix&lt;ttb_prefix&gt;get&lt;enr_line_path&gt;sort[]]&quot;&gt;" ec36="&lt;$list variable=filter_root_path filter=&quot;[&lt;found_line_path&gt;split[-]count[]match[1]]&quot;&gt;" ec37="&lt;$vars" ec38="  cur_root_path=&lt;&lt;found_line_path&gt;&gt;" ec39="  cur_level_seq=1 &gt;" ec40="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ec41="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ec42="&lt;/$list&gt;&lt;!--filter_root_path--&gt;" ec43="&lt;/$list&gt;&lt;!--found_line_path--&gt;" ec44="&lt;!--gtree_ref_disp_root_tree--&gt;" ec45="\end" ec46="" ec47="\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)" ec48="&lt;$list variable=filter_level_max filter=&quot;[&lt;cur_level_seq&gt;!match[10]]&quot;&gt;" ec49="&lt;$list variable=cur_line_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;cur_root_path&gt;sort[]]&quot;&gt;" ec50="&lt;&lt;gtree_ref_disp_card_entry&gt;&gt;" ec51="&lt;&lt;gtree_ref_each_line_branch&gt;&gt;" ec52="&lt;/$list&gt;&lt;!--cur_line_card--&gt;" ec53="&lt;/$list&gt;&lt;!--filter_level_max--&gt;" ec54="&lt;!--gtree_ref_recurse_code_level--&gt;" ec55="\end" ec56="" ec57="\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)" ec58="&lt;$list variable=disp_card_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[card]]&quot;&gt;" ec59="&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;" ec60="&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;" ec61="&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; /&gt;&lt;br&gt;" ec62="&lt;/$list&gt;&lt;!--indent_arrows--&gt;" ec63="&lt;/$list&gt;&lt;!--indent_count--&gt;" ec64="&lt;/$list&gt;&lt;!--disp_card_link--&gt;" ec65="&lt;!--gtree_ref_disp_card_entry--&gt;" ec66="\end" ec67="" ec68="\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)" ec69="&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_line_card&gt;fields[]prefix[ln-]sort[]]&quot;&gt;" ec70="&lt;$list variable=filter_skip_e0 filter=&quot;[&lt;cur_line_branch&gt;!match[ln-e0]]&quot;&gt;" ec71="&lt;&lt;gtree_ref_disp_link_entry&gt;&gt;" ec72="&lt;&lt;gtree_ref_disp_doc_contents&gt;&gt;" ec73="&lt;/$list&gt;&lt;!--filter_skip_e0--&gt;" ec74="&lt;&lt;gtree_ref_disp_next_line_branch&gt;&gt;" ec75="&lt;/$list&gt;&lt;!--cur_line_branch--&gt;" ec76="&lt;!--gtree_ref_each_line_branch--&gt;" ec77="\end" ec78="" ec79="\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ec80="&lt;$list variable=disp_branch_link filter=&quot;[&lt;disp_link&gt;lowercase[]match[yes]]&quot;&gt;" ec81="&lt;$list variable=indent_count filter=&quot;[&lt;cur_level_seq&gt;multiply[2]]&quot;&gt;" ec82="&lt;$list variable=indent_arrows filter=&quot;[[-&gt;]pad&lt;indent_count&gt;,[-&gt;]]&quot;&gt;" ec83="&lt;&lt;indent_arrows&gt;&gt; &lt;$link to=&lt;&lt;cur_line_card&gt;&gt; &gt;&lt;&lt;cur_line_branch&gt;&gt;&lt;/$link&gt;" ec84="&lt;/$list&gt;&lt;!--indent_arrows--&gt;" ec85="&lt;/$list&gt;&lt;!--indent_count--&gt;" ec86="&lt;/$list&gt;&lt;!--disp_branch_link--&gt;" ec87="&lt;!--gtree_ref_disp_link_entry--&gt;" ec88="\end" ec89="" ec90="\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ec91="&lt;$list variable=disp_doc_contents filter=&quot;[&lt;disp_link&gt;lowercase[]!match[card]]&quot;&gt;" ec92="&lt;$vars cur_field=&lt;&lt;cur_line_branch&gt;&gt; &gt;" ec93="&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;" ec94="&lt;/$vars&gt;&lt;!--cur_field--&gt;" ec95="&lt;/$list&gt;&lt;!--disp_doc_contents--&gt;" ec96="&lt;!--gtree_ref_disp_doc_contents--&gt;" ec97="\end" ec98="" ec99="\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)" ed100="&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_root_path&gt;sort[]]&quot;&gt;" ed101="&lt;$list variable=next_level filter=&quot;[&lt;cur_level_seq&gt;add[1]]&quot;&gt;" ed102="&lt;$vars cur_root_path=&lt;&lt;next_line_branch&gt;&gt; cur_level_seq=&lt;&lt;next_level&gt;&gt; &gt;" ed103="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ed104="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ed105="&lt;/$list&gt;&lt;!--next_level--&gt;" ed106="&lt;/$list&gt;&lt;!--next_line_branch--&gt;" ed107="&lt;!--gtree_ref_disp_next_line_branch--&gt;" ed108="\end" ed109="" ed110="\define gtree_ref_disp_field(ttb_card, cur_field)" ed111="&lt;$list variable=line_num filter=&quot;[&lt;cur_field&gt;removeprefix[ln-]]&quot;&gt;" ed112="&lt;$list variable=cur_entry filter=&quot;[&lt;ttb_card&gt;get&lt;line_num&gt;]&quot;" ed113="&gt;&lt;$text text=&lt;&lt;cur_entry&gt;&gt; /&gt;" ed114="&lt;/$list&gt;&lt;!--cur_entry--&gt;" ed115="&lt;/$list&gt;&lt;!--line_num--&gt;" ed116="&lt;!--gtree_ref_disp_field--&gt;" ed117="\end" ed118="" ed119="\define gtree_disp_next_level()" ed120="&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;" ed121="&lt;$list variable=ttb_card filter=&quot;[&lt;cur_card&gt;split[\]first[]]&quot;&gt;" ed122="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot;&gt;" ed123="&lt;$vars enr_line_path=line-path&gt;" ed124="&lt;$list variable=cur_line_path filter=&quot;[&lt;cur_card&gt;get&lt;enr_line_path&gt;]&quot;&gt;" ed125="&lt;&lt;gtree_ref_disp_parent_link&gt;&gt;&lt;br&gt;" ed126="&lt;&lt;gtree_ref_each_line_prefix&gt;&gt;" ed127="&lt;$vars disp_link=card&gt;" ed128="&lt;&lt;gtree_ref_disp_subtree&gt;&gt;" ed129="&lt;/$vars&gt;&lt;!--disp_link--&gt;" ed130="&lt;$vars disp_link=yes&gt;" ed131="&lt;&lt;gtree_ref_disp_subtree&gt;&gt;" ed132="&lt;/$vars&gt;&lt;!--disp_link--&gt;" ed133="&lt;/$list&gt;&lt;!--cur_line_path--&gt;" ed134="&lt;/$vars&gt;&lt;!--enr_line_path--&gt;" ed135="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ed136="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed137="&lt;/$list&gt;&lt;!--cur_card--&gt;" ed138="&lt;!--gtree_disp_next_level--&gt;" ed139="\end" ed140="" ed141="\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)" ed142="&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]]&quot;&gt;" ed143="&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]]&quot;&gt;" ed144="&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;]&quot;&gt;" ed145="&lt;$link to=&lt;&lt;parent_card&gt;&gt; /&gt;&lt;br&gt;" ed146="&lt;/$list&gt;&lt;!--parent_card--&gt;" ed147="&lt;/$list&gt;&lt;!--parent_branch--&gt;" ed148="&lt;/$list&gt;&lt;!--parent_line_path--&gt;" ed149="&lt;!--gtree_ref_disp_parent_link--&gt;" ed150="\end" ed151="" ed152="\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path)" ed153="&lt;$list variable=cur_prefix filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]&quot;&gt;" ed154="&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;" ed155="&lt;&lt;gtree_ref_disp_next_line_branch_cards&gt;&gt;" ed156="&lt;/$list&gt;&lt;!--cur_prefix--&gt;" ed157="&lt;!--gtree_ref_each_line_prefix--&gt;" ed158="\end" ed159="" ed160="\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)" ed161="&lt;$list variable=cur_field filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;" ed162="&lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;" ed163="&lt;/$list&gt;&lt;!--cur_field--&gt;" ed164="&lt;!--gtree_ref_disp_line_prefix_group--&gt;" ed165="\end" ed166="" ed167="\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)" ed168="&lt;$list variable=cur_line_branch filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;" ed169="&lt;$list variable=next_line_branch filter=&quot;[&lt;cur_line_branch&gt;addprefix&lt;cur_line_path&gt;]&quot;&gt;" ed170="&lt;$list variable=next_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;next_line_branch&gt;sort[]]&quot;&gt;" ed171="" ed172="* &lt;$link to=&lt;&lt;next_card&gt;&gt; /&gt;" ed173="&lt;/$list&gt;&lt;!--next_card--&gt;" ed174="&lt;/$list&gt;&lt;!--next_line_branch--&gt;" ed175="&lt;/$list&gt;&lt;!--cur_line_branch--&gt;" ed176="&lt;!--gtree_ref_disp_next_line_branch_cards--&gt;" ed177="\end" ed178="" ed179="\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)" ed180="&lt;hr&gt;" ed181="&lt;$list variable=found_line_num filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;" ed182="&lt;$list variable=found_line_path filter=&quot;[&lt;cur_line_path&gt;addsuffix&lt;found_line_num&gt;]&quot;&gt;" ed183="&lt;$vars cur_root_path=&lt;&lt;found_line_path&gt;&gt; cur_level_seq=1 &gt;" ed184="&lt;&lt;gtree_ref_recurse_code_level&gt;&gt;" ed185="&lt;/$vars&gt;&lt;!--cur_root_path, cur_level_seq--&gt;" ed186="&lt;/$list&gt;&lt;!--found_line_path--&gt;" ed187="&lt;/$list&gt;&lt;!--found_line_num--&gt;" ed188="&lt;!--gtree_ref_disp_subtree--&gt;" ed189="\end" ed190="" ed191="\define gtree_audit_lne_lnz(ur_ttb_card)" ed192="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ed193="&lt;$list variable=ttb_prefix filter=&quot;[&lt;ttb_card&gt;addsuffix[\]]&quot; &gt;" ed194="&lt;$vars disp_link=card enr_line_path=line-path&gt;" ed195="&lt;$list variable=cur_card filter=&quot;[prefix&lt;ttb_prefix&gt;has&lt;enr_line_path&gt;]&quot;&gt;" ed196="&lt;&lt;gtree_ref_disp_lnz_subcards&gt;&gt;" ed197="&lt;&lt;gtree_ref_disp_ln_lvl3_subcards&gt;&gt;" ed198="&lt;/$list&gt;&lt;!--cur_card--&gt;" ed199="&lt;/$vars&gt;&lt;!--enr_line_path--&gt;" ed200="&lt;/$list&gt;&lt;!--ttb_prefix--&gt;" ed201="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed202="&lt;!--gtree_audit_lne_lnz--&gt;" ed203="\end" ed204="" ed205="\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)" ed206="&lt;$list variable=cur_zfield_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-z]]&quot;&gt;" ed207="" ed208="&lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;" ed209="&lt;&lt;cur_zfield_name&gt;&gt;&lt;br&gt;" ed210="" ed211="&lt;/$list&gt;&lt;!--cur_zfield_name--&gt;" ed212="&lt;!--gtree_ref_disp_lnz_subcards--&gt;" ed213="\end" ed214="" ed215="\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)" ed216="&lt;$list variable=cur_field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]]&quot;&gt;" ed217="&lt;$list variable=split_field filter=&quot;[&lt;cur_field_name&gt;split[-]count[]!match[2]]&quot;&gt;" ed218="" ed219="&lt;$text text=&quot;----&quot; /&gt; &lt;$link to=&lt;&lt;cur_card&gt;&gt; /&gt;" ed220="&lt;&lt;cur_field_name&gt;&gt;&lt;br&gt;" ed221="" ed222="&lt;/$list&gt;&lt;!--split_field--&gt;" ed223="&lt;/$list&gt;&lt;!--cur_field_name--&gt;" ed224="&lt;!--gtree_ref_disp_ln_lvl3_subcards--&gt;" ed225="\end" ed226="" ed227="\define gtree_disp_ttb_lines(ur_ttb_card)" ed228="&lt;$vars exclude_created=&quot;[!match[created]!match[modified]!match[tags]!match[text]!match[title]]&quot;&gt;" ed229="&lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;" ed230="&lt;$list variable=cur_field filter=&quot;[&lt;ttb_card&gt;fields[]filter&lt;exclude_created&gt;sort[]]&quot;&gt;" ed231="&lt;$list variable=field_val filter=&quot;[&lt;ttb_card&gt;get&lt;cur_field&gt;else[]]&quot;&gt;" ed232="&lt;&lt;cur_field&gt;&gt; &lt;$text text=&lt;&lt;field_val&gt;&gt; /&gt;&lt;br&gt;" ed233="&lt;/$list&gt;&lt;!--field_val--&gt;" ed234="&lt;/$list&gt;&lt;!--cur_field--&gt;" ed235="&lt;/$list&gt;&lt;!--ttb_card--&gt;" ed236="&lt;/$vars&gt;&lt;!--exclude_created--&gt;" ed237="\end" modified="20210215042807009" tags="DOC" title="Sample Code">
 <pre>&lt;!--
 \define gtree_disp_tree_cards(ur_ttb_card)
 &lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot; &gt;
@@ -12231,9 +12349,9 @@ Overwrite text fields
 \end
 
 \define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
-&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]]&quot;&gt;
-&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]]&quot;&gt;
-&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;]&quot;&gt;
+&lt;$list variable=parent_line_path filter=&quot;[&lt;cur_line_path&gt;split[ln-]butlast[]join[ln-]else[ln-]]&quot;&gt;
+&lt;$list variable=parent_branch filter=&quot;[&lt;cur_line_path&gt;split[ln-]last[]addprefix[ln-]else[ln-]]&quot;&gt;
+&lt;$list variable=parent_card filter=&quot;[prefix&lt;ttb_prefix&gt;line-path&lt;parent_line_path&gt;has:field&lt;parent_branch&gt;else&lt;ttb_card&gt;]&quot;&gt;
 &lt;$link to=&lt;&lt;parent_card&gt;&gt; /&gt;&lt;br&gt;
 &lt;/$list&gt;&lt;!--parent_card--!&gt;
 &lt;/$list&gt;&lt;!--parent_branch--!&gt;
@@ -12241,18 +12359,31 @@ Overwrite text fields
 &lt;!--gtree_ref_disp_parent_link--!&gt;
 \end
 
-\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path)
+\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_section)
 &lt;$list variable=cur_prefix filter=&quot;[&lt;cur_card&gt;fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]&quot;&gt;
+&lt;$vars disp_section=leading&gt;
 &lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_section--!&gt;
 &lt;&lt;gtree_ref_disp_next_line_branch_cards&gt;&gt;
+&lt;$vars disp_section=trailing&gt;
+&lt;&lt;gtree_ref_disp_line_prefix_group&gt;&gt;
+&lt;/$vars&gt;&lt;!--disp_section--!&gt;
 &lt;/$list&gt;&lt;!--cur_prefix--!&gt;
 &lt;!--gtree_ref_each_line_prefix--!&gt;
 \end
 
-\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
+\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix, disp_section)
+&lt;$list variable=disp_leading filter=&quot;[&lt;disp_section&gt;match[leading]then[]else[!]]&quot;&gt;
+&lt;$vars test_prefix=&quot;[&quot; test_suffix=&quot;match[]]&quot;&gt;
+&lt;$list variable=include_section filter=&quot;[&lt;test_prefix&gt;addsuffix&lt;disp_leading&gt;addsuffix&lt;test_suffix&gt;]&quot;&gt;
 &lt;$list variable=cur_field filter=&quot;[&lt;cur_card&gt;fields[]prefix&lt;cur_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=found_section filter=&quot;[&lt;cur_card&gt;get&lt;cur_field&gt;!match[]else[]filter&lt;include_section&gt;]&quot;&gt;
 &lt;&lt;gtree_ref_disp_field&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--found_section--!&gt;
 &lt;/$list&gt;&lt;!--cur_field--!&gt;
+&lt;/$list&gt;&lt;!--include_section--!&gt;
+&lt;/$vars&gt;&lt;!--test_prefix, test_suffix--!&gt;
+&lt;/$list&gt;&lt;!--disp_leading--!&gt;
 &lt;!--gtree_ref_disp_line_prefix_group--!&gt;
 \end
 
@@ -12697,12 +12828,6 @@ Overwrite text fields
 
 &lt;&lt;ttb_store_vars&gt;&gt;</pre>
 </div>
-<div created="20210213151014971" list-after="$:/core/ui/ViewTemplate/tags" modified="20210214131828760" tags="$:/tags/ViewTemplate MCR GTREE" title="template e1 tree">
-<pre>&lt;$list variable=ttb_card filter=&quot;[&lt;currentTiddler&gt;has:field[e1]]&quot;&gt;
-&lt;&lt;gtree_btn_disp_tree_options&gt;&gt;
-&lt;&lt;glbl_article_list&gt;&gt;
-&lt;/$list&gt;&lt;!--ttb_card--&gt;</pre>
-</div>
 <div created="20201226041128309" description="Export Code" extension="codetxt" modified="20201226042341669" tags="$:/tags/Exporter META" title="template ExportAllCode">
 <pre>\define renderContent()
 &lt;$list variable=cur_tip_pk filter=&quot;[all[tiddlers]!has[draft.of]has[tags]!prefix[undefined]sort[title]]&quot;&gt;
@@ -12738,11 +12863,6 @@ Overwrite text fields
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 &lt;/$button&gt;&lt;/div&gt;
 </pre>
-</div>
-<div created="20210213091855085" list-after="$:/core/ui/ViewTemplate/tags" modified="20210214131808172" tags="$:/tags/ViewTemplate MCR GTREE" title="template LinePath">
-<pre>&lt;$list filter=&quot;[is[current]has[line-path]]&quot;&gt;
-&lt;&lt;gtree_disp_next_level&gt;&gt;
-&lt;/$list&gt;</pre>
 </div>
 <div created="20200405112008513" modified="20201229110659683" tags="META" title="View All Cards">
 <pre>&lt;$list filter=&quot;[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]&quot;&gt;

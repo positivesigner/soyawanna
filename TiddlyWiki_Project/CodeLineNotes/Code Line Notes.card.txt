@@ -94,6 +94,554 @@ New Card
 
 
 
+$:/positivesigner/btn gcmpr card
+
+<<gcmpr_btn_cmp_current>> 
+
+
+
+
+$:/positivesigner/gcmpr
+
+
+
+$:/positivesigner/gtree
+
+
+
+$:/positivesigner/gtree/mcr gtree_disp_field
+
+\define gtree_disp_tree_cards(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link=card enr_line_path=line-path>
+<<gtree_ref_disp_root_tree>>
+</$vars><!--disp_link, enr_line_path-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_disp_tree_cards-->
+\end
+
+\define gtree_disp_tree_links(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link=yes enr_line_path=line-path>
+<<gtree_ref_disp_root_tree>>
+</$vars><!--disp_link, enr_line_path-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_disp_tree_links-->
+\end
+
+\define gtree_disp_tree_text(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link=no enr_line_path=line-path>
+<<gtree_ref_disp_root_tree>>
+</$vars><!--disp_link, enr_line_path-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_disp_tree_text-->
+\end
+
+\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)
+<$list variable=found_line_path filter="[prefix<ttb_prefix>get<enr_line_path>sort[]]">
+<$list variable=filter_root_path filter="[<found_line_path>split[-]count[]match[1]]">
+<$vars
+  cur_root_path=<<found_line_path>>
+  cur_level_seq=1 >
+<<gtree_ref_recurse_code_level>>
+</$vars><!--cur_root_path, cur_level_seq-->
+</$list><!--filter_root_path-->
+</$list><!--found_line_path-->
+<!--gtree_ref_disp_root_tree-->
+\end
+
+\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)
+<$list variable=filter_level_max filter="[<cur_level_seq>!match[10]]">
+<$list variable=cur_line_card filter="[prefix<ttb_prefix>line-path<cur_root_path>sort[]]">
+<<gtree_ref_disp_card_entry>>
+<<gtree_ref_each_line_branch>>
+</$list><!--cur_line_card-->
+</$list><!--filter_level_max-->
+<!--gtree_ref_recurse_code_level-->
+\end
+
+\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
+<$list variable=disp_card_link filter="[<disp_link>lowercase[]match[card]]">
+<$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
+<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
+<<indent_arrows>> <$link to=<<cur_line_card>> /><br>
+</$list><!--indent_arrows-->
+</$list><!--indent_count-->
+</$list><!--disp_card_link-->
+<!--gtree_ref_disp_card_entry-->
+\end
+
+\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
+<$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
+<$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
+<<gtree_ref_disp_link_entry>>
+<<gtree_ref_disp_doc_contents>>
+</$list><!--filter_skip_e0-->
+<<gtree_ref_disp_next_line_branch>>
+</$list><!--cur_line_branch-->
+<!--gtree_ref_each_line_branch-->
+\end
+
+\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+<$list variable=disp_branch_link filter="[<disp_link>lowercase[]match[yes]]">
+<$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
+<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
+<<indent_arrows>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
+</$list><!--indent_arrows-->
+</$list><!--indent_count-->
+</$list><!--disp_branch_link-->
+<!--gtree_ref_disp_link_entry-->
+\end
+
+\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+<$list variable=disp_doc_contents filter="[<disp_link>lowercase[]!match[card]]">
+<$vars cur_field=<<cur_line_branch>> >
+<<gtree_ref_disp_field>><br>
+</$vars><!--cur_field-->
+</$list><!--disp_doc_contents-->
+<!--gtree_ref_disp_doc_contents-->
+\end
+
+\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
+<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_root_path>sort[]]">
+<$list variable=next_level filter="[<cur_level_seq>add[1]]">
+<$vars cur_root_path=<<next_line_branch>> cur_level_seq=<<next_level>> >
+<<gtree_ref_recurse_code_level>>
+</$vars><!--cur_root_path, cur_level_seq-->
+</$list><!--next_level-->
+</$list><!--next_line_branch-->
+<!--gtree_ref_disp_next_line_branch-->
+\end
+
+\define gtree_ref_disp_field(ttb_card, cur_field)
+<$list variable=line_num filter="[<cur_field>removeprefix[ln-]]">
+<$list variable=cur_entry filter="[<ttb_card>get<line_num>]"
+><$text text=<<cur_entry>> />
+</$list><!--cur_entry-->
+</$list><!--line_num-->
+<!--gtree_ref_disp_field-->
+\end
+
+\define gtree_disp_next_level()
+<$list variable=cur_card filter="[<currentTiddler>]">
+<$list variable=ttb_card filter="[<cur_card>split[\]first[]]">
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]">
+<$vars enr_line_path=line-path>
+<$list variable=cur_line_path filter="[<cur_card>get<enr_line_path>]">
+<<gtree_ref_disp_parent_link>><br>
+<<gtree_ref_each_line_prefix>>
+<$vars disp_link=card>
+<<gtree_ref_disp_subtree>>
+</$vars><!--disp_link-->
+<$vars disp_link=yes>
+<<gtree_ref_disp_subtree>>
+</$vars><!--disp_link-->
+</$list><!--cur_line_path-->
+</$vars><!--enr_line_path-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+</$list><!--cur_card-->
+<!--gtree_disp_next_level-->
+\end
+
+\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
+<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]else[ln-]]">
+<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]else[ln-]]">
+<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>else<ttb_card>]">
+<$link to=<<parent_card>> /><br>
+</$list><!--parent_card-->
+</$list><!--parent_branch-->
+</$list><!--parent_line_path-->
+<!--gtree_ref_disp_parent_link-->
+\end
+
+\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_section)
+<$list variable=cur_prefix filter="[<cur_card>fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]">
+<$vars disp_section=leading>
+<<gtree_ref_disp_line_prefix_group>>
+</$vars><!--disp_section-->
+<<gtree_ref_disp_next_line_branch_cards>>
+<$vars disp_section=trailing>
+<<gtree_ref_disp_line_prefix_group>>
+</$vars><!--disp_section-->
+</$list><!--cur_prefix-->
+<!--gtree_ref_each_line_prefix-->
+\end
+
+\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix, disp_section)
+<$list variable=disp_leading filter="[<disp_section>match[leading]then[]else[!]]">
+<$vars test_prefix="[" test_suffix="match[]]">
+<$list variable=include_section filter="[<test_prefix>addsuffix<disp_leading>addsuffix<test_suffix>]">
+<$list variable=cur_field filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
+<$list variable=found_section filter="[<cur_card>get<cur_field>!match[]else[]filter<include_section>]">
+<<gtree_ref_disp_field>><br>
+</$list><!--found_section-->
+</$list><!--cur_field-->
+</$list><!--include_section-->
+</$vars><!--test_prefix, test_suffix-->
+</$list><!--disp_leading-->
+<!--gtree_ref_disp_line_prefix_group-->
+\end
+
+\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
+<$list variable=cur_line_branch filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
+<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
+<$list variable=next_card filter="[prefix<ttb_prefix>line-path<next_line_branch>sort[]]">
+
+* <$link to=<<next_card>> />
+</$list><!--next_card-->
+</$list><!--next_line_branch-->
+</$list><!--cur_line_branch-->
+<!--gtree_ref_disp_next_line_branch_cards-->
+\end
+
+\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)
+<hr>
+<$list variable=found_line_num filter="[<cur_card>fields[]prefix[ln-]]">
+<$list variable=found_line_path filter="[<cur_line_path>addsuffix<found_line_num>]">
+<$vars cur_root_path=<<found_line_path>> cur_level_seq=1 >
+<<gtree_ref_recurse_code_level>>
+</$vars><!--cur_root_path, cur_level_seq-->
+</$list><!--found_line_path-->
+</$list><!--found_line_num-->
+<!--gtree_ref_disp_subtree-->
+\end
+
+\define gtree_audit_lne_lnz(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
+<$vars disp_link=card enr_line_path=line-path>
+<$list variable=cur_card filter="[prefix<ttb_prefix>has<enr_line_path>]">
+<<gtree_ref_disp_lnz_subcards>>
+<<gtree_ref_disp_ln_lvl3_subcards>>
+</$list><!--cur_card-->
+</$vars><!--enr_line_path-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+<!--gtree_audit_lne_lnz-->
+\end
+
+\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)
+<$list variable=cur_zfield_name filter="[<cur_card>fields[]prefix[ln-z]]">
+
+<$link to=<<cur_card>> />
+<<cur_zfield_name>><br>
+
+</$list><!--cur_zfield_name-->
+<!--gtree_ref_disp_lnz_subcards-->
+\end
+
+\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)
+<$list variable=cur_field_name filter="[<cur_card>fields[]prefix[ln-]]">
+<$list variable=split_field filter="[<cur_field_name>split[-]count[]!match[2]]">
+
+<$text text="----" /> <$link to=<<cur_card>> />
+<<cur_field_name>><br>
+
+</$list><!--split_field-->
+</$list><!--cur_field_name-->
+<!--gtree_ref_disp_ln_lvl3_subcards-->
+\end
+
+\define gtree_disp_ttb_lines(ur_ttb_card)
+<$vars exclude_created="[!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
+<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]">
+<$list variable=cur_field filter="[<ttb_card>fields[]filter<exclude_created>sort[]]">
+<$list variable=field_val filter="[<ttb_card>get<cur_field>else[]]">
+<<gtree_ref_disp_assigned_field>>
+</$list><!--field_val-->
+</$list><!--cur_field-->
+</$list><!--ttb_prefix-->
+</$list><!--ttb_card-->
+</$vars><!--exclude_created-->
+<!--gtree_disp_ttb_lines-->
+\end
+
+\define gtree_ref_disp_assigned_field(ttb_card, ttb_prefix, cur_field, field_val)
+<$list variable=assigned_field filter="[<cur_field>addprefix[ln-]]">
+<$list variable=assigned_card filter="[prefix<ttb_prefix>has:field<assigned_field>else[]]">
+<$list variable=link_field filter="[<assigned_card>!match[]]">
+<$link to=<<assigned_card>> ><<cur_field>></$link>
+</$list><!--link_field-->
+<$list variable=bold_field filter="[<assigned_card>match[]]">
+''<<cur_field>>''
+</$list><!--bold_field-->
+</$list><!--assigned_card-->
+</$list><!--assigned_field-->
+<$text text=<<field_val>> /><br>
+<!--gtree_ref_disp_assigned_field-->
+\end
+
+\define gtree_ttb_store_vars()
+<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
+<<gtree_ref_user_filter_card>>
+<<gtree_ref_user_filter_vars>>
+</$list><!--ttb_card-->
+<!--ttb_store_vars-->
+\end
+
+\define gtree_ref_user_filter_card(ttb_card)
+<$edit-text tiddler=<<ttb_card>> field=prefix_text placeholder="[no text yet]" autoHeight=yes tag=input/>
+<$list variable=prefix_text filter="[<ttb_card>get[prefix_text]else[]]">
+<$button>
+<$action-setfield $tiddler=<<ttb_card>> filter_prefix=<<prefix_text>> />
+<$action-deletefield $tiddler=<<ttb_card>> $field=selected_card />
+List cards
+</$button>
+</$list><!--prefix_text-->
+<!--gtree_ref_user_filter_card-->
+\end
+
+\define gtree_ref_user_filter_vars(ttb_card)
+<$list variable=card_prefix filter="[<ttb_card>get[filter_prefix]addprefix[(?i)^]]">
+<$list variable=card_first filter="[regexp<card_prefix>sort[]first[]else[]]">
+
+<<gtree_ref_user_select_card>>
+<<gtree_ref_user_selected_vars>>
+</$list><!--card_first-->
+</$list><!--card_prefix-->
+<!--gtree_ref_user_filter_vars-->
+\end
+
+\define gtree_ref_user_select_card(ttb_card, card_prefix, card_first)
+<$select tiddler=<<ttb_card>> field=selected_card default=<<card_first>> >
+<$list variable=cur_card filter="[regexp<card_prefix>sort[]]">
+<option value=<<cur_card>>><<cur_card>></option>
+</$list><!--cur_card-->
+</$select>
+<span style="margin-left:20px;" /><$checkbox default="0" unchecked="1" checked="0" tiddler=<<ttb_card>> field="include_last_line" ><span style="margin-left:5px;" />Include Last Line</$checkbox>
+<!--gtree_ref_user_select_card-->
+\end
+
+\define gtree_ref_user_selected_vars(ttb_card, card_prefix, card_first)
+<$list variable=source_card filter="[<ttb_card>get[selected_card]else<card_first>]">
+<$list variable=include_last_line filter="[<ttb_card>get[include_last_line]else[0]]">
+<<gtree_ref_text_parse_vars>>
+</$list><!--include_last_line-->
+</$list><!--source_card-->
+<!--gtree_ref_user_selected_vars-->
+\end
+
+\define gtree_ref_text_parse_vars(ttb_card, card_prefix, card_first, source_card, include_last_line)
+<$wikify name=lit_cr text="&#13;">
+<$wikify name=lit_lf text="&#10;">
+<<gtree_ref_selcard_summary>>
+</$wikify><!--lit_lf-->
+</$wikify><!--lit_cr-->
+<!--gtree_ref_text_parse_vars-->
+\end
+
+\define gtree_ref_selcard_summary(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf)
+<$link to=<<source_card>> />
+
+<$list variable=cur_field filter="[<source_card>fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]">
+Found fields: <<cur_field>>
+</$list><!--cur_field-->
+
+<$vars lit_gt=">">
+<$list variable=comment_close_holder filter="[[--!]addsuffix<lit_gt>]">
+<$list variable=comment_close_replace filter="[[--]addsuffix<lit_gt>]">
+<$list variable=doc_text filter="[<source_card>get[text]split<lit_cr>join[]split<comment_close_holder>join<comment_close_replace>]">
+<$list variable=line_count filter="[<doc_text>split<lit_lf>count[]subtract[1]!match[0]subtract[1]!match[0]subtract<include_last_line>!match[0]]">
+Found lines: <<line_count>>
+
+<<gtree_ref_user_button_overwrite>>
+</$list><!--line_count-->
+</$list><!--doc_text-->
+</$list><!--comment_close_replace-->
+</$list><!--comment_close_holder-->
+</$vars><!--lit_gt-->
+<!--gtree_ref_selcard_summary-->
+\end
+
+\define gtree_ref_user_button_overwrite(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
+<$button>
+<<gtree_ref_clear_current_fields>>
+<<gtree_ref_list_line_labels>>
+Overwrite text fields
+</$button>
+<!--gtree_ref_user_button_overwrite-->
+\end
+
+\define gtree_ref_clear_current_fields(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
+<$list variable=cur_field filter="[<source_card>fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
+<$action-deletefield $tiddler=<<source_card>> $field=<<cur_field>> />
+</$list>
+<!--gtree_ref_clear_current_fields-->
+\end
+
+\define gtree_ref_list_line_labels(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
+<$list variable=linctr filter="[range<line_count>]">
+<$list variable=line_num_e filter="[<linctr>split[]last[3]join[]]">
+<$list variable=line_num_f filter="[<linctr>split[]butlast[3]last[3]join[]else[]]">
+<$list variable=line_title_e_prefix filter="[<line_num_e>split[]count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]">
+<$list variable=line_title_f_prefix filter="[<line_num_f>split[]!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]">
+<$list variable=line_title_e_suffix filter="[<line_title_f_prefix>match[]then<line_title_e_prefix>else[e]]">
+<$list variable=line_title filter="[<line_title_f_prefix>addsuffix<line_num_f>addsuffix<line_title_e_suffix>addsuffix<line_num_e>]">
+<<gtree_ref_assign_line_field>>
+</$list><!--line_title-->
+</$list><!--line_title_e_suffix-->
+</$list><!--line_title_f_prefix-->
+</$list><!--line_title_e_prefix-->
+</$list><!--line_num_f-->
+</$list><!--line_num_e-->
+</$list><!--linctr-->
+<!--gtree_ref_list_line_labels-->
+\end
+
+\define gtree_ref_assign_line_field(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count, linctr, line_title)
+<$list variable=cur_line_nth filter="[<linctr>add[1]]">
+<$list variable=cur_line_text filter="[<doc_text>split<lit_lf>nth<cur_line_nth>]">
+<$action-setfield $tiddler=<<source_card>> $field=<<line_title>> $value=<<cur_line_text>>/>
+</$list><!--cur_line_text-->
+</$list><!--cur_line_nth-->
+<!--gtree_ref_assign_line_field-->
+\end
+
+\define gtree_btn_disp_tree_options()
+<$list variable=ttb_card filter="[<currentTiddler>]">
+<$vars lit_lt="<" lit_gt=">" lit_s=" " lit_qs='"' lit_fslash="/" lit_state_popup="$:/state/popup/">
+<$vars macro_name=gtree_disp_tree_cards button_title="Show Actions tree">
+<<gtree_ref_button_tree_option>>
+</$vars><!--macro_name, button_title-->
+
+<$vars macro_name=gtree_audit_lne_lnz button_title="Show Audit list">
+<<gtree_ref_button_tree_option>>
+</$vars><!--macro_name, button_title-->
+
+<$vars macro_name=gtree_disp_ttb_lines button_title="Show Lines list">
+<<gtree_ref_button_tree_option>>
+</$vars><!--macro_name, button_title-->
+
+<$vars macro_name=gtree_disp_tree_text button_title="Show Text list">
+<<gtree_ref_button_tree_option>>
+</$vars><!--macro_name, button_title-->
+
+<$vars macro_name=gtree_disp_tree_links button_title="Show Lines tree">
+<<gtree_ref_button_tree_option>>
+</$vars><!--macro_name, button_title-->
+
+</$vars><!--lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup-->
+</$list><!--ttb_card-->
+\end
+
+\define gtree_ref_button_tree_option(ttb_card, lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup, macro_name, button_title)
+<$list variable=dest_card filter="[<ttb_card>addprefix<lit_fslash>addprefix<macro_name>addprefix<lit_state_popup>]">
+<$list variable=new_card_content filter="[<macro_name>addprefix<lit_lt>addprefix<lit_lt>addsuffix<lit_s>addsuffix<lit_qs>addsuffix<ttb_card>addsuffix<lit_qs>addsuffix<lit_gt>addsuffix<lit_gt>]">
+<$button>
+<$action-setfield $tiddler=<<dest_card>> text=<<new_card_content>>/>
+<$action-navigate $to=<<dest_card>> />
+<<button_title>>
+</$button>
+</$list><!--new_card_content-->
+</$list><!--dest_card-->
+\end
+
+
+
+
+$:/positivesigner/gtree/template e1 tree
+
+<$list variable=ttb_card filter="[<currentTiddler>has:field[e1]]">
+<<gtree_btn_disp_tree_options>>
+<<glbl_article_list>>
+</$list><!--ttb_card-->
+
+
+
+$:/positivesigner/gtree/template LinePath
+
+<$list filter="[is[current]has[line-path]]">
+<<gtree_disp_next_level>>
+</$list>
+
+
+
+$:/positivesigner/mcr gcmpr_compare_card
+
+\define gcmpr_compare_card(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]">
+<$list variable=compare_card filter="[<ttb_card>addprefix[$:/state/popup/compare-card/]]">
+<$link to=<<ttb_card>> />
+<<gcmpr_ref_copy_over_ttb_card>>
+<br>
+<$link to=<<compare_card>> />
+<<gcmpr_ref_replace_comment_endings>>
+<<gcmpr_ref_disp_diff_text>>
+<$edit-text autoHeight=no tiddler=<<compare_card>> tag=textarea default="" />
+</$list><!--compare_card-->
+</$list><!--ttb_card-->
+<!--gcmpr_compare_card-->
+\end
+
+\define gcmpr_ref_copy_over_ttb_card(ttb_card, compare_card)
+<$vars enr_text="text" >
+<$list variable=compare_text filter="[<compare_card>get<enr_text>]">
+<$button>
+<$action-setfield $tiddler=<<ttb_card>> text=<<compare_text>> />
+Copy over 
+</$button>
+</$list><!--compare_text-->
+</$vars><!--enr_text-->
+\end
+
+\define gcmpr_ref_replace_comment_endings(ttb_card, compare_card)
+<$button>
+<$vars comment_flag="--" lit_exclm="!" lit_lt="<" lit_gt=">" enr_text="text" >
+<$wikify name=lit_lf text="&#10;">
+<$list variable=comment_open_text filter="[<lit_lt>addsuffix<lit_exclm>addsuffix<comment_flag>]">
+<$list variable=comment_close_text filter="[<comment_flag>addsuffix<lit_gt>]">
+<$list variable=comment_close_replace filter="[<comment_flag>addsuffix<lit_exclm>addsuffix<lit_gt>]">
+<$list variable=replace_text filter="[<compare_card>get<enr_text>split<comment_close_text>join<comment_close_replace>addprefix<lit_lf>addprefix<comment_open_text>addsuffix<lit_lf>addsuffix<comment_close_text>]">
+<$action-setfield $tiddler=<<compare_card>> text=<<replace_text>> />
+</$list><!--replace_text-->
+</$list><!--comment_close_replace-->
+</$list><!--comment_close_text-->
+</$list><!--comment_open_text-->
+</$wikify>
+</$vars><!--comment_flag, lit_exclm, lit_lt, lit_gt-->
+Replace comment endings
+</$button><br>
+<!--gcmpr_ref_replace_comment_endings-->
+\end
+
+\define gcmpr_ref_disp_diff_text()
+<$list variable=val_ttb_card filter="[<ttb_card>get[text]!match[]]">
+<$list variable=val_compare_card filter="[<compare_card>get[text]!match[]]">
+<$diff-text source=<<val_ttb_card>> dest=<<val_compare_card>> />
+</$list><!--val_compare_card-->
+</$list><!--val_ttb_card-->
+<!--gcmpr_ref_disp_diff_text-->
+\end
+
+\define gcmpr_btn_cmp_current()
+<$list variable=cur_card filter="[all[current]]">
+<$list variable=dest_card filter="[<cur_card>addprefix[$:/state/popup/gcmpr/]]">
+<$vars lit_lt="<" lit_gt=">" lit_s=" " lit_qs='"' macro_name="gcmpr_compare_card" enr_text="text" >
+<$list variable=macro_call_text filter="[<lit_lt>addsuffix<lit_lt>addsuffix<macro_name>addsuffix<lit_s>addsuffix<lit_qs>addsuffix<cur_card>addsuffix<lit_qs>addsuffix<lit_gt>addsuffix<lit_gt>]">
+<$button class=<<tv-config-toolbar-class>> >
+<$action-setfield $tiddler=<<dest_card>> text=<<macro_call_text>> />
+<$action-navigate $to=<<dest_card>> />
+cmp
+</$button>
+</$list><!--macro_call_text-->
+</$vars><!--lit_lt-->
+</$list><!--dest_card-->
+</$list><!--cur_card-->
+<!--gcmpr_btn_cmp_current-->
+\end
+
+
+
+
 $:/themes/tiddlywiki/vanilla/metrics/bodyfontsize
 
 15px
@@ -836,445 +1384,6 @@ mcr glbl_image
 
 
 
-mcr gtree_disp_field
-
-\define gtree_disp_tree_cards(ur_ttb_card)
-<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
-<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
-<$vars disp_link=card enr_line_path=line-path>
-<<gtree_ref_disp_root_tree>>
-</$vars><!--disp_link, enr_line_path-->
-</$list><!--ttb_prefix-->
-</$list><!--ttb_card-->
-<!--gtree_disp_tree_cards-->
-\end
-
-\define gtree_disp_tree_links(ur_ttb_card)
-<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
-<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
-<$vars disp_link=yes enr_line_path=line-path>
-<<gtree_ref_disp_root_tree>>
-</$vars><!--disp_link, enr_line_path-->
-</$list><!--ttb_prefix-->
-</$list><!--ttb_card-->
-<!--gtree_disp_tree_links-->
-\end
-
-\define gtree_disp_tree_text(ur_ttb_card)
-<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
-<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
-<$vars disp_link=no enr_line_path=line-path>
-<<gtree_ref_disp_root_tree>>
-</$vars><!--disp_link, enr_line_path-->
-</$list><!--ttb_prefix-->
-</$list><!--ttb_card-->
-<!--gtree_disp_tree_text-->
-\end
-
-\define gtree_ref_disp_root_tree(ttb_card, ttb_prefix, disp_link, enr_line_path)
-<$list variable=found_line_path filter="[prefix<ttb_prefix>get<enr_line_path>sort[]]">
-<$list variable=filter_root_path filter="[<found_line_path>split[-]count[]match[1]]">
-<$vars
-  cur_root_path=<<found_line_path>>
-  cur_level_seq=1 >
-<<gtree_ref_recurse_code_level>>
-</$vars><!--cur_root_path, cur_level_seq-->
-</$list><!--filter_root_path-->
-</$list><!--found_line_path-->
-<!--gtree_ref_disp_root_tree-->
-\end
-
-\define gtree_ref_recurse_code_level(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq)
-<$list variable=filter_level_max filter="[<cur_level_seq>!match[10]]">
-<$list variable=cur_line_card filter="[prefix<ttb_prefix>line-path<cur_root_path>sort[]]">
-<<gtree_ref_disp_card_entry>>
-<<gtree_ref_each_line_branch>>
-</$list><!--cur_line_card-->
-</$list><!--filter_level_max-->
-<!--gtree_ref_recurse_code_level-->
-\end
-
-\define gtree_ref_disp_card_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
-<$list variable=disp_card_link filter="[<disp_link>lowercase[]match[card]]">
-<$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
-<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
-<<indent_arrows>> <$link to=<<cur_line_card>> /><br>
-</$list><!--indent_arrows-->
-</$list><!--indent_count-->
-</$list><!--disp_card_link-->
-<!--gtree_ref_disp_card_entry-->
-\end
-
-\define gtree_ref_each_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card)
-<$list variable=cur_line_branch filter="[<cur_line_card>fields[]prefix[ln-]sort[]]">
-<$list variable=filter_skip_e0 filter="[<cur_line_branch>!match[ln-e0]]">
-<<gtree_ref_disp_link_entry>>
-<<gtree_ref_disp_doc_contents>>
-</$list><!--filter_skip_e0-->
-<<gtree_ref_disp_next_line_branch>>
-</$list><!--cur_line_branch-->
-<!--gtree_ref_each_line_branch-->
-\end
-
-\define gtree_ref_disp_link_entry(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
-<$list variable=disp_branch_link filter="[<disp_link>lowercase[]match[yes]]">
-<$list variable=indent_count filter="[<cur_level_seq>multiply[2]]">
-<$list variable=indent_arrows filter="[[->]pad<indent_count>,[->]]">
-<<indent_arrows>> <$link to=<<cur_line_card>> ><<cur_line_branch>></$link>
-</$list><!--indent_arrows-->
-</$list><!--indent_count-->
-</$list><!--disp_branch_link-->
-<!--gtree_ref_disp_link_entry-->
-\end
-
-\define gtree_ref_disp_doc_contents(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
-<$list variable=disp_doc_contents filter="[<disp_link>lowercase[]!match[card]]">
-<$vars cur_field=<<cur_line_branch>> >
-<<gtree_ref_disp_field>><br>
-</$vars><!--cur_field-->
-</$list><!--disp_doc_contents-->
-<!--gtree_ref_disp_doc_contents-->
-\end
-
-\define gtree_ref_disp_next_line_branch(ttb_card, ttb_prefix, disp_link, enr_line_path, cur_root_path, cur_level_seq, cur_line_card, cur_line_branch)
-<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_root_path>sort[]]">
-<$list variable=next_level filter="[<cur_level_seq>add[1]]">
-<$vars cur_root_path=<<next_line_branch>> cur_level_seq=<<next_level>> >
-<<gtree_ref_recurse_code_level>>
-</$vars><!--cur_root_path, cur_level_seq-->
-</$list><!--next_level-->
-</$list><!--next_line_branch-->
-<!--gtree_ref_disp_next_line_branch-->
-\end
-
-\define gtree_ref_disp_field(ttb_card, cur_field)
-<$list variable=line_num filter="[<cur_field>removeprefix[ln-]]">
-<$list variable=cur_entry filter="[<ttb_card>get<line_num>]"
-><$text text=<<cur_entry>> />
-</$list><!--cur_entry-->
-</$list><!--line_num-->
-<!--gtree_ref_disp_field-->
-\end
-
-\define gtree_disp_next_level()
-<$list variable=cur_card filter="[<currentTiddler>]">
-<$list variable=ttb_card filter="[<cur_card>split[\]first[]]">
-<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]">
-<$vars enr_line_path=line-path>
-<$list variable=cur_line_path filter="[<cur_card>get<enr_line_path>]">
-<<gtree_ref_disp_parent_link>><br>
-<<gtree_ref_each_line_prefix>>
-<$vars disp_link=card>
-<<gtree_ref_disp_subtree>>
-</$vars><!--disp_link-->
-<$vars disp_link=yes>
-<<gtree_ref_disp_subtree>>
-</$vars><!--disp_link-->
-</$list><!--cur_line_path-->
-</$vars><!--enr_line_path-->
-</$list><!--ttb_prefix-->
-</$list><!--ttb_card-->
-</$list><!--cur_card-->
-<!--gtree_disp_next_level-->
-\end
-
-\define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
-<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]else[ln-]]">
-<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]else[ln-]]">
-<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>else<ttb_card>]">
-<$link to=<<parent_card>> /><br>
-</$list><!--parent_card-->
-</$list><!--parent_branch-->
-</$list><!--parent_line_path-->
-<!--gtree_ref_disp_parent_link-->
-\end
-
-\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_section)
-<$list variable=cur_prefix filter="[<cur_card>fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]">
-<$vars disp_section=leading>
-<<gtree_ref_disp_line_prefix_group>>
-</$vars><!--disp_section-->
-<<gtree_ref_disp_next_line_branch_cards>>
-<$vars disp_section=trailing>
-<<gtree_ref_disp_line_prefix_group>>
-</$vars><!--disp_section-->
-</$list><!--cur_prefix-->
-<!--gtree_ref_each_line_prefix-->
-\end
-
-\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix, disp_section)
-<$list variable=disp_leading filter="[<disp_section>match[leading]then[]else[!]]">
-<$vars test_prefix="[" test_suffix="match[]]">
-<$list variable=include_section filter="[<test_prefix>addsuffix<disp_leading>addsuffix<test_suffix>]">
-<$list variable=cur_field filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
-<$list variable=found_section filter="[<cur_card>get<cur_field>!match[]else[]filter<include_section>]">
-<<gtree_ref_disp_field>><br>
-</$list><!--found_section-->
-</$list><!--cur_field-->
-</$list><!--include_section-->
-</$vars><!--test_prefix, test_suffix-->
-</$list><!--disp_leading-->
-<!--gtree_ref_disp_line_prefix_group-->
-\end
-
-\define gtree_ref_disp_next_line_branch_cards(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
-<$list variable=cur_line_branch filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
-<$list variable=next_line_branch filter="[<cur_line_branch>addprefix<cur_line_path>]">
-<$list variable=next_card filter="[prefix<ttb_prefix>line-path<next_line_branch>sort[]]">
-
-* <$link to=<<next_card>> />
-</$list><!--next_card-->
-</$list><!--next_line_branch-->
-</$list><!--cur_line_branch-->
-<!--gtree_ref_disp_next_line_branch_cards-->
-\end
-
-\define gtree_ref_disp_subtree(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_link)
-<hr>
-<$list variable=found_line_num filter="[<cur_card>fields[]prefix[ln-]]">
-<$list variable=found_line_path filter="[<cur_line_path>addsuffix<found_line_num>]">
-<$vars cur_root_path=<<found_line_path>> cur_level_seq=1 >
-<<gtree_ref_recurse_code_level>>
-</$vars><!--cur_root_path, cur_level_seq-->
-</$list><!--found_line_path-->
-</$list><!--found_line_num-->
-<!--gtree_ref_disp_subtree-->
-\end
-
-\define gtree_audit_lne_lnz(ur_ttb_card)
-<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
-<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]" >
-<$vars disp_link=card enr_line_path=line-path>
-<$list variable=cur_card filter="[prefix<ttb_prefix>has<enr_line_path>]">
-<<gtree_ref_disp_lnz_subcards>>
-<<gtree_ref_disp_ln_lvl3_subcards>>
-</$list><!--cur_card-->
-</$vars><!--enr_line_path-->
-</$list><!--ttb_prefix-->
-</$list><!--ttb_card-->
-<!--gtree_audit_lne_lnz-->
-\end
-
-\define gtree_ref_disp_lnz_subcards(ttb_card, ttb_prefix, cur_card)
-<$list variable=cur_zfield_name filter="[<cur_card>fields[]prefix[ln-z]]">
-
-<$link to=<<cur_card>> />
-<<cur_zfield_name>><br>
-
-</$list><!--cur_zfield_name-->
-<!--gtree_ref_disp_lnz_subcards-->
-\end
-
-\define gtree_ref_disp_ln_lvl3_subcards(ttb_card, ttb_prefix, cur_card)
-<$list variable=cur_field_name filter="[<cur_card>fields[]prefix[ln-]]">
-<$list variable=split_field filter="[<cur_field_name>split[-]count[]!match[2]]">
-
-<$text text="----" /> <$link to=<<cur_card>> />
-<<cur_field_name>><br>
-
-</$list><!--split_field-->
-</$list><!--cur_field_name-->
-<!--gtree_ref_disp_ln_lvl3_subcards-->
-\end
-
-\define gtree_disp_ttb_lines(ur_ttb_card)
-<$vars exclude_created="[!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
-<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]" >
-<$list variable=ttb_prefix filter="[<ttb_card>addsuffix[\]]">
-<$list variable=cur_field filter="[<ttb_card>fields[]filter<exclude_created>sort[]]">
-<$list variable=field_val filter="[<ttb_card>get<cur_field>else[]]">
-<<gtree_ref_disp_assigned_field>>
-</$list><!--field_val-->
-</$list><!--cur_field-->
-</$list><!--ttb_prefix-->
-</$list><!--ttb_card-->
-</$vars><!--exclude_created-->
-<!--gtree_disp_ttb_lines-->
-\end
-
-\define gtree_ref_disp_assigned_field(ttb_card, ttb_prefix, cur_field, field_val)
-<$list variable=assigned_field filter="[<cur_field>addprefix[ln-]]">
-<$list variable=assigned_card filter="[prefix<ttb_prefix>has:field<assigned_field>else[]]">
-<$list variable=link_field filter="[<assigned_card>!match[]]">
-<$link to=<<assigned_card>> ><<cur_field>></$link>
-</$list><!--link_field-->
-<$list variable=bold_field filter="[<assigned_card>match[]]">
-''<<cur_field>>''
-</$list><!--bold_field-->
-</$list><!--assigned_card-->
-</$list><!--assigned_field-->
-<$text text=<<field_val>> /><br>
-<!--gtree_ref_disp_assigned_field-->
-\end
-
-\define gtree_ttb_store_vars()
-<$list variable=ttb_card filter="[[$:/state/popup/SplitCodeSearch]]">
-<<gtree_ref_user_filter_card>>
-<<gtree_ref_user_filter_vars>>
-</$list><!--ttb_card-->
-<!--ttb_store_vars-->
-\end
-
-\define gtree_ref_user_filter_card(ttb_card)
-<$edit-text tiddler=<<ttb_card>> field=prefix_text placeholder="[no text yet]" autoHeight=yes tag=input/>
-<$list variable=prefix_text filter="[<ttb_card>get[prefix_text]else[]]">
-<$button>
-<$action-setfield $tiddler=<<ttb_card>> filter_prefix=<<prefix_text>> />
-<$action-deletefield $tiddler=<<ttb_card>> $field=selected_card />
-List cards
-</$button>
-</$list><!--prefix_text-->
-<!--gtree_ref_user_filter_card-->
-\end
-
-\define gtree_ref_user_filter_vars(ttb_card)
-<$list variable=card_prefix filter="[<ttb_card>get[filter_prefix]addprefix[(?i)^]]">
-<$list variable=card_first filter="[regexp<card_prefix>sort[]first[]else[]]">
-
-<<gtree_ref_user_select_card>>
-<<gtree_ref_user_selected_vars>>
-</$list><!--card_first-->
-</$list><!--card_prefix-->
-<!--gtree_ref_user_filter_vars-->
-\end
-
-\define gtree_ref_user_select_card(ttb_card, card_prefix, card_first)
-<$select tiddler=<<ttb_card>> field=selected_card default=<<card_first>> >
-<$list variable=cur_card filter="[regexp<card_prefix>sort[]]">
-<option value=<<cur_card>>><<cur_card>></option>
-</$list><!--cur_card-->
-</$select>
-<span style="margin-left:20px;" /><$checkbox default="0" unchecked="1" checked="0" tiddler=<<ttb_card>> field="include_last_line" ><span style="margin-left:5px;" />Include Last Line</$checkbox>
-<!--gtree_ref_user_select_card-->
-\end
-
-\define gtree_ref_user_selected_vars(ttb_card, card_prefix, card_first)
-<$list variable=source_card filter="[<ttb_card>get[selected_card]else<card_first>]">
-<$list variable=include_last_line filter="[<ttb_card>get[include_last_line]else[0]]">
-<<gtree_ref_text_parse_vars>>
-</$list><!--include_last_line-->
-</$list><!--source_card-->
-<!--gtree_ref_user_selected_vars-->
-\end
-
-\define gtree_ref_text_parse_vars(ttb_card, card_prefix, card_first, source_card, include_last_line)
-<$wikify name=lit_cr text="&#13;">
-<$wikify name=lit_lf text="&#10;">
-<<gtree_ref_selcard_summary>>
-</$wikify><!--lit_lf-->
-</$wikify><!--lit_cr-->
-<!--gtree_ref_text_parse_vars-->
-\end
-
-\define gtree_ref_selcard_summary(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf)
-<$link to=<<source_card>> />
-
-<$list variable=cur_field filter="[<source_card>fields[]!match[created]!match[modified]!match[tags]!match[text]!match[title]count[]]">
-Found fields: <<cur_field>>
-</$list><!--cur_field-->
-
-<$vars lit_gt=">">
-<$list variable=comment_close_holder filter="[[--!]addsuffix<lit_gt>]">
-<$list variable=comment_close_replace filter="[[--]addsuffix<lit_gt>]">
-<$list variable=doc_text filter="[<source_card>get[text]split<lit_cr>join[]split<comment_close_holder>join<comment_close_replace>]">
-<$list variable=line_count filter="[<doc_text>split<lit_lf>count[]subtract[1]!match[0]subtract[1]!match[0]subtract<include_last_line>!match[0]]">
-Found lines: <<line_count>>
-
-<<gtree_ref_user_button_overwrite>>
-</$list><!--line_count-->
-</$list><!--doc_text-->
-</$list><!--comment_close_replace-->
-</$list><!--comment_close_holder-->
-</$vars><!--lit_gt-->
-<!--gtree_ref_selcard_summary-->
-\end
-
-\define gtree_ref_user_button_overwrite(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
-<$button>
-<<gtree_ref_clear_current_fields>>
-<<gtree_ref_list_line_labels>>
-Overwrite text fields
-</$button>
-<!--gtree_ref_user_button_overwrite-->
-\end
-
-\define gtree_ref_clear_current_fields(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
-<$list variable=cur_field filter="[<source_card>fields[]!match[text]!match[created]!match[modified]!match[tags]!match[text]!match[title]]">
-<$action-deletefield $tiddler=<<source_card>> $field=<<cur_field>> />
-</$list>
-<!--gtree_ref_clear_current_fields-->
-\end
-
-\define gtree_ref_list_line_labels(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count)
-<$list variable=linctr filter="[range<line_count>]">
-<$list variable=line_num_e filter="[<linctr>split[]last[3]join[]]">
-<$list variable=line_num_f filter="[<linctr>split[]butlast[3]last[3]join[]else[]]">
-<$list variable=line_title_e_prefix filter="[<line_num_e>split[]count[]split[1]join[e]split[2]join[ec]split[3]join[ed]]">
-<$list variable=line_title_f_prefix filter="[<line_num_f>split[]!match[]count[]!match[0]split[1]join[f]split[2]join[fc]split[3]join[fd]else[]]">
-<$list variable=line_title_e_suffix filter="[<line_title_f_prefix>match[]then<line_title_e_prefix>else[e]]">
-<$list variable=line_title filter="[<line_title_f_prefix>addsuffix<line_num_f>addsuffix<line_title_e_suffix>addsuffix<line_num_e>]">
-<<gtree_ref_assign_line_field>>
-</$list><!--line_title-->
-</$list><!--line_title_e_suffix-->
-</$list><!--line_title_f_prefix-->
-</$list><!--line_title_e_prefix-->
-</$list><!--line_num_f-->
-</$list><!--line_num_e-->
-</$list><!--linctr-->
-<!--gtree_ref_list_line_labels-->
-\end
-
-\define gtree_ref_assign_line_field(ttb_card, card_prefix, card_first, source_card, include_last_line, lit_cr, lit_lf, doc_text, line_count, linctr, line_title)
-<$list variable=cur_line_nth filter="[<linctr>add[1]]">
-<$list variable=cur_line_text filter="[<doc_text>split<lit_lf>nth<cur_line_nth>]">
-<$action-setfield $tiddler=<<source_card>> $field=<<line_title>> $value=<<cur_line_text>>/>
-</$list><!--cur_line_text-->
-</$list><!--cur_line_nth-->
-<!--gtree_ref_assign_line_field-->
-\end
-
-\define gtree_btn_disp_tree_options()
-<$list variable=ttb_card filter="[<currentTiddler>]">
-<$vars lit_lt="<" lit_gt=">" lit_s=" " lit_qs='"' lit_fslash="/" lit_state_popup="$:/state/popup/">
-<$vars macro_name=gtree_disp_tree_cards button_title="Show Actions tree">
-<<gtree_ref_button_tree_option>>
-</$vars><!--macro_name, button_title-->
-
-<$vars macro_name=gtree_audit_lne_lnz button_title="Show Audit list">
-<<gtree_ref_button_tree_option>>
-</$vars><!--macro_name, button_title-->
-
-<$vars macro_name=gtree_disp_ttb_lines button_title="Show Lines list">
-<<gtree_ref_button_tree_option>>
-</$vars><!--macro_name, button_title-->
-
-<$vars macro_name=gtree_disp_tree_text button_title="Show Text list">
-<<gtree_ref_button_tree_option>>
-</$vars><!--macro_name, button_title-->
-
-<$vars macro_name=gtree_disp_tree_links button_title="Show Lines tree">
-<<gtree_ref_button_tree_option>>
-</$vars><!--macro_name, button_title-->
-
-</$vars><!--lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup-->
-</$list><!--ttb_card-->
-\end
-
-\define gtree_ref_button_tree_option(ttb_card, lit_lt, lit_gt, lit_qs, lit_s, lit_fslash, lit_state_popup, macro_name, button_title)
-<$list variable=dest_card filter="[<ttb_card>addprefix<lit_fslash>addprefix<macro_name>addprefix<lit_state_popup>]">
-<$list variable=new_card_content filter="[<macro_name>addprefix<lit_lt>addprefix<lit_lt>addsuffix<lit_s>addsuffix<lit_qs>addsuffix<ttb_card>addsuffix<lit_qs>addsuffix<lit_gt>addsuffix<lit_gt>]">
-<$button>
-<$action-setfield $tiddler=<<dest_card>> text=<<new_card_content>>/>
-<$action-navigate $to=<<dest_card>> />
-<<button_title>>
-</$button>
-</$list><!--new_card_content-->
-</$list><!--dest_card-->
-\end
-
-
-
-
 parm SkipSaveExportHTML
 
 
@@ -1437,9 +1546,9 @@ Sample Code
 \end
 
 \define gtree_ref_disp_parent_link(cur_card, ttb_card, ttb_prefix, cur_line_path)
-<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]]">
-<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]]">
-<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>]">
+<$list variable=parent_line_path filter="[<cur_line_path>split[ln-]butlast[]join[ln-]else[ln-]]">
+<$list variable=parent_branch filter="[<cur_line_path>split[ln-]last[]addprefix[ln-]else[ln-]]">
+<$list variable=parent_card filter="[prefix<ttb_prefix>line-path<parent_line_path>has:field<parent_branch>else<ttb_card>]">
 <$link to=<<parent_card>> /><br>
 </$list><!--parent_card--!>
 </$list><!--parent_branch--!>
@@ -1447,18 +1556,31 @@ Sample Code
 <!--gtree_ref_disp_parent_link--!>
 \end
 
-\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path)
+\define gtree_ref_each_line_prefix(cur_card, ttb_card, ttb_prefix, cur_line_path, disp_section)
 <$list variable=cur_prefix filter="[<cur_card>fields[]prefix[ln-]removeprefix[ln-]splitbefore[e]splitbefore[f]splitbefore[y]splitbefore[z]addprefix[ln-]sort[]]">
+<$vars disp_section=leading>
 <<gtree_ref_disp_line_prefix_group>>
+</$vars><!--disp_section--!>
 <<gtree_ref_disp_next_line_branch_cards>>
+<$vars disp_section=trailing>
+<<gtree_ref_disp_line_prefix_group>>
+</$vars><!--disp_section--!>
 </$list><!--cur_prefix--!>
 <!--gtree_ref_each_line_prefix--!>
 \end
 
-\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix)
+\define gtree_ref_disp_line_prefix_group(cur_card, ttb_card, ttb_prefix, cur_line_path, cur_prefix, disp_section)
+<$list variable=disp_leading filter="[<disp_section>match[leading]then[]else[!]]">
+<$vars test_prefix="[" test_suffix="match[]]">
+<$list variable=include_section filter="[<test_prefix>addsuffix<disp_leading>addsuffix<test_suffix>]">
 <$list variable=cur_field filter="[<cur_card>fields[]prefix<cur_prefix>sort[]]">
+<$list variable=found_section filter="[<cur_card>get<cur_field>!match[]else[]filter<include_section>]">
 <<gtree_ref_disp_field>><br>
+</$list><!--found_section--!>
 </$list><!--cur_field--!>
+</$list><!--include_section--!>
+</$vars><!--test_prefix, test_suffix--!>
+</$list><!--disp_leading--!>
 <!--gtree_ref_disp_line_prefix_group--!>
 \end
 
@@ -1899,15 +2021,6 @@ Overwrite text fields
 
 
 
-template e1 tree
-
-<$list variable=ttb_card filter="[<currentTiddler>has:field[e1]]">
-<<gtree_btn_disp_tree_options>>
-<<glbl_article_list>>
-</$list><!--ttb_card-->
-
-
-
 template ExportAllCode
 
 \define renderContent()
@@ -1950,14 +2063,6 @@ template Home Button
 <$action-sendmessage $message="tm-home"/>
 </$button></div>
 
-
-
-
-template LinePath
-
-<$list filter="[is[current]has[line-path]]">
-<<gtree_disp_next_level>>
-</$list>
 
 
 
