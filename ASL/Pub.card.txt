@@ -1470,6 +1470,19 @@ template Home Button
 
 
 
+template link field
+
+<$vars link_field_prefix="link-" filter_has_link="[fields[]prefix[link-]first[]]" cur_card=<<currentTiddler>> >
+<$list variable=found_filter filter="[<cur_card>filter<filter_has_link>]">
+<<glbl_dt_ddd>>
+
+<<glbl_navigate_book>>
+</$list><!--found_filter-->
+</$vars>
+
+
+
+
 View All Cards
 
 <$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
