@@ -138,6 +138,217 @@ $:/plugins/danielo515/searchNreplace
 
 
 
+$:/positivesigner/gcmpr
+
+
+
+$:/positivesigner/gcmpr/btn gcmpr card
+
+<<gcmpr_btn_cmp_current>> 
+
+
+
+
+$:/positivesigner/gcmpr/mcr gcmpr_compare_card
+
+\define gcmpr_compare_card(ur_ttb_card)
+<$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]">
+<$list variable=compare_card filter="[<ttb_card>addprefix[$:/state/popup/compare-card/]]">
+<$link to=<<ttb_card>> />
+<<gcmpr_ref_edit_source_text>>
+<<gcmpr_ref_copy_over_ttb_card>>
+<br>
+<$link to=<<compare_card>> />
+<<gcmpr_ref_replace_comment_endings>>
+<<gcmpr_ref_disp_diff_text>>
+<$edit-text autoHeight=no tiddler=<<compare_card>> tag=textarea default="" />
+<<gcmpr_ref_disp_textedit_link>>
+</$list><!--compare_card-->
+</$list><!--ttb_card-->
+<!--gcmpr_compare_card-->
+\end
+
+\define gcmpr_ref_edit_source_text(ttb_card, compare_card)
+<$vars enr_text="text" >
+<$list variable=source_text filter="[<ttb_card>get<enr_text>else[]]">
+<$button>
+<$action-setfield $tiddler=<<compare_card>> text=<<source_text>> />
+Edit Source
+</$button>
+</$list><!--source_text-->
+</$vars><!--enr_text-->
+<!--gcmpr_ref_edit_source_text-->
+\end
+
+\define gcmpr_ref_copy_over_ttb_card(ttb_card, compare_card)
+<$vars enr_text="text" >
+<$list variable=compare_text filter="[<compare_card>get<enr_text>else[]]">
+<$button>
+<$action-setfield $tiddler=<<ttb_card>> text=<<compare_text>> />
+Copy over
+</$button>
+</$list><!--compare_text-->
+</$vars><!--enr_text-->
+<!--gcmpr_ref_copy_over_ttb_card-->
+\end
+
+\define gcmpr_ref_replace_comment_endings(ttb_card, compare_card)
+<$button>
+<$vars comment_flag="--" lit_exclm="!" lit_lt="<" lit_gt=">" enr_text="text" >
+<$wikify name=lit_lf text="&#10;">
+<$list variable=comment_open_text filter="[<lit_lt>addsuffix<lit_exclm>addsuffix<comment_flag>]">
+<$list variable=comment_close_text filter="[<comment_flag>addsuffix<lit_gt>]">
+<$list variable=comment_close_replace filter="[<comment_flag>addsuffix<lit_exclm>addsuffix<lit_gt>]">
+<$list variable=replace_text filter="[<compare_card>get<enr_text>split<comment_close_text>join<comment_close_replace>addprefix<lit_lf>addprefix<comment_open_text>addsuffix<lit_lf>addsuffix<comment_close_text>]">
+<$action-setfield $tiddler=<<compare_card>> text=<<replace_text>> />
+</$list><!--replace_text-->
+</$list><!--comment_close_replace-->
+</$list><!--comment_close_text-->
+</$list><!--comment_open_text-->
+</$wikify>
+</$vars><!--comment_flag, lit_exclm, lit_lt, lit_gt-->
+Replace comment endings
+</$button><br>
+<!--gcmpr_ref_replace_comment_endings-->
+\end
+
+\define gcmpr_ref_disp_diff_text()
+<$list variable=val_ttb_card filter="[<ttb_card>get[text]!match[]]">
+<$list variable=val_compare_card filter="[<compare_card>get[text]!match[]]">
+<$diff-text source=<<val_ttb_card>> dest=<<val_compare_card>> />
+</$list><!--val_compare_card-->
+</$list><!--val_ttb_card-->
+<!--gcmpr_ref_disp_diff_text-->
+\end
+
+\define gcmpr_ref_disp_textedit_link()
+<$list variable=cur_url filter="[{$:/info/url/full}]">
+<$list variable=new_link filter="[<cur_url>addsuffix[#]addsuffix[$:/positivesigner/gcmpr/textarea]split[$:]join[%24%3A]]">
+<a href=<<new_link>> target="_blank" >text editor</a>
+</$list>
+</$list>
+<!--gcmpr_ref_disp_textedit_link-->
+\end
+
+\define gcmpr_btn_cmp_current()
+<$list variable=cur_card filter="[all[current]]">
+<$list variable=dest_card filter="[<cur_card>addprefix[$:/state/popup/gcmpr/]]">
+<$vars lit_lt="<" lit_gt=">" lit_s=" " lit_qs='"' macro_name="gcmpr_compare_card" enr_text="text" >
+<$list variable=macro_call_text filter="[<lit_lt>addsuffix<lit_lt>addsuffix<macro_name>addsuffix<lit_s>addsuffix<lit_qs>addsuffix<cur_card>addsuffix<lit_qs>addsuffix<lit_gt>addsuffix<lit_gt>]">
+<$button class=<<tv-config-toolbar-class>> >
+<$action-setfield $tiddler=<<dest_card>> text=<<macro_call_text>> />
+<$action-navigate $to=<<dest_card>> />
+Compare to Textbox
+</$button>
+</$list><!--macro_call_text-->
+</$vars><!--lit_lt-->
+</$list><!--dest_card-->
+</$list><!--cur_card-->
+<!--gcmpr_btn_cmp_current-->
+\end
+
+\define gcmpr_textarea_new()
+<$vars enr_text="text" enr_new_filename="new_filename" enr_rows="rows" enr_cols="cols" enr_disp_btn_incr_decr="disp_btn_incr_decr" lit_state_popup_prefix="$:/state/popup/gcmpr_textarea/" lit_default_rows="20" lit_default_cols="160" cur_card=<<currentTiddler>> >
+<$list variable=temp_card filter="[<cur_card>addprefix<lit_state_popup_prefix>]">
+New file name:
+@@margin-left:5px;
+<$edit-text tiddler=<<temp_card>> field=new_filename placeholder="" autoHeight=yes tag=input/>
+@@
+<$list variable=val_disp_btn_incr_decr filter="[<temp_card>get<enr_disp_btn_incr_decr>!match[]else[]]">
+<$list variable=val_rows filter="[<temp_card>get<enr_rows>!match[]!match[0]else<lit_default_rows>]">
+<$list variable=val_cols filter="[<temp_card>get<enr_cols>!match[]!match[0]else<lit_default_cols>]">
+<$list variable=val_new_filename filter="[<temp_card>get<enr_new_filename>!match[]]">
+<$list variable=new_card filter="[<val_new_filename>addprefix<lit_state_popup_prefix>]">
+<$list variable=new_temp_card filter="[<new_card>addprefix<lit_state_popup_prefix>]">
+<$list variable=filter_newcard_not_exists filter="[<new_card>!is[tiddler]]">
+<$button>
+<$list variable=cur_card_text filter="[<cur_card>get<enr_text>]">
+<$action-setfield $tiddler=<<new_card>> $field=<<enr_text>> $value=<<cur_card_text>> />
+</$list><!--cur_card_text-->
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_new_filename>> $value=<<val_new_filename>> />
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_rows>> $value=<<val_rows>> />
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_cols>> $value=<<val_cols>> />
+<$action-setfield $tiddler=<<new_temp_card>> $field=<<enr_disp_btn_incr_decr>> $value=<<val_disp_btn_incr_decr>> />
+<$action-navigate $to=<<new_card>> />
+New card
+</$button>
+</$list><!--filter_newcard_not_exists-->
+</$list><!--new_temp_card-->
+</$list><!--new_card-->
+</$list><!--val_new_filename-->
+
+<br>
+<$list variable=filter_disp_buttons filter="[<val_disp_btn_incr_decr>!match[]]">
+@@margin-right:20px;
+<$button>
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_disp_btn_incr_decr>> $value="" />
+Show Resize buttons
+</$button>
+@@
+</$list><!--filter_disp_buttons-->
+Rows: <<val_rows>>
+<$list variable=filter_disp_buttons filter="[<val_disp_btn_incr_decr>match[]]">
+<$button>
+<$list variable=val_new_rows filter="[<val_rows>add[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_rows>> $value=<<val_new_rows>> 
+/>
+</$list><!--val_new_rows-->
++
+</$button>
+<$list variable=filter_zero_rows filter="[<val_rows>!match[0]]">
+<$button>
+<$list variable=val_new_rows filter="[<val_rows>subtract[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_rows>> $value=<<val_new_rows>> />
+</$list><!--val_new_rows-->
+-
+</$button>
+</$list><!--filter_zero_rows-->
+</$list><!--filter_disp_buttons-->
+Cols: <<val_cols>>
+<$list variable=filter_disp_buttons filter="[<val_disp_btn_incr_decr>match[]]">
+<$button>
+<$list variable=val_new_cols filter="[<val_cols>add[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_cols>> $value=<<val_new_cols>> />
+</$list><!--val_new_cols-->
++
+</$button>
+<$list variable=filter_zero_cols filter="[<val_cols>!match[0]]">
+<$button>
+<$list variable=val_new_cols filter="[<val_cols>subtract[10]]">
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_cols>> $value=<<val_new_cols>> />
+</$list><!--val_new_cols-->
+-
+</$button>
+@@margin-left:20px;
+<$button>
+<$action-setfield $tiddler=<<temp_card>> $field=<<enr_disp_btn_incr_decr>> $value="hide" />
+Hide resize buttons
+</$button>
+@@
+</$list><!--filter_disp_buttons-->
+</$list><!--filter_zero_cols-->
+<br>
+<textarea rows=<<val_rows>> cols=<<val_cols>> />
+</$list><!--val_cols-->
+</$list><!--val_rows-->
+</$list><!--val_disp_btn_incr_decr-->
+</$list><!--temp_card-->
+</$vars><!--enr_new_filename-->
+\end
+
+\define glbl_chk(ur_field)
+<br><$checkbox tiddler=<<currentTiddler>> field="$ur_field$" unchecked="no" checked="yes"></$checkbox><span style="margin-right:5px;" />
+\end
+
+
+
+
+$:/positivesigner/gcmpr/textarea
+
+<<gcmpr_textarea_new>>
+
+
+
 $:/themes/tiddlywiki/vanilla/metrics/bodyfontsize
 
 15px
@@ -1431,6 +1642,15 @@ Search All Fields
 </$list><!--skip_system_pk-->
 </$list><!--show_code_pk-->
 </$vars><!--search_text_pk-->
+
+
+
+template chapter seq
+
+<$list variable=found_filter filter="[<currentTiddler>has[chapter-seq]]">
+<<glbl_chapter_field>>
+</$list><!--found_filter-->
+
 
 
 
