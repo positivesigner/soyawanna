@@ -1444,6 +1444,12 @@ https://www.sitepoint.com/understanding-module-exports-exports-node-js/
 
 
 
+ext SO.com RunTime Net 4.5
+
+https://stackoverflow.com/questions/8517159/how-do-i-detect-at-runtime-that-net-version-4-5-is-currently-running-your-code
+
+
+
 ext SQLite Blob text
 
 https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite
@@ -1662,6 +1668,12 @@ https://www.w3schools.com/tags/att_meta_http_equiv.asp
 ext W3Schools NoScript tag
 
 https://www.w3schools.com/tags/tag_noscript.asp
+
+
+
+ext WestWindCom Net Core Runtime
+
+https://weblog.west-wind.com/posts/2018/Apr/12/Getting-the-NET-Core-Runtime-Version-in-a-Running-Application
 
 
 
@@ -8257,6 +8269,23 @@ VBNetCode\UserBowl example
         End Class 'sUserBowl
     End Class 'UB, UN
 
+
+
+
+VBNetCode\Version
+
+<<ext "WestWindCom Net Core Runtime">>
+<<ext "SO.com RunTime Net 4.5">>
+
+```
+Function version_info() As String
+version_info = "flag CLR 4.5 Features = " & If(Type.GetType(typeName:="System.Reflection.ReflectionContext", throwOnError:=False) Is Nothing, "", "True") & vbCrLf
+version_info &= "flag CLR 4.51 Features = " & If(Type.GetType(typeName:="System.Runtime.GCLargeObjectHeapCompactionMode", throwOnError:=False) Is Nothing, "", "True") & vbCrLf
+version_info &= "CLR Version = " & System.Environment.Version.ToString & vbCrLf
+version_info &= "CLR Local Path = " & System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory() & vbCrLf
+version_info &= "Operating System = " & CType(System.Attribute.GetCustomAttribute(System.Reflection.Assembly.GetEntryAssembly(), GetType(System.Runtime.Versioning.TargetFrameworkAttribute)), System.Runtime.Versioning.TargetFrameworkAttribute).FrameworkName & " on " & System.Runtime.InteropServices.RuntimeInformation.OSDescription
+End Function
+```
 
 
 

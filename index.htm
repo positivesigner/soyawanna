@@ -359,6 +359,8 @@ Error message and password prompt
 
 <li>ext SitePoint Exports Node.JS</li>
 
+<li>ext SO.com RunTime Net 4.5</li>
+
 <li>ext SQLite Blob text</li>
 
 <li>ext SQLite DB Browser</li>
@@ -426,6 +428,8 @@ Error message and password prompt
 <li>ext W3Schools Meta HTTP-EQUIV</li>
 
 <li>ext W3Schools NoScript tag</li>
+
+<li>ext WestWindCom Net Core Runtime</li>
 
 <li>ext WHATWg.org Link Icon</li>
 
@@ -806,6 +810,8 @@ Error message and password prompt
 <li>VBNetCode\Unicode Code Point</li>
 
 <li>VBNetCode\UserBowl example</li>
+
+<li>VBNetCode\Version</li>
 
 <li>VBNetProject</li>
 
@@ -11027,7 +11033,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210215152130610" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210222012609714" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11036,13 +11042,13 @@ Hide resize buttons
 <div created="20201226064903165" modified="20210215152107994" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20201226064844310" modified="20210215152130610" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210222012609714" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210215152105373" list="$:/Import [[Tag pairs]] [[Code Samples]]" modified="20210215152105373" title="$:/StoryList">
+<div created="20210222011844572" list="[[Tag pairs]] [[Code Samples]] VBNetCode VBNetCode\Version [[ext WestWindCom Net Core Runtime]] [[ext SO.com RunTime Net 4.5]]" modified="20210222011844572" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12210,6 +12216,9 @@ Make sure you put a space between the power operator (^) and the numbers
 <div created="20210111045641773" modified="20210111045656911" tags="EXT" title="ext SitePoint Exports Node.JS">
 <pre>https://www.sitepoint.com/understanding-module-exports-exports-node-js/</pre>
 </div>
+<div created="20210222012103171" modified="20210222012125652" tags="EXT" title="ext SO.com RunTime Net 4.5">
+<pre>https://stackoverflow.com/questions/8517159/how-do-i-detect-at-runtime-that-net-version-4-5-is-currently-running-your-code</pre>
+</div>
 <div created="20201213204034881" modified="20201226065145140" tags="EXT" title="ext SQLite Blob text">
 <pre>https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite</pre>
 </div>
@@ -12328,6 +12337,9 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20210111011432509" modified="20210111011446229" tags="EXT" title="ext W3Schools NoScript tag">
 <pre>https://www.w3schools.com/tags/tag_noscript.asp</pre>
+</div>
+<div created="20210222012025086" modified="20210222012048249" tags="EXT" title="ext WestWindCom Net Core Runtime">
+<pre>https://weblog.west-wind.com/posts/2018/Apr/12/Getting-the-NET-Core-Runtime-Version-in-a-Running-Application</pre>
 </div>
 <div created="20210111005101802" modified="20210111005125993" tags="EXT" title="ext WHATWg.org Link Icon">
 <pre>https://html.spec.whatwg.org/multipage/links.html#rel-icon</pre>
@@ -18355,6 +18367,20 @@ Result:
         End Class 'sUserBowl
     End Class 'UB, UN
 </pre>
+</div>
+<div created="20210222011846591" modified="20210222012608425" tags="" title="VBNetCode\Version">
+<pre>&lt;&lt;ext &quot;WestWindCom Net Core Runtime&quot;&gt;&gt;
+&lt;&lt;ext &quot;SO.com RunTime Net 4.5&quot;&gt;&gt;
+
+```
+Function version_info() As String
+version_info = &quot;flag CLR 4.5 Features = &quot; &amp; If(Type.GetType(typeName:=&quot;System.Reflection.ReflectionContext&quot;, throwOnError:=False) Is Nothing, &quot;&quot;, &quot;True&quot;) &amp; vbCrLf
+version_info &amp;= &quot;flag CLR 4.51 Features = &quot; &amp; If(Type.GetType(typeName:=&quot;System.Runtime.GCLargeObjectHeapCompactionMode&quot;, throwOnError:=False) Is Nothing, &quot;&quot;, &quot;True&quot;) &amp; vbCrLf
+version_info &amp;= &quot;CLR Version = &quot; &amp; System.Environment.Version.ToString &amp; vbCrLf
+version_info &amp;= &quot;CLR Local Path = &quot; &amp; System.Runtime.InteropServices.RuntimeEnvironment.GetRuntimeDirectory() &amp; vbCrLf
+version_info &amp;= &quot;Operating System = &quot; &amp; CType(System.Attribute.GetCustomAttribute(System.Reflection.Assembly.GetEntryAssembly(), GetType(System.Runtime.Versioning.TargetFrameworkAttribute)), System.Runtime.Versioning.TargetFrameworkAttribute).FrameworkName &amp; &quot; on &quot; &amp; System.Runtime.InteropServices.RuntimeInformation.OSDescription
+End Function
+```</pre>
 </div>
 <div created="20210102101943687" modified="20210102101956275" tags="DOC" title="VBNetProject">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
