@@ -305,6 +305,8 @@ Error message and password prompt
 
 <li>Excel VBA\Power Exponent</li>
 
+<li>ext ALAorg Citations bookmarklet</li>
+
 <li>ext Apple.com Safari Meta tags</li>
 
 <li>ext CodeAcademy DocType</li>
@@ -316,6 +318,8 @@ Error message and password prompt
 <li>ext FileFormat.Info UnicodeInput</li>
 
 <li>ext FileFormat.Info UnicodeInput.ZIP</li>
+
+<li>ext GitHub LukeHorvat Computed Style to Inline</li>
 
 <li>ext GoogleDevelopers FullScreen web app</li>
 
@@ -551,7 +555,15 @@ Error message and password prompt
 
 <li>JavaScript\TypeOf Name</li>
 
+<li>JavaScriptBookmarklet\View Page Source</li>
+
 <li>JavaScriptBookmarklets</li>
+
+<li>JavaScriptBookmarklets\Bibliographic citation</li>
+
+<li>JavaScriptBookmarklets\Convert to Inline CSS</li>
+
+<li>JavaScriptBookmarklets\Edit current page</li>
 
 <li>JavaScriptBookmarklets\Extract iFrame pages</li>
 
@@ -11033,7 +11045,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210222012609714" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210227135832346" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11042,13 +11054,13 @@ Hide resize buttons
 <div created="20201226064903165" modified="20210215152107994" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20201226064844310" modified="20210222012609714" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210227135832346" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210222011844572" list="[[Tag pairs]] [[Code Samples]] VBNetCode VBNetCode\Version [[ext WestWindCom Net Core Runtime]] [[ext SO.com RunTime Net 4.5]]" modified="20210222011844572" title="$:/StoryList">
+<div created="20210227113529631" list="[[Tag pairs]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Edit current page]] [[JavaScriptBookmarklet\View Page Source]]" modified="20210227134649961" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12135,6 +12147,9 @@ Make sure you put a space between the power operator (^) and the numbers
 - Note: CalcResult = 32
 </pre>
 </div>
+<div created="20210227131654621" modified="20210227131718062" tags="EXT" title="ext ALAorg Citations bookmarklet">
+<pre>http://www.ala.org/tools/article/ala-techsource/%E2%80%9Ccitethis%E2%80%9D-building-javascript-bookmarklet-creates-citations-sharing-web</pre>
+</div>
 <div created="20210110234417429" modified="20210110234435454" tags="EXT" title="ext Apple.com Safari Meta tags">
 <pre>https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html</pre>
 </div>
@@ -12152,6 +12167,9 @@ Make sure you put a space between the power operator (^) and the numbers
 </div>
 <div created="20210108155315002" modified="20210108155338081" tags="EXT" title="ext FileFormat.Info UnicodeInput.ZIP">
 <pre>https://www.fileformat.info/tool/unicodeinput/unicodeinput.zip</pre>
+</div>
+<div created="20210227134340475" modified="20210227134408433" tags="EXT" title="ext GitHub LukeHorvat Computed Style to Inline">
+<pre>https://github.com/lukehorvat/computed-style-to-inline-style</pre>
 </div>
 <div created="20210111000008902" modified="20210111000027144" tags="EXT" title="ext GoogleDevelopers FullScreen web app">
 <pre>https://developers.google.com/web/fundamentals/native-hardware/fullscreen/</pre>
@@ -13850,8 +13868,89 @@ The use of the call object is implicit, because once the call object is created,
 * null, object, {ur_prop_name: ur_prop_value}, [ur_val1, ur_val2, ur_val3], new Date(), /regex/ = &quot;object&quot;
 </pre>
 </div>
+<div created="20210227132724008" modified="20210227135831005" tags="" title="JavaScriptBookmarklet\View Page Source">
+<pre>```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){
+;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';
+void(newWindow.focus());}
+</pre>
+</div>
 <div created="20201123032719183" modified="20201226065145144" tags="DOC" title="JavaScriptBookmarklets">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20210227123234758" modified="20210227131726765" tags="" title="JavaScriptBookmarklets\Bibliographic citation">
+<pre>&lt;&lt;ext &quot;ALAorg Citations bookmarklet&quot;&gt;&gt;
+```
+javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
+</div>
+<div created="20210227113531277" modified="20210227134424891" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
+<pre>Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
+
+&lt;&lt;ext &quot;GitHub LukeHorvat Computed Style to Inline&quot;&gt;&gt;
+
+```
+avascript:(function (global, factory) {
+  if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+    define([&quot;module&quot;], factory);
+  } else if (typeof exports !== &quot;undefined&quot;) {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.computedStyleToInlineStyle = mod.exports;
+  }
+})(this, function (module) {
+  &quot;use strict&quot;;
+
+  var each = Array.prototype.forEach;
+
+
+  function computedStyleToInlineStyle(element) {
+    var _context2;
+
+    var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+
+    if (!element) {
+      throw new Error(&quot;No element specified.&quot;);
+    }
+
+    if (options.recursive) {
+      var _context;
+
+      (_context = element.children, each).call(_context, function (child) {
+        computedStyleToInlineStyle(child, options);
+      });
+    }
+
+    var computedStyle = getComputedStyle(element);
+    (_context2 = options.properties || computedStyle, each).call(_context2, function (property) {
+      element.style[property] = computedStyle.getPropertyValue(property);
+    });
+  }
+
+  module.exports = computedStyleToInlineStyle;
+});
+(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filename:&lt;/strong&gt; '+'0'.repeat(4-yyyy.toString().length)+yyyy+'m'+'0'.repeat(2-mm.toString().length)+mm+'d'+'0'.repeat(2-dd.toString().length)+dd+' '+url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-')+'.html&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();
+document.querySelectorAll('iframe,script').forEach(function(element){element.parentNode.removeChild(element)});
+computedStyleToInlineStyle(document.body, { recursive: true });
+document.head.parentNode.removeChild(document.head);
+alert(&quot;done&quot;);</pre>
+</div>
+<div created="20210227123123287" modified="20210227123204142" tags="" title="JavaScriptBookmarklets\Edit current page">
+<pre>Edit webpage
+
+```
+javascript:document.body.contentEditable = 'true'; document.designMode='on'; void 0
+```
+
+Editing Done
+
+```
+javascript:document.body.contentEditable = 'false'; document.designMode='off'; void 0
+```
+</pre>
 </div>
 <div created="20201123032735208" modified="20210108190045314" tags="JavaScriptCode HTMLCode Extract FileSystem" title="JavaScriptBookmarklets\Extract iFrame pages">
 <pre>```

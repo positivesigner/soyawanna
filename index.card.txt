@@ -1282,6 +1282,12 @@ Make sure you put a space between the power operator (^) and the numbers
 
 
 
+ext ALAorg Citations bookmarklet
+
+http://www.ala.org/tools/article/ala-techsource/%E2%80%9Ccitethis%E2%80%9D-building-javascript-bookmarklet-creates-citations-sharing-web
+
+
+
 ext Apple.com Safari Meta tags
 
 https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
@@ -1315,6 +1321,12 @@ https://www.fileformat.info/tool/unicodeinput/index.htm
 ext FileFormat.Info UnicodeInput.ZIP
 
 https://www.fileformat.info/tool/unicodeinput/unicodeinput.zip
+
+
+
+ext GitHub LukeHorvat Computed Style to Inline
+
+https://github.com/lukehorvat/computed-style-to-inline-style
 
 
 
@@ -3364,9 +3376,102 @@ JavaScript\TypeOf Name
 
 
 
+JavaScriptBookmarklet\View Page Source
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){
+;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';
+void(newWindow.focus());}
+
+
+
+
 JavaScriptBookmarklets
 
 <<glbl_article_list>>
+
+
+
+JavaScriptBookmarklets\Bibliographic citation
+
+<<ext "ALAorg Citations bookmarklet">>
+```
+javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='<p><strong>Title('+t.innerHTML.length+'):</strong> '+t.innerHTML+'</p>';var m=document.getElementsByTagName('meta');for(var i=0;i < m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='<p><strong>'+m[i].getAttribute('name')+'('+c.length+'):</strong> '+c+'</p>';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified '+lm+'. <a target="_blank" href="'+url+'">'+url+'</a> (accessed '+mm+'/'+dd+'/'+yyyy+').</p>';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;"><a href="%23" onclick="document.body.removeChild(document.body.firstChild);return false">remove</a>'+info+'</div>';})();
+
+
+
+JavaScriptBookmarklets\Convert to Inline CSS
+
+Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
+
+<<ext "GitHub LukeHorvat Computed Style to Inline">>
+
+```
+avascript:(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["module"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.computedStyleToInlineStyle = mod.exports;
+  }
+})(this, function (module) {
+  "use strict";
+
+  var each = Array.prototype.forEach;
+
+
+  function computedStyleToInlineStyle(element) {
+    var _context2;
+
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    if (!element) {
+      throw new Error("No element specified.");
+    }
+
+    if (options.recursive) {
+      var _context;
+
+      (_context = element.children, each).call(_context, function (child) {
+        computedStyleToInlineStyle(child, options);
+      });
+    }
+
+    var computedStyle = getComputedStyle(element);
+    (_context2 = options.properties || computedStyle, each).call(_context2, function (property) {
+      element.style[property] = computedStyle.getPropertyValue(property);
+    });
+  }
+
+  module.exports = computedStyleToInlineStyle;
+});
+(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='<p><strong>Title('+t.innerHTML.length+'):</strong> '+t.innerHTML+'</p>';var m=document.getElementsByTagName('meta');for(var i=0;i < m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='<p><strong>'+m[i].getAttribute('name')+'('+c.length+'):</strong> '+c+'</p>';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified '+lm+'. <a target="_blank" href="'+url+'">'+url+'</a> (accessed '+mm+'/'+dd+'/'+yyyy+').</p><p><strong>Filename:</strong> '+'0'.repeat(4-yyyy.toString().length)+yyyy+'m'+'0'.repeat(2-mm.toString().length)+mm+'d'+'0'.repeat(2-dd.toString().length)+dd+' '+url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-')+'.html</p>';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;"><a href="%23" onclick="document.body.removeChild(document.body.firstChild);return false">remove</a>'+info+'</div>';})();
+document.querySelectorAll('iframe,script').forEach(function(element){element.parentNode.removeChild(element)});
+computedStyleToInlineStyle(document.body, { recursive: true });
+document.head.parentNode.removeChild(document.head);
+alert("done");
+
+
+
+JavaScriptBookmarklets\Edit current page
+
+Edit webpage
+
+```
+javascript:document.body.contentEditable = 'true'; document.designMode='on'; void 0
+```
+
+Editing Done
+
+```
+javascript:document.body.contentEditable = 'false'; document.designMode='off'; void 0
+```
+
 
 
 
