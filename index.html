@@ -6432,7 +6432,7 @@ DOC
 
 </button>
 </span></span><span><h2 class="tc-title">JavaScriptBookmarklets\Convert to Inline CSS</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>27th February 2021 at 5:44am</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>27th February 2021 at 7:21am</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
@@ -6455,7 +6455,7 @@ DOC
   var each = Array.prototype.forEach;
 
 
-  function computedStyleToInlineStyle(element) {
+  function computedStyleToInlineStyle(nest_level, parent_style, element) {
     var _context2;
 
     var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
@@ -6464,17 +6464,27 @@ DOC
       throw new Error(&quot;No element specified.&quot;);
     }
 
+    var computedStyle = getComputedStyle(element);
     if (options.recursive) {
       var _context;
 
       (_context = element.children, each).call(_context, function (child) {
-        computedStyleToInlineStyle(child, options);
+        computedStyleToInlineStyle(nest_level+1, computedStyle, child, options);
       });
     }
 
-    var computedStyle = getComputedStyle(element);
     (_context2 = options.properties || computedStyle, each).call(_context2, function (property) {
-      element.style[property] = computedStyle.getPropertyValue(property);
+      if (nest_level &lt; 100) { 
+            element.style[property] = computedStyle.getPropertyValue(property);
+      }
+      else if (parent_style != null &amp;&amp; computedStyle != null) {
+            var cmpr_parent = parent_style.getPropertyValue(property);
+            var cmpr_child = computedStyle.getPropertyValue(property);
+            if (cmpr_parent == cmpr_child) { }
+            else {
+                element.style[property] = cmpr_child;
+            }
+      }
     });
   }
 
@@ -6482,7 +6492,7 @@ DOC
 });
 (function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filename:&lt;/strong&gt; '+'0'.repeat(4-yyyy.toString().length)+yyyy+'m'+'0'.repeat(2-mm.toString().length)+mm+'d'+'0'.repeat(2-dd.toString().length)+dd+' '+url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-')+'.html&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();
 document.querySelectorAll('iframe,script').forEach(function(element){element.parentNode.removeChild(element)});
-computedStyleToInlineStyle(document.body, { recursive: true });
+computedStyleToInlineStyle(1, getComputedStyle(document.body), document.body, { recursive: true });
 document.head.parentNode.removeChild(document.head);
 alert(&quot;done&quot;);</code></pre></div>
 
