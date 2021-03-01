@@ -11045,7 +11045,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210227152109695" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210301153611181" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11054,13 +11054,13 @@ Hide resize buttons
 <div created="20201226064903165" modified="20210215152107994" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20201226064844310" modified="20210227152109696" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210301153611181" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210227113529631" list="[[Tag pairs]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Convert to Inline CSS]] [[$:/state/popup/gcmpr/JavaScriptBookmarklets\Convert to Inline CSS]]" modified="20210227142201456" title="$:/StoryList">
+<div created="20210301112908720" list="[[JavaScriptBookmarklets\Convert to Inline CSS]] [[$:/state/popup/gcmpr/JavaScriptBookmarklets\Convert to Inline CSS]]" modified="20210301112908720" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13883,7 +13883,7 @@ void(newWindow.focus());}
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
-<div created="20210227113531277" modified="20210227152108625" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
+<div created="20210227113531277" modified="20210301153610236" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
 <pre>Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
 
 &lt;&lt;ext &quot;GitHub LukeHorvat Computed Style to Inline&quot;&gt;&gt;
@@ -13907,46 +13907,75 @@ avascript:(function (global, factory) {
   var each = Array.prototype.forEach;
 
 
-  function computedStyleToInlineStyle(nest_level, parent_style, element) {
+  function computedStyleToInlineStyle(nest_level, parent_style, cur_elt) {
     var _context2;
+    if (!cur_elt) {
+        throw new Error(&quot;No element specified.&quot;);
+        }
 
-    var options = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : {};
+    var cur_style = getComputedStyle(cur_elt);
+    var _context;
+    (_context = cur_elt.children, each).call(_context, function (child) {
+        computedStyleToInlineStyle(nest_level+1, cur_style, child);
+        });
 
-    if (!element) {
-      throw new Error(&quot;No element specified.&quot;);
-    }
-
-    var computedStyle = getComputedStyle(element);
-    if (options.recursive) {
-      var _context;
-
-      (_context = element.children, each).call(_context, function (child) {
-        computedStyleToInlineStyle(nest_level+1, computedStyle, child, options);
-      });
-    }
-
-    (_context2 = options.properties || computedStyle, each).call(_context2, function (property) {
-      if (nest_level &lt; 100) { 
-            element.style[property] = computedStyle.getPropertyValue(property);
-      }
-      else if (parent_style != null &amp;&amp; computedStyle != null) {
-            var cmpr_parent = parent_style.getPropertyValue(property);
-            var cmpr_child = computedStyle.getPropertyValue(property);
-            if (cmpr_parent == cmpr_child) { }
-            else {
-                element.style[property] = cmpr_child;
+    var parent_copy = document.createElement(&quot;an_unknown_tag&quot;);
+    if (nest_level &gt; 1) {
+        for (var pctr = 0; pctr &lt; parent_style.length; pctr++) {
+            var pname = parent_style[pctr];
+            var pval = parent_style.getPropertyValue(pname);
+            parent_copy.style[pname] = pval;
             }
-      }
-    });
-  }
+        }
+
+    var blank_element = document.createElement(&quot;an_unknown_tag&quot;);
+    parent_copy.appendChild(blank_element);
+    document.head.appendChild(parent_copy);
+    var blank_style = getComputedStyle(blank_element);
+
+    for (var dctr = 0; dctr &lt; blank_style.length; dctr++) {
+        if (dctr &lt; cur_style.length) {
+            var dname = blank_style[dctr];
+            var dval = blank_style.getPropertyValue(dname);
+			var cval = cur_style.getPropertyValue(dname);
+            if (cval != dval &amp;&amp; cur_elt.style[dname] != dval) {
+                cur_elt.style[dname] = cval;
+                }
+            }
+        }
+    }
 
   module.exports = computedStyleToInlineStyle;
 });
-(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filename:&lt;/strong&gt; '+'0'.repeat(4-yyyy.toString().length)+yyyy+'m'+'0'.repeat(2-mm.toString().length)+mm+'d'+'0'.repeat(2-dd.toString().length)+dd+' '+url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-')+'.html&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();
-document.querySelectorAll('iframe,script').forEach(function(element){element.parentNode.removeChild(element)});
-computedStyleToInlineStyle(1, getComputedStyle(document.body), document.body, { recursive: true });
+(function(){
+	var h = document.createElement('div');
+	var t = document.getElementsByTagName('title')[0];
+	var cite_remove = '&lt;a href=&quot;%23&quot; onclick=&quot;document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false&quot;&gt;remove&lt;/a&gt;';
+	var info = '&lt;p&gt;&lt;strong&gt;Title(' + t.innerHTML.length + '):&lt;/strong&gt; ' + t.innerHTML + '&lt;/p&gt;';
+	var m = document.getElementsByTagName('meta');
+	for(var i = 0; i &lt; m.length; i++) {
+		if(null !== m[i].getAttribute('name') ) {
+			var c=m[i].getAttribute('content');
+			info += '&lt;p&gt;&lt;strong&gt;' + m[i].getAttribute('name') + '(' + c.length + '):&lt;/strong&gt; ' + c + '&lt;/p&gt;';
+			}
+		}
+	
+	var lm = document.lastModified;
+	var url = location.href;
+	var d = new Date();
+	var dd = d.getDate();
+	var mm = d.getMonth()+1;
+	var yyyy = d.getFullYear();
+	info += '&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified ' + lm + '. &lt;a target=&quot;_blank&quot; href=&quot;' + url + '&quot;&gt;' + url + '&lt;/a&gt; (accessed ' + mm + '/' + dd + '/' + yyyy + ').&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filename:&lt;/strong&gt; ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html&lt;/p&gt;';
+	document.body.insertBefore(h,document.body.firstChild);
+	h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;' + cite_remove + info + cite_remove + '&lt;/div&gt;';
+	})();
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
+computedStyleToInlineStyle(1, null, document.body);
 document.head.parentNode.removeChild(document.head);
-alert(&quot;done&quot;);</pre>
+document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
+alert(&quot;done&quot;);
+</pre>
 </div>
 <div created="20210227123123287" modified="20210227123204142" tags="" title="JavaScriptBookmarklets\Edit current page">
 <pre>Edit webpage

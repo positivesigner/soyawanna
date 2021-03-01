@@ -3425,46 +3425,75 @@ avascript:(function (global, factory) {
   var each = Array.prototype.forEach;
 
 
-  function computedStyleToInlineStyle(nest_level, parent_style, element) {
+  function computedStyleToInlineStyle(nest_level, parent_style, cur_elt) {
     var _context2;
+    if (!cur_elt) {
+        throw new Error("No element specified.");
+        }
 
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var cur_style = getComputedStyle(cur_elt);
+    var _context;
+    (_context = cur_elt.children, each).call(_context, function (child) {
+        computedStyleToInlineStyle(nest_level+1, cur_style, child);
+        });
 
-    if (!element) {
-      throw new Error("No element specified.");
-    }
-
-    var computedStyle = getComputedStyle(element);
-    if (options.recursive) {
-      var _context;
-
-      (_context = element.children, each).call(_context, function (child) {
-        computedStyleToInlineStyle(nest_level+1, computedStyle, child, options);
-      });
-    }
-
-    (_context2 = options.properties || computedStyle, each).call(_context2, function (property) {
-      if (nest_level < 100) { 
-            element.style[property] = computedStyle.getPropertyValue(property);
-      }
-      else if (parent_style != null && computedStyle != null) {
-            var cmpr_parent = parent_style.getPropertyValue(property);
-            var cmpr_child = computedStyle.getPropertyValue(property);
-            if (cmpr_parent == cmpr_child) { }
-            else {
-                element.style[property] = cmpr_child;
+    var parent_copy = document.createElement("an_unknown_tag");
+    if (nest_level > 1) {
+        for (var pctr = 0; pctr < parent_style.length; pctr++) {
+            var pname = parent_style[pctr];
+            var pval = parent_style.getPropertyValue(pname);
+            parent_copy.style[pname] = pval;
             }
-      }
-    });
-  }
+        }
+
+    var blank_element = document.createElement("an_unknown_tag");
+    parent_copy.appendChild(blank_element);
+    document.head.appendChild(parent_copy);
+    var blank_style = getComputedStyle(blank_element);
+
+    for (var dctr = 0; dctr < blank_style.length; dctr++) {
+        if (dctr < cur_style.length) {
+            var dname = blank_style[dctr];
+            var dval = blank_style.getPropertyValue(dname);
+			var cval = cur_style.getPropertyValue(dname);
+            if (cval != dval && cur_elt.style[dname] != dval) {
+                cur_elt.style[dname] = cval;
+                }
+            }
+        }
+    }
 
   module.exports = computedStyleToInlineStyle;
 });
-(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='<p><strong>Title('+t.innerHTML.length+'):</strong> '+t.innerHTML+'</p>';var m=document.getElementsByTagName('meta');for(var i=0;i < m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='<p><strong>'+m[i].getAttribute('name')+'('+c.length+'):</strong> '+c+'</p>';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified '+lm+'. <a target="_blank" href="'+url+'">'+url+'</a> (accessed '+mm+'/'+dd+'/'+yyyy+').</p><p><strong>Filename:</strong> '+'0'.repeat(4-yyyy.toString().length)+yyyy+'m'+'0'.repeat(2-mm.toString().length)+mm+'d'+'0'.repeat(2-dd.toString().length)+dd+' '+url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-')+'.html</p>';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;"><a href="%23" onclick="document.body.removeChild(document.body.firstChild);return false">remove</a>'+info+'</div>';})();
-document.querySelectorAll('iframe,script').forEach(function(element){element.parentNode.removeChild(element)});
-computedStyleToInlineStyle(1, getComputedStyle(document.body), document.body, { recursive: true });
+(function(){
+	var h = document.createElement('div');
+	var t = document.getElementsByTagName('title')[0];
+	var cite_remove = '<a href="%23" onclick="document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false">remove</a>';
+	var info = '<p><strong>Title(' + t.innerHTML.length + '):</strong> ' + t.innerHTML + '</p>';
+	var m = document.getElementsByTagName('meta');
+	for(var i = 0; i < m.length; i++) {
+		if(null !== m[i].getAttribute('name') ) {
+			var c=m[i].getAttribute('content');
+			info += '<p><strong>' + m[i].getAttribute('name') + '(' + c.length + '):</strong> ' + c + '</p>';
+			}
+		}
+	
+	var lm = document.lastModified;
+	var url = location.href;
+	var d = new Date();
+	var dd = d.getDate();
+	var mm = d.getMonth()+1;
+	var yyyy = d.getFullYear();
+	info += '<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified ' + lm + '. <a target="_blank" href="' + url + '">' + url + '</a> (accessed ' + mm + '/' + dd + '/' + yyyy + ').</p><p><strong>Filename:</strong> ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html</p>';
+	document.body.insertBefore(h,document.body.firstChild);
+	h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;">' + cite_remove + info + cite_remove + '</div>';
+	})();
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
+computedStyleToInlineStyle(1, null, document.body);
 document.head.parentNode.removeChild(document.head);
+document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
 alert("done");
+
 
 
 
