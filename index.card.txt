@@ -3376,16 +3376,6 @@ JavaScript\TypeOf Name
 
 
 
-JavaScriptBookmarklet\View Page Source
-
-```
-avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){
-;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';
-void(newWindow.focus());}
-
-
-
-
 JavaScriptBookmarklets
 
 <<glbl_article_list>>
@@ -3471,10 +3461,10 @@ avascript:(function (global, factory) {
 	var cite_remove = '<a href="%23" onclick="document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false">remove</a>';
 	var info = '<p><strong>Title(' + t.innerHTML.length + '):</strong> ' + t.innerHTML + '</p>';
 	var m = document.getElementsByTagName('meta');
-	for(var i = 0; i < m.length; i++) {
+	for(var i = 0; i < ((m == null) ? 0 : m.length); i++) {
 		if(null !== m[i].getAttribute('name') ) {
 			var c=m[i].getAttribute('content');
-			info += '<p><strong>' + m[i].getAttribute('name') + '(' + c.length + '):</strong> ' + c + '</p>';
+			if (c != null) {info += '<p><strong>' + m[i].getAttribute('name') + '(' + c.length + '):</strong> ' + c + '</p>';}
 			}
 		}
 	
@@ -3549,6 +3539,20 @@ Copy the HTML body without any HTML tags, so the text is loaded without any HTML
 ```
 avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/<[^>]+>/g, '<br>');void(newWindow.focus());}
 ```
+
+
+
+JavaScriptBookmarklets\View Body with reflow
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt\/a>;','>&lt\/a>;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
+
+
+
+JavaScriptBookmarklets\View HTML Source
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
 
 
 

@@ -555,8 +555,6 @@ Error message and password prompt
 
 <li>JavaScript\TypeOf Name</li>
 
-<li>JavaScriptBookmarklet\View Page Source</li>
-
 <li>JavaScriptBookmarklets</li>
 
 <li>JavaScriptBookmarklets\Bibliographic citation</li>
@@ -570,6 +568,10 @@ Error message and password prompt
 <li>JavaScriptBookmarklets\Extract images</li>
 
 <li>JavaScriptBookmarklets\Extract plain text</li>
+
+<li>JavaScriptBookmarklets\View Body with reflow</li>
+
+<li>JavaScriptBookmarklets\View HTML Source</li>
 
 <li>keyboard action FontLarge</li>
 
@@ -11045,7 +11047,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210301153611181" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210302014209630" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11054,13 +11056,13 @@ Hide resize buttons
 <div created="20201226064903165" modified="20210215152107994" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/Appearance</pre>
 </div>
-<div created="20201226064844310" modified="20210301153611181" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210302014209630" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210301112908720" list="[[JavaScriptBookmarklets\Convert to Inline CSS]] [[$:/state/popup/gcmpr/JavaScriptBookmarklets\Convert to Inline CSS]]" modified="20210301112908720" title="$:/StoryList">
+<div created="20210302012735845" list="[[Tag pairs]] [[Recent Entries]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Convert to Inline CSS]] [[$:/state/popup/gcmpr/JavaScriptBookmarklets\Convert to Inline CSS]]" modified="20210302012848026" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13868,13 +13870,6 @@ The use of the call object is implicit, because once the call object is created,
 * null, object, {ur_prop_name: ur_prop_value}, [ur_val1, ur_val2, ur_val3], new Date(), /regex/ = &quot;object&quot;
 </pre>
 </div>
-<div created="20210227132724008" modified="20210227135831005" tags="" title="JavaScriptBookmarklet\View Page Source">
-<pre>```
-avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){
-;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';
-void(newWindow.focus());}
-</pre>
-</div>
 <div created="20201123032719183" modified="20201226065145144" tags="DOC" title="JavaScriptBookmarklets">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
@@ -13883,7 +13878,7 @@ void(newWindow.focus());}
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
-<div created="20210227113531277" modified="20210301153610236" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
+<div created="20210227113531277" modified="20210302014205550" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
 <pre>Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
 
 &lt;&lt;ext &quot;GitHub LukeHorvat Computed Style to Inline&quot;&gt;&gt;
@@ -13953,10 +13948,10 @@ avascript:(function (global, factory) {
 	var cite_remove = '&lt;a href=&quot;%23&quot; onclick=&quot;document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false&quot;&gt;remove&lt;/a&gt;';
 	var info = '&lt;p&gt;&lt;strong&gt;Title(' + t.innerHTML.length + '):&lt;/strong&gt; ' + t.innerHTML + '&lt;/p&gt;';
 	var m = document.getElementsByTagName('meta');
-	for(var i = 0; i &lt; m.length; i++) {
+	for(var i = 0; i &lt; ((m == null) ? 0 : m.length); i++) {
 		if(null !== m[i].getAttribute('name') ) {
 			var c=m[i].getAttribute('content');
-			info += '&lt;p&gt;&lt;strong&gt;' + m[i].getAttribute('name') + '(' + c.length + '):&lt;/strong&gt; ' + c + '&lt;/p&gt;';
+			if (c != null) {info += '&lt;p&gt;&lt;strong&gt;' + m[i].getAttribute('name') + '(' + c.length + '):&lt;/strong&gt; ' + c + '&lt;/p&gt;';}
 			}
 		}
 	
@@ -14019,6 +14014,14 @@ Copy the HTML body without any HTML tags, so the text is loaded without any HTML
 ```
 avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&lt;[^&gt;]+&gt;/g, '&lt;br&gt;');void(newWindow.focus());}
 ```</pre>
+</div>
+<div created="20210302004438895" modified="20210302012815324" tags="" title="JavaScriptBookmarklets\View Body with reflow">
+<pre>```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;').replaceAll('&amp;lt;html','&amp;lt;div').replaceAll('&amp;lt;\/html','&amp;lt;div').replaceAll('&amp;lt;body','&amp;lt;div').replaceAll('&amp;lt;\/body','&amp;lt;div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('&gt;remove&amp;lt\/a&gt;;','&gt;&amp;lt\/a&gt;;').replaceAll('src=&quot;http','src_attr=&quot;http').replaceAll('src=\'http','src_attr=\'http')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
+</div>
+<div created="20210302004407474" modified="20210302012827833" tags="" title="JavaScriptBookmarklets\View HTML Source">
+<pre>```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
 </div>
 <div created="20200411063250301" key="((font-large))" modified="20201226065145144" tags="$:/tags/KeyboardShortcut META" title="keyboard action FontLarge">
 <pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
