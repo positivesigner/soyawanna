@@ -167,6 +167,8 @@ Error message and password prompt
 
 <li>$:/config/shortcuts/save-wiki</li>
 
+<li>$:/config/shortcuts/toggle-sidebar</li>
+
 <li>$:/config/TextEditor/EnableToolbar</li>
 
 <li>$:/config/ViewToolbarButtons/Visibility/$:/positivesigner/gcmpr/btn gcmpr card</li>
@@ -200,6 +202,8 @@ Error message and password prompt
 <li>$:/state/dropdown/keyboardshortcut/save-all-changes-286565879</li>
 
 <li>$:/state/dropdown/keyboardshortcut/save-wiki-286565879</li>
+
+<li>$:/state/dropdown/keyboardshortcut/toggle-sidebar-286565879</li>
 
 <li>$:/state/searchNreplace/global</li>
 
@@ -569,6 +573,8 @@ Error message and password prompt
 
 <li>JavaScriptBookmarklets\Extract plain text</li>
 
+<li>JavaScriptBookmarklets\Unescape HTML code</li>
+
 <li>JavaScriptBookmarklets\View Body with reflow</li>
 
 <li>JavaScriptBookmarklets\View HTML Source</li>
@@ -923,6 +929,9 @@ Error message and password prompt
 </div>
 <div created="20210111033139919" modified="20210111033139919" title="$:/config/shortcuts/save-wiki">
 <pre></pre>
+</div>
+<div created="20210303093608117" modified="20210303093608117" title="$:/config/shortcuts/toggle-sidebar">
+<pre>alt-shift-S ctrl-R</pre>
 </div>
 <div created="20201114120819491" modified="20201226080905670" tags="META" title="$:/config/TextEditor/EnableToolbar">
 <pre>no</pre>
@@ -11023,13 +11032,16 @@ Hide resize buttons
 <div created="20201226064729191" modified="20201226064729191" title="$:/SiteTitle">
 <pre>Code Samples</pre>
 </div>
-<div created="20210119101953452" modified="20210119101953452" title="$:/state/dropdown/keyboardshortcut/preview-286565879">
-<pre>open</pre>
+<div created="20210119101953452" modified="20210303093522789" title="$:/state/dropdown/keyboardshortcut/preview-286565879">
+<pre>close</pre>
 </div>
 <div created="20201226064917274" modified="20201226064918319" title="$:/state/dropdown/keyboardshortcut/save-all-changes-286565879">
 <pre>close</pre>
 </div>
 <div created="20210111033134350" modified="20210111033150674" title="$:/state/dropdown/keyboardshortcut/save-wiki-286565879">
+<pre>close</pre>
+</div>
+<div created="20210303093538274" modified="20210303093612291" title="$:/state/dropdown/keyboardshortcut/toggle-sidebar-286565879">
 <pre>close</pre>
 </div>
 <div created="20210103085241144" modified="20210103085241818" title="$:/state/searchNreplace/global">
@@ -11047,22 +11059,22 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210302014209630" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210303103819269" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Toolbars</pre>
 </div>
-<div created="20201226064903165" modified="20210215152107994" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Appearance</pre>
+<div created="20201226064903165" modified="20210303093630895" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/Info</pre>
 </div>
-<div created="20201226064844310" modified="20210302014209630" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210303103819269" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210302012735845" list="[[Tag pairs]] [[Recent Entries]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Convert to Inline CSS]] [[$:/state/popup/gcmpr/JavaScriptBookmarklets\Convert to Inline CSS]]" modified="20210302012848026" title="$:/StoryList">
+<div created="20210303093442617" list="[[Tag pairs]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\View HTML Source]] [[JavaScriptBookmarklets\Unescape HTML code]]" modified="20210303103321455" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -14015,9 +14027,13 @@ Copy the HTML body without any HTML tags, so the text is loaded without any HTML
 avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&lt;[^&gt;]+&gt;/g, '&lt;br&gt;');void(newWindow.focus());}
 ```</pre>
 </div>
-<div created="20210302004438895" modified="20210302012815324" tags="" title="JavaScriptBookmarklets\View Body with reflow">
+<div created="20210303103805231" modified="20210303103817486" tags="" title="JavaScriptBookmarklets\Unescape HTML code">
 <pre>```
-avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;').replaceAll('&amp;lt;html','&amp;lt;div').replaceAll('&amp;lt;\/html','&amp;lt;div').replaceAll('&amp;lt;body','&amp;lt;div').replaceAll('&amp;lt;\/body','&amp;lt;div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('&gt;remove&amp;lt\/a&gt;;','&gt;&amp;lt\/a&gt;;').replaceAll('src=&quot;http','src_attr=&quot;http').replaceAll('src=\'http','src_attr=\'http')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
+avascript:document.documentElement.innerHTML='&lt;html&gt;&lt;body&gt;'+document.body.innerHTML.replaceAll('&amp;lt;','&lt;').replaceAll('&amp;gt;','&gt;').replaceAll('&amp;amp;','&amp;')+'&lt;\/body&gt;&lt;\/html&gt;';</pre>
+</div>
+<div created="20210302004438895" modified="20210303102319802" tags="" title="JavaScriptBookmarklets\View Body with reflow">
+<pre>```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;').replaceAll('&amp;lt;html','&amp;lt;div').replaceAll('&amp;lt;\/html','&amp;lt;\/div').replaceAll('&amp;lt;body','&amp;lt;div').replaceAll('&amp;lt;\/body','&amp;lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('&gt;remove&amp;lt;\/a&gt;','&amp;gt;&amp;lt\/a&amp;gt;').replaceAll('src=&quot;http','src_attr=&quot;http').replaceAll('src=\'http','src_attr=\'http')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
 </div>
 <div created="20210302004407474" modified="20210302012827833" tags="" title="JavaScriptBookmarklets\View HTML Source">
 <pre>```

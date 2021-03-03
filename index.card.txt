@@ -3542,10 +3542,17 @@ avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){newW
 
 
 
+JavaScriptBookmarklets\Unescape HTML code
+
+```
+avascript:document.documentElement.innerHTML='<html><body>'+document.body.innerHTML.replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&amp;','&')+'<\/body><\/html>';
+
+
+
 JavaScriptBookmarklets\View Body with reflow
 
 ```
-avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt\/a>;','>&lt\/a>;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;\/div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt;\/a>','&gt;&lt\/a&gt;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
 
 
 
