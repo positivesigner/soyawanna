@@ -1057,6 +1057,132 @@ Del ARTICLE and IMG cards
 
 
 
+Card filter
+
+\define tag_button(ur_field, ur_tag_name)
+<$button>
+<$action-setfield $tiddler="$ur_field$" text="$ur_tag_name$"/>
+<$action-navigate $to="Tag pairs"/>
+<<tag-pill "$ur_tag_name$">>
+</$button>
+\end
+
+{{ext TW Return}}
+
+<$list variable=on_twcard filter="[<tv-config-toolbar-icons>!match[no]]">
+<$button>
+<$list variable=cur_temp_card filter="[prefix[$:/state/popup/tag_e]]" >
+<$action-deletetiddler $tiddler=<<cur_temp_card>> />
+</$list><!--cur_temp_card-->
+<$list variable=cur_temp_card filter="[prefix[$:/state/popup/text_e]]" >
+<$action-deletetiddler $tiddler=<<cur_temp_card>> />
+</$list><!--cur_temp_card-->
+<$list variable=cur_temp_card filter="[prefix[$:/state/popup/text_input_e]]" >
+<$action-deletetiddler $tiddler=<<cur_temp_card>> />
+</$list><!--cur_temp_card-->
+Clear filters
+</$button><br>
+
+Text search: <$edit-text tiddler="$:/state/popup/text_input_e1" field=text default="" placeholder="[Type to search for text 1]" autoHeight=yes tag=input/>
+<$edit-text tiddler="$:/state/popup/text_input_e2" field=text default="" placeholder="[Type to search for text 2]" autoHeight=yes tag=input/>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/text_e1" text={{$:/state/popup/text_input_e1}}/>
+<$action-setfield $tiddler="$:/state/popup/text_e2" text={{$:/state/popup/text_input_e2}}/>
+Search text
+</$button><br>
+
+<$list variable=text_prefix_e1 filter="[[$:/state/popup/text_e1]get[text]else[]]">
+<$list variable=text_lowercase_e1 filter="[<text_prefix_e1>lowercase[]]">
+<$list variable=text_prefix_e2 filter="[[$:/state/popup/text_e2]get[text]else[]]">
+<$list variable=text_lowercase_e2 filter="[<text_prefix_e2>lowercase[]]">
+<$list variable=tag_prefix_e1 filter="[[$:/state/popup/tag_e1]get[text]uppercase[]else[]]">
+<$list variable=count_any_input filter="[<text_prefix_e1>] [<text_prefix_e2>] [<tag_prefix_e1>] +[each:value[]!match[]count[]]">
+
+<$list variable=tag_list filter="[tags[]each:value[]!prefix[$:]sort[]]">
+<$list variable=all_caps_taglist filter="[<tag_list>uppercase[]]">
+<$list variable=filter_all_capslist filter="[<tag_list>!match<all_caps_taglist>]">
+<$list variable=card_count filter="[tag<tag_list>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>count[]!match[0]]">@@white-space:nowrap;<$macrocall $name=tag_button ur_field="$:/state/popup/tag_e1" ur_tag_name=<<tag_list>> /> ( <<card_count>> )@@
+</$list><!--card_count-->
+</$list><!--filter_all_capslist-->
+</$list><!--all_caps_taglist-->
+</$list><!--tag_list
+-->
+
+<$list variable=filter_any_input filter="[<count_any_input>!match[0]]">
+<$list variable=tag_e1 filter="[search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>tags[]each:value[]!prefix[$:]sort[]]">
+<$list variable=all_caps_tage1 filter="[<tag_e1>uppercase[]]">
+<$list variable=filter_all_capse1 filter="[<tag_e1>!match<all_caps_tage1>]">
+<$list variable=filter_prefix_e1 filter="[<all_caps_tage1>prefix<tag_prefix_e1>]">
+<$list variable=card_count filter="[tag<tag_e1>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>count[]]">
+<$list variable=filter_card_found filter="[<card_count>!match[0]]">
+<$macrocall $name=tag_button ur_field="$:/state/popup/tag_e1" ur_tag_name=<<tag_e1>> />
+
+<$list variable=link_title filter="[tag<tag_e1>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>]">
+
+<<<
+<$link to=<<link_title>> /> (<$list variable=disp_tag filter="[<link_title>tags[]sort[]]"> <<disp_tag>> </$list>)
+
+<$list variable=filter_anytext_e1 filter="[<text_prefix_e1>!match[]]">
+<$list variable=found_leadingtext_e1 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e1>butlast[]]">
+
+* <$list variable=sample_leadingtext_e1 filter="[<found_leadingtext_e1>split[ ]last[7]join[ ]]">
+<$text text=<<sample_leadingtext_e1>> />
+''<$text text=<<text_lowercase_e1>> />''
+</$list><!--sample_leadingtext_e1-->
+<br>
+</$list><!--found_leadingtext_e1-->
+<$list variable=found_trailingtext_e1 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e1>butfirst[]]">
+
+* <$list variable=sample_trailingtext_e1 filter="[<found_trailingtext_e1>split[ ]first[7]join[ ]]">
+''<$text text=<<text_lowercase_e1>> />''
+<$text text=<<sample_trailingtext_e1>> />
+</$list><!--sample_trailingtext_e1-->
+</$list><!--found_trailingtext_e1-->
+</$list><!--filter_anytext_e1
+-->
+
+<$list variable=filter_anytext_e2 filter="[<text_prefix_e2>!match[]]">
+<$list variable=found_leadingtext_e2 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e2>butlast[]]">
+
+* <$list variable=sample_leadingtext_e2 filter="[<found_leadingtext_e2>split[ ]last[7]join[ ]]">
+<$text text=<<sample_leadingtext_e2>> />
+''<$text text=<<text_lowercase_e2>> />''
+</$list><!--sample_leadingtext_e2-->
+<br>
+</$list><!--found_leadingtext_e2-->
+<$list variable=found_trailingtext_e2 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e2>butfirst[]]">
+
+* <$list variable=sample_trailingtext_e2 filter="[<found_trailingtext_e2>split[ ]first[7]join[ ]]">
+''<$text text=<<text_lowercase_e2>> />''
+<$text text=<<sample_trailingtext_e2>> />
+</$list><!--sample_trailingtext_e2-->
+</$list><!--found_trailingtext_e2-->
+</$list><!--filter_anytext_e2
+-->
+
+<<<
+</$list><!--link_title-->
+</$list><!--filter_card_found-->
+</$list><!--card_count-->
+</$list><!--filter_prefix_e1-->
+</$list><!--filter_all_capse1-->
+</$list><!--all_caps_tage1-->
+</$list><!--tag_e1-->
+</$list><!--filter_any_input-->
+</$list><!--count_any_input-->
+</$list><!--tag_prefix_e1-->
+</$list><!--text_lowercase_e2-->
+</$list><!--text_lowercase_e1-->
+</$list><!--text_prefix_e2-->
+</$list><!--text_prefix_e1-->
+</$list><!--on_twcard-->
+
+[[Search All Code |View All Code]]
+
+[[___|Recent Entries]]
+
+
+
 ChromeBrowser
 
 <<glbl_article_list>>
@@ -4315,132 +4441,6 @@ SQLite\Top or Limit records
 <<ext "SQLite Top 5 Records">>
 
 SELECT * FROM Table_Name LIMIT 5;
-
-
-
-Tag pairs
-
-\define tag_button(ur_field, ur_tag_name)
-<$button>
-<$action-setfield $tiddler="$ur_field$" text="$ur_tag_name$"/>
-<$action-navigate $to="Tag pairs"/>
-<<tag-pill "$ur_tag_name$">>
-</$button>
-\end
-
-{{ext TW Return}}
-
-<$list variable=on_twcard filter="[<tv-config-toolbar-icons>!match[no]]">
-<$button>
-<$list variable=cur_temp_card filter="[prefix[$:/state/popup/tag_e]]" >
-<$action-deletetiddler $tiddler=<<cur_temp_card>> />
-</$list><!--cur_temp_card-->
-<$list variable=cur_temp_card filter="[prefix[$:/state/popup/text_e]]" >
-<$action-deletetiddler $tiddler=<<cur_temp_card>> />
-</$list><!--cur_temp_card-->
-<$list variable=cur_temp_card filter="[prefix[$:/state/popup/text_input_e]]" >
-<$action-deletetiddler $tiddler=<<cur_temp_card>> />
-</$list><!--cur_temp_card-->
-Clear filters
-</$button><br>
-
-Text search: <$edit-text tiddler="$:/state/popup/text_input_e1" field=text default="" placeholder="[Type to search for text 1]" autoHeight=yes tag=input/>
-<$edit-text tiddler="$:/state/popup/text_input_e2" field=text default="" placeholder="[Type to search for text 2]" autoHeight=yes tag=input/>
-<$button>
-<$action-setfield $tiddler="$:/state/popup/text_e1" text={{$:/state/popup/text_input_e1}}/>
-<$action-setfield $tiddler="$:/state/popup/text_e2" text={{$:/state/popup/text_input_e2}}/>
-Search text
-</$button><br>
-
-<$list variable=text_prefix_e1 filter="[[$:/state/popup/text_e1]get[text]else[]]">
-<$list variable=text_lowercase_e1 filter="[<text_prefix_e1>lowercase[]]">
-<$list variable=text_prefix_e2 filter="[[$:/state/popup/text_e2]get[text]else[]]">
-<$list variable=text_lowercase_e2 filter="[<text_prefix_e2>lowercase[]]">
-<$list variable=tag_prefix_e1 filter="[[$:/state/popup/tag_e1]get[text]uppercase[]else[]]">
-<$list variable=count_any_input filter="[<text_prefix_e1>] [<text_prefix_e2>] [<tag_prefix_e1>] +[each:value[]!match[]count[]]">
-
-<$list variable=tag_list filter="[tags[]each:value[]!prefix[$:]sort[]]">
-<$list variable=all_caps_taglist filter="[<tag_list>uppercase[]]">
-<$list variable=filter_all_capslist filter="[<tag_list>!match<all_caps_taglist>]">
-<$list variable=card_count filter="[tag<tag_list>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>count[]!match[0]]">@@white-space:nowrap;<$macrocall $name=tag_button ur_field="$:/state/popup/tag_e1" ur_tag_name=<<tag_list>> /> ( <<card_count>> )@@
-</$list><!--card_count-->
-</$list><!--filter_all_capslist-->
-</$list><!--all_caps_taglist-->
-</$list><!--tag_list
--->
-
-<$list variable=filter_any_input filter="[<count_any_input>!match[0]]">
-<$list variable=tag_e1 filter="[search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>tags[]each:value[]!prefix[$:]sort[]]">
-<$list variable=all_caps_tage1 filter="[<tag_e1>uppercase[]]">
-<$list variable=filter_all_capse1 filter="[<tag_e1>!match<all_caps_tage1>]">
-<$list variable=filter_prefix_e1 filter="[<all_caps_tage1>prefix<tag_prefix_e1>]">
-<$list variable=card_count filter="[tag<tag_e1>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>count[]]">
-<$list variable=filter_card_found filter="[<card_count>!match[0]]">
-<$macrocall $name=tag_button ur_field="$:/state/popup/tag_e1" ur_tag_name=<<tag_e1>> />
-
-<$list variable=link_title filter="[tag<tag_e1>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>]">
-
-<<<
-<$link to=<<link_title>> /> (<$list variable=disp_tag filter="[<link_title>tags[]sort[]]"> <<disp_tag>> </$list>)
-
-<$list variable=filter_anytext_e1 filter="[<text_prefix_e1>!match[]]">
-<$list variable=found_leadingtext_e1 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e1>butlast[]]">
-
-* <$list variable=sample_leadingtext_e1 filter="[<found_leadingtext_e1>split[ ]last[7]join[ ]]">
-<$text text=<<sample_leadingtext_e1>> />
-''<$text text=<<text_lowercase_e1>> />''
-</$list><!--sample_leadingtext_e1-->
-<br>
-</$list><!--found_leadingtext_e1-->
-<$list variable=found_trailingtext_e1 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e1>butfirst[]]">
-
-* <$list variable=sample_trailingtext_e1 filter="[<found_trailingtext_e1>split[ ]first[7]join[ ]]">
-''<$text text=<<text_lowercase_e1>> />''
-<$text text=<<sample_trailingtext_e1>> />
-</$list><!--sample_trailingtext_e1-->
-</$list><!--found_trailingtext_e1-->
-</$list><!--filter_anytext_e1
--->
-
-<$list variable=filter_anytext_e2 filter="[<text_prefix_e2>!match[]]">
-<$list variable=found_leadingtext_e2 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e2>butlast[]]">
-
-* <$list variable=sample_leadingtext_e2 filter="[<found_leadingtext_e2>split[ ]last[7]join[ ]]">
-<$text text=<<sample_leadingtext_e2>> />
-''<$text text=<<text_lowercase_e2>> />''
-</$list><!--sample_leadingtext_e2-->
-<br>
-</$list><!--found_leadingtext_e2-->
-<$list variable=found_trailingtext_e2 filter="[<link_title>get[text]lowercase[]split<text_lowercase_e2>butfirst[]]">
-
-* <$list variable=sample_trailingtext_e2 filter="[<found_trailingtext_e2>split[ ]first[7]join[ ]]">
-''<$text text=<<text_lowercase_e2>> />''
-<$text text=<<sample_trailingtext_e2>> />
-</$list><!--sample_trailingtext_e2-->
-</$list><!--found_trailingtext_e2-->
-</$list><!--filter_anytext_e2
--->
-
-<<<
-</$list><!--link_title-->
-</$list><!--filter_card_found-->
-</$list><!--card_count-->
-</$list><!--filter_prefix_e1-->
-</$list><!--filter_all_capse1-->
-</$list><!--all_caps_tage1-->
-</$list><!--tag_e1-->
-</$list><!--filter_any_input-->
-</$list><!--count_any_input-->
-</$list><!--tag_prefix_e1-->
-</$list><!--text_lowercase_e2-->
-</$list><!--text_lowercase_e1-->
-</$list><!--text_prefix_e2-->
-</$list><!--text_prefix_e1-->
-</$list><!--on_twcard-->
-
-[[Search All Code |View All Code]]
-
-[[___|Recent Entries]]
 
 
 
