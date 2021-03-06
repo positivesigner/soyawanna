@@ -179,8 +179,6 @@ Error message and password prompt
 
 <li>$:/DefaultTiddlers</li>
 
-<li>$:/Import</li>
-
 <li>$:/isEncrypted</li>
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
@@ -220,6 +218,8 @@ Error message and password prompt
 <li>$:/state/tab--1963855381</li>
 
 <li>$:/state/tab-1749438307</li>
+
+<li>$:/state/tab/moresidebar-1850697562</li>
 
 <li>$:/state/tab/sidebar--595412856</li>
 
@@ -596,6 +596,8 @@ Error message and password prompt
 <li>mcr glbl_code_split</li>
 
 <li>mcr glbl_compare_lines</li>
+
+<li>mcr glbl_dt_ddd</li>
 
 <li>mcr glbl_ext</li>
 
@@ -10813,14 +10815,6 @@ Error message and password prompt
 [tag[INDEX]!has[sort_ord]sort[title]]
 </pre>
 </div>
-<div status="complete" title="$:/Import">
-<pre>The following tiddlers were imported:
-
-# [[$:/positivesigner/gcmpr]]
-# [[$:/positivesigner/gcmpr/btn gcmpr card]]
-# [[$:/positivesigner/gcmpr/mcr gcmpr_compare_card]]
-# [[$:/positivesigner/gcmpr/textarea]]</pre>
-</div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
@@ -10834,7 +10828,7 @@ Error message and password prompt
 <pre>&lt;&lt;gcmpr_btn_cmp_current&gt;&gt; 
 </pre>
 </div>
-<div created="20210215032519812" modified="20210215143949582" tags="$:/tags/Macro $:/positivesigner/gcmpr" title="$:/positivesigner/gcmpr/mcr gcmpr_compare_card">
+<div created="20210215032519812" modified="20210306085334764" tags="$:/tags/Macro $:/positivesigner/gcmpr" title="$:/positivesigner/gcmpr/mcr gcmpr_compare_card">
 <pre>\define gcmpr_compare_card(ur_ttb_card)
 &lt;$list variable=ttb_card filter=&quot;[[$ur_ttb_card$]!match[]]&quot;&gt;
 &lt;$list variable=compare_card filter=&quot;[&lt;ttb_card&gt;addprefix[$:/state/popup/compare-card/]]&quot;&gt;
@@ -10857,7 +10851,7 @@ Error message and password prompt
 &lt;$list variable=source_text filter=&quot;[&lt;ttb_card&gt;get&lt;enr_text&gt;else[]]&quot;&gt;
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;compare_card&gt;&gt; text=&lt;&lt;source_text&gt;&gt; /&gt;
-Edit Source
+Copy Source
 &lt;/$button&gt;
 &lt;/$list&gt;&lt;!--source_text--&gt;
 &lt;/$vars&gt;&lt;!--enr_text--&gt;
@@ -10869,7 +10863,7 @@ Edit Source
 &lt;$list variable=compare_text filter=&quot;[&lt;compare_card&gt;get&lt;enr_text&gt;else[]]&quot;&gt;
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;ttb_card&gt;&gt; text=&lt;&lt;compare_text&gt;&gt; /&gt;
-Copy over
+Overwrite Source
 &lt;/$button&gt;
 &lt;/$list&gt;&lt;!--compare_text--&gt;
 &lt;/$vars&gt;&lt;!--enr_text--&gt;
@@ -11061,7 +11055,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210306060837157" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210306094814670" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11070,13 +11064,16 @@ Hide resize buttons
 <div created="20201226064903165" modified="20210306043521620" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
-<div created="20201226064844310" modified="20210306060837157" title="$:/state/tab/sidebar--595412856">
+<div created="20210306085219583" modified="20210306092847150" title="$:/state/tab/moresidebar-1850697562">
+<pre>$:/core/ui/MoreSideBar/Tags</pre>
+</div>
+<div created="20201226064844310" modified="20210306094814670" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210306045714033" list="[[Tag pairs]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\View HTML Source]] [[JavaScriptBookmarklets\Clear all CSS]] [[mcr glbl_article_list]]" modified="20210306052453256" title="$:/StoryList">
+<div created="20210306094258754" list="[[Tag pairs]] [[$:/state/popup/gcmpr/Tag pairs]]" modified="20210306094258754" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -14136,7 +14133,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--save_export_html--&gt;
 </pre>
 </div>
-<div created="20201120062240873" modified="20210306045725349" tags="$:/tags/Macro META" title="mcr glbl_article_list">
+<div created="20201120062240873" modified="20210306092156929" tags="$:/tags/Macro META" title="mcr glbl_article_list">
 <pre>\define glbl_article_list()
 &lt;ol&gt;
 &lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
@@ -14147,7 +14144,37 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
-\end</pre>
+\end
+\define glbl_article_checklist()
+&lt;&lt;glbl_dt_ddd&gt;&gt;
+&lt;$wikify name=cur_date text=&quot;&quot;&quot;&lt;&lt;now &quot;YYYYm0MMd0DD&quot;&gt;&gt;&quot;&quot;&quot; &gt;
+&lt;$list variable=diff_date filter=&quot;[&lt;currentTiddler&gt;get[match_date]else[]!match&lt;cur_date&gt;]&quot;&gt;
+&lt;$button&gt;
+&lt;$list variable=field_name filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[chk_]]&quot;&gt;
+&lt;$action-setfield $field=&lt;&lt;field_name&gt;&gt; $value=&quot;&quot; /&gt;
+&lt;/$list&gt;&lt;!--field_name--&gt;
+&lt;$action-setfield match_date=&lt;&lt;cur_date&gt;&gt; /&gt;
+Clear all checkmarks
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--diff_date--&gt;
+&lt;/$wikify&gt;&lt;!--cur_date--&gt;
+&lt;ol&gt;
+&lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
+&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]]&quot;&gt;
+&lt;li&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&lt;&lt;chk_name&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
+&lt;/$checkbox&gt;
+&lt;/li&gt;
+&lt;/$list&gt;&lt;!--chk_name--&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
+&lt;/ol&gt;
+\end
+</pre>
 </div>
 <div created="20201128162437302" modified="20201226065145145" tags="$:/tags/Macro META" title="mcr glbl_code_split">
 <pre>\define glbl_code_block(ur_note_pk)
@@ -14381,6 +14408,15 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 
 &lt;&lt;glbl_compare_lines &quot;$:/state/CompareText1&quot; &quot;$:/state/CompareText2&quot;&gt;&gt;
 --&gt;</pre>
+</div>
+<div created="20201115020319967" modified="20210306091020294" tags="$:/tags/Macro META" title="mcr glbl_dt_ddd">
+<pre>\define glbl_dt_ddd()
+&lt;div style=&quot;clear:right;float:right;background-color:aquamarine;&quot;&gt;&lt;&lt;now &quot;YYYYm0MMd0DD DDD pm0hh12\m0mm&quot;&gt;&gt;&lt;/div&gt;
+&lt;$list filter=&quot;[&lt;currentTiddler&gt;split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]&quot;&gt;
+&lt;$view field=&quot;title&quot; format=&quot;date&quot; template=&quot;[UTC]DDD&quot; /&gt;
+&lt;/$list&gt;
+\end
+</pre>
 </div>
 <div created="20201122104355355" modified="20210108094552527" tags="$:/tags/Macro META" title="mcr glbl_ext">
 <pre>\define ext(ur_extnote_pk)
@@ -14688,7 +14724,7 @@ UPPER(field)
 
 SELECT * FROM Table_Name LIMIT 5;</pre>
 </div>
-<div created="20210108091437598" modified="20210119040834762" sort_ord="1" tags="INDEX" title="Tag pairs">
+<div created="20210108091437598" modified="20210306094721974" sort_ord="1" tags="INDEX" title="Tag pairs">
 <pre>\define tag_button(ur_field, ur_tag_name)
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&quot;$ur_field$&quot; text=&quot;$ur_tag_name$&quot;/&gt;
@@ -14726,8 +14762,7 @@ Search text
 &lt;$list variable=text_prefix_e2 filter=&quot;[[$:/state/popup/text_e2]get[text]else[]]&quot;&gt;
 &lt;$list variable=text_lowercase_e2 filter=&quot;[&lt;text_prefix_e2&gt;lowercase[]]&quot;&gt;
 &lt;$list variable=tag_prefix_e1 filter=&quot;[[$:/state/popup/tag_e1]get[text]uppercase[]else[]]&quot;&gt;
-&lt;$list variable=tag_prefix_e2 filter=&quot;[[$:/state/popup/tag_e2]get[text]uppercase[]else[]]&quot;&gt;
-&lt;$list variable=count_any_input filter=&quot;[&lt;text_prefix_e1&gt;] [&lt;text_prefix_e2&gt;] [&lt;tag_prefix_e1&gt;] [&lt;tag_prefix_e2&gt;] +[each:value[]!match[]count[]]&quot;&gt;
+&lt;$list variable=count_any_input filter=&quot;[&lt;text_prefix_e1&gt;] [&lt;text_prefix_e2&gt;] [&lt;tag_prefix_e1&gt;] +[each:value[]!match[]count[]]&quot;&gt;
 
 &lt;$list variable=tag_list filter=&quot;[tags[]each:value[]!prefix[$:]sort[]]&quot;&gt;
 &lt;$list variable=all_caps_taglist filter=&quot;[&lt;tag_list&gt;uppercase[]]&quot;&gt;
@@ -14744,16 +14779,11 @@ Search text
 &lt;$list variable=all_caps_tage1 filter=&quot;[&lt;tag_e1&gt;uppercase[]]&quot;&gt;
 &lt;$list variable=filter_all_capse1 filter=&quot;[&lt;tag_e1&gt;!match&lt;all_caps_tage1&gt;]&quot;&gt;
 &lt;$list variable=filter_prefix_e1 filter=&quot;[&lt;all_caps_tage1&gt;prefix&lt;tag_prefix_e1&gt;]&quot;&gt;
-&lt;$list variable=tag_e2 filter=&quot;[search:text,title&lt;text_prefix_e1&gt;search:text,title&lt;text_prefix_e2&gt;tags[]each:value[]!prefix[$:]!match&lt;tag_e1&gt;sort[]]&quot;&gt;
-&lt;$list variable=all_caps_tage2 filter=&quot;[&lt;tag_e2&gt;uppercase[]]&quot;&gt;
-&lt;$list variable=filter_all_capse2 filter=&quot;[&lt;tag_e2&gt;!match&lt;all_caps_tage2&gt;]&quot;&gt;
-&lt;$list variable=filter_prefix_e2 filter=&quot;[&lt;all_caps_tage2&gt;prefix&lt;tag_prefix_e2&gt;]&quot;&gt;
-&lt;$list variable=card_count filter=&quot;[tag&lt;tag_e1&gt;tag&lt;tag_e2&gt;search:text,title&lt;text_prefix_e1&gt;search:text,title&lt;text_prefix_e2&gt;count[]]&quot;&gt;
+&lt;$list variable=card_count filter=&quot;[tag&lt;tag_e1&gt;search:text,title&lt;text_prefix_e1&gt;search:text,title&lt;text_prefix_e2&gt;count[]]&quot;&gt;
 &lt;$list variable=filter_card_found filter=&quot;[&lt;card_count&gt;!match[0]]&quot;&gt;
 &lt;$macrocall $name=tag_button ur_field=&quot;$:/state/popup/tag_e1&quot; ur_tag_name=&lt;&lt;tag_e1&gt;&gt; /&gt;
-&lt;$macrocall $name=tag_button ur_field=&quot;$:/state/popup/tag_e2&quot; ur_tag_name=&lt;&lt;tag_e2&gt;&gt; /&gt;
 
-&lt;$list variable=link_title filter=&quot;[tag&lt;tag_e1&gt;tag&lt;tag_e2&gt;search:text,title&lt;text_prefix_e1&gt;search:text,title&lt;text_prefix_e2&gt;]&quot;&gt;
+&lt;$list variable=link_title filter=&quot;[tag&lt;tag_e1&gt;search:text,title&lt;text_prefix_e1&gt;search:text,title&lt;text_prefix_e2&gt;]&quot;&gt;
 
 &lt;&lt;&lt;
 &lt;$link to=&lt;&lt;link_title&gt;&gt; /&gt; (&lt;$list variable=disp_tag filter=&quot;[&lt;link_title&gt;tags[]sort[]]&quot;&gt; &lt;&lt;disp_tag&gt;&gt; &lt;/$list&gt;)
@@ -14800,17 +14830,12 @@ Search text
 &lt;/$list&gt;&lt;!--link_title--&gt;
 &lt;/$list&gt;&lt;!--filter_card_found--&gt;
 &lt;/$list&gt;&lt;!--card_count--&gt;
-&lt;/$list&gt;&lt;!--filter_prefix_e2--&gt;
-&lt;/$list&gt;&lt;!--filter_all_capse2--&gt;
-&lt;/$list&gt;&lt;!--all_caps_tage2--&gt;
-&lt;/$list&gt;&lt;!--tag_e2--&gt;
 &lt;/$list&gt;&lt;!--filter_prefix_e1--&gt;
 &lt;/$list&gt;&lt;!--filter_all_capse1--&gt;
 &lt;/$list&gt;&lt;!--all_caps_tage1--&gt;
 &lt;/$list&gt;&lt;!--tag_e1--&gt;
 &lt;/$list&gt;&lt;!--filter_any_input--&gt;
 &lt;/$list&gt;&lt;!--count_any_input--&gt;
-&lt;/$list&gt;&lt;!--tag_prefix_e2--&gt;
 &lt;/$list&gt;&lt;!--tag_prefix_e1--&gt;
 &lt;/$list&gt;&lt;!--text_lowercase_e2--&gt;
 &lt;/$list&gt;&lt;!--text_lowercase_e1--&gt;

@@ -119,7 +119,7 @@ $:/positivesigner/gcmpr/mcr gcmpr_compare_card
 <$list variable=source_text filter="[<ttb_card>get<enr_text>else[]]">
 <$button>
 <$action-setfield $tiddler=<<compare_card>> text=<<source_text>> />
-Edit Source
+Copy Source
 </$button>
 </$list><!--source_text-->
 </$vars><!--enr_text-->
@@ -131,7 +131,7 @@ Edit Source
 <$list variable=compare_text filter="[<compare_card>get<enr_text>else[]]">
 <$button>
 <$action-setfield $tiddler=<<ttb_card>> text=<<compare_text>> />
-Copy over
+Overwrite Source
 </$button>
 </$list><!--compare_text-->
 </$vars><!--enr_text-->
@@ -3689,6 +3689,36 @@ mcr glbl_article_list
 </$list><!--card_prefix-->
 </ol>
 \end
+\define glbl_article_checklist()
+<<glbl_dt_ddd>>
+<$wikify name=cur_date text="""<<now "YYYYm0MMd0DD">>""" >
+<$list variable=diff_date filter="[<currentTiddler>get[match_date]else[]!match<cur_date>]">
+<$button>
+<$list variable=field_name filter="[<currentTiddler>fields[]prefix[chk_]]">
+<$action-setfield $field=<<field_name>> $value="" />
+</$list><!--field_name-->
+<$action-setfield match_date=<<cur_date>> />
+Clear all checkmarks
+</$button>
+</$list><!--diff_date-->
+</$wikify><!--cur_date-->
+<ol>
+<$list variable=card_prefix filter="[<currentTiddler>addsuffix[\]]">
+<$list variable=cur_card filter="[prefix<card_prefix>sort[]]">
+<$list variable=disp_name filter="[<cur_card>split[\]butfirst[]join[\]]">
+<$list variable=chk_name filter="[<disp_name>addprefix[chk_]]">
+<li>
+<$checkbox default="no" unchecked="no" checked="yes" field=<<chk_name>> >
+<$link to=<<cur_card>> ><<disp_name>></$link>
+</$checkbox>
+</li>
+</$list><!--chk_name-->
+</$list><!--disp_name-->
+</$list><!--cur_card-->
+</$list><!--card_prefix-->
+</ol>
+\end
+
 
 
 
@@ -3928,6 +3958,18 @@ mcr glbl_compare_lines
 
 <<glbl_compare_lines "$:/state/CompareText1" "$:/state/CompareText2">>
 -->
+
+
+
+mcr glbl_dt_ddd
+
+\define glbl_dt_ddd()
+<div style="clear:right;float:right;background-color:aquamarine;"><<now "YYYYm0MMd0DD DDD pm0hh12\m0mm">></div>
+<$list filter="[<currentTiddler>split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]">
+<$view field="title" format="date" template="[UTC]DDD" />
+</$list>
+\end
+
 
 
 
@@ -4315,8 +4357,7 @@ Search text
 <$list variable=text_prefix_e2 filter="[[$:/state/popup/text_e2]get[text]else[]]">
 <$list variable=text_lowercase_e2 filter="[<text_prefix_e2>lowercase[]]">
 <$list variable=tag_prefix_e1 filter="[[$:/state/popup/tag_e1]get[text]uppercase[]else[]]">
-<$list variable=tag_prefix_e2 filter="[[$:/state/popup/tag_e2]get[text]uppercase[]else[]]">
-<$list variable=count_any_input filter="[<text_prefix_e1>] [<text_prefix_e2>] [<tag_prefix_e1>] [<tag_prefix_e2>] +[each:value[]!match[]count[]]">
+<$list variable=count_any_input filter="[<text_prefix_e1>] [<text_prefix_e2>] [<tag_prefix_e1>] +[each:value[]!match[]count[]]">
 
 <$list variable=tag_list filter="[tags[]each:value[]!prefix[$:]sort[]]">
 <$list variable=all_caps_taglist filter="[<tag_list>uppercase[]]">
@@ -4333,16 +4374,11 @@ Search text
 <$list variable=all_caps_tage1 filter="[<tag_e1>uppercase[]]">
 <$list variable=filter_all_capse1 filter="[<tag_e1>!match<all_caps_tage1>]">
 <$list variable=filter_prefix_e1 filter="[<all_caps_tage1>prefix<tag_prefix_e1>]">
-<$list variable=tag_e2 filter="[search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>tags[]each:value[]!prefix[$:]!match<tag_e1>sort[]]">
-<$list variable=all_caps_tage2 filter="[<tag_e2>uppercase[]]">
-<$list variable=filter_all_capse2 filter="[<tag_e2>!match<all_caps_tage2>]">
-<$list variable=filter_prefix_e2 filter="[<all_caps_tage2>prefix<tag_prefix_e2>]">
-<$list variable=card_count filter="[tag<tag_e1>tag<tag_e2>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>count[]]">
+<$list variable=card_count filter="[tag<tag_e1>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>count[]]">
 <$list variable=filter_card_found filter="[<card_count>!match[0]]">
 <$macrocall $name=tag_button ur_field="$:/state/popup/tag_e1" ur_tag_name=<<tag_e1>> />
-<$macrocall $name=tag_button ur_field="$:/state/popup/tag_e2" ur_tag_name=<<tag_e2>> />
 
-<$list variable=link_title filter="[tag<tag_e1>tag<tag_e2>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>]">
+<$list variable=link_title filter="[tag<tag_e1>search:text,title<text_prefix_e1>search:text,title<text_prefix_e2>]">
 
 <<<
 <$link to=<<link_title>> /> (<$list variable=disp_tag filter="[<link_title>tags[]sort[]]"> <<disp_tag>> </$list>)
@@ -4389,17 +4425,12 @@ Search text
 </$list><!--link_title-->
 </$list><!--filter_card_found-->
 </$list><!--card_count-->
-</$list><!--filter_prefix_e2-->
-</$list><!--filter_all_capse2-->
-</$list><!--all_caps_tage2-->
-</$list><!--tag_e2-->
 </$list><!--filter_prefix_e1-->
 </$list><!--filter_all_capse1-->
 </$list><!--all_caps_tage1-->
 </$list><!--tag_e1-->
 </$list><!--filter_any_input-->
 </$list><!--count_any_input-->
-</$list><!--tag_prefix_e2-->
 </$list><!--tag_prefix_e1-->
 </$list><!--text_lowercase_e2-->
 </$list><!--text_lowercase_e1-->
