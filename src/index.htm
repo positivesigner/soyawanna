@@ -11061,7 +11061,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210306054653219" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210306060837157" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11070,7 +11070,7 @@ Hide resize buttons
 <div created="20201226064903165" modified="20210306043521620" title="$:/state/tab-1749438307">
 <pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
-<div created="20201226064844310" modified="20210306054653219" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210306060837157" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -13890,7 +13890,7 @@ The use of the call object is implicit, because once the call object is created,
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
-<div created="20210306043205137" modified="20210306054646266" tags="" title="JavaScriptBookmarklets\Clear all CSS">
+<div created="20210306043205137" modified="20210306060835467" tags="" title="JavaScriptBookmarklets\Clear all CSS">
 <pre>Clears all the CSS Class and Style attributes
 
 ```
@@ -13931,9 +13931,9 @@ avascript:(function (global, factory) {
 });
 document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 clearAllCSS(1, document.body);
-document.head.parentNode.removeChild(document.head);
-document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
-document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;1&quot;) + &quot;00%&quot;;
+if (document.head!=null){document.head.parentNode.removeChild(document.head)};
+document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;2&quot;) + &quot;00%&quot;;
 undefined;
 </pre>
 </div>

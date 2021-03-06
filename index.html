@@ -6562,7 +6562,7 @@ DOC
 
 </button>
 </span></span><span><h2 class="tc-title">JavaScriptBookmarklets\Clear all CSS</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>5th March 2021 at 9:46pm</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>5th March 2021 at 10:08pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
@@ -6603,9 +6603,9 @@ DOC
 });
 document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 clearAllCSS(1, document.body);
-document.head.parentNode.removeChild(document.head);
-document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
-document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;1&quot;) + &quot;00%&quot;;
+if (document.head!=null){document.head.parentNode.removeChild(document.head)};
+document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;2&quot;) + &quot;00%&quot;;
 undefined;
 </code></pre></div>
 

@@ -3430,9 +3430,9 @@ avascript:(function (global, factory) {
 });
 document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 clearAllCSS(1, document.body);
-document.head.parentNode.removeChild(document.head);
-document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
-document.body.style.fontSize=prompt("Please enter font multiplier", "1") + "00%";
+if (document.head!=null){document.head.parentNode.removeChild(document.head)};
+document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+document.body.style.fontSize=prompt("Please enter font multiplier", "2") + "00%";
 undefined;
 
 
