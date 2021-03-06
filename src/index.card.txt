@@ -1569,20 +1569,18 @@ ext TW Return
 \define TW_Return(ur_url, ur_link_title)
 <div style="float:right"><a href="$ur_url$"> ($ur_link_title$)</a></div>
 \end
-<$list filter="[<tv-config-toolbar-icons>match[no]]">
-<$list filter="[{$:/info/url/full}split[/]count[]subtract[1]]" variable=found_index>
-<$list filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]]">
-<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="TiddlyWiki view of website" />
+<$list variable=found_index filter="[{$:/info/url/full}split[/]count[]subtract[1]]">
+<$list variable=skip_html filter="[<tv-config-toolbar-icons>match[no]]">
+<$list variable=return_url filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]addprefix[src/]]">
+<$macrocall $name=TW_Return ur_url=<<return_url>> ur_link_title="TiddlyWiki view of website" />
+</$list><!--found_html-->
+</$list><!--skip_html-->
+<$list variable=found_html filter="[<tv-config-toolbar-icons>!match[no]]">
+<$list variable=return_url filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]split[.htm]join[.html]addprefix[../]]">
+<$macrocall $name=TW_Return ur_url=<<return_url>> ur_link_title="Static HTML view of website" />
 </$list>
-</$list>
-</$list>
-<$list filter="[<tv-config-toolbar-icons>!match[no]]">
-<$list filter="[{$:/info/url/full}split[/]count[]subtract[1]]" variable=found_index>
-<$list filter="[{$:/info/url/full}split[/]butfirst<found_index>first[]split[.html]join[.htm]split[.htm]join[.html]]">
-<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="Static HTML view of website" />
-</$list>
-</$list>
-</$list>
+</$list><!--found_html-->
+</$list><!--found_index-->
 
 
 
@@ -3390,6 +3388,78 @@ javascript:(function(){var h=document.createElement('div');var t=document.getEle
 
 
 
+JavaScriptBookmarklets\Clear all CSS
+
+Clears all the CSS Class and Style attributes
+
+```
+avascript:(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["module"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.clearAllCSS = mod.exports;
+  }
+})(this, function (module) {
+  "use strict";
+
+  var each = Array.prototype.forEach;
+
+
+  function clearAllCSS(nest_level, parent_style, cur_elt) {
+    var _context2;
+    if (!cur_elt) {
+        throw new Error("No element specified.");
+        }
+
+    var _context;
+    (_context = cur_elt.children, each).call(_context, function (child) {
+        clearAllCSS(nest_level+1, cur_style, child);
+        });
+
+    cur_elt.style = "";
+    cur_elt.class = "";
+    }
+
+  module.exports = clearAllCSS;
+});
+(function(){
+	var h = document.createElement('div');
+	var t = document.getElementsByTagName('title')[0];
+	var cite_remove = '<a href="%23" onclick="document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false">remove</a>';
+	var info = '<p><strong>Title(' + t.innerHTML.length + '):</strong> ' + t.innerHTML + '</p>';
+	var m = document.getElementsByTagName('meta');
+	for(var i = 0; i < ((m == null) ? 0 : m.length); i++) {
+		if(null !== m[i].getAttribute('name') ) {
+			var c=m[i].getAttribute('content');
+			if (c != null) {info += '<p><strong>' + m[i].getAttribute('name') + '(' + c.length + '):</strong> ' + c + '</p>';}
+			}
+		}
+	
+	var lm = document.lastModified;
+	var url = location.href;
+	var d = new Date();
+	var dd = d.getDate();
+	var mm = d.getMonth()+1;
+	var yyyy = d.getFullYear();
+	info += '<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified ' + lm + '. <a target="_blank" href="' + url + '">' + url + '</a> (accessed ' + mm + '/' + dd + '/' + yyyy + ').</p><p><strong>Filename:</strong> ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html</p>';
+	document.body.insertBefore(h,document.body.firstChild);
+	h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;">' + cite_remove + info + cite_remove + '</div>';
+	})();
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
+clearAllCSS(1, null, document.body);
+document.head.parentNode.removeChild(document.head);
+document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
+alert("done");
+
+
+
+
 JavaScriptBookmarklets\Convert to Inline CSS
 
 Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
@@ -3549,17 +3619,17 @@ avascript:document.documentElement.innerHTML='<html><body>'+document.body.innerH
 
 
 
-JavaScriptBookmarklets\View Body with reflow
-
-```
-avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;\/div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt;\/a>','&gt;&lt\/a&gt;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
-
-
-
 JavaScriptBookmarklets\View HTML Source
 
 ```
 avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
+
+
+
+JavaScriptBookmarklets\View HTML to TW
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;\/div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt;\/a>','&gt;&lt\/a&gt;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
 
 
 
@@ -3607,10 +3677,12 @@ keyboard action SaveAllChanges
 <$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
 <$action-sendmessage $message="tm-save-wiki" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$$ur_save_wiki_extension$"
 />
-<$list vairable=save_export_html filter="[[$ur_save_export_html$]match[1]]">
+<$list variable=save_export_html filter="[[$ur_save_export_html$]match[1]]">
+<$list variable=save_as_html_path filter="[[$ur_filename$]split[-fslash-src-fslash-]join[-fslash-]addprefix[WikiMove_]addsuffix[-stamp-$ur_stamp$.html]]">
 <$action-sendmessage $message="tm-download-file"
-$param="$:/core/templates/exporters/StaticRiver" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.html"
+$param="$:/core/templates/exporters/StaticRiver" filename=<<save_as_html_path>>
 exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+</$list><!--save_as_html_path-->
 </$list><!--save_export_html-->
 <$action-sendmessage $message="tm-download-file"
 $param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.card.txt" />
@@ -3620,6 +3692,7 @@ $param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp
 <$list variable=save_as_file_name filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
 <$macrocall $name="ExportSaveAll" ur_filename=<<save_as_file_name>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> ur_save_wiki_extension=<<save_wiki_extension>> ur_save_export_html=<<save_export_html>> />
 </$list><!--save_as_file_name-->
+</$list><!--save_wiki_extension-->
 </$list><!--save_export_html-->
 
 
@@ -3629,15 +3702,15 @@ mcr glbl_article_list
 
 \define glbl_article_list()
 <ol>
-<$list filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[\]]">
-<$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
-<li><$link to=<<currentTiddler>> /></li>
-</$list>
-</$list>
+<$list variable=card_prefix filter="[<currentTiddler>addsuffix[\]]">
+<$list variable=cur_card filter="[prefix<card_prefix>sort[]]">
+<$list variable=disp_name filter="[<cur_card>split[\]butfirst[]join[\]]">
+<li><$link to=<<cur_card>> ><<disp_name>></$link></li>
+</$list><!--disp_name-->
+</$list><!--cur_card-->
+</$list><!--card_prefix-->
 </ol>
 \end
-
-
 
 
 

@@ -563,6 +563,8 @@ Error message and password prompt
 
 <li>JavaScriptBookmarklets\Bibliographic citation</li>
 
+<li>JavaScriptBookmarklets\Clear all CSS</li>
+
 <li>JavaScriptBookmarklets\Convert to Inline CSS</li>
 
 <li>JavaScriptBookmarklets\Edit current page</li>
@@ -575,9 +577,9 @@ Error message and password prompt
 
 <li>JavaScriptBookmarklets\Unescape HTML code</li>
 
-<li>JavaScriptBookmarklets\View Body with reflow</li>
-
 <li>JavaScriptBookmarklets\View HTML Source</li>
+
+<li>JavaScriptBookmarklets\View HTML to TW</li>
 
 <li>keyboard action FontLarge</li>
 
@@ -11059,22 +11061,22 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210303103819269" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210306045729922" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
 <pre>$:/core/ui/ControlPanel/Toolbars</pre>
 </div>
-<div created="20201226064903165" modified="20210303093630895" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20201226064903165" modified="20210306043521620" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
-<div created="20201226064844310" modified="20210303103819269" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210306045729922" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210303093442617" list="[[Tag pairs]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\View HTML Source]] [[JavaScriptBookmarklets\Unescape HTML code]]" modified="20210303103321455" title="$:/StoryList">
+<div created="20210306045714033" list="[[Tag pairs]] [[Code Samples]] [[mcr glbl_article_list]]" modified="20210306045714033" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12302,24 +12304,22 @@ Make sure you put a space between the power operator (^) and the numbers
 <div created="20201122074133227" modified="20210108101409390" tags="EXT" title="ext TW Manual">
 <pre>TiddlyWiki_Code\Snapshot\TheBook - The TiddlyWiki Manual.txt.html</pre>
 </div>
-<div created="20201114124116532" modified="20201226065145141" tags="META" title="ext TW Return">
+<div created="20201114124116532" modified="20210306045536973" tags="META" title="ext TW Return">
 <pre>\define TW_Return(ur_url, ur_link_title)
 &lt;div style=&quot;float:right&quot;&gt;&lt;a href=&quot;$ur_url$&quot;&gt; ($ur_link_title$)&lt;/a&gt;&lt;/div&gt;
 \end
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]]&quot;&gt;
-&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;TiddlyWiki view of website&quot; /&gt;
+&lt;$list variable=found_index filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot;&gt;
+&lt;$list variable=skip_html filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[no]]&quot;&gt;
+&lt;$list variable=return_url filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]addprefix[src/]]&quot;&gt;
+&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;return_url&gt;&gt; ur_link_title=&quot;TiddlyWiki view of website&quot; /&gt;
+&lt;/$list&gt;&lt;!--found_html--&gt;
+&lt;/$list&gt;&lt;!--skip_html--&gt;
+&lt;$list variable=found_html filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
+&lt;$list variable=return_url filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]split[.htm]join[.html]addprefix[../]]&quot;&gt;
+&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;return_url&gt;&gt; ur_link_title=&quot;Static HTML view of website&quot; /&gt;
 &lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]count[]subtract[1]]&quot; variable=found_index&gt;
-&lt;$list filter=&quot;[{$:/info/url/full}split[/]butfirst&lt;found_index&gt;first[]split[.html]join[.htm]split[.htm]join[.html]]&quot;&gt;
-&lt;$macrocall $name=TW_Return ur_url=&lt;&lt;currentTiddler&gt;&gt; ur_link_title=&quot;Static HTML view of website&quot; /&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+&lt;/$list&gt;&lt;!--found_html--&gt;
+&lt;/$list&gt;&lt;!--found_index--&gt;
 </pre>
 </div>
 <div created="20201122081448898" modified="20210108101358151" tags="EXT" title="ext TW Snapshot Review">
@@ -13890,6 +13890,75 @@ The use of the call object is implicit, because once the call object is created,
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
+<div created="20210306043205137" modified="20210306043449087" tags="" title="JavaScriptBookmarklets\Clear all CSS">
+<pre>Clears all the CSS Class and Style attributes
+
+```
+avascript:(function (global, factory) {
+  if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
+    define([&quot;module&quot;], factory);
+  } else if (typeof exports !== &quot;undefined&quot;) {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.clearAllCSS = mod.exports;
+  }
+})(this, function (module) {
+  &quot;use strict&quot;;
+
+  var each = Array.prototype.forEach;
+
+
+  function clearAllCSS(nest_level, parent_style, cur_elt) {
+    var _context2;
+    if (!cur_elt) {
+        throw new Error(&quot;No element specified.&quot;);
+        }
+
+    var _context;
+    (_context = cur_elt.children, each).call(_context, function (child) {
+        clearAllCSS(nest_level+1, cur_style, child);
+        });
+
+    cur_elt.style = &quot;&quot;;
+    cur_elt.class = &quot;&quot;;
+    }
+
+  module.exports = clearAllCSS;
+});
+(function(){
+	var h = document.createElement('div');
+	var t = document.getElementsByTagName('title')[0];
+	var cite_remove = '&lt;a href=&quot;%23&quot; onclick=&quot;document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false&quot;&gt;remove&lt;/a&gt;';
+	var info = '&lt;p&gt;&lt;strong&gt;Title(' + t.innerHTML.length + '):&lt;/strong&gt; ' + t.innerHTML + '&lt;/p&gt;';
+	var m = document.getElementsByTagName('meta');
+	for(var i = 0; i &lt; ((m == null) ? 0 : m.length); i++) {
+		if(null !== m[i].getAttribute('name') ) {
+			var c=m[i].getAttribute('content');
+			if (c != null) {info += '&lt;p&gt;&lt;strong&gt;' + m[i].getAttribute('name') + '(' + c.length + '):&lt;/strong&gt; ' + c + '&lt;/p&gt;';}
+			}
+		}
+	
+	var lm = document.lastModified;
+	var url = location.href;
+	var d = new Date();
+	var dd = d.getDate();
+	var mm = d.getMonth()+1;
+	var yyyy = d.getFullYear();
+	info += '&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified ' + lm + '. &lt;a target=&quot;_blank&quot; href=&quot;' + url + '&quot;&gt;' + url + '&lt;/a&gt; (accessed ' + mm + '/' + dd + '/' + yyyy + ').&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filename:&lt;/strong&gt; ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html&lt;/p&gt;';
+	document.body.insertBefore(h,document.body.firstChild);
+	h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;' + cite_remove + info + cite_remove + '&lt;/div&gt;';
+	})();
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
+clearAllCSS(1, null, document.body);
+document.head.parentNode.removeChild(document.head);
+document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
+alert(&quot;done&quot;);
+</pre>
+</div>
 <div created="20210227113531277" modified="20210302014205550" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
 <pre>Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
 
@@ -14031,13 +14100,13 @@ avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);i
 <pre>```
 avascript:document.documentElement.innerHTML='&lt;html&gt;&lt;body&gt;'+document.body.innerHTML.replaceAll('&amp;lt;','&lt;').replaceAll('&amp;gt;','&gt;').replaceAll('&amp;amp;','&amp;')+'&lt;\/body&gt;&lt;\/html&gt;';</pre>
 </div>
-<div created="20210302004438895" modified="20210303102319802" tags="" title="JavaScriptBookmarklets\View Body with reflow">
-<pre>```
-avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;').replaceAll('&amp;lt;html','&amp;lt;div').replaceAll('&amp;lt;\/html','&amp;lt;\/div').replaceAll('&amp;lt;body','&amp;lt;div').replaceAll('&amp;lt;\/body','&amp;lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('&gt;remove&amp;lt;\/a&gt;','&amp;gt;&amp;lt\/a&amp;gt;').replaceAll('src=&quot;http','src_attr=&quot;http').replaceAll('src=\'http','src_attr=\'http')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
-</div>
 <div created="20210302004407474" modified="20210302012827833" tags="" title="JavaScriptBookmarklets\View HTML Source">
 <pre>```
 avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
+</div>
+<div created="20210302004438895" modified="20210306042748883" tags="" title="JavaScriptBookmarklets\View HTML to TW">
+<pre>```
+avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){;newWindow.document.documentElement.innerHTML='&lt;html&gt;&lt;head&gt;&lt;title&gt;Source of Page&lt;\/title&gt;&lt;\/head&gt;&lt;body&gt;&lt;pre&gt;'+document.documentElement.outerHTML.replaceAll('&amp;','&amp;amp;').replaceAll('&lt;','&amp;lt;').replaceAll('&amp;lt;html','&amp;lt;div').replaceAll('&amp;lt;\/html','&amp;lt;\/div').replaceAll('&amp;lt;body','&amp;lt;div').replaceAll('&amp;lt;\/body','&amp;lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('&gt;remove&amp;lt;\/a&gt;','&amp;gt;&amp;lt\/a&amp;gt;').replaceAll('src=&quot;http','src_attr=&quot;http').replaceAll('src=\'http','src_attr=\'http')+'&lt;\/pre&gt;&lt;\/body&gt;&lt;\/html&gt;';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}</pre>
 </div>
 <div created="20200411063250301" key="((font-large))" modified="20201226065145144" tags="$:/tags/KeyboardShortcut META" title="keyboard action FontLarge">
 <pre>&lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/fontsize&quot; text=&quot;24px&quot;/&gt;
@@ -14063,17 +14132,19 @@ avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);i
 
 </pre>
 </div>
-<div created="20201114070625406" key="((save-all-changes))" modified="20210103080833093" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveAllChanges">
+<div created="20201114070625406" key="((save-all-changes))" modified="20210306045346788" tags="$:/tags/KeyboardShortcut META" title="keyboard action SaveAllChanges">
 <pre>\define ExportSaveAll(ur_filename, ur_stamp, ur_save_wiki_extension, ur_save_export_html)
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/tab/sidebar--595412856&quot; text=&quot;$:/core/ui/SideBar/More&quot;/&gt;
 &lt;$action-sendmessage $message=&quot;tm-save-wiki&quot; filename=&quot;WikiMove_$ur_filename$-stamp-$ur_stamp$$ur_save_wiki_extension$&quot;
 /&gt;
-&lt;$list vairable=save_export_html filter=&quot;[[$ur_save_export_html$]match[1]]&quot;&gt;
+&lt;$list variable=save_export_html filter=&quot;[[$ur_save_export_html$]match[1]]&quot;&gt;
+&lt;$list variable=save_as_html_path filter=&quot;[[$ur_filename$]split[-fslash-src-fslash-]join[-fslash-]addprefix[WikiMove_]addsuffix[-stamp-$ur_stamp$.html]]&quot;&gt;
 &lt;$action-sendmessage $message=&quot;tm-download-file&quot;
-$param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&quot;WikiMove_$ur_filename$-stamp-$ur_stamp$.html&quot;
+$param=&quot;$:/core/templates/exporters/StaticRiver&quot; filename=&lt;&lt;save_as_html_path&gt;&gt;
 exportFilter=&quot;&quot;&quot;[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[INDEX]!tag[META]!tag[MCR]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]&quot;&quot;&quot;/&gt;
+&lt;/$list&gt;&lt;!--save_as_html_path--&gt;
 &lt;/$list&gt;&lt;!--save_export_html--&gt;
 &lt;$action-sendmessage $message=&quot;tm-download-file&quot;
 $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-stamp-$ur_stamp$.card.txt&quot; /&gt;
@@ -14083,21 +14154,22 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;$list variable=save_as_file_name filter=&quot;[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]&quot;&gt;
 &lt;$macrocall $name=&quot;ExportSaveAll&quot; ur_filename=&lt;&lt;save_as_file_name&gt;&gt; ur_stamp=&lt;&lt;now format:&quot;YYYYm0MMd0DDam0hhm0mms0ss&quot;&gt;&gt; ur_save_wiki_extension=&lt;&lt;save_wiki_extension&gt;&gt; ur_save_export_html=&lt;&lt;save_export_html&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--save_as_file_name--&gt;
+&lt;/$list&gt;&lt;!--save_wiki_extension--&gt;
 &lt;/$list&gt;&lt;!--save_export_html--&gt;
 </pre>
 </div>
-<div created="20201120062240873" modified="20201226065145144" tags="$:/tags/Macro MCR" title="mcr glbl_article_list">
+<div created="20201120062240873" modified="20210306045725349" tags="$:/tags/Macro META" title="mcr glbl_article_list">
 <pre>\define glbl_article_list()
 &lt;ol&gt;
-&lt;$list filter=&quot;[&lt;currentTiddler&gt;split[Draft of ]join[]split[']join[]addsuffix[\]]&quot;&gt;
-&lt;$list filter=&quot;[all[tiddlers]prefix&lt;currentTiddler&gt;sort[]]&quot;&gt;
-&lt;li&gt;&lt;$link to=&lt;&lt;currentTiddler&gt;&gt; /&gt;&lt;/li&gt;
-&lt;/$list&gt;
-&lt;/$list&gt;
+&lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
-\end
-
-</pre>
+\end</pre>
 </div>
 <div created="20201128162437302" modified="20201226065145145" tags="$:/tags/Macro META" title="mcr glbl_code_split">
 <pre>\define glbl_code_block(ur_note_pk)
