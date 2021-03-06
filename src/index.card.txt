@@ -3411,7 +3411,7 @@ avascript:(function (global, factory) {
   var each = Array.prototype.forEach;
 
 
-  function clearAllCSS(nest_level, parent_style, cur_elt) {
+  function clearAllCSS(nest_level, cur_elt) {
     var _context2;
     if (!cur_elt) {
         throw new Error("No element specified.");
@@ -3419,43 +3419,21 @@ avascript:(function (global, factory) {
 
     var _context;
     (_context = cur_elt.children, each).call(_context, function (child) {
-        clearAllCSS(nest_level+1, cur_style, child);
+        clearAllCSS(nest_level+1, child);
         });
 
-    cur_elt.style = "";
-    cur_elt.class = "";
+    cur_elt.removeAttribute("style");
+    cur_elt.removeAttribute("class");
     }
 
   module.exports = clearAllCSS;
 });
-(function(){
-	var h = document.createElement('div');
-	var t = document.getElementsByTagName('title')[0];
-	var cite_remove = '<a href="%23" onclick="document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false">remove</a>';
-	var info = '<p><strong>Title(' + t.innerHTML.length + '):</strong> ' + t.innerHTML + '</p>';
-	var m = document.getElementsByTagName('meta');
-	for(var i = 0; i < ((m == null) ? 0 : m.length); i++) {
-		if(null !== m[i].getAttribute('name') ) {
-			var c=m[i].getAttribute('content');
-			if (c != null) {info += '<p><strong>' + m[i].getAttribute('name') + '(' + c.length + '):</strong> ' + c + '</p>';}
-			}
-		}
-	
-	var lm = document.lastModified;
-	var url = location.href;
-	var d = new Date();
-	var dd = d.getDate();
-	var mm = d.getMonth()+1;
-	var yyyy = d.getFullYear();
-	info += '<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified ' + lm + '. <a target="_blank" href="' + url + '">' + url + '</a> (accessed ' + mm + '/' + dd + '/' + yyyy + ').</p><p><strong>Filename:</strong> ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html</p>';
-	document.body.insertBefore(h,document.body.firstChild);
-	h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;">' + cite_remove + info + cite_remove + '</div>';
-	})();
-document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
-clearAllCSS(1, null, document.body);
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+clearAllCSS(1, document.body);
 document.head.parentNode.removeChild(document.head);
 document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
-alert("done");
+document.body.style.fontSize=prompt("Please enter font multiplier", "1") + "00%";
+undefined;
 
 
 

@@ -6562,7 +6562,7 @@ DOC
 
 </button>
 </span></span><span><h2 class="tc-title">JavaScriptBookmarklets\Clear all CSS</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
-<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>5th March 2021 at 8:34pm</div></div><div class=" tc-reveal">
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>5th March 2021 at 9:46pm</div></div><div class=" tc-reveal">
 <div class="tc-tags-wrapper"></div>
 </div>
 
@@ -6584,7 +6584,7 @@ DOC
   var each = Array.prototype.forEach;
 
 
-  function clearAllCSS(nest_level, parent_style, cur_elt) {
+  function clearAllCSS(nest_level, cur_elt) {
     var _context2;
     if (!cur_elt) {
         throw new Error(&quot;No element specified.&quot;);
@@ -6592,43 +6592,21 @@ DOC
 
     var _context;
     (_context = cur_elt.children, each).call(_context, function (child) {
-        clearAllCSS(nest_level+1, cur_style, child);
+        clearAllCSS(nest_level+1, child);
         });
 
-    cur_elt.style = &quot;&quot;;
-    cur_elt.class = &quot;&quot;;
+    cur_elt.removeAttribute(&quot;style&quot;);
+    cur_elt.removeAttribute(&quot;class&quot;);
     }
 
   module.exports = clearAllCSS;
 });
-(function(){
-	var h = document.createElement('div');
-	var t = document.getElementsByTagName('title')[0];
-	var cite_remove = '&lt;a href=&quot;%23&quot; onclick=&quot;document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false&quot;&gt;remove&lt;/a&gt;';
-	var info = '&lt;p&gt;&lt;strong&gt;Title(' + t.innerHTML.length + '):&lt;/strong&gt; ' + t.innerHTML + '&lt;/p&gt;';
-	var m = document.getElementsByTagName('meta');
-	for(var i = 0; i &lt; ((m == null) ? 0 : m.length); i++) {
-		if(null !== m[i].getAttribute('name') ) {
-			var c=m[i].getAttribute('content');
-			if (c != null) {info += '&lt;p&gt;&lt;strong&gt;' + m[i].getAttribute('name') + '(' + c.length + '):&lt;/strong&gt; ' + c + '&lt;/p&gt;';}
-			}
-		}
-	
-	var lm = document.lastModified;
-	var url = location.href;
-	var d = new Date();
-	var dd = d.getDate();
-	var mm = d.getMonth()+1;
-	var yyyy = d.getFullYear();
-	info += '&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified ' + lm + '. &lt;a target=&quot;_blank&quot; href=&quot;' + url + '&quot;&gt;' + url + '&lt;/a&gt; (accessed ' + mm + '/' + dd + '/' + yyyy + ').&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Filename:&lt;/strong&gt; ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html&lt;/p&gt;';
-	document.body.insertBefore(h,document.body.firstChild);
-	h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;' + cite_remove + info + cite_remove + '&lt;/div&gt;';
-	})();
-document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
-clearAllCSS(1, null, document.body);
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+clearAllCSS(1, document.body);
 document.head.parentNode.removeChild(document.head);
 document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
-alert(&quot;done&quot;);
+document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;1&quot;) + &quot;00%&quot;;
+undefined;
 </code></pre></div>
 
 <div class="tc-tiddler-plugin-info tc-reveal"><p>
