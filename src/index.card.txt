@@ -1416,7 +1416,7 @@ VBNet_Project/MxBase/MxBase%20Classes.html
 
 ext Project Check app
 
-TiddlyWiki_Project\Checkapp\Checkapp.htm
+TW Project\Checkapp\Checkapp.htm
 
 
 
@@ -1540,12 +1540,6 @@ https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki
 
 
 
-ext TW Empty v5d01d23
-
-TiddlyWiki_Code\Snapshot\tw_empty_v5d01d23.html
-
-
-
 ext TW Features
 
 TiddlyWiki_Code\Features\TW Features.htm
@@ -1554,7 +1548,7 @@ TiddlyWiki_Code\Features\TW Features.htm
 
 ext TW JS Pretty
 
-TiddlyWiki_Project\JS_Pretty\TW JS Pretty.htm
+TW Project\JS_Pretty\TW JS Pretty.htm
 
 
 
@@ -1593,13 +1587,19 @@ TiddlyWiki_Code\Snapshot\Browse Code tiddlywiki_v5d01d23pre-release.htm
 
 ext TW Snapshot v5d01d23
 
-TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23.html
+TW Project\Snapshot\tiddlywiki_v5d01d23.html
+
+
+
+ext TW Snapshot v5d01d23 empty
+
+TW Project\Snapshot\tw_empty_v5d01d23.html
 
 
 
 ext TW Snapshot v5d01d23 pre-release
 
-TiddlyWiki_Code\Snapshot\tiddlywiki_v5d01d23pre-release.html
+TW Project\Snapshot\tiddlywiki_v5d01d23_pre-release.html
 
 
 
@@ -1695,7 +1695,7 @@ https://html.spec.whatwg.org/multipage/links.html#rel-icon
 
 ext Wiki Empty Setup
 
-TiddlyWiki_Project\Empty Setup\Wiki Empty Setup.htm
+TW Project\Empty Setup\Wiki Empty Setup.htm
 
 
 
@@ -7420,7 +7420,7 @@ Goal: Browse the code inside the WIki file
 
 <<ext "TW Snapshot v5d01d23">>
 
-<<ext "TW Empty v5d01d23">>
+<<ext "TW Snapshot v5d01d23 empty">>
 
 <<ext "TW Snapshot v5d01d23 pre-release">>
 
