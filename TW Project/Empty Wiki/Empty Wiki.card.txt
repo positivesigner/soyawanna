@@ -64,6 +64,12 @@ no
 
 
 
+$:/config/ViewToolbarButtons/Visibility/$:/positivesigner/gcmpr/btn gcmpr card
+
+hide
+
+
+
 $:/config/WikiParserRules/Inline/wikilink
 
 disable
@@ -326,264 +332,493 @@ fluid-fixed
 
 
 
-2021m02
+Add a Field-Value
 
-<<glbl_article_dates>>
+[New Card]
 
+* [Footer field list]
+* Field Name = `key`
+* Field Value = `((save-all-changes))`
+* Click button Add to add the field-value to this Card
+* Note: Field names must be unique on each Card
 
+---
+<$image source={{!!img}} />
 
 
-2021m02d01 Mon JW Broadcast
 
-<<glbl_dt_ddd>>
 
-* First Monday of each month, usualy after p03m00
+Add a Tag Name
 
+[New Card]
 
+* [Tag Name box]
+* Tag Name = INDEX
+* Click button Add
+* Note: The Control Panel's Default Tidders filter will look for all Cards with the INDEX tag. Only those Cards will be shown when you re-open the Wiki file.
 
-2021m02d01 Mon Turn in Field Service time
+---
+<$image source={{!!img}} />
 
-<<glbl_dt_ddd>>
 
 
 
+Additional Features
 
-2021m02d01 Oil Change check
+<<glbl_article_list>>
 
 
 
-2021m02d02 Tue Monica thumb drive
+Additional Features\Adding a Webpage Favicon
 
-<<glbl_dt_ddd>>
+[ICO file]
 
-Convention, Assembly, and latest JW Broadcast
+* Create an icon file
+* Drag-drop onto Wiki Window
 
-* Waiting on Thumb Drive order on Mikel's account
+[Wiki file]
 
+* Import the icon image
+* Title = `$:/favicon.ico`
 
 
-2021m02d04 Thu Meeting p07m00
 
-<<glbl_dt_ddd>>
 
-[[Contacts\KH Zoom meeting]]
+Additional Features\Anchor a Card to the Right Side of Window
 
-<<ext "WT">>
+Copy the [[DivPop.svg]] link from here to your new Wiki File window
 
+* When a green bar appears across the top of the form, you can let go of the mouse dragging -> Opens Card
 
+!! $:/Import Card
+* Click button Import -> Changes view
+* Note: You can click on the `DivPop.svg` link to see the imported image
 
-2021m02d05 Fri Oil change check
+!! Control Panel
+* [Appearance tab, Theme Tweaks sub-tab, Options section]
+* Sidebar layout = `Fluid Story, Fixed Sidebar`
+* [Sizes section]
+* Sidebar width = 350px
+* Note: If you want a larger Sidebar width, make sure you change the `350px` in the code below to match your new width
 
-<<glbl_dt_ddd>>
+!! New Card
+* Title = `DivPop glbl`
+* Tag = `$:/tags/BelowStory`
+* Main Body Text = 
 
-2020m08d20 Oil changed at Guaranty
+<$codeblock code={{DivPop glbl}} />
 
-* Miles = 
-* Next change at mileage = 
+!! New Card
+* Title = `DivPop btn`
+* Tag = `$:/tags/ViewToolbar`
+* Main Body Text = 
 
+<$codeblock code={{DivPop btn}} />
 
+!! Testing script
+* You should see a button that looks like a right-arrow in the top-right corner after the Checkmark button
+* Click the button, and the story river should be shrunk to the left, and the Card should be pinned on the right where the Sidebar is normally
+* Click the Close button at the top of the pinned Card to get widen the story river again
 
 
-2021m02d06 Sat Field Service a10m00
 
-<<glbl_dt_ddd>>
 
-[[Contacts\KH Zoom meeting]]
+Additional Features\Card Editor tweaks
 
+!! Sidebar
+* Show or Hide the Sidebar by typing Alt-Shift-S.
 
+!! Editor with Live Preview
+* When editing a field, show the preview of the code changes by clicking the Editor Toolbar button that looks like an eye.
+* Or you can type Alt-P. 
 
-2021m02d07 Sun Meeting a10m00
+!! Control Panel
+* [Settings tab, Camel Case Wiki Links section]
+* checkbox Enable automatic ~CamelCase linking = clear
+!!
+* [Editor Toolbar section]
+* checkbox Show editor toolbar = clear
+!!
+* [Tiddler Opening Behaviour section]
+* Navigation from outside the story river section = `Open at the bottom of the story river`
+!!
+* [Wiki Links section]
+* checkbox Enable links to missing tiddlers = clear
+!!
+* [Permalink/permaview Mode]
+* checkbox Copy permalink/permaview URL to clipboard = clear
+!!
+* [Appearance tab, Theme Tweaks sub-tab, Options section]
+* Sidebar layout = `Fluid Story, fixed sidebar`
+!!
+* [Sizes section for Normal Font]
+* Font size = 14px
+* Line height = 20px
+* Font size for tiddler body = 15px
+* Line height for tiddler body = 24px
+!!
+* [Sizes section for Large Font]
+* Font size = 24px
+* Line height = 30px
+* Font size for tiddler body = 25px
+* Line height for tiddler body = 34px
+!!
+* [Saving tab, General sub-tab, Autosave section]
+* radiobox Do not save changes automatically = set
 
-<<glbl_dt_ddd>>
+!! Search and Replace Text
+* Drag and drop the below link onto your Wiki File window to install a Text Replacement bar. The Find bar is supplied by the web browser.
 
-<<ext "WT">>
+[[$:/plugins/danielo515/searchNreplace]]
 
+* Note: You will have to re-open the Wiki File to see the Text Replacement bar in the Editor view
 
 
-2021m02d08 Mon BBTS Meeting a08m30
 
-<<glbl_dt_ddd>>
 
-Set morning alarm a08m00
+Additional Features\Change the Font Size
 
+[New Card]
 
+* Title = `$:/config/ShortcutInfo/font-large`
 
-2021m02d10 Wed ASLSJ site
+[New Card]
 
-<<glbl_dt_ddd>>
+* Title = `$:/config/ShortcutInfo/font-normal`
 
-Google Sites creation will only be available in the new experience. Transition your active classic sites before September 2021.
-Dear Thomas,
+[New Card]
 
-In 2016, we launched an updated Google Sites (referred to in this email as "new Sites") designed to help you create websites without programming experience, optimize across mobile and desktop, and co-build with real-time collaboration. In 2017, we announced that we are replacing the previous Sites experience, referred to as "classic Sites" with our new Google Sites product. Since that announcement, we've invested in the new Sites experience by building top requested features.
+* Title = `$:/config/shortcuts/font-large`
+* Main Body Text = `ctrl-shift-Quote`
 
-We’ve identified that you own one or more active classic Sites. You must take action before September 2021 to avoid disruption.
+[New Card]
 
-Additionally, starting November 1, 2020, site creation will no longer be available in classic Sites. Any newly generated websites will only be available in the new experience.
+* Title = `$:/config/shortcuts/font-normal`
+* Main Body Text = `ctrl-shift-Comma`
 
-What do I need to do?
-Start your migration today. If you want your site to continue to be available to viewers, you must convert and publish it to the new experience before September 2021.
+[New Card]
 
-If you take no action, starting September 1, 2021 your active sites will automatically be:
-Downloaded as an archive and saved to your Google Drive.
-Replaced with a draft in the new Sites experience for you to review and publish.
+* Title = `keyboard action FontLarge`
+* Tag = `$:/tags/KeyboardShortcut`
+* Field-Value: `key` = `((font-large))`
+* Main Body Text =
 
-We’ve created a new <a href="https://sites.google.com/classicsitesmanager?filter=active">Classic Sites Manager</a> to help you transition your website(s) using the options below:
-sites icon Convert your site(s) to the new experience if you want your site to continue to be available to visitors.
-download icon Download your site(s) if you want to store an archived version of your website.
-trash icon Delete your site(s) that you no longer need.
-Learn more about how to <a href="https://support.google.com/sites#topic=6372873">manage your transition</a>.
+<$codeblock code={{keyboard action FontLarge}} />
 
-Learn more about the new Google Sites
-We’ve listened to your feedback, and your top requests are now included in the new Sites experience.
+[New Card]
 
-Section layouts and pre-built templates let you create websites with fewer clicks and less site creation knowledge.
-Version history allows you to see your edit history, revert and restore previous versions, and review the history of who made changes.
-New tile types let you be more expressive with website content, including a table of contents, image carousels, collapsible text, and more.
-Custom URLs and publishing to an audience let you share your website content.
-See what’s new in Google Sites.
+* Title = `keyboard action FontNormal`
+* Tag = $:/tags/KeyboardShortcut
+* Field-Value: `key` = `((font-normal))`
+* Main Body Text =
 
-For additional resources on what you need to know and how to manage your transition, visit the Sites Help Center.
+<$codeblock code={{keyboard action FontNormal}} />
 
-Thanks for choosing Google Sites.
+[New Card]
 
-—The G Suite Team
+* Title = `Font Size`
+* Main Body Text = 
 
-© 2020  Google LLC 1600 Amphitheatre Parkway, Mountain View, CA 94043
+```
+<$button>
+{{keyboard action FontLarge}}
+Big Font
+</$button>
 
-You have received this mandatory email announcement to update you about important information related to your Google account.
+<$button>
+{{keyboard action FontNormal}}
+Normal Font
+</$button>
+```
 
+[[Recent Entries]]
 
+* [Main Body Text, at the top]
+* Insert a new line `[[Font Size]]`
+* Note: This will add a link to the Font Size buttons
 
+[Testing script]
 
+* Ctrl-Shift-Quote changes the font Larger
+* Ctrl-Shift-Comma changes the font back to normal
 
 
-2021m02d15 Mon Domain Renewal
 
-<<glbl_dt_ddd>>
 
-GoDaddy.com
+Additional Features\Delete Existing Cards by Tag
 
-* Your domain's set to expire on 2/28/2021
+[New Card]
 
+* Title = `btn Delete Cards`
+* Main Body Text = 
 
+<$codeblock code={{btn Delete Cards}} />
 
-2021m02d20 Sat Pay Bills
+[Font Size Card]
 
-<<glbl_dt_ddd>>
+* Add link
 
+```
+[[btn Delete Cards]]
 
 
-2021m03
 
-<<glbl_article_dates>>
 
+Additional Features\Display Card text lines
 
+* Show all text lines as a code block
 
+```
+<<glbl_code_block "UrCardPK">>
+```
 
-2021m03d13 Sat Set Clocks Back
+* Show all text lines with line numbers
 
-<<glbl_dt_ddd>>
+```
+<<glbl_code_linenum "UrCardPK">>
+```
 
-Daylight saving time 2021 in Oregon will begin at 2:00 AM on
-Sunday, March 14
+* Show the text lines of two Cards that have differences
 
-and ends at 2:00 AM on
-Sunday, November 7
+```
+<$edit-text tiddler="$:/state/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text tiddler="$:/state/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
 
+<<glbl_compare_lines "$:/state/CompareText1" "$:/state/CompareText2">>
+```
 
 
 
-2021m04
 
-<<glbl_article_dates>>
+Additional Features\External Link organization
 
+* Create one Card for each external link in this format
+** Title always starts with `ext` and a space, then the external link description
+** Tagged as EXT
+** Contains one line in this format:
 
+```
+[ext[ur_url]]
+```
 
+* Reference the Card with the `ext` macro, but don't include the `ext` prefix or the leading space
+* The link is shown, and there will be `->` on the right side of the Card window
+* This flags links that will open in a new tab, and allows you to easily open the `ext` Card and change the saved link
 
-2021m04d03 Sat Assembly Day
+```
+<<ext "UrExternalLinkDiscption">>
+```
 
-<<glbl_dt_ddd>>
 
-Watch videos
 
 
+Additional Features\Home Cards Keyboard Shortcut
 
-2021m05d31 Mon PTO Weekend
+The form opens with just the Main Index Cards shown. I prefer Alt-H to re-open the Main Index Cards while closing all other open Cards.
 
-<<glbl_dt_ddd>>
+[New Card]
 
-"""
-2021m01d01fr New Year's Day
-2021m01d18mo MLKJr Day
-2021m02d15mo President's Day
-"""
+* Title = `$:/config/ShortcutInfo/home-tiddlers`
 
->2021m05d31mo Memorial Day
-2021m07d04su Independence Day
-2021m07d05mo Independence weekend
-2021m09d06mo Labor Day
-2020m11d11tr Veteran's Day
-2021m11d25tr Thanksgiving Day
-2021m11d26fr Thanksgiving weekend
-2021m12d24fr Christmas weekend
-2021m12d25sa Christmas Day
-2022m12d31fr New Year's weekend
-2022m01d01sa New Year's Day
+[New Card]
 
+* Title = `$:/config/shortcuts/home-tiddlers`
+* Main Body Text = `alt-H`
 
+[New Card]
 
+* Title = `keyboard action HomeTiddlers`
+* Tag = `$:/tags/KeyboardShortcut`
+* Field-Value: `key` = `((home-tiddlers))`
+* Main Body Text = 
 
-2021m06
+<$codeblock code={{keyboard action HomeTiddlers}} />
 
-<<glbl_article_dates>>
 
 
 
+Additional Features\Image link opens Card
 
-2021m06d25 Fri Dentist JC a11m30
+* If an image is very tall, use the glbl_image_wide macro:
 
-<<glbl_dt_ddd>>
+```
+<<glbl_image_wide "ur_image_card_pk">>
 
-[[Contacts\Dentist Dr. Powell]]
+```
+* If an image is very wide compared to it's height, use the glbl_image_high macro:
 
+```
+<<glbl_image_high "ur_image_card_pk">>
 
+```
 
-2021m09
 
-<<glbl_article_dates>>
 
 
+Additional Features\List links to sub-articles
 
+* List articles with the current Card title as a prefix, separated by a backslash
 
-2021m09d01 AAA Insurance Renewal
+```
+<<glbl_article_list>>
+```
 
-Expires 2021m10
 
 
 
-2022m02
+Additional Features\Organize Cards
 
-<<glbl_article_dates>>
+I prefer to put a tag on each Card that I create. That way I can exclude my personal Cards from the HTML version export.
 
+* Meta-Card / Generic Macros tag: META
+* Main Index tag: INDEX
+* Main Document tag: DOC
+* Individual Articles: ARTICLE
+* External Link tag: EXTLINK
+* Article Images tag: IMG
+* Article Macros tag: MCR
 
+The "Untagged" list should be empty or have a parent Card that uses the `glbl_article_list` macro.
 
+!! New Card
 
-2022m02d01 DMV Renewal
+* Title = `View All Cards`
+* Main Body Text = 
 
-Expires 2020m03
+<$codeblock code={{View All Cards}} />
 
+!! New Card
 
+* Title = `View All Code`
+* Main Body Text = 
 
-2022m04d01 Fri Schedule Eye Exam
+<$codeblock code={{View All Code}} />
 
-<<glbl_dt_ddd>>
-"""
-Eugene Eye Care last seen 2020m07d15
-- Ask to make appointment: 2020m04
+[Recent Entries Card]
 
-- 992 Country Club Road, Suite 101.
-- 541-687-1716
+* [Main Body text, at top]
+* Add link `[[View All Pages]]`
+* Add link `[[View All Code]]`
+
+
+
+
+Additional Features\Save Directly to GitHub Repository
+
+!! https://github.com/
+* Login
+* Click the top-right corner Profile menu, click the Settings option -> Navigates page
+
+!! https://github.com/settings/profile
+* Scroll down the left-side links, click the Developer Options option -> Navigates page
+
+!! https://github.com/settings/apps
+* In the left-side links, click the Personal Access Tokens option -> Navigates page
+
+!! https://github.com/settings/tokens
+* Choose a token name from the record list -> Navigates page
+
+!! Example https://github.com/settings/tokens/123456789
+* At the top, click button Regenerate Token
+* Copy the new token text to the clipboard
+
+!! Wiki File $:/ControlPanel
+* [Saving tab, General sub-tab]
+* optionbox Do not save changes automatically = set
+!!
+* [Saving tab, GitHub Saver sub-tab]
+* Username = `UrGitHubUserName`
+* Password, OAUTH Token = Paste from clipboard
+* Note: This password will need to be re-pasted each time the Wiki File is opened
+* Target repository: `UrGitHubUserName\UrRepositoryName`
+* Target branch for saving: `master`
+* Note: You can choose a different branch
+* Path to target file: `/UrRelativeFolderPathFromRoot/`
+* Filename of target file: UrWikiFileName
+* Note: You will have to manually change the Path and Filename if you move or rename the Wiki File
+* Server API URL: `https://api.github.com`
+
+!! Font Size Card
+
+* Add button
+
+```
+<$button>
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-sendmessage $message="tm-save-wiki" />
+Save Wiki to GitHub
+</$button>
+
+
+
+
+Additional Features\See all Recently Changed Cards
+
+!! Main Index Card
+* [Main Body Text]
+* Add the following link code to the bottom
+
+```
+[[___|Recent entries]]
+```
+
+* Close the editor
+* Note: This will show a short, blue line at the bottom of the Main Index Card
+* Click the Blue Line Link -> Opens page
+
+
+!! New Card
+* Note: Title = Recent Entries
+* Click the top-right corner button that looks like a Pencil to show the Card Editor
+* Main Body Text = `<<timeline limit:30 format:"YYYY-0MM-0DD">>`
+* Close the editor
+* Note: This will show the 30 most recently changed Card titles, grouped by date
+
+
+
+
+Additional Features\Static HTML backlink
+
+The custom save feature downloads two versions of the Wiki File. This macro will link the to files to each other.
+
+!! New Card
+* Title = `ext TW Return`
+* Main Body Text = 
+
+<$codeblock code={{ext TW Return}} />
+
+!! Main Index Card
+* [At top of code]
+* Insert line `{{ext TW Return}}`
+* Note: The Static HTML and Wiki File pages will be linked to each other through the link at the top-right corner of the Main Index Card
+
+
+
+Additional Features\View or Copy Card source code
+
+!! New Card
+* Title = `mcr glbl_code_split`
+* Tags = `$:/tags/Macro`
+* Main Body Text = 
+
+<$codeblock code={{mcr glbl_code_split}} />
+
+
+
+
+Basic Wiki Setup
+
+<ol>
+<$list filter="[<currentTiddler>fields[]prefix[e]sort[]]" variable=lookup_name>
+<$list filter="[<currentTiddler>get<lookup_name>]" variable=ref_note_pk>
+<$list filter="[<ref_note_pk>get[img]else[]]" variable=ref_img_pk>
+<li><$link to=<<ref_note_pk>> />@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;<$image width=200px source=<<ref_img_pk>> />@@<div style="clear:both;"></div></li>
+</$list>
+</$list>
+</$list>
+</ol>
 
 
 
@@ -597,292 +832,85 @@ Del ARTICLE and IMG cards
 
 
 
-Collections
+Change Title and Default Page Search
 
-<<ext "History Bible Browse">>
+[Control Panel]
 
-<<ext "History Daily Text">>
+* [Info tab, Basic sub-tab]
+* Title of this TiddlyWiki = UrTitle
+* Subtitle = UrSubTitle
+* Default tiddlers = `[all[tiddlers]tag[INDEX]sort[title]]`
+* Title for new tiddlers = `New Card`
 
-<<ext "History Bills">>
+<$image source={{!!img}} />
 
-<<ext "History Contacts">>
 
-<<ext "History Home Notes">>
 
-<<ext "History Misc2">>
 
-<<ext "WT">>
+Close the Card Editor
 
+[New Card]
 
+* [Top-right corner buttons]
+* Click the button that looks like a checkmark -> Changes view
+* Note: Or you can type Ctrl-Enter
 
-Contacts
+---
+<$image source={{!!img}} />
 
-[[Old Contacts]]
 
-<<glbl_article_list>>
 
+Create a Keyboard Shortcut Assignment Card
 
+[New Card]
 
-Contacts\Bi-mart Pharmacy
+* Title = `img Keyboard Shortcut Assignment`
+* Main Body Text = `alt-S`
+* Click button Checkbox (close editor)
+* Note: This will assign the default keyboard shortcut on all platforms to Alt-S.
 
-* Address = 110 East 6th Ave, Junction City, OR 97448
-* Phone = 541-998-6498
-* Website = www.bimart.com
-* Pharmacy # = 670
+---
+<$image source={{!!img}} />
 
 
 
 
-Contacts\Dentist Dr. Powell
+Create a Keyboard Shortcut Label Card for Save Changes
 
-"""
-Drs. Powell & Fredrickson
-- Family Dentistry
+[New Card]
 
-Bradley D. Powell, DMD
-Daniel A. Fredrickson, DMD
+* Title: =`$:/config/ShortcutInfo/save-all-changes`
+* Click button Checkbox (close editor)
+* Note: This allows you to see the `save-all-changes` keyboard shortcut in the Control Panel's Keyboard Shortcuts tab
 
-- Address = 582 Laurel St. , Junction City, OR 97448
-- Phone = 541-998-8147
+---
+<$image source={{!!img}} />
 
-Note: A 24-hour notice is necessary to change appointment
 
 
 
-Contacts\KH Zoom meeting
+Create a Keyboard Shortcut Program Card
 
-Zoom main meeting number, then they will split us out into our separate groups
+[New Card]
 
-* Field Service email = tomstonecontact@gmail.com
-* Field Service phone = (541) 995-0091
-* KH Phone = (541) 689-4571
-* KH Address = 3750 Barger Drive, Eugene, OR 97402-3652
-* KH Map = https://apps.jw.org/ui/E/meeting-search.html#/weekly-meetings/search/E/Oregon%2099,%20Eugene,%20OR,%20USA/44.070155,-123.142815/@44.083416,-123.156557,17z/detail?id=AC08CC3E-FEA4-4FE6-B2B4-275E3980891E
+* Title = `keyboard action SaveAllChanges`
+* Tag = `$:/tags/KeyboardShortcut`
 
-Eugene Bethel Meeting ID = 552 293 6614
+---
+<$image source={{!!img}} />
 
-Nugent Group meeting ID = https://us04web.zoom.us/j/77960935062?pwd=REJXSWRmMXNYRGVISkJjUTlFNEEvZz09
 
-Stanley group meeting ID = 368 199 8558
 
-Salem Sign Language meeting ID = 503 589 9307
 
-* password = 000705
-* Monday meeting = 7pm
-* Saturday meeting = 10am
-* Brother Lake = (541) 979-3368
-* KH Phone = (503) 364-6252
-* KH Address = 4795 Macleay Rd SE, Salem OR  97301-5955
-* KH Map = https://apps.jw.org/ui/E/meeting-search.html#/weekly-meetings/search/ASL/Oregon%2099,%20Eugene,%20OR,%20USA/44.070155,-123.142815/@44.913774,-122.955237,15z/detail?id=CA5E008F-1F6C-4256-A9A5-FC1EA93A1999
+Create new Card
 
+[Sidebar]
 
+* [Header icons]
+* Click button that looks like a Plus Sign -> Navigates page
+* Note: Or you can type Ctrl-N
 
-Contacts\Medical Clinic Dr. Tracy Hardwick
-
-"""
-Oregon Medical Group
-- Northside Medical Clinic
-
-
-- Clinic Hours = Weekdays, 8 am to 5 pm
-- Address = 3915 River Road, Eugene, Oregon. 97404
-- Phone = (541) 687-4900
-
-
-Primary Care Physician = Dr. Tracy Hardwick
-
-Vertigo specialist = [[Dr. Ryan Embley |Old Contacts\2020m11 Vertigo Physical Therapy]]
-"""
-
-!!Prescriptions
-
-"""
-Vitamin D3
-- 50 mcg (2000 IU)
-- 1 per day
-- Prescribed by = Tracy Hardwick
-- Purchased at = Safeway
-
-Venlafaxine HCL ER
-- ER = Extended Release
-- 37.5 mg
-- Container = 24 capsules
-- Take one capsule by mouth every day
-- Fulfilled by - [[Contacts\Bi-mart Pharmacy]]
-- Prescription # (Rx #) = 480848
-- Prescribed by = Tracy Hardwick
-- Fulfilled on = 8/26/2020 qty = 30, 9/21/2020 qty = 30, 10/29/2020 qty = 90
-- Drug description = Gray & Peach oblong capsule ER 24HR; Imprint = E 73
-- Ingestion instructions = Swallow whole or sprinkle capsule contents on small amount of applesauce
-
-Athlete's Foot Cream
-- Prescription = over the counter
-- Drug description = Terbinafine hydrochloride cream 1%; Full prescription strength
-- Uses = Antifungal cream
-- Fulfilled with = Sunmark6^^(R)^^ athlete's foot cream; Net weight = 1 oz (30 g)
-- Application instructions for ringworm = Apply once a day (morning or night) for 1 week or as directed by a doctor
-- Prescribed by = Tracy Hardwick
-- Doctor application instructions for ringworm = Apply three times a day
-
-Meclizine
-- Purchased at = Safeway
-- Prescribed by = secondary doctor
-- Doctor ingestion instructions for vertigo = Take three times a day until Epley Maneuver fixes the problem
-- Prescribed on = 11/9/2020
-- Fixed by = 11/24/2020
-- Specialist seen = 
-
-
-
-
-Daily
-
-<<glbl_article_checklist>>
-
-
-
-Daily\BBTS tickets
-
-6 hours
-
-
-
-Daily\Brsh,fls,fnl,shv,shw,med
-
-Med = [[Contacts\Oregon Medical Group]]
-
-
-
-Daily\Daily Text
-
-
-
-Daily\Digital maintenance
-
-* Backup phone pictures
-* Work laptop
-* Home laptop
-* tablet
-* Instapaper.com
-* Gmail.com
-
-
-
-
-Daily\Eat fruit, veg
-
-
-
-Daily\Exercise
-
-"""
-Cardio exercises
-- 10 minutes jog out, 10 minutes back
-- 1 time a day
-- 7 days a week
-
-Eye focus exercises
-- 1 minute shake head with eye focus on post-it, 5 reps
-- 3 times a day
-- 7 days a week
-
-
-
-Daily\Home maintenance
-
-* dishes
-* laundry
-* clean toilet, bathroom mirrors, shower, mop floors
-* empty all garbage cans: kitchen, bathroom, bedroom
-* clean cabinets
-* counters
-* behind garbage can
-* behind refrigerator
-* mop floors
-* dishwasher
-* microwave
-* inside refrigerator
-* metal cleaner
-* rechargeable batteries
-* empty car trash
-* wash outside
-* vacuum inside
-* wipe dash and windows
-* rotate tires, oil change
-
-
-
-Daily\Meeting parts
-
-<<ext "WT">>
-
-
-
-Daily\Move gmail notes to wk
-
-
-
-Daily\Organize box or desk paperwork
-
-
-
-Daily\Part of broadcast
-
-Watch part of broadcast, Morning Worship, or other release
-
-
-
-Daily\Personal Project
-
-* META Tags to system tags
-
-<<<
-mcr glbl_article_list
-
-tag = $:/positivesigner/std_lib
-<<<
-
-
-* Empty WIki.htm
-
-<<<
-glbl_article_list
-
-$:/positivesigner/gcmpr
-
-include Ctrl-R shortcut to sidebar
-
-save all in scr folder
-
-ext TW return to src folder
-
-template ExportAllCode
-<<<
-
-* Document macro construction
-
-* Macro deployment against cards
-
-
-
-
-Daily\Play piano, recipe
-
-* Single-apple Pie crust and filling
-
-
-
-Daily\Service time
-
-Letter writing
-
-Phone witnessing
-
-Saturdays a10m00
-
-Tuesdays p07m00
-
-
+<$image source={{!!img}} />
 
 
 
@@ -940,39 +968,90 @@ close
 
 
 
-ext History Bible Browse
+Download Empty Wiki
 
-[ext[History/Bible Browse.htm]]
+!! TiddlyWiki Empty Edition link
 
+* https://tiddlywiki.com/#Empty%20Edition -> Navigates page
 
+!! TiddlyWiki.com
+* Click button Download Empty -> Saves file
 
-ext History Bills
+!! Desktop Downloads folder
+* Locate the file: ''empty.html''
+* Rename to ''UrFile.html'' before opening
+* Open the ''UrFile.html'' file in the browser -> Opens browser
 
-[ext[History/Bills.htm]]
+!! Local ''UrFile.html'' Wiki
+* Note: The first time you open the Wiki opens a basic Configuration Page Card
+* Click the top-right ''X'' button to close the Card
 
-
-
-ext History Contacts
-
-[ext[History/Contacts.htm]]
-
-
-
-ext History Daily Text
-
-[ext[History/Daily Text.htm]]
+<$image source={{!!img}} />
 
 
 
-ext History Home Notes
 
-[ext[History/Home%20Notes.htm]]
+Enter a program to show a list of Cards
+
+[New Card]
+
+* [Main Body Text box]
+* Paste in the below one line of code
+
+```
+<<list-links filter:"[tag[DOC]sort[title]]">>
+```
+
+* Note: This will list all the Cards with the DOC tag
+
+---
+<$image source={{!!img}} />
 
 
 
-ext History Misc2
 
-[ext[History/Misc2.htm]]
+Enter Card Title
+
+[New Card]
+
+* [Title box]
+* Title = UrTitle
+* Note: This will be the only page shown when you re-open the Wiki file
+
+---
+<$image source={{!!img}} />
+
+
+
+Enter the Save All Program
+
+[''keyboard action SaveAllChanges'' Card]
+
+* Copy-paste in the following code:
+
+```
+\define ExportSaveAll(ur_filename ur_stamp)
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.htm"
+/>
+<$action-sendmessage $message="tm-download-file"
+$param="$:/core/templates/exporters/StaticRiver" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
+exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+\end
+<$list filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
+<$macrocall $name="ExportSaveAll" ur_filename=<<currentTiddler>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> />
+</$list>
+```
+
+* Click button Checkbox (close editor) -> Saves the Wiki
+* Note: This will create a new download file name from the browser's full URL path. There will be a date-time stamp added, so each download will have a unique name.
+* Note: This will also close the Sidebar and change the Sidebar's Selected Tab to "More"
+
+---
+<$image source={{!!img}} />
+
 
 
 
@@ -994,12 +1073,6 @@ ext TW Return
 </$list><!--found_html-->
 </$list><!--found_index-->
 
-
-
-
-ext WT
-
-[ext[History/WT.htm]]
 
 
 
@@ -1131,24 +1204,6 @@ $param="template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp
 
 
 
-mcr glbl_article_dates
-
-\define glbl_article_dates()
-<<glbl_dt_ddd>>
-
-<ol>
-<$list filter="[<currentTiddler>split[Draft of ]join[]split[']join[]addsuffix[d]]">
-<$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
-<li><$link to=<<currentTiddler>> /></li>
-</$list>
-</$list>
-</ol>
-\end
-
-
-
-
-
 mcr glbl_article_list
 
 \define glbl_article_list()
@@ -1191,72 +1246,6 @@ Clear all checkmarks
 </$list><!--card_prefix-->
 </ol>
 \end
-
-
-
-
-mcr glbl_code_section
-
-\define glbl_code_section_group(ur_note_pk, ur_skip_count)
-<$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentTiddler>><br></$list></$list>
-\end
-\define glbl_code_section_count(ur_note_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
-<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_section_group ur_note_pk="$ur_note_pk$" ur_skip_count=<<currentTiddler>> /></$list>
-\end
-\define glbl_code_section_data()
-<$macrocall $name=glbl_code_section_count ur_note_pk=<<source_note_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
-\end
-\define glbl_code_section_next_group_disp(ur_rem_counter, ur_oper)
-<$list filter="[{$ur_rem_counter$}$ur_oper$[1]]">
-<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
-</$list>
-\end
-\define glbl_code_section_disp(ur_source_note_pk, ur_temp_remcounter_pk, ur_first_line_skip)
-Line Count: <$list filter="[{$ur_source_note_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]"></$list><br>
-Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
-\end
-\define glbl_code_section_init(ur_note_pk, ur_first_line_skip)
-<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
-  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
-    <$list filter="[{$ur_note_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]floor[]]">
-      <$button>
-        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
-        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
-        Reset destination edit field
-        </$button>
-      </$list><br>
-	
-    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
-    </$vars>
-  </$list>
-\end
-\define glbl_code_section(ur_note_pk, ur_first_line_skip)
-<$macrocall $name=glbl_code_section_init ur_note_pk="$ur_note_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
-[[$ur_note_pk$]]<br>
-<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
-  <$vars source_note_pk="$ur_note_pk$" temp_remcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_note_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
-    <$macrocall $name=glbl_code_section_disp ur_source_note_pk=<<source_note_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
-    <$button>
-      <$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="subtract" />
-      
-      Browse next 100 lines
-      </$button><br>
-    <$button>
-      <$macrocall $name=glbl_code_section_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="add" />
-      
-      Browse prev 100 lines
-      </$button><br>
-
-    <<glbl_code_section_data>>
-    </$vars>
-  </$list>
-\end
-
-<!--<$macrocall $name=glbl_code_section ur_note_pk="WebNotes\Data" ur_first_line_skip=1 />-->
-
-<!--<<glbl_code_section "WebNotes\Data 1 >>-->
-
-<!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.-->
 
 
 
@@ -1527,109 +1516,37 @@ mcr glbl_ext
 
 
 
-Next
+mcr glbl_image
 
-<<glbl_article_list>>
-
-
-
-Next\Get a Credit Report
-
-<<glbl_dt_ddd>>
-
+\define glbl_image_high(ur_image_pk, ur_size:200)
+<$link to="$ur_image_pk$">[img height=$ur_size$px [$ur_image_pk$]]</$link>
+\end
+\define glbl_image_wide(ur_image_pk, ur_size:500)
+<$link to="$ur_image_pk$">[img width=$ur_size$px [$ur_image_pk$]]</$link>
+\end
 
 
 
-Next\Lookup Invisilign cleaning
+Notes Wiki
 
-<<glbl_dt_ddd>>
+{{ext TW Return}}
 
+<<list-links filter:"[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]">>
 
-
-
-Next\Move songs from phone
-
-<<glbl_dt_ddd>>
-"""
-[Two songs on phone sdcard]
-- Place in Master Folder and backup
-
-- Always be my
-- since u been
+[[___|Recent Entries]]
 
 
 
-Next\Oregon Driver's License
+Open Control Panel
 
-<<glbl_dt_ddd>>
+[empty.html]
 
-October 1, 2020 your Oregon driver license or ID card can no longer be used to pass airport security
+* [Sidebar, Header icons]
+* Click button that looks like machine gear -> Navigates page
+* Note: Or you can use the Sidebar's Tools tab to find the Control Panel button
 
-Oregon will start issuing driver licenses and IDs that are Real ID compilant on July 6, 2020
-
-We suggest you obtain and use a passport or passport card or another TSA acceptible document for now
-
-www.oregon.gov/realid
-
-
-
-Next\Review Bugout bag
-
-Review supplies in evac pacs
-
-* 3-days indoors
-* [ext[Medium article |https://medium.com/outdoor-adventures/whaddya-mean-you-dont-have-a-bug-out-bag-with-these-20-items-163a3795a878]]
-
-
-
-Old Contacts
-
-<<glbl_article_list>>
-
-
-
-Old Contacts\2018m11 Sleep Apnea
-
-"""
-Oregon Lung Specialists
-- 541-687-1712
-- 3355 RiverBend Drive, Suite 240
-- Springfield, Oregon 97477
-
-SLEEP OFFICE LOCATION
-Northwest Specialty Clinics
-- https://www.oregonlungspecialists.com/physicians_4.html
-- Dr. Karthik Mahadevan
-- Phone: (541) 868-9983
-- Fax: (541) 747-9680
-- 3355 RiverBend Dr. Suite 230
-- Springfield, Oregon 97477
-- across Skybridge, past coffee shop, down the elevator to 2nd floor, exit elevator to right, enter room with Pulmonary Clinic on right, opposite side of room from Pulmonary Clinic
-
-
-
-
-Old Contacts\2020m11 Vertigo Physical Therapy
-
-"""
-Dr. Ryan Embly
-- Physical Therapy provided with Therapeutic Associates
-- Clinic Address = 1650 Chambers Street, Eugene, OR 97402
-- Appointments = 541-686-1916
-- Email = rembley@taipt.com
-- - Feel free to email about future vertigo episodes
-
-
-
-
-Old Contacts\Mandibular Adjustment Device
-
-"""
-Dr. W. Gary Grieve Orthodontics
-- Phone: (541) 484-1877
-- 995 Willagillespie Rd, Suite, 400
-- Eugene, OR 97401
-- Received MA Device on 2020m01d21
+---
+<$image source={{!!img}} />
 
 
 
@@ -1669,6 +1586,10 @@ Save Wiki
 
 
 
+parm SkipSaveExportHTML
+
+
+
 Recent Entries
 
 [[Search All Fields]]
@@ -1682,6 +1603,37 @@ Recent Entries
 [[Font Size]]
 
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+Save Status on every Card
+
+The Sidebar's Save icon turn red when there are changes in the Wiki File that need to be saved. I like to also show the red icon in the bottom right corner of every Card.
+
+[New Card]
+
+* Title = `template Home Button`
+* Tag = `$:/tags/ViewTemplate`
+* Main Body Text =
+
+```
+<div style="float:right;padding-left:30px;">
+{{$:/core/ui/TopBar/menu}}
+</div>
+
+<div style="float:right"><$button set="$:/state/sidebar" setTo="no" tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=<<tv-config-toolbar-class>>>
+<span class="tc-dirty-indicator">
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/core/images/home-button}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text"><$text text={{$:/language/Buttons/Home/Caption}}/></span>
+</$list>
+</span>
+<$action-sendmessage $message="tm-home"/>
+</$button></div>
+```
+
 
 
 
@@ -1788,13 +1740,17 @@ template Home Button
 
 
 
-ToDo
+Test the Alt-S Keyboard Shortcut
 
-<<glbl_dt_ddd>>
+[empty-htm]
 
-<<list-links filter:"[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]">>
+* Type the Alt-S key combination -> Saves the file
+* Note: This will download two files. The first one is a copy of the Wiki File with all the changes - the extension is .HTM .
+* Note: The second file is an exported HTML version of all the Wiki File Cards without any JavaScript.
 
-[[___|Recent Entries]]
+---
+<$image source={{!!img}} />
+
 
 
 
@@ -1821,39 +1777,4 @@ View All Code
 <$codeblock code=<<cur_card_text>> />
 </$list><!--cur_card_text-->
 </$list><!--cur_card_pk-->
-
-
-
-Vitamins
-
-Vitamin D,,3,, - 1000 IU / 50 mcg
-
-Venlafaxine HCL ER (extended release) - 37.5 mg capsules
-
-* Drug description = Grey/Peach oblong capsule ER 24 hours
-* Imprint = E 73
-* Do not drink alcohol with this drug - may cause drowsiness
-* Swallow whole or sprinkle capsule contents on small amount of applesauce
-* Take medication with food
-* Filled by = Bi-mart Pharmacy #670
-* Prescribed by = Dr. Tracy Hardwick
-* Prescription # = 480848
-* Instructions = Take one capsule by mouth every day
-* Discard After = 1 year
-
-Keep an eye out for return of fungal that needs OTC Athlete's Foot medicine
-
-Ventolin^^(R)^^ HFA Inhalation Aerosol (albuterol sulfate) - 90 mcg per actuaiton
-
-* Prescription # = 172660
-* Discard After = 1 year
-* Instructions = Inhale two puffs by mouth four times a day as needed for wheezing or shortness of breath
-
-Motion Sickness Releief - meclizine HCI 25 mg (antiemetic)
-
-* Less drowsy formula
-* Discard After = 1 year
-* Instructions = 1 to 2 tablets once daily for adults, or as directed by a doctor
-* Doctor directions = 1 tablet three times a day until Vertigo symptoms are gone for a full 24 hours
-
 
