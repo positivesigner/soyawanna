@@ -64,6 +64,12 @@ no
 
 
 
+$:/config/ViewToolbarButtons/Visibility/$:/positivesigner/gcmpr/btn gcmpr card
+
+hide
+
+
+
 $:/config/WikiParserRules/Inline/wikilink
 
 disable
@@ -81,6 +87,23 @@ $:/DefaultTiddlers
 $:/language/DefaultNewTiddlerTitle
 
 New Card
+
+
+
+$:/positivesigner/base-install
+
+\define show_pill()
+<<tag-pill tag:"$(cur_entry)$" >>
+\end
+---
+<$list variable=cur_entry filter="[prefix[$:/positivesigner/]is[tag]sort[]]">
+
+<<cur_entry>>
+</$list>
+
+
+
+$:/positivesigner/div-pop
 
 
 
@@ -292,6 +315,14 @@ Hide resize buttons
 $:/positivesigner/gcmpr/textarea
 
 <<gcmpr_textarea_new>>
+
+
+
+$:/positivesigner/home-button
+
+
+
+$:/positivesigner/text-ref
 
 
 
@@ -1438,6 +1469,12 @@ VBNet_Project\DeveloperSettings\DeveloperSettings.zip
 
 
 
+ext Empty Wiki Setup
+
+TW Project\Empty Wiki\Empty Wiki.htm
+
+
+
 ext FileFormat.Info UnicodeInput
 
 https://www.fileformat.info/tool/unicodeinput/index.htm
@@ -1711,21 +1748,27 @@ TiddlyWiki_Code\Snapshot\Browse Code tiddlywiki_v5d01d23pre-release.htm
 
 
 
-ext TW Snapshot v5d01d23
-
-TW Project\Snapshot\tiddlywiki_v5d01d23.html
-
-
-
 ext TW Snapshot v5d01d23 empty
 
 TW Project\Snapshot\tw_empty_v5d01d23.html
 
 
 
+ext TW Snapshot v5d01d23 main-site
+
+TW Project\Snapshot\tiddlywiki_v5d01d23_main-site.html
+
+
+
 ext TW Snapshot v5d01d23 pre-release
 
 TW Project\Snapshot\tiddlywiki_v5d01d23_pre-release.html
+
+
+
+ext TW Snapshot v5d01d23 update
+
+TW Project\Snapshot\tiddlywiki_v5d01d23_update.html
 
 
 
@@ -1819,12 +1862,6 @@ https://html.spec.whatwg.org/multipage/links.html#rel-icon
 
 
 
-ext Wiki Empty Setup
-
-TW Project\Empty Setup\Wiki Empty Setup.htm
-
-
-
 ext Wiki Move HTM
 
 VBNS_Project\Wiki_Move\Wiki Move HTM.htm
@@ -1902,6 +1939,31 @@ C:\UrPath\ffmpeg.exe -i "C:\UrPath\UrFile.mp4" -r 0.083 -s 320x180 "UrPath\UrSub
 
 Font Size
 
+<$list variable=cur_entry filter="[all[tiddlers]!suffix[.js]!suffix[.css]!match[$:/core]!prefix[$:/config/]!prefix[$:/DefaultTiddlers]!prefix[$:/Import]!match[$:/isEncrypted]!prefix[$:/language/]!prefix[$:/theme]!prefix[$:/temp/]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/SiteTitle]!match[$:/SiteSubtitle]!prefix[$:/state/]count[]]">
+Specific prefix filter: <<cur_entry>> cards
+</$list>
+
+<$list variable=cur_entry filter="[all[tiddlers]!is[system]] [prefix[$:/positivesigner]] +[count[]]">
+
+Non-system plus system PositiveSigner filter: <<cur_entry>> cards
+</$list>
+
+
+<$button>
+<$list variable=cur_card filter="[!is[system]!prefix[Draft of]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
+</$list>
+Append COPY tag to all non-system cards
+</$button><br>
+
+<$button>
+<$list variable=cur_card filter="[tag[COPY]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[remove[COPY]]"/>
+</$list>
+Remove COPY tag from all cards
+</$button><br>
+
+
 <$button>
 {{keyboard action FontLarge}}
 Big Font
@@ -1912,107 +1974,7 @@ Big Font
 Normal Font
 </$button>
 
-<$button>
-<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
-<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
-<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
-<$action-sendmessage $message="tm-save-wiki" />
-Save Wiki to GitHub
-</$button>
-
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
-<$button>
-<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
-</$list>
-Close all other open Cards
-</$button>
-</$list>
-
-
-
-<$vars new_card_entry_pk="$:/state/popup/NewTempCardPK">
-<$edit-text tiddler=<<new_card_entry_pk>> field=text default="New Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
-<$link to=<<new_card_entry_pk>> /> = -<$transclude tiddler=<<new_card_entry_pk>> />-<br>
-
-<$list variable=new_card filter="[<new_card_entry_pk>get[text]!match[]]">
-<$vars compare_entry_pk="$:/state/popup/CompareTempCardPK">
-
-<$list variable=new_pk filter="[<new_card>addprefix[$:/state/popup/]]">
-<$button>
-<$action-sendmessage $message="tm-new-tiddler" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
-Create Card ''<<new_card>>'' and Edit
-</$button><br>
-
-<$button>
-<$wikify name=open_brackets text="&#91;&#91;">
-<$wikify name=close_brackets text="&#93;&#93;">
-<$list variable=orig_card_exists filter="[<new_card>is[tiddler]count[]match[1]split[1]join[empty card]else[card not created]]">
-<$list variable=orig_card_content filter="[<new_card>get[text]else<orig_card_exists>addprefix[```
-]addprefix[
-
-]addprefix<close_brackets>addprefix<new_card>addprefix<open_brackets>]">
-<$action-setfield $tiddler=<<new_pk>> text=<<orig_card_content>> />
-</$list><!--orig_card_content-->
-</$list><!--orig_card_exists-->
-</$wikify><!--close_brackets-->
-</$wikify><!--open_brackets-->
-<$action-navigate $to=<<new_pk>>/>
-Create Card ''<<new_card>>'' and Show
-</$button><br>
-
-<$link to=<<new_pk>> /><br>
-
-<$button>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
-Close Card: ''<<new_card>>''
-</$button><br>
-
-<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
-<$button>
-<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
-</$list>
-Close all other open Cards
-</$button>
-</$list><br>
-
-<$button>
-<$action-sendmessage $message="tm-delete-tiddler" $param=<<new_pk>> />
-Delete Card: ''<<new_card>>'' with confirmation
-</$button><br>
-
-<$button>
-<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
-<$action-deletetiddler $tiddler=<<new_pk>> />
-Delete Card: ''<<new_card>>'' without confirmation
-</$button><br>
-
-<$edit-text tiddler=<<compare_entry_pk>> field=text default="Compare Card Title" placeholder="[no text yet]" autoHeight=yes tag=input/><br>
-<$list variable=compare_pk filter="[<compare_entry_pk>get[text]]">
-<$link to=<<compare_pk>> />
-<$list variable=compare_text filter="[<compare_pk>get[text]]">
-<$list variable=new_card_text filter="[<new_pk>get[text]]">
-<$diff-text source=<<new_card_text>> dest=<<compare_text>> />
-</$list><!--new_card_text-->
-</$list><!--compare_text-->
-</$list><!--compare_pk-->
-
-</$list><!--new_pk-->
-</$vars><!--compare_entry_pk-->
-</$list><!--new_card-->
-</$vars><!--new_card_entry_pk-->
-
-
-!!Cards tagged with only $ prefixed tags
-
-<$list variable=cur_card filter="[is[tiddler]has[tags]!prefix[$:/state/]]">
-<$list variable=has_non_dprefixed_tag filter="[<cur_card>tags[]!prefix[$]count[]match[0]]">
-
-<$link to=<<cur_card>> />
-</$list><!--has_non_dprefixed_tag-->
-</$list><!--cur_card-->
-
+[[Panel]]
 
 !!Cards where has[tags] does not work
 
@@ -2025,7 +1987,7 @@ Delete Card: ''<<new_card>>'' without confirmation
 
 !!Cards with no tags
 
-<$list variable=cur_card filter="[is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
+<$list variable=cur_card filter="[!is[system]is[tiddler]!has[tags]!prefix[Draft of]!prefix[$:/state/]!prefix[$:/library/]!prefix[$:/boot/]!prefix[$:/temp/]!match[$:/core]!match[$:/Import]!match[$:/isEncrypted]!match[$:/SiteSubtitle]!match[$:/SiteTitle]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/theme]!match[$:/themes/tiddlywiki/snowwhite]!match[$:/themes/tiddlywiki/vanilla]]">
 <$list variable=has_parent_card filter="[<cur_card>split[\]count[]match[1]]">
 
 <$link to=<<cur_card>> />
@@ -2038,29 +2000,6 @@ Delete Card: ''<<new_card>>'' without confirmation
 </$list><!--parent_card_exists-->
 </$list><!--has_parent_card-->
 </$list><!--cur_card-->
-
-
-
-<$button>
-<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]has[tags]]">
-<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
-</$list>
-<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]!prefix[Draft of]!has[tags]]">
-<$list variable=has_parent_card filter="[<cur_card>split[\]count[]!match[1]]">
-<$list variable=parent_card_exists filter="[<cur_card>split[\]first[]is[tiddler]]">
-<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
-</$list><!--parent_card_exists-->
-</$list><!--has_parent_card-->
-</$list><!--cur_card-->
-Append COPY tag to all cards that already have tags
-</$button><br>
-
-<$button>
-<$list variable=cur_card filter="[tag[COPY]]">
-<$action-listops $tiddler=<<cur_card>> $tags="+[remove[COPY]]"/>
-</$list>
-Remove COPY tag from all cards
-</$button><br>
 
 
 [[parm SkipSaveExportHTML]]
@@ -3548,8 +3487,9 @@ avascript:(function (global, factory) {
         clearAllCSS(nest_level+1, child);
         });
 
-    cur_elt.removeAttribute("style");
-    cur_elt.removeAttribute("class");
+    while(cur_elt.attributes.length > 0) {
+        cur_elt.removeAttribute(cur_elt.attributes[0].name);
+        }
     }
 
   module.exports = clearAllCSS;
@@ -4102,8 +4042,13 @@ mcr glbl_dt_ddd
 mcr glbl_ext
 
 \define ext(ur_extnote_pk)
-<$list filter="[[ext $ur_extnote_pk$]get[text]count[]match[0]]">Missing: [$ur_extnote_pk$]</$list>
-<a target="_blank" href={{ext $ur_extnote_pk$}}>$ur_extnote_pk$</a><div style="float:right">[[->|ext $ur_extnote_pk$]]</div>
+<$list variable=missing_entry filter="[[ext $ur_extnote_pk$]get[text]else[]match[]]">Missing: [$ur_extnote_pk$]
+</$list><!--missing_entry-->
+<$list variable=prefix_dir filter="[{$:/info/url/full}split[/src/]count[]match[2]then[../]else[]]">
+<$list variable=found_entry filter="[[ext $ur_extnote_pk$]get[text]else[]addprefix<prefix_dir>]">
+<a target="_blank" href=<<found_entry>> >$ur_extnote_pk$</a><div style="float:right">[[->|ext $ur_extnote_pk$]]</div>
+</$list><!--found_entry-->
+</$list><!--prefix_dir-->
 \end
 
 
@@ -4118,6 +4063,41 @@ MicrosoftRemoteDesktop
 MicrosoftRemoteDesktop\Setup PC
 
 <<ext "Microsoft RemoteDesktop Enable">>
+
+
+
+Panel
+
+* https://github.com/settings/tokens
+>* If there is an existing personal access token,
+>>* Click on the name -> Navigates page
+>>* Click button Regenerate Token -> Navigates page
+>>* Click button Copy to Clipboard
+>* Otherwise create a new token
+* https://github.com/settings/tokens/new
+>* Note = name of end user and device
+>>* Must be unique
+>>* Each device should get a different token
+>* checkbox "repo" = set
+>* Click button Generate token -> Navigates page
+>* Click button Copy to Clipboard
+!!
+* <$link to="$:/ControlPanel" />
+>* [Saving tab, GitHub Saver sub-tab]
+>* Paste into field "Password, OAUTH token, or personal access token"
+>* Close the Control Panel card
+!!
+* Click button <$button>
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-sendmessage $message="tm-save-wiki" />
+Save Wiki
+</$button>
+>* Wait a few seconds for the "Saved wiki" notification
+>* The token is saved in internal browser storage
+>* If you get a "401" error, go back to step 1 to generate a new token
+
 
 
 
@@ -7418,11 +7398,13 @@ TW Project\Code Snapshot
 
 Goal: Browse the code inside the WIki file
 
-<<ext "TW Snapshot v5d01d23">>
+<<ext "TW Snapshot v5d01d23 main-site">>
 
 <<ext "TW Snapshot v5d01d23 empty">>
 
 <<ext "TW Snapshot v5d01d23 pre-release">>
+
+<<ext "TW Snapshot v5d01d23 update">>
 
 
 
@@ -7475,7 +7457,7 @@ Goal: Upload a text file and comment on each line, table or function
 
 TW Project\Wiki Empty Setup
 
-<<ext "Wiki Empty Setup">>
+<<ext "Empty Wiki Setup">>
 
 Goal: Use the empty TW document and generate a static HTML page
 
