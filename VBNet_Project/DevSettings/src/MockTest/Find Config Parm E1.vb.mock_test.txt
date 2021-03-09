@@ -1,0 +1,5 @@
+sAppConfigSettings	key_search	npp_path,bcomp_path
+sAppConfigSettings	npp_path	MockTest\afile.ext
+sAppConfigSettings	bcomp_path	MockTest\bfile.ext
+sDevSettings	npp_path	MockTest\nofile.ext
+sDevSettings	bcomp_path	MockTest\nofile.ext

@@ -1,5 +1,5 @@
 Option Strict On
-Namespace Mx '2020m01d13
+Namespace Mx '2020m03d08
     Public Module ConstVar
         Public Const mt = ""
         Public Const qs = """"
@@ -1541,6 +1541,13 @@ Namespace Mx '2020m01d13
                 gParentDir = New FileName(Me.ParentDir)
             End Function 'gParentDir
 
+            Public ReadOnly Property HasPath() As Boolean
+                <System.Diagnostics.DebuggerHidden()>
+                Get
+                    HasPath = HasText(Me.FilePath)
+                End Get
+            End Property 'HasPath
+
             Public Property Name() As String
                 <System.Diagnostics.DebuggerHidden()>
                 Get
@@ -1826,7 +1833,7 @@ Namespace Mx '2020m01d13
 
     Public Class TablePKEnum(Of E As {New, bitBASE}, P As {New, bitBASE}, T As {New, TRow(Of E)})
         Private ttb As System.Collections.Generic.Dictionary(Of P, T)
-        Private PK As E
+        Public PK As E
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub New(Optional ur_flag_populate_keys As Boolean = True)
@@ -2017,7 +2024,7 @@ Namespace Mx '2020m01d13
 
     Public Class TablePKStr(Of E As {New, bitBASE}, T As {New, TRow(Of E)})
         Private ttb As System.Collections.Generic.Dictionary(Of String, T)
-        Private PK As Objlist(Of E)
+        Public PK As Objlist(Of E)
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub New(ur_pk_count As Integer)
@@ -2219,8 +2226,10 @@ Namespace Mx '2020m01d13
         Public Function SelOnKey(ParamArray ur_key() As String) As TablePKStr(Of E, T)
             Dim ret = Me
             For KEYCTR = 1 To Me.PK.Count
-                ret = ret.Sel(Me.PK.Item(b0(KEYCTR)), ur_key(b0(KEYCTR)))
-            Next
+                If ur_key.Length >= KEYCTR Then
+                    ret = ret.Sel(Me.PK.Item(b0(KEYCTR)), ur_key(b0(KEYCTR)))
+                End If
+            Next KEYCTR
 
             SelOnKey = ret
         End Function 'SelOnKey

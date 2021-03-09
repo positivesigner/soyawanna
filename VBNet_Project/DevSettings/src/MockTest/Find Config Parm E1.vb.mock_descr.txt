@@ -1,0 +1,1 @@
+When sAppConfigSettings gives search paths npp_path and bcomp_path, and sCustomAppParm has both keys, the function will find that no keys are still needed.

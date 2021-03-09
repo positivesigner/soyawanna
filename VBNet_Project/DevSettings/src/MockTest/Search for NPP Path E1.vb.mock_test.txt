@@ -1,0 +1,2 @@
+sAppConfigSettings	npp_path	MockTest\Search for NPP Path E1.vb
+strPARM_NAME	npp_path

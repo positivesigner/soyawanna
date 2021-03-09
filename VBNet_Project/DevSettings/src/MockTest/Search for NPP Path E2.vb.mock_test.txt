@@ -1,0 +1,2 @@
+sAppConfigSettings	npp_path	MockTest\No File Here.ext
+strPARM_NAME	npp_path

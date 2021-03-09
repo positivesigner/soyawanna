@@ -1,5 +1,24 @@
-start "" "%~dp0\MxClasses\VBNetScript.exe" /path=%0
-exit
+@echo off
+@SET mx_dir=%CD%
+@SET countloops=20
+:mx_search
+@set /a countloops-=1
+@FOR %%i IN ("%mx_dir%") DO IF EXIST %%~si\MxClasses\VBNetScript.exe GOTO mx_found
+@FOR %%i IN ("%mx_dir%\..") DO SET mx_dir=%%~si
+@IF %countloops%==0 GOTO mx_max_loops
+@GOTO mx_search
+
+:mx_max_loops
+@ECHO Cannot find MxClasses\VBNetScript.exe within 20 parent directories
+@PAUSE
+@GOTO mx_end
+
+:mx_found
+@cd %mx_dir%
+@START "" "%mx_dir%\MxClasses\VBNetScript.exe" /path=%0
+
+:mx_end
+@EXIT
 MxClasses\MxBaseEc13.vb
 RetVal = Mx.Want.BranchCheckout_errhnd()
 End Function
@@ -23,7 +42,7 @@ End Namespace
 Namespace Mx
     Public Class Want
         Public Shared Sub BranchCheckout(ret_msg As Strap)
-            Dim flnPERSIST = FileNamed().d(Strapd().d(glbl.gEnvironment.ExpandEnvironmentVariables("%APPDATA%")).dSprtr("\", "DeveloperCustomApp_settings").dSprtr("\", "user.config.tsv"))
+            Dim flnPERSIST = FileNamed().d(Strapd().d(glbl.gEnvironment.ExpandEnvironmentVariables("%APPDATA%")).dSprtr("\", "DevCustomApp_settings").dSprtr("\", "user.config.tsv"))
             Have.UserBowl.SelKey(enmUN.persist_path).Contents = flnPERSIST
             Call Have.CustomApp.PersistRead(flnPERSIST)
 
@@ -43,6 +62,10 @@ Namespace Mx
                 Dim flnROOT_PATH = FileNamed().d(Have.UserBowl.SelKey(enmUN.script_folder).Contents)
                 If glbl.gWindowsFS.HasDir(flnROOT_PATH.gCopy.d(".git")) Then
                     flnROOT_PATH = flnROOT_PATH
+                    strPREFIX = flnROOT_PATH.Name
+
+                ElseIf glbl.gWindowsFS.HasDir(flnROOT_PATH.gParentDir.d(".git")) Then
+                    flnROOT_PATH = flnROOT_PATH.gParentDir
                     strPREFIX = flnROOT_PATH.Name
 
                 Else
