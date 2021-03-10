@@ -10840,7 +10840,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Panel]]</pre>
+# [[mcr glbl_article_list]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -11101,7 +11101,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210307052510262" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210310062921342" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11113,13 +11113,13 @@ Hide resize buttons
 <div created="20210306085219583" modified="20210307041223464" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20201226064844310" modified="20210307052510263" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210310062921342" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210307040656072" list="[[Card filter]] [[Code Samples]] [[Recent Entries]] [[Font Size]] [[btn Delete Cards]] [[TW Project]] [[TW Project\Wiki Empty Setup]] [[ext Empty Wiki Setup]] [[TW Project\Code Snapshot]] $:/positivesigner/base-install" modified="20210307052414514" title="$:/StoryList">
+<div list="[[Card filter]] [[Code Samples]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -14220,7 +14220,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--save_export_html--&gt;
 </pre>
 </div>
-<div created="20201120062240873" modified="20210307040409208" tags="$:/tags/Macro $:/positivesigner/text-ref" title="mcr glbl_article_list">
+<div created="20201120062240873" modified="20210310062708422" tags="$:/tags/Macro $:/positivesigner/text-ref" title="mcr glbl_article_list">
 <pre>\define glbl_article_list()
 &lt;ol&gt;
 &lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
@@ -14233,11 +14233,12 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/ol&gt;
 \end
 \define glbl_article_checklist()
+&lt;$vars cur_card=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;&lt;glbl_dt_ddd&gt;&gt;
 &lt;$wikify name=cur_date text=&quot;&quot;&quot;&lt;&lt;now &quot;YYYYm0MMd0DD&quot;&gt;&gt;&quot;&quot;&quot; &gt;
-&lt;$list variable=diff_date filter=&quot;[&lt;currentTiddler&gt;get[match_date]else[]!match&lt;cur_date&gt;]&quot;&gt;
+&lt;$list variable=diff_date filter=&quot;[&lt;cur_card&gt;get[match_date]else[]!match&lt;cur_date&gt;]&quot;&gt;
 &lt;$button&gt;
-&lt;$list variable=field_name filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[chk_]]&quot;&gt;
+&lt;$list variable=field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[chk_]]&quot;&gt;
 &lt;$action-setfield $field=&lt;&lt;field_name&gt;&gt; $value=&quot;&quot; /&gt;
 &lt;/$list&gt;&lt;!--field_name--&gt;
 &lt;$action-setfield match_date=&lt;&lt;cur_date&gt;&gt; /&gt;
@@ -14246,13 +14247,13 @@ Clear all checkmarks
 &lt;/$list&gt;&lt;!--diff_date--&gt;
 &lt;/$wikify&gt;&lt;!--cur_date--&gt;
 &lt;ol&gt;
-&lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
-&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
-&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
-&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]]&quot;&gt;
+&lt;$list variable=card_prefix filter=&quot;[&lt;cur_card&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_entry filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_entry&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]split[ ]join[_]lowercase[]]&quot;&gt;
 &lt;li&gt;
-&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&lt;&lt;chk_name&gt;&gt; &gt;
-&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; tiddler=&lt;&lt;cur_card&gt;&gt; field=&lt;&lt;chk_name&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;cur_entry&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
 &lt;/$checkbox&gt;
 &lt;/li&gt;
 &lt;/$list&gt;&lt;!--chk_name--&gt;
@@ -14260,6 +14261,7 @@ Clear all checkmarks
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
+&lt;/$vars&gt;
 \end
 </pre>
 </div>

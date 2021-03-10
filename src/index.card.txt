@@ -3756,11 +3756,12 @@ mcr glbl_article_list
 </ol>
 \end
 \define glbl_article_checklist()
+<$vars cur_card=<<currentTiddler>> >
 <<glbl_dt_ddd>>
 <$wikify name=cur_date text="""<<now "YYYYm0MMd0DD">>""" >
-<$list variable=diff_date filter="[<currentTiddler>get[match_date]else[]!match<cur_date>]">
+<$list variable=diff_date filter="[<cur_card>get[match_date]else[]!match<cur_date>]">
 <$button>
-<$list variable=field_name filter="[<currentTiddler>fields[]prefix[chk_]]">
+<$list variable=field_name filter="[<cur_card>fields[]prefix[chk_]]">
 <$action-setfield $field=<<field_name>> $value="" />
 </$list><!--field_name-->
 <$action-setfield match_date=<<cur_date>> />
@@ -3769,13 +3770,13 @@ Clear all checkmarks
 </$list><!--diff_date-->
 </$wikify><!--cur_date-->
 <ol>
-<$list variable=card_prefix filter="[<currentTiddler>addsuffix[\]]">
-<$list variable=cur_card filter="[prefix<card_prefix>sort[]]">
-<$list variable=disp_name filter="[<cur_card>split[\]butfirst[]join[\]]">
-<$list variable=chk_name filter="[<disp_name>addprefix[chk_]]">
+<$list variable=card_prefix filter="[<cur_card>addsuffix[\]]">
+<$list variable=cur_entry filter="[prefix<card_prefix>sort[]]">
+<$list variable=disp_name filter="[<cur_entry>split[\]last[]]">
+<$list variable=chk_name filter="[<disp_name>addprefix[chk_]split[ ]join[_]lowercase[]]">
 <li>
-<$checkbox default="no" unchecked="no" checked="yes" field=<<chk_name>> >
-<$link to=<<cur_card>> ><<disp_name>></$link>
+<$checkbox default="no" unchecked="no" checked="yes" tiddler=<<cur_card>> field=<<chk_name>> >
+<$link to=<<cur_entry>> ><<disp_name>></$link>
 </$checkbox>
 </li>
 </$list><!--chk_name-->
@@ -3783,6 +3784,7 @@ Clear all checkmarks
 </$list><!--cur_card-->
 </$list><!--card_prefix-->
 </ol>
+</$vars>
 \end
 
 
