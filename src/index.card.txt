@@ -3617,7 +3617,7 @@ alert("done");
 JavaScriptBookmarklets\Dark theme
 
 ```
-avascript:var temp_bgcolor=prompt("Please enter background color", "black");if(temp_bgcolor=="black"){document.body.style.backgroundColor="black";document.body.style.color="white";}else{document.body.style.backgroundColor="white";document.body.style.color="black";}undefined;
+avascript:var temp_bgcolor=prompt("Please enter background color", "black");if(temp_bgcolor=="black"){document.body.style.backgroundColor="black";document.body.style.color="white";}else{document.body.style.backgroundColor=temp_bgcolor;document.body.style.color="black";}undefined;
 
 
 
