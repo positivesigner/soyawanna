@@ -587,7 +587,11 @@ Error message and password prompt
 
 <li>JavaScriptBookmarklets\Clear all CSS</li>
 
+<li>JavaScriptBookmarklets\Clear all Images</li>
+
 <li>JavaScriptBookmarklets\Convert to Inline CSS</li>
+
+<li>JavaScriptBookmarklets\Dark theme</li>
 
 <li>JavaScriptBookmarklets\Edit current page</li>
 
@@ -596,6 +600,8 @@ Error message and password prompt
 <li>JavaScriptBookmarklets\Extract images</li>
 
 <li>JavaScriptBookmarklets\Extract plain text</li>
+
+<li>JavaScriptBookmarklets\Multiple columns</li>
 
 <li>JavaScriptBookmarklets\Unescape HTML code</li>
 
@@ -11101,7 +11107,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210310062921342" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210311034854329" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11113,13 +11119,13 @@ Hide resize buttons
 <div created="20210306085219583" modified="20210307041223464" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20201226064844310" modified="20210310062921342" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210311034854329" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Card filter]] [[Code Samples]]" title="$:/StoryList">
+<div created="20210311031106189" list="[[Card filter]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Clear all CSS]] [[JavaScriptBookmarklets\Clear all Images]] [[JavaScriptBookmarklets\Multiple columns]] [[JavaScriptBookmarklets\Dark theme]]" modified="20210311031155566" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13973,7 +13979,7 @@ The use of the call object is implicit, because once the call object is created,
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
-<div created="20210306043205137" modified="20210307023312084" tags="" title="JavaScriptBookmarklets\Clear all CSS">
+<div created="20210306043205137" modified="20210311031118751" tags="" title="JavaScriptBookmarklets\Clear all CSS">
 <pre>Clears all the CSS Class and Style attributes
 
 ```
@@ -14018,10 +14024,19 @@ clearAllCSS(1, document.body);
 if (document.head!=null){document.head.parentNode.removeChild(document.head)};
 document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;2&quot;) + &quot;00%&quot;;
+document.body.outerHTML=document.body.outerHTML;
 undefined;
 </pre>
 </div>
-<div created="20210227113531277" modified="20210302014205550" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
+<div created="20210311031200000" modified="20210311031234073" tags="" title="JavaScriptBookmarklets\Clear all Images">
+<pre>Clears all the CSS Class and Style attributes
+
+```
+avascript:document.querySelectorAll('img').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+undefined;
+</pre>
+</div>
+<div created="20210227113531277" modified="20210311031132288" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
 <pre>Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
 
 &lt;&lt;ext &quot;GitHub LukeHorvat Computed Style to Inline&quot;&gt;&gt;
@@ -14112,8 +14127,13 @@ document.querySelectorAll('iframe,script,noscript').forEach(function(element){el
 computedStyleToInlineStyle(1, null, document.body);
 document.head.parentNode.removeChild(document.head);
 document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
+document.body.outerHTML=document.body.outerHTML;
 alert(&quot;done&quot;);
 </pre>
+</div>
+<div created="20210311034300137" modified="20210311034851466" tags="" title="JavaScriptBookmarklets\Dark theme">
+<pre>```
+avascript:var temp_bgcolor=prompt(&quot;Please enter background color&quot;, &quot;black&quot;);if(temp_bgcolor==&quot;black&quot;){document.body.style.backgroundColor=&quot;black&quot;;document.body.style.color=&quot;white&quot;;}else{document.body.style.backgroundColor=&quot;white&quot;;document.body.style.color=&quot;black&quot;;}undefined;</pre>
 </div>
 <div created="20210227123123287" modified="20210227123204142" tags="" title="JavaScriptBookmarklets\Edit current page">
 <pre>Edit webpage
@@ -14157,6 +14177,13 @@ Copy the HTML body without any HTML tags, so the text is loaded without any HTML
 ```
 avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&lt;[^&gt;]+&gt;/g, '&lt;br&gt;');void(newWindow.focus());}
 ```</pre>
+</div>
+<div created="20210311033342788" modified="20210311034048799" tags="" title="JavaScriptBookmarklets\Multiple columns">
+<pre>```
+avascript:document.body.style.columnCount=prompt(&quot;Please enter column count&quot;, &quot;2&quot;);
+document.body.style.columnGap=&quot;1em&quot;;
+undefined;
+</pre>
 </div>
 <div created="20210303103805231" modified="20210303103817486" tags="" title="JavaScriptBookmarklets\Unescape HTML code">
 <pre>```
