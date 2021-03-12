@@ -1,1 +1,0 @@
-bcomp_path

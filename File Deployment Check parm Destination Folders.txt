@@ -1,0 +1,8 @@
+deployment_folderpath
+C:\Gthb\soyawanna
+C:\Gthb\soyawanna\MxClasses
+C:\Gthb\soyawanna\VBNet_Project\DevSettings\DevSettings.zip\DevSettings\Dep
+C:\Gthb\soyawanna\VBNet_Project\VBNetScript\VBNetScript_EXE.zip
+C:\Gthb\soyawanna\VBNS_Project\Wiki_Move
+C:\Gthb\wk
+C:\Gthb\wk\MxClasses
