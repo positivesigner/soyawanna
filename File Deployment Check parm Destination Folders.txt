@@ -6,3 +6,11 @@ C:\Gthb\soyawanna\VBNet_Project\VBNetScript\VBNetScript_EXE.zip
 C:\Gthb\soyawanna\VBNS_Project\Wiki_Move
 C:\Gthb\wk
 C:\Gthb\wk\MxClasses
+C:\TJBF\zPortableInstalls\VBNetScript\MxClasses\DLL_SystemIoCompression2019m12
+C:\TJBF\zPortableInstalls\VBNetScript\MxClasses
+C:\TJBF\Blob_Zip\internalscripts.zip\MxClasses
+C:\TJBF\Blob_Zip\internalscripts.zip\MxClasses\DLL_SystemIoCompression2019m12
+C:\TJBF\Blob_Zip\internalscripts.zip\VBNet Project\DevSettings\Dep
+C:\TJBF\Blob_Zip\internalscripts.zip\VBNet Project\VBNetScript\Dep
+C:\TJBF\Blob_Zip\internalscripts.zip\VBNet Project\MxClasses
+C:\TJBF\Blob_Zip\internalscripts.zip\VBNet Project\MxClasses\DLL_SystemIoCompression2019m12
