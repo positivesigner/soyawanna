@@ -30,6 +30,10 @@ $:/config/ShortcutInfo/home-tiddlers
 
 
 
+$:/config/ShortcutInfo/preview-card
+
+
+
 $:/config/ShortcutInfo/save-all-changes
 
 
@@ -49,6 +53,12 @@ ctrl-shift-Comma
 $:/config/shortcuts/home-tiddlers
 
 alt-H
+
+
+
+$:/config/shortcuts/preview-card
+
+alt-V
 
 
 
@@ -1232,6 +1242,37 @@ $:/positivesigner/home-button/template Home Button
 
 
 
+$:/positivesigner/preview-button
+
+<$set name=cur_title filter=<<currentCard>> >
+<$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
+<$link to=<<missing_tag>> /> missing tag
+</$list><!--missing_tag-->
+
+<$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
+<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
+
+<$link to=<<cur_card>> />
+</$list><!--cur_card-->
+</$list><!--filter_text-->
+</$set><!--cur_title-->
+
+
+
+$:/positivesigner/preview-button/keyboard action PreviewCard
+
+<$list variable=cur_card filter="[[$:/state/showeditpreview]]">
+<$list variable=cur_val filter="[<cur_card>get[text]match[yes]]">
+<$action-setfield $tiddler=<<cur_card>> text="no"/>
+</$list>
+<$list variable=cur_val filter="[<cur_card>get[text]!match[yes]]">
+<$action-setfield $tiddler=<<cur_card>> text="yes"/>
+</$list>
+</$list>
+
+
+
+
 $:/positivesigner/text-ref
 
 <$set name=cur_title filter=<<currentCard>> >
@@ -1251,10 +1292,32 @@ $:/positivesigner/text-ref
 
 $:/positivesigner/text-ref/btn Delete Cards
 
+<$vars has_parent_doctag="[split[\]first[]tag[DOC]]" has_has_parent="[split[\]count[]!match[1]]">
+<$set name=fn_img_cards_selall filter="[prefix[$:/img/]]">
+<$set name=fn_ext_cards_selall filter="[prefix[$:/ext/]]">
+<$set name=fn_card_with_docparent_selall filter="[get[title]filter<has_has_parent>filter<has_parent_doctag>sort[]]">
+<$set name=fn_compiled_cards_selall filter="[enlist<fn_img_cards_selall>append<fn_ext_cards_selall>append<fn_card_with_docparent_selall>]">
+
 <$button>
-<$list filter="[tag[ARTICLE]] [tag[IMG]]"><$action-deletetiddler $tiddler=<<currentTiddler>> /></$list>
-Del ARTICLE and IMG cards
+<$list variable=cur_entry filter="[enlist<fn_compiled_cards_selall>]">
+<$action-deletetiddler $tiddler=<<cur_entry>> />
+</$list><!--cur_entry-->
+Del <$list
+variable=cur_count filter="[enlist<fn_img_cards_selall>count[]]"><<cur_count>></$list> IMG cards, <$list
+variable=cur_count filter="[enlist<fn_ext_cards_selall>count[]]"><<cur_count>></$list> EXT cards, and <$list
+variable=cur_count filter="[enlist<fn_card_with_docparent_selall>count[]]"><<cur_count>></$list> DOC sub-cards
 </$button>
+
+<$list variable=cur_entry filter="[enlist<fn_compiled_cards_selall>]">
+
+<$link to=<<cur_entry>> />
+</$list><!--cur_entry-->
+</$set><!--fn_compiled_cards_selall-->
+</$set><!--fn_card_with_docparent_selall-->
+</$set><!--fn_ext_cards_selall-->
+</$set><!--fn_img_cards_selall-->
+</$vars><!--has_parent_doctag-->
+
 
 
 
