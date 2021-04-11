@@ -2790,6 +2790,9 @@ Code Samples
 
 <$list variable=found_html filter="[<tv-config-toolbar-icons>!match[no]]">
 <<glbl_text_search>>
+@@float:right;
+[ext[Empty Wiki|..\emptywiki.htm]]
+@@
 </$list>
 
 <<list-links filter:"[tag[DOC]sort[title]]">>
