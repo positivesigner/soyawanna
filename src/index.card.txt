@@ -2651,7 +2651,9 @@ Code Samples
 
 {{$:/positivesigner/text-ref/ext TW Return}}
 
+<$list variable=found_html filter="[<tv-config-toolbar-icons>!match[no]]">
 <<glbl_text_search>>
+</$list>
 
 <<list-links filter:"[tag[DOC]sort[title]]">>
 
