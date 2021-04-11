@@ -587,7 +587,11 @@ Error message and password prompt
 
 <li>JavaScriptBookmarklets\Clear all CSS</li>
 
+<li>JavaScriptBookmarklets\Clear all Images</li>
+
 <li>JavaScriptBookmarklets\Convert to Inline CSS</li>
+
+<li>JavaScriptBookmarklets\Dark theme</li>
 
 <li>JavaScriptBookmarklets\Edit current page</li>
 
@@ -596,6 +600,8 @@ Error message and password prompt
 <li>JavaScriptBookmarklets\Extract images</li>
 
 <li>JavaScriptBookmarklets\Extract plain text</li>
+
+<li>JavaScriptBookmarklets\Multiple columns</li>
 
 <li>JavaScriptBookmarklets\Unescape HTML code</li>
 
@@ -10840,7 +10846,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[Panel]]</pre>
+# [[mcr glbl_article_list]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -11101,7 +11107,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210307052510262" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210323212426483" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11113,13 +11119,13 @@ Hide resize buttons
 <div created="20210306085219583" modified="20210307041223464" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20201226064844310" modified="20210307052510263" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210323212426484" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210307040656072" list="[[Card filter]] [[Code Samples]] [[Recent Entries]] [[Font Size]] [[btn Delete Cards]] [[TW Project]] [[TW Project\Wiki Empty Setup]] [[ext Empty Wiki Setup]] [[TW Project\Code Snapshot]] $:/positivesigner/base-install" modified="20210307052414514" title="$:/StoryList">
+<div created="20210323212407221" list="[[Card filter]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Clear all Images]]" modified="20210323212409471" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13973,7 +13979,7 @@ The use of the call object is implicit, because once the call object is created,
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
-<div created="20210306043205137" modified="20210307023312084" tags="" title="JavaScriptBookmarklets\Clear all CSS">
+<div created="20210306043205137" modified="20210323211536451" tags="" title="JavaScriptBookmarklets\Clear all CSS">
 <pre>Clears all the CSS Class and Style attributes
 
 ```
@@ -14014,14 +14020,23 @@ avascript:(function (global, factory) {
   module.exports = clearAllCSS;
 });
 document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-clearAllCSS(1, document.body);
+clearAllCSS(1, document.documentElement);
 if (document.head!=null){document.head.parentNode.removeChild(document.head)};
 document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;2&quot;) + &quot;00%&quot;;
+document.body.outerHTML=document.body.outerHTML;
 undefined;
 </pre>
 </div>
-<div created="20210227113531277" modified="20210302014205550" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
+<div created="20210311031200000" modified="20210323212425222" tags="" title="JavaScriptBookmarklets\Clear all Images">
+<pre>Clears all the CSS Class and Style attributes
+
+```
+avascript:document.querySelectorAll('img,picture,svg,video').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+undefined;
+</pre>
+</div>
+<div created="20210227113531277" modified="20210311031132288" tags="" title="JavaScriptBookmarklets\Convert to Inline CSS">
 <pre>Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
 
 &lt;&lt;ext &quot;GitHub LukeHorvat Computed Style to Inline&quot;&gt;&gt;
@@ -14112,8 +14127,13 @@ document.querySelectorAll('iframe,script,noscript').forEach(function(element){el
 computedStyleToInlineStyle(1, null, document.body);
 document.head.parentNode.removeChild(document.head);
 document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
+document.body.outerHTML=document.body.outerHTML;
 alert(&quot;done&quot;);
 </pre>
+</div>
+<div created="20210311034300137" modified="20210311035024102" tags="" title="JavaScriptBookmarklets\Dark theme">
+<pre>```
+avascript:var temp_bgcolor=prompt(&quot;Please enter background color&quot;, &quot;black&quot;);if(temp_bgcolor==&quot;black&quot;){document.body.style.backgroundColor=&quot;black&quot;;document.body.style.color=&quot;white&quot;;}else{document.body.style.backgroundColor=temp_bgcolor;document.body.style.color=&quot;black&quot;;}undefined;</pre>
 </div>
 <div created="20210227123123287" modified="20210227123204142" tags="" title="JavaScriptBookmarklets\Edit current page">
 <pre>Edit webpage
@@ -14157,6 +14177,13 @@ Copy the HTML body without any HTML tags, so the text is loaded without any HTML
 ```
 avascript:newWindow=window.open(&quot;about:blank&quot;,&quot;newWindow&quot;);if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&lt;[^&gt;]+&gt;/g, '&lt;br&gt;');void(newWindow.focus());}
 ```</pre>
+</div>
+<div created="20210311033342788" modified="20210311034048799" tags="" title="JavaScriptBookmarklets\Multiple columns">
+<pre>```
+avascript:document.body.style.columnCount=prompt(&quot;Please enter column count&quot;, &quot;2&quot;);
+document.body.style.columnGap=&quot;1em&quot;;
+undefined;
+</pre>
 </div>
 <div created="20210303103805231" modified="20210303103817486" tags="" title="JavaScriptBookmarklets\Unescape HTML code">
 <pre>```
@@ -14220,7 +14247,7 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/$list&gt;&lt;!--save_export_html--&gt;
 </pre>
 </div>
-<div created="20201120062240873" modified="20210307040409208" tags="$:/tags/Macro $:/positivesigner/text-ref" title="mcr glbl_article_list">
+<div created="20201120062240873" modified="20210310062708422" tags="$:/tags/Macro $:/positivesigner/text-ref" title="mcr glbl_article_list">
 <pre>\define glbl_article_list()
 &lt;ol&gt;
 &lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
@@ -14233,11 +14260,12 @@ $param=&quot;template ExportAllCode&quot; filename=&quot;WikiMove_$ur_filename$-
 &lt;/ol&gt;
 \end
 \define glbl_article_checklist()
+&lt;$vars cur_card=&lt;&lt;currentTiddler&gt;&gt; &gt;
 &lt;&lt;glbl_dt_ddd&gt;&gt;
 &lt;$wikify name=cur_date text=&quot;&quot;&quot;&lt;&lt;now &quot;YYYYm0MMd0DD&quot;&gt;&gt;&quot;&quot;&quot; &gt;
-&lt;$list variable=diff_date filter=&quot;[&lt;currentTiddler&gt;get[match_date]else[]!match&lt;cur_date&gt;]&quot;&gt;
+&lt;$list variable=diff_date filter=&quot;[&lt;cur_card&gt;get[match_date]else[]!match&lt;cur_date&gt;]&quot;&gt;
 &lt;$button&gt;
-&lt;$list variable=field_name filter=&quot;[&lt;currentTiddler&gt;fields[]prefix[chk_]]&quot;&gt;
+&lt;$list variable=field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[chk_]]&quot;&gt;
 &lt;$action-setfield $field=&lt;&lt;field_name&gt;&gt; $value=&quot;&quot; /&gt;
 &lt;/$list&gt;&lt;!--field_name--&gt;
 &lt;$action-setfield match_date=&lt;&lt;cur_date&gt;&gt; /&gt;
@@ -14246,13 +14274,13 @@ Clear all checkmarks
 &lt;/$list&gt;&lt;!--diff_date--&gt;
 &lt;/$wikify&gt;&lt;!--cur_date--&gt;
 &lt;ol&gt;
-&lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
-&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
-&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
-&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]]&quot;&gt;
+&lt;$list variable=card_prefix filter=&quot;[&lt;cur_card&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_entry filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_entry&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]split[ ]join[_]lowercase[]]&quot;&gt;
 &lt;li&gt;
-&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&lt;&lt;chk_name&gt;&gt; &gt;
-&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; tiddler=&lt;&lt;cur_card&gt;&gt; field=&lt;&lt;chk_name&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;cur_entry&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
 &lt;/$checkbox&gt;
 &lt;/li&gt;
 &lt;/$list&gt;&lt;!--chk_name--&gt;
@@ -14260,6 +14288,7 @@ Clear all checkmarks
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
+&lt;/$vars&gt;
 \end
 </pre>
 </div>

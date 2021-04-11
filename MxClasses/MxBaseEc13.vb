@@ -1,5 +1,5 @@
 Option Strict On
-Namespace Mx '2020m03d08
+Namespace Mx '2020m03d12
     Public Module ConstVar
         Public Const mt = ""
         Public Const qs = """"
@@ -1833,14 +1833,16 @@ Namespace Mx '2020m03d08
 
     Public Class TablePKEnum(Of E As {New, bitBASE}, P As {New, bitBASE}, T As {New, TRow(Of E)})
         Private ttb As System.Collections.Generic.Dictionary(Of P, T)
+        Public KeyList As Objlist(Of P)
         Public PK As E
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub New(Optional ur_flag_populate_keys As Boolean = True)
             Me.ttb = New System.Collections.Generic.Dictionary(Of P, T)
             Me.PK = TRow(Of E).glbl.RefKeys.tr_b1(1)
+            Me.KeyList = TRow(Of P).glbl.RefKeys
             If ur_flag_populate_keys Then
-                For Each enmENTRY In TRow(Of P).glbl.RefKeys
+                For Each enmENTRY In Me.KeyList
                     Dim new_row = New T
                     new_row.v(Me.PK) = enmENTRY.name
                     Me.ttb.Add(enmENTRY, new_row)
@@ -2080,6 +2082,27 @@ Namespace Mx '2020m03d08
         End Function 'DelKey
 
         <System.Diagnostics.DebuggerHidden()>
+        Public Function Index_TableSplit(ur_key As E) As SdPair(Of Objlist(Of T))
+            Dim sdpRET = New SdPair(Of Objlist(Of T))
+            Index_TableSplit = sdpRET
+            Dim tblCHUNK As Objlist(Of T) = Nothing
+            For Each rowCHUNK In Me.ttb.Values
+                Dim strINDEX = rowCHUNK.v(ur_key)
+                Dim intFOUND = sdpRET.IndexOf(strINDEX)
+                If intFOUND < 0 Then
+                    tblCHUNK = New Objlist(Of T)
+                    sdpRET.d(strINDEX, tblCHUNK)
+                Else
+                    tblCHUNK = sdpRET.l_enm(intFOUND)
+                End If
+
+                tblCHUNK.Add(rowCHUNK)
+            Next rowCHUNK
+
+            Call sdpRET.Sort()
+        End Function 'Index_TableSplit
+
+        <System.Diagnostics.DebuggerHidden()>
         Public Function Ins(ur_row As T) As T
             Ins = ur_row
             Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_row)
@@ -2298,6 +2321,31 @@ Namespace Mx '2020m03d08
             End Function 'Get_PKStr
         End Class 'prv
     End Class 'TablePKStr
+
+    Public Class TablePKStrOne(Of E As {New, bitBASE}, P As {New, bitBASE}, T As {New, TRow(Of E)})
+        Inherits TablePKStr(Of E, T)
+        Public KeyList As Objlist(Of P)
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub New()
+            Call MyBase.New(1)
+            Me.KeyList = TRow(Of P).glbl.RefKeys
+        End Sub
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shadows Function SelKey(ur_key As P) As T
+            Dim retROW As T = Nothing
+            For Each trwENTRY In Me.SelOnKey(ur_key.name).SelAll
+                retROW = trwENTRY
+            Next
+
+            If retROW Is Nothing Then
+                retROW = Me.InsKey(ur_key.name)
+            End If
+
+            SelKey = retROW
+        End Function 'SelKey
+    End Class 'TablePKStrOne
 
 
     Partial Public Class Have

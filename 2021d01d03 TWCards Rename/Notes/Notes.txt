@@ -1,0 +1,1 @@
+just renaming currentTiddler to currentCard in the html file does not allow you to use the currentCard variable

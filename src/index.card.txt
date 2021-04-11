@@ -3495,7 +3495,7 @@ avascript:(function (global, factory) {
   module.exports = clearAllCSS;
 });
 document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-clearAllCSS(1, document.body);
+clearAllCSS(1, document.documentElement);
 if (document.head!=null){document.head.parentNode.removeChild(document.head)};
 document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 document.body.style.fontSize=prompt("Please enter font multiplier", "2") + "00%";
@@ -3510,7 +3510,7 @@ JavaScriptBookmarklets\Clear all Images
 Clears all the CSS Class and Style attributes
 
 ```
-avascript:document.querySelectorAll('img').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+avascript:document.querySelectorAll('img,picture,svg,video').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 undefined;
 
 

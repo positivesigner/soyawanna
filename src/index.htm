@@ -11107,7 +11107,7 @@ Hide resize buttons
 <div created="20201226080855668" modified="20210119105104165" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20201226065136179" modified="20210311035800400" title="$:/state/sidebar">
+<div created="20201226065136179" modified="20210323212426483" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210215152113607" modified="20210215152113607" title="$:/state/tab--1963855381">
@@ -11119,13 +11119,13 @@ Hide resize buttons
 <div created="20210306085219583" modified="20210307041223464" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20201226064844310" modified="20210311035800401" title="$:/state/tab/sidebar--595412856">
+<div created="20201226064844310" modified="20210323212426484" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210311031106189" list="[[Card filter]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Clear all CSS]] [[JavaScriptBookmarklets\Clear all Images]] [[JavaScriptBookmarklets\Multiple columns]] [[JavaScriptBookmarklets\Dark theme]]" modified="20210311031155566" title="$:/StoryList">
+<div created="20210323212407221" list="[[Card filter]] [[Code Samples]] JavaScriptBookmarklets [[JavaScriptBookmarklets\Clear all Images]]" modified="20210323212409471" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13979,7 +13979,7 @@ The use of the call object is implicit, because once the call object is created,
 ```
 javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='&lt;p&gt;&lt;strong&gt;Title('+t.innerHTML.length+'):&lt;/strong&gt; '+t.innerHTML+'&lt;/p&gt;';var m=document.getElementsByTagName('meta');for(var i=0;i &lt; m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='&lt;p&gt;&lt;strong&gt;'+m[i].getAttribute('name')+'('+c.length+'):&lt;/strong&gt; '+c+'&lt;/p&gt;';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='&lt;p&gt;&lt;strong&gt;Citation: &lt;/strong&gt;&quot;' + t.innerHTML + '.&quot; Last modified '+lm+'. &lt;a target=&quot;_blank&quot; href=&quot;'+url+'&quot;&gt;'+url+'&lt;/a&gt; (accessed '+mm+'/'+dd+'/'+yyyy+').&lt;/p&gt;';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='&lt;div style=&quot;border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;&quot;&gt;&lt;a href=&quot;%23&quot; onclick=&quot;document.body.removeChild(document.body.firstChild);return false&quot;&gt;remove&lt;/a&gt;'+info+'&lt;/div&gt;';})();</pre>
 </div>
-<div created="20210306043205137" modified="20210311031118751" tags="" title="JavaScriptBookmarklets\Clear all CSS">
+<div created="20210306043205137" modified="20210323211536451" tags="" title="JavaScriptBookmarklets\Clear all CSS">
 <pre>Clears all the CSS Class and Style attributes
 
 ```
@@ -14020,7 +14020,7 @@ avascript:(function (global, factory) {
   module.exports = clearAllCSS;
 });
 document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-clearAllCSS(1, document.body);
+clearAllCSS(1, document.documentElement);
 if (document.head!=null){document.head.parentNode.removeChild(document.head)};
 document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;2&quot;) + &quot;00%&quot;;
@@ -14028,11 +14028,11 @@ document.body.outerHTML=document.body.outerHTML;
 undefined;
 </pre>
 </div>
-<div created="20210311031200000" modified="20210311031234073" tags="" title="JavaScriptBookmarklets\Clear all Images">
+<div created="20210311031200000" modified="20210323212425222" tags="" title="JavaScriptBookmarklets\Clear all Images">
 <pre>Clears all the CSS Class and Style attributes
 
 ```
-avascript:document.querySelectorAll('img').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+avascript:document.querySelectorAll('img,picture,svg,video').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
 undefined;
 </pre>
 </div>
