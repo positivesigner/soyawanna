@@ -6573,6 +6573,10 @@ DOC
 
 
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CCurrent%20Card%20without%20Draft">Current Card without Draft</a></li>
+
+
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#TiddlyWiki%5CData%20Tiddler">Data Tiddler</a></li>
 
 
@@ -7524,6 +7528,33 @@ extends the
 third line.</code></pre><blockquote class="tc-quote"><p>Result:</p><pre><code>This is one big line here.
 Followed by a second line,
 and a third here. And this extends the third line.</code></pre></blockquote></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+</div>
+
+
+</a><a name="TiddlyWiki\Current Card without Draft">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="TiddlyWiki\Current Card without Draft"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal">
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span class=" tc-reveal" hidden="true"></span></span><span><h2 class="tc-title">TiddlyWiki\Current Card without Draft</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>10th April 2021 at 10:12pm</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><p>The set command's filter parameter can evaluate the text stored in a macro. The list command's filter parameter cannot do this evaluation.</p><pre><code>\define curentCard()
+[[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
+\end
+
+&lt;$set name=cur_title filter=&lt;&lt;curentCard&gt;&gt; &gt;
+&lt;&lt;cur_title&gt;&gt;
+&lt;/$set&gt;&lt;!--cur_title--&gt;</code></pre></div>
 
 <div class="tc-tiddler-plugin-info tc-reveal"><p>
 </p></div>

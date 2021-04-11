@@ -695,17 +695,20 @@ $:/plugins/hoelzro/progress-bar
 
 $:/positivesigner/base-install
 
+<$vars cur_title=<<currentTiddler>> >
 Optional card groups:
 
-<$list variable=cur_entry filter="[prefix[$:/positivesigner/]is[tag]!suffix[/base-install]sort[]]">
+<$list variable=cur_entry filter="[prefix[$:/positivesigner/]is[tag]!suffix[/base-install]!has[draft-of]sort[]]">
 
-<<cur_entry>>
-</$list>
+<<cur_entry>><$list
+variable=missing_tag filter="[<cur_title>!tag<cur_entry>]">
+- add tag to this base-install card
+</$list><!--missing_tag-->
+</$list><!--cur_entry-->
 
 ---
 Base-Install card group:
 
-<$vars cur_title=<<currentTiddler>> >
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
 <$list variable=cur_card filter="[tag<filter_text>!match<cur_title>sort[]]">
 <$list variable=filter_card_group filter="[<cur_card>!prefix[$:/positivesigner/]] [<cur_card>prefix[$:/positivesigner/]!is[tag]]">
@@ -715,6 +718,16 @@ Base-Install card group:
 </$list><!--cur_card-->
 </$list><!--filter_text-->
 </$vars><!--cur_card-->
+
+
+
+$:/positivesigner/base-install/currentCard
+
+\define curentCard()
+[[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
+\end
+
+
 
 
 
@@ -767,7 +780,7 @@ $:/positivesigner/div-pop
 
 <$vars cur_title=<<currentTiddler>> >
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
-<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>sort[]]">
+<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
@@ -834,7 +847,7 @@ $:/positivesigner/full-text-search
 
 <$vars cur_title=<<currentTiddler>> >
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
-<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>sort[]]">
+<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
@@ -904,7 +917,7 @@ $:/positivesigner/gcmpr
 
 <$vars cur_title=<<currentTiddler>> >
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
-<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>sort[]]">
+<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
@@ -1124,7 +1137,7 @@ $:/positivesigner/home-button
 
 <$vars cur_title=<<currentTiddler>> >
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
-<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>sort[]]">
+<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
@@ -1164,14 +1177,18 @@ $:/positivesigner/home-button/template Home Button
 
 $:/positivesigner/text-ref
 
-<$vars cur_title=<<currentTiddler>> >
+<$set name=cur_title filter=<<curentCard>> >
+<$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
+<$link to=<<missing_tag>> /> missing tag
+</$list><!--missing_tag-->
+
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
-<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>sort[]]">
+<$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
 </$list><!--filter_text-->
-</$vars><!--cur_card-->
+</$set><!--cur_title-->
 
 
 
@@ -5425,6 +5442,23 @@ Followed by a second line,
 and a third here. And this extends the third line.
 ```
 <<<
+
+
+
+
+TiddlyWiki\Current Card without Draft
+
+The set command's filter parameter can evaluate the text stored in a macro. The list command's filter parameter cannot do this evaluation.
+
+```
+\define curentCard()
+[[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
+\end
+
+<$set name=cur_title filter=<<curentCard>> >
+<<cur_title>>
+</$set><!--cur_title-->
+```
 
 
 
