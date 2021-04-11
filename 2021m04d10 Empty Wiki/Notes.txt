@@ -1,1 +1,0 @@
-Use the $:/positivesigner cards and rename the ext* and img* cards
