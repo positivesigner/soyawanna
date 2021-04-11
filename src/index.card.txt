@@ -723,7 +723,7 @@ Base-Install card group:
 
 $:/positivesigner/base-install/currentCard
 
-\define curentCard()
+\define currentCard()
 [[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
 \end
 
@@ -749,13 +749,54 @@ exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXT]!tag[
 <$action-sendmessage $message="tm-download-file"
 $param="$:/positivesigner/base-install/template ExportAllCode" filename="WikiMove_$ur_filename$-stamp-$ur_stamp$.card.txt" />
 \end
-<$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[parm SkipSaveExportHTML]is[tiddler]count[]multiply[-1]] +[sum[]]">
+<$list variable=save_export_html filter="[{$:/info/url/full}suffix[.htm]count[]] [[$:/positivesigner/base-install/parm SkipSaveExportHTML]is[tiddler]count[]multiply[-1]] +[sum[]]">
 <$list variable=save_wiki_extension filter="[{$:/info/url/full}split[.]last[]addprefix[.]]">
 <$list variable=save_as_file_name filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
 <$macrocall $name="ExportSaveAll" ur_filename=<<save_as_file_name>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> ur_save_wiki_extension=<<save_wiki_extension>> ur_save_export_html=<<save_export_html>> />
 </$list><!--save_as_file_name-->
 </$list><!--save_wiki_extension-->
 </$list><!--save_export_html-->
+
+
+
+
+$:/positivesigner/base-install/Remove Modules
+
+\define useraction.review_positivesigner_modules()
+<$vars positivesigner_prefix="$:/positivesigner/">
+
+<$button>
+<$list variable=cur_card filter="[prefix<positivesigner_prefix>]">
+<$action-deletetiddler $tiddler=<<cur_card>> />
+</$list><!--cur_card-->
+<$list variable=cur_tag filter=<<assistant.list_prefixed_tags "positivesigner_prefix">> >
+<$list variable=cur_card filter="[tag<cur_tag>!prefix[$:]]">
+<$action-deletetiddler $tiddler=<<cur_card>> />
+</$list><!--cur_card-->
+</$list><!--cur_tag-->
+Delete positivesigner modules
+</$button>
+
+<$list variable=cur_card filter="[prefix<positivesigner_prefix>]">
+
+<$link to=<<cur_card>> />
+</$list><!--cur_card-->
+
+<$list variable=cur_tag filter=<<assistant.list_prefixed_tags "positivesigner_prefix">> >
+<$list variable=cur_card filter="[tag<cur_tag>!prefix[$:]]">
+
+<$link to=<<cur_card>> />
+</$list><!--cur_card-->
+</$list><!--cur_tag-->
+
+</$vars><!--positivesigner_prefix-->
+\end
+
+\define assistant.list_prefixed_tags(ur_prefix)
+[tags[]prefix[$($ur_prefix$)$]each:value[]]
+\end
+
+<<useraction.review_positivesigner_modules>>
 
 
 
@@ -778,14 +819,18 @@ $:/positivesigner/base-install/template ExportAllCode
 
 $:/positivesigner/div-pop
 
-<$vars cur_title=<<currentTiddler>> >
+<$set name=cur_title filter=<<currentCard>> >
+<$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
+<$link to=<<missing_tag>> /> missing tag
+</$list><!--missing_tag-->
+
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
 <$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
 </$list><!--filter_text-->
-</$vars><!--cur_card-->
+</$set><!--cur_title-->
 
 
 
@@ -845,14 +890,18 @@ close
 
 $:/positivesigner/full-text-search
 
-<$vars cur_title=<<currentTiddler>> >
+<$set name=cur_title filter=<<currentCard>> >
+<$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
+<$link to=<<missing_tag>> /> missing tag
+</$list><!--missing_tag-->
+
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
 <$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
 </$list><!--filter_text-->
-</$vars><!--cur_card-->
+</$set><!--cur_title-->
 
 
 
@@ -915,14 +964,18 @@ $:/positivesigner/full-text-search/glbl_search_box
 
 $:/positivesigner/gcmpr
 
-<$vars cur_title=<<currentTiddler>> >
+<$set name=cur_title filter=<<currentCard>> >
+<$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
+<$link to=<<missing_tag>> /> missing tag
+</$list><!--missing_tag-->
+
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
 <$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
 </$list><!--filter_text-->
-</$vars><!--cur_card-->
+</$set><!--cur_title-->
 
 
 
@@ -1135,14 +1188,18 @@ $:/positivesigner/gcmpr/textarea
 
 $:/positivesigner/home-button
 
-<$vars cur_title=<<currentTiddler>> >
+<$set name=cur_title filter=<<currentCard>> >
+<$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
+<$link to=<<missing_tag>> /> missing tag
+</$list><!--missing_tag-->
+
 <$list variable=filter_text filter="[<cur_title>split[Draft of ']join[]split[']join[]]">
 <$list variable=cur_card filter="[tag<filter_text>!match<cur_title>!suffix[/base-install]sort[]]">
 
 <$link to=<<cur_card>> />
 </$list><!--cur_card-->
 </$list><!--filter_text-->
-</$vars><!--cur_card-->
+</$set><!--cur_title-->
 
 
 
@@ -1177,7 +1234,7 @@ $:/positivesigner/home-button/template Home Button
 
 $:/positivesigner/text-ref
 
-<$set name=cur_title filter=<<curentCard>> >
+<$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
 </$list><!--missing_tag-->
@@ -1287,7 +1344,7 @@ Normal Font
 </$list><!--cur_card-->
 
 
-[[parm SkipSaveExportHTML]]
+[[parm SkipSaveExportHTML|$:/positivesigner/base-install/parm SkipSaveExportHTML]]
 
 [[btn Delete Cards|$:/positivesigner/text-ref/btn Delete Cards]]
 
@@ -5446,18 +5503,26 @@ and a third here. And this extends the third line.
 
 
 
-TiddlyWiki\Current Card without Draft
+TiddlyWiki\Current Card Title without Draft Of prefix
 
-The set command's filter parameter can evaluate the text stored in a macro. The list command's filter parameter cannot do this evaluation.
+The set or list widgets' filter parameter can evaluate the text stored in a macro.
+
+* Note: For some reason, the set widget added extra spaces. Use the list widget.
 
 ```
-\define curentCard()
+\define currentCard()
 [[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
 \end
 
-<$set name=cur_title filter=<<curentCard>> >
+<$set name=cur_title filter=<<currentCard>> >
+
 <<cur_title>>
 </$set><!--cur_title-->
+
+<$list variable=cur_title filter=<<currentCard>> >
+
+<$link to=<<cur_title>> />
+</$list><!--cur_title-->
 ```
 
 
@@ -6308,6 +6373,22 @@ TiddlyWiki\List Links standard
 
 
 
+TiddlyWiki\List remove entries
+
+One list of titles can be removed from another list.
+
+```
+<$vars ur_list="a bc d" skip_list="bc f">
+
+<$list variable=cur_card filter="[enlist<ur_list>remove<skip_list>]">
+
+<<cur_card>>
+</$list>
+</$vars>
+```
+
+
+
 TiddlyWiki\List Widget
 
 ! Content and Attributes
@@ -6362,6 +6443,33 @@ Your browser does not support the HTML 5 video tag.
 </audio>
 ```
 
+
+
+
+TiddlyWiki\Macro results stored in Variable
+
+The set or list widgets' filter option lets you evaluate macro output as a filter command.
+
+```
+\define list_prefixed_tags(ur_prefix)
+[tags[]prefix[$($ur_prefix$)$]each:value[]]
+\end
+
+<$vars positivesigner_prefix="$:/positivesigner/">
+<$set name=cur_tag filter=<<list_prefixed_tags "positivesigner_prefix">> >
+<$list variable=cur_entry filter="[enlist<cur_tag>]">
+
+<<cur_entry>>
+</$list><!--cur_entry-->
+</$set><!--cur_tag-->
+
+
+<$list variable=cur_tag filter=<<list_prefixed_tags "positivesigner_prefix">> >
+
+<<cur_tag>>
+</$list><!--cur_tag-->
+</$vars><!--positivesigner_prefix-->
+```
 
 
 
