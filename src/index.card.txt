@@ -107,9 +107,9 @@ $:/ext
 
 
 
-$:/ext/Apple.com Safari Meta tags
+$:/ext/ALAorg Citations bookmarklet
 
-https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+http://www.ala.org/tools/article/ala-techsource/%E2%80%9Ccitethis%E2%80%9D-building-javascript-bookmarklet-creates-citations-sharing-web
 
 
 
@@ -131,6 +131,12 @@ https://html.com/tags/doctype/
 
 
 
+$:/ext/JavaScript This Parameter
+
+http://blog.niftysnippets.org/2008/03/mythical-methods.html
+
+
+
 $:/ext/JTFAssociates MOTW
 
 https://jtfassociates.com/using-the-mark-of-the-web-motw/
@@ -140,6 +146,12 @@ https://jtfassociates.com/using-the-mark-of-the-web-motw/
 $:/ext/MetaTags.org Generator
 
 https://www.metatags.org/all-meta-tags-overview/meta-name-generator/
+
+
+
+$:/ext/Microsoft RemoteDesktop Enable
+
+https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access
 
 
 
@@ -155,9 +167,57 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Comments
 
 
 
+$:/ext/MozillaDeveloper Strict mode
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+
+
+
 $:/ext/PSU.edu LangTag
 
 https://accessibility.psu.edu/foreignlanguages/langtaghtml/
+
+
+
+$:/ext/Regexp Filter with brackets
+
+https://tiddlywiki.narkive.com/T5403O4p/tw5-regexp-for-matching-a-tag-tiddlytweeter#post7
+
+
+
+$:/ext/Regular Expression Quantifiers
+
+https://www.rexegg.com/regex-quantifiers.html
+
+
+
+$:/ext/SQLite Blob text
+
+https://stackoverflow.com/questions/15366594/convert-hex-to-text-using-sqlite
+
+
+
+$:/ext/SQLite DB Browser
+
+https://sqlitebrowser.org/dl/
+
+
+
+$:/ext/SQLite Language functions
+
+https://sqlite.org/lang_corefunc.html
+
+
+
+$:/ext/SQLite schema information
+
+https://stackoverflow.com/questions/6460671/sqlite-schema-information-metadata
+
+
+
+$:/ext/SQLite Top 5 Records
+
+https://stackoverflow.com/questions/2728999/how-to-get-top-5-records-in-sqlite
 
 
 
@@ -1610,7 +1670,7 @@ $:/positivesigner/text-ref/View All Code
 
 $:/state/showeditpreview
 
-yes
+no
 
 
 
@@ -1776,11 +1836,27 @@ Activities
 
 
 
+Activities\How add JavaScript code to html file using HTML5 Code
+
+
+
+Activities\How add tag to cards using TiddlyWiki Code
+
+
+
+Activities\How backlink to alternate file extension using TiddlyWiki Code
+
+
+
 Activities\How browse local computer HTML files using Google Chrome Android
 
 
 
 Activities\How browse local computer HTML files using Google Chrome Windows
+
+
+
+Activities\How browse SQLite database archive using DB Browser Windows
 
 
 
@@ -1796,11 +1872,23 @@ Activities\How checkout repository commit using Git for Windows
 
 
 
+Activities\How clear all CSS formatting in html dom using JavaScript Bookmarklet
+
+
+
+Activities\How clear all images in html dom using JavaScript Bookmarklet
+
+
+
 Activities\How clear cookies on exit using Google Chrome Windows
 
 
 
-Activities\How comment out CSS styles in html file using HTML5 Code
+Activities\How comment out code in html file using JavaScript Code
+
+
+
+Activities\How comment out CSS styles in html file using CSS Code
 
 
 
@@ -1808,7 +1896,27 @@ Activities\How comment out tags using HTML5 Code
 
 
 
+Activities\How compare text lines using TiddlyWiki Code
+
+
+
+Activities\How convert html dom to inline html css using JavaScript Bookmarklet
+
+
+
+Activities\How create a Bibliographic citation for website page using JavaScript Bookmarklet
+
+
+
 Activities\How create a Lua program using QLua Android
+
+
+
+Activities\How create calendar grid using TiddlyWiki Code
+
+
+
+Activities\How create contact sheet from image files using IrfanView Windows
 
 
 
@@ -1824,11 +1932,51 @@ Activities\How create Screenshot using Screenshot Easy Android
 
 
 
+Activities\How declare checkbox input using TiddlyWiki Code
+
+
+
 Activities\How define key-value pair class in QLua Code
 
 
 
+Activities\How delete card using TiddlyWiki Code
+
+
+
 Activities\How deploy a Program Module using QLua Android
+
+
+
+Activities\How detect Node.JS environment in JavaScript Code
+
+
+
+Activities\How determine variable contents data type using JavaScript Code
+
+
+
+Activities\How display card over sidebar using TiddlyWiki Code
+
+
+
+Activities\How embed font file using TiddlyWiki Editor
+
+
+
+Activities\How enable Microsoft Remote Desktop using Windows Settings
+
+
+
+Activities\How encript card contents using TiddlyWiki Editor
+
+
+
+Activities\How execute nameless function in JavaScript Code
+
+
+
+Activities\How export article entries from Instapaper.com Website
 
 
 
@@ -1840,11 +1988,39 @@ Activities\How export email from Google.com Takeout
 
 
 
+Activities\How export html dom as html code using JavaScript Bookmarklet
+
+
+
+Activities\How export html dom as TW html snippet using JavaScript Bookmarklet
+
+
+
 Activities\How extract captions text from video file using FFMpeg Windows
 
 
 
+Activities\How extract date-part from string using TiddlyWiki Code
+
+
+
+Activities\How extract html dom text using JavaScript Bookmarklet
+
+
+
+Activities\How extract iframe reference URLs using JavaScript Bookmarklet
+
+
+
+Activities\How extract image reference URLs using JavaScript Bookmarklet
+
+
+
 Activities\How extract image snapshots from video file using FFMpeg Windows
+
+
+
+Activities\How filter title list using TiddlyWiki Code
 
 
 
@@ -1872,6 +2048,10 @@ Activities\How flag elements for CSS styles in html file using HTML5 Code
 
 
 
+Activities\How flag html dom text as editable using JavaScript Bookmarklet
+
+
+
 Activities\How flag html file Internet Explorer Compatibility using HTML5 Meta Tag
 
 
@@ -1888,7 +2068,43 @@ Activities\How flag structure in html file with Language/Accent using HTML5 Code
 
 
 
+Activities\How flag text block with CSS classes using TiddlyWiki Code
+
+
+
+Activities\How form text as mono-spaced source code using TiddlyWiki Code
+
+
+
+Activities\How form text section with CSS styles using TiddlyWiki Code
+
+
+
+Activities\How format blob text as hexadecimal codes using SQLite Code
+
+
+
+Activities\How format browser window icon in html file using HTML5 Code
+
+
+
 Activities\How format browser window title using HTML5 Code
+
+
+
+Activities\How format decimal number as hex code using TiddlyWiki Code
+
+
+
+Activities\How format global card footer using TiddlyWiki Code
+
+
+
+Activities\How format html dom background using JavaScript Bookmarklet
+
+
+
+Activities\How format html dom text into multiple columns using JavaScript Bookmarklet
 
 
 
@@ -1897,6 +2113,26 @@ Activities\How format html file Full Screen status bar on Apple computers using 
 
 
 Activities\How format html file Telephone Numbers on Apple computers using HTML5 Meta Tag
+
+
+
+Activities\How format plain text using TiddlyWiki Code
+
+
+
+Activities\How format SQLite Schema table data using SQLite Code
+
+
+
+Activities\How format text using SQLite Code
+
+
+
+Activities\How format wikitext with hard line-breaks using TiddlyWiki Code
+
+
+
+Activities\How hide content in exported html file using TiddlyWiki Code
 
 
 
@@ -1912,11 +2148,31 @@ Activities\How hold current worksheet using Excel VBA
 
 
 
+Activities\How limit selection rows using SQLite Code
+
+
+
+Activities\How link to external files using TiddlyWiki Code
+
+
+
+Activities\How navigate to card using TiddlyWiki Code
+
+
+
+Activities\How parse Instapaper Articles archive using TiddlyWiki Code
+
+
+
 Activities\How parse MBOX email archive using VB.Net Code
 
 
 
 Activities\How pull Git Repository changes using Pocket Git Android
+
+
+
+Activities\How reference external font files using TiddlyWiki Code
 
 
 
@@ -1940,6 +2196,14 @@ Activities\How run program using QLua Console Android
 
 
 
+Activities\How set card field using TiddlyWiki Code
+
+
+
+Activities\How set windows clipboard text using TiddlyWiki Code
+
+
+
 Activities\How share data between User profiles using Android file system
 
 
@@ -1952,6 +2216,14 @@ Activities\How share purchased apps using Google Play Store Android
 
 
 
+Activities\How show grouped count totals using TiddlyWiki Code
+
+
+
+Activities\How show sub-html file in card using TiddlyWiki Code
+
+
+
 Activities\How show sub-html file in html file using HTML5 Code
 
 
@@ -1960,7 +2232,15 @@ Activities\How simulate HTTP Response header in html file using HTML5 Meta Tag
 
 
 
+Activities\How space apart structures in html file using HTML5 Code
+
+
+
 Activities\How specify developer information in html file using HTML5 Meta Tag
+
+
+
+Activities\How specify global macro scope using TiddlyWiki Editor
 
 
 
@@ -1968,7 +2248,27 @@ Activities\How specify initial viewport expected size in html file using HTML5 M
 
 
 
+Activities\How specify jump point in JavaScript Code
+
+
+
+Activities\How specify local variable scope using JavaScript Code
+
+
+
+Activities\How specify multi-line string using JavaScript Code
+
+
+
 Activities\How specify server application in html file using HTML5 Meta Tag
+
+
+
+Activities\How specify strict mode in html file using JavaScript Code
+
+
+
+Activities\How specify structural characters in string literals using JavaScript Code
 
 
 
@@ -1980,7 +2280,39 @@ Activities\How specify website creation tool in html file using HTML5 Meta Tag
 
 
 
+Activities\How split code lines using TiddlyWiki Code
+
+
+
+Activities\How store current card Title without Draft Of prefix using TiddlyWiki Code
+
+
+
+Activities\How store data dictionary records using TiddlyWiki Code
+
+
+
+Activities\How stripe background colors on table in html file using CSS Code
+
+
+
+Activities\How structure text string match using Regular Expression Code
+
+
+
+Activities\How test boolean automatic type conversion using JavaScript Code
+
+
+
 Activities\How test VB.Net code using DCoder Android
+
+
+
+Activities\How unescape html character literals using JavaScript Bookmarklet
+
+
+
+Activities\How view TiddlyWiki Core macro definitions using TiddlyWiki Code
 
 
 
@@ -2003,6 +2335,68 @@ Documentation History
 
 
 Draft of 'New Card'
+
+
+
+How add JavaScript code to html file using HTML5 Code\Form e1\HTML5 Code
+
+```
+<html>
+  <body><script type = "text/javascript">window.onerror=function(msg,url,line){alert("Line number = "+line+"\nMessage:\n\n"+msg)}</script>
+    <script type="text/javascript">
+alert('hi';
+      </script>
+    </body>
+  </html>
+
+
+
+
+How add tag to cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$button>
+<$action-setfield $tiddler="Test1" tags="COPY"/>
+Reset Test1 Card's Tag list with just COPY
+</$button>
+
+<$button>
+<$list variable=cur_card filter="[is[tiddler]!prefix[$:/state/]]">
+<$list variable=has_tag filter="[<cur_card>tags[]count[]!match[0]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[append[COPY]]"/>
+</$list>
+</$list>
+Append COPY tag to all Cards that already have tags
+</$button>
+
+<$button>
+<$list variable=cur_card filter="[tag[COPY]]">
+<$action-listops $tiddler=<<cur_card>> $tags="+[remove[COPY]]"/>
+</$list>
+Remove COPY tag from all Cards
+</$button>
+
+
+
+
+How backlink to alternate file extension using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Title = ext TW Return
+
+```
+\define TW_Return(ur_url, ur_link_title)
+<div style="float:right"><a href="$ur_url$"> ($ur_link_title$)</a></div>
+\end
+<$list filter="[<tv-config-toolbar-icons>match[no]]">
+<$list filter="[{$:/info/url/full}split[.html]join[.htm]]">
+<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="TiddlyWiki view of website" />
+</$list>
+</$list>
+<$list filter="[<tv-config-toolbar-icons>!match[no]]">
+<$list filter="[{$:/info/url/full}split[.html]join[.htm]split[.htm]join[.html]]">
+<$macrocall $name=TW_Return ur_url=<<currentTiddler>> ur_link_title="Static HTML view of website" />
+</$list>
+</$list>
 
 
 
@@ -2047,6 +2441,14 @@ How browse local computer HTML files using Google Chrome Windows\Form e1\Google 
 
 Note: You can also create a Website shortcut on the Desktop from Google Chrome
 
+
+
+
+How browse SQLite database archive using DB Browser Windows\Form e1\DB Browser Windows
+
+<<ext "SQLite DB Browser">>
+
+I used `DB Browser for SQLite - .zip (no installer) for 64-bit Windows`
 
 
 
@@ -2122,6 +2524,67 @@ rem Use GitHub Desktop to delete the branch
 
 
 
+How clear all CSS formatting in html dom using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+Clears all the CSS Class and Style attributes
+
+```
+avascript:(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["module"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.clearAllCSS = mod.exports;
+  }
+})(this, function (module) {
+  "use strict";
+
+  var each = Array.prototype.forEach;
+
+
+  function clearAllCSS(nest_level, cur_elt) {
+    var _context2;
+    if (!cur_elt) {
+        throw new Error("No element specified.");
+        }
+
+    var _context;
+    (_context = cur_elt.children, each).call(_context, function (child) {
+        clearAllCSS(nest_level+1, child);
+        });
+
+    while(cur_elt.attributes.length > 0) {
+        cur_elt.removeAttribute(cur_elt.attributes[0].name);
+        }
+    }
+
+  module.exports = clearAllCSS;
+});
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+clearAllCSS(1, document.documentElement);
+if (document.head!=null){document.head.parentNode.removeChild(document.head)};
+document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+document.body.style.fontSize=prompt("Please enter font multiplier", "2") + "00%";
+document.body.outerHTML=document.body.outerHTML;
+undefined;
+
+
+
+
+How clear all images in html dom using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:document.querySelectorAll('img,picture,svg,video').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
+undefined;
+
+
+
+
 How clear cookies on exit using Google Chrome Windows\Form e1\Google Chrome Windows
 
 """
@@ -2135,7 +2598,28 @@ How clear cookies on exit using Google Chrome Windows\Form e1\Google Chrome Wind
 
 
 
-How comment out CSS styles in html file using HTML5 Code\Form e1\HTML5 Code
+How comment out code in html file using JavaScript Code\Form e1\JavaScript Code
+
+* tag name = `script`
+* `type` attr = `text/javascript`
+* Start JavaScript comment text block with forward-slash asterisk ( `/*` )
+* End comment text with asterisk forward-slash ( `*/` )
+* Start JavaScript comment text line with two forward-slashes ( `//` )
+
+!! Sample code
+
+```
+<script type="text/javascript">/*
+Comment text block
+*/
+
+alert('User message'); //end of line comment
+</style>
+```
+
+
+
+How comment out CSS styles in html file using CSS Code\Form e1\CSS Code
 
 * Start CSS comment text with forward-slash asterisk ( `/*` )
 * End CSS comment text with asterisk forward-slash ( `*/` )
@@ -2174,6 +2658,212 @@ How comment out tags using HTML5 Code\Form e1\HTML5 Code
 
 
 
+How compare text lines using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$diff-text source={{t1}} dest={{mcr glbl_section_disp}}/>
+```
+
+Name = mcr glbl_compare_lines
+
+Tag = `$:/tags/Macro`
+
+```
+\define glbl_compare_lines_results_table(ur_card_pk, ur_second_pk, ur_row_count)
+<table><tr>
+<th>''Line''</th>
+<th>Show text</th>
+<th>First Side<br>Second Side</th>
+</tr>
+<$list filter="[range<intSECOND_COUNT>subtract[1]]" variable="intCUR_ENTRY">
+<$list filter="[{$ur_card_pk$}splitregexp[\n]butfirst<intCUR_ENTRY>first[]]" variable="strFIRST_LINE">
+<$list filter="[{$ur_second_pk$}splitregexp[\n]butfirst<intCUR_ENTRY>first[]!match<strFIRST_LINE>]" variable="strSECOND_LINE">
+<tr>
+<td rowspan=2>
+
+!!<<intCUR_ENTRY>>
+</td>
+<td>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/CompareTextLine1" text=<<intCUR_ENTRY>>/>
+<$action-setfield $tiddler="$:/state/popup/CompareTextSection1" text="""<$edit-text tiddler="$:/state/popup/CompareTextLine1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
+<$list filter="[{$:/state/popup/CompareTextLine1}!match[]else[0]]" variable=intSTART_LINE><$list filter="[<intSTART_LINE>subtract[1]]" variable=intPREV_LINE>
+<$list filter="[<intSTART_LINE>add[1]]" variable=intNEXT_LINE>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/CompareTextLine1" text=<<intPREV_LINE>>/>
+<<intPREV_LINE>>
+</$button>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/CompareTextLine1" text=<<intNEXT_LINE>>/>
+<<intNEXT_LINE>>
+</$button><br>[[$ur_card_pk$]]<br>
+<$macrocall $name=glbl_code_disp_group ur_card_pk="$ur_card_pk$"  ur_skip_count=<<intSTART_LINE>> />
+</$list></$list></$list>""" />
+<$action-navigate $to="$:/state/popup/CompareTextSection1"/>
+<<intCUR_ENTRY>>
+</$button>
+</td>
+<td><$codeblock code=<<strFIRST_LINE>> /></td>
+</tr>
+<tr>
+<td>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/CompareTextLine2" text=<<intCUR_ENTRY>>/>
+<$action-setfield $tiddler="$:/state/popup/CompareTextSection2" text="""<$edit-text tiddler="$:/state/popup/CompareTextLine2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=input/>
+<$list filter="[{$:/state/popup/CompareTextLine2}!match[]else[0]]" variable=intSTART_LINE>
+<$list filter="[<intSTART_LINE>subtract[1]]" variable=intPREV_LINE>
+<$list filter="[<intSTART_LINE>add[1]]" variable=intNEXT_LINE>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/CompareTextLine2" text=<<intPREV_LINE>>/>
+<<intPREV_LINE>>
+</$button>
+<$button>
+<$action-setfield $tiddler="$:/state/popup/CompareTextLine2" text=<<intNEXT_LINE>>/>
+<<intNEXT_LINE>>
+</$button><br>[[$ur_second_pk$]]<br>
+<$macrocall $name=glbl_code_disp_group ur_card_pk="$ur_second_pk$"  ur_skip_count=<<intSTART_LINE>> />
+</$list></$list></$list>""" />
+<$action-navigate $to="$:/state/popup/CompareTextSection2"/>
+<<intCUR_ENTRY>>
+</$button>
+</td>
+<td><$codeblock code=<<strSECOND_LINE>> /></td>
+</tr>
+</$list></$list></$list>
+</table>
+\end
+\define glbl_compare_lines(ur_card_pk, ur_second_pk)
+<$list filter="[{$ur_card_pk$}splitregexp[\n]count[]]" variable="intFIRST_COUNT">
+<$list filter="[{$ur_second_pk$}splitregexp[\n]count[]]" variable="intSECOND_COUNT">
+<$list filter="[{$ur_second_pk$}splitregexp[\n]count[]subtract<intFIRST_COUNT>]" variable="intSECOND_EXTRA">
+
+[[$ur_card_pk$]] line count: <<intFIRST_COUNT>>
+
+[[$ur_second_pk$]] line count: <<intSECOND_COUNT>>
+
+''$ur_second_pk$'' excess line count: ''<<intSECOND_EXTRA>>''
+
+<$macrocall $name=glbl_compare_lines_results_table ur_card_pk="$ur_card_pk$" ur_second_pk="$ur_second_pk$" ur_row_count=<<intSECOND_COUNT>> />
+</$list>
+</$list>
+</$list>
+\end
+
+<!--
+<$edit-text tiddler="$:/state/popup/CompareText1" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+<$edit-text tiddler="$:/state/popup/CompareText2" field=text default="" placeholder="[no text yet]" autoHeight=no tag=textarea/>
+
+<<glbl_compare_lines "$:/state/popup/CompareText1" "$:/state/popup/CompareText2">>
+-->
+
+
+
+How convert html dom to inline html css using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+Run this script (it takes a while) and then save the web page. All the CSS properties are specified on each element, so it does not need to load any stylesheets.
+
+<<ext "GitHub LukeHorvat Computed Style to Inline">>
+
+```
+avascript:(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["module"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(module);
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod);
+    global.computedStyleToInlineStyle = mod.exports;
+  }
+})(this, function (module) {
+  "use strict";
+
+  var each = Array.prototype.forEach;
+
+
+  function computedStyleToInlineStyle(nest_level, parent_style, cur_elt) {
+    var _context2;
+    if (!cur_elt) {
+        throw new Error("No element specified.");
+        }
+
+    var cur_style = getComputedStyle(cur_elt);
+    var _context;
+    (_context = cur_elt.children, each).call(_context, function (child) {
+        computedStyleToInlineStyle(nest_level+1, cur_style, child);
+        });
+
+    var parent_copy = document.createElement("an_unknown_tag");
+    if (nest_level > 1) {
+        for (var pctr = 0; pctr < parent_style.length; pctr++) {
+            var pname = parent_style[pctr];
+            var pval = parent_style.getPropertyValue(pname);
+            parent_copy.style[pname] = pval;
+            }
+        }
+
+    var blank_element = document.createElement("an_unknown_tag");
+    parent_copy.appendChild(blank_element);
+    document.head.appendChild(parent_copy);
+    var blank_style = getComputedStyle(blank_element);
+
+    for (var dctr = 0; dctr < blank_style.length; dctr++) {
+        if (dctr < cur_style.length) {
+            var dname = blank_style[dctr];
+            var dval = blank_style.getPropertyValue(dname);
+			var cval = cur_style.getPropertyValue(dname);
+            if (cval != dval && cur_elt.style[dname] != dval) {
+                cur_elt.style[dname] = cval;
+                }
+            }
+        }
+    }
+
+  module.exports = computedStyleToInlineStyle;
+});
+(function(){
+	var h = document.createElement('div');
+	var t = document.getElementsByTagName('title')[0];
+	var cite_remove = '<a href="%23" onclick="document.body.firstChild.style.visibility = \'hidden\';document.body.firstChild.style.height = \'0px\';return false">remove</a>';
+	var info = '<p><strong>Title(' + t.innerHTML.length + '):</strong> ' + t.innerHTML + '</p>';
+	var m = document.getElementsByTagName('meta');
+	for(var i = 0; i < ((m == null) ? 0 : m.length); i++) {
+		if(null !== m[i].getAttribute('name') ) {
+			var c=m[i].getAttribute('content');
+			if (c != null) {info += '<p><strong>' + m[i].getAttribute('name') + '(' + c.length + '):</strong> ' + c + '</p>';}
+			}
+		}
+	
+	var lm = document.lastModified;
+	var url = location.href;
+	var d = new Date();
+	var dd = d.getDate();
+	var mm = d.getMonth()+1;
+	var yyyy = d.getFullYear();
+	info += '<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified ' + lm + '. <a target="_blank" href="' + url + '">' + url + '</a> (accessed ' + mm + '/' + dd + '/' + yyyy + ').</p><p><strong>Filename:</strong> ' + '0'.repeat(4-yyyy.toString().length) + yyyy + 'm'+'0'.repeat(2-mm.toString().length) + mm + 'd' + '0'.repeat(2-dd.toString().length) + dd + ' ' + url.replace('http://','').replace('https://','').replace('file:///','').replaceAll('/','-fslash-') + '.html</p>';
+	document.body.insertBefore(h,document.body.firstChild);
+	h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;">' + cite_remove + info + cite_remove + '</div>';
+	})();
+document.querySelectorAll('iframe,script,noscript').forEach(function(element){element.parentNode.removeChild(element)});
+computedStyleToInlineStyle(1, null, document.body);
+document.head.parentNode.removeChild(document.head);
+document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
+document.body.outerHTML=document.body.outerHTML;
+alert("done");
+
+
+
+
+How create a Bibliographic citation for website page using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+<<ext "ALAorg Citations bookmarklet">>
+```
+javascript:(function(){var h=document.createElement('div');var t=document.getElementsByTagName('title')[0];var info='<p><strong>Title('+t.innerHTML.length+'):</strong> '+t.innerHTML+'</p>';var m=document.getElementsByTagName('meta');for(var i=0;i < m.length;i++){if(null !==m[i].getAttribute('name')){var c=m[i].getAttribute('content');info+='<p><strong>'+m[i].getAttribute('name')+'('+c.length+'):</strong> '+c+'</p>';}}var lm=document.lastModified;var url=location.href;var d=new Date();var dd=d.getDate();var mm=d.getMonth()+1;var yyyy=d.getFullYear();info+='<p><strong>Citation: </strong>"' + t.innerHTML + '." Last modified '+lm+'. <a target="_blank" href="'+url+'">'+url+'</a> (accessed '+mm+'/'+dd+'/'+yyyy+').</p>';document.body.insertBefore(h,document.body.firstChild);h.innerHTML='<div style="border:1px solid %23888;border-radius:5px;-moz-box-shadow:0 0 5px %23888;-webkit-box-shadow:0 0 5px%23888;box-shadow:0 0 5px %23888;background:%23eee;text-align:left;padding:1em;"><a href="%23" onclick="document.body.removeChild(document.body.firstChild);return false">remove</a>'+info+'</div>';})();
+
+
+
 How create a Lua program using QLua Android\Form e1\QLua Android
 
 """
@@ -2194,6 +2884,94 @@ How create a Lua program using QLua Android\Form e1\QLua Android
 [SDCard file list]
 - Note: The file gets saved in the folder /sdcard/qlua5
 
+
+
+
+How create calendar grid using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\define CalendarEntryDay(ur_ymd,ur_d,ur_cur_date)
+<$list filter='$ur_ymd$ +[match[$ur_cur_date$]]'>
+//''<span style="background-color:yellow">$ur_ymd$</span>''//<br>
+</$list>
+<$list filter='[prefix[$ur_ymd$]count[]match[0]]'>
+<$list filter='$ur_ymd$ +[!match[$ur_cur_date$]]'>
+$ur_ymd$<br>
+</$list>
+</$list>
+<$list filter="[prefix[$ur_ymd$]count[]match[1]]">
+''d$ur_d$''<br><<currentTiddler>> entry<br>
+</$list>
+<$list filter="[prefix[$ur_ymd$]count[]!match[0]!match[1]]">
+''d$ur_d$''<br><<currentTiddler>> entries<br>
+</$list>
+\end
+
+\define CalendarEntryMonth(ur_ym,ur_d,ur_cur_date)
+<$list filter="0 1 2 3 4 5 6 7 8 9 +[match[$ur_d$]count[]!match[0]]">
+<$macrocall $name="CalendarEntryDay" ur_prefix=<<currentTiddler>> ur_ymd="$ur_ym$d0$ur_d$" ur_d="0$ur_d$" ur_cur_date="$ur_cur_date$" />
+</$list>
+<$list filter="0 1 2 3 4 5 6 7 8 9 +[match[$ur_d$]count[]match[0]]">
+<$macrocall $name="CalendarEntryDay" ur_prefix=<<currentTiddler>> ur_ymd="$ur_ym$d$ur_d$" ur_d="$ur_d$" ur_cur_date="$ur_cur_date$" />
+</$list>
+\end
+
+\define CalendarListDailyThings(day month year)
+<$button class='tc-btn-invisible' style='width:100%;height:100%'>
+<div style='height:100%;width:100%;position:relative;text-align:left;vertical-align:top;z-index=0'>
+
+<$list filter="0 1 2 3 4 5 6 7 8 9 +[match[$month$]count[]!match[0]]">
+<$macrocall $name="CalendarEntryMonth" ur_prefix=<<currentTiddler>> ur_ym="$year$m0$month$" ur_d="$day$"  ur_cur_date=<<now YYYYm0MMd0DD>> />
+</$list>
+<$list filter="0 1 2 3 4 5 6 7 8 9 +[match[$month$]count[]match[0]]">
+<$macrocall $name="CalendarEntryMonth" ur_prefix=<<currentTiddler>> ur_m="$year$m$month$" ur_d="$day$" ur_cur_date=<<now YYYYm0MMd0DD>> />
+</$list>
+
+
+</div>
+</$button>
+\end
+\define date_list_entry(ur_num,ur_cur_date)
+<$list filter="[[$ur_num$]match[$ur_cur_date$]]">
+//''<span style="background-color:yellow">$ur_cur_date$</span>''//<br>
+</$list>
+<$list filter="[prefix[$ur_num$]count[]!match[0]]">
+<$list filter="[[$ur_num$]!match[$ur_cur_date$]count[]!match[0]]">
+$ur_num$<br>
+</$list>
+</$list>
+<<list-links filter:"[prefix[$ur_num$]]" >>
+\end
+\define date_list_dayunit(ur_num,ur_cur_date)
+<$list filter="$ur_num$0 $ur_num$1 $ur_num$2 $ur_num$3 $ur_num$4 $ur_num$5 $ur_num$6 $ur_num$7 $ur_num$8 $ur_num$9">
+<$macrocall $name="date_list_entry" ur_num=<<currentTiddler>> ur_cur_date="$ur_cur_date$" />
+</$list>
+\end
+\define date_list_daydec(ur_year_month,ur_num,ur_cur_date)
+<$list filter="$ur_year_month$d0 $ur_year_month$d1 $ur_year_month$d2 $ur_year_month$d3 $ur_year_month$d4 $ur_year_month$d5 $ur_year_month$d6 $ur_year_month$d7 $ur_year_month$d8 $ur_year_month$d9">
+<$macrocall $name="date_list_dayunit" ur_num=<<currentTiddler>> ur_cur_date="$ur_cur_date$" />
+</$list>
+\end
+\define date_list(ur_year,ur_month)
+<$calendar-month year="$ur_year$" month="$ur_month$" />
+
+<$macrocall $name="date_list_daydec" ur_year_month="$ur_year$m$ur_month$" ur_num=<<currentTiddler>> ur_cur_date=<<now YYYYm0MMd0DD>> />
+\end
+
+
+
+
+How create contact sheet from image files using IrfanView Windows\Form e1\IrfanView Windows
+
+"""
+- Open one thumbnail image -> Loads image
+- Click the File menu option Thumbnails -> Opens dialog
+- [Thumbnails dialog]
+- Select all files in the folder
+- Click the File menu, option Create Contact Sheet
+- 1280x738, 738/1280*320 = 184.5, use -s 320x180 to keep aspect ratio
+- paper 150px * 8.5in = 1250px wide, 150px * 11in = 1650in tall
+- screen 1920px x 1080px with 7 x 7, stretch small images to maximal size
 
 
 
@@ -2251,6 +3029,13 @@ How create Screenshot using Screenshot Easy Android\Form e2\Screenshot Easy Andr
 - * Open app Screenshot Easy
 
 
+
+
+
+How declare checkbox input using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$checkbox default="yes" unchecked="no" checked="yes" field="text" tiddler="$:/state/popup/checkUseIt">Use It</$checkbox>
 
 
 
@@ -2497,6 +3282,27 @@ print('1: ' .. strFILE)
 
 
 
+How delete card using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$button>
+<$list filter="[tag[ARTICLE]]"><$action-sendmessage $message=tm-delete-tiddler $param=<<currentTiddler>> /></$list>
+Del ARTICLE tagged Cards with Confirmation
+</$button>
+
+<$button>
+<$list filter="[tag[ARTICLE]]"><$action-deletetiddler $tiddler=<<currentTiddler>> /></$list>
+Del ARTICLE tagged Cards without Confirmation
+</$button>
+
+<$button>
+<$list filter="[tag[DOC]]" variable=doc_pk><$list filter="[<doc_pk>fields[]prefix[e]]" variable=field_pk2><$action-deletefield $tiddler=<<doc_pk>> $field=<<field_pk2>> /></$list></$list>
+Del fields starting with `E` in DOC tagged Cards
+</$button>
+
+
+
+
 How deploy a Program Module using QLua Android\Form e1\QLua Android
 
 """
@@ -2544,6 +3350,207 @@ require 'UrFileName'
 
 """
 - Output is the Lua program output
+
+
+
+How detect Node.JS environment in JavaScript Code\Form e1\JavaScript Code
+
+* Creating and Exporting a Module
+
+<<ext "SitePoint Exports Node.JS">>
+
+* Initially at least, `exports` is a reference to `module.exports`
+* If you assign anything to `module.exports`, `exports` is not no longer a reference to it, and exports loses all its power
+
+<<ext "HackSparrow Module.Exports">>
+
+* Since there's no window object in Node.js by default you can go the other way around and check whether you're running inside a Browser.
+
+<<ext "StackOverflow How Check Running Under Node.JS">>
+
+
+
+How determine variable contents data type using JavaScript Code\Form e1\JavaScript Code
+
+* typeof always returns a string
+* Note: typeof operator takes precedence over string concatenation ( ` + ` )
+* Note: type a let or const variable in a block before they are declared will throw a ReferenceError
+
+* Undefined, undeclared variable, or unassigned variable = "undefined"
+* Boolean(1), !!(1) = "boolean"
+* Number('321') , Infinity, NaN = "number"
+* Bigint, 321n = "bigint"
+* String = "string"
+* Symbol = "symbol"
+* Function() {}, class UrClassName {},  = "function"
+* null, object, {ur_prop_name: ur_prop_value}, [ur_val1, ur_val2, ur_val3], new Date(), /regex/ = "object"
+
+
+
+
+How display card over sidebar using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+[DivPop.svg]
+
+[DivPop button]
+Tag = `$:/tags/ViewToolbar`
+
+```
+\define divpop_current(ur_ref)
+<$button class=<<tv-config-toolbar-class>> >
+<$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text="$ur_ref$"/>
+<$action-sendmessage $message="tm-close-tiddler" $param="pop_right"/>
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{DivPop.svg}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text"><$text text="Popup over Sidebar"/></span>
+</$list>
+</$button>
+\end
+
+<$list filter="[all[current]]">
+<$macrocall $name=divpop_current ur_ref=<<currentTiddler>> /> 
+</$list>
+```
+
+[DivPop macro]
+
+Tag = `$:/tags/BelowStory`
+
+```
+<$list filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
+<div style="
+position: fixed;
+top: 0px;
+right: 0px;
+width: 350px;
+border: 3px solid;
+background: white;
+bottom: 0%;
+">
+<div style="overflow-y: scroll; height: 100%;">
+<$button>
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+close
+</$button>
+<$tiddler tiddler=<<currentTiddler>> >
+<$transclude mode="block" />
+</$tiddler>
+</div>
+</div>
+</$list>
+
+
+
+
+How embed font file using TiddlyWiki Editor\Form e1\TiddlyWiki Editor
+
+"""
+- <<ext "Narkive TW5 Embed Font">>
+- Visit: <<ext "FontSquirrel WebFont Generator">>
+- Upload your font file (".ttf", ".eot", ".woff", etc)
+- Select option "Expert"
+- Check the option case at CSS >> Base64 Encode
+- Generate your webkit -> Downloads file
+
+[stylesheet.zip file]
+- Unpack ZIP file -> Downloads file
+
+[stylesheet.css]
+- Note: The file's content in Base64 encoded
+
+[Wiki file]
+- Drag-drop file to import -> Creates Card
+- [styleshee.css Card]
+- Make sure the field font-family is what you want
+- Tag = $:/tags/Stylesheet
+- Tiddler type = Plain text (text/plain)
+- Create a new Card and use the font
+
+
+
+
+How enable Microsoft Remote Desktop using Windows Settings\Form e1\Windows Settings
+
+<<ext "Microsoft RemoteDesktop Enable">>
+
+
+
+How encript card contents using TiddlyWiki Settings\Form e1\TiddlyWiki Settings
+
+"""
+[Wiki file]
+- [Sidebar, Tools tab]
+- Click button Set Password -> Opens dialog
+- Password = UrPasswordText
+- Repeat password = UrPasswordText
+- Click button Set Password -> Closes dialog
+
+[keyboard action SaveAllChanges]
+- [<$action-sendmessage $message="tm-download-file"]
+- Comment out this tag to keep the HTML Wiki version from being exported
+- Save the Wiki file
+
+- Note: The password will be required to start the Wiki application when you open the Wiki file
+
+
+
+
+How execute nameless function in JavaScript Code\Form e1\JavaScript Code
+
+```
+;(
+    function() {
+        alert('hi');
+        }
+    )();
+
+
+
+
+How export article entries from Instapaper.com Website\Form e1\Instapaper.com Website
+
+"""
+- [https://www.instapaper.com/u]
+- [Top-right icon]
+- Click login-name menu, option Settings -> Navigates page
+- [Settings page, Export section]
+- Click link Download .CSV file -> Opens dialog
+- Click button OK -> Starts download, closes dialog
+
+[CSV file]
+- Header fields =
+"""
+
+```
+URL
+Title
+Selection
+Folder
+Timestamp
+```
+
+- Header line =
+
+```
+URL,Title,Selection,Folder,Timestamp
+```
+
+- Sample data 1 =
+
+```
+https://m.youtube.com/watch?v=ABC123DEF&index=14,"""UrQuotedText"" - UrVideoTitle",UrCommentText,"UrInstapaperFolder",1605840648
+```
+
+- Sample data 1 =
+
+```
+https://www.urcompany.com/urfolder/urarticle/,UrArticleTitle,,UrInstapaperFolder,UrCommentText1603883475
+```
+
 
 
 
@@ -2698,6 +3705,20 @@ Email Content = "First line that is not a tag or tag continuation -> through las
 
 
 
+How export html dom as html code using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
+
+
+
+How export html dom as TW html snippet using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;\/div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt;\/a>','&gt;&lt\/a&gt;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
+
+
+
 How extract captions text from video file using FFMpeg Windows\Form e1\FFMpeg Windows
 
 - * The output filename must have a .SRT extension
@@ -2706,6 +3727,92 @@ How extract captions text from video file using FFMpeg Windows\Form e1\FFMpeg Wi
 chcp 65001
 C:\UrPath\ffmpeg.exe -i "C:\UrPath\UrFile.mp4" "C:\UrPath\UrFile.srt"
 pause
+
+
+
+
+How extract date-part from string using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Tag = `$:/tags/Macro`
+
+```
+\define glbl_dt_ddd()
+<div style="clear:right;float:right;background-color:aquamarine;"><<now "YYYYm0MMd0DD DDD pm0hh12\m0mm">></div>
+<$list filter="[<currentTiddler>split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]">
+<$view field="title" format="date" template="[UTC]DDD" />
+</$list>
+\end
+```
+
+|!Token |!Substituted Value |
+|`DDD` |Day of week in full (eg, "Monday") |
+|`ddd` |Short day of week (eg, "Mon") |
+|`DD` |Day of month |
+|`0DD` |Adds a leading zero |
+|`DDth` |Adds a suffix |
+|`WW` |ISO-8601 week number of year |
+|`0WW` |Adds a leading zero |
+|`MMM` |Month in full (eg, "July") |
+|`mmm` |Short month (eg, "Jul") |
+|`MM` |Month number |
+|`0MM` |Adds leading zero |
+|`YYYY` |Full year |
+|`YY` |Two digit year |
+|`wYYYY` |Full year with respect to week number |
+|`wYY` |Two digit year with respect to week number |
+|`hh` |Hours |
+|`0hh` |Adds a leading zero |
+|`hh12` |Hours in 12 hour clock |
+|`0hh12` |Hours in 12 hour clock with leading zero |
+|`mm` |Minutes |
+|`0mm` |Minutes with leading zero |
+|`ss` |Seconds |
+|`0ss` |Seconds with leading zero |
+|`XXX` |Milliseconds |
+|`0XXX` |Milliseconds with leading zero |
+|`am` or `pm` |Lower case AM/PM indicator |
+|`AM` or `PM` |Upper case AM/PM indicator |
+|`TZD` |Timezone offset |
+|`\x` |Used to escape a character that would otherwise have special meaning |
+|`[UTC]`|Time-shift the represented date to UTC. Must be at very start of format string|
+
+
+
+
+How extract html dom text using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+Copy the HTML body to a new window, so CSS and Javascript are ignored
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML;void(newWindow.focus());}
+```
+
+Copy the HTML body to a new window showing the HTML tags, so you can see the HTML code
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/&/g,"&amp;").replace(/</g,"<br>&lt;");void(newWindow.focus());}
+```
+
+Copy the HTML body without any HTML tags, so the text is loaded without any HTML or CSS styling
+
+```
+avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){newWindow.document.documentElement.innerHTML=document.body.innerHTML.replace(/<[^>]+>/g, '<br>');void(newWindow.focus());}
+```
+
+
+
+How extract iframe reference URLs using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+(function(){ var imgs = document.getElementsByTagName('iframe'),t=[]; for (var i=0, n=imgs.length;i'+ imgs[i].src+''); if (t.length) { var w=window.open('','_blank'); if (w) {w.document.write(t.join(' '));w.document.close();} else alert('cannot pop a window'); } })();
+
+
+
+
+How extract image reference URLs using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:(function(){ var imgs = document.getElementsByTagName('img'),t=[]; for (var i=0, n=imgs.length;i<n;i++) t.push('<a href="'+imgs[i].src+'"><img src="'+ imgs[i].src+'" width="100"></a>'); if (t.length) { var w=window.open('','_blank'); if (w) {w.document.write(t.join(' '));w.document.close();} else alert('cannot pop a window'); } })();
 
 
 
@@ -2736,6 +3843,36 @@ rem -ss 05:00 -t 10:00 means start at 5min and end 10min later at 15min
 C:\UrPath\ffmpeg.exe -i "C:\UrPath\UrFile.mp4" -r 0.083 -s 320x180 "UrPath\UrSubdir\output_%%04d.jpg"
 
 
+
+
+
+How filter title list using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!!Math
+
+"""
+abs - calculate the absolute value of a list of numbers
+add - treating each input title as a number, add to each the numeric value of the operand
+ceil - rounds a list of numbers up to the next largest integer
+divide - treating each input title as a number, divide them by the numeric value of the operand
+exponential - convert each number to exponential notation with N digits
+fixed - convert each number to fixed point notation with N digits after the decimal point
+floor - rounds a list of numbers to the largest integer less than or equal to each number
+max - treating each input title as a number, take the maximum of its value and the numeric value of the operand
+maxall - find the largest of a list of numbers
+min - treating each input title as a number, take the minimum of its value and the numeric value of the operand
+minall - find the smallest of a list of numbers
+multiply - treating each input title as a number, multiply it by the numeric value of the operand
+negate - calculate the negation of a list of numbers
+precision - convert each number to a string with N significant digits
+product - produce the product of the input numbers
+remainder - treating each input title as a number, return the remainder when divided by the numeric value of the operand
+round - rounds a list of numbers to the nearest integer
+sign - return -1, 0 or 1 for a list of numbers according to whether each number is negative, zero, or positive
+subtract - treating each input title as a number, subtract from each the numeric value of the operand
+sum - produce the sum of the input numbers
+trunc - truncates a list of numbers to their integer part, removing any fractional part
+untrunc - rounds a list of numbers to the next integer with largest absolute value, that is, away from zero
 
 
 
@@ -2886,6 +4023,23 @@ How flag elements for CSS styles in html file using HTML5 Code\Form e1\HTML5 Cod
 
 
 
+How flag html dom text as editable using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+Edit webpage
+
+```
+javascript:document.body.contentEditable = 'true'; document.designMode='on'; void 0
+```
+
+Editing Done
+
+```
+javascript:document.body.contentEditable = 'false'; document.designMode='off'; void 0
+```
+
+
+
+
 How flag html file Internet Explorer Compatibility using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
 
 * tag name = `meta`
@@ -2969,6 +4123,209 @@ How flag structure in html file with Language/Accent using HTML5 Code\Form e1\HT
 
 
 
+How flag text block with CSS classes using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!! New Card page
+* Card name = css alternating-rows
+* Tag = $:/tags/Stylesheet
+
+```
+.alternating-rows tr:nth-child(even) {background-color:white}
+.alternating-rows tr:nth-child(odd) {background-color:lightgrey}
+```
+
+Note: The @''''@ directive must include the leading period (.) to select a CSS class
+
+```
+@@.alternating-rows
+<table>
+<tr><th>hi</th></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+
+
+
+
+How form text as mono-spaced source code using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+\define sample_data_e1()
+```
+sample code "here" and "there"
+```
+\end
+
+\define sample_data_e2()
+<$codeblock code="""sample code "here" and "there"
+"""/>
+\end
+
+\define sample_data_e3() \define sample_data_e3() sample code "here" and "there"
+
+\define sample_data_e4()
+\define sample_data_e4()
+sample
+code """here"""
+and "there"
+\end <--Last line of macro
+\end
+
+\define sample_data_e5()
+<$codeblock code={{{ [[UrCardPK]get[text]] }}}/>
+\end
+
+<$codeblock code=<<sample_data_e1>>/>
+
+You can use the `<$codeblock>` widget to display text as the three-backticks TiddlyWiki formatting block. Make sure to put an enter at the end of the string if it ends with d-quotes.
+
+<$codeblock code=<<sample_data_e2>>/>
+
+If you need to show text triple d-quotes in a code string, define a macro to return the string literal instead of passing in a code string.
+
+<$codeblock code=<<sample_data_e3>>/>
+
+Make sure to put a leading space or some trailing comment text on any line within the macro that has `\end` by itself. Otherwise the macro definition will end early.
+
+<$codeblock code=<<sample_data_e4>>/>
+
+Another way to display a Card's content is by using the triple-curly-brace inclusion.
+
+<$codeblock code=<<sample_data_e5>>/>
+
+
+
+
+How form text section with CSS styles using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!! Apply stylesheet to all cards
+
+* New card name = UrStylesheetCardName
+* Tag = $:/tags/Stylesheet
+
+```
+.tc-tiddler-body {
+  word-break: normal; 
+  word-wrap: break-word;
+  white-space: pre-wrap;
+} 
+```
+
+* Note: The card's Preview window was not using the same CSS stylesheet changes as the committed card
+
+!! Apply stylesheet to cards with specific tag `linewrap`
+
+* New card name = UrStylesheetCardName
+* Tag = $:/tags/Stylesheet
+
+```
+[data-tags*="linewrap"] .tc-tiddler-body {
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+```
+
+* Note: Only cards with the `linewrap` tag will use this stylesheet change
+
+!! Apply Styles to In-line Text
+
+* Start a text block with @,,,,@ and the CSS styles with no spaces
+
+Sample Code:
+
+```
+@@word-break:normal;word-wrap:break-word;white-space:pre-wrap;
+These are
+separate lines
+here
+@@
+
+This is
+one big
+line
+```
+
+<<<
+Result:
+
+```
+These are
+separate lines
+here
+
+This is one big line
+```
+<<<
+
+* or start in the middle of a text block
+
+Sample Code:
+
+```
+This is
+one big
+line@@word-break:normal;word-wrap:break-word;white-space:pre-wrap; here.
+Followed by a second line,
+and a third here@@. And this
+extends the
+third line.
+```
+
+<<<
+Result:
+
+```
+This is one big line here.
+Followed by a second line,
+and a third here. And this extends the third line.
+```
+<<<
+
+
+
+
+How format blob text as hexadecimal codes using SQLite Code\Form e1\SQLite Code
+
+<<ext "SQLite Blob text">>
+
+```
+WITH RECURSIVE test(c,cur) as (
+     SELECT '', HEX(blob_field) FROM UrTable WHERE UrPK = 6
+   UNION ALL
+    select c || char((case substr(cur,1,1) when 'A' then 10 when 'B' then 11 when 'C' then 12 when 'D' then 13 when 'E' then 14 when 'F' then 15 else substr(cur,1,1) end)*16
+               + (case substr(cur,2,1) when 'A' then 10 when 'B' then 11 when 'C' then 12 when 'D' then 13 when 'E' then 14 when 'F' then 15 else substr(cur,2,1) end)),
+substr(cur,3)
+from test where length(cur)>0
+)
+select * from test
+```
+
+
+
+
+How format browser window icon in html file using HTML5 Code\Form e1\HTML5 Code
+
+* tag name = `link`
+* `rel` attr = `icon`, `shortcut icon`
+* `href` attr = Website icon filename, relative path, or full path
+* Note: The favicon is loaded as soon as the browsers parses the link rel="icon" declaration, or after the page is loaded when the link is not found
+* Note: The icon keyword may be preceded by the keyword "shortcut". If the "shortcut" keyword is present, the rel attribute's entire value must be an ASCII case-insensitive match for the string "shortcut icon" (with a single U+0020 SPACE character between the tokens and no other ASCII whitespace).
+
+<<ext "MathiasBynens Rel Icon">>
+
+<<ext "WHATWg.org Link Icon">>
+
+!! Sample code
+
+```
+<link rel="shortcut icon" href="favicon.ico">
+```
+
+
+
+
 How format browser window title using HTML5 Code\Form e1\HTML5 Code
 
 * The &lt;head> element is a container for metadata (data about data) and is placed between the &lt;html> tag and the &lt;body> tag
@@ -2983,6 +4340,112 @@ How format browser window title using HTML5 Code\Form e1\HTML5 Code
   <title>UrTitle</title>
 </head>
 ```
+
+
+
+
+How format decimal number as hex code using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+"""
+Name = mcr glbl_dec_to_hex5
+Tag = `$:/tags/Macro`
+"""
+
+```
+\define glbl_dec_to_hex5(ur_code)
+<$list filter="[[$ur_code$]divide[16]divide[16]divide[16]divide[16]floor[]]" variable=lvl_x4>
+<$list filter="[<lvl_x4>multiply[16]multiply[16]multiply[16]multiply[16]]" variable=lvl_d4>
+<$list filter="[[$ur_code$]subtract<lvl_d4>divide[16]divide[16]divide[16]floor[]]" variable=lvl_x3>
+<$list filter="[<lvl_x3>multiply[16]multiply[16]multiply[16]]" variable=lvl_d3>
+<$list filter="[[$ur_code$]subtract<lvl_d4>subtract<lvl_d3>divide[16]divide[16]floor[]]" variable=lvl_x2>
+<$list filter="[<lvl_x2>multiply[16]multiply[16]]" variable=lvl_d2>
+<$list filter="[[$ur_code$]subtract<lvl_d4>subtract<lvl_d3>subtract<lvl_d2>divide[16]floor[]]" variable=lvl_x1>
+<$list filter="[<lvl_x1>multiply[16]]" variable=lvl_d1>
+<$list filter="[[$ur_code$]subtract<lvl_d4>subtract<lvl_d3>subtract<lvl_d2>subtract<lvl_d1>]" variable=lvl_xrem>
+<$list filter="[range[15]butfirst[9]match<lvl_x4>add[55]] [range[10]subtract[1]match<lvl_x4>add[48]]" variable=lvl_h4>
+<$list filter="[range[15]butfirst[9]match<lvl_x3>add[55]] [range[10]subtract[1]match<lvl_x3>add[48]]" variable=lvl_h3>
+<$list filter="[range[15]butfirst[9]match<lvl_x2>add[55]] [range[10]subtract[1]match<lvl_x2>add[48]]" variable=lvl_h2>
+<$list filter="[range[15]butfirst[9]match<lvl_x1>add[55]] [range[10]subtract[1]match<lvl_x1>add[48]]" variable=lvl_h1>
+<$list filter="[range[15]butfirst[9]match<lvl_xrem>add[55]] [range[10]subtract[1]match<lvl_xrem>add[48]]" variable=lvl_hrem>
+<$wikify name=str_hex_out text="0x&#<<lvl_h4>>;-&#<<lvl_h3>>;&#<<lvl_h2>>;&#<<lvl_h1>>;&#<<lvl_hrem>>;" >
+<<str_hex_out>>
+</$wikify>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+</$list>
+\end
+
+
+
+How format global card footer using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Every Card shows the Wikified content of the Card content, followed by the Wikified content of every Card with the tag `$:/tags/ViewTemplate`.
+
+!Example Footer Text
+
+Create a new Card
+
+<<<
+template Global Footer
+<<<
+
+```
+Any Text Here
+```
+
+Add the tag:
+
+* $:/tags/ViewTemplate
+
+And then every Card will show the words "Any Text Here" at the bottom of the Card.
+
+!Example Footer Home Button
+
+Create a new Card
+
+<<<
+template Home Button
+<<<
+
+```
+<div style="float:right">{{$:/core/ui/Buttons/home}}</div>
+```
+
+Add the tag:
+
+* $:/tags/ViewTemplate
+
+And then every Card will show the "Home" icon at the bottom-right of the Card.
+
+
+
+
+
+
+How format html dom background using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:var temp_bgcolor=prompt("Please enter background color", "black");if(temp_bgcolor=="black"){document.body.style.backgroundColor="black";document.body.style.color="white";}else{document.body.style.backgroundColor=temp_bgcolor;document.body.style.color="black";}undefined;
+
+
+
+How format html dom text into multiple columns using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:document.body.style.columnCount=prompt("Please enter column count", "2");
+document.body.style.columnGap="1em";
+undefined;
 
 
 
@@ -3024,6 +4487,203 @@ How format html file Telephone Numbers on Apple computers using HTML5 Meta Tag\F
 
 
 
+How format plain text using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!! Use the TextWidget to ignore WikiText formatting
+
+* widget name = `$text`
+* `text` attr = <$text text="`still black colored text`" />
+
+!! Sample code
+
+```
+<$text text="`still black colored text`" />
+```
+
+<<<
+Results:
+
+<$text text="`still black colored text`" />
+<<<
+!! Use the Rules card pragma to ignore WikiText formatting
+
+* [New card]
+* Put `\rules only` at the top of the card text
+
+!! Sample code
+
+```
+\rules only
+`still black colored text`
+```
+
+<<<
+Results:
+
+<$text text="`still black colored text`" />
+<<<
+
+!! Use the Card Datatype to ignore WikiText formatting
+
+* [New card]
+* `type` field = `text/plain`
+
+!! Sample code
+
+```
+`still black colored text`
+```
+
+<<<
+Results:
+
+```
+`still black colored text`
+```
+<<<
+
+
+
+
+How format SQLite Schema table data using SQLite Code\Form e1\SQLite Code
+
+<<ext "SQLite schema information">>
+
+```
+SELECT name, sql FROM sqlite_master
+WHERE type='table'
+ORDER BY name;
+```
+
+<<ext "SQLite Language functions">>
+
+sqlite_source_id()
+
+```
+--version string of SQLite Library source code
+2020-08-14 13:23:32 fca8dc8b578f215a969cd899336378966156154710873e68b3d9ac5881b0ff3f
+```
+
+sqlite_version()
+
+```
+--version string of SQLite Library running
+3.33.0
+```
+
+
+
+How format text using SQLite Code\Form e1\SQLite Code
+
+<<ext "SQLite Language functions">>
+
+```
+--comment
+```
+
+CHAR(unicode_char_list)
+
+COALESCE(field_list)
+
+HEX(field)
+
+IFNULL(field, default_text)
+
+INSTR(field, search_text)
+
+LENGTH(field)
+
+LIKE(field, comparison_text)
+
+* field LIKE comparisontext
+* LIKE(field, comparison_text, escape_char)
+
+LOWER(field)
+
+LTRIM(field)
+
+* LTRIM(field, chars_to_remove)
+
+PRINTF(format_text, field_list)
+
+REPLACE(field, search_text, new_text)
+
+RTRIM(field)
+
+* RTRIM(field, chars_to_remove)
+
+SUBSTR(field, start_char)
+
+* SUBSTR(field, start_char, char_count)
+
+TRIM(field)
+
+* TRIM(field, chars_to_remove)
+
+typeof(field)
+
+* "null", "integer", "real", "text", or "blob".
+
+UNICODE(number)
+
+UPPER(field)
+
+
+
+
+How format wikitext with hard line-breaks using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+HTML normally ignores line breaks. TiddlyWiki uses HTML, and includes a way to stop ignoring line breaks.
+
+[TiddlyWiki editor]
+- Type three double-quotes (`"""`) and press enter to ignore line breaks below this point
+- The (`"""`) does not show up in the output
+
+Three double-quotes will start a hard line breaks section
+
+```
+"""
+```
+
+```
+line one blends into line two continues
+
+"""
+line three stops
+line four starts
+"""
+```
+
+line one blends into
+line two continues
+
+"""
+line three stops
+line four starts
+"""
+
+!!HTML Preformatted text with Sans-Serif font
+
+`<pre style="font-family: sans-serif;">line three stops
+line four starts</pre>`
+
+<pre style="font-family: sans-serif;">line three stops
+line four starts</pre>
+
+
+
+
+How hide content in exported html file using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!! Hide section when exported to static HTML file
+
+```
+<$list filter="[<tv-config-toolbar-icons>match[no]]">
+```
+
+
+
+
 How hide structure in html file using HTML5 Code\Form e1\HTML5 Code
 
 * CSS style name = `display`
@@ -3057,6 +4717,141 @@ wksDATA.Cells(2,2).Value = "Hi"
 
 'Press F5 to run the macro
 'Note: Cell B2 says "Hi"
+
+
+
+How limit selection rows using SQLite Code\Form e1\SQLite Code
+
+<<ext "SQLite Top 5 Records">>
+
+SELECT * FROM Table_Name LIMIT 5;
+
+
+
+How link to external files using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+* Create one Card for each external link in this format
+** Title always starts with `ext` and a space, then the external link description
+** Tagged as EXT
+** Contains one line in this format:
+
+```
+[ext[ur_url]]
+```
+
+* Reference the Card with the `ext` macro, but don't include the `ext` prefix or the leading space
+* The link is shown, and there will be `->` on the right side of the Card window
+* This flags links that will open in a new tab, and allows you to easily open the `ext` Card and change the saved link
+
+```
+<<ext "UrExternalLinkDiscption">>
+```
+
+* Global macro
+** Title = mcr glbl_ext
+** Tag = $:/tags/Macro
+** Main Body text =
+
+```
+\define ext(ur_extcard_pk)
+{{ext $ur_extcard_pk$}}<div style="float:right">[[_|ext $ur_extcard_pk$]]</div>
+\end
+
+
+
+
+How navigate to card using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$vars new_code="Test1">
+<$list variable=new_pk filter="[<new_code>addprefix[$:/state/popup/]]">
+<$button>
+<$action-sendmessage $message="tm-new-tiddler" title=<<new_pk>> tags="OneTag [[Another Tag]]" text=<<now "Today is DDth, MMM YYYY">>/>
+Create Code ''<<new_code>>'' and Edit
+</$button><br>
+
+<$button>
+<$action-setfield $tiddler=<<new_pk>> text="yes"/>
+<$action-navigate $to=<<new_pk>>/>
+Create Code ''<<new_code>>'' and Show
+</$button><br>
+
+<$link to=<<new_pk>> /><br>
+
+<$button>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
+Close Code: ''<<new_code>>''
+</$button><br>
+
+<$list filter="[<currentTiddler>!prefix[Draft of]]" variable=strCARD_PK>
+<$button>
+<$list filter="[list[$:/StoryList]] -[<strCARD_PK>]" variable=strCLOSE_PK>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<strCLOSE_PK>>/>
+</$list>
+Close all other open Codes
+</$button>
+</$list><br>
+
+<$button>
+<$action-sendmessage $message="tm-delete-tiddler" $param=<<new_pk>> />
+Delete Card: ''<<new_card>>'' with confirmation
+</$button><br>
+
+<$button>
+<$action-sendmessage $message="tm-close-tiddler" $param=<<new_pk>> />
+<$action-deletetiddler $tiddler=<<new_pk>> />
+Delete Card: ''<<new_card>>'' without confirmation
+</$button>
+</$list><!--new_pk-->
+</$vars><!--new_card-->
+
+
+
+
+How parse Instapaper Articles archive using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\define link_title()
+''[<$list filter="[<http_text>split[,]butlast[]last[]]" />]'' <$list filter="[<http_text>split[,]rest[]first[]]" />
+<$list filter="[<http_text>split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]floor[]]"><$vars tid_year=<<currentTiddler>> >
+<$list filter="[<http_text>split[,]last[]divide[60]divide[60]divide[24]divide[365]add[1970]subtract<tid_year>multiply[12]floor[]]"><$vars tid_month=<<currentTiddler>> >
+(<<tid_year>>-<<tid_month>>)
+</$vars></$list>
+</$vars></$list>
+<ul>
+<$list filter='[<http_text>split[,]butlast[]butlast[]butfirst[]butfirst[]join[,]split["]butfirst[]butlast[]join["]split[""]join["]split[...]]'>
+<li><<currentTiddler>></li>
+</$list>
+</ul>
+\end
+<$list filter="[{WebNotes\Data}split[http]count[]]" ><$vars total_count=<<currentTiddler>> >Count of entries: <<total_count>><br><br>
+<!--
+<$button>
+<$action-setfield $tiddler="$:/state/popup/audit_1k" text="0"/>
+Reset
+</$button><br>
+
+<$button>
+<$list filter="[{$:/state/popup/audit_1k}add[1000]]">
+<$action-setfield $tiddler="$:/state/popup/audit_1k" text=<<currentTiddler>> />
+Next 1k
+</$list>
+</$button><br>
+{{$:/state/popup/audit_1k}}
+
+<$list filter="[{WebNotes\Data}split[http]first{$:/state/popup/audit_1k}last[1000]]"><$vars http_text=<<currentTiddler>> >
+-->
+<$list filter="[{WebNotes\Data}split[{{]join[-opencurlybrace-]split[http]]"><$vars http_text=<<currentTiddler>> >
+<$list filter="[<http_text>split[,]first[]!suffix[URL]addprefix[http]]"><$vars http_link=<<currentTiddler>> >
+<$list filter="[all[tiddlers]field:twnote<currentTiddler>count[]match[0]]">
+<<http_link>><br>
+- <<link_title>> <br>
+</$list>
+</$vars></$list>
+</$vars></$list>
+</$vars></$list>
+```
+
 
 
 
@@ -3301,6 +5096,38 @@ How pull Git Repository changes using Pocket Git Android\Form e1\Pocket Git Andr
 
 
 
+How reference external font files using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
+
+@@font-family: 'Playfair Display';
+!'Playfair Display'  1234567890 ABC abc
+@@
+
+@@font-family: 'Sofia';
+!'Sofia'  1234567890 ABC abc
+@@
+
+@@font-family: 'Alex Brush';
+!'Alex Brush'  1234567890 ABC abc
+@@
+
+@@font-family: 'Akronim';
+!'Akronim'  1234567890 ABC abc
+@@
+
+@@font-family: 'Annie Use Your Telescope';
+!'Annie Use Your Telescope'  1234567890 ABC abc
+@@
+
+
+
+
 How remote control Android computer using AnyDesk Android\Form e1\Google Play Store Android
 
 """
@@ -3504,6 +5331,51 @@ loadfile('/sdcard/qlua5/ur_file.lua')()
 
 
 
+How set card field using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$button>
+<$action-setfield $tiddler="$:/state/UrCardPK" text="yes"/>
+Set UrCardPK = yes
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/UrCardPK" text="no"/>
+Set UrCardPK = no
+</$button>
+
+
+
+
+How set windows clipboard text using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Tags = `$:/tags/Macro`
+
+```
+\define cboard_copy(ur_text)
+<pre>$ur_text$</pre>
+<span style="margin-left:30px">
+<<copy-to-clipboard "$ur_text$">>
+</span>
+\end
+\define cboard_pwd(ur_text ur_pk)
+<$reveal type="nomatch" state="$:/state/popup/$ur_pk$" text="show">
+
+<$button set="$:/state/popup/$ur_pk$" setTo="show">Show</$button>
+
+</$reveal>
+<$reveal type="match" state="$:/state/popup/$ur_pk$" text="show">
+
+<$button set="$:/state/popup/$ur_pk$" setTo="hide">Hide</$button>
+<pre>$ur_text$</pre>
+</$reveal>
+<span style="margin-left:30px">
+<<copy-to-clipboard "$ur_text$">>
+</span>
+\end
+
+
+
 How share data between User profiles using Android file system\Form e1\Android file system
 
 """
@@ -3607,6 +5479,158 @@ If the 'Family' logins does not contain the account you want to access your shar
 
 
 
+How show grouped count totals using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+unique_groups()
+- find list of titles with UrAttribute
+    - [has[UrAttribute]]
+- split by the prefix before the first hyphen
+    - [<currentTiddler>split[-]nth[1]]
+- return each title's prefix followed by a space
+    - ><<currentTiddler>> <
+
+unique_counts()
+- create a new variable ugrp with the list of title prefixes from unique_groups()
+    - <$wikify name=ugrp text=<<unique_groups>>
+- split the new variable by spaces
+    - [<ugrp>split[ ]
+- ignore white-space only entries, and sort the rest alphabetically
+    - !match[]sort[]
+- use "each:value" to get the unique title prefixes in the list
+    - each:value[]]
+- for each unique title prefix, get a count of titles with UrAttribute
+    - [has[UrAttribute]prefixcount[]]
+
+count_size()
+- create a new variable ugrp with the list of title prefixes from unique_groups()
+    - <$wikify name=ugrp text=<<unique_groups>>
+- split the new variable by spaces, ignore white-space, sort, use "each:value", store as ur_entry
+    - [<ugrp>split[ ]!match[]sort[]each:value[]]
+    - ur_entry=<<currentTiddler>>
+- for each unique title prefix, only continue where the count of titles with UrAttribute matches the parent unique count
+    - [has[UrAttribute]prefix<ur_entry>count[]match[$(currentTiddler)$]]
+- find all the titles with the unique title prefix, and return a "1" for each entry
+    - [has[UrAttribute]prefix]">1 <
+
+main()
+- create a new variable ucnt with the list of title prefixes from unique_counts()
+    - <$wikify name=ucnt text=<<unique_counts>>
+- split the new variable by spaces, ignore white-space, sort, use "each:value"
+    - [split[ ]trim[]!match[]sort[]each:value[]]
+- For each unique count,
+    - list the entry
+    - sum the number of entries returned from count_size() divided by the unique count
+```
+
+```
+\define unique_groups()
+<$list filter="[has[eng-vocab]]"><$list filter="[<currentTiddler>split[-]nth[1]]"><<currentTiddler>> </$list></$list>
+\end
+\define unique_counts()
+<$wikify name=ugrp text=<<unique_groups>> >
+<$list filter="[<ugrp>split[ ]!match[]sort[]each:value[]]">
+<$list filter="[has[eng-vocab]prefix<currentTiddler>count[]]"><<currentTiddler>> </$list>
+</$list>
+</$wikify>
+\end
+\define count_size()
+<$wikify name=ugrp text=<<unique_groups>> >
+<$list filter="[<ugrp>split[ ]!match[]sort[]each:value[]]"><$vars ur_entry=<<currentTiddler>> >
+<$list filter="[has[eng-vocab]prefix<ur_entry>count[]match[$(currentTiddler)$]]">
+<$list filter="[has[eng-vocab]prefix<ur_entry>]">1 </$list>
+</$list>
+</$vars></$list>
+</$wikify>
+\end
+<$wikify name=ucnt text=<<unique_counts>> >
+<$list filter="[<ucnt>split[ ]trim[]!match[]sort[]each:value[]]">
+ASLSJ Prefix Groups with <<currentTiddler>> words -
+<$wikify name=usize text=<<count_size>> >
+<$list filter="[<usize>split[ ]trim[]!match[]sum[]divide<currentTiddler>]"><<currentTiddler>><br>
+</$list>
+</$wikify>
+</$list>
+</$wikify>
+```
+
+
+
+
+How show sub-html file in card using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Use an iFrame to run JavaScript in a TiddlyWiki
+
+```
+>iframe src="javascript:newWindow='';var ...
+```
+
+- just `javascript:newWindow=var ...` did not compile. An empty string is a work-around.
+
+Alternative output: use alert instead of document.write
+
+```
+alert(strTEXT);"/>
+```
+
+How to reference an external HTML file in a tiddler
+
+```
+>iframe src=...  scrolling=yes style="border-style:none;height:100%;width:100%">
+>/iframe>
+```
+
+- A self-closing tag does not allow remaining html code to be displayed
+- ALWAYS specify a closing >/iframe> tag
+
+TW Macro to show iframe and link
+
+```
+>div style='float:right'>[ext[_ |$ur_pk$.txt.html]]
+>/div>
+>iframe src='$ur_pk$.txt.html'>
+>/iframe>
+```
+
+- $macrocall $name=iframe_txt ur_pk= currentTiddler
+
+```
+<iframe src="javascript:newWindow='';var qs = '&quot;';var qt = '&apos;';
+
+var objFRAME = document.createElement('iframe');
+objFRAME.setAttribute('id', 'innerFrame');
+objFRAME.setAttribute('src', 'http://www.google.com/');
+document.body.appendChild(objFRAME); 
+var objTEST = objFRAME;
+var strTEXT = '';
+if (objTEST===undefined) {
+strTEXT = 'undef obj';
+} else if (objTEST===null) {
+strTEXT = 'null obj';
+} else {
+var intSEQ = 0;
+var strNAME;
+for (strNAME in objTEST) {
+intSEQ += 1;
+strTEXT += ' ; ' + strNAME;
+}
+strTEXT = 'olen ' + intSEQ + strTEXT;
+}
+document.write(strTEXT);"></iframe>
+
+alert(strTEXT);"/>
+
+<iframe src='iframe.scrE2.txt' height=100% width=100% scrolling=yes frameborder=no></iframe>
+
+
+\define iframe_txt(ur_pk)
+<div style="float:right">[ext[_ |$ur_pk$.txt.html]]</div>
+<iframe src='$ur_pk$.txt.html' scrolling=yes style="border-style:none;height:100%;width:100%"></iframe>
+\end
+
+
+
+
 How show sub-html file in html file using HTML5 Code\Form e1\HTML5 Code
 
 ```
@@ -3630,12 +5654,28 @@ How simulate HTTP Response header in html file using HTML5 Meta Tag\Form e1\HTML
 
 
 
+How space apart structures in html file using HTML5 Code\Form e1\HTML5 Code
+
+```
+style="margin-left:30px"
+
+style="padding-left:10px"
+
+
+
 How specify developer information in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
 
 * tag name = `meta`
 * `name` attr = `copyright`, `ur_app_name-version`
 * `content` attr = Any text data
 * Note: This information is not used by the browser
+
+
+
+
+How specify global macro scope using TiddlyWiki Editor\Form e1\TiddlyWiki Editor
+
+Tag = `$:/tags/Macro`
 
 
 
@@ -3670,6 +5710,135 @@ How specify initial viewport expected size in html file using HTML5 Meta Tag\For
 
 
 
+How specify jump point in JavaScript Code\Form e1\JavaScript Code
+
+The labeled statement can be used with break or continue statements.
+
+```
+List: 
+while(counter < 50)
+{
+     userInput += userInput;
+     counter++;
+     if(userInput > 10000)
+     {
+          break List;
+     }
+}
+```
+
+```
+var i = 100, j = 100;
+outerloop:
+while(i>0) {
+  while(j>0) {
+   j++
+
+   if(j>50) {
+     break outerloop;
+   }
+  }
+i++
+
+}
+```
+
+```
+loop1:
+for (let i = 0; i < 5; i++) {
+  if (i === 1) {
+    continue loop1;
+  }
+  str = str + i;
+}
+```
+
+
+
+
+How specify local variable scope using JavaScript Code\Form e1\JavaScript Code
+
+<<ext "JavaScript This Parameter">>
+
+Functions called via property references get "this" set for them: This is the part that really makes it seem like JavaScript has methods: The "this" reference gets set automagically to the object instance if you call a function via a property reference.
+
+Within that call, use the object in question as "this". Getting the function reference from an object property doesn't link it in any way to the object the property came from. The JavaScript engine treats calls of functions just retrieved from object properties as special and sets up "this" accordingly. Essentially, "this" is just a function argument that's passed into the function as an implicit feature of calling a function via a property reference.
+
+JavaScript gives us the call and apply methods on function instances, with which we can say explicitly what we want "this" to be. If you say myfunction.call(myobject), you're saying "call myfunction and use myobject as 'this'", which is what the property-retrieval stuff does implicitly for you.
+
+`UrObject.UrFunction();`
+
+- equates to -
+
+`UrObject.UrFunction.call(UrObject);`
+
+Everything can be seen as a function.
+
+`window['UrObject']['UrFunction'].call(window['UrObject']);`
+
+Getting the function reference from the property (UrObject.UrFunction) is distinct from the fact we're calling it (call) is distinct from what "this" should be ((UrObject)).
+
+<<ext "JavaScript Closures">>
+
+The interpreter creates a call object for this particular execution of the function and sets some properties on that call object before passing it into the function's code.
+
+* A property called arguments which is an array (of sorts, in most implementations it's not actually an Array object) of the actual arguments we called the function with, plus a callee property which is a reference to the function being called.
+* A property for each of the arguments defined by the function declaration. The values of these properties are set to the values passed into the function. If any arguments weren't specified (because JavaScript lets you call functions with however many arguments you want, regardless of the definition), properties for any missing arguments are still created on the call object — with the value undefined.
+* A property for every declared variable within the function (e.g., every "var" statement). (These start out with the value undefined.)
+
+```
+window.UrFunction(UrObject1, UrObject2);
+```
+
+That creates a call object for this execution of updateDisplay that essentially looks like this:
+
+```
+call.arguments = [UrObject1, UrObject2]
+call.arguments.callee = UrFunction
+call.ur_input_parm1 = UrObject1
+call.ur_input_parm2 = UrObject2
+call.internal_var1 = undefined
+```
+
+The use of the call object is implicit, because once the call object is created, it's put at the top of the scope chain for the duration of the function call.
+
+
+
+How specify multi-line string using JavaScript Code\Form e1\JavaScript Code
+
+It's not a multiline string, it's a one line string split over multiple lines of code that make up a single statement.
+
+Old version uses backslash as a line continuation character:
+
+```
+eval(" \
+alert('hi'); \
+");
+```
+
+New version uses backtick character as multi-line string:
+
+WARNING: Not supported by IE
+
+```
+eval(`
+alert('hi');
+`);
+```
+
+Use string concatenation instead:
+
+```
+eval(
+"var v1 = 'hi';" +
+"alert(v1);"
+);
+```
+
+
+
+
+
 How specify server application in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
 
 * tag name = `META`
@@ -3683,6 +5852,108 @@ How specify server application in html file using HTML5 Meta Tag\Form e1\HTML5 M
 <meta name="application-name" content="UrApplicationTitle" />
 ```
 
+
+
+
+How specify strict mode in html file using JavaScript Code\Form e1\JavaScript Code
+
+<<ext "JavaScript Strict Mode">>
+
+Strict mode makes assignments which would otherwise silently fail to throw an exception.  For example, NaN is a non-writable global variable. In normal code assigning to NaN does nothing; the developer receives no failure feedback. In strict mode assigning to NaN throws an exception.
+
+* First statement in script or function: 'use strict'; or "use strict";
+* Note: Strict mode applies to entire scripts or to individual functions, not individual block statements enclosed in {} braces within a function
+* Note: Strict mode code and non-strict mode code can coexist, so scripts can opt into strict mode incrementally
+* Note: The entire contents of JavaScript modules are automatically in strict mode, with no statement needed to initiate it
+
+<<ext "MozillaDeveloper Strict mode">>
+
+!! Sample data
+
+```
+"use strict";
+mistypeVariable = 17;
+```
+
+<<<
+Result in Developer Tools, Javascript Console:
+
+```
+Uncaught ReferenceError: mistypeVariable is not defined
+    at UrFile.html:UrLineNumber
+```
+<<<
+
+```
+<script type="module">
+mistypeVariable = 17;
+</script>
+```
+
+<<<
+Result:
+
+```
+Uncaught ReferenceError: mistypeVariable is not defined
+    at UrFile.html:UrLine
+```
+<<<
+
+```
+'use strict';
+
+// Assignment to a non-writable global
+var undefined = 5; // throws a TypeError
+var Infinity = 5; // throws a TypeError
+
+// Assignment to a non-writable property
+var obj1 = {};
+Object.defineProperty(obj1, 'x', { value: 42, writable: false });
+obj1.x = 9; // throws a TypeError
+
+// Assignment to a getter-only property
+var obj2 = { get x() { return 17; } };
+obj2.x = 5; // throws a TypeError
+
+// Assignment to a new property on a non-extensible object
+var fixed = {};
+Object.preventExtensions(fixed);
+fixed.newProp = 'ohai'; // throws a TypeError
+```
+
+Strict mode in ECMAScript 2015 forbids setting properties on primitive values. Without strict mode, setting properties is simply ignored (no-op), with strict mode, however, a TypeError is thrown.
+
+```
+(function() {
+'use strict';
+
+false.true = '';         // TypeError
+(14).sailing = 'home';   // TypeError
+'with'.you = 'far away'; // TypeError
+
+})();
+```
+
+
+
+
+How specify structural characters in string literals using JavaScript Code\Form e1\JavaScript Code
+
+"""
+Here are all the string escape codes:
+
+\0 The NUL character (\u0000)
+\b Backspace (\u0008)
+\t Horizontal tab (\u0009)
+\n Newline (\u000A)
+\v Vertical tab (\u000B)
+\f Form feed (\u000C)
+\r Carriage return (\u000D)
+\" Double quote (\u0022)
+\' Apostrophe or single quote (\u0027)
+\\ Backslash (\u005C)
+\x XX The Latin-1 character specified by the two hexadecimal digits XX
+\u XXXX The Unicode character specified by the four hexadecimal digits XXXX
 
 
 
@@ -3736,6 +6007,386 @@ How specify website creation tool in html file using HTML5 Meta Tag\Form e1\HTML
 <meta name="generator" content="UrProgramTitle" />
 ```
 
+
+
+
+How split code lines using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Title = `mcr glbl_code_split`
+
+Tags = `$:/tags/Macro`
+
+```
+\define glbl_code_block(ur_card_pk)
+[[$ur_card_pk$]]
+<$codeblock code={{$ur_card_pk$}} />
+\end
+\define glbl_code_linenum(ur_card_pk, ur_skip_count, ur_section_size, ur_disp_linenum)
+<div style="clear:both">[[$ur_card_pk$]]</div>
+<$list filter="[[$ur_skip_count$]!match[]else[0]]" variable=intSKIP_COUNT>
+<$list filter="[[$ur_card_pk$]get[text]splitregexp[\n]butfirst<intSKIP_COUNT>count[]]" variable=intLINE_COUNT>
+<$list filter="[[$ur_section_size$]!match[]!match[0]else<intLINE_COUNT>]" variable=intSECTION_SIZE>
+<$list filter="[range<intSECTION_SIZE>]" variable=intCUR_LINE>
+<$list filter="[<intCUR_LINE>subtract[1]]" variable=IntREMOVE_LINE>
+<$list filter="[[$ur_card_pk$]get[text]splitregexp[\n]butfirst<intSKIP_COUNT>butfirst<IntREMOVE_LINE>first[]]" variable=strCUR_LINE>
+<$list filter="[[$ur_disp_linenum$]!match[n]!match[0]]"><div style="float:left"><<intCUR_LINE>></div></$list>
+<$codeblock code=<<strCUR_LINE>> />
+</$list></$list></$list></$list></$list></$list>
+\end
+\define glbl_code_split_group(ur_card_pk, ur_skip_count)
+<$list filter="[{$ur_card_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]splitregexp[\u0009]join[__	__]splitregexp[\u0020]join[__ __]splitregexp[\u0022\u0022\u0022]join[&#x0022;&#x0022;&#x0022;]]"><<currentTiddler>>
+</$list></$list>
+\end
+\define glbl_code_split_count(ur_card_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_split_group ur_card_pk="$ur_card_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+\end
+\define glbl_code_split_data()
+<$macrocall $name=glbl_code_split_count ur_card_pk=<<source_card_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+\end
+\define glbl_code_split_next_group_disp(ur_rem_counter)
+<$list filter="[{$ur_rem_counter$}subtract[1]]">
+<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+</$list>
+\end
+\define glbl_code_split_disp(ur_source_card_pk, ur_temp_card_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: <$list filter="[{$ur_source_card_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]"></$list><br>
+Rem to find: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
+Source data: [[$ur_source_card_pk$]]<br>
+\end
+\define glbl_code_split_combine()
+$(currentTiddler)$$(str_html_out)$
+\end
+\define glbl_code_split_init(ur_card_pk, ur_first_line_skip)
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_card_pk="$ur_card_pk$" temp_card_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$list filter="[{$ur_card_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]add[1]floor[]]">
+      <$button>
+        <$action-setfield $tiddler=<<temp_card_pk>> text="" />
+        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
+        Reset destination edit field
+        </$button>
+      </$list><br>
+	
+    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
+    </$vars>
+  </$list>
+\end
+\define glbl_code_split(ur_card_pk, ur_first_line_skip)
+<$macrocall $name=glbl_code_split_init ur_card_pk="$ur_card_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_card_pk="$ur_card_pk$" temp_card_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesOutput" temp_remcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$macrocall $name=glbl_code_split_disp ur_source_card_pk=<<source_card_pk>> ur_temp_card_pk=<<temp_card_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+    <$button>
+      <$wikify name=str_html_out text=<<glbl_code_split_data>> >
+        <$list filter="[<temp_card_pk>get[text]else[]]"><$vars combine_html_out=<<glbl_code_split_combine>> >
+        <$action-setfield $tiddler=<<temp_card_pk>> text=<<combine_html_out>> />
+         </$vars></$list>
+        <$macrocall $name=glbl_code_split_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> />
+        </$wikify>
+      
+      Find next 100 lines
+      </$button><br>
+
+    <$edit-text tiddler=<<temp_card_pk>> autoHeight=no />
+    </$vars>
+  </$list>
+\end
+\define glbl_code_disp_group(ur_card_pk, ur_skip_count)
+<$list filter="[{$ur_card_pk$}splitregexp[\n]butfirst[$ur_skip_count$]first[100]]"><$list filter="[<currentTiddler>splitregexp[\u0026]join[&#x0026;]splitregexp[\u00A0]join[&nbsp;]splitregexp[\u0009]join[&nbsp;&nbsp;&nbsp;&nbsp;]splitregexp[\u0020]join[&nbsp;]splitregexp[\u0027]join[&#x0027;]splitregexp[\u002C]join[&#x002C;]splitregexp[\u002D]join[&#x002D;]splitregexp[\u002F]join[&#x002F;]splitregexp[\u003A]join[&#x003A;]splitregexp[\u003C]join[&#x003C;]splitregexp[\u0040]join[&#x0040;]splitregexp[\u005B]join[&#x005B;]splitregexp[\u005C]join[&#x005C;]splitregexp[\u005E]join[&#x005E;]splitregexp[\u005F]join[&#x005F;]splitregexp[\u0060]join[&#x0060;]splitregexp[\u007B]join[&#x007B;]splitregexp[\u007E]join[&#x007E;]]"><<currentTiddler>><br></$list></$list>
+\end
+\define glbl_code_disp_count(ur_card_pk, ur_rem_counter, ur_last_counter, ur_first_line_skip)
+<$list filter="[{$ur_last_counter$}subtract{$ur_rem_counter$}multiply[100]add[$ur_first_line_skip$]]"><$macrocall $name=glbl_code_disp_group ur_card_pk="$ur_card_pk$" ur_skip_count=<<currentTiddler>> /></$list>
+\end
+\define glbl_code_disp_data()
+<$macrocall $name=glbl_code_disp_count ur_card_pk=<<source_card_pk>> ur_rem_counter=<<temp_remcounter_pk>> ur_last_counter=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+\end
+\define glbl_code_disp_next_group_disp(ur_rem_counter, ur_oper)
+<$list filter="[{$ur_rem_counter$}$ur_oper$[1]]">
+<$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+</$list>
+\end
+\define glbl_code_disp_disp(ur_source_card_pk, ur_temp_remcounter_pk, ur_first_line_skip)
+Line Count: <$list filter="[{$ur_source_card_pk$}splitregexp[\n]butfirst[$ur_first_line_skip$]count[]]"></$list><br>
+Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
+\end
+\define glbl_code_disp_init(ur_card_pk, ur_first_line_skip)
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_card_pk="$ur_card_pk$" temp_remcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$list filter="[{$ur_card_pk$}splitregexp[\n]butfirst<first_line_skip>count[]divide[100]floor[]]">
+      <$button>
+        <$action-setfield $tiddler=<<temp_remcounter_pk>> text=<<currentTiddler>> />
+        <$action-setfield $tiddler=<<temp_lastcounter_pk>> text=<<currentTiddler>> />
+        Reset destination edit field
+        </$button>
+      </$list><br>
+	
+    <$edit-text tiddler=<<temp_remcounter_pk>> autoHeight=yes tag=input />
+    </$vars>
+  </$list>
+\end
+\define glbl_code_disp(ur_card_pk, ur_first_line_skip)
+<$macrocall $name=glbl_code_disp_init ur_card_pk="$ur_card_pk$" ur_first_line_skip="$ur_first_line_skip$" /><br>
+[[$ur_card_pk$]]<br>
+<$list filter="[[$ur_first_line_skip$]!match[]then[$ur_first_line_skip$]else[0]]">
+  <$vars source_card_pk="$ur_card_pk$" temp_remcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesRemCounter" temp_lastcounter_pk="$:/state/popup/$ur_card_pk$/HtmlEscapedLinesLastCounter" first_line_skip=<<currentTiddler>> >
+    <$macrocall $name=glbl_code_disp_disp ur_source_card_pk=<<source_card_pk>> ur_temp_remcounter_pk=<<temp_remcounter_pk>> ur_temp_lastcounter_pk=<<temp_lastcounter_pk>> ur_first_line_skip=<<first_line_skip>> />
+    <$button>
+      <$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="subtract" />
+      
+      Browse next 100 lines
+      </$button><br>
+    <$button>
+      <$macrocall $name=glbl_code_disp_next_group_disp ur_rem_counter=<<temp_remcounter_pk>> ur_oper="add" />
+      
+      Browse prev 100 lines
+      </$button><br>
+
+    <<glbl_code_disp_data>>
+    </$vars>
+  </$list>
+\end
+
+<!--<$macrocall $name=glbl_code_disp ur_card_pk="WebNotes\Data" ur_first_line_skip=1 />-->
+
+<!--<<glbl_code_disp "WebNotes\Data 1 >>-->
+
+<!--Does not pass through the \u0009 tab or \u00A0 non-breaking space characters. Chrome highlight and copy puts spaces on the clipboard.-->
+
+<!--[[WebNotes\Data]]-->
+
+<!--<$macrocall $name=glbl_code_split ur_card_pk="WebNotes\Data" ur_first_line_skip=1 />-->
+
+<!--<<glbl_code_block "UrCardPK">>-->
+
+<!--<<glbl_code_linenum "UrCardPK" 0 15 n>>-->
+
+
+
+
+How store current card Title without Draft Of prefix using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+The set or list widgets' filter parameter can evaluate the text stored in a macro.
+
+* Note: For some reason, the set widget added extra spaces. Use the list widget.
+
+```
+\define currentCard()
+[[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
+\end
+
+<$set name=cur_title filter=<<currentCard>> >
+
+<<cur_title>>
+</$set><!--cur_title-->
+
+<$list variable=cur_title filter=<<currentCard>> >
+
+<$link to=<<cur_title>> />
+</$list><!--cur_title-->
+```
+
+
+
+
+How store data dictionary records using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Type = `application/x-tiddler-dictionary`
+
+```
+3:a
+2:b
+3:c
+```
+
+See list of unique indexes:
+
+```
+<$list variable=cur_key filter="[[UrPK]indexes[]]"><<cur_key>>: 
+<$list variable=cur_val filter="[[UrPK]getindex<cur_key>]"><<cur_val>><br>
+</$list><!--cur_val-->
+</$list><!--cur_key-->
+```
+
+Use one value (last one if an index is duplicated):
+
+```
+-{{UrPK##3}}-
+
+
+```
+
+[[VBNetCode\Text file to JSON Lines]]
+
+
+
+How stripe background colors on table in html file using CSS Code\Form e1\CSS Code
+
+Stylesheet classes:
+
+```
+.alternating-rows tr:nth-child(even) {background-color:white}
+.alternating-rows tr:nth-child(odd) {background-color:lightgrey}
+```
+
+HTML using class
+
+```
+<table class="alternating-rows">
+<tr><th>hi</th></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+<tr><td>hi</td></tr>
+
+
+
+
+How structure text string match using Regular Expression Code\Form e1\Regular Expression Code
+
+\define disp_re(ur_list, ur_re)
+<$vars re="$ur_re$">
+`$ur_list$` matches `$ur_re$`?
+<$list variable=ret filter="[[$ur_list$]regexp<re>else[no]]"> -,/<<ret>>\,- </$list>
+
+`$ur_list$` split out `$ur_re$`?
+<$list variable=ret filter="[[$ur_list$]splitregexp<re>]"> -,/<<ret>>\,- </$list></$vars>
+<!--
+disp_re-->
+\end
+[[TiddlyWiki\Regular Expression]]
+
+<<ext "Regexp Filter with brackets">>
+
+<<<
+The code would get complexer ^^[sic]^^ too as "[''''[...]'''']" can't be put directly in the regex in TW. You'd have to do it through a variable. And since "[character class]" is reserved in regex you'd also have to escape square brackets "[\[\]]".
+<<<
+
+<<ext "Regular Expression Quantifiers">>
+
+Regular expressions take a string of text, and returns a YES or NO as to whether it matches a character pattern.
+
+You can specify a literal character.
+
+* A letter or series of letters
+** <<disp_re "ABC" "B">>
+* `\`. is a literal period, because without the \ escape it would have special meaning
+** <<disp_re "AA.AA" "\.">>
+
+You can use tokens to specify a kind of character to match.
+
+* `\d` is a numeric digit 0 through 9
+** <<disp_re "A2C" "\d">>
+
+* `\D` is any non-numeric digit
+** <<disp_re "5A8" "\D">>
+
+* `\s` is a whitespace character; like space, tab, or line feed
+** <<disp_re "A C" "\s">>
+
+* `\S` is a non-whitespace character
+** <<disp_re "A" "\S">>
+
+* `\W` is a whitespace or punctuation character (non-word character)
+** <<disp_re ";" "\W">>
+
+* `\w` is a word character (non-whitespace and non-punctuation character)
+** <<disp_re "A" "\w">>
+
+* `.` period is any character
+** <<disp_re "A" ".">>
+
+You can get out of having to use the \ escape over a block of text if you prefer to type it out.
+
+* `\QOne. Two. Three.\E`  treats anything between the delimiters as a literal string, like "One. Two. Three."
+** Useful to escape metacharacters
+** Otherwise the periods would be special characters applied to the one letter before each period
+** You can also write it as `One\. Two\. Three\.`
+
+A regex quantifier such as `+` tells the regex engine to match a certain quantity of the character, token or subexpression immediately to its left.
+
+* `A+` the quantifier + applies to A
+** <<disp_re "AAABCCC" "B+">>
+** <<disp_re "AAABBBCCC" "B+">>
+* `A*` the quantifier * applies to A
+** <<disp_re "ABBBC" "B*">>
+** <<disp_re "AC" "B*">>
+* `ABC?` the quantifier `?` applies to the C—not to ABC
+** <<disp_re "ABCD" "BC?">>
+** <<disp_re "ABD" "BC?">>
+* `(?:A|B|C)+` the quantifier + applies to the subexpression
+** <<disp_re "ABCD" "(?:B|C)+">>
+** <<disp_re "ABD" "(?:B|C)+">>
+* `\QA.B.C\E+` is treated as a sequence of literals, so the quantifier only applies to the last character
+** This could also be written as `A\.B\.C+`
+
+By default, a quantifier tells the engine to match as many instances of its quantified token or subpattern as possible. This behavior is called greedy.
+
+* `A+` is greedy, and matches all the number characters in a row from the starting point where exists (a number)
+** <<disp_re "ABBBCD" "B+">>
+* `A+B` is greedy, and matches all the number characters in a row where exists (a letter B after a letter A)
+** <<disp_re "ABBBCD" "B+C">>
+** <<disp_re "ABBBCD" "(B+)C">>
+
+In contrast to the standard greedy quantifier, which eats up as many instances of the quantified token as possible, a lazy (sometimes called reluctant) quantifier tells the engine to match as few of the quantified tokens as needed.
+
+* `\w*?B` is lazy, and matches as few word characters in a row as needed where exists (a letter B after a word character)
+** <<disp_re "+ABCCC+" "\w*?C">>
+** <<disp_re "+ABCCC+" "\w*C">>
+
+In contrast to the standard docile quantifier, which gives up characters if needed in order to allow the rest of the pattern to match, a possessive quantifier tells the engine that even if what follows in the pattern fails to match, it will hang on to its characters.
+
+* A++ is possessive—it matches as many characters as needed and never gives any of them back.
+** Whereas the regex A+. matches the string AAA, A++. doesn't. At first, the token A++ greedily matches all the A characters in the string. The engine then advances to the next token in the pattern. The dot . fails to match because there are no characters left to match. The engine looks if there is something to backtrack. But A++ is possessive, so it will not give up any characters. There is nothing to backtrack, and the pattern fails. In contrast, with A+., the A+ would have given up the final A, allowing the dot to match.
+
+You can specify a number range of characters to repeat.
+
+* A{2,9} uses two to nine As, as many as possible (greedy), giving up characters if the engine needs to backtrack (docile)
+** <<disp_re "+ABCCC+" "C{1,2}">>
+** <<disp_re "+ABCCC+" "C{2,2}">>
+** <<disp_re "+ABCCC+" "C{2,9}">>
+* A{2,} uses two or more As, as many as possible (greedy), giving up characters if the engine needs to backtrack (docile)
+** <<disp_re "+ABCCC+" "C{2,}">>
+
+You can use negated character classs to match characters other up to the one you want.
+
+* `^[^\.]*` skips up to first period
+** <<disp_re "AB.C.D" "^[^\.]*">>
+* `^.*\.` skips up to last period
+** <<disp_re "AB.C.D" "^.*\.">>
+
+Tempered Greedy Token Solution
+
+* `A(?:(?!B).)*B` stops at the first B instead of the last B
+** <<disp_re "AB.C.DCE" "B(?:(?!C).)*C">>
+** <<disp_re "AB.C.DCE" "B.*C">>
+
+* `A(?:(?!C)(?!B).)*B` stops at the first B unless there is a C between the A and B
+** <<disp_re "AB.CA" "B(?:(?!D)(?!C).)*C">>
+** <<disp_re "AB.CAB.FGHBC" "B(?:(?!D)(?!C).)*C">>
+** <<disp_re "AB.CAB.DFGHBC" "B(?:(?!D)(?!C).)*C">>
+
+
+
+
+How test boolean automatic type conversion using JavaScript Code\Form e1\JavaScript Code
+
+If a value can be converted to true, the value is so-called truthy. If a value can be converted to false, the value is so-called falsy.
+
+Examples of expressions that can be converted to false are:
+
+* null
+* NaN
+* 0
+* empty string ( ` "" ` or ` '' ` ) or empty template literal ( &#x0060;&#x0060; )
+* undefined
+
+The logical OR expression is evaluated left to right, and first truthy returned expression stops evaluation of the remaining expressions
+
+The && operator is executed before the || operator
+
+Note: If you use this operator to provide a default value to some variable, be aware that any falsy value will not be used. If you only need to filter out null or undefined, consider using the nullish coalescing operator ( ` ?? ` )
 
 
 
@@ -3804,6 +6455,51 @@ End Namespace
 
 
 
+How unescape html character literals using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet
+
+```
+avascript:document.documentElement.innerHTML='<html><body>'+document.body.innerHTML.replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&amp;','&')+'<\/body><\/html>';
+
+
+
+How view TiddlyWiki Core macro definitions using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+* Title = `mcr glbl_core_mcr_def`
+* Tag = `$:/tags/Macro`
+
+```
+\define glbl_core_mcr_def(ur_macro_name)
+<$list variable=cur_pk filter="""[[$:/core]get[text]split[define $ur_macro_name$(]butfirst[]split[\n\\end]first[]addprefix[define $ur_macro_name$(]addsuffix[\n\\end]split[\\]join[\]split[\"]join["]split[\n]join[
+]]""">
+<$codeblock code=<<cur_pk>> />
+</$list><!--cur_pk-->
+\end
+```
+
+* Show all Core macro names and source code
+
+```
+<$list variable=show_code_pk filter="[<currentTiddler>split[Draft of]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-checkShowCode]]">
+<$checkbox default="no" unchecked="no" checked="yes" field="text" tiddler=<<show_code_pk>>> Show Code</$checkbox>
+
+<$list variable=cur_def_text filter="[[$:/core]get[text]split[define ]!prefix[{]!prefix[the]sort[]]">
+<$list variable=cur_macro_name filter="[<cur_def_text>split[(]first[]]">
+<$list variable=cur_end_text filter="""[<cur_def_text>split[\n\\end]first[]addprefix[define ]addsuffix[\n\\end]split[\\]join[\]split[\"]join["]split[\n]join[
+]]""">
+
+!! <<cur_macro_name>>
+<$list variable=cur_showcode_text filter="[<show_code_pk>get[text]match[yes]]"><$codeblock code=<<cur_end_text>> />
+</$list><!--cur_showcode_text-->
+
+</$list><!--cur_end_text-->
+</$list><!--cur_macro_name-->
+</$list><!--cur_def_text-->
+</$list><!--show_code_pk-->
+```
+
+
+
+
 Research Notes
 
 <<glbl_article_list>>
@@ -3829,6 +6525,22 @@ User Forms\AnyDesk Android
 !!Overview
 
 AnyDesk Android application allows you to remote control an Android computer using another Android computer
+
+
+
+User Forms\CSS Code
+
+!!Overview
+
+CSS Code applies formatting to html structures
+
+
+
+User Forms\DB Browser Windows
+
+!!Overview
+
+DB Browser Windows can browse the table data in a SQLite database archive
 
 
 
@@ -3951,6 +6663,38 @@ HTML5 Meta Tag codes are used by browsers to flag specific features
 
 
 
+User Forms\Instapaper.com Website
+
+!!Overview
+
+Instapaer.com Website stores article links and user comments
+
+
+
+User Forms\IrfanView Windows
+
+!!Ovverview
+
+IrfanView Windows edits image files
+
+
+
+User Forms\JavaScript Bookmarklet
+
+!!Overview
+
+JavaScript Bookmarklet runs JavaScript Code in the URL field of a browser window
+
+
+
+User Forms\JavaScript Code
+
+!!Overview
+
+JavaScript Code updates structures in the HTML DOM
+
+
+
 User Forms\Plus.codes Website
 
 !!Overview
@@ -3999,11 +6743,43 @@ RealVNC.com registers Windows computers for remote control by other computers
 
 
 
+User Forms\Regular Expression Code
+
+!!Overview
+
+Regular Expression Code matches text sections for validation or string splitting
+
+
+
 User Forms\Screenshot Easy Android
 
 !!Overview
 
 The Screenshot Easy Android application shows a button that takes a screenshot
+
+
+
+User Forms\SQLite Code
+
+!!Overview
+
+SQLite Code pulls data from columns in tables
+
+
+
+User Forms\TiddlyWiki Code
+
+!!Overview
+
+TiddlyWiki Code calls javascript functions with structural scope
+
+
+
+User Forms\TiddlyWiki Editor
+
+
+
+User Forms\TiddlyWiki Settings
 
 
 
@@ -4036,4 +6812,12 @@ User Forms\WebDav Server Android
 !!Overview
 
 WebDav Server Android allows other computers on the network to access an Android File System folder
+
+
+
+User Forms\Windows Settings
+
+!!Overview
+
+Windows Settings changes features available to users or networks
 
