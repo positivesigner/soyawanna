@@ -107,108 +107,6 @@ $:/ext
 
 
 
-$:/ext/Apple.com Safari Meta tags
-
-https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
-
-
-
-$:/ext/CodeAcademy DocType
-
-https://discuss.codecademy.com/t/why-we-type-before-doctype-what-is-the-role-of-in-doctype-html/60880/3
-
-
-
-$:/ext/GoogleDevelopers FullScreen web app
-
-https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
-
-
-
-$:/ext/HTML.com DocType
-
-https://html.com/tags/doctype/
-
-
-
-$:/ext/JTFAssociates MOTW
-
-https://jtfassociates.com/using-the-mark-of-the-web-motw/
-
-
-
-$:/ext/MetaTags.org Generator
-
-https://www.metatags.org/all-meta-tags-overview/meta-name-generator/
-
-
-
-$:/ext/Mozilla.org META tags
-
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name
-
-
-
-$:/ext/MozillaDeveloper CSS Comment
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/Comments
-
-
-
-$:/ext/PSU.edu LangTag
-
-https://accessibility.psu.edu/foreignlanguages/langtaghtml/
-
-
-
-$:/ext/StackOverflow CSS location
-
-https://stackoverflow.com/questions/1642212/whats-the-difference-if-i-put-css-file-inside-head-or-body
-
-
-
-$:/ext/StackOverflow Hide Parent Show Child tag
-
-https://stackoverflow.com/questions/12956937/display-html-child-element-when-parent-element-is-displaynone
-
-
-
-$:/ext/StackOverflow Meta UA-Compatible
-
-https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do#:~:text=The%20X%2DUA%2DCompatible%20meta%20tag%20allows%20web%20authors%20to,meta%20tag%20in%20certain%20circumstances.
-
-
-
-$:/ext/W3.org HTML401 Meta
-
-https://www.w3.org/TR/html401/struct/global.html#h-7.4.4
-
-
-
-$:/ext/W3.org HTML401 Profiles
-
-https://www.w3.org/TR/html401/struct/global.html#profiles
-
-
-
-$:/ext/W3Schools DocType
-
-https://www.w3schools.com/tags/tag_doctype.asp
-
-
-
-$:/ext/W3Schools Head tag
-
-https://www.w3schools.com/tags/tag_head.asp
-
-
-
-$:/ext/W3Schools NoScript tag
-
-https://www.w3schools.com/tags/tag_noscript.asp
-
-
-
 $:/img
 
 <$vars cur_title=<<currentTiddler>> >
@@ -1405,21 +1303,13 @@ $:/positivesigner/text-ref/mcr glbl_dt_ddd
 $:/positivesigner/text-ref/mcr glbl_ext
 
 \define ext(ur_extnote_pk)
-<$list variable=found_entry filter="[[$:/ext/$ur_extnote_pk$]get[text]else[]]">
-<$list variable=missing_entry filter="[<found_entry>match[]]">Missing: [$ur_extnote_pk$]
+<$list variable=missing_entry filter="[[$:/ext/$ur_extnote_pk$]get[text]else[]match[]]">Missing: [$ur_extnote_pk$]
 </$list><!--missing_entry-->
-<$list variable=found_link filter="[<found_entry>!match[]]">
 <$list variable=prefix_dir filter="[{$:/info/url/full}split[/src/]count[]match[2]then[../]else[]]">
-<$list variable=http_prefix filter="[<found_entry>regexp[:/]else[]]">
-<$list variable=local_prefix filter="[<found_entry>addprefix<prefix_dir>!match<prefix_dir>]">
-<$list variable=link_url filter="[<http_prefix>!match[]else<local_prefix>!match[]]">
-<a target="_blank" href=<<link_url>> >$ur_extnote_pk$</a><div style="float:right">[[->|$:/ext/$ur_extnote_pk$]]</div>
-</$list><!--link_url-->
-</$list><!--local_prefix-->
-</$list><!--http_prefix-->
-</$list><!--prefix_dir-->
-</$list><!--found_link-->
+<$list variable=found_entry filter="[[$:/ext/$ur_extnote_pk$]get[text]else[]addprefix<prefix_dir>]">
+<a target="_blank" href=<<found_entry>> >$ur_extnote_pk$</a><div style="float:right">[[->|$:/ext/$ur_extnote_pk$]]</div>
 </$list><!--found_entry-->
+</$list><!--prefix_dir-->
 \end
 
 
@@ -1637,18 +1527,11 @@ Details --$(activity_prefix)$--
 </$list><!--detail_card-->
 \end
 \define activity_details(ur_activity_prefix)
-@@margin-left:20em;
-<$button>
-<$action-navigate $to="Activities\$ur_activity_prefix$" />
-Summary --$ur_activity_prefix$--
-</$button>
-@@
-
 <$list variable=step_card filter="[prefix[$ur_activity_prefix$]]">
 <$list variable=step_seq filter="[<step_card>split[\]last[]]">
 <$list variable=step_text filter="[<step_card>get[text]]">
 <$list variable=text_with_suffix filter="[<step_text>split<test_qs3>count[]remainder[2]match[0]then[]else<test_qs3>]">
-[<$link to=<<step_card>> ><<step_seq>></$link> step]<br>
+[<$link to=<<step_card>> ><<step_seq>></$link>]<br>
 
 <$transclude tiddler=<<step_card>> mode="block" /><br>
 </$list><!--text_with_suffix-->
@@ -1666,7 +1549,7 @@ $:/userguidecode/macro/Activity Step Link and Primary Actions
 <$list variable=step_refform_title filter="[[$(activity_step)$]split[\Form ]butfirst[]first[]split[\]butfirst[]]">
 <$list variable=step_activity_prefix filter="[[$(activity_step)$]split[\Form ]first[]addsuffix[\Form ]]">
 
-[<$link to="$(activity_step)$"><<step_refform_title>></$link> step]
+[<$link to="$(activity_step)$"><<step_refform_title>></$link>]
 
 <$list variable=step_text filter="[[$(activity_step)$]get[text]split[
 ]prefix[- *]]">
@@ -1708,9 +1591,9 @@ $:/userguidecode/view_template/Activity Step pre-processing
 <$list variable=cur_card filter="[<currentTiddler>]">
 <$list variable=refform_title filter="[<cur_card>split[\Form ]butfirst[]first[]split[\]butfirst[]]">
 <$list variable=activity_prefix filter="[<cur_card>split[\Form ]first[]]">
-
-<<btn_activity_details>>
 <$list variable=include_prev_activity_step filter="[prefix<activity_prefix>sort[]allbefore<cur_card>count[]!match[0]]">
+<<btn_activity_details>>
+
 <blockquote class="tc-quote"><p>
 <$list variable=activity_step filter="[prefix<activity_prefix>sort[]allbefore<cur_card>]">
 <<activity_step_link>>
@@ -1719,7 +1602,7 @@ $:/userguidecode/view_template/Activity Step pre-processing
 </$list><!--include_prev_activity_step-->
 
 <$list variable=userform_link filter="[<refform_title>addprefix[User Forms\]]">
-[<$link to=<<userform_link>> ><<refform_title>></$link> form]
+[<$link to=<<userform_link>> ><<refform_title>></$link>]
 </$list><!--userform_link-->
 
 </$list><!--activity_prefix-->
@@ -1748,11 +1631,11 @@ $:/userguidecode/view_template/Activity Summary
 
 $:/userguidecode/view_template/UserForm Summary
 
-<$list variable=cur_card filter="[<currentTiddler>prefix[User Forms\]]">
-<$list variable=userform_suffix filter="[<cur_card>split[\]butfirst[]first[]!match[]]">
+<$list variable=cur_card filter="[<currentTiddler>]">
+<$list variable=userform_suffix filter="[<cur_card>prefix[User Forms\]split[\]butfirst[]first[]!match[]]">
 
-<blockquote class="tc-quote"><p>
-<$list variable=activity_entry filter="[suffix<userform_suffix>regexp[\\Form]!match<cur_card>sort[]]">
+<<<
+<$list variable=activity_entry filter="[suffix<userform_suffix>!match<cur_card>sort[]]">
 <$list variable=activity_prefix filter="[<activity_entry>split[\]first[]]">
 
 <$link to=<<activity_entry>> ><<activity_prefix>></$link> <$list
@@ -1763,7 +1646,7 @@ variable=activity_prevcount filter="[suffix<userform_suffix>!match<cur_card>pref
 </$list><!--activity_prefix-->
 </$list><!--activity_entry-->
 
-</p></blockquote>
+<<<
 </$list><!--userform_suffix-->
 </$list><!--cur_card-->
 
@@ -1776,219 +1659,13 @@ Activities
 
 
 
-Activities\How browse local computer HTML files using Google Chrome Android
+Activities\How create a wire payment
 
 
 
-Activities\How browse local computer HTML files using Google Chrome Windows
-
-
-
-Activities\How calculate an exponent/power of a number using Excel VBA
-
-
-
-Activities\How change profile directory using Google Chrome Windows
-
-
-
-Activities\How checkout repository commit using Git for Windows
-
-
-
-Activities\How clear cookies on exit using Google Chrome Windows
-
-
-
-Activities\How comment out CSS styles in html file using HTML5 Code
-
-
-
-Activities\How comment out tags using HTML5 Code
-
-
-
-Activities\How create a Lua program using QLua Android
-
-
-
-Activities\How create Desktop Shortcut to Website using Google Chrome Android
-
-
-
-Activities\How create Excel Macro using Excel for Windows
-
-
-
-Activities\How create Screenshot using Screenshot Easy Android
-
-
-
-Activities\How define key-value pair class in QLua Code
-
-
-
-Activities\How deploy a Program Module using QLua Android
-
-
-
-Activities\How export Contact list from Google.com Contacts
-
-
-
-Activities\How export email from Google.com Takeout
-
-
-
-Activities\How extract captions text from video file using FFMpeg Windows
-
-
-
-Activities\How extract image snapshots from video file using FFMpeg Windows
-
-
-
-Activities\How find earth plus-code area using Plus.codes Website
-
-
-
-Activities\How find Git program used with GitHub for Windows
-
-
-
-Activities\How flag alternate structure for Javascript-disabled browser using HTML5 Code
-
-
-
-Activities\How flag an HTML file for active content using HTML5 Comment
-
-
-
-Activities\How flag document Content type in html file using HTML5 Comment
-
-
-
-Activities\How flag elements for CSS styles in html file using HTML5 Code
-
-
-
-Activities\How flag html file Internet Explorer Compatibility using HTML5 Meta Tag
-
-
-
-Activities\How flag html file run Full Screen on Android computer using HTML5 Meta Tag
-
-
-
-Activities\How flag html file run Full Screen on Apple computer using HTML5 Meta Tag
-
-
-
-Activities\How flag structure in html file with Language/Accent using HTML5 Code
-
-
-
-Activities\How format browser window title using HTML5 Code
-
-
-
-Activities\How format html file Full Screen status bar on Apple computers using HTML5 Meta Tag
-
-
-
-Activities\How format html file Telephone Numbers on Apple computers using HTML5 Meta Tag
-
-
-
-Activities\How hide structure in html file using HTML5 Code
-
-
-
-Activities\How highlight misspelled words on Google Chrome Windows
-
-
-
-Activities\How hold current worksheet using Excel VBA
-
-
-
-Activities\How parse MBOX email archive using VB.Net Code
-
-
-
-Activities\How pull Git Repository changes using Pocket Git Android
-
-
-
-Activities\How remote control Android computer using AnyDesk Android
-
-
-
-Activities\How remote control Windows computer using VNC Viewer Android
-
-
-
-Activities\How run a Lua Program using QLua Android
-
-
-
-Activities\How run console commands using QLua Android
-
-
-
-Activities\How run program using QLua Console Android
-
-
-
-Activities\How share data between User profiles using Android file system
-
-
-
-Activities\How share files across Network using WebDav Server Android
-
-
-
-Activities\How share purchased apps using Google Play Store Android
-
-
-
-Activities\How show sub-html file in html file using HTML5 Code
-
-
-
-Activities\How simulate HTTP Response header in html file using HTML5 Meta Tag
-
-
-
-Activities\How specify developer information in html file using HTML5 Meta Tag
-
-
-
-Activities\How specify initial viewport expected size in html file using HTML5 Meta Tag
-
-
-
-Activities\How specify server application in html file using HTML5 Meta Tag
-
-
-
-Activities\How specify valid Meta tags in html file using HTML5 Code
-
-
-
-Activities\How specify website creation tool in html file using HTML5 Meta Tag
-
-
-
-Activities\How test VB.Net code using DCoder Android
-
-
-
-Automation Scripting
+Automation Scirpting
 
 {{ext TW Return}}
-
-{{$:/positivesigner/text-ref/Search All Fields}}
 
 <<list-links filter:"[tag[DOC]sort[sort_ord]sort[title]] [tag[DOC]!has[sort_ord]sort[title]]">>
 
@@ -2002,1805 +1679,281 @@ Documentation History
 
 
 
-Draft of 'New Card'
+Documentation History\2021m04d20 TJS
 
+Initial document
 
 
-How browse local computer HTML files using Google Chrome Android\Form e1\Google Chrome Android
 
-"""
-- Navigate to file:///sdcard/
-
-- [Directory list]
-- Select which sub-folder you want to bookmark
-- [Navigation bar, Top-right icons]
-- Click button Bookmark Page (looks like a star shape) -> Opens dialog
-- [Bookmark Added dialog]
-- Name = UrShortName
-- Click button Done -> Closes dialog
-- [Navigation bar]
-- Address = UrShortName -> Shows suggestions
-- [Suggestion list]
-- Select the suggested link -> Navigates page
-
-Note: You can also use Total Commander to create a local file desktop shortcut
-
-
-
-
-How browse local computer HTML files using Google Chrome Windows\Form e1\Google Chrome Windows
-
-"""
-- Navigate to file:///C:/
-
-- [Directory list]
-- Select which sub-folder you want to bookmark
-- [Navigation bar, Top-right icons]
-- Click button Bookmark Page (looks like a star shape) -> Opens dialog
-- [Bookmark Added dialog]
-- Name = UrShortName
-- Click button Done -> Closes dialog
-- [Navigation bar]
-- Address = UrShortName -> Shows suggestions
-- [Suggestion list]
-- Select the suggested link -> Navigates page
-
-Note: You can also create a Website shortcut on the Desktop from Google Chrome
-
-
-
-
-How calculate an exponent/power of a number using Excel VBA\Form e1\Excel VBA
-
-"""
-- * Make sure you put a space between the power operator ( ^ ) and the numbers
-
-- CalcResult = 2^5
-- Note: This gives a compilation error on 64-bit Excel
-
-- CalcResult = 2 ^ 5
-- Note: CalcResult = 32
-
-
-
-
-How change profile directory using Google Chrome Windows\Form e1\Google Chrome Windows
-
-"""
-- * Note: Google Chrome Portable has these parameters automatically included when calling the Chrome.exe program.
-"""
-
-```
-–user-data-dir="%TEMP%"
-–disk-cache-dir="%TEMP%\GoogleChromePortable\Cache"
-```
-
-"""
-To override the user data and all the cache directories:
-
-- Find the INI file in the PortableApp sub-directory
-"""
-
-```
-GoogleChromePortable\Other\Source\GoogleChromePortable.ini
-```
-
-"""
-- Copy it to the program main directory
-"""
-
-```
-GoogleChromePortable\GoogleChromePortable.ini
-```
-
-"""
-- [Edit the file]
-- CacheInTemp = false
-- Save file
-- Note: When you restart Google Chrome Portable, cached files will be stored under the program's folder
-"""
-
-```
-C:\TJBF\zPortableInstalls\Chrome\Data\profile\Default\*Cache\
-```
-
-
-
-
-How checkout repository commit using Git for Windows\Form e1\Git for Windows
-
-- * after the new branch name, provide a commit hash on which to base the new branch
-
-```
-@echo off
-SET ur_repo=
-SET ur_branch=
-"C:\UrPath\git.exe" -C %ur_repo% checkout -b test-branch %ur_branch%
-
-rem Use GitHub Desktop to delete the branch
-
-
-
-
-How clear cookies on exit using Google Chrome Windows\Form e1\Google Chrome Windows
-
-"""
-- * Note: The incognito option starts the browser with an open Incognito window
-"""
-
-```
-–incognito
-```
-
-
-
-
-How comment out CSS styles in html file using HTML5 Code\Form e1\HTML5 Code
-
-* Start CSS comment text with forward-slash asterisk ( `/*` )
-* End CSS comment text with asterisk forward-slash ( `*/` )
-
-<<ext "MozillaDeveloper CSS Comment">>
-
-!! Sample code
-
-```
-<style type="text/css">/*
-Comment text
-*/
-
-.ur_class_name {
-  width: 50%;
-}
-</style>
-```
-
-
-
-How comment out tags using HTML5 Code\Form e1\HTML5 Code
-
-* Declaration Name = `--`
-* Content = unprocessed text, except for the character sequence double-hyphen close-tag ( `-->` )
-* Note: HTML declarations are not tags, because the have an exclamation mark ( `!` ) before the declaration name / code
-* Note: XML documents have a requirement that a double-hyphen ( `--` ) must itself be doubled ( `----` ) when used in a comment declaration, but HTML 5 has no such requirement
-
-
-!! Sample code for HTML 5 Comment
-
-```
-<!-- a text editor can see the comment text -->
-```
-
-
-
-
-How create a Lua program using QLua Android\Form e1\QLua Android
-
-"""
-- Click button Editor -> Navigates page
-
-- [QLua app, Editor page, Top-right side icons]
-- * Click button New File (looks like a page with a Plus sign) -> Opens dialog
-
-- [New file dialog]
-- Click option Blank file -> Closes dialog
-
-- [QLua app, Editor page, Main Body text]
-- Enter some text
-
-- [Bottom bar]
-- Click button Save (looks like a 3.5" floppy disk)
-
-[SDCard file list]
-- Note: The file gets saved in the folder /sdcard/qlua5
-
-
-
-
-How create Desktop Shortcut to Website using Google Chrome Android\Form e1\Google Chrome Android
-
-"""
-- [Non-incognito mode]
-- Navigate to website page
-- Note: This does not work for file:///sdcard HTML files
-
-- [Top-right icons]
-- * Click the three-lines menu, option Add to Home screen -> Opens dialog
-
-- [Add to Home screen dialog]
-- Shortcut name / UrShortcutName
-- Click button Add -> Closes dialog
-
-[Desktop icons]
-- Click icon UrShortcutName -> Opens browser
-
-
-
-How create Excel Macro using Excel for Windows\Form e1\Excel for Windows
-
-"""
-- [Ribbon menus]
-- * View menu, option Record Macro -> Starts recording
-- View menu, option Stop Recording -> Stops recording
-- View menu, option Macros -> Opens dialog
-
-[Macro list]
-- Click button Edit Macro -> Opens window
-
-[VBA Editor]
-- You can change the name of the macro and add commands
-- Close the editor
-
-[Excel for Windows]
-- Save the file as a Macro-Enabled workbook (mwb)
-
-
-
-How create Screenshot using Screenshot Easy Android\Form e1\Google Play Store Android
-
-"""
-- * Install app Screenshot Easy by Ice Cold Apps
-- Note: Contains ads
-
-
-
-
-How create Screenshot using Screenshot Easy Android\Form e2\Screenshot Easy Android
-
-"""
-- * Open app Screenshot Easy
-
-
-
-
-
-How define key-value pair class in QLua Code\Form e1\QLua Code
-
-"""
-I created some default functions that I need to see the key/value pairs in Lua tables
-
-[def.lua]
-- [def_tcompile]
-- This creates a 'tcompile' function that concatenates a table's string values then loads the result as a new function
-- [def_ti]
-- This creates a 'ti' function that adds a new numbered row to a table
-- [def_tia]
-- This clears out a global table variable and creates a 'tia' function that calls the 'ti' function for that table without having to pass it in as a parameter
-- [def_printk]
-- This creates a 'printk' function that prints all the keys in a table, sorted alphabetically
-- [def_printv]
-- This creates a 'printv' function that prints all the values in a table, sorted alphabetically
-- [def_tcopy]
-- This creates a 'tcopy' function that copies all records from one table into another
-- [def_printiv]
-- This creates a 'printiv' function that prints all the values in a table, in their original order (good for numeric-keyed tables)
-- [def_printkv]
-- This creates a 'printkv' function that prints all keys and values in a table, sorted by key alphabetically
-- [def_ioexec]
-- * This creates a 'ioexec' function that runs a shell command and returns a table you can store
-- - Example: Prints all the .lua files under a directory
-"""
-
-```
-local ttbFILE = ioexec('find /sdcard/qlua5 -name "*.lua" -print')
-local strFILE = ""
-for k,v in pairs(ttbFILE) do
-  strFILE = v
-  break
-  end
-
-print('1: ' .. strFILE)
-```
-
-"""
-- [def_printio]
-- This creates a 'printio' function that runs printiv on the ioexec table
-- - Example: printio('ls /storage')
-"""
-
-```
---[under folder /sdcard/qlua5]
---This file can be run by the QLua command "LoadFile" because it uses the Load function instead of the LoadString function in def_tcompile and def_tia
-
-print()
-
-def_tcompile = {'function tcompile(ur_table) load(table.concat(ur_table, "\\r"))() end'}
-load(table.concat(def_tcompile, "\r"))()
-
-def_ti = {'function ti(ur_table, ur_line) table.insert(ur_table, ur_line) end'}
-tcompile(def_ti)
-
-def_tia = {}
-ti(def_tia, 'function tia(ur_table)')
-ti(def_tia, '  local strASSIGN = ur_table .. " = {}; " ')
-ti(def_tia, '  strASSIGN = strASSIGN .. "function tii(ur_line) ti(" .. ur_table .. ", ur_line) end" ')
-ti(def_tia, '  load(strASSIGN)() ')
-ti(def_tia, '  end')
-tcompile(def_tia)
-
-tia 'def_printk'
-tii 'function printk(ur_table)'
-tii '  local pk = {}'
-tii '  for k in pairs(ur_table) do'
-tii '    table.insert(pk, k)'
-tii '    end'
-tii '  table.sort(pk)'
-tii '  for k,v in pairs(pk) do print(v) end'
-tii '  end'
-tcompile(def_printk)
-
-tia 'def_printv'
-tii 'function printv(ur_table)'
-tii '  local pk = {}'
-tii '  for k,v in pairs(ur_table) do'
-tii '    table.insert(pk, v)'
-tii '    end'
-tii '  table.sort(pk)'
-tii '  for k,v in pairs(pk) do print(v) end'
-tii '  end'
-tcompile(def_printv)
-
-tia 'def_tcopy'
-tii 'function tcopy(ur_src_table, ur_dest_table)'
-tii '  for k,v in pairs(ur_src_table) do'
-tii '    table.insert(ur_dest_table, v)'
-tii '    end'
-tii '  end'
-tcompile(def_tcopy)
-
-tia 'def_printiv'
-tii 'function printiv(ur_table)'
-tii '  for k,v in pairs(ur_table) do'
-tii '    print(v)'
-tii '    end'
-tii '  end'
-tcompile(def_printiv)
-
-tia 'def_printkv'
-tii 'function printkv(ur_table)'
-tii '  local pk = {}'
-tii '  for k in pairs(ur_table) do'
-tii '    table.insert(pk, k)'
-tii '    end'
-tii '  table.sort(pk)'
-tii '  for k,v in pairs(pk) do print(v .. ": " .. type(ur_table[v]) ) end'
-tii '  end'
-tcompile(def_printkv)
-
-tia 'def_ioexec'
-tii 'function ioexec(ur_cmd)'
-tii '  local iofile = io.popen(ur_cmd)'
-tii '  local retTABLE = {}'
-tii '  for k in iofile:lines() do table.insert(retTABLE, k) end'
-tii '  iofile:close()'
-tii '  return retTABLE'
-tii '  end'
-tcompile(def_ioexec)
-
-tia 'def_printio'
-tii 'function printio(ur_cmd)'
-tii '  printiv(ioexec(ur_cmd))'
-tii '  end'
-tcompile(def_printio)
-
---printio('ls /storage')
-local ttbFILE = ioexec('find /sdcard/Download -name "TWMove_*.htm" -print')
-local strFILE = ""
-for k,v in pairs(ttbFILE) do
-  strFILE = v
-  break
-  end
-
-print('1: ' .. strFILE)
-```
-
-```
---[under folder /sdcard/qlua5]
---Create subdir share/5.3
---Put in a copy of def.lua
---This file can be run by the QLua command "require" because it uses the LoadString function instead of the Load function in def_tcompile and def_tia
-
-print()
-
-def_tcompile = {'function tcompile(ur_table) loadstring(table.concat(ur_table, "\\r"))() end'}
-loadstring(table.concat(def_tcompile, "\\r"))()
-
-def_ti = {'function ti(ur_table, ur_line) table.insert(ur_table, ur_line) end'}
-tcompile(def_ti)
-
-def_tia = {}
-ti(def_tia, 'function tia(ur_table)')
-ti(def_tia, '  local strASSIGN = ur_table .. " = {}; " ')
-ti(def_tia, '  strASSIGN = strASSIGN .. "function tii(ur_line) ti(" .. ur_table .. ", ur_line) end" ')
-ti(def_tia, '  loadstring(strASSIGN)() ')
-ti(def_tia, '  end')
-tcompile(def_tia)
-
-tia 'def_printk'
-tii 'function printk(ur_table)'
-tii '  local pk = {}'
-tii '  for k in pairs(ur_table) do'
-tii '    table.insert(pk, k)'
-tii '    end'
-tii '  table.sort(pk)'
-tii '  for k,v in pairs(pk) do print(v) end'
-tii '  end'
-tcompile(def_printk)
-
-tia 'def_printv'
-tii 'function printv(ur_table)'
-tii '  local pk = {}'
-tii '  for k,v in pairs(ur_table) do'
-tii '    table.insert(pk, v)'
-tii '    end'
-tii '  table.sort(pk)'
-tii '  for k,v in pairs(pk) do print(v) end'
-tii '  end'
-tcompile(def_printv)
-
-tia 'def_tcopy'
-tii 'function tcopy(ur_src_table, ur_dest_table)'
-tii '  for k,v in pairs(ur_src_table) do'
-tii '    table.insert(ur_dest_table, v)'
-tii '    end'
-tii '  end'
-tcompile(def_tcopy)
-
-tia 'def_printiv'
-tii 'function printiv(ur_table)'
-tii '  for k,v in pairs(ur_table) do'
-tii '    print(v)'
-tii '    end'
-tii '  end'
-tcompile(def_printiv)
-
-tia 'def_printkv'
-tii 'function printkv(ur_table)'
-tii '  local pk = {}'
-tii '  for k in pairs(ur_table) do'
-tii '    table.insert(pk, k)'
-tii '    end'
-tii '  table.sort(pk)'
-tii '  for k,v in pairs(pk) do print(v .. ": " .. type(ur_table[v]) ) end'
-tii '  end'
-tcompile(def_printkv)
-
-tia 'def_ioexec'
-tii 'function ioexec(ur_cmd)'
-tii '  local iofile = io.popen(ur_cmd)'
-tii '  local retTABLE = {}'
-tii '  for k in iofile:lines() do table.insert(retTABLE, k) end'
-tii '  iofile:close()'
-tii '  return retTABLE'
-tii '  end'
-tcompile(def_ioexec)
-
-tia 'def_printio'
-tii 'function printio(ur_cmd)'
-tii '  printiv(ioexec(ur_cmd))'
-tii '  end'
-tcompile(def_printio)
-
---printio('ls /storage')
---[[
-local ttbFILE = ioexec('find /sdcard/Download -name "TWMove_*.htm" -print')
-local strFILE = ""
-for k,v in pairs(ttbFILE) do
-  strFILE = v
-  break
-  end
-
-print('1: ' .. strFILE)
---]]
-```
-
-
+How create a wire payment\Form e1\Purchase Orders form
 
-
-How deploy a Program Module using QLua Android\Form e1\QLua Android
-
-"""
-- Note: I had problems using the `LoadString` function with the `require` command
-- - In the Lua code, replace any references to the `Load` function with the `LoadString` function
-- - The `LoadString` command needs extra escaping like`\\r` for the parameter, so replace `\r` with `\\r` when using the `LoadString` command
-
-- [Bottom bar]
-- Click button Save-As (Looks like a page with a Plus in the bottom-right corner) -> Open dialog
-
-- [Save As dialog]
-- If necessary,
-- - [Bottom bar]
-- - Click button New Folder (looks like a Plus sign) -> Opens dialog
-- - Directory Name = `share`
-- - Click button OK -> Closes dialog
-
-- Note: The `share/5.3` directory under the QLua5 folder is where Lua looks to load "program modules" that must be loaded to the _G array as a prerequisites to running the current program
-
-- [Folder list]
-- * Select folder `share`
-- If necessary,
-- - [Bottom bar]
-- - Click button New Folder (looks like a Plus sign) -> Opens dialog
-- - Directory Name = `5.3`
-- - Click button OK -> Closes dialog
-
-- [Folder list]
-- * Select folder `5.3`
-- [Bottom bar]
-- File name = UrFileName.lua
-- Click button OK (looks like a checkmark)
-
-[File Manager]
-- Note: Your Lua program is stored in folder `/sdcard/qlua/share/5.3`
-
-[Lua console]
-- Note: The require command to loads and runs a program module
-- - Do not include the path or the `.lua` file extension
-"""
-
-```
-require 'UrFileName'
-```
-
-"""
-- Output is the Lua program output
-
-
-
-How export Contact list from Google.com Contacts\Form e1\Google.com Contacts
-
 """
-- [https://contacts.google.com/]
-- [Left-side menu]
-- * Click button Export -> Opens dialog
-- Export contacts = Contacts (total count)
-- Export as = Google CSV
-- Click button Export -> Downloads file, Closes dialog
-
-[CSV file]
-- Header fields =
-"""
-
-```
-Name
-Given Name
-Additional Name
-Family Name
-Yomi Name
-Given Name Yomi
-Additional Name Yomi
-Family Name Yomi
-Name Prefix
-Name Suffix
-Initials
-Nickname
-Short Name
-Maiden Name
-Birthday
-Gender
-Location
-Billing Information
-Directory Server
-Mileage
-Occupation
-Hobby
-Sensitivity
-Priority
-Subject
-Notes
-Language
-Photo
-Group Membership
-E-mail 1 - Type
-E-mail 1 - Value
-E-mail 2 - Type
-E-mail 2 - Value
-Phone 1 - Type
-Phone 1 - Value
-Phone 2 - Type
-Phone 2 - Value
-Address 1 - Type
-Address 1 - Formatted
-Address 1 - Street
-Address 1 - City
-Address 1 - PO Box
-Address 1 - Region
-Address 1 - Postal Code
-Address 1 - Country
-Address 1 - Extended Address
-Organization 1 - Type
-Organization 1 - Name
-Organization 1 - Yomi Name
-Organization 1 - Title
-Organization 1 - Department
-Organization 1 - Symbol
-Organization 1 - Location
-Organization 1 - Job Description
-Relation 1 - Type
-Relation 1 - Value
-Website 1 - Type
-Website 1 - Value
-```
-
-- Header line =
-
-```
-Name,Given Name,Additional Name,Family Name,Yomi Name,Given Name Yomi,Additional Name Yomi,Family Name Yomi,Name Prefix,Name Suffix,Initials,Nickname,Short Name,Maiden Name,Birthday,Gender,Location,Billing Information,Directory Server,Mileage,Occupation,Hobby,Sensitivity,Priority,Subject,Notes,Language,Photo,Group Membership,E-mail 1 - Type,E-mail 1 - Value,E-mail 2 - Type,E-mail 2 - Value,Phone 1 - Type,Phone 1 - Value,Phone 2 - Type,Phone 2 - Value,Address 1 - Type,Address 1 - Formatted,Address 1 - Street,Address 1 - City,Address 1 - PO Box,Address 1 - Region,Address 1 - Postal Code,Address 1 - Country,Address 1 - Extended Address,Organization 1 - Type,Organization 1 - Name,Organization 1 - Yomi Name,Organization 1 - Title,Organization 1 - Department,Organization 1 - Symbol,Organization 1 - Location,Organization 1 - Job Description,Relation 1 - Type,Relation 1 - Value,Website 1 - Type,Website 1 - Value
-```
-
-- Sample data 1
-
-```
-.me,.me,,,,,,,,,,,,,,,,,,,,,,,,,,,Imported 8/5/16 ::: * myContacts,,,,,Mobile,5554443333 ::: 16665554444,,,,,,,,,,,,,,,,,,,,,,,
-```
-
-- Sample data 2
-
-```
-UrContactName,UrContactFirstName,,UrContactLastName,,,,,,,,,,,,,,,,,,,,,,,,,* myContacts,,,,,Mobile,(444) 333-2222,,,,,,,,,,,,,,,,,,,,,,,
-```
-
-
-
-
-How export email from Google.com Takeout\Form e1\Google.com Takeout
-
+- * [New record]
+- Vendor = @UrVendorNum
+- Save
+- Note: PO # = @UrPoNum
+- Click button Lines -> Opens form
 """
-- [https://takeout.google.com/]
-- * [Products section]
-- Click link Deselect All
-- [Mail section]
-- checkbox = set
-- [End of Page section]
-- Click button Next Step -> Navigates section
-- [Choose file type, frequency & destination]
-- Frequency = Export once
-- File type = .zip
-- File size = 2 GB
-- Click button Create Export -> Navigates section
-- [Export Progress]
-- Note: Google is creating a copy of files from Mail. This process can take a long time (possibly hours or days) to complete. You'll receive an email when your export is done.
-
-[https://mail.google.com/]
-- [Message with title "Archive of Google data requested"]
-- Note: You can ignore the message or click the link to verify it was you
-- [Message with title "Your Google data is ready to download"]
-- Click button Download Your Files -> Opens tab
-
-[Google Takeout form]
-- Re-enter your password
-- [Record where Export = Mail]
-- Note: The size of the export file is also in the Export column
-- Click button Download -> Downloads file
-- Note: The file may take a long time to download depending on your internet connection and the size of the file
-
-[ZIP file]
-- Extract the ZIP file to a folder
-
-[Takeout folder]
-- Open the archive_browser.html -> Opens browser
-
-[Archive Browser page]
-- [File Formats tab]
-- Note: An mbox is a way of storing mail messages and is supported by common mail clients like Microsoft Outlook, Mozilla Thunderbird, and Apple's Mail program. These files are most easily opened by a dedicated mail client like those listed above
-
-[Takeout\Mail folder]
-- [All mail Including Spam and Trash.mbox]
-- Use Mozilla Thunderbird to read the MBOX file
-- OR Split this file into smaller text files... [[somehow |VBNetCode\Copy File Lines]]
-- Format:
-
-Record Start = Leading "From " <- Including the space
-Tags = "WordsWithoutSpaces:" <- no spaces in tag name
-Tag continuation values = " Every Line With Leading Space Or Tab After Tag Name"
-Email Content = "First line that is not a tag or tag continuation -> through last line before next leading " "From "
-
-
-
-
-How extract captions text from video file using FFMpeg Windows\Form e1\FFMpeg Windows
-
-- * The output filename must have a .SRT extension
-
-```
-chcp 65001
-C:\UrPath\ffmpeg.exe -i "C:\UrPath\UrFile.mp4" "C:\UrPath\UrFile.srt"
-pause
 
 
 
 
-How extract image snapshots from video file using FFMpeg Windows\Form e1\FFMpeg Windows
+How create a wire payment\Form e2\Purchase Order Lines form
 
 """
-- * The output filename must have an image file format extension, like .JPG
-- `-ss 05:00 -t 10:00` means start at 5min and end 10min later at 15min
-- `-r 1` means 1 frame per second
-- `-r 0.25` means 1 frame every 4 seconds
-- `-r 0.083` means 1 frame every 12 seconds, or 5 frames per minute, 50 frames out of every ten minutes, or 300 frames every hour
-
-- IrfanView can create a portrait contact sheet with 5 columns, representing one min of video per row, 10 rows per page showing 10 minutes of video
-- IrfanView can create a landscape contact sheet with 7 columns is one 3 min per 2 rows, 7 rows per page showing 10.5 minutes of video, two pages showing 21 minutes
-
-- Open on thumbnail image with IrfanView, select File menu Thumbnails option
-- Select all files in the folder, select File menu Create Contact Sheet
-- 1280x738, 738/1280*320 = 184.5, use -s 320x180 to keep aspect ratio
-- paper 150px * 8.5in = 1250px wide, 150px * 11in = 1650in tall
-- screen 1920px x 1080px with 7 x 7, stretch small images to maximal size
+- * [New record]
+- [Header section]
+- Item = @UrPoLineItem
+- U/M = @UrPoLineUM
+- Quantity = 1
 
-"""
+- [Costs tab]
+- Plan Cost = 10.00
+- Material cost = 10.00
+- Save record
 
-```
-chcp 65001
-rem -ss 05:00 -t 10:00 means start at 5min and end 10min later at 15min
-C:\UrPath\ffmpeg.exe -i "C:\UrPath\UrFile.mp4" -r 0.083 -s 320x180 "UrPath\UrSubdir\output_%%04d.jpg"
+- [Main tab]
+- Status = Ordered -> Opens dialog
+- Dialog: [Change PO Line/Release Status] will be performed.
+- Click OK -> Runs some update
+- Save record
 
+- [Costs tab]
+- Note: Received qty = 0 and Vouchered qty = 0
 
 
 
 
-How find earth plus-code area using Plus.codes Website\Form e1\Plus.codes Website
+How create a wire payment\Form e3\Purchase Order Receiving form
 
 """
-- [https://plus.codes/map/]
-- [Search box, Left-side icon]
-- Click the three-lines menu, option Satellite -> Refreshes window
-- * Click the three-lines menu, option Grid -> Refreshes window
-- [Navigate to location]
-- When the mouse icon is a hand, double-click to Zoom in
-- Each time you click, the location will show as 8 characters, a plus sign, and two suffix characters
-- - Example: 73F6C9JH+HR
-- The last two Zoom levels allow you to select a single Plus Code rectangle, which has three suffix characters after the plus sign
-- - Example: 73F6C9JH+HR7
-- Copy the browser address bar
-- - Example: https://plus.codes/73F6C9JH+HR7
-
-- Note: You can email the page link to someone
-- - They will have to turn on the satellite and / or grid options again
-
-- Note: You can use the browser to bookmark the current page
-- - Android O/S Chrome can create a desktop shortcut to the current website page (when not in Incognito mode)
+- [Header section]
+- Filter: PO Number = @UrPoNum
+- - (Click out of the PO Number box to filter the grid)
 
-- Note: The plus codes are 8 characters, a plus, and two or three suffix characters
-- - The bottom of the Plus.Codes website's map only temporarily shows the three suffix characters after you click, quickly reverting to show only two suffix characters
-- - You can still see all three suffix characters in the address bar
+- [grid, record where PO = @UrPoNum]
+- Note: Receive Qty = 1
+- checkbox Select = set
 
-- [Bottom location code bar, Right-side icon]
-- Click button Navigate (looks like a Right-Turn Only road sign) -> Navigates to Google Maps website
-- Note: Android O/S Chrome app will ask to Stay On Web or Use The App
-- - Click button Use The App to open the Google Maps app
+- [Header section]
+- * Click button Receive -> Opens dialog
+- Dialog: "1 Pending PO Receiving Transaction(s) were posted."
+- Click button OK -> Closes dialog, refreshes grid
+- Note: The grid has no lines
 
+- PO Line/Release Status = Filled
+- Note: The record shows again, with Received qty = 1
 
 
 
-How find Git program used with GitHub for Windows\Form e1\GitHub for Windows
 
-"""
-- The git.exe program is under the GitHub install folder's resources\app sub-folder
-
-- When GitHub Desktop is installed, the Git.exe program can be placed in the %APPDATA% folder
-- There may be multiple sub-directories, one for each version of Git that has been downloaded
-- Look for the latest version-numbered folder
-"""
-
-```
-C:\Users\UrUser\AppData\Local\GitHubDesktop\app-UrVersion
-```
+How create a wire payment\Form e4\Generate A/P Transactions form
 
 """
-Under the app-UrVersion folder, find the Git.exe program
-"""
-
-```
-app-UrVersion\resources\app\git\cmd\git.exe
-
-
-
-
-How flag alternate structure for Javascript-disabled browser using HTML5 Code\Form e1\HTML5 Code
-
-* tag name = `noscript`
-* Note: The tag contents are displayed to users that have disabled scripts in their browser or have a browser that doesn't support user action event scripting
-
-<<ext "W3Schools NoScript tag">>
-
-!! Sample code
-
-```
-</noscript>
-<!--Javascript-disabled browser additional content-->
-</noscript>
-<!--Ordinary content-->
-```
-
-
-
-
-How flag an HTML file for active content using HTML5 Comment\Form e1\HTML5 Comment
-
-* Comment text sequence:
-
-<<<
-* `<!--` and optional whitespace
-* `saved from url=(`
-* the number of characters in the URL string (including the trailing backslash)
-* `)`
-* the URL string
-* optional whitespace and `-->`
-<<<
-
-* HTML documents viewed in Internet Explorer show a warning message due to active content, or has a specifically crafted HTML Comment Declaration that names the root URL of the website it is being hosted on
-* Note: If this is for a new site, or if the domain is not known, you can use `about:internet` as a valid URL
-
-<<ext "JTFAssociates MOTW">>
-
-!!Sample code
-
-```
-<!-- saved from url=(0014)about:internet -->
-```
-
-
-
-
-How flag document Content type in html file using HTML5 Comment\Form e1\HTML5 Comment
-
-* Declaration Name = `DOCTYPE`
-* Content = `html`
-* Note: HTML declarations are not tags, because the have an exclamation mark ( `!` ) before the declaration name / code
-* Note: This should be the first non-whitespace characters in the document to be compliant with HTML standards
-* Note: HTML5 documents don't really need a DOCTYPE as there is no HTML5 DTD for browsers to refer to, but it is used in HTML5 to make sure the browser doesn’t switch into “quirks” mode and remains in full standards mode
-
-<<ext "W3Schools DocType">>
-
-<<ext "HTML.com DocType">>
-
-<<ext "CodeAcademy DocType">>
-
-!! Sample code for HTML 5 declaration
-
-```
-<!DOCTYPE html>
-```
-
-
-
-
-
-How flag elements for CSS styles in html file using HTML5 Code\Form e1\HTML5 Code
-
-* tag name = `style`
-* `type` attr = `text/css`
-* Note: The most recent versions of the HTML spec now permits the &lt;style> tag within body elements
-* Note: Putting CSS in body means it is loaded later and the browser starts drawing the interface faster
-* Note: Putting CSS in body can decrease page performance due to possible reflows/repaints once the browser hits styles further down in the page tree
-
-<<ext "StackOverflow CSS location">>
+- Filter: Vendor = @UrPoVendor
 
-!! Sample code
+- [Header section]
+- Material = @UrPoLineCost
 
-```
-<style type="text/css">
-```
-
-
-
-
-How flag html file Internet Explorer Compatibility using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `meta`
-* `http-equiv` attr = `X-UA-Compatible`
-* `content` attr = `IE=Edge` or (`IE=11`, `IE=EmulateIE11`, and similar version number pairs)
-* Note: Use this tag if you need features specific to an older version of IE like IE9 or IE8
-* Note: If you only support the latest browsers (IE11 and/or Edge) then this tag will not affect the web page's behavior until another version is created
-
-<<<
-Internet Explorer begins interpreting markup using the latest version. When Internet Explorer encounters the X-UA-Compatible META tag it starts over using the designated version's engine. This is a performance hit because the browser must stop and restart analyzing the content.
-<<<
-
-<<ext "StackOverflow Meta UA-Compatible">>
-
-!! Sample code
-
-```
-<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-```
-
-<<<
-`content="IE=Edge" ` mode tells Internet Explorer to display content in the highest mode available. With Internet Explorer 9, this is equivalent to IE9 mode. If a future release of Internet Explorer supported a higher compatibility mode, pages set to edge mode would appear in the highest mode supported by that version. Those same pages would still appear in IE9 mode when viewed with Internet Explorer 9.
-<<<
-
-
-
-
-How flag html file run Full Screen on Android computer using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `meta`
-* `name` attr = `mobile-web-app-capable`
-* content = `yes`
-* Note: This tells the browser to launch the page fullscreen when the user has added it to the home screen
-* Note: A better option is to use the Web App Manifest for Chrome, Opera, Firefox, and Samsung browsers
-
-<<ext "GoogleDevelopers FullScreen web app">>
-
-!! Sample code
-
-```
-<meta name="mobile-web-app-capable" content="yes"/>
-```
-
-
-
-
-How flag html file run Full Screen on Apple computer using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `meta`
-* `name` attr = `apple-mobile-web-app-capable`
-* `content` attr = `yes`
-* Note: The default behavior is to use Safari to display web content
-* Note: You can determine whether a webpage is displayed in full-screen mode using the window.navigator.standalone Boolean JavaScript property
-
-<<ext "Apple.com Safari Meta tags">>
-
-!! Sample code
-
-```
-<meta name="apple-mobile-web-app-capable" content="yes" />
-```
-
-
-
-
-How flag structure in html file with Language/Accent using HTML5 Code\Form e1\HTML5 Code
-
-* tag name = any
-* `lang` attr = an ISO-639 Language code
-* The official W3C recommendation is to declare the primary language for each Web page with a &lt;...lang => attribute in the &lt;html> tag
-* Note: The LANG tag (i.e. the lang="" attribute) is designed to signal screen readers pronunciation engines to switch to another language or accent
-
-<<ext "PSU.edu LangTag">>
-
-!! Sample code
-
-```
-<html lang="en-GB">
-```
-
-
-
-
-How format browser window title using HTML5 Code\Form e1\HTML5 Code
-
-* The &lt;head> element is a container for metadata (data about data) and is placed between the &lt;html> tag and the &lt;body> tag
-* Metadata describes how to interpret and format the HTML document stored within the &lt;body> tag
-
-<<ext "W3Schools Head tag">>
-
-!! Sample code
-
-```
-<head>
-  <title>UrTitle</title>
-</head>
-```
-
-
-
-
-How format html file Full Screen status bar on Apple computers using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `meta`
-* `name` attr = `apple-mobile-web-app-status-bar-style`
-* `content` attr = `default`, `black`, `black-translucent`
-* Note: If set to black-translucent, the web content is displayed on the entire screen, partially obscured by the status bar
-* Note: This meta tag has no effect unless you first specify full-screen mode as described in apple-apple-mobile-web-app-capable
-
-<<ext "Apple.com Safari Meta tags">>
-
-!! Sample code
-
-```
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-```
-
-
-
-
-How format html file Telephone Numbers on Apple computers using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `meta`
-* `name` attr = `format-detection`
-* `content` attr = `telephone=no`
-* Note: By default, Safari on iOS detects any string formatted like a phone number and makes it a link that calls the number
-
-<<ext "Apple.com Safari Meta tags">>
-
-!! Sample code
-
-```
-<meta name="format-detection" content="telephone=no" />
-```
-
-
-
-
-How hide structure in html file using HTML5 Code\Form e1\HTML5 Code
-
-* CSS style name = `display`
-* value = `none`
-* Note: The entire tag and sub-tag structure is hidden
-* Note: To hide the root tag and show a child tag, use CSS styles `visibility: hidden` and `visibility: visible`, though the parent markup will still take up screen real estate
-
-<<ext "StackOverflow Hide Parent Show Child tag">>
-
-
-
-How highlight misspelled words on Google Chrome Windows\Form e1\Google Chrome Windows
-
+- [PO Selection tab's grid]
+- Find row where PO = @UrPoNum
+- Note: To Vch/Adj quantity = 1
+- checkbox Selected = set
+- * Click button Generate -&gt; Opens dialog
+- Diolog: "[Generate] will be performed"
+- Click button OK -&gt; Changes dialog
+- Dialog:
 """
-- [Top-right icons]
-- Click the three-dots menu, option Settings -> Navigates page
-- [Settings page[
-- * search for Language -> Filters results
-- [Languages section]
-- * checkbox Spell check = clear -> Chrome will not highlight spelling errors
-
-
-
-
-How hold current worksheet using Excel VBA\Form e1\Excel VBA
 
 ```
-Dim wksDATA As Worksheet
-Set wksDATA = Application.ActiveSheet
-wksDATA.Cells(2,2).Value = "Hi"
-
-'Press F5 to run the macro
-'Note: Cell B2 says "Hi"
-
-
-
-How parse MBOX email archive using VB.Net Code\Form e1\VB.Net Code
-
+    1 Voucher(s) were created.
+    
+    Voucher that has [Voucher: @UrVoucherNum] was created.
 ```
-start "" "%~dp0\MxClasses\VBNetScript.exe" /path=%0 & exit
-MxClasses\MxBaseEc12.vb
-RetVal = Mx.Want.TextFile_Split_errhnd
-End Function
-End Class
-End Namespace
-
-'Namespace Mx
-'    Module subs
-'        Sub Main()
-'            Dim RetVal = Mx.Want.TextFile_Split_errhnd
-'            If Mx.AreEqual(RetVal, "QUIT") = False Then MsgBox(RetVal)
-'        End Sub
-'    End Module 'subs
-
-'    Public Class Class1
-'        Public Shared SourceFolder As String = My.Application.Info.DirectoryPath.Replace("\bin\Debug", "")
-'        Public Shared SourcePath As String = "UrFolder\MyApp.exe"
-'    End Class
-'End Namespace 'Mx
-
-Namespace Mx
-    Public Class Want
-        Public Shared Sub TextFile_Split(ret_message As Strap)
-			Dim tabchr = CHR(9)
-			Dim flnDATA = FileNamed().d("C:\Users\Dad\Downloads\Takeout\Mail\All mail Including Spam and Trash.mbox")
-			Dim intLINE_COUNT = 0
-			Dim sdaPREFIX_SKIPPED = New Sdata
-			Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT("TXT"), False, gUTF8_FileEncoding)
-				Using stmDATA = New System.IO.StreamReader(flnDATA, gUTF8_FileEncoding)
-				    Dim bolINCLUDE_INDENTED_LINES = False
-					Dim bolHTML_TEXT = False
-					Dim bolPLAIN_TEXT = False
-					Dim bolSKIP_TEXT = False
-					While stmDATA.EndOfStream = False
-						Dim strLINE = stmDATA.ReadLine()
-						If strLINE.Length = 0 Then
-						
-						ElseIf Left(strLINE, 5) = "From " AndAlso
-						  Len(strLINE) = 59 Then
-						    bolINCLUDE_INDENTED_LINES = False
-							bolHTML_TEXT = False
-							bolPLAIN_TEXT = False
-							bolSKIP_TEXT = False
-							stmOUT_FILE.WriteLine()
-							stmOUT_FILE.WriteLine()
-							stmOUT_FILE.WriteLine()
-							stmOUT_FILE.WriteLine()
-							stmOUT_FILE.WriteLine()
-							stmOUT_FILE.WriteLine(strLINE)
-							intLINE_COUNT += 1
-						
-						ElseIf bolSKIP_TEXT Then
-						
-						ElseIf bolPLAIN_TEXT Then
-							If strLINE.Trim.Length > 0 Then
-								Dim bolCUR_HTML = False
-								Dim intFOUND_SPRTR = InStr(strLINE, "<")
-								Dim intFOUND_TAGCLOSE = InStr(strLINE, ">")
-								If intFOUND_SPRTR > 0 AndAlso
-								  intFOUND_TAGCLOSE > intFOUND_SPRTR Then
-									bolHTML_TEXT = True
-									bolCUR_HTML = True
-									
-									End If
-								
-								If Left(strLINE, 16) = "X-Attachment-Id:" OrElse
-								  Left(strLINE, 32) = "Content-Transfer-Encoding:base64" Then
-									bolSKIP_TEXT = True
-									
-									End If 'strLINE
-								
-								If bolHTML_TEXT = False Then
-									stmOUT_FILE.WriteLine(strLINE)
-									intLINE_COUNT += 1
-								
-								ElseIf bolCUR_HTML Then
-									Dim strTEXT = strLINE
-									While intFOUND_SPRTR > 0
-										Dim strPREFIX = Mid(strTEXT, 1, intFOUND_SPRTR - 1)
-										Dim strTAG = Mid(strTEXT, intFOUND_SPRTR)
-										intFOUND_SPRTR = InStr(strTAG, ">")
-										If intFOUND_SPRTR = 0 Then
-											strTEXT = strPREFIX
-										
-										Else
-											strTEXT = strPREFIX & Mid(strTAG, intFOUND_SPRTR + 1)
-											intFOUND_SPRTR = InStr(strTEXT, "<")
-											
-											End If 'intFOUND_SPRTR
-										
-										End While 'intFOUND_SPRTR
-									
-									If strTEXT.Trim.Length > 0 Then
-										stmOUT_FILE.WriteLine(strTEXT)
-										intLINE_COUNT += 1
-										
-										End If
-									
-									End If 'intFOUND_SPRTR
-									
-								End If 'strLINE
-							
-						ElseIf (Left(strLINE, 1) = s OrElse Left(strLINE, 1) = tabchr) AndAlso
-						  bolINCLUDE_INDENTED_LINES Then
-							'stmOUT_FILE.WriteLine(strLINE)
-							'intLINE_COUNT += 1
-						    
-						Else 'strLINE
-						    bolINCLUDE_INDENTED_LINES = False
-							Dim strPREFIX = mt
-						    Dim intFOUND_SPRTR = InStr(strLINE, ":")
-							If intFOUND_SPRTR > 0 Then
-							    strPREFIX = Mid(strLINE, 1, intFOUND_SPRTR)
-								If InStr(strPREFIX, tabchr) > 0 OrElse
-								  InStr(strPREFIX, s) > 0 Then
-									strPREFIX = mt
-									
-									End If
-								
-								End If
-							
-							If strPREFIX = "Content-Type:" OrElse
-							  strPREFIX = "Subject:" OrElse
-							  strPREFIX = "To:" OrElse
-							  strPREFIX = "Date:" OrElse
-							  strPREFIX = "From:" Then
-								bolINCLUDE_INDENTED_LINES = True
-								stmOUT_FILE.WriteLine(strLINE)
-								intLINE_COUNT += 1
-							
-							ElseIf Right(strPREFIX, 1) = ":" Then
-								bolINCLUDE_INDENTED_LINES = True
-								If sdaPREFIX_SKIPPED.Contains(strPREFIX) = False Then
-									sdaPREFIX_SKIPPED.d(strPREFIX)
-									
-								    End If
-							
-							ElseIf strPREFIX = "" Then
-							    bolPLAIN_TEXT = True
-								intFOUND_SPRTR = InStr(strLINE, "<")
-								Dim intFOUND_TAGCLOSE = InStr(strLINE, ">")
-								If intFOUND_SPRTR > 0 AndAlso
-								  intFOUND_TAGCLOSE > intFOUND_SPRTR Then
-									bolHTML_TEXT = True
-									
-									End If
-								
-								End If 'strPREFIX
-							
-							End If 'strLINE
-						
-						If intLINE_COUNT >= 100000 Then
-							Exit While
-							
-							End If
-						
-						End While 'stmDATA
-					
-					End Using 'stmDATA
-				
-				End Using 'stmOUT_FILE
-			
-			Using stmOUT_FILE = New System.IO.StreamWriter(flnDATA.gCopy.dAppendEXT("PREFIX_SKIPPED.TXT"), False, gUTF8_FileEncoding)
-				Call sdaPREFIX_SKIPPED.Sort()
-				For Each strENTRY In sdaPREFIX_SKIPPED
-					stmOUT_FILE.WriteLine(strENTRY)
-					
-					Next strENTRY
-				
-				End Using 'stmOUT_FILE
-
-			ret_message.Clear.d(intLINE_COUNT.ToString)
-			
-			End Sub 'TextFile_Split
-
-        Public Shared Function TextFile_Split_errhnd() As Strap
-            Dim stpRET = Strapd()
-            TextFile_Split_errhnd = stpRET
-            stpRET.d("QUIT")
-            Dim objERR_LIST = New ErrListBase : Try
-                Call TextFile_Split(stpRET)
-
-            Catch ex As System.Exception
-                Call objERR_LIST.dError_Stack(ex)
-            End Try
-
-            If objERR_LIST.Found Then
-                stpRET.Clear().d(objERR_LIST.ToString)
-            End If
-        End Function 'TextFile_Split_errhnd
-    End Class 'Want
-End Namespace 'Mx
-
-
-
-
-How pull Git Repository changes using Pocket Git Android\Form e1\Pocket Git Android
-
-"""
-- [Repositories List page, Top-right icons]
-- Click button Preferences (looks like three lines) -Navigates page
-- [Preferences page, Defaults section]
-- Click link Default Directory -> Opens dialog
-- [Select Folder dialog]
-- Select the Downloads folder -> Closes dialog
-- [Preferences page, Defaults section]
-- Note: Default Directory = /storage/emulated/0/Download
-- Click button Back (looks like a left arrow) -> Navigates page
-
-- [Repositories List page, Bottom-right icons]
-- Click button Create Project (looks like a red button with a Plus sign) -> Opens dialog
-- [Create Project dialog]
-- Project Name = UrProjectName
-- Clone URL = UrRepositoryURL
-- Note: Local Path automatically creates a sub-directory under the Downloads folder
-- Click the Authentication drop-list, option Password
-- Username = UrRepositoryUsername
-- Password = UrRepositoryPassword
-- [Create Project dialog, Top-right icons]
-- Click button Save (looks like a floppy disk) -> Closes dialog
-
-- [Repositories List page]
-- Click repository UrProjectName -> Navigates page
-
-- [Repository page, Top-right icons]
-- * Click the Remotes menu (looks like a cloud), click option Fetch -> Starts process
-- Wait for popup message "Finished fetching"
-- * Click the Remotes menu, click option Pull -> Starts process
-- Wait for popup message "Finished pulling"
-
-[File system]
-- [Downloads folder]
-- Note: All the files in the repository are available under the UrProjectName sub-folder in the Downloads folder
-
-
-
-
-How remote control Android computer using AnyDesk Android\Form e1\Google Play Store Android
-
-"""
-- [On both Android computers]
-- * Install app AnyDesk by AnyDesk Software GmbH
-- https://play.google.com/store/apps/details?id=com.anydesk.anydeskandroid&hl=en_US&gl=US
-
-
-
-
-How remote control Android computer using AnyDesk Android\Form e2\AnyDesk Android
-
-"""
-- * The other installed devices will show when connected to the same WiFi network
-- Automatically figures out how to use the controlling Android device's touch screen
-
-
-
-
-How remote control Windows computer using VNC Viewer Android\Form e1\RealVNC.com Website
-
 """
-[https://www.realvnc.com/en/connect/download/viewer/windows/]
-- * Download app VNC Connect for Windows
-
-
+- Click button OK -&gt; Closes dialog, refreshes collection
+- Note: Material grid does not show PO UrPoNum
 
+[Purchase Order Lines form]
+- Note: Received qty = 1 and Vouchered qty = 1
 
-How remote control Windows computer using VNC Viewer Android\Form e2\VNC Connect for Windows
 
-"""
-- * Connects to login
-- Note: Allows connection by RealVNC's VNC Viewer app on Android O/S
-
 
 
+How create a wire payment\Form e5\Voucher Listing form
 
-How remote control Windows computer using VNC Viewer Android\Form e3\Google Play Store Android
-
 """
-- * Install app VNC Viewer by RealVNC Limited
-
+- * Filter: PO = @UrPoNum
+- Note: Extended Cost = 10.00 and Invoice Amount = 0.00
 
 
 
-How remote control Windows computer using VNC Viewer Android\Form e4\VNC Viewer Android
+How create a wire payment\Form e6\A/P Vouchers and Adjustments form
 
 """
-- * Connects to login
+- * Filter: PO = @UrPoNum
+- Note: This is an Unposted A/P transaction
 
-- [Alt tab]
-- Use Ctrl-Esc to get to the Windows Start Menu and the Task Bar to change windows
 
 
 
+How create a wire payment\Form e7\A/P Voucher Posting form
 
-How run a Lua Program using QLua Android\Form e1\QLua Android
-
 """
-- Click button Editor -> Navigates page
-
-- [QLua app, Editor page, Top-right side icon]
-- Click button Open file (looks like a Tabbed folder) -> Opens dialog
-- Select file -> Closes dialog
-
-- [QLua app, Editor page, Main Body text]
-- Note: You can change the source code and save again before each run
-
-- [Bottom bar icons]
-- * Click button Run (looks like a right-arrow play button) -> Navigates page
+- * Note: radio-option Print = set
+- Vendor range = 500
+- * Click button Process -> Opens dialog
+- Dialog: [A/P Voucher Posting] will be printed.
+- Click OK -> Opens dialog, opens browser, refreshes grid
+- Dialog: "Report Submitted"
+- Click button OK -> Closes dialog
 
+[PDF output]
+- Note: Total = 10.00
 
+[A/P Voucher Posting form]
+- Note: There is a record in the grid where Vendor = @UrPoVendor
+- * radio-option Commit = set
+- * Click button Process -> Opens dialog, opens browser
+- If dialog "Voucher Register(s) exist with dates outside the current period.",
+- - Click button OK -> changes dialog
 
+- If dialog "You do not have 'Enter out of Date Range' authorization",
+- - Add that group to your user permissions
+- - Re-do the Print option.
 
-How run a Lua Program using QLua Android\Form e2\QLua Console Android
+- Dialog: "[Post] will be performed"
+- Click OK -> Changes dialog
+- Dialog: "1 A/P Transaction(s) were posted"
+- Click OK -> Closes dialog, refreshes grid
+- Note: There are no records in the grid
 
-"""
-- Note: The top line shows the current path and the Linux shell command used to show the editor
-- Note: The output of your program is below the first line
-- * Note: The the last line says "Press enter to exit"
-
-
+[Voucher Listing form]
+- Filter: PO = @UrPoNum
+- Note: Invoice Amount = 10.00
 
+[A/P Vouchers and Adjustments form]
+- Filter: PO = @UrPoNum
+- Note: There is no record
 
-How run console commands using QLua Android\Form e1\QLua Android
 
-"""
-- * Click button Console -> Navigates page
-
 
 
+How create a wire payment\Form e8\A/P Posted Transaction Detail form
 
-How run console commands using QLua Android\Form e2\QLua Console Android
-
-"""
-- [console window]
-- Note: The right-arrow symbol (greater-than sign) is the Lua prompt
-- Note: Comment line-endings in a Lua file are separated by two hyhpens
 """
+- * Filter: PO = @UrPoNum
+- Note: This is a Posted A/P transaction
+- Note: Check Date = [blank]
 
-```
---Single-line comment
-ur_object.ur_function() --Comment until end of line
-```
-
-"""
-- Note: Multi-line comments in a Lua file are separated by two hyphens and two open brackets, and closed by two hyphens and two close brackets
-"""
 
-```
---[[
-Block comment
-multiple lines
---]]
-```
 
-"""
-- * Note: Commands in Lua are case sensitive
-- - You can create functions named `abc`, `Abc`, `abC`, and `ABC`, and each one can store to a different value
-
-- Note: Exiting the Lua interpreter returns to the Linux Shell command line interpreter that was created by QLua
-- Run the `os.exit()` command
-"""
 
-```
-os.exit()
-```
+How create a wire payment\Form e9\A/P Payments form
 
 """
-[Linux Shell CLI]
-- Note: The $ symbol (dollar sign) is the Linux Shell prompt
-- Note: Commands in Linux Shell are case sensitive
-- - You can create programs named `abc`, `Abc`, `abC`, and `ABC`, and each one can run different code
-- - Most standard Linux Shell commands are named with all lowercase characters, so only `abc` would be the standard way to name a program
-
-- Note: Exiting the Linux Shell returns to the QLua app main page
-- Run the `exit` command
+- * [New record]
+- Vendor = @UrPoVendor
+- Payment Type = Wire Transfer
+- Amount = @UrPoLineAmount
+- Note: @UrCheckNum = Check Number
+- Note: @UrBankCode = Bank Code
+- Save record
+- Click button Quick -> Opens form
 """
-
-```
-exit
-```
 
 
 
 
+How create a wire payment\Form ec10\A/P Quick Payment Application form
 
-How run program using QLua Console Android\Form e1\QLua Console Android
-
-"""
-- Note: I had problems using the `LoadString` function with the `loadfile` command
-- - In the Lua code, replace any references to the `LoadString` function with the `Load` function
-- - The `Load` command did not need extra escaping like`\\r` for the parameter, so replace `\\r` with `\r` when using the `Load` command
-- Save the result of the loadfile command to create a new function from the file
-"""
-
-```
-urfile_fn=loadfile('/sdcard/qlua5/ur_file.lua')
-```
-
-"""
-- Note: This added a row to the _G table
-- Note: Just typing a function name or a table name shows the type of data stored in the row
 """
+- [Header section]
+- Note: Applied = 0.00, Remaining = 10.00
+- Note: Voucher grid has one record for PO = @UrPoNum
 
-```
-_G.urfile
-```
+- [Voucher grid]
+- If there are no records, use the Void A/P Posted Payments form to void a recent EFT payment (usually one check number before the check you just created)
+- If you cannot void a payment, run the Manual Check process steps to create a new Purchase Order, receive it, Generate A/P Transactions, and post them
 
-"""
-- Output is `function: 0x#####`
-- Note: any command except _G is an implied name lookup in the _G table
+- [Voucher grid, record where PO = @UrPoNum]
+- checkbox Selected = set
+- * Click button Apply -> Opens dialog
+- Dialog:
 """
 
-```
-urfile
-```
-
-"""
-- Output is also the same `function: 0x####`
-- Note: You can run a function by adding parentheses to the end of the function name
-- Running a function can load additional functions into the _G table
-"""
+    ```
+    0 A/P Payment Distributions(s) were changed.
 
-```
-urfile()
-```
+    1 A/P Payment Distributions(s) were created.
 
-"""
-- Output is the Lua program output
-- * Note: Any functions or tables added to the _G table are available
-- Note: You can load a Lua function and run it on the same line instead of storing the program in a variable by adding an extra pair of parentheses
-"""
+    0 A/P Payment Distributions(s) were deleted.
 
-```
-loadfile('/sdcard/qlua5/ur_file.lua')()
 ```
-
-"""
-- Output is the Lua program output
 
-
-
-How share data between User profiles using Android file system\Form e1\Android file system
-
-"""
-When you change users on an Android device, the file:///sdcard/ folder is aliased to a different location for each. There is a specific sub-folder that is aliased to the same location for all users.
-
-[File Manager]
-- * Navigate to /sdcard/Android/obb
-- Create a folder and copy files into it
-
-[Android Notices menu]
-- Change the current user
-
-[File Manager]
-- Navigate to /sdcard/Android/obb
-- You can see the same folder and files from the other login
-
-
-
-
-How share files across Network using WebDav Server Android\Form e1\Google Play Store Android
-
 """
-- * Install app WebDAV Server - BestDAV
-- - Free or Pro edition
-
-
-
+- Click OK -> Closes dialog
+- If dialog "Do you want to save your changes to A/P Quick Payment Applications?",
+- - Click Yes
 
-How share files across Network using WebDav Server Android\Form e2\WebDav Server Android
+- Note: Applied = 10.00, Remaining = 0.00
+- Close Form
 
+[A/P Payments form]
+- Refresh collection
+- [Voucher grid]
+- Note: There is a record with PO = @UrPoNum
+- Note: This grid shows the A/P Payment Distributions form’s records (Table = aptrxd_mst)
 """
-- [Main page, top bar]
-- Note: Folders not listed under the "Folders" button automatically has read-only access via WebDav
-- Click button Settings -> nav
-- [Settings page]
-- Website Home Directory = /storage
-- [Main page, bottom bar]
-- Click button Start Server
-- Note: The server's network URL starts with "http://" and ends with ":8080"
-- - Sample = http://192.168.0.15:8080
-
-[Windows computer]
-- [browser]
-- Address = http://192.168.0.15:8080
-- Click link Get the file list -> nav
-- Note: The directory shows the "external" SD Card name (if any) and "enc_emulated"
-- To see the "internal" /sdcard folder on the android device,
-- - Click link "enc_emulated" -> /_dir.cgi?dir=%2Fenc_emulated
-- - Edit the address to say /_dir.cgi?dir=%2Femulated/0
-
-- [Windows Explorer]
-- Address = \\192.168.0.15@8080\DavWWWRoot
-- Note: The directory shows the "external" SD Card name (if any) and "emulated", "enc_emulated", and "self"
-- To see the "internal" /sdcard folder on the android device,
-- - Click link "emulated" -> http://192.168.0.15:8080/emulated
-- - Edit the address to say http://192.168.0.15:8080/emulated/0
-
-
-
-
-How share purchased apps using Google Play Store Android\Form e1\Google Play Store Android
 
-"""
-- [Top-left icon]
-- Click the three-lines menu, option `Family Library` -> Navigates page
-- Note: There are two Sections
-- - `Added by [Other]`
-- - `Added by you`
-
-If the purchased app you want to share is not shown under the `Added by You` section, you can add it.
-
-[Play Store]
-- [Top-left icon]
-- Click the three-lines menu, option `My apps & games` -> Navigates page
-- [Installed tab, or Library tab]
-- Choose an app you purchased -> Navigates page
-- [App page]
-- Note: The checkbox Family Library is a toggle switch
-- checkbox Family Library = set -> The app is available to all `Family` logins
-
-If the 'Family' logins does not contain the account you want to access your shared app, you can add it.
-
-[Play Store]
-- [Top-left icon]
-- Click the three-lines menu, option `Account` -> Navigates page
-- [Family tab]
-- Click button Manage family members -> Opens dialog
-- [Family dialog]
-- Click button Invite family members -> Opens dialog
-- [Verify CVC dialog]
-- Enter your credit card number's CVC number
-- Click button Verify -> Closes dialog, Opens dialog
-- [Send Invitations dialog]
-- Select a contact
-- Click button Send
-
-[Added Account email]
-- Click the invitation link -> Navigates page
-- Note: The Added Account can now use the Play Store app to install the Family Library shared app
-
-
-
-
-How show sub-html file in html file using HTML5 Code\Form e1\HTML5 Code
-
-```
-<iframe src="UrPath\UrFile.html" scrolling=yes style="border-style:none;height:75%;width:100%" ></iframe>
-
-
-
-
-How simulate HTTP Response header in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* The http-equiv attribute value `content-type` provides an HTTP header specifying that the character encoding for the document is in the content attribute
-
-<<ext "W3Schools Meta HTTP-EQUIV">>
-
-!! Sample code
-
-```
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-```
-
-
-
-
-How specify developer information in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `meta`
-* `name` attr = `copyright`, `ur_app_name-version`
-* `content` attr = Any text data
-* Note: This information is not used by the browser
-
-
-
-
-How specify initial viewport expected size in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `META`
-* `name` attr = viewport'
-* `content` attr = comma-separated list of equates
-* Note: This is used by mobile devices only
-* Note: The default values may vary between devices and browsers
-* Note: Disabling zooming capabilities by setting user-scalable to a value of no prevents people experiencing low vision conditions from being able to read and understand page content
-
-<<<
-* width = ( A positive integer number ) or ( the text `device-width` )
-* height = ( A positive integer) or ( the text `device-height` )
-* initial-scale = A positive number between 0.0 and 10.0
-* maximum-scale = A positive number between 0.0 and 10.0
-* minimum-scale = A positive number between 0.0 and 10.0
-* user-scalable = `yes`, `no`
-* viewport-fit = `auto', 'contain`, `cover`
-<<<
-
-<<ext "Mozilla.org META tags">>
-
-!! Sample code
-
-```
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-```
 
 
 
+How create a wire payment\Form ec11\A/P Wire Posting form
 
-How specify server application in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `META`
-* name attr = `application-name`
-* `content` attr = The application that is dynamically supplying content for the current web page
-* Note: isolated web pages shouldn't define an application-name
-
-<<ext "Mozilla.org META tags">>
-
-```
-<meta name="application-name" content="UrApplicationTitle" />
-```
-
-
-
-
-How specify valid Meta tags in html file using HTML5 Code\Form e1\HTML5 Code
-
-<<ext "W3.org HTML401 Meta">>
-
-This specification does not define a set of legal meta data properties.
-The meaning of a property and the set of legal values for that property should be defined in a reference lexicon called a profile.
-
-<<ext "W3.org HTML401 Profiles">>
-
 """
-- * The profile attribute of the HEAD specifies the location of a meta data profile.
-- The value of the profile attribute is a URI.
-"""
-
-User agents may use this URI in two ways:
+- * Note: radio-option A/P Wire Posting Report = set
+- Vendor = @UrPoVendor
+- * Click button Process -> Opens dialog, refreshes grid, opens browser
+- Dialog: "Report Submitted"
+- Click OK -> Closes dialog
 
-* As a globally unique name.
+[PDF Output]
+- Note: Total Wire Amount = 10.00
+- Note: Amt Paid = 10.00
 
-<<<
-User agents may be able to recognize the name (without actually retrieving the profile) and perform some activity based on known conventions for that profile.
-For instance, search engines could provide an interface for searching through catalogs of HTML documents, where these documents all use the same profile for representing catalog entries.
-<<<
+[A/P Wire Posting form]
+- [Header section]
+- * radio-option Final Register and Post = set
+- * Click button Process -> Opens dialog
+- Dialog: [A/P Wire Posting] will be performed.
+- Click OK -> Changes dialog
+- Dialog: 1 A/P Payment(s) were posted.
+- Click OK -> Opens dialog, opens browser
+- Dialog: Report Submitted
+- Click OK -> Closes dialog
 
-* As a link.
+[PDF Output]
+- Note: Grand Total = 10.00
 
-<<<
-User agents may dereference the URI and perform some activity based on the actual definitions within the profile (e.g., authorize the usage of the profile within the current HTML document).
-This specification does not define formats for profiles.
-<<<
+[A/P Wire Posting form]
+- [Header section]
+- * radio-option Print Remittance Advice = set
+- checkbox Use Profile = clear
+- * Click button Process -> Opens dialog
+- Dialog: [Remittance Advice] will be performed.
+- Click OK -> Changes dialog
+- Dialog: Report Submitted
+- Click OK -> Changes dialog
+- Dialog: Did Remittance Advice print successfully?
+- Click Yes -> Closes dialog
 
+[Background Task History form]
+- Wait for report to complete
 
+[Report Output Files form]
+- Open PDF file
 
-
-
-How specify website creation tool in html file using HTML5 Meta Tag\Form e1\HTML5 Meta Tag
-
-* tag name = `META`
-* `name` attr = `generator`
-* `content` attr = The name of the program you used to create your website
-* Note: This tag is automatically inserted by website-generating applications
-* Note :People who don’t want to advertise which tool or program they used to create the website can remove this tag from the generated pages
-
-<<ext "MetaTags.org Generator">>
-
-!! Sample code
-
-```
-<meta name="generator" content="UrProgramTitle" />
-```
-
-
-
-
-How test VB.Net code using DCoder Android\Form e1\DCoder Android
-
-Note: I found that the DCoder app actually submitted the VB code to a web server. So there was no way for me to access the local file system.
-
-```
-  'Visual Basic.Net Compiler version 0.0.0.5943 (Mono 4.0.1)
-
-Imports System
-Imports System.Collections.Generic
-Imports System.Text.RegularExpressions
-
-Namespace Dcoder
-  Public Module Program
-    Public Sub Main(args() As string)
-      Dim strRET = "Hi"
-      For Each strENTRY As String In SubDir_List("/")
-          For Each strE2 As String In SubDir_List("/" & strENTRY)
-          For Each strE3 As String In SubDir_List("/" & strENTRY)
-              strRET &= vbLf & strENTRY & "/" & strE2 & "/" & strE3
-          Next strE3
-          Next strE2
-      Next strENTRY
-      
-      strRET &= vbLf & "Done"
-      Console.WriteLine(strRET)
-    End Sub 'Main
-
-    Public Function t1(ur_root_dir As String) As String
-        Return "no"
-    End Function
-
-    Public Function SubDir_List(ur_root_dir As String) As System.Collections.Generic.List(Of String)
-      Dim lstRET = New System.Collections.Generic.List(Of String)
-      SubDir_List = lstRET
-      Try
-      Dim proc = New System.Diagnostics.Process
-      Dim stg = new System.Diagnostics.ProcessStartInfo
-      proc.StartInfo = stg
-      stg.FileName = "ls"
-      stg.Arguments = ur_root_dir
-
-      'stg.FileName = "find"
-      'stg.Arguments = ". -name '*' -print"
-
-      stg.UseShellExecute = false
-      stg.RedirectStandardOutput= true
-      stg.RedirectStandardError = true
-      stg.CreateNoWindow = true
-      proc.Start()
-      Dim strCL_OUT = proc.StandardOutput.ReadToEnd()
-      'strRET = "[Output: " & vbLf & strCL_OUT & "]"
-      'strRET &= vbLf & "(err: " & vbLf & proc.StandardError.ReadToEnd() & ")"
-      For Each strENTRY As String In strCL_OUT.Split(CHR(10))
-          If strENTRY <> "" Then
-              lstRET.Add(strENTRY)
-          End If
-      Next strENTRY
-      Catch ex As System.Exception
-      End Try
-    End Function 'SubDir_List
-  End Module
-End Namespace
 
 
 
@@ -3810,230 +1963,148 @@ Research Notes
 
 
 
+Research Notes\Pay a vendor
+
+Paying a vendor uses the [[Activities\How create a wire payment]].
+
+
+
 User Forms
 
 <<glbl_article_list>>
 
 
 
-User Forms\Android file system
+User Forms\A/P Payments form
+
+!!Dependencies
+
+Table = appmt_mst
 
 !!Overview
 
-Android file system has a reserved folder for sharing data
+The A/P Payments form is used to store the Check information used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\AnyDesk Android
 
-!!Overview
+User Forms\A/P Posted Transaction Detail form
 
-AnyDesk Android application allows you to remote control an Android computer using another Android computer
+!!Dependencies
 
-
-
-User Forms\DCoder Android
+Table = aptrxp_mst
 
 !!Overview
 
-DCoder Android application can test VB.Net code
+The A/P Posted Transaction Detail form is used to store the Voucher and Cost information used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\Excel for Windows
+User Forms\A/P Quick Payment Application form
 
-!!Overview
+!!Dependencies
 
-Excel for Windows application can run Excel macros to change the currently loaded worksheets' cells
-
-
-
-User Forms\Excel Formula
+Table = appmt_mst
 
 !!Overview
 
-Excel Formula code is used in an Excel worksheet's cell to show the user a calculation result
+The A/P Quick Payment Application form is used to create A/P Payment Distribution records used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\Excel VBA
 
-!!Overview
+User Forms\A/P Voucher Posting form
 
-Excel VBA can change the currently loaded worksheet cells
+!!Dependencies
 
-
-
-User Forms\FFMpeg Windows
-
-
-
-User Forms\Git for Windows
+Table = aptrx_mst
 
 !!Overview
 
-Git for Windows can update the branch of a repository
+The A/P Voucher Posting form is used to store the Item, Quantity and Cost information used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\GitHub for Windows
+User Forms\A/P Vouchers and Adjustments form
 
-!!Overview
+!!Dependencies
 
-GitHub for Windows calls the Git application commands
-
-
-
-User Forms\Google Chrome Android
+Table = aptrx_mst
 
 !!Overview
 
-The Google Chrome Android application can browse HTML documents and create Desktop icon shortcuts.
+The A/P Vouchers and Adjustments form is used to store the Voucher and Cost information used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\Google Chrome Windows
+User Forms\A/P Wire Posting form
 
-!!Overview
+!!Dependencies
 
-Google Chrome Windows can show local HTML files
-
-- The command line options are usually two hyphens ( -- ) followed by a keyword
-
-
-
-
-User Forms\Google Play Store Android
+Table = appmt_mst
 
 !!Overview
 
-Google Play Store Android allows you to install Android applications
+The A/P Wire Posting form is used to store the Check information needed for the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\Google.com Contacts
+User Forms\Generate A/P Transactions form
 
-!!Overview
+!!Dependencies
 
-Google.com Contacts hold contact information synchronized between Google logins
-
-
-
-User Forms\Google.com Takeout
+Tables = vendor_mst, poitem_mst
 
 !!Overview
 
-Google.com Takeout can export your stored data in different file formats
+The Generate A/P Transactions form is used create Vouchers and A/P Vouchers used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\HTML5 Code
+User Forms\Purchase Order Lines form
 
-!!Overview
+!!Dependencies
 
-HTML5 Code defines text structures for image layout
-
-
-
-User Forms\HTML5 Comment
+Table = poitem_mst
 
 !!Overview
 
-HTML5 Comment codes are used by browsers to flag specific features
+The Purchase Order Lines form is used to store the Item, Quantity and Cost information used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\HTML5 Meta Tag
+User Forms\Purchase Order Receiving form
 
-!!Overview
+!!Dependencies
 
-HTML5 Meta Tag codes are used by browsers to flag specific features
-
-
-
-User Forms\Plus.codes Website
+Table = poitem_mst
 
 !!Overview
 
-Plus.codes website allows you to find an earth plus.code area
+The Purchase Order Receiving form is used to receive a quantity on a Purchase Order Line used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\Pocket Git Android
+User Forms\Purchase Orders form
 
-!!Overview
+!!Dependencies
 
-Pocket Git Android application can pull changes from a remote repository
-
-
-
-User Forms\QLua Android
+Table = po_mst
 
 !!Overview
 
-QLua Android has a command line interpreter
+The Purchase Orders form is used to store the Header information for Purchase Order Lines used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
 
 
-User Forms\QLua Code
 
-!!Overview
+User Forms\Voucher Listing form
 
-The QLua application interprets QLua function calls and outputs text to a QLua console
+!!Dependencies
 
-
-
-User Forms\QLua Console Android
+Table = vchitem_mst
 
 !!Overview
 
-The QLua console interpreter runs on top of the Linux command line interpreter
-
-
-
-User Forms\RealVNC.com Website
-
-!!Overview
-
-RealVNC.com registers Windows computers for remote control by other computers
-
-
-
-User Forms\Screenshot Easy Android
-
-!!Overview
-
-The Screenshot Easy Android application shows a button that takes a screenshot
-
-
-
-User Forms\VB.Net Code
-
-!!Overview
-
-VB.Net Code can change the Windows File system
-
-
-
-User Forms\VNC Connect for Windows
-
-!!Overview
-
-VNC Connect for Windows registers the Windows computer on RealVNC.com as being available for remote control by other computers
-
-
-
-User Forms\VNC Viewer Android
-
-!!Overview
-
-VNC Viewer Android app allows you to remote control a Windows computer registered at RealVNC.com
-
-
-
-User Forms\WebDav Server Android
-
-!!Overview
-
-WebDav Server Android allows other computers on the network to access an Android File System folder
+The Voucher Listing form is used to store the Voucher, Item, Quantity and Cost information used in the A/P Check Printing / Posting form, A/P EFT Posting form, and A/P Wire Posting form.
 
