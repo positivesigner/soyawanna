@@ -435,14 +435,15 @@ $:/plugins/hoelzro/progress-bar
 
 $:/positivesigner/base-install
 
+<!--2021m04d24-->
 <$vars cur_title=<<currentTiddler>> >
 Optional card groups:
 
-<$list variable=cur_entry filter="[prefix[$:/positivesigner/]is[tag]!suffix[/base-install]!has[draft-of]sort[]]">
+<$list variable=cur_entry filter="[prefix[$:/positivesigner/]is[tag]!suffix[/base-install]!suffix[/tag]!has[draft-of]sort[]]">
 
 <<cur_entry>><$list
-variable=missing_tag filter="[<cur_title>!tag<cur_entry>]">
-- add tag to this base-install card
+variable=missing_tag filter="[[$:/positivesigner/tag]!tag<cur_entry>]">
+- add tag to the [[$:/positivesigner/tag]] card
 </$list><!--missing_tag-->
 </$list><!--cur_entry-->
 
@@ -464,9 +465,9 @@ Base-Install card group:
 $:/positivesigner/base-install/currentCard
 
 \define currentCard()
+<!--2021m04d24-->
 [[$(currentTiddler)$]get[draft.of]else[$(currentTiddler)$]]
 \end
-
 
 
 
@@ -474,6 +475,7 @@ $:/positivesigner/base-install/currentCard
 $:/positivesigner/base-install/keyboard action SaveAllChanges
 
 \define ExportSaveAll(ur_filename, ur_stamp, ur_save_wiki_extension, ur_save_export_html)
+<!--2021m04d24-->
 <$action-setfield $tiddler="$:/state/sidebar" text="no"/>
 <$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
 <$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
@@ -503,6 +505,7 @@ $param="$:/positivesigner/base-install/template ExportAllCode" filename="WikiMov
 $:/positivesigner/base-install/Remove Modules
 
 \define useraction.review_positivesigner_modules()
+<!--2021m04d24-->
 <$vars positivesigner_prefix="$:/positivesigner/">
 
 <$button>
@@ -544,6 +547,7 @@ Delete positivesigner modules
 $:/positivesigner/base-install/template ExportAllCode
 
 \define renderContent()
+<!--2021m04d24-->
 <$list variable=cur_tip_pk filter="[all[tiddlers]!has[draft.of]!is[image]has[tags]!prefix[undefined]] [!prefix[$]!has[draft.of]!is[image]!has[tags]!prefix[undefined]] +[sort[title]]">
 <hr>
 <h2><$link to=<<cur_tip_pk>> /></h2>
@@ -559,6 +563,7 @@ $:/positivesigner/base-install/template ExportAllCode
 
 $:/positivesigner/div-pop
 
+<!--2021m04d24-->
 <$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
@@ -576,6 +581,7 @@ $:/positivesigner/div-pop
 
 $:/positivesigner/div-pop/DivPop btn
 
+<!--2021m04d24-->
 <$list variable=cur_card filter="[all[current]]">
 <$button class=<<tv-config-toolbar-class>> >
 <$action-setfield $tiddler="$:/state/sidebar" text="yes"/>
@@ -594,6 +600,7 @@ $:/positivesigner/div-pop/DivPop btn
 
 $:/positivesigner/div-pop/DivPop glbl
 
+<!--2021m04d24-->
 <$list variable=cur_divpop_card filter="[{$:/state/popup/DivPopTitle}is[tiddler]]">
 <div style="
 position: fixed;
@@ -630,6 +637,7 @@ close
 
 $:/positivesigner/full-text-search
 
+<!--2021m04d24-->
 <$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
@@ -648,6 +656,7 @@ $:/positivesigner/full-text-search
 $:/positivesigner/full-text-search/glbl_search_box
 
 \define glbl_text_search()
+<!--2021m04d24-->
 <div class="tc-sidebar-lists">
 
 <$set name="searchTiddler" value="$:/temp/search">
@@ -704,6 +713,7 @@ $:/positivesigner/full-text-search/glbl_search_box
 
 $:/positivesigner/gcmpr
 
+<!--2021m04d24-->
 <$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
@@ -721,6 +731,7 @@ $:/positivesigner/gcmpr
 
 $:/positivesigner/gcmpr/btn gcmpr card
 
+<!--2021m04d24-->
 <<gcmpr_btn_cmp_current>> 
 
 
@@ -729,6 +740,7 @@ $:/positivesigner/gcmpr/btn gcmpr card
 $:/positivesigner/gcmpr/mcr gcmpr_compare_card
 
 \define gcmpr_compare_card(ur_ttb_card)
+<!--2021m04d24-->
 <$list variable=ttb_card filter="[[$ur_ttb_card$]!match[]]">
 <$list variable=compare_card filter="[<ttb_card>addprefix[$:/state/popup/compare-card/]]">
 <$link to=<<ttb_card>> />
@@ -922,12 +934,14 @@ Hide resize buttons
 
 $:/positivesigner/gcmpr/textarea
 
+<!--2021m04d24-->
 <<gcmpr_textarea_new>>
 
 
 
 $:/positivesigner/home-button
 
+<!--2021m04d24-->
 <$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
@@ -945,6 +959,7 @@ $:/positivesigner/home-button
 
 $:/positivesigner/home-button/keyboard action HomeTiddlers
 
+<!--2021m04d24-->
 <$action-sendmessage $message="tm-home"/>
 
 
@@ -952,6 +967,7 @@ $:/positivesigner/home-button/keyboard action HomeTiddlers
 
 $:/positivesigner/home-button/template Home Button
 
+<!--2021m04d24-->
 <$list variable=on_twcard filter="[<tv-config-toolbar-icons>!match[no]]">
 <div style="float:right;padding-left:30px;">
 {{$:/core/ui/TopBar/menu}}
@@ -974,6 +990,7 @@ $:/positivesigner/home-button/template Home Button
 
 $:/positivesigner/preview-button
 
+<!--2021m04d24-->
 <$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
@@ -991,6 +1008,7 @@ $:/positivesigner/preview-button
 
 $:/positivesigner/preview-button/keyboard action PreviewCard
 
+<!--2021m04d24-->
 <$list variable=cur_card filter="[[$:/state/showeditpreview]]">
 <$list variable=cur_val filter="[<cur_card>get[text]match[yes]]">
 <$action-setfield $tiddler=<<cur_card>> text="no"/>
@@ -1003,8 +1021,16 @@ $:/positivesigner/preview-button/keyboard action PreviewCard
 
 
 
+$:/positivesigner/tag
+
+<!--2021m04d24-->
+
+
+
+
 $:/positivesigner/text-ref
 
+<!--2021m04d24-->
 <$set name=cur_title filter=<<currentCard>> >
 <$list variable=missing_tag filter="[prefix<cur_title>!tag<cur_title>]">
 <$link to=<<missing_tag>> /> missing tag
@@ -1022,6 +1048,7 @@ $:/positivesigner/text-ref
 
 $:/positivesigner/text-ref/btn Delete Cards
 
+<!--2021m04d24-->
 <$vars has_parent_doctag="[split[\]first[]tag[DOC]]" has_has_parent="[split[\]count[]!match[1]]">
 <$set name=fn_img_cards_selall filter="[prefix[$:/img/]]">
 <$set name=fn_ext_cards_selall filter="[prefix[$:/ext/]]">
@@ -1069,6 +1096,7 @@ variable=cur_count filter="[!is[system]!has[tags]count[]]"><<cur_count>></$list>
 $:/positivesigner/text-ref/ext TW Return
 
 \define TW_Return(ur_url, ur_link_title)
+<!--2021m04d24-->
 <div style="float:right"><a href="$ur_url$"> ($ur_link_title$)</a></div>
 \end
 <$list variable=found_index filter="[{$:/info/url/full}split[/]count[]subtract[1]]">
@@ -1089,6 +1117,7 @@ $:/positivesigner/text-ref/ext TW Return
 
 $:/positivesigner/text-ref/Font Size
 
+<!--2021m04d24-->
 <$list variable=cur_entry filter="[all[tiddlers]!suffix[.js]!suffix[.css]!match[$:/core]!prefix[$:/config/]!prefix[$:/DefaultTiddlers]!prefix[$:/Import]!match[$:/isEncrypted]!prefix[$:/language/]!prefix[$:/theme]!prefix[$:/temp/]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/SiteTitle]!match[$:/SiteSubtitle]!prefix[$:/state/]count[]]">
 Specific prefix filter: <<cur_entry>> cards
 </$list>
@@ -1145,6 +1174,7 @@ Normal Font
 
 $:/positivesigner/text-ref/keyboard action FontLarge
 
+<!--2021m04d24-->
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="24px"/>
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="30px"/>
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="25px"/>
@@ -1155,6 +1185,7 @@ $:/positivesigner/text-ref/keyboard action FontLarge
 
 $:/positivesigner/text-ref/keyboard action FontNormal
 
+<!--2021m04d24-->
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/fontsize" text="14px"/>
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/lineheight" text="20px"/>
 <$action-setfield $tiddler="$:/themes/tiddlywiki/vanilla/metrics/bodyfontsize" text="15px"/>
@@ -1166,6 +1197,7 @@ $:/positivesigner/text-ref/keyboard action FontNormal
 $:/positivesigner/text-ref/mcr glbl_article_list
 
 \define glbl_article_list()
+<!--2021m04d24-->
 <ol>
 <$list variable=card_prefix filter="[<currentTiddler>addsuffix[\]]">
 <$list variable=cur_card filter="[prefix<card_prefix>sort[]]">
@@ -1214,6 +1246,7 @@ Clear all checkmarks
 $:/positivesigner/text-ref/mcr glbl_code_split
 
 \define glbl_code_block(ur_note_pk)
+<!--2021m04d24-->
 [[$ur_note_pk$]]
 <$codeblock code={{$ur_note_pk$}} />
 \end
@@ -1362,6 +1395,7 @@ Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
 $:/positivesigner/text-ref/mcr glbl_compare_lines
 
 \define glbl_compare_lines_results_table(ur_note_pk, ur_second_pk, ur_row_count)
+<!--2021m04d24-->
 <table><tr>
 <th>''Line''</th>
 <th>Show text</th>
@@ -1453,6 +1487,7 @@ $:/positivesigner/text-ref/mcr glbl_compare_lines
 $:/positivesigner/text-ref/mcr glbl_dt_ddd
 
 \define glbl_dt_ddd()
+<!--2021m04d24-->
 <div style="clear:right;float:right;background-color:aquamarine;"><<now "YYYYm0MMd0DD DDD pm0hh12\m0mm">></div>
 <$list filter="[<currentTiddler>split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]">
 <$view field="title" format="date" template="[UTC]DDD" />
@@ -1465,6 +1500,7 @@ $:/positivesigner/text-ref/mcr glbl_dt_ddd
 $:/positivesigner/text-ref/mcr glbl_ext
 
 \define ext(ur_extnote_pk)
+<!--2021m04d24-->
 <$list variable=found_entry filter="[[$:/ext/$ur_extnote_pk$]get[text]else[]]">
 <$list variable=missing_entry filter="[<found_entry>match[]]">Missing: [$ur_extnote_pk$]
 </$list><!--missing_entry-->
@@ -1488,6 +1524,7 @@ $:/positivesigner/text-ref/mcr glbl_ext
 $:/positivesigner/text-ref/mcr glbl_img
 
 \define imgh(ur_image_pk, ur_size:200)
+<!--2021m04d24-->
 <$link to="$:/img/$ur_image_pk$"><$image alt="$ur_image_pk$" height="$ur_size$px" source="$:/img/$ur_image_pk$" /></$link>
 \end
 \define imgw(ur_image_pk, ur_size:500)
@@ -1498,6 +1535,7 @@ $:/positivesigner/text-ref/mcr glbl_img
 
 $:/positivesigner/text-ref/Panel
 
+<!--2021m04d24-->
 * https://github.com/settings/tokens
 >* If there is an existing personal access token,
 >>* Click on the name -> Navigates page
@@ -1533,6 +1571,7 @@ Save Wiki
 
 $:/positivesigner/text-ref/Recent Entries
 
+<!--2021m04d24-->
 [[Search All Fields|$:/positivesigner/text-ref/Search All Fields]]
 
 [[Tags Count Audit|$:/positivesigner/text-ref/Tags Count Audit]]
@@ -1553,6 +1592,7 @@ $:/positivesigner/text-ref/Recent Entries
 
 $:/positivesigner/text-ref/Rename EXT Prefixes
 
+<!--2021m04d24-->
 <$list variable=ext_prefix_count filter="[prefix[ext]count[]]">
 
 <$button>
@@ -1579,6 +1619,7 @@ Remove all EXT-prefix tags:
 
 $:/positivesigner/text-ref/Search All Fields
 
+<!--2021m04d24-->
 <$list variable=only_in_jsapp filter="[<tv-config-toolbar-icons>!match[no]]">
 <$vars search_text_pk="$:/state/popup/SearchAllFields">
 <$list variable=show_code_pk filter="[<search_text_pk>addsuffix[-checkShowCode]]">
@@ -1628,6 +1669,7 @@ $:/positivesigner/text-ref/Search All Fields
 
 $:/positivesigner/text-ref/Tags Count Audit
 
+<!--2021m04d24-->
 <$list variable=cur_card filter="[!tag[DOC]!tag[EXT]!tag[IMG]!tag[INDEX]!tag[META]has[tags]!prefix[$:]!prefix[Draft of]] [!has[tags]!prefix[$:]!prefix[Draft of]] +[sort[]]">
 <$list variable=filter_tag_count filter="[<cur_card>tags[]first[]count[]match[0]]">
 <$list variable=parent_title filter="[<cur_card>split[\]first[]]">
@@ -1645,6 +1687,7 @@ $:/positivesigner/text-ref/Tags Count Audit
 
 $:/positivesigner/text-ref/View All Cards
 
+<!--2021m04d24-->
 <$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
 <hr>
 <h2><$link to=<<currentTiddler>> /></h2>
@@ -1656,6 +1699,7 @@ $:/positivesigner/text-ref/View All Cards
 
 $:/positivesigner/text-ref/View All Code
 
+<!--2021m04d24-->
 <$list variable=cur_card_pk filter="[!has[draft.of]!prefix[undefined]!prefix[$]] [prefix[$]!has[draft.of]has[tags]] +[sort[title]]">
 <hr>
 <h2><$link to=<<cur_card_pk>> /></h2>
