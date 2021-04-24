@@ -1023,7 +1023,7 @@ $:/positivesigner/preview-button/keyboard action PreviewCard
 
 $:/positivesigner/tag
 
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 
 
 
@@ -1713,22 +1713,17 @@ $:/positivesigner/text-ref/View All Code
 
 
 
-$:/state/showeditpreview
+$:/positivesigner/user-guide
 
-no
-
-
-
-$:/themes/tiddlywiki/vanilla/options/sidebarlayout
-
-fluid-fixed
+<!--2021m04d24e2-->
 
 
 
-$:/userguidecode/macro/Activity Details
+
+$:/positivesigner/user-guide/macro/Activity Details
 
 \define btn_activity_details()
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 <$list variable=detail_card filter="[[$(activity_prefix)$]addprefix[$:/state/popup/activity_details/]]">
 <!--<<activity_details "How to activity title">>-->
 <$list variable=detail_macro_call filter="""[[<]addsuffix[<]addsuffix[activity_details]addsuffix[ ]addsuffix["]addsuffix[$(activity_prefix)$]addsuffix["]addsuffix[>]addsuffix[>]]""">
@@ -1766,10 +1761,10 @@ Summary --$ur_activity_prefix$--
 
 
 
-$:/userguidecode/macro/Activity Step Link and Primary Actions
+$:/positivesigner/user-guide/macro/Activity Step Link and Primary Actions
 
 \define activity_step_link()
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 <$list variable=step_refform_title filter="[[$(activity_step)$]split[\Form ]butfirst[]first[]split[\]butfirst[]]">
 <$list variable=step_activity_prefix filter="[[$(activity_step)$]split[\Form ]first[]addsuffix[\Form ]]">
 
@@ -1787,13 +1782,9 @@ $:/userguidecode/macro/Activity Step Link and Primary Actions
 
 
 
-$:/userguidecode/tag
+$:/positivesigner/user-guide/view_template/Activity Step post-processing
 
-
-
-$:/userguidecode/view_template/Activity Step post-processing
-
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 <$list variable=cur_card filter="[<currentTiddler>]">
 <$list variable=refform_title filter="[<cur_card>split[\Form ]butfirst[]first[]split[\]butfirst[]]">
 <$list variable=activity_prefix filter="[<cur_card>split[\Form ]first[]addsuffix[\Form ]]">
@@ -1815,9 +1806,9 @@ $:/userguidecode/view_template/Activity Step post-processing
 
 
 
-$:/userguidecode/view_template/Activity Step pre-processing
+$:/positivesigner/user-guide/view_template/Activity Step pre-processing
 
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 <$list variable=cur_card filter="[<currentTiddler>]">
 <$list variable=refform_title filter="[<cur_card>split[\Form ]butfirst[]first[]split[\]butfirst[]]">
 <$list variable=activity_prefix filter="[<cur_card>split[\Form ]first[]]">
@@ -1842,9 +1833,9 @@ $:/userguidecode/view_template/Activity Step pre-processing
 
 
 
-$:/userguidecode/view_template/Activity Summary
+$:/positivesigner/user-guide/view_template/Activity Summary
 
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 <$list variable=cur_card filter="[<currentTiddler>]">
 <$list variable=activity_prefix filter="[<cur_card>prefix[Activities\]split[\]butfirst[]first[]!match[]]">
 
@@ -1860,9 +1851,9 @@ $:/userguidecode/view_template/Activity Summary
 
 
 
-$:/userguidecode/view_template/UserForm Summary
+$:/positivesigner/user-guide/view_template/UserForm Summary
 
-<!--2021m04d24-->
+<!--2021m04d24e2-->
 <$list variable=cur_card filter="[<currentTiddler>prefix[User Forms\]]">
 <$list variable=userform_suffix filter="[<cur_card>split[\]butfirst[]first[]!match[]]">
 
@@ -1882,6 +1873,18 @@ variable=activity_prevcount filter="[suffix<userform_suffix>!match<cur_card>pref
 </$list><!--userform_suffix-->
 </$list><!--cur_card-->
 
+
+
+
+$:/state/showeditpreview
+
+no
+
+
+
+$:/themes/tiddlywiki/vanilla/options/sidebarlayout
+
+fluid-fixed
 
 
 
@@ -6586,6 +6589,10 @@ How view TiddlyWiki Core macro definitions using TiddlyWiki Code\Form e1\TiddlyW
 </$list><!--show_code_pk-->
 ```
 
+
+
+
+INDEX
 
 
 

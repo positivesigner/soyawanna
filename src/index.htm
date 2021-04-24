@@ -343,6 +343,20 @@ Error message and password prompt
 
 <li>$:/positivesigner/text-ref/View All Code</li>
 
+<li>$:/positivesigner/user-guide</li>
+
+<li>$:/positivesigner/user-guide/macro/Activity Details</li>
+
+<li>$:/positivesigner/user-guide/macro/Activity Step Link and Primary Actions</li>
+
+<li>$:/positivesigner/user-guide/view_template/Activity Step post-processing</li>
+
+<li>$:/positivesigner/user-guide/view_template/Activity Step pre-processing</li>
+
+<li>$:/positivesigner/user-guide/view_template/Activity Summary</li>
+
+<li>$:/positivesigner/user-guide/view_template/UserForm Summary</li>
+
 <li>$:/SiteSubtitle</li>
 
 <li>$:/SiteTitle</li>
@@ -370,20 +384,6 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/vanilla</li>
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
-
-<li>$:/userguidecode/macro/Activity Details</li>
-
-<li>$:/userguidecode/macro/Activity Step Link and Primary Actions</li>
-
-<li>$:/userguidecode/tag</li>
-
-<li>$:/userguidecode/view_template/Activity Step post-processing</li>
-
-<li>$:/userguidecode/view_template/Activity Step pre-processing</li>
-
-<li>$:/userguidecode/view_template/Activity Summary</li>
-
-<li>$:/userguidecode/view_template/UserForm Summary</li>
 
 <li>Activities</li>
 
@@ -892,6 +892,8 @@ Error message and password prompt
 <li>How unescape html character literals using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet</li>
 
 <li>How view TiddlyWiki Core macro definitions using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
+
+<li>INDEX</li>
 
 <li>Research Notes</li>
 
@@ -11813,8 +11815,8 @@ Hide resize buttons
 &lt;/$list&gt;
 </pre>
 </div>
-<div color="#423fde" created="20210424083114040" modified="20210424085913905" tags="$:/positivesigner/base-install $:/positivesigner/gcmpr $:/positivesigner/home-button $:/positivesigner/text-ref $:/positivesigner/div-pop $:/positivesigner/full-text-search $:/positivesigner/preview-button $:/positivesigner/tag" title="$:/positivesigner/tag">
-<pre>&lt;!--2021m04d24--&gt;
+<div color="#423fde" created="20210424083114040" modified="20210424090426206" tags="$:/positivesigner/base-install $:/positivesigner/gcmpr $:/positivesigner/home-button $:/positivesigner/text-ref $:/positivesigner/div-pop $:/positivesigner/full-text-search $:/positivesigner/preview-button $:/positivesigner/tag $:/positivesigner/user-guide" title="$:/positivesigner/tag">
+<pre>&lt;!--2021m04d24e2--&gt;
 </pre>
 </div>
 <div color="#423fde" created="20210307035136466" modified="20210424083444631" tags="$:/positivesigner/text-ref $:/positivesigner/tag" title="$:/positivesigner/text-ref">
@@ -12445,6 +12447,148 @@ Remove all EXT-prefix tags:
 &lt;/$list&gt;&lt;!--cur_card_text--&gt;
 &lt;/$list&gt;&lt;!--cur_card_pk--&gt;</pre>
 </div>
+<div color="#423fde" created="20210424090311506" modified="20210424090902591" tags="$:/positivesigner/tag $:/positivesigner/user-guide" title="$:/positivesigner/user-guide">
+<pre>&lt;!--2021m04d24e2--&gt;
+</pre>
+</div>
+<div created="20210421195030608" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424090830686" tags="$:/tags/Macro $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/macro/Activity Details">
+<pre>\define btn_activity_details()
+&lt;!--2021m04d24e2--&gt;
+&lt;$list variable=detail_card filter=&quot;[[$(activity_prefix)$]addprefix[$:/state/popup/activity_details/]]&quot;&gt;
+&lt;!--&lt;&lt;activity_details &quot;How to activity title&quot;&gt;&gt;--&gt;
+&lt;$list variable=detail_macro_call filter=&quot;&quot;&quot;[[&lt;]addsuffix[&lt;]addsuffix[activity_details]addsuffix[ ]addsuffix[&quot;]addsuffix[$(activity_prefix)$]addsuffix[&quot;]addsuffix[&gt;]addsuffix[&gt;]]&quot;&quot;&quot;&gt;
+@@margin-left:20em;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;detail_card&gt;&gt; $field=text $value=&lt;&lt;detail_macro_call&gt;&gt; /&gt;
+&lt;$action-navigate $to=&lt;&lt;detail_card&gt;&gt; /&gt;
+Details --$(activity_prefix)$--
+&lt;/$button&gt;
+@@
+&lt;/$list&gt;&lt;!--detail_macro_call--&gt;
+&lt;/$list&gt;&lt;!--detail_card--&gt;
+\end
+\define activity_details(ur_activity_prefix)
+@@margin-left:20em;
+&lt;$button&gt;
+&lt;$action-navigate $to=&quot;Activities\$ur_activity_prefix$&quot; /&gt;
+Summary --$ur_activity_prefix$--
+&lt;/$button&gt;
+@@
+
+&lt;$list variable=step_card filter=&quot;[prefix[$ur_activity_prefix$]]&quot;&gt;
+&lt;$list variable=step_seq filter=&quot;[&lt;step_card&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=step_text filter=&quot;[&lt;step_card&gt;get[text]]&quot;&gt;
+&lt;$list variable=text_with_suffix filter=&quot;[&lt;step_text&gt;split&lt;test_qs3&gt;count[]remainder[2]match[0]then[]else&lt;test_qs3&gt;]&quot;&gt;
+[&lt;$link to=&lt;&lt;step_card&gt;&gt; &gt;&lt;&lt;step_seq&gt;&gt;&lt;/$link&gt; step]&lt;br&gt;
+
+&lt;$transclude tiddler=&lt;&lt;step_card&gt;&gt; mode=&quot;block&quot; /&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--text_with_suffix--&gt;
+&lt;/$list&gt;&lt;!--step_text--&gt;
+&lt;/$list&gt;&lt;!--step_seq--&gt;
+&lt;/$list&gt;&lt;!--step_card--&gt;
+\end
+</pre>
+</div>
+<div created="20210420202950760" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424090811412" tags="$:/tags/Macro $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/macro/Activity Step Link and Primary Actions">
+<pre>\define activity_step_link()
+&lt;!--2021m04d24e2--&gt;
+&lt;$list variable=step_refform_title filter=&quot;[[$(activity_step)$]split[\Form ]butfirst[]first[]split[\]butfirst[]]&quot;&gt;
+&lt;$list variable=step_activity_prefix filter=&quot;[[$(activity_step)$]split[\Form ]first[]addsuffix[\Form ]]&quot;&gt;
+
+[&lt;$link to=&quot;$(activity_step)$&quot;&gt;&lt;&lt;step_refform_title&gt;&gt;&lt;/$link&gt; step]
+
+&lt;$list variable=step_text filter=&quot;[[$(activity_step)$]get[text]split[
+]prefix[- *]]&quot;&gt;
+
+&lt;&lt;step_text&gt;&gt;
+&lt;/$list&gt;&lt;!--step_text--&gt;
+&lt;/$list&gt;&lt;!--step_activity_prefix--&gt;
+&lt;/$list&gt;&lt;!--step_refform_title--&gt;
+\end
+</pre>
+</div>
+<div created="20210420201558648" list-after="$:/core/ui/ViewTemplate/body" modified="20210424090754242" tags="$:/tags/ViewTemplate $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/view_template/Activity Step post-processing">
+<pre>&lt;!--2021m04d24e2--&gt;
+&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$list variable=refform_title filter=&quot;[&lt;cur_card&gt;split[\Form ]butfirst[]first[]split[\]butfirst[]]&quot;&gt;
+&lt;$list variable=activity_prefix filter=&quot;[&lt;cur_card&gt;split[\Form ]first[]addsuffix[\Form ]]&quot;&gt;
+
+&lt;$list variable=include_next_activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allafter&lt;cur_card&gt;count[]!match[0]]&quot;&gt;
+
+&lt;&lt;&lt;
+&lt;$list variable=activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allafter&lt;cur_card&gt;]&quot;&gt;
+
+&lt;&lt;activity_step_link&gt;&gt;
+&lt;/$list&gt;&lt;!--activity_step--&gt;
+
+&lt;&lt;&lt;
+&lt;/$list&gt;&lt;!--include_next_activity_step--&gt;
+&lt;/$list&gt;&lt;!--activity_prefix--&gt;
+&lt;/$list&gt;&lt;!--refform_title--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20210420194412038" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424090721025" tags="$:/tags/ViewTemplate $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/view_template/Activity Step pre-processing">
+<pre>&lt;!--2021m04d24e2--&gt;
+&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$list variable=refform_title filter=&quot;[&lt;cur_card&gt;split[\Form ]butfirst[]first[]split[\]butfirst[]]&quot;&gt;
+&lt;$list variable=activity_prefix filter=&quot;[&lt;cur_card&gt;split[\Form ]first[]]&quot;&gt;
+
+&lt;&lt;btn_activity_details&gt;&gt;
+&lt;$list variable=include_prev_activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allbefore&lt;cur_card&gt;count[]!match[0]]&quot;&gt;
+&lt;blockquote class=&quot;tc-quote&quot;&gt;&lt;p&gt;
+&lt;$list variable=activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allbefore&lt;cur_card&gt;]&quot;&gt;
+&lt;&lt;activity_step_link&gt;&gt;
+&lt;/$list&gt;&lt;!--activity_step--&gt;
+&lt;/p&gt;&lt;/blockquote&gt;
+&lt;/$list&gt;&lt;!--include_prev_activity_step--&gt;
+
+&lt;$list variable=userform_link filter=&quot;[&lt;refform_title&gt;addprefix[User Forms\]]&quot;&gt;
+[&lt;$link to=&lt;&lt;userform_link&gt;&gt; &gt;&lt;&lt;refform_title&gt;&gt;&lt;/$link&gt; form]
+&lt;/$list&gt;&lt;!--userform_link--&gt;
+
+&lt;/$list&gt;&lt;!--activity_prefix--&gt;
+&lt;/$list&gt;&lt;!--refform_title--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20210420202332209" list-after="$:/core/ui/ViewTemplate/body" modified="20210424090926080" tags="$:/tags/ViewTemplate $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/view_template/Activity Summary">
+<pre>&lt;!--2021m04d24e2--&gt;
+&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
+&lt;$list variable=activity_prefix filter=&quot;[&lt;cur_card&gt;prefix[Activities\]split[\]butfirst[]first[]!match[]]&quot;&gt;
+
+&lt;&lt;btn_activity_details&gt;&gt;
+&lt;$list variable=activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]]&quot;&gt;
+
+&lt;$macrocall $name=activity_step_link ur_activity_prefix=&lt;&lt;activity_prefix&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--activity_step--&gt;
+
+&lt;/$list&gt;&lt;!--activity_prefix--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20210420204337879" list-after="$:/core/ui/ViewTemplate/body" modified="20210424090450037" tags="$:/tags/ViewTemplate $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/view_template/UserForm Summary">
+<pre>&lt;!--2021m04d24e2--&gt;
+&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;prefix[User Forms\]]&quot;&gt;
+&lt;$list variable=userform_suffix filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]first[]!match[]]&quot;&gt;
+
+&lt;blockquote class=&quot;tc-quote&quot;&gt;&lt;p&gt;
+&lt;$list variable=activity_entry filter=&quot;[suffix&lt;userform_suffix&gt;regexp[\\Form]!match&lt;cur_card&gt;sort[]]&quot;&gt;
+&lt;$list variable=activity_prefix filter=&quot;[&lt;activity_entry&gt;split[\]first[]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;activity_entry&gt;&gt; &gt;&lt;&lt;activity_prefix&gt;&gt;&lt;/$link&gt; &lt;$list
+variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt;cur_card&gt;prefix&lt;activity_prefix&gt;sort[]allbefore&lt;activity_entry&gt;count[]add[1]!match[1]]&quot;&gt;
+(&lt;&lt;activity_prevcount&gt;&gt;)
+&lt;/$list&gt;&lt;!--activity_prevcount--&gt;
+
+&lt;/$list&gt;&lt;!--activity_prefix--&gt;
+&lt;/$list&gt;&lt;!--activity_entry--&gt;
+
+&lt;/p&gt;&lt;/blockquote&gt;
+&lt;/$list&gt;&lt;!--userform_suffix--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
 <div created="20210307044138767" modified="20210420034333368" title="$:/SiteSubtitle">
 <pre>User Guide</pre>
 </div>
@@ -12457,7 +12601,7 @@ Remove all EXT-prefix tags:
 <div created="20210411090905404" modified="20210424023654826" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210424085918714" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210424091009295" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210307044725895" modified="20210307044725895" title="$:/state/tab--1963855381">
@@ -12469,13 +12613,13 @@ Remove all EXT-prefix tags:
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210424085918715" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210424091009295" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210424085827236" list="[[Automation Scripting]] [[$:/positivesigner/text-ref/Recent Entries]] [[$:/positivesigner/text-ref/Font Size]] $:/positivesigner/text-ref $:/positivesigner/tag" modified="20210424085839959" title="$:/StoryList">
+<div created="20210424090141274" list="[[Automation Scripting]] $:/positivesigner/user-guide [[$:/positivesigner/user-guide/view_template/UserForm Summary]] [[$:/positivesigner/user-guide/view_template/Activity Summary]] [[$:/positivesigner/user-guide/view_template/Activity Step pre-processing]] [[$:/positivesigner/user-guide/view_template/Activity Step post-processing]] [[$:/positivesigner/user-guide/macro/Activity Step Link and Primary Actions]] [[$:/positivesigner/user-guide/macro/Activity Details]]" modified="20210424091003295" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12589,147 +12733,6 @@ Remove all EXT-prefix tags:
 </div>
 <div created="20201114120802874" modified="20210411025532488" tags="$:/positivesigner/div-pop" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
-</div>
-<div created="20210421195030608" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424085722257" tags="$:/tags/Macro $:/userguidecode/tag" title="$:/userguidecode/macro/Activity Details">
-<pre>\define btn_activity_details()
-&lt;!--2021m04d24--&gt;
-&lt;$list variable=detail_card filter=&quot;[[$(activity_prefix)$]addprefix[$:/state/popup/activity_details/]]&quot;&gt;
-&lt;!--&lt;&lt;activity_details &quot;How to activity title&quot;&gt;&gt;--&gt;
-&lt;$list variable=detail_macro_call filter=&quot;&quot;&quot;[[&lt;]addsuffix[&lt;]addsuffix[activity_details]addsuffix[ ]addsuffix[&quot;]addsuffix[$(activity_prefix)$]addsuffix[&quot;]addsuffix[&gt;]addsuffix[&gt;]]&quot;&quot;&quot;&gt;
-@@margin-left:20em;
-&lt;$button&gt;
-&lt;$action-setfield $tiddler=&lt;&lt;detail_card&gt;&gt; $field=text $value=&lt;&lt;detail_macro_call&gt;&gt; /&gt;
-&lt;$action-navigate $to=&lt;&lt;detail_card&gt;&gt; /&gt;
-Details --$(activity_prefix)$--
-&lt;/$button&gt;
-@@
-&lt;/$list&gt;&lt;!--detail_macro_call--&gt;
-&lt;/$list&gt;&lt;!--detail_card--&gt;
-\end
-\define activity_details(ur_activity_prefix)
-@@margin-left:20em;
-&lt;$button&gt;
-&lt;$action-navigate $to=&quot;Activities\$ur_activity_prefix$&quot; /&gt;
-Summary --$ur_activity_prefix$--
-&lt;/$button&gt;
-@@
-
-&lt;$list variable=step_card filter=&quot;[prefix[$ur_activity_prefix$]]&quot;&gt;
-&lt;$list variable=step_seq filter=&quot;[&lt;step_card&gt;split[\]last[]]&quot;&gt;
-&lt;$list variable=step_text filter=&quot;[&lt;step_card&gt;get[text]]&quot;&gt;
-&lt;$list variable=text_with_suffix filter=&quot;[&lt;step_text&gt;split&lt;test_qs3&gt;count[]remainder[2]match[0]then[]else&lt;test_qs3&gt;]&quot;&gt;
-[&lt;$link to=&lt;&lt;step_card&gt;&gt; &gt;&lt;&lt;step_seq&gt;&gt;&lt;/$link&gt; step]&lt;br&gt;
-
-&lt;$transclude tiddler=&lt;&lt;step_card&gt;&gt; mode=&quot;block&quot; /&gt;&lt;br&gt;
-&lt;/$list&gt;&lt;!--text_with_suffix--&gt;
-&lt;/$list&gt;&lt;!--step_text--&gt;
-&lt;/$list&gt;&lt;!--step_seq--&gt;
-&lt;/$list&gt;&lt;!--step_card--&gt;
-\end
-</pre>
-</div>
-<div created="20210420202950760" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424085735567" tags="$:/tags/Macro $:/userguidecode/tag" title="$:/userguidecode/macro/Activity Step Link and Primary Actions">
-<pre>\define activity_step_link()
-&lt;!--2021m04d24--&gt;
-&lt;$list variable=step_refform_title filter=&quot;[[$(activity_step)$]split[\Form ]butfirst[]first[]split[\]butfirst[]]&quot;&gt;
-&lt;$list variable=step_activity_prefix filter=&quot;[[$(activity_step)$]split[\Form ]first[]addsuffix[\Form ]]&quot;&gt;
-
-[&lt;$link to=&quot;$(activity_step)$&quot;&gt;&lt;&lt;step_refform_title&gt;&gt;&lt;/$link&gt; step]
-
-&lt;$list variable=step_text filter=&quot;[[$(activity_step)$]get[text]split[
-]prefix[- *]]&quot;&gt;
-
-&lt;&lt;step_text&gt;&gt;
-&lt;/$list&gt;&lt;!--step_text--&gt;
-&lt;/$list&gt;&lt;!--step_activity_prefix--&gt;
-&lt;/$list&gt;&lt;!--step_refform_title--&gt;
-\end
-</pre>
-</div>
-<div created="20210424085519381" modified="20210424085547740" tags="$:/userguidecode/tag" title="$:/userguidecode/tag">
-<pre></pre>
-</div>
-<div created="20210420201558648" list-after="$:/core/ui/ViewTemplate/body" modified="20210424085758458" tags="$:/tags/ViewTemplate $:/userguidecode/tag" title="$:/userguidecode/view_template/Activity Step post-processing">
-<pre>&lt;!--2021m04d24--&gt;
-&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
-&lt;$list variable=refform_title filter=&quot;[&lt;cur_card&gt;split[\Form ]butfirst[]first[]split[\]butfirst[]]&quot;&gt;
-&lt;$list variable=activity_prefix filter=&quot;[&lt;cur_card&gt;split[\Form ]first[]addsuffix[\Form ]]&quot;&gt;
-
-&lt;$list variable=include_next_activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allafter&lt;cur_card&gt;count[]!match[0]]&quot;&gt;
-
-&lt;&lt;&lt;
-&lt;$list variable=activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allafter&lt;cur_card&gt;]&quot;&gt;
-
-&lt;&lt;activity_step_link&gt;&gt;
-&lt;/$list&gt;&lt;!--activity_step--&gt;
-
-&lt;&lt;&lt;
-&lt;/$list&gt;&lt;!--include_next_activity_step--&gt;
-&lt;/$list&gt;&lt;!--activity_prefix--&gt;
-&lt;/$list&gt;&lt;!--refform_title--&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-</pre>
-</div>
-<div created="20210420194412038" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424085810138" tags="$:/tags/ViewTemplate $:/userguidecode/tag" title="$:/userguidecode/view_template/Activity Step pre-processing">
-<pre>&lt;!--2021m04d24--&gt;
-&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
-&lt;$list variable=refform_title filter=&quot;[&lt;cur_card&gt;split[\Form ]butfirst[]first[]split[\]butfirst[]]&quot;&gt;
-&lt;$list variable=activity_prefix filter=&quot;[&lt;cur_card&gt;split[\Form ]first[]]&quot;&gt;
-
-&lt;&lt;btn_activity_details&gt;&gt;
-&lt;$list variable=include_prev_activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allbefore&lt;cur_card&gt;count[]!match[0]]&quot;&gt;
-&lt;blockquote class=&quot;tc-quote&quot;&gt;&lt;p&gt;
-&lt;$list variable=activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]allbefore&lt;cur_card&gt;]&quot;&gt;
-&lt;&lt;activity_step_link&gt;&gt;
-&lt;/$list&gt;&lt;!--activity_step--&gt;
-&lt;/p&gt;&lt;/blockquote&gt;
-&lt;/$list&gt;&lt;!--include_prev_activity_step--&gt;
-
-&lt;$list variable=userform_link filter=&quot;[&lt;refform_title&gt;addprefix[User Forms\]]&quot;&gt;
-[&lt;$link to=&lt;&lt;userform_link&gt;&gt; &gt;&lt;&lt;refform_title&gt;&gt;&lt;/$link&gt; form]
-&lt;/$list&gt;&lt;!--userform_link--&gt;
-
-&lt;/$list&gt;&lt;!--activity_prefix--&gt;
-&lt;/$list&gt;&lt;!--refform_title--&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-</pre>
-</div>
-<div created="20210420202332209" list-after="$:/core/ui/ViewTemplate/body" modified="20210424085819441" tags="$:/tags/ViewTemplate $:/userguidecode/tag" title="$:/userguidecode/view_template/Activity Summary">
-<pre>&lt;!--2021m04d24--&gt;
-&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;]&quot;&gt;
-&lt;$list variable=activity_prefix filter=&quot;[&lt;cur_card&gt;prefix[Activities\]split[\]butfirst[]first[]!match[]]&quot;&gt;
-
-&lt;&lt;btn_activity_details&gt;&gt;
-&lt;$list variable=activity_step filter=&quot;[prefix&lt;activity_prefix&gt;sort[]]&quot;&gt;
-
-&lt;$macrocall $name=activity_step_link ur_activity_prefix=&lt;&lt;activity_prefix&gt;&gt; /&gt;
-&lt;/$list&gt;&lt;!--activity_step--&gt;
-
-&lt;/$list&gt;&lt;!--activity_prefix--&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-</pre>
-</div>
-<div created="20210420204337879" list-after="$:/core/ui/ViewTemplate/body" modified="20210424085711187" tags="$:/tags/ViewTemplate $:/userguidecode/tag" title="$:/userguidecode/view_template/UserForm Summary">
-<pre>&lt;!--2021m04d24--&gt;
-&lt;$list variable=cur_card filter=&quot;[&lt;currentTiddler&gt;prefix[User Forms\]]&quot;&gt;
-&lt;$list variable=userform_suffix filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]first[]!match[]]&quot;&gt;
-
-&lt;blockquote class=&quot;tc-quote&quot;&gt;&lt;p&gt;
-&lt;$list variable=activity_entry filter=&quot;[suffix&lt;userform_suffix&gt;regexp[\\Form]!match&lt;cur_card&gt;sort[]]&quot;&gt;
-&lt;$list variable=activity_prefix filter=&quot;[&lt;activity_entry&gt;split[\]first[]]&quot;&gt;
-
-&lt;$link to=&lt;&lt;activity_entry&gt;&gt; &gt;&lt;&lt;activity_prefix&gt;&gt;&lt;/$link&gt; &lt;$list
-variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt;cur_card&gt;prefix&lt;activity_prefix&gt;sort[]allbefore&lt;activity_entry&gt;count[]add[1]!match[1]]&quot;&gt;
-(&lt;&lt;activity_prevcount&gt;&gt;)
-&lt;/$list&gt;&lt;!--activity_prevcount--&gt;
-
-&lt;/$list&gt;&lt;!--activity_prefix--&gt;
-&lt;/$list&gt;&lt;!--activity_entry--&gt;
-
-&lt;/p&gt;&lt;/blockquote&gt;
-&lt;/$list&gt;&lt;!--userform_suffix--&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-</pre>
 </div>
 <div created="20210420034612737" modified="20210420210845656" sort_ord="1" tags="DOC" title="Activities">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
@@ -16916,6 +16919,9 @@ avascript:document.documentElement.innerHTML='&lt;html&gt;&lt;body&gt;'+document
 &lt;/$list&gt;&lt;!--show_code_pk--&gt;
 ```
 </pre>
+</div>
+<div color="#423fde" created="20210424090522887" modified="20210424090546408" tags="$:/positivesigner/base-install" title="INDEX">
+<pre></pre>
 </div>
 <div created="20210421202339839" modified="20210421202352583" tags="DOC" title="Research Notes">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
