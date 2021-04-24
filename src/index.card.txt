@@ -1579,6 +1579,7 @@ Remove all EXT-prefix tags:
 
 $:/positivesigner/text-ref/Search All Fields
 
+<$list variable=only_in_jsapp filter="[<tv-config-toolbar-icons>!match[no]]">
 <$vars search_text_pk="$:/state/popup/SearchAllFields">
 <$list variable=show_code_pk filter="[<search_text_pk>addsuffix[-checkShowCode]]">
 <$list variable=skip_system_pk filter="[<search_text_pk>addsuffix[-checkSkipSystem]]">
@@ -1621,7 +1622,7 @@ $:/positivesigner/text-ref/Search All Fields
 </$list><!--skip_system_pk-->
 </$list><!--show_code_pk-->
 </$vars><!--search_text_pk-->
-
+</$list><!--only_in_jsapp-->
 
 
 
@@ -2220,6 +2221,10 @@ Activities\How show grouped count totals using TiddlyWiki Code
 
 
 
+Activities\How show image using TiddlyWiki Code
+
+
+
 Activities\How show sub-html file in card using TiddlyWiki Code
 
 
@@ -2318,7 +2323,7 @@ Activities\How view TiddlyWiki Core macro definitions using TiddlyWiki Code
 
 Automation Scripting
 
-{{ext TW Return}}
+{{$:/positivesigner/text-ref/ext TW Return}}
 
 {{$:/positivesigner/text-ref/Search All Fields}}
 
@@ -5553,6 +5558,36 @@ ASLSJ Prefix Groups with <<currentTiddler>> words -
 </$list>
 </$wikify>
 ```
+
+
+
+
+How show image using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+"""
+Link an image in a Tiddler with 500px width
+- Have image tiddler
+- Have text tiddler
+- Apply image to text tiddler at 500px width
+
+[New tiddler]
+- title = mcr img_link
+- tag = $:/tags/Macro
+- text field code
+"""
+
+```
+\define img_link(ur_pk)
+@@max-width:500px;
+[img [$ur_pk$]]
+@@
+\end
+```
+
+"""
+[Text tiddler]
+- $macrocall $name=img_link ur_pk= currentTiddler
+"""
 
 
 
