@@ -1,3 +1,6 @@
+Create JavaScript Plug-in
+https://sudonull.com/post/97468-How-to-write-a-plugin-for-TiddlyWiki
+
 https://dynalist.io/d/zUP-nIWu2FFoXH-oM7L7d9DM#z=zdF80rIaJ79W5P0IGsjYIjkD
 
 [Ace editor](http://innoq.tiddlyspot.com/)

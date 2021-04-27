@@ -119,6 +119,12 @@ https://discuss.codecademy.com/t/why-we-type-before-doctype-what-is-the-role-of-
 
 
 
+$:/ext/Empty Wiki Setup
+
+TW Project\Empty Wiki\Empty Wiki.htm
+
+
+
 $:/ext/GoogleDevelopers FullScreen web app
 
 https://developers.google.com/web/fundamentals/native-hardware/fullscreen/
@@ -170,6 +176,12 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Comments
 $:/ext/MozillaDeveloper Strict mode
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+
+
+
+$:/ext/Project Check app
+
+TW Project\Checkapp\Checkapp.htm
 
 
 
@@ -254,6 +266,60 @@ https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewi
 $:/ext/TiddlyWiki TopBar Menu
 
 https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid
+
+
+
+$:/ext/TW Snapshot v5d01d23 empty
+
+TW Project\Snapshot\tiddlywiki_v5d01d23_empty.html
+
+
+
+$:/ext/TW Snapshot v5d01d23 main-site
+
+TW Project\Snapshot\tiddlywiki_v5d01d23_main-site.html
+
+
+
+$:/ext/TW Snapshot v5d01d23 pre-release
+
+TW Project\Snapshot\tiddlywiki_v5d01d23_pre-release.html
+
+
+
+$:/ext/TW Snapshot v5d01d23 update
+
+TW Project\Snapshot\tiddlywiki_v5d01d23_upgrade.html
+
+
+
+$:/ext/Unicode Block 00-Basic Latin
+
+https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)
+
+
+
+$:/ext/Unicode Block 01-Latin Supplement
+
+https://en.wikipedia.org/wiki/Latin-1_Supplement_(Unicode_block)
+
+
+
+$:/ext/Unicode Block Planes
+
+https://en.wikipedia.org/wiki/Plane_(Unicode)
+
+
+
+$:/ext/Unicode Character Database
+
+http://www.unicode.org/Public/UCD/latest/
+
+
+
+$:/ext/Unicode Code Block List
+
+https://en.wikipedia.org/wiki/Unicode_block
 
 
 
@@ -1988,6 +2054,10 @@ Activities\How create a Lua program using QLua Android
 
 
 
+Activities\How create a shopping list using TiddlyWiki Projects
+
+
+
 Activities\How create calendar grid using TiddlyWiki Code
 
 
@@ -2060,6 +2130,10 @@ Activities\How execute nameless function in JavaScript Code
 
 
 
+Activities\How export a set of cards using TiddlyWiki Advanced Search
+
+
+
 Activities\How export article entries from Instapaper.com Website
 
 
@@ -2120,7 +2194,19 @@ Activities\How find Git program used with GitHub for Windows
 
 
 
+Activities\How find latest version of TiddlyWiki project on TiddlyWiki.com Website
+
+
+
 Activities\How find sample code in TiddlyWiki repository using GitHub.com Website
+
+
+
+Activities\How find the latest Unicode standard using Unicode.org Website
+
+
+
+Activities\How find unicode characters using Wikipedia.org Website
 
 
 
@@ -2357,6 +2443,10 @@ Activities\How set windows clipboard text using TiddlyWiki Code
 
 
 Activities\How setup keyboard shortcut using TiddlyWiki Code
+
+
+
+Activities\How setup tiddlywiki empty using TiddlyWiki Projects
 
 
 
@@ -3087,6 +3177,15 @@ How create a Lua program using QLua Android\Form e1\QLua Android
 
 
 
+How create a shopping list using TiddlyWiki Projects\Form e1\TiddlyWiki Projects
+
+- Goal: Find food by aisle
+
+<<ext "Project Check app">>
+
+
+
+
 How create calendar grid using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 ```
@@ -3762,6 +3861,28 @@ How execute nameless function in JavaScript Code\Form e1\JavaScript Code
 
 
 
+How export a set of cards using TiddlyWiki Advanced Search\Form e1\Folder Structure
+
+"""
+- Look for the downloaded .JSON file in the Downloads folder
+- Rename the file according to your tag name
+- You can drag the file onto a TiddlyWiki page to re-import the cards
+
+
+
+
+How export a set of cards using TiddlyWiki Advanced Search\Form e1\TiddlyWiki Advanced Search
+
+"""
+- Click tab Filter -> Navigates tab
+- Filter = `[tag[UrTagName]]`
+- Note: The cards are listed
+- Click button Export Tiddlers (resembles arrow coming out of tray) -> Opens menu
+- Click option JSON -> Downloads file
+
+
+
+
 How export article entries from Instapaper.com Website\Form e1\Instapaper.com Website
 
 """
@@ -4204,6 +4325,35 @@ app-UrVersion\resources\app\git\cmd\git.exe
 
 
 
+How find latest version of TiddlyWiki project on TiddlyWiki.com Website\Form e1\TiddlyWiki.com Website
+
+<<ext "TW Snapshot Review">>
+
+Goal: Browse the code inside the WIki file
+
+<<ext "TiddlyWiki.com main-site">>
+
+<<<
+<<ext "TW Snapshot v5d01d23 main-site">>
+<<<
+
+<<ext "TiddlyWiki.com empty">>
+
+<<<
+<<ext "TW Snapshot v5d01d23 empty">>
+<<<
+
+<<ext "TW Snapshot v5d01d23 pre-release">>
+
+<<ext "TiddlyWiki.com Upgrade">>
+
+<<<
+<<ext "TW Snapshot v5d01d23 update">>
+<<<
+
+
+
+
 How find sample code in TiddlyWiki repository using GitHub.com Website\Form e1\GitHub.com Website
 
 !!TiddlyWiki Git repository sample code
@@ -4246,6 +4396,50 @@ How find sample code in TiddlyWiki repository using GitHub.com Website\Form e1\G
 
 * These lines show that the `$:/state/sidebar` Card is "no" to hide the sidebar, or "yes" show it
 
+
+
+
+How find the latest Unicode standard using Unicode.org Website\Form e1\Unicode.org Website
+
+All files for the most up-to-date version of the Unicode Character Database can be found at: <<ext "Unicode Character Database">>.
+
+The latest text file databases are under the UCD subfolder. The latest set of text file databases is in a ZIP file under ucd/UCD.zip.
+
+The list of Unicode Code Blocks are in the text database under ucd/Blocks.txt.
+
+There is a list of names for the Unicode Code Points under ucd/Index.txt. There same list is sorted in Code Point order at under ucd/NameAliases.txt. Each hex code can have multiple names.
+
+The unique list of Unicode Code Points is under ucd/UnicodeData.txt. There is a character name and possibly an alternative name on each row.
+
+
+
+
+
+How find unicode characters using Wikipedia.org Website\Form e1\Wikipedia.org Website
+
+<<ext "Unicode Block 00-Basic Latin">>
+
+<<ext "Unicode Block 01-Latin Supplement">>
+
+<<ext "Unicode Code Block List">>
+
+<<ext "Unicode Block Planes">>
+
+Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
+
+Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
+
+Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
+
+Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
+
+Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
+
+Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
+
+Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
 
 
 
@@ -6680,6 +6874,16 @@ alt-H
 
 
 
+How setup tiddlywiki empty using TiddlyWiki Projects\Form e1\TiddlyWiki Projects
+
+- Goal: Use the empty TW document and generate a static HTML page
+
+<<ext "Empty Wiki Setup">>
+
+<<ext "EmptyWiki base-install">>
+
+
+
 How share data between User profiles using Android file system\Form e1\Android file system
 
 """
@@ -8339,6 +8543,10 @@ User Forms\FFMpeg Windows
 
 
 
+User Forms\Folder Structure
+
+
+
 User Forms\Git for Windows
 
 !!Overview
@@ -8534,6 +8742,14 @@ SQLite Code pulls data from columns in tables
 
 
 
+User Forms\TiddlyWiki Advanced Search
+
+!!Overview
+
+TiddlyWiki Advanced Search is found on the Side Bar's Tools tab. Click the Advanced Search button.
+
+
+
 User Forms\TiddlyWiki Code
 
 !!Overview
@@ -8546,7 +8762,23 @@ User Forms\TiddlyWiki Editor
 
 
 
+User Forms\TiddlyWiki Projects
+
+!!Overview
+
+TiddlyWiki Projects can have hidden system cards for added global functionality
+
+
+
 User Forms\TiddlyWiki Settings
+
+
+
+User Forms\TiddlyWiki.com Website
+
+!!Overview
+
+TiddlyWiki.com Website has the latest TiddlyWiki Single Page Application.
 
 
 
@@ -8555,6 +8787,14 @@ User Forms\TotalCommander Android
 !!Overview
 
 TotalCommander Android allows you to browse the folder structure of the storage
+
+
+
+User Forms\Unicode.org Website
+
+!!Overview
+
+Unicode.org Website has data files defining the Unicode standard
 
 
 
@@ -8595,6 +8835,14 @@ User Forms\WebDav Server Android
 !!Overview
 
 WebDav Server Android allows other computers on the network to access an Android File System folder
+
+
+
+User Forms\Wikipedia.org Website
+
+!!Overview
+
+Wikipedia.org Website has summary pages about Unicode organization
 
 
 
