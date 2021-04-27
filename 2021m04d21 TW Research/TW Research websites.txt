@@ -1,0 +1,54 @@
+https://dynalist.io/d/zUP-nIWu2FFoXH-oM7L7d9DM#z=zdF80rIaJ79W5P0IGsjYIjkD
+
+[Ace editor](http://innoq.tiddlyspot.com/)
+[ActionIncrement widget](https://skeeve.github.io/tw5-plugins/) - The action-increment widget is an action widget that retrieves a value from a text reference. It will then increase the first digit-sequence found in that text and store it.
+[Ad-Hoc Macro](https://tobibeer.github.io/tb5/#Ad-Hoc%20Macro) - evaluate any text as an ad-hoc macro even passing variables.
+[Amazon Web Services Plugin](https://tiddlywiki.com/#OfficialPlugins) - provides several tools for working with Amazon Web Services **(official TW plugin)**
+[Delay Actions](https://groups.google.com/forum/#!topic/tiddlywiki/z7SGLAPODW8), defer the execution of action widgets for a set amount of time
+[CouchDB adaptor](https://github.com/wshallum/couchadaptor)
+[Count (tobibeer)](http://tobibeer.github.io/tw5-plugins/#count) - A filter to count titles or compare against a specified count
+[Demo Code Macro](http://ooktech.com/jed/ExampleWikis/DemoCodeMacro/) - This is an attempt to make a macro that can be used to demonstrate wikitext code fragments in an interactive way.
+[dom (tobibeer)](http://tobibeer.github.io/tw5-plugins/#dom) - retrieve text or attributes from dom nodes
+[eval (tobibeer)](http://tobibeer.github.io/tw5-plugins/#eval) - Evaluate expressions, compute and compare tiddler properties and data
+[Fargo.io integration](http://blog.jeffreykishner.com/2014/01/24/note-taking-bookmarklets-for-fargoio-and-tiddlywiki-.html)
+[Global macros, instructions on how to make](http://tw5magick.tiddlyspot.com/)
+[Highlight plugin](https://tiddlywiki.com/plugins/tiddlywiki/highlight/#%24%3A%2Fplugins%2Ftiddlywiki%2Fhighlight) **(official TW plugin)** - description: Plugin that activates syntax highlighting of code blocks using v8.8.0 of highlight.js from Ivan Sagalaev. demo [here](https://tiddlywiki.com/plugins/tiddlywiki/highlight/)
+[HTAlink](http://welford.github.io/) - Will only work in offline hta editions of this page. Launches external links in your default browser and not IE
+[ifAisB](https://tid.li/tw5/hacks.html) - This macro allows to test if a value A – a variable or a transcluded value – matches a value B and to react accordingly. It works almost like an if-then-else statement.
+[IfTid Widget](http://gwiz.tiddlyspot.com/) - need to change tw- to tc-. The widget is used to test for the existence of a tiddler (or field) and to send different widget messages based upon the existence of this tiddler (or field.)
+[IfTref Widget](http://gwiz.tiddlyspot.com/) - need to change tw- to tc-. The widget is used to test for the value of a TextReference and to send different widget messages based upon whether this value matches the value specified by the 'value=' attribute.
+[Incremental load command](http://malsandbox.tiddlyspot.com/) - only loads tiddlers that either don't already exist in the tiddlers folder, or have a newer modified date than the existing tiddler.
+[Javascript macros in wikitext](http://tw5magick.tiddlyspot.com/)
+[JSON editor (btheado)](http://btheado.github.io/jsoneditor.html)
+[JSON editor (bjtools)](http://bjtools.tiddlyspot.com/)
+[JsonMangler](https://joshuafontany.github.io/TW5-JsonMangler/) - This plugin changes the methods tiddlywiki uses to retrieve and set values in json data tiddlers. It does this in a way that aims for backwards compatibility.
+
+[keyboard-snippets plugin](http://braintest.tiddlyspot.com/#keyboard-snippets)
+[LetWidget](http://tiddlystuff.tiddlyspot.com/) - The LetWidget is an enhancement of the SetWidget.
+[mforth](https://quaraman.de/tw/mforth.html) - It is a forth like language in a tiddlywiki macro. Forth operates with Reverse Polish Notation (RPN for short).
+[Mousetrap](http://welford.github.io/) - simple library for handling keyboard shortcuts in Javascript.
+[muut integration](http://ooktech.com/jed/ExampleWikis/TiddlyWiki-muut/)
+[Nodewebkitsaver plugin](http://ooktech.com/jed/ExampleWikis/SetFilters/#%24%3A%2Fplugins%2FOokTech%2FSetFilters) - provides a saver module for saving changes when using [TiddlyWiki](http://ooktech.com/jed/ExampleWikis/SetFilters/#TiddlyWiki) directly under NW.js (previously known as node-webkit).
+[Pack as plugin](http://braintest.tiddlyspot.com/#Pack%20as%20plugin) - Beta version
+[Pan widget](http://muritest.tiddlyspot.com) - This widget is touch sensitive. It is able to trigger actions as the start and end of pans. Multiple differntial pans are possible.
+[Persistent-states](https://wikilabs.github.io/#persistent-states) and [Remove-states](https://wikilabs.github.io/#remove-states)
+[pick Plugin](https://skeeve.github.io/tw5-plugins/) - The pick plugin is a set of two filters and one widget to help extracting data from your TiddlyWiki file.
+[PluginSize](https://tid.li/tw5/plugins.html#%24%3A%2Fplugins%2Ftelmiger%2FPluginSize:%24%3A%2Fplugins%2Ftelmiger%2FPluginSize) - This plugin calculates the size of all installed plugins, including themes and languages.
+[PluginDevelopment](https://github.com/inmysocks/PluginDevelopment) – Scripts to help you create plugins and plugin libraries for node.js
+[pv5](http://pv5.tiddlyspot.com/) - testing params and variables
+[random (tobibeer)](http://tobibeer.github.io/tw5-plugins/#random) - A filter to return one or more random titles
+[ReplacePragma](http://tiddlystuff.tiddlyspot.com/)
+[Save trail plugin](https://tiddlywiki.com/#OfficialPlugins) - This plugin causes TiddlyWiki to continuously download (as a JSON file) the contents of any tiddler that is manually changed by any of several means **(official TW plugin)**
+[setvars (tobibeer)](http://tobibeer.github.io/tw5-plugins/#setvars) - Set multiple, complex variables based on attributes, filters, or conditionals
+[Shuffle filter operator](https://mklauber.github.io/tw5-plugins/#Shuffle%20Operator) - implements a new filter operator called Shuffle. This operator takes the input list and randomizes the order of the list. If no parameter is provided, the list order is random every time.
+[SPilot4Tw](https://www.quaraman.de/tw/pilot.html) - A programming language that can be included as Tiddlywiki plugin.
+[Startup Actions demo](http://ooktech.com/jed/ExampleWikis/StartupActions/) - A plugin to add startup scripts to TiddlyWiki
+[style (tobibeer)](http://tobibeer.github.io/tw/style/#GettingStarted) - This wiki introduces you to using your desktop browser to inspect the styles applied to elements in TiddlyWiki and permanently change them.
+[Three.js](http://rboue.tiddlyspot.com/#Three.js%2Fintroduction) - 3D modeling
+[TiddlyWiki5 Coding](http://cjhunt.github.io/) - These pages document aspects TiddlyWiki5 programming, sharing "lessons learned" to help developers to get started with TiddlyWiki5 customization and extension. (FYI - 4 years old)
+[Tinka](https://tinkaplugin.github.io/) - Create and modify plugins in the browser.
+[Trace-variable example](http://eucaly-tw5.tiddlyspot.com/#trace-variable%20Example) - no clue what this is.
+[Trigger Actions Demo](http://ooktech.com/jed/ExampleWikis/TriggerActions/)
+[Tutorial Maker with HopScotchjs](https://cdn.rawgit.com/abesamma/TW5-tutorial-maker-plugin/29c31124/Demo.html) - a plugin that allows TW5 developers to create interactive product tutorials for their tiddlywiki projects, to guide new users.
+[TW Components](https://tw-scripts.github.io/TW-Components/) - A component is a group of TW macros and tiddlers create a visual element for complex processes. The ultimate objective of TW components is to create objects which can simply by used by TW programmer to create complex plugins or codes.
+[twexe - run exe's from hta files](https://github.com/welford/twexe) - only works in offline hta versions of TW. It lets you register and run exes from tiddlywiki

@@ -239,6 +239,24 @@ https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compa
 
 
 
+$:/ext/Tiddly Wiki Home Button source code
+
+https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/home.tid
+
+
+
+$:/ext/TiddlyWiki Save Button source code
+
+https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/PageControls/savewiki.tid
+
+
+
+$:/ext/TiddlyWiki TopBar Menu
+
+https://github.com/Jermolene/TiddlyWiki5/blob/master/core/ui/TopRightBar/menu.tid
+
+
+
 $:/ext/W3.org HTML401 Meta
 
 https://www.w3.org/TR/html401/struct/global.html#h-7.4.4
@@ -1982,11 +2000,19 @@ Activities\How create Desktop Shortcut to Website using Google Chrome Android
 
 
 
+Activities\How create desktop shortcut using TotalCommander Android
+
+
+
 Activities\How create Excel Macro using Excel for Windows
 
 
 
 Activities\How create Screenshot using Screenshot Easy Android
+
+
+
+Activities\How create text file using TotalCommander Android
 
 
 
@@ -2026,7 +2052,7 @@ Activities\How enable Microsoft Remote Desktop using Windows Settings
 
 
 
-Activities\How encript card contents using TiddlyWiki Editor
+Activities\How encrypt card contents using TiddlyWiki Settings
 
 
 
@@ -2078,6 +2104,10 @@ Activities\How extract image snapshots from video file using FFMpeg Windows
 
 
 
+Activities\How filter on unicode characters using TiddlyWiki Code
+
+
+
 Activities\How filter title list using TiddlyWiki Code
 
 
@@ -2087,6 +2117,10 @@ Activities\How find earth plus-code area using Plus.codes Website
 
 
 Activities\How find Git program used with GitHub for Windows
+
+
+
+Activities\How find sample code in TiddlyWiki repository using GitHub.com Website
 
 
 
@@ -2174,6 +2208,10 @@ Activities\How format html file Telephone Numbers on Apple computers using HTML5
 
 
 
+Activities\How format plain text to stay on same line using TiddlyWiki Code
+
+
+
 Activities\How format plain text using TiddlyWiki Code
 
 
@@ -2214,6 +2252,34 @@ Activities\How link to external files using TiddlyWiki Code
 
 
 
+Activities\How list all unicode characters in a text string using TiddlyWiki Code
+
+
+
+Activities\How list and view all cards using TiddlyWiki Code
+
+
+
+Activities\How list links from numbered fields using TiddlyWiki Code
+
+
+
+Activities\How list links in standard format using TiddlyWiki Code
+
+
+
+Activities\How list links of prefixed cards using TiddlyWiki Code
+
+
+
+Activities\How list recently changed cards using TiddlyWiki Code
+
+
+
+Activities\How make pagination buttons using TiddlyWiki Code
+
+
+
 Activities\How navigate to card using TiddlyWiki Code
 
 
@@ -2223,6 +2289,10 @@ Activities\How parse Instapaper Articles archive using TiddlyWiki Code
 
 
 Activities\How parse MBOX email archive using VB.Net Code
+
+
+
+Activities\How poll Downloads folder to move TiddlyWiki updated files using VB.Net Code
 
 
 
@@ -2238,11 +2308,23 @@ Activities\How reference external font files using TiddlyWiki Code
 
 
 
+Activities\How reference macros stored in another card using TiddlyWiki Code
+
+
+
 Activities\How remote control Android computer using AnyDesk Android
 
 
 
 Activities\How remote control Windows computer using VNC Viewer Android
+
+
+
+Activities\How remove list entries using TiddlyWiki Code
+
+
+
+Activities\How reveal sections of a card using TiddlyWiki Code
 
 
 
@@ -2258,11 +2340,23 @@ Activities\How run program using QLua Console Android
 
 
 
+Activities\How save Wiki and Export HTML using TiddlyWiki Code
+
+
+
+Activities\How search all fields using TiddlyWiki Code
+
+
+
 Activities\How set card field using TiddlyWiki Code
 
 
 
 Activities\How set windows clipboard text using TiddlyWiki Code
+
+
+
+Activities\How setup keyboard shortcut using TiddlyWiki Code
 
 
 
@@ -2286,11 +2380,23 @@ Activities\How show image using TiddlyWiki Code
 
 
 
+Activities\How show local video or audio file using TiddlyWiki Code
+
+
+
 Activities\How show sub-html file in card using TiddlyWiki Code
 
 
 
 Activities\How show sub-html file in html file using HTML5 Code
+
+
+
+Activities\How show text differences using TiddlyWiki Code
+
+
+
+Activities\How show wikitext from another card using TiddlyWiki Code
 
 
 
@@ -2350,11 +2456,27 @@ Activities\How split code lines using TiddlyWiki Code
 
 
 
+Activities\How split text lines into separate fields using TiddlyWiki Code
+
+
+
+Activities\How store card wikitext translated to html using TiddlyWiki Code
+
+
+
 Activities\How store current card Title without Draft Of prefix using TiddlyWiki Code
 
 
 
 Activities\How store data dictionary records using TiddlyWiki Code
+
+
+
+Activities\How store data from an edit text box using TiddlyWiki Code
+
+
+
+Activities\How store tag list from macro results using TiddlyWiki Code
 
 
 
@@ -2370,11 +2492,23 @@ Activities\How test boolean automatic type conversion using JavaScript Code
 
 
 
+Activities\How test JavaScript code using TiddlyWiki Code
+
+
+
+Activities\How test regular expression code using TiddlyWiki Code
+
+
+
 Activities\How test VB.Net code using DCoder Android
 
 
 
 Activities\How unescape html character literals using JavaScript Bookmarklet
+
+
+
+Activities\How upload file using TiddlyWiki Code
 
 
 
@@ -3060,6 +3194,36 @@ How create Desktop Shortcut to Website using Google Chrome Android\Form e1\Googl
 
 
 
+How create desktop shortcut using TotalCommander Android\Form e1\TotalCommander Android
+
+"""
+Note: You can also create a Website shortcut on the Desktop from Google Chrome
+Note: You can also create a Browser shortcut to a local folder
+
+[Total Commander directory]
+- Hold down on file entry named like *.html -> Opens menu
+
+- [context menu]
+- Click option Create link on desktop -> Opens dialog
+
+- [Create link dialog, main page, command line section]
+- Click button '>>' -> Opens dialog
+
+- [Choose app dialog, main page]
+- Click option Choose app * -> Navigates page
+
+- [Choose app dialog, Choose app * page]
+- Click option Chrome -> Navigates page
+
+- [Create link dialog, main page]
+- Click button OK / Apply -> Closes dialog
+
+[Android Desktop icons]
+- Note: The icon was added to the desktop automatically
+
+
+
+
 How create Excel Macro using Excel for Windows\Form e1\Excel for Windows
 
 """
@@ -3094,6 +3258,27 @@ How create Screenshot using Screenshot Easy Android\Form e2\Screenshot Easy Andr
 """
 - * Open app Screenshot Easy
 
+
+
+
+
+How create text file using TotalCommander Android\Form e1\TotalCommander Android
+
+"""
+[Total Commander directory]
+- [Top of the directory]
+- Hold down on the '..' button to see the menu -> Opens menu
+- - or Hold down on any subdirectory name to see the menu -> Opens menu
+
+- [context menu]
+- Click option New Text file -> Opens dialog
+
+- [Create new text file dialog]
+- Enter a new text file name
+- Click button OK -> Closes dialog
+
+- [Directory list]
+- Note: The new file was added to the current folder
 
 
 
@@ -3545,7 +3730,7 @@ How enable Microsoft Remote Desktop using Windows Settings\Form e1\Windows Setti
 
 
 
-How encript card contents using TiddlyWiki Settings\Form e1\TiddlyWiki Settings
+How encrypt card contents using TiddlyWiki Settings\Form e1\TiddlyWiki Settings
 
 """
 [Wiki file]
@@ -3912,6 +4097,25 @@ C:\UrPath\ffmpeg.exe -i "C:\UrPath\UrFile.mp4" -r 0.083 -s 320x180 "UrPath\UrSub
 
 
 
+How filter on unicode characters using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+The &amp;#x005B; code specifies the --&#x005B;-- character. The Wikify widget can evaluate the codepoint and store the unicode character in a variable. Then you can use the variable in a filter.
+
+```
+\define calc_open_bracket()&#x005B;
+<$wikify name=lit_open_bracket text=<<calc_open_bracket>> >
+<$list variable=cur_title filter="[tag[T!]sort[]]">
+<$list variable=filter_text_contents filter="[<cur_title>get[text]split<lit_open_bracket>count[1]!match[1]]">
+
+<$link to=<<cur_title>> />
+</$list><!--filter_text_contents-->
+</$list><!--cur_title-->
+</$wikify><!--lit_open_bracket-->
+```
+
+
+
+
 How filter title list using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 !!Math
@@ -3996,6 +4200,51 @@ Under the app-UrVersion folder, find the Git.exe program
 
 ```
 app-UrVersion\resources\app\git\cmd\git.exe
+
+
+
+
+How find sample code in TiddlyWiki repository using GitHub.com Website\Form e1\GitHub.com Website
+
+!!TiddlyWiki Git repository sample code
+
+[Home button]
+<<ext "Tiddly Wiki Home Button source code">>
+
+```
+{{$:/core/images/home-button}}
+```
+
+<<<
+{{$:/core/images/home-button}}
+<<<
+
+
+[Save button]
+<<ext "TiddlyWiki Save Button source code">>
+
+```
+<$action-sendmessage $message="tm-save-wiki" $param={{$:/config/SaveWikiButton/Template}} filename=<<site-title>>/>
+```
+
+* This code says I can specify my own download file name
+
+```
+<span class="tc-dirty-indicator">
+```
+
+* This code changes the color of elements within the `<span>` to red when the Wiki file has not been saved
+
+[TiddlyWiki TopBar Menu]
+
+<<ext "TiddlyWiki TopBar Menu">>
+
+```
+<$button set="$:/state/sidebar" setTo="no"/>
+<$button set="$:/state/sidebar" setTo="yes"/>
+```
+
+* These lines show that the `$:/state/sidebar` Card is "no" to hide the sidebar, or "yes" show it
 
 
 
@@ -4553,6 +4802,155 @@ How format html file Telephone Numbers on Apple computers using HTML5 Meta Tag\F
 
 
 
+How format plain text to stay on same line using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!! Use CSS white-space tag
+
+* The CSS `white-space:nowrap;` disables normal text wrapping
+* This is useful when you have several smaller phrases that should not be separated visually onto different lines
+* Note: This can make the line extend past the edge of the browser window, requiring scrolling to see the rest
+
+!!Sample Code that can split phrases
+
+```
+A code line (1) A code line (2) A code line (3) A code line (4) A code line (5) A code line (6) A code line (7) A code line (8) A code line (9) A code line (10) A code line (11) A code line (12) A code line (13) A code line (14)
+```
+
+<<<
+Results:
+
+A code line (1) A code line (2) A code line (3) A code line (4) A code line (5) A code line (6) A code line (7) A code line (8) A code line (9) A code line (10) A code line (11) A code line (12) A code line (13) A code line (14)
+<<<
+
+!!Sample Code that can keeps short phrases together
+
+```
+@@white-space:nowrap;A code line (1)@@ @@white-space:nowrap;A code line (2)@@ @@white-space:nowrap;A code line (3)@@ @@white-space:nowrap;A code line (4)@@ @@white-space:nowrap;A code line (5)@@ @@white-space:nowrap;A code line (6)@@ @@white-space:nowrap;A code line (7)@@ @@white-space:nowrap;A code line (8)@@ @@white-space:nowrap;A code line (9)@@ @@white-space:nowrap;A code line (10)@@ @@white-space:nowrap;A code line (11)@@ @@white-space:nowrap;A code line (12)@@ @@white-space:nowrap;A code line (13)@@ @@white-space:nowrap;A code line (14)@@
+```
+
+<<<
+Results:
+
+@@white-space:nowrap;A code line (1)@@ @@white-space:nowrap;A code line (2)@@ @@white-space:nowrap;A code line (3)@@ @@white-space:nowrap;A code line (4)@@ @@white-space:nowrap;A code line (5)@@ @@white-space:nowrap;A code line (6)@@ @@white-space:nowrap;A code line (7)@@ @@white-space:nowrap;A code line (8)@@ @@white-space:nowrap;A code line (9)@@ @@white-space:nowrap;A code line (10)@@ @@white-space:nowrap;A code line (11)@@ @@white-space:nowrap;A code line (12)@@ @@white-space:nowrap;A code line (13)@@ @@white-space:nowrap;A code line (14)@@
+<<<
+
+!! Hard-line breaks using CSS styles
+
+* New card name = UrStylesheetCardName
+* Tag = $:/tags/Stylesheet
+
+```
+.tc-tiddler-body {
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+```
+
+* Note: When using this alternate CSS, wiki text markup will be ignored unless preceded by a double-spaced line
+* Note: The card's Preview window was not using the same CSS stylesheet changes as the committed card
+
+Sample Code:
+
+```
+*bullet 1
+*bullet 2
+*bullet 3
+Pressing enter creates a new line, and does not continue the previous wikitext bullet line.
+Every hard line break is shown like you would see in a text file or a ",,,,",,,," wikitext block.
+*These lines start with a wikitext code just like the ones above.
+*Leading wikitext codes are ignored until preceded by a double-spaced line
+
+*bullet 4 requires a preceding double-spaced line to be interpreted as wikitext
+```
+
+<<<
+Results:
+
+```
+* bullet 1
+* bullet 2
+* bullet 3
+
+Pressing enter creates a new line, and does not continue the previous wikitext bullet line.
+Every hard line break is shown like you would see in a text file or a """ wikitext block.
+*These lines start with a wikitext code just like the ones above.
+*Leading wikitext codes are ignored until preceded by a double-spaced line
+
+* bullet 4 requires a preceding double-spaced line to be interpreted as wikitext
+```
+<<<
+
+!! Apply stylesheet to cards with specific tag `linewrap`
+
+* New card name = UrStylesheetCardName
+* Tag = $:/tags/Stylesheet
+
+```
+[data-tags*="linewrap"] .tc-tiddler-body {
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+```
+
+!! Apply Styles to In-line Text
+
+* Start a text block with @,,,,@ and the CSS styles with no spaces
+
+Sample Code:
+
+```
+@@word-break:normal;word-wrap:break-word;white-space:pre-wrap;
+These are
+separate lines
+here
+@@
+
+This is
+one big
+line
+```
+
+<<<
+Result:
+
+```
+These are
+separate lines
+here
+
+This is one big line
+```
+<<<
+
+* or start in the middle of a text block
+
+Sample Code:
+
+```
+This is
+one big
+line@@word-break:normal;word-wrap:break-word;white-space:pre-wrap; here.
+Followed by a second line,
+and a third here@@. And this
+extends the
+third line.
+```
+
+<<<
+Result:
+
+```
+This is one big line here.
+Followed by a second line,
+and a third here. And this extends the third line.
+```
+<<<
+
+
+
+
 How format plain text using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 !! Use the TextWidget to ignore WikiText formatting
@@ -4607,6 +5005,268 @@ Results:
 `still black colored text`
 ```
 <<<
+
+
+You can type most standard text without problems. Leading, repeated, or paired special characters may need escaped.
+
+!Vertical Spacing
+
+```
+Pressing enter at the end of a line does not start a new paragraph.
+Both of these lines are one paragraph.
+
+You must leave a blank line between text lines to get a paragraph.
+Press enter twice.
+```
+
+For example, see how the above two paragraphs are shown below:
+
+Pressing enter at the end of a line does not start a new paragraph.
+Both of these lines are one paragraph.
+
+You must leave a blank line between text lines to get a paragraph.
+Press enter twice.
+
+
+!Leading Special Characters
+
+!!Bulleted List Entry
+
+```
+*Bulleted List Entry
+```
+
+*Bulleted List Entry
+
+Leading with an asterisk creates a bulleted list entry. To escape, prefix with four single-quotes.
+
+If you want a single blank line between two bullet points, use a !''''! Heading Line without any title text.
+
+```
+''''*Bulleted List Entry
+```
+
+''''*Bulleted List Entry
+
+!!Heading Line
+
+```
+!Heading Line
+```
+
+Starting a new paragraph line with an exclamation mark (!) results in a heading line.
+
+```
+!Heading Line
+```
+
+The above heading markup starts with an exclamation mark. To escape, prefix with four single-quotes.
+
+```
+''''!Heading Line
+```
+
+''''!Heading Line
+
+!!Mono-spaced Text Block
+
+```
+ ```
+ Mono-spaced Text Block
+ ```
+```
+
+```
+Mono-spaced Text Block
+```
+
+Leading with a triple back-tick creates a mono-space text block. To escape, surround the triple back-tick with doubled square-brackets.
+
+```
+[[''']] Regular typeface
+```
+
+[[```]] Regular typeface
+
+!!Numbered List Entry
+
+```
+#Numbered List Entry
+```
+
+#Numbered List Entry
+
+Leading with a pound-sign creates a numbered list entry. To escape, prefix with four single-quotes.
+
+```
+''''#Numbered List Entry
+```
+
+''''#Numbered List Entry
+
+!!Quoted text block
+```
+<<<
+Quoted text block
+<<<
+```
+
+<<<
+Quoted text block
+<<<
+
+Leading with a triple less-than creates a quoted text block. To escape, surround the 
+
+```
+''''<<< Unquoted text
+```
+
+''''<<< Unquoted text
+
+!!URL Links
+
+```
+https://tiddlywiki.com/
+```
+
+https://tiddlywiki.com/
+
+Start text with an "http'''':/''''/" "http'''':/''''/" will create a URL link. To escape, place four single-quotes before the colon and between the double forward-slashes.
+
+```
+https'''':/''''/tiddlywiki.com/
+```
+
+https'''':/''''/tiddlywiki.com/
+
+
+!Repeated Special Characters
+
+```
+''Bold Text'' //Italic Text// ~~Strike-through Text~~ __Underlined Text__ ^^Raised-Small Text^^ ,,Lowered-Small Text,, `Mono-spaced Text`
+```
+
+''Bold Text'' //Italic Text// ~~Strike-through Text~~ __Underlined Text__ ^^Raised-Small Text^^ ,,Lowered-Small Text,, `Mono-spaced Text`
+
+A number of repeated special characters are used as Wiki Markup to format text. To escape, place four single-quotes between the doubled characters or surround the doubled characters with doubled square-braces.
+
+```
+[['']]Bold Text[['']] /''''/Italic Text/''''/ ~''''~Strike-through Text~''''~ _''''_Underlined Text_''''_ ^''''^Raised-Small Text^''''^ ,'''',Lowered-Small Text,'''', [[`]]Mono-spaced Text[[`]]
+```
+
+[['']]Bold Text[['']] /''''/Italic Text/''''/ ~''''~Strike-through Text~''''~ _''''_Underlined Text_''''_ ^''''^Raised-Small Text^''''^ ,'''',Lowered-Small Text,'''', [[`]]Mono-spaced Text[[`]]
+
+!Paired Special Characters
+
+!!Literal Text
+
+```
+[[Literal Text]]
+```
+
+[[Literal Text]]
+
+Surrounding text with doubled square-brackets shows the literal surrounded text without applying formatting. To escape, place four single-quotes between the first doubled square-brackets.
+
+```
+[''''[Literal Text]]
+```
+
+[''''[Literal Text]]
+
+!!Transcluded Text
+
+```
+{{Other Tiddler Title}}
+
+Note: The other tidder's content is "Other Tiddler Transcluded Text".
+```
+
+{{Other Tiddler Title}}
+
+Surrounding text with doubled curly-braces shows the full content of another tiddler. To escape, place four single-quotes between the first doubled curly-braces.
+
+```
+{''''{Other Tiddler Title}}
+```
+
+{''''{Other Tiddler Title}}
+
+!!HTML Markup
+
+```
+<b>HTML Markup</b>
+```
+
+<b>HTML Markup</b>
+
+Surrounding text with angled-brackets uses HTML formatting. To escape, rename the first angle-bracket to &lt'''';
+
+```
+&lt;b>HTML Markup</b>
+```
+
+&lt;b>HTML Markup</b>
+
+!!HTML Literals
+
+```
+&lt;
+
+Note: &lt; represents a left angle-bracket, or the less-than symbol (<).
+```
+
+&lt;
+
+Surrounding text with an ampersand (&) and a semi-colon translate to an HTML literal. To escape, place four single-quotes after the ampersand.
+
+```
+&lt;
+```
+
+&''''lt;
+
+
+!!CSS Styles
+
+You can apply CSS styles in-line with the text. Make sure you put the semi-colon at the end of the style list.
+
+```
+You can apply @@background-color:yellow; CSS styles @@ in-line with the text.
+```
+
+You can apply @@background-color:yellow; CSS styles @@ in-line with the text.
+
+
+!!Tables
+
+```
+|!Cell1 |!Cell2 |
+|Cell3 |Cell3 |
+
+|^top left |^ top center |^ top right|
+|middle left | middle center | middle right|
+|,bottom left |, bottom center |, bottom right|
+
+
+To merge a table cell with the one above, use the special cell text ~. To merge a cell with the one to its left use the text <. To merge one to its right use >. For example:
+
+|Cell1 |Cell2 |Cell3 |Cell4 |
+|Cell5 |Cell6 |Cell7 |<|
+|Cell5 |~|Cell7 |Cell8 |
+|>|Cell9 |Cell10 |Cell11 |
+
+assigns the CSS classes "myclass" and "anotherClass" to the table
+gives the table the caption "This is a caption"
+adds a header row of cells with the text "Header"
+adds a footer row of cells with the text "Footer"
+|myclass anotherClass|k
+|This is a caption |c
+|Cell1 |Cell2 |
+|Cell3 |Cell3 |
+|Header|Header|h
+|Footer|Footer|f
+```
 
 
 
@@ -4823,6 +5483,255 @@ How link to external files using TiddlyWiki Code\Form e1\TiddlyWiki Code
 {{ext $ur_extcard_pk$}}<div style="float:right">[[_|ext $ur_extcard_pk$]]</div>
 \end
 
+
+
+
+How list all unicode characters in a text string using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\define CharRef(ur_code, ur_line_grouping)
+<$list filter="[[$ur_code$]divide[$ur_line_grouping$]floor[]] " variable=div_val>
+<$list filter="[[$ur_code$]divide[$ur_line_grouping$]match<div_val>] "><br><sub>$ur_code$
+<<glbl_dec_to_hex5 "$ur_code$">>
+</sub><br>
+</$list>
+</$list>
+[&#$ur_code$;]
+\end
+
+https://en.wikipedia.org/wiki/Unicode_block
+
+https://en.wikipedia.org/wiki/Plane_(Unicode)
+
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef LineGrouping" text=""/>
+Line Grouping = 10
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef LineGrouping" text="16"/>
+Line Grouping = 16
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef CharacterListBase" text=""/>
+Clear selection
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef CharacterListBase" text="0"/>
+Show Base Multilingual Plane (BMP = 0-65535, 0x0-0xFFFF)
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef CharacterListBase" text="65536"/>
+Show Supplementary Multilingual Plane (SMP = 65536-131071, 0x10000-0x1FFFF)
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef CharacterListBase" text="131072"/>
+Show Supplementary Ideographic Plane (SIP = 131072-196607, 0x2000-0x2FFFF)
+</$button>
+
+<$button>
+<$action-setfield $tiddler="$:/state/mcr CharRef CharacterListBase" text="196608"/>
+Show Tertiary Ideographic Plane (TIP = 196608-262143, 0x3000-0x3FFFF)
+</$button>
+
+Note: Planes 4 to 13 (planes 4 to D in hexadecimal): No characters have yet been assigned to Planes 4 through 13
+
+Note: Plane 14 (E in hexadecimal), the Supplementary Special-purpose Plane (SSP)
+
+Note: Plane 15 (plane F in hexadecimal) = Supplementary Private Use Area-A (PUA-A), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+Note: Plane 16 (plane 10 in hexadecimal) = Supplementary Private Use Area-B (PUA-B), is only available for use by parties outside the ISO and the Unicode Consortium.
+
+@@font-family: "Lucida Console", Courier, monospace;
+<$list filter="[{$:/state/mcr CharRef LineGrouping}!match[]else[10]] " variable=line_grouping>
+<$list filter="[[$:/state/mcr CharRef CharacterListBase]get[text]!match[]]">
+<$list filter="[range[512]subtract[1]multiply[128]add{$:/state/mcr CharRef CharacterListBase}]" variable=cur_block>
+<h2><<cur_block>></h2>
+<$list filter="[range[128]subtract[1]] +[add<cur_block>] " variable=cur_code>
+<$macrocall $name=CharRef ur_code=<<cur_code>> ur_line_grouping=<<line_grouping>> />
+</$list>
+</$list>
+</$list>
+</$list>
+```
+
+```
+\define dec_to_u_hex4()
+<$list variable=cur_d4 filter="[[$(dec_num)$]divide[16]floor[]divide[16]floor[]divide[16]floor[]]"
+><$list variable=rem_d4 filter="[[0]subtract<cur_d4>multiply[16]multiply[16]multiply[16]add[$(dec_num)$]]"
+><$list variable=cur_d3 filter="[<rem_d4>divide[16]floor[]divide[16]floor[]]"
+><$list variable=rem_d3 filter="[[0]subtract<cur_d3>multiply[16]multiply[16]add<rem_d4>]"
+><$list variable=cur_d2 filter="[<rem_d3>divide[16]floor[]]"
+><$list variable=rem_d2 filter="[[0]subtract<cur_d2>multiply[16]add<rem_d3>]"
+><$list variable=hex filter="[[;]addsuffix<cur_d4>addsuffix[;]addsuffix<cur_d3>addsuffix[;]addsuffix<cur_d2>addsuffix[;]addsuffix<rem_d2>split[;10]join[A]split[;11]join[B]split[;12]join[C]split[;13]join[D]split[;14]join[E]split[;15]join[F]split[;]join[]]"
+>\u<<hex>></$list><!--hex
+--></$list><!--rem_d2
+--></$list><!--cur_d2
+--></$list><!--rem_d3
+--></$list><!--cur_d3
+--></$list><!--rem_d3
+--></$list><!--cur_d4
+-->
+\end
+\define entry_hexcode(ur_char, ur_code_page)
+<$list variable=cur_codepage filter="""[[$ur_code_page$]!match[]else[0]multiply[256]]""">
+<$list variable=dec_num filter="""[range[256]add<cur_codepage>]""">
+<$wikify name=hex_unicode text=<<dec_to_u_hex4>> >
+<$list filter="""[[$ur_char$]regexp<hex_unicode>]""" variable=match_text>
+-$ur_char$-<<hex_unicode>>-&amp;#<<dec_num>>;
+</$list><!--match_text-->
+</$wikify><!--hex_unicode-->
+</$list><!--cur_unicode-->
+</$list><!--cur_unicode-->
+\end
+\define unicode_points(ur_pk)
+<$list variable=code_page filter="[[$:/state/unicode_points_codepage]get[text]else[0]]">
+
+Code page = <<code_page>> <$button
+
+style="margin-left:30px">
+<$list variable="next_page" filter="[<code_page>add[1]]"><$action-setfield $tiddler="$:/state/unicode_points_codepage" text=<<next_page>>/></$list>
+Next page
+</$button><$button
+
+style="margin-left:30px">
+<$action-setfield $tiddler="$:/state/unicode_points_codepage" text="0"/>
+Reset
+</$button><br>
+
+
+<$list variable=cur_char filter="[[$ur_pk$]get[text]splitregexp[\u005D]count[]!match[1]!match[0]]">-&#x005D;-\u005D-&amp;#93;
+<br>
+<br>
+</$list><!--cur_char-->
+<$list variable=cur_char filter="[[$ur_pk$]get[text]splitregexp[\u0060]count[]!match[1]!match[0]]">-&#x0060;-\u0060-&amp;#96;
+<br>
+<br>
+</$list><!--cur_char-->
+<$list variable=cur_char filter="[[$ur_pk$]get[text]splitregexp[\u005D]join[]splitregexp[\u0060]join[]split[]each:value[]sort[]]">-<<cur_char>>-
+<$macrocall $name=entry_hexcode ur_code_page=<<code_page>> ur_char=<<cur_char>> />
+<br>
+<br>
+</$list><!--cur_char-->
+</$list><!--code_page-->
+\end
+
+<<unicode_points "UrPK">>
+
+
+
+How list and view all cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$list filter="[all[tiddlers]!tag[EXTLINK]!tag[IMG]!tag[INDEX]!tag[MCR]!tag[META]!has[draft.of]!is[image]!is[tag]!is[system]has[tags]!prefix[undefined]sort[title]]">
+<hr>
+<h2><$link to=<<currentTiddler>> /></h2>
+{{||$:/core/ui/ViewTemplate/tags}}
+<$transclude mode="block"/>
+</$list>
+
+
+
+How list links from numbered fields using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<ol>
+<$list filter="[<currentTiddler>fields[]prefix[e]sort[]]" variable=lookup_name>
+<$list filter="[<currentTiddler>get<lookup_name>]" variable=ref_card_pk>
+<$list filter="[<ref_card_pk>get[img]else[]]" variable=ref_img_pk>
+<li><$link to=<<ref_card_pk>> />@@float: right;overflow: auto;vertical-align: top;padding-left: 10px;<$image width=200px source=<<ref_img_pk>> />@@<div style="clear:both;"></div></li>
+</$list>
+</$list>
+</$list>
+</ol>
+
+
+
+
+How list links in standard format using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<<list-links filter:"[tag[DOC]field:level[1]sort[title]] [tag[DOC]field:level[]sort[title]]">>
+
+
+
+How list links of prefixed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<ol>
+<$list filter="[<currentTiddler>addsuffix[\]]">
+<$list filter="[all[tiddlers]prefix<currentTiddler>sort[]]">
+<li><$link to=<<currentTiddler>> /></li>
+</$list>
+</$list>
+</ol>
+
+
+
+
+How list recently changed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+
+How make pagination buttons using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\define page_next()
+<$list variable="filter_prev_page" filter="[<page_pk>get[text]!match[0]!match[]]">
+<$button style="margin-left:30px">
+<$action-setfield $tiddler=<<page_pk>> text=""/>
+First page
+</$button>
+
+<$button style="margin-left:30px">
+<$list variable="next_page" filter="[<cur_page_skip>subtract[10]]"><$action-setfield $tiddler=<<page_pk>> text=<<next_page>>/></$list>
+Previous page
+</$button>
+</$list><!--filter_prev_page-->
+
+<$button style="margin-left:30px">
+<$list variable="next_page" filter="[<cur_page_skip>add[10]]"><$action-setfield $tiddler=<<page_pk>> text=<<next_page>>/><$action-navigate $to=<<card_pk>> $scroll="yes"/></$list>
+Next page
+</$button><br>
+<!--***page_next***-->
+\end
+<$list variable="card_pk" filter="[<currentTiddler>]">
+<$list variable="popup_pk" filter="[<currentTiddler>removeprefix[Draft of ']removesuffix[']addprefix[$:/state/]] [<currentTiddler>!prefix[Draft of ']addprefix[$:/state/]]">
+
+<$list variable="page_pk" filter="[<popup_pk>addsuffix[-cur_page]]">
+<$list variable="cur_page_skip" filter="[<page_pk>get[text]!match[]else[0]]">
+<$list variable="cur_page_num"filter="[<cur_page_skip>add[1]]">
+<$list variable="cur_page_through" filter="[<cur_page_num>subtract[1]add[10]]">
+<<page_next>>
+
+<$list variable="subdir_count" filter="[{File List Data}splitregexp[\n]!suffix[.JPG]!suffix[.jpg]count[]]">
+
+Subdirectories <<cur_page_num>> through <<cur_page_through>>
+
+Number of subdirectories: <<subdir_count>><br>
+<$list variable="cur_subdir_path" filter="[{File List Data}splitregexp[\n]!suffix[.JPG]!suffix[.jpg]butfirst<cur_page_num>first[10]]">
+
+<$list variable="raw_image_count" filter="[{File List Data}splitregexp[\n]prefix<cur_subdir_path>uppercase[]suffix[.JPG]count[]addprefix[ (]addprefix<cur_subdir_name>addsuffix[ photo]]">
+<<raw_image_count>>
+</$list><!--raw_image_count-->
+
+</$list><!--cur_subdir_path-->
+</$list><!--subdir_count-->
+<<page_next>>
+</$list><!--cur_page_through-->
+</$list><!--cur_page_num-->
+</$list><!--page_pk-->
+</$list><!--popup_pk-->
+</$list><!--card_pk-->
 
 
 
@@ -5121,6 +6030,50 @@ End Namespace 'Mx
 
 
 
+How poll Downloads folder to move TiddlyWiki updated files using VB.Net Code\Form e1\VB.Net Code
+
+Make a small form with a timer that moves downloaded TiddlyWiki files back to their original folder
+
+- I have not tried to play around with running TW5 on Node.js. I don't prefer having to use TiddlyDesktop as a separate web browser. Installing a plugin would only save my wiki changes under the downloads directory. I like using a portable web browser on my thumb drive, and I am able to run non-admin programs on my computer. So I made a small program with a timer to move each saved TW file from my Downloads directory back to its original loading location.
+
+- I created a small program with a multi-line textbox, and a timer to poll the Downloads folder every five seconds. It moves all the TWMove files in alphabetical order, so the latest timestamped file will be processed last. It finds the destination path as part of the filename. (Moving assumes the original TW.html file is not locked by the browser. This happened to me once, but I just had to restart the browser to release the file lock.)
+
+- I leave the program running all the time I am logged in. Alt-S saves the data in TiddlyWiki to the Downloads folder. After at most five seconds, the timer moves the file to overwrite the original location. The form flashes on the screen for one second and then hides itself until another move.
+
+- The program's text box shows the folder I'm polling. When it picks up a file, the original path is pre-pended to the textbox's list of processed files and the form flashes in the foreground for a second. (I could have made a system tray pop-up notification instead.)
+
+
+
+
+How poll Downloads folder to move TiddlyWiki updated files using VB.Net Code\Form e2\TiddlyWiki Code
+
+- I created an alt-S shortcut macro to save the current wiki with a specific filename prefix (TWMove_), the entire file path - with substitutions for path-specific characters (: and \), and a time stamp. (Using split/join is accurate enough for me.)
+
+Example: TWMove_C-colon-slash-RootDirOne-slash-SubDirTwo-slash-UrWiki.html
+
+```
+
+\define ExportSaveAll(ur_filename ur_stamp)
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
+/>
+\end
+<$list filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.html]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
+<$macrocall $name="ExportSaveAll" ur_filename=<<currentTiddler>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> />
+</$list>
+```
+
+
+
+
+How poll Downloads folder to move TiddlyWiki updated files using VB.Net Code\Form e3\Google Chrome Windows
+
+- I have my web browser save all downloaded files to a specific Downloads folder. (Specifically on Google Chrome, I did install a plugin to automatically hide the dowloaded files bar. It was getting annoying.)
+
+
+
+
 How print document using UPS.com Website\Form e1\UPS.com Website
 
 """
@@ -5271,6 +6224,13 @@ How reference external font files using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 
 
+How reference macros stored in another card using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\import [[mcr date_list]]
+
+
+
 How remote control Android computer using AnyDesk Android\Form e1\Google Play Store Android
 
 """
@@ -5323,6 +6283,96 @@ How remote control Windows computer using VNC Viewer Android\Form e4\VNC Viewer 
 
 - [Alt tab]
 - Use Ctrl-Esc to get to the Windows Start Menu and the Task Bar to change windows
+
+
+
+
+How remove list entries using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+- One list of titles can be removed from another list.
+
+```
+<$vars ur_list="a bc d" skip_list="bc f">
+
+<$list variable=cur_card filter="[enlist<ur_list>remove<skip_list>]">
+
+<<cur_card>>
+</$list>
+</$vars>
+```
+
+
+
+How reveal sections of a card using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+Title = mcr T1Reveal
+
+```
+\define t1cb(UrContent)
+<$list filter="[[$UrContent$]!match[]]">
+$UrContent$
+<$button message="tm-copy-to-clipboard" param="$UrContent$">
+Copy to clipboard
+</$button>
+</$list>
+\end
+\define t1reveal(UrPK UrSeq UrContent)
+<$list filter="[[$UrContent$]!match[]]">
+<br>
+<$reveal type="nomatch" state="$:/state/popup/$UrPK$\$UrSeq$" text="show">
+<$button set="$:/state/popup/$UrPK$\$UrSeq$" setTo="show">,,$UrSeq$,,</$button>
+</$reveal>
+<$reveal type="match" state="$:/state/popup/$UrPK$\$UrSeq$" text="show">
+<$button set="$:/state/popup/$UrPK$\$UrSeq$" setTo="hide">^^$UrSeq$^^</$button><br>
+"""
+$UrContent$
+"""
+</$reveal>
+<$list filter="[[$UrSeq$]match[Pwd]]">
+<$button message="tm-copy-to-clipboard" param="$UrContent$">
+Copy to clipboard
+</$button>
+</$list>
+</$list>
+\end
+```
+
+Card name = `mcr glbl_section_disp`
+
+Tag = `$:/tags/Macro`
+
+```
+\define glbl_section_disp(ur_title, ur_section_num)
+<$reveal type="nomatch" state="$:/state/popup/$(currentTiddler)$-popup$ur_section_num$" text="show">
+<$button class="tc-btn-invisible" set="$:/state/popup/$(currentTiddler)$-popup$ur_section_num$" setTo="show">
+
+!!$ur_title$ - Show
+</$button></$reveal>
+<$reveal type="match" state="$:/state/popup/$(currentTiddler)$-popup$ur_section_num$" text="show">
+<$button class="tc-btn-invisible" set="$:/state/popup/$(currentTiddler)$-popup$ur_section_num$" setTo="hide">
+
+!!$ur_title$
+</$button><br>
+
+<<section$ur_section_num$>>
+
+<$button style="float:right" class="tc-btn-invisible" set="$:/state/popup/$(currentTiddler)$-popup$ur_section_num$" setTo="hide">
+---
+</$button><br>
+</$reveal>
+\end
+<!--|v
+-- Card content call
+
+\define section1()
+
+section content
+
+!!!here
+
+\end
+<<glbl_section_disp "Section 1" 1>>
+^|-->
 
 
 
@@ -5474,6 +6524,73 @@ loadfile('/sdcard/qlua5/ur_file.lua')()
 
 
 
+How save Wiki and Export HTML using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\define ExportSaveAll(ur_filename ur_stamp)
+<$action-setfield $tiddler="$:/state/sidebar" text="no"/>
+<$action-setfield $tiddler="$:/state/popup/DivPopTitle" text=""/>
+<$action-setfield $tiddler="$:/state/tab/sidebar--595412856" text="$:/core/ui/SideBar/More"/>
+<$action-sendmessage $message="tm-save-wiki" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.htm"
+/>
+<$action-sendmessage $message="tm-download-file"
+$param="$:/core/templates/exporters/StaticRiver" filename="TWMove_$ur_filename$-stamp-$ur_stamp$.html"
+exportFilter="""[all[tiddlers]tag[INDEX]sort[title]][all[tiddlers]!tag[EXTLINK]!tag[INDEX]!tag[META]!prefix[Draft of]!is[image]!is[tag]!is[system]sort[title]]"""/>
+\end
+<$list filter="[{$:/info/url/full}split[file:///]join[]split[:]join[-colon-]split[.htm]join[]split[%20]join[ ]split[/]join[-fslash-]split[%]join[-percent-]]">
+<$macrocall $name="ExportSaveAll" ur_filename=<<currentTiddler>> ur_stamp=<<now format:"YYYYm0MMd0DDam0hhm0mms0ss">> />
+</$list>
+
+
+
+How search all fields using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$vars search_text_pk="$:/state/popup/SearchAllFields">
+<$list variable=show_code_pk filter="[<search_text_pk>addsuffix[-checkShowCode]]">
+<$list variable=skip_system_pk filter="[<search_text_pk>addsuffix[-checkSkipSystem]]">
+<$edit-text tiddler=<<search_text_pk>> field=text default="" placeholder="[no text yet]" autoHeight=yes tag=input/>
+<$checkbox default="no" unchecked="no" checked="yes" field="text" tiddler=<<show_code_pk>>> Show Code</$checkbox>
+<$checkbox default="yes" unchecked="no" checked="yes" field="text" tiddler=<<skip_system_pk>>> Skip System </$checkbox><br>
+<br>
+
+<$list variable=cur_search_text filter="[<search_text_pk>get[text]addsuffix[(?i)]!match[]]">
+<$list variable=cur_showcode_text filter="[<show_code_pk>get[text]else[no]]">
+<$list variable=cur_skipsystem_text filter="[<skip_system_pk>get[text]else[yes]match[yes]count[]]">
+
+<!--Card titles-->
+<$list variable=cur_pk filter="[regexp<cur_search_text>sort[]]">
+<$list variable=found_skipsystem filter="[<cur_skipsystem_text>] [<cur_pk>!is[system]count[]] +[sum[]match[1]]">
+
+<$link to=<<cur_pk>> />: title
+</$list><!--found_skipsystem-->
+</$list><!--cur_pk-->
+
+<!--Card fields-->
+<$list variable=cur_pk filter="[!regexp<cur_search_text>sort[]]">
+<$list variable=found_skipsystem filter="[<cur_pk>is[system]count[]multiply<cur_skipsystem_text>match[0]]">
+<$list variable=cur_field filter="[<cur_pk>fields[]]">
+<$list variable=found_field filter="[<cur_pk>get<cur_field>regexp<cur_search_text>]">
+
+<$link to=<<cur_pk>> />: <<cur_field>>
+<$list variable=disp_code filter="[<cur_showcode_text>match[yes]]">
+<$codeblock code=<<found_field>> />
+</$list><!--disp_code-->
+</$list><!--found_field-->
+</$list><!--cur_field-->
+
+</$list><!--found_skipsystem-->
+</$list><!--cur_pk-->
+
+</$list><!--cur_skipsystem_text-->
+</$list><!--cur_showcode_text-->
+</$list><!--cur_search_text-->
+</$list><!--skip_system_pk-->
+</$list><!--show_code_pk-->
+</$vars><!--search_text_pk-->
+
+
+
 How set card field using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 ```
@@ -5516,6 +6633,50 @@ Tags = `$:/tags/Macro`
 <<copy-to-clipboard "$ur_text$">>
 </span>
 \end
+
+
+
+How setup keyboard shortcut using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!!Pre-requisites
+
+* You need a `ur_message_to_send` to replace in the below steps
+** `tm-home` is an example message that TiddlyWiki can do
+* You need a `ur_card_pk` to replace in the below steps
+** It should describe the desired action
+
+!!Setup keyboard shortcut
+
+[New Card]
+
+* Title = $:/config/ShortcutInfo/ur_card_pk
+* Main Body text is blank
+
+[New Card]
+
+* Title = $:/config/shortcuts/ur_card_pk
+* Main Body Text =
+
+```
+alt-H
+```
+
+[New Card]
+
+* Title = keyboard action ur_card_pk
+* Tag = $:/tags/KeyboardShortcut
+* Field-Value: key =
+
+```
+((ur_card_pk))
+```
+
+* Main Body Text =
+
+```
+<$action-sendmessage $message="ur_message_to_send"/>
+```
+
 
 
 
@@ -5730,6 +6891,67 @@ Link an image in a Tiddler with 500px width
 
 
 
+How show local video or audio file using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<video width="320" height="180"
+poster="video\Frozen Sleep - Cortana Tribute by Malukah.png"
+controls preload="none">
+<source src="video\Frozen Sleep - Cortana Tribute by Malukah.webm" type=
+"video/webm">
+<source src="video\Frozen Sleep - Cortana Tribute by Malukah.ogv" type=
+"video/ogg">
+<source src="video\Frozen Sleep - Cortana Tribute by Malukah.mp4" type=
+"video/mp4">
+Your browser does not support the HTML 5 video tag.
+</video>
+```
+
+```
+<audio controls preload="none">
+<source src="audio\Frozen-Sleep-Malukah.ogg" type="audio/ogg">
+<source src="audio\Frozen-Sleep-Malukah.mp3" type="audio/mp3">
+<p>Your browser does not support the HTML 5 audio tag.</p>
+</audio>
+```
+
+* Title = mcr glbl_ext_av
+* Tag = `$:/tags/Macro`
+* Note: The paths are relative to the current website. You cannot load Video or Audio content from other websites due to browser restrictions.
+
+* Note: You can add attribute `poster="placeholder.png" ` to the Video tag if you have a specific image you want instead of the video's first frame
+
+```
+\define glbl_ext_video(UrFolder,UrVideo,UrTime)
+<video width="320" height="180"
+controls preload="metadata">
+<source src="$UrFolder$/$UrVideo$.mp4#t=$UrTime$" type=
+"video/mp4">
+Your browser does not support the HTML 5 video tag.
+</video>
+\end
+\define glbl_ext_audio(UrFolder,UrAudio,UrTime)
+<audio controls preload="none">
+<source src="$UrFolder$/$UrAudio$.mp3#t=$UrTime$" type=
+"audio/mp3">
+Your browser does not support the HTML 5 audio tag.
+</audio>
+\end
+
+<!--|v
+* Hard-coded to only use MP4 files
+
+<<glbl_ext_video "MyVideosSubFolder" "MyVideoFile" "00:01:00">>
+
+<<glbl_ext_video "file:///C:/UrFolder/UrSubFolder" "UrFilenameNoExtension" "00:01:00">>
+^|-->
+<!--|v
+<<glbl_ext_audio "MyAudioSubFolder" "MyAudioFile" "00:01:00">>
+^|-->
+
+
+
+
 How show sub-html file in card using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 Use an iFrame to run JavaScript in a TiddlyWiki
@@ -5809,6 +7031,22 @@ How show sub-html file in html file using HTML5 Code\Form e1\HTML5 Code
 ```
 <iframe src="UrPath\UrFile.html" scrolling=yes style="border-style:none;height:75%;width:100%" ></iframe>
 
+
+
+
+How show text differences using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$diff-text source={{FirstTiddler}} dest={{SecondTiddler}}/>
+
+
+
+How show wikitext from another card using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$transclude mode="block" tiddler=<<currentTiddler>> />
+
+<$transclude mode="inline" tiddler=<<currentTiddler>> field="ref_data" />
 
 
 
@@ -6337,6 +7575,197 @@ Rem to browse: <$list filter="[{$ur_temp_remcounter_pk$}]"></$list><br>
 
 
 
+How split text lines into separate fields using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+\define ui(ur_pk)
+<$wikify name=lf_char text="&#x000A;">
+<$list
+variable=ttbLINE filter="""[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbLINE]]""">
+<$list
+variable=ttbPAGE filter="""[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbPAGE]]""">
+<$list
+variable=dest_count filter="""[prefix<ttbLINE>fields:exclude[created title modified]count[]]""">
+<$list
+variable=rec_count filter="""[[$ur_pk$]get[text]splitregexp[\n]count[]]""">
+<$list
+variable=rem_count filter="""[<ttbPAGE>get[text]splitregexp[\n]count[]divide[100]trunc[]add[1]]""">
+<$list
+variable=cur_pagek filter="""[<ttbPAGE>get[pagek_seq]else[0]]""">
+
+Rem page count: <<rem_count>> | Current page: <<cur_pagek>> | <$link to=<<ttbPAGE>> /><br>
+
+
+<$list
+variable="display_snapshot_button" filter="[<ttbPAGE>get[text]else[]!match[]]">
+
+<$list
+variable="display_split_button" filter="[<rem_count>!match[0]]">
+<$button>
+
+<$list
+variable=new_line_pk filter="""[<ttbLINE>addsuffix[-]addsuffix<cur_pagek>]""">
+<$list
+variable=cur_seq filter="""[range[100]subtract[1]]""">
+<$list
+variable=new_row_seq filter="""[<cur_pagek>subtract[1]multiply[100]add<cur_seq>add[1]]""">
+<$list
+variable=rec_line filter="""[<ttbPAGE>get[text]splitregexp[\n]butfirst<cur_seq>first[]]""">
+<$action-setfield $tiddler=<<new_line_pk>> $field=<<new_row_seq>> $value=<<rec_line>>/>
+</$list><!--rec_line-->
+</$list><!--new_row_seq-->
+</$list><!--cur_seq-->
+</$list><!--new_line_pk-->
+
+<$list
+variable=rec_line filter="""[<ttbPAGE>get[text]splitregexp[\n]butfirst[100]join<lf_char>]""">
+<$action-setfield $tiddler=<<ttbPAGE>> $field="text" $value=<<rec_line>>/>
+</$list><!--rec_line-->
+
+<$list
+variable="next_page" filter="[<ttbPAGE>get[pagek_seq]add[1]]"><$action-setfield $tiddler=<<ttbPAGE>> $field="pagek_seq" $value=<<next_page>>/></$list><!--next_page-->
+
+Split Chars
+</$button></$list><!--display_split_button--></$list><!--display_snapshot_button--><$button
+style="margin-left:25px">
+
+<$list
+variable=del_line_pk filter="""[prefix<ttbLINE>]"""><$action-sendmessage $message=tm-delete-tiddler $param=<<del_line_pk>> />
+</$list><!--del_line_pk-->
+
+<$action-setfield $tiddler=<<ttbPAGE>> $field="pagek_seq" $value="1"/>
+
+<$action-setfield $tiddler=<<ttbPAGE>> $field="text" $value={{$ur_pk$}}/>
+
+Clear Chars
+</$button>
+
+<$list
+variable=found_line_pk filter="""[prefix<ttbLINE>]""">
+<$list
+variable=disp_line_pk filter="""[<found_line_pk>removeprefix<ttbLINE>removeprefix[-]]""">
+<$link to=<<found_line_pk>> ><<disp_line_pk>></$link>
+</$list><!--disp_line_pk-->
+</$list><!--found_line_pk-->
+
+Source line count: <<rec_count>><br>
+
+Dest field count: <<dest_count>>
+
+</$list><!--cur_pagek-->
+</$list><!--rem_count-->
+</$list><!--rec_count-->
+</$list><!--dest_count-->
+</$list><!--ttbPAGE-->
+</$list><!--ttbLINE-->
+</$wikify><!--lf_char-->
+\end
+
+<<ui "UrPK">>
+```
+
+```
+\define ui(ur_pk)
+<$wikify name=lf_char text="&#x000A;">
+<$list
+variable=ttbLINE filter="""[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbLINE]]""">
+<$list
+variable=ttbPAGE filter="""[[$(currentTiddler)$]split[Draft of ]join[]split[']join[]addprefix[$:/state/popup/]addsuffix[-ttbPAGE]]""">
+<$list
+variable=dest_count filter="""[prefix<ttbLINE>indexes[]count[]]""">
+<$list
+variable=rec_count filter="""[[$ur_pk$]get[text]splitregexp[\n]count[]]""">
+<$list
+variable=rem_count filter="""[<ttbPAGE>get[text]splitregexp[\n]count[]divide[100]trunc[]add[1]]""">
+<$list
+variable=cur_pagek filter="""[<ttbPAGE>get[pagek_seq]else[0]]""">
+
+Rem page count: <<rem_count>> | Current page: <<cur_pagek>> | <$link to=<<ttbPAGE>> /><br>
+
+
+<$list
+variable="display_snapshot_button" filter="[<ttbPAGE>get[text]else[]!match[]]">
+
+<$list
+variable="display_split_button" filter="[<rem_count>!match[0]]">
+<$button>
+
+<$list
+variable=new_line_pk filter="""[<ttbLINE>addsuffix[-]addsuffix<cur_pagek>]""">
+<$list
+variable=cur_seq filter="""[range[100]subtract[1]]""">
+<$list
+variable=new_row_seq filter="""[<cur_pagek>subtract[1]multiply[100]add<cur_seq>add[1]]""">
+<$list
+variable=rec_line filter="""[<ttbPAGE>get[text]splitregexp[\n]butfirst<cur_seq>first[]]""">
+<$action-setfield $tiddler=<<ttbLINE>> $index=<<new_row_seq>> $value=<<rec_line>>/>
+</$list><!--rec_line-->
+</$list><!--new_row_seq-->
+</$list><!--cur_seq-->
+</$list><!--new_line_pk-->
+
+<$list
+variable=rec_line filter="""[<ttbPAGE>get[text]splitregexp[\n]butfirst[100]join<lf_char>]""">
+<$action-setfield $tiddler=<<ttbPAGE>> $field="text" $value=<<rec_line>>/>
+</$list><!--rec_line-->
+
+<$list
+variable="next_page" filter="[<ttbPAGE>get[pagek_seq]add[1]]"><$action-setfield $tiddler=<<ttbPAGE>> $field="pagek_seq" $value=<<next_page>>/></$list><!--next_page-->
+
+Split Chars
+</$button></$list><!--display_split_button--></$list><!--display_snapshot_button--><$button
+style="margin-left:200px">
+
+<$list
+variable=del_line_pk filter="""[prefix<ttbLINE>]"""><$action-sendmessage $message=tm-delete-tiddler $param=<<del_line_pk>> />
+</$list><!--del_line_pk-->
+
+<$action-setfield $tiddler=<<ttbPAGE>> $field="pagek_seq" $value="1"/>
+
+<$action-setfield $tiddler=<<ttbPAGE>> $field="text" $value={{$ur_pk$}}/>
+
+Clear Chars
+</$button>
+
+<$link to=<<ttbLINE>> />
+<$list
+variable=found_line_pk filter="""[prefix<ttbLINE>]""">
+<$list
+variable=disp_line_pk filter="""[<found_line_pk>removeprefix<ttbLINE>removeprefix[-]]""">
+<$link to=<<found_line_pk>> ><<disp_line_pk>></$link>
+</$list><!--disp_line_pk-->
+</$list><!--found_line_pk-->
+
+Source line count: <<rec_count>><br>
+
+Dest field count: <<dest_count>>
+
+</$list><!--cur_pagek-->
+</$list><!--rem_count-->
+</$list><!--rec_count-->
+</$list><!--dest_count-->
+</$list><!--ttbPAGE-->
+</$list><!--ttbLINE-->
+</$wikify><!--lf_char-->
+\end
+
+<<ui "UrPK">>
+
+
+
+How store card wikitext translated to html using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<$wikify name=str_text_out text="&#65;">
+A = <<str_text_out>>
+</$wikify>
+
+<$wikify name=str_text_out text="''bold font''" output=html>
+B = <<str_text_out>>
+</$wikify>
+
+
+
 How store current card Title without Draft Of prefix using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 The set or list widgets' filter parameter can evaluate the text stored in a macro.
@@ -6390,6 +7819,67 @@ Use one value (last one if an index is duplicated):
 ```
 
 [[VBNetCode\Text file to JSON Lines]]
+
+
+
+How store data from an edit text box using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+\define sample_data_e1()
+<$edit-text tiddler="$:/state/popup/TestText1" field=text default="" placeholder="[no text yet]" autoHeight=yes tag=input/>
+\end
+
+\define sample_data_e2()
+<$edit-text tiddler="$:/state/popup/TestText2" field=text default="here" placeholder="[no text yet]" autoHeight=yes tag=textarea/>
+\end
+
+You can choose to edit a Card or a Card's field in a single-line or multi-line textbox.
+
+* The `default` parameter is automatically placed in the textbox when the Card does not exist
+** Typing in the box will add to the default text
+** The Card will be created when the text in the box is changed
+** Otherwise the default text will not be saved
+
+* The `placeholder` parameter is shown as greyed-out text when the Card does not exist and there is no default text, or the Card exists and the text field is empty
+** Typing in the box will overwrite the placeholder text
+
+Note: Editing a Card PK that starts with `$:/state/popup/` will not be saved and does not affect the Wiki's "dirty" flag
+
+[[$:/state/popup/TestText1]]
+<$codeblock code=<<sample_data_e1>> />
+<<sample_data_e1>>
+
+---
+[[$:/state/popup/TestText2]]
+<$codeblock code=<<sample_data_e2>> />
+<<sample_data_e2>>
+
+
+
+
+How store tag list from macro results using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+- The set or list widgets' filter option lets you evaluate macro output as a filter command.
+
+```
+\define list_prefixed_tags(ur_prefix)
+[tags[]prefix[$($ur_prefix$)$]each:value[]]
+\end
+
+<$vars positivesigner_prefix="$:/positivesigner/">
+<$set name=cur_tag filter=<<list_prefixed_tags "positivesigner_prefix">> >
+<$list variable=cur_entry filter="[enlist<cur_tag>]">
+
+<<cur_entry>>
+</$list><!--cur_entry-->
+</$set><!--cur_tag-->
+
+
+<$list variable=cur_tag filter=<<list_prefixed_tags "positivesigner_prefix">> >
+
+<<cur_tag>>
+</$list><!--cur_tag-->
+</$vars><!--positivesigner_prefix-->
+```
 
 
 
@@ -6563,6 +8053,71 @@ Note: If you use this operator to provide a default value to some variable, be a
 
 
 
+How test JavaScript code using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+* Click the button to copy the text to a javascript bookmarklet
+* Open a new tab
+* Type the letter "j" in the address bar, paste in the clipboard text, and press enter
+* The Javascript alert box shows the message
+
+```
+\define glbl_copyto_js_bookmarklet(ur_js_code)
+<pre>$ur_js_code$</pre>
+<$macrocall $name="copy-to-clipboard" src="""avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){const el = newWindow.document.createElement('textarea');const ur_str='$ur_js_code$';try {el.value =eval(ur_str)}catch(err) {el.value = err.message;}; newWindow.document.body.appendChild(el); el.select();void(newWindow.focus());}""" />
+\end
+
+<!--|v
+<<glbl_copyto_js_bookmarklet """parseInt("FF",16).toString(10);""">>
+^|-->
+
+
+
+
+How test regular expression code using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+```
+<!--|v
+Split at Regular Expression skips everything before the first period -> `.12`,  `.1` and `.or.maybe.1`
+^|-->
+
+<$vars re="^[^\.]*">
+<$list variable="found_section" filter="[[no.12]] [[no.100]] [[yes.or.maybe.100]] +[splitregexp<re>sortan[]]">
+<<found_section>>
+</$list><!--found_section-->
+</$vars>
+
+<!--|v
+Split at Regular Expression skips everything before the last period -> `1`,  `1` and `1`
+
+Each:Value gets the unique list of entries -> `2` and `1`
+
+Sort orders them numberically
+^|-->
+
+<$vars re="^.*\.">
+<$list variable="found_section" filter="[[no.12]] [[no.100]] [[yes.or.maybe.100]] +[splitregexp<re>!match[]each:value[]sortan[]]">
+<<found_section>>
+</$list><!--found_section-->
+</$vars>
+
+
+<!--|v
+Split
+^|-->
+
+<!--<$vars re="^[^\.]*"> skip up to first period excluded-->
+<!--<$vars re="^.*\."> skip up to first period included-->
+<$vars card_pk="File List Data" re="^.*\.">
+<$list variable="cur_file_ext" filter="[<card_pk>get[text]splitregexp[\n]splitregexp[\n]regexp[\.gif(?i)]] [<card_pk>get[text]splitregexp[\n]splitregexp[\n]regexp[\.jpeg(?i)]] [<card_pk>get[text]splitregexp[\n]regexp[\.jpg$(?i)]] [<card_pk>get[text]splitregexp[\n]splitregexp[\n]regexp[\.png(?i)]] [<card_pk>get[text]splitregexp[\n]splitregexp[\n]regexp[\.tif(?i)]] +[splitregexp<re>!match[]each:value[]sort[]addprefix[.]]">
+<$list variable="file_ext_count" filter="[<card_pk>get[text]splitregexp[\n]splitregexp[\n]suffix<cur_file_ext>count[]]">
+
+<<cur_file_ext>>: <<file_ext_count>> files
+</$list><!--file_ext_count-->
+</$list><!--cur_file_ext-->
+</$vars>
+
+
+
 How test VB.Net code using DCoder Android\Form e1\DCoder Android
 
 Note: I found that the DCoder app actually submitted the VB code to a web server. So there was no way for me to access the local file system.
@@ -6632,6 +8187,33 @@ How unescape html character literals using JavaScript Bookmarklet\Form e1\JavaSc
 
 ```
 avascript:document.documentElement.innerHTML='<html><body>'+document.body.innerHTML.replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&amp;','&')+'<\/body><\/html>';
+
+
+
+How upload file using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+!! Drag and drop
+* Drag a file icon from the Windows Desktop or Windows Explorer over the Wiki until you see a top-margin green bar show
+* Release the mouse to drop the file -> Opens card
+
+!! Import Card
+* Review the file list and uncheck and undesired import objects
+* Click button Import -> Creates Cards
+
+!! BrowseWidget
+
+* Create a $browse tag -> Makes button
+* Click button Choose File -> Opens dialog
+* Choose a file -> Closes dialog, opens Card
+
+!! Import Card
+* Review the file list and uncheck and undesired import objects
+* Click button Import -> Creates Cards
+
+```
+<$browse />
+```
+
 
 
 
@@ -6770,6 +8352,14 @@ User Forms\GitHub for Windows
 !!Overview
 
 GitHub for Windows calls the Git application commands
+
+
+
+User Forms\GitHub.com Website
+
+!!Overview
+
+GitHub.com Website allows you to browse public source code repository files.
 
 
 
@@ -6957,6 +8547,14 @@ User Forms\TiddlyWiki Editor
 
 
 User Forms\TiddlyWiki Settings
+
+
+
+User Forms\TotalCommander Android
+
+!!Overview
+
+TotalCommander Android allows you to browse the folder structure of the storage
 
 
 
