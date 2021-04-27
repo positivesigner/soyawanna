@@ -2226,6 +2226,10 @@ Activities\How parse MBOX email archive using VB.Net Code
 
 
 
+Activities\How print document using UPS.com Website
+
+
+
 Activities\How pull Git Repository changes using Pocket Git Android
 
 
@@ -5117,6 +5121,83 @@ End Namespace 'Mx
 
 
 
+How print document using UPS.com Website\Form e1\UPS.com Website
+
+"""
+[https://locations.theupsstore.com/]
+- Find specific store
+- Click button Start Print Order -> Opens tab
+
+[https://UrStoreNumber.upsstoreprintshop.com/DSF/SmartStore.aspx#!/Storefront]
+- [top-right search buttons, menu Category]
+- Click option Copies and Quick Prints -> Navigates page
+- [In This Category section, Quick Copies and Prints - 8.5x11 box]
+- Click button Get Started -> Opens form
+
+[Quick Copies and Prints - 8.5x11 form]
+- [Files section]
+- Click button Add Files -> Opens dialog
+- Dialog: Add Files
+- Click button Upload Files -> Opens form
+
+[Windows Open File form]
+- Change directories to find file
+- Select PDF or Image file
+- Click button OK -> Closes form, refreshes dialog
+
+[Quick Copies and Prints - 8.5x11 form]
+- Dialog: Upload Files
+- Click button Upload -> Refresh dialog
+- Click button Done -> Closes dialog, refreshes form
+- Job Name = UrJobName
+- Note: Unit Price and Total Price are shown at the bottom
+- Click button Add to Cart -> Opens dialog
+- Dialog:
+"""
+
+```
+	I have carefully reviewed and approve this job. By clicking the button, I agree that my layout, copy and spelling are as intended and accurate. I agree that my document will print exactly as it appears above and that I can no longer make changes once my order has been placed.
+```
+
+"""
+- Click button I Agree -> Closes form, updates page
+
+- [top-right buttons]
+- Click button Cart -> Navigates page
+
+- [Cart page]
+- Note: Total is shown at right
+- Click button Proceed to Checkout -> Opens dialog
+- Click tab Checkout as Guest -> Navigates tab
+- E-Mail = UrEmailAddress
+- Enter the code shown below = UrCaptchaCode
+- Click button Continue -> Closes dialog, refreshes page
+- Click button Proceed to Checkout -> Navigates page
+
+- [Select a shipping address & shipping options page]
+- Click button Proceed to Payment -> Navigates page
+
+- [How would you like to pay? page]
+- Payment Method = Credit Card
+- Card Type = UrCardType
+- Card Number = UrCardNumber
+- CVV Number = UrCVVNumber
+- First Name = UrFirstName
+- Last Name = UrLastName
+- Address Lines 1-3 = UrAddress
+- City = UrCity
+- State = UrState
+- Zip/Postal Code = UrZipCode
+- Country = UrCountry
+- Phone Number 1 = UrPhoneNumber
+- Click button Place My Order -> Navigates page
+
+- [Order Confirmation page]
+- Click button Print
+
+
+
+
 How pull Git Repository changes using Pocket Git Android\Form e1\Pocket Git Android
 
 """
@@ -6876,6 +6957,14 @@ User Forms\TiddlyWiki Editor
 
 
 User Forms\TiddlyWiki Settings
+
+
+
+User Forms\UPS.com Website
+
+!!Overview
+
+UPS.com Website allows you to order prints online for pickup at a UPS location
 
 
 
