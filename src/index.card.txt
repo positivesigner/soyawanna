@@ -2046,6 +2046,10 @@ Activities\How convert html dom to inline html css using JavaScript Bookmarklet
 
 
 
+Activities\How convert PDF file using IrfanView Windows
+
+
+
 Activities\How create a Bibliographic citation for website page using JavaScript Bookmarklet
 
 
@@ -3142,6 +3146,80 @@ document.head.parentNode.removeChild(document.head);
 document.querySelectorAll('link').forEach(function(element){element.parentNode.removeChild(element)});
 document.body.outerHTML=document.body.outerHTML;
 alert("done");
+
+
+
+
+How convert PDF file using IrfanView Windows\Form e1\GitHub.com Website
+
+"""
+- [<<ext "GitHub Artiflex GhostScript">>]
+- * Download program named like "gs9540w64.exe">>
+
+
+
+
+How convert PDF file using IrfanView Windows\Form e2\Folder Structure
+
+"""
+- [Downloads folder]
+- * Run GhostScript Installation -> Opens form
+
+
+
+
+How convert PDF file using IrfanView Windows\Form e3\GhostScript Installer
+
+"""
+- [Welcome form]
+- Click button Next -> Navigates form
+
+- [License Agreement form]
+- Click button I Agree -> Navigates form
+
+- [Choose Install Location form]
+- * Click button Install -> Navigates form
+
+- [Installing form]
+- Wait for progress bar to complete -> Navigates page
+
+- [Completing Setup form]
+- checkbox Generate map for Windows CJK TrueType fonts = clear
+- checkbox Show Readme = clear
+- Click button Finish -> Closes form
+
+
+
+
+How convert PDF file using IrfanView Windows\Form e4\IrfanView Windows
+
+"""
+- [Menu bar, Options menu]
+- Click option Properties/Settings -> Opens dialog
+
+- [Properties/Settings dialog, left-side menu]
+- Click tab PlugIns -> Navigates tab
+
+- [Properties/Settings dialog, PlugIns tab, Other PlugIns section]
+- * Click button Postscript options -> Opens dialog2
+
+- [Ghostscript PlugIn Options dialog]
+- radio-option Retrieve GS location from System Registry = set
+- Click OK -> Closes dailag2
+
+- [Properties/Settings ]
+- Click OK -> Closes dialog
+
+- [Button bar]
+- * Open PDF file
+- Note: The PDF file is shown
+
+- [Menu bar, File menu]
+- * Click option Save as -> Opens dialog
+
+- [Save Picture As dialog]
+- Save as type = PNG
+- Click button Save -> Writes file, closes dialog
 
 
 
@@ -8544,6 +8622,14 @@ User Forms\FFMpeg Windows
 
 
 User Forms\Folder Structure
+
+
+
+User Forms\GhostScript Installer
+
+!!Overview
+
+GhostScript Installer enables reading PDF documents for utilities like IrfanView
 
 
 
