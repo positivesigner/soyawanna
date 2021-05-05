@@ -2118,6 +2118,10 @@ Activities\How display card over sidebar using TiddlyWiki Code
 
 
 
+Activities\How download YouTube video using VLC for Windows
+
+
+
 Activities\How embed font file using TiddlyWiki Editor
 
 
@@ -3870,6 +3874,61 @@ close
 </div>
 </div>
 </$list>
+
+
+
+
+How download YouTube video using VLC for Windows\Form e1\Google Chrome Windows
+
+"""
+- Open a YouTube page with a video
+- Press the space bar to pause playback
+
+- [In the Address bar]
+- * Click in the Address bar and press Ctrl-A then Ctrl-C to copy the page's address to the clipboard
+- - Make sure the address says "www.youtube.com" and not "youtu.be"
+
+
+
+
+How download YouTube video using VLC for Windows\Form e2\VLC for Windows
+
+"""
+- [Menu bar, Media menu]
+- Click option Open Network Stream -> Opens dialog
+
+- [Open Media dialog, Network tab]
+- Paste in the YouTube page's address
+- Click button Play -> Closes dialog, plays video
+
+- [Video window]
+- Press the space bar to pause the video
+
+- * [Menu bar, Tools menu]
+- * Click option Codec Information -> Opens dialog
+
+- [Current Media Information dialog, bottom section]
+-  * Click in the Location box and press Ctrl-A then Ctrl-C to copy the Location address to the clipboard
+
+
+
+
+
+How download YouTube video using VLC for Windows\Form e3\Google Chrome Windows
+
+"""
+- [Address bar]
+- Paste in the address and press enter -> Plays video
+
+- [Video window]
+- Press the space bar to Pause the video
+- * Right-click on the video file -> Opens menu
+
+- [Context menu]
+- * Click option Save Video As -> Opens dialog
+
+- [Save As dialog]
+- Choose the location and filename to save the video file
 
 
 
@@ -8897,6 +8956,14 @@ User Forms\VB.Net Code
 !!Overview
 
 VB.Net Code can change the Windows File system
+
+
+
+User Forms\VLC for Windows
+
+!!Overview
+
+VLC for Windows allows you to watch videos on your computer or from YouTube.com
 
 
 
