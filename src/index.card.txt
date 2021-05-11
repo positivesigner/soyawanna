@@ -2558,6 +2558,10 @@ Activities\How split text lines into separate fields using TiddlyWiki Code
 
 
 
+Activities\How start background thread using VB.Net Code
+
+
+
 Activities\How store card wikitext translated to html using TiddlyWiki Code
 
 
@@ -8091,6 +8095,115 @@ Dest field count: <<dest_count>>
 \end
 
 <<ui "UrPK">>
+
+
+
+How start background thread using VB.Net Code\Form e1\VB.Net Code
+
+```
+Namespace Mx
+        Public Class rStatusForm
+            Inherits System.Windows.Forms.Form
+
+            Public txtLOG As System.Windows.Forms.TextBox
+            Private bgTHREAD As System.ComponentModel.BackgroundWorker
+            Private bg_fn As UserAction.enkBG.zcalc_status
+            Private bg_completed As System.ComponentModel.RunWorkerCompletedEventHandler
+            Private bg_progress As System.ComponentModel.ProgressChangedEventHandler
+            Private bg_work As System.ComponentModel.DoWorkEventHandler
+
+            Public Sub New()
+                Me.txtLOG = New System.Windows.Forms.TextBox()
+                Me.txtLOG.Name = "txtLOG"
+                Me.txtLOG.Multiline = True
+                Me.txtLOG.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+                Me.txtLOG.Dock = System.Windows.Forms.DockStyle.Fill
+
+                Me.bgTHREAD = New System.ComponentModel.BackgroundWorker()
+                Me.bgTHREAD.WorkerReportsProgress = True
+                Me.bgTHREAD.WorkerSupportsCancellation = True
+
+                AddHandler Me.txtLOG.KeyPress, AddressOf StopWork
+                Me.StartWork(Me.bg_fn)
+            End Sub 'New
+
+            Private Sub StopWork()
+                Call Me.bgTHREAD.CancelAsync()
+            End Sub
+
+            Private Sub StartWork(ur_fn As UserAction.enkBG.zcalc_status)
+                Me.bg_fn = ur_fn
+                If Me.bg_work IsNot Nothing Then
+                    RemoveHandler Me.bgTHREAD.DoWork, Me.bg_work
+                End If
+
+                Me.bg_work = New System.ComponentModel.DoWorkEventHandler(AddressOf RunWorkerAsyncStartWork)
+                AddHandler Me.bgTHREAD.DoWork, Me.bg_work
+
+                If Me.bg_progress IsNot Nothing Then
+                    RemoveHandler Me.bgTHREAD.ProgressChanged, Me.bg_progress
+                End If
+
+                Me.bg_progress = New System.ComponentModel.ProgressChangedEventHandler(AddressOf RunWorkerAsyncProgressChanged)
+                AddHandler Me.bgTHREAD.ProgressChanged, Me.bg_progress
+
+                If Me.bg_completed IsNot Nothing Then
+                    RemoveHandler Me.bgTHREAD.RunWorkerCompleted, Me.bg_completed
+                End If
+
+                Me.bg_completed = New System.ComponentModel.RunWorkerCompletedEventHandler(AddressOf RunWorkerAsyncRunWorkerCompleted)
+                AddHandler Me.bgTHREAD.RunWorkerCompleted, Me.bg_completed
+
+                Me.bgTHREAD.RunWorkerAsync()
+            End Sub 'StartWork
+
+            Private Sub RunWorkerAsyncStartWork(worker As System.ComponentModel.BackgroundWorker, e As System.ComponentModel.DoWorkEventArgs)
+                Mx.Calculate_Status(worker)
+            End Sub
+
+            Private Sub RunWorkerAsyncProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs)
+                If e.ProgressPercentage > 0 Then
+                    Me.txtLOG.Text = "Working: " & e.ProgressPercentage.ToString
+                    'Dim t1 As String = e.UserState
+                End If
+            End Sub 'RunWorkerAsyncProgressChanged
+
+            Private Sub RunWorkerAsyncRunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs)
+                If e.Cancelled Then
+                    MsgBox("Operation cancelled By User")
+                Else
+                    MsgBox("Operation completed")
+                End If
+            End Sub 'RunWorkerAsyncRunWorkerCompleted
+        End Class 'rStatusForm
+
+
+        Public Shared Sub Calculate_Status(worker As System.ComponentModel.BackgroundWorker)
+            Dim message_written = worker.CancellationPending
+            If message_written = False Then
+                worker.ReportProgress(15, "No")
+                System.Threading.Thread.Sleep(2000)
+                If worker.CancellationPending Then
+                    message_written = True
+                    MsgBox("canceled")
+                End If
+            End If
+
+            If message_written = False Then
+                worker.ReportProgress(30)
+                System.Threading.Thread.Sleep(2000)
+                If worker.CancellationPending Then
+                    message_written = True
+                    MsgBox("canceled")
+                End If
+            End If
+
+            If message_written = False Then
+                worker.ReportProgress(100)
+            End If
+        End Sub 'Calculate_Status
+End Namespace 'Mx
+
 
 
 

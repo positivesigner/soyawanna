@@ -719,6 +719,8 @@ Error message and password prompt
 
 <li>Activities\How split text lines into separate fields using TiddlyWiki Code</li>
 
+<li>Activities\How start background thread using VB.Net Code</li>
+
 <li>Activities\How store card wikitext translated to html using TiddlyWiki Code</li>
 
 <li>Activities\How store current card Title without Draft Of prefix using TiddlyWiki Code</li>
@@ -1074,6 +1076,8 @@ Error message and password prompt
 <li>How split code lines using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
 
 <li>How split text lines into separate fields using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
+
+<li>How start background thread using VB.Net Code\Form e1\VB.Net Code</li>
 
 <li>How store card wikitext translated to html using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
 
@@ -12895,7 +12899,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210427120520865" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210505215129363" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210509040143246" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -12910,13 +12914,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210505215129363" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210509040143246" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Automation Scripting]]" title="$:/StoryList">
+<div created="20210509035522032" list="[[Automation Scripting]] [[User Forms]] [[User Forms\VB.Net Code]] [[How parse MBOX email archive using VB.Net Code\Form e1\VB.Net Code]] [[$:/state/popup/activity_details/How parse MBOX email archive using VB.Net Code]] [[Activities\How parse MBOX email archive using VB.Net Code]] [[Activities\How start background thread using VB.Net Code]] [[How start background thread using VB.Net Code\Form e1\VB.Net Code]]" modified="20210509035550484" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13467,6 +13471,9 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <pre></pre>
 </div>
 <div created="20210427090454765" modified="20210427090559330" tags="" title="Activities\How split text lines into separate fields using TiddlyWiki Code">
+<pre></pre>
+</div>
+<div created="20210509035554210" modified="20210509035615865" tags="" title="Activities\How start background thread using VB.Net Code">
 <pre></pre>
 </div>
 <div created="20210427103415121" modified="20210427103538190" tags="" title="Activities\How store card wikitext translated to html using TiddlyWiki Code">
@@ -18500,6 +18507,112 @@ Dest field count: &lt;&lt;dest_count&gt;&gt;
 \end
 
 &lt;&lt;ui &quot;UrPK&quot;&gt;&gt;</pre>
+</div>
+<div created="20210509035616591" modified="20210509040133991" tags="" title="How start background thread using VB.Net Code\Form e1\VB.Net Code">
+<pre>```
+Namespace Mx
+        Public Class rStatusForm
+            Inherits System.Windows.Forms.Form
+
+            Public txtLOG As System.Windows.Forms.TextBox
+            Private bgTHREAD As System.ComponentModel.BackgroundWorker
+            Private bg_fn As UserAction.enkBG.zcalc_status
+            Private bg_completed As System.ComponentModel.RunWorkerCompletedEventHandler
+            Private bg_progress As System.ComponentModel.ProgressChangedEventHandler
+            Private bg_work As System.ComponentModel.DoWorkEventHandler
+
+            Public Sub New()
+                Me.txtLOG = New System.Windows.Forms.TextBox()
+                Me.txtLOG.Name = &quot;txtLOG&quot;
+                Me.txtLOG.Multiline = True
+                Me.txtLOG.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+                Me.txtLOG.Dock = System.Windows.Forms.DockStyle.Fill
+
+                Me.bgTHREAD = New System.ComponentModel.BackgroundWorker()
+                Me.bgTHREAD.WorkerReportsProgress = True
+                Me.bgTHREAD.WorkerSupportsCancellation = True
+
+                AddHandler Me.txtLOG.KeyPress, AddressOf StopWork
+                Me.StartWork(Me.bg_fn)
+            End Sub 'New
+
+            Private Sub StopWork()
+                Call Me.bgTHREAD.CancelAsync()
+            End Sub
+
+            Private Sub StartWork(ur_fn As UserAction.enkBG.zcalc_status)
+                Me.bg_fn = ur_fn
+                If Me.bg_work IsNot Nothing Then
+                    RemoveHandler Me.bgTHREAD.DoWork, Me.bg_work
+                End If
+
+                Me.bg_work = New System.ComponentModel.DoWorkEventHandler(AddressOf RunWorkerAsyncStartWork)
+                AddHandler Me.bgTHREAD.DoWork, Me.bg_work
+
+                If Me.bg_progress IsNot Nothing Then
+                    RemoveHandler Me.bgTHREAD.ProgressChanged, Me.bg_progress
+                End If
+
+                Me.bg_progress = New System.ComponentModel.ProgressChangedEventHandler(AddressOf RunWorkerAsyncProgressChanged)
+                AddHandler Me.bgTHREAD.ProgressChanged, Me.bg_progress
+
+                If Me.bg_completed IsNot Nothing Then
+                    RemoveHandler Me.bgTHREAD.RunWorkerCompleted, Me.bg_completed
+                End If
+
+                Me.bg_completed = New System.ComponentModel.RunWorkerCompletedEventHandler(AddressOf RunWorkerAsyncRunWorkerCompleted)
+                AddHandler Me.bgTHREAD.RunWorkerCompleted, Me.bg_completed
+
+                Me.bgTHREAD.RunWorkerAsync()
+            End Sub 'StartWork
+
+            Private Sub RunWorkerAsyncStartWork(worker As System.ComponentModel.BackgroundWorker, e As System.ComponentModel.DoWorkEventArgs)
+                Mx.Calculate_Status(worker)
+            End Sub
+
+            Private Sub RunWorkerAsyncProgressChanged(sender As Object, e As System.ComponentModel.ProgressChangedEventArgs)
+                If e.ProgressPercentage &gt; 0 Then
+                    Me.txtLOG.Text = &quot;Working: &quot; &amp; e.ProgressPercentage.ToString
+                    'Dim t1 As String = e.UserState
+                End If
+            End Sub 'RunWorkerAsyncProgressChanged
+
+            Private Sub RunWorkerAsyncRunWorkerCompleted(sender As Object, e As System.ComponentModel.RunWorkerCompletedEventArgs)
+                If e.Cancelled Then
+                    MsgBox(&quot;Operation cancelled By User&quot;)
+                Else
+                    MsgBox(&quot;Operation completed&quot;)
+                End If
+            End Sub 'RunWorkerAsyncRunWorkerCompleted
+        End Class 'rStatusForm
+
+
+        Public Shared Sub Calculate_Status(worker As System.ComponentModel.BackgroundWorker)
+            Dim message_written = worker.CancellationPending
+            If message_written = False Then
+                worker.ReportProgress(15, &quot;No&quot;)
+                System.Threading.Thread.Sleep(2000)
+                If worker.CancellationPending Then
+                    message_written = True
+                    MsgBox(&quot;canceled&quot;)
+                End If
+            End If
+
+            If message_written = False Then
+                worker.ReportProgress(30)
+                System.Threading.Thread.Sleep(2000)
+                If worker.CancellationPending Then
+                    message_written = True
+                    MsgBox(&quot;canceled&quot;)
+                End If
+            End If
+
+            If message_written = False Then
+                worker.ReportProgress(100)
+            End If
+        End Sub 'Calculate_Status
+End Namespace 'Mx
+</pre>
 </div>
 <div created="20210427103522511" modified="20210427103542600" tags="" title="How store card wikitext translated to html using TiddlyWiki Code\Form e1\TiddlyWiki Code">
 <pre>```
