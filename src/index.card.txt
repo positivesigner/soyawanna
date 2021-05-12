@@ -1962,7 +1962,7 @@ variable=activity_prevcount filter="[suffix<userform_suffix>!match<cur_card>pref
 
 $:/state/showeditpreview
 
-no
+yes
 
 
 
@@ -2335,6 +2335,10 @@ Activities\How highlight misspelled words on Google Chrome Windows
 
 
 Activities\How hold current worksheet using Excel VBA
+
+
+
+Activities\How interpret earth plus-code digits from Plus.codes Website
 
 
 
@@ -5778,6 +5782,85 @@ wksDATA.Cells(2,2).Value = "Hi"
 
 'Press F5 to run the macro
 'Note: Cell B2 says "Hi"
+
+
+
+How interpret earth plus-code digits from Plus.codes Website\Form e1\Plus.codes Website
+
+"""
+- [https://plus.codes/map/]
+- [Search box, Left-side icon]
+- Click the three-lines menu, option Satellite -> Refreshes window
+- * Click the three-lines menu, option Grid -> Refreshes window
+- [Navigate to location]
+- When the mouse icon is a hand, double-click to Zoom in
+- Each time you click, the location will show as 8 characters, a plus sign, and two suffix characters
+- - Example: 73F6C9JH+HR
+
+- [Look at the grid are zoomed out to the maximum extent]
+- The first digit grows from 3 in South America to 9 in North America (Antarctica would be zero)
+- The second digit grows from 2 in the Altlantic Ocean to 9 in the Pacific Ocean, and wraps around again to V in the Atlantic Ocean (which touches the 2 rectangle)
+- All other zoomed in grid rectangles have a pair of digits from 2 to V
+- The first digit is always North from Antarctica (bottom of the rectangle), and the second digit is always East from the International Date Line (left of the rectangle)
+
+- [20 unique numbers]
+- The unique codes used are values selected (in order) from the numerals and the capital letters: 2, 3, 4, 5, 6, 7, 8, 9, C, F, G, H, J, M, P, Q, R, V, W, X
+- * Grouping these by two digits each helps identify a percent up or right in the rectangle: 0.2, 0.3, 1.4, 1.5, 2.6, 2,7, 3.8, 3.9, 4.C, 4.F, 5.G, 5.H, 6.J, 6.M, 7.P, 7.Q, 8.R, 8.V, 9.W, 9.X
+- * The first North digit uses less codes, so they have a different percentage: 2.3, 3.4, 4.5, 5.6, 6.7, 7.8, 8.9
+
+- [Create a text map]
+- Now we can make a set of nested rectangles for each embedded percentage
+- The number after each decimal point is the actual plus code
+- The number before is 10 percent North or 10 percent East in the level's rectangle
+"""
+<table>
+<tr><td>
+<table>
+<caption>Plus Code: 73F6C3GQ+</caption>
+<tr>
+<td style=“padding:0px;” /><td>0.3</td><td colspan="2">73F6</td>
+</tr>
+<tr>
+<td rowspan="4" style="transform:rotate(-90deg);transform-origin: 50% 50%;">6.7</td><td style=“padding:0px;” /><td>2.6</td>
+</tr>
+<tr>
+<!--rowspan 4--><td rowspan="3" style="transform:rotate(-90deg);transform-origin: 50% 50%;">4.F</td><td style=“padding:0px;” /><td>0.3</td><td colspan="2">C3GQ+</td>
+</tr>
+<tr>
+<!--rowspan 4--><!--rowspan 3--><td rowspan="2" style="transform:rotate(-90deg);transform-origin: 50% 50%;">4.C</td><td style=“padding:0px;” /><td>7.Q</td><td></td>
+</tr>
+<tr>
+<!--rowspan 4--><!--rowspan 3--><!--rowspan 2--><td style="transform:rotate(-90deg);transform-origin: 50% 50%;">5.G</td><td></td>
+</tr>
+</table>
+</td></tr>
+<tr><td>
+<table>
+<tr>
+<td style=“padding:0px;” /><td>0.3</td><td colspan="2">C3FQ+</td>
+</tr>
+<tr>
+<td rowspan="2" style="transform:rotate(-90deg);transform-origin: 50% 50%;">4.C</td><td style=“padding:0px;” /><td>7.Q</td><td></td>
+</tr>
+<tr>
+<!--rowspan 2--><td style="transform:rotate(-90deg);transform-origin: 50% 50%;">4.F</td><td></td>
+</tr>
+</table>
+</td>
+<td>
+<table>
+<tr>
+<td style=“padding:0px;” /><td>0.3</td><td colspan="2">C3FR+</td>
+</tr>
+<tr>
+<td rowspan="2" style="transform:rotate(-90deg);transform-origin: 50% 50%;">4.C</td><td style=“padding:0px;” /><td>8.R</td><td></td>
+</tr>
+<tr>
+<!--rowspan 2--><td style="transform:rotate(-90deg);transform-origin: 50% 50%;">4.F</td><td></td>
+</tr>
+</table>
+</td></tr>
+</table>
 
 
 

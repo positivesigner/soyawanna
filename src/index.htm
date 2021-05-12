@@ -609,6 +609,8 @@ Error message and password prompt
 
 <li>Activities\How hold current worksheet using Excel VBA</li>
 
+<li>Activities\How interpret earth plus-code digits from Plus.codes Website</li>
+
 <li>Activities\How limit selection rows using SQLite Code</li>
 
 <li>Activities\How link to external files using TiddlyWiki Code</li>
@@ -948,6 +950,8 @@ Error message and password prompt
 <li>How highlight misspelled words on Google Chrome Windows\Form e1\Google Chrome Windows</li>
 
 <li>How hold current worksheet using Excel VBA\Form e1\Excel VBA</li>
+
+<li>How interpret earth plus-code digits from Plus.codes Website\Form e1\Plus.codes Website</li>
 
 <li>How limit selection rows using SQLite Code\Form e1\SQLite Code</li>
 
@@ -12896,10 +12900,10 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090736888" modified="20210411090736888" title="$:/state/dropdown/keyboardshortcut/preview-card-286565879">
 <pre>open</pre>
 </div>
-<div created="20210411090905404" modified="20210427120520865" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
-<pre>no</pre>
+<div created="20210411090905404" modified="20210512044558828" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
+<pre>yes</pre>
 </div>
-<div created="20210307044348911" modified="20210509040143246" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210512052842542" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -12914,13 +12918,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210509040143246" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210512052842544" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210509035522032" list="[[Automation Scripting]] [[User Forms]] [[User Forms\VB.Net Code]] [[How parse MBOX email archive using VB.Net Code\Form e1\VB.Net Code]] [[$:/state/popup/activity_details/How parse MBOX email archive using VB.Net Code]] [[Activities\How parse MBOX email archive using VB.Net Code]] [[Activities\How start background thread using VB.Net Code]] [[How start background thread using VB.Net Code\Form e1\VB.Net Code]]" modified="20210509035550484" title="$:/StoryList">
+<div created="20210512042754379" list="[[Automation Scripting]] [[User Forms]] [[User Forms\Plus.codes Website]] [[How find earth plus-code area using Plus.codes Website\Form e1\Plus.codes Website]] [[How interpret earth plus-code digits from Plus.codes Website\Form e1\Plus.codes Website]] [[Activities\How interpret earth plus-code digits from Plus.codes Website]]" modified="20210512042800102" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13306,6 +13310,9 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <pre></pre>
 </div>
 <div created="20210422235519925" modified="20210422235559586" tags="" title="Activities\How hold current worksheet using Excel VBA">
+<pre></pre>
+</div>
+<div created="20210512042807653" modified="20210512043128057" tags="" title="Activities\How interpret earth plus-code digits from Plus.codes Website">
 <pre></pre>
 </div>
 <div created="20210423073629673" modified="20210423073656621" tags="" title="Activities\How limit selection rows using SQLite Code">
@@ -16382,6 +16389,82 @@ wksDATA.Cells(2,2).Value = &quot;Hi&quot;
 
 'Press F5 to run the macro
 'Note: Cell B2 says &quot;Hi&quot;</pre>
+</div>
+<div created="20210512042803385" modified="20210512052819249" tags="" title="How interpret earth plus-code digits from Plus.codes Website\Form e1\Plus.codes Website">
+<pre>&quot;&quot;&quot;
+- [https://plus.codes/map/]
+- [Search box, Left-side icon]
+- Click the three-lines menu, option Satellite -&gt; Refreshes window
+- * Click the three-lines menu, option Grid -&gt; Refreshes window
+- [Navigate to location]
+- When the mouse icon is a hand, double-click to Zoom in
+- Each time you click, the location will show as 8 characters, a plus sign, and two suffix characters
+- - Example: 73F6C9JH+HR
+
+- [Look at the grid are zoomed out to the maximum extent]
+- The first digit grows from 3 in South America to 9 in North America (Antarctica would be zero)
+- The second digit grows from 2 in the Altlantic Ocean to 9 in the Pacific Ocean, and wraps around again to V in the Atlantic Ocean (which touches the 2 rectangle)
+- All other zoomed in grid rectangles have a pair of digits from 2 to V
+- The first digit is always North from Antarctica (bottom of the rectangle), and the second digit is always East from the International Date Line (left of the rectangle)
+
+- [20 unique numbers]
+- The unique codes used are values selected (in order) from the numerals and the capital letters: 2, 3, 4, 5, 6, 7, 8, 9, C, F, G, H, J, M, P, Q, R, V, W, X
+- * Grouping these by two digits each helps identify a percent up or right in the rectangle: 0.2, 0.3, 1.4, 1.5, 2.6, 2,7, 3.8, 3.9, 4.C, 4.F, 5.G, 5.H, 6.J, 6.M, 7.P, 7.Q, 8.R, 8.V, 9.W, 9.X
+- * The first North digit uses less codes, so they have a different percentage: 2.3, 3.4, 4.5, 5.6, 6.7, 7.8, 8.9
+
+- [Create a text map]
+- Now we can make a set of nested rectangles for each embedded percentage
+- The number after each decimal point is the actual plus code
+- The number before is 10 percent North or 10 percent East in the level's rectangle
+&quot;&quot;&quot;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;
+&lt;table&gt;
+&lt;caption&gt;Plus Code: 73F6C3GQ+&lt;/caption&gt;
+&lt;tr&gt;
+&lt;td style=“padding:0px;” /&gt;&lt;td&gt;0.3&lt;/td&gt;&lt;td colspan=&quot;2&quot;&gt;73F6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;4&quot; style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;6.7&lt;/td&gt;&lt;td style=“padding:0px;” /&gt;&lt;td&gt;2.6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;!--rowspan 4--&gt;&lt;td rowspan=&quot;3&quot; style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;4.F&lt;/td&gt;&lt;td style=“padding:0px;” /&gt;&lt;td&gt;0.3&lt;/td&gt;&lt;td colspan=&quot;2&quot;&gt;C3GQ+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;!--rowspan 4--&gt;&lt;!--rowspan 3--&gt;&lt;td rowspan=&quot;2&quot; style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;4.C&lt;/td&gt;&lt;td style=“padding:0px;” /&gt;&lt;td&gt;7.Q&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;!--rowspan 4--&gt;&lt;!--rowspan 3--&gt;&lt;!--rowspan 2--&gt;&lt;td style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;5.G&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td style=“padding:0px;” /&gt;&lt;td&gt;0.3&lt;/td&gt;&lt;td colspan=&quot;2&quot;&gt;C3FQ+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;2&quot; style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;4.C&lt;/td&gt;&lt;td style=“padding:0px;” /&gt;&lt;td&gt;7.Q&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;!--rowspan 2--&gt;&lt;td style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;4.F&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td style=“padding:0px;” /&gt;&lt;td&gt;0.3&lt;/td&gt;&lt;td colspan=&quot;2&quot;&gt;C3FR+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;2&quot; style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;4.C&lt;/td&gt;&lt;td style=“padding:0px;” /&gt;&lt;td&gt;8.R&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;!--rowspan 2--&gt;&lt;td style=&quot;transform:rotate(-90deg);transform-origin: 50% 50%;&quot;&gt;4.F&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</pre>
 </div>
 <div created="20210423073657101" modified="20210423073707098" tags="" title="How limit selection rows using SQLite Code\Form e1\SQLite Code">
 <pre>&lt;&lt;ext &quot;SQLite Top 5 Records&quot;&gt;&gt;
