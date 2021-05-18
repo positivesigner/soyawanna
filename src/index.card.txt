@@ -2082,6 +2082,10 @@ Activities\How create Excel Macro using Excel for Windows
 
 
 
+Activities\How create JavaScript plug-in using TiddlyWiki Code
+
+
+
 Activities\How create Screenshot using Screenshot Easy Android
 
 
@@ -2371,6 +2375,10 @@ Activities\How list links of prefixed cards using TiddlyWiki Code
 
 
 Activities\How list recently changed cards using TiddlyWiki Code
+
+
+
+Activities\How make full-width textarea using TiddlyWiki
 
 
 
@@ -3433,6 +3441,12 @@ How create Excel Macro using Excel for Windows\Form e1\Excel for Windows
 
 
 
+How create JavaScript plug-in using TiddlyWiki Code\Form e1\TiddlyWiki Code
+
+<<ext "SudoNull Write TiddlyWiki Plugin">>
+
+
+
 How create Screenshot using Screenshot Easy Android\Form e1\Google Play Store Android
 
 """
@@ -4034,7 +4048,7 @@ How export article entries from Instapaper.com Website\Form e1\Instapaper.com We
 - [https://www.instapaper.com/u]
 - [Top-right icon]
 - Click login-name menu, option Settings -> Navigates page
-- [Settings page, Export section]
+- * [Settings page, Export section]
 - Click link Download .CSV file -> Opens dialog
 - Click button OK -> Starts download, closes dialog
 
@@ -6096,6 +6110,24 @@ How list recently changed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 ```
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+
+How make full-width textarea using TiddlyWiki\Form e1\TiddlyWiki Code
+
+"""
+- [New card]
+- tag = $:/tags/Stylesheet
+- text = .cls_full_width { width:100%; }
+
+- [New card]
+- widget = &lt;$edit-text
+- tiddler = UrCardPK
+- field = UrFieldName
+- class = cls_full_width
+- tag = textarea
+- autoHeight = no
 
 
 
