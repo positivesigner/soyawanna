@@ -1,5 +1,5 @@
 Option Strict On
-Namespace Mx '2020m01d03
+Namespace Mx '2020m05d09 from 2020m04d29
     Public Module ConstVar
         Public Const mt = ""
         Public Const qs = """"
@@ -102,18 +102,18 @@ Namespace Mx '2020m01d03
                 pstpNOTICE_MSG.dLine().dLine()
             End If
 
-            pstpNOTICE_MSG.dLine(ur_exception.Message)
-            pstpNOTICE_MSG.dLine(Strapd().d("Error in @r1.@r2").r1(ur_methodbase.DeclaringType.Name).r2(ur_methodbase.Name).dS("(status: @r1)").r1(ur_procedure_status))
+            pstpNOTICE_MSG.dLineNB(ur_exception.Message)
+            pstpNOTICE_MSG.dLineNB(Strapd().d("Error in @r1.@r2").r1(ur_methodbase.DeclaringType.Name).r2(ur_methodbase.Name).dS("(status: @r1)").r1(ur_procedure_status))
         End Sub 'dError_Data
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub dError_Stack(ur_exception As System.Exception)
             Dim hr As Integer = System.Runtime.InteropServices.Marshal.GetHRForException(ur_exception)
-            pstpNOTICE_MSG.dLine(ur_exception.GetType.ToString & "(0x" & hr.ToString("X8") & "): " & ur_exception.Message & System.Environment.NewLine & ur_exception.StackTrace & System.Environment.NewLine)
+            pstpNOTICE_MSG.dLineNB(ur_exception.GetType.ToString & "(0x" & hr.ToString("X8") & "): " & ur_exception.Message & System.Environment.NewLine & ur_exception.StackTrace & System.Environment.NewLine)
             Dim st = New System.Diagnostics.StackTrace(ur_exception, True)
             For Each objFRAME In st.GetFrames
                 If objFRAME.GetFileLineNumber() > 0 Then
-                    pstpNOTICE_MSG.dLine("Line:" & objFRAME.GetFileLineNumber() & " Filename: " & System.IO.Path.GetFileName(objFRAME.GetFileName) & System.Environment.NewLine)
+                    pstpNOTICE_MSG.dLineNB("Line:" & objFRAME.GetFileLineNumber() & " Filename: " & System.IO.Path.GetFileName(objFRAME.GetFileName) & System.Environment.NewLine)
                 End If
             Next objFRAME
         End Sub 'dError_Stack
@@ -229,6 +229,18 @@ Namespace Mx '2020m01d03
             End Get
         End Property
 
+        Public Shadows ReadOnly Property SelTop1() As ObjCTR(Of T)
+            <System.Diagnostics.DebuggerHidden()>
+            Get
+                Dim lstTEMP = New Objlist(Of T)
+                If Me.Indexb1 <= Me.LastIndexb1 Then
+                    lstTEMP.Add(Me.row)
+                End If
+
+                SelTop1 = New ObjCTR(Of T)(lstTEMP)
+            End Get
+        End Property 'SelTop1
+
         <System.Diagnostics.DebuggerHidden()>
         Public Shadows Function GetEnumerator() As ObjCTR(Of T)
             GetEnumerator = Me
@@ -297,6 +309,15 @@ Namespace Mx '2020m01d03
         Public Shadows Function kvp() As ObjCTR(Of T)
             kvp = New ObjCTR(Of T)(Me)
         End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shadows Function SelTop1() As Objlist(Of T)
+            Dim retLIST = New Objlist(Of T)
+            SelTop1 = retLIST
+            If Me.Count > 0 Then
+                retLIST.Add(Me.tr_b1(1))
+            End If
+        End Function 'SelTop1
 
         Public Property tr_b1(ur_index As Integer) As T
             <System.Diagnostics.DebuggerHidden()>
@@ -549,6 +570,15 @@ Namespace Mx '2020m01d03
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
+        Public Shadows Function SelTop1() As Sdata
+            Dim retLIST = New Sdata
+            SelTop1 = retLIST
+            If Me.Count > 0 Then
+                retLIST.Add(Me.v_b1(1))
+            End If
+        End Function 'SelTop1
+
+        <System.Diagnostics.DebuggerHidden()>
         Public Shared Function Split(ur_text As String, ur_sprtr As Char) As Sdata
             Dim sdaCMP = New Sdata
             Split = sdaCMP
@@ -643,13 +673,29 @@ Namespace Mx '2020m01d03
         End Function 'dCSVList
 
         <System.Diagnostics.DebuggerHidden()>
+        Public Function dLineNB(Optional ur_text As String = "") As Strap
+            dLineNB = Me.dSprtrNB(vbCrLf, ur_text)
+        End Function 'dLineNB
+
+        <System.Diagnostics.DebuggerHidden()>
         Public Function dLine(Optional ur_text As String = "") As Strap
             dLine = Me.dSprtr(vbCrLf, ur_text)
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
-        Public Function dS(ur_text As String) As Strap
-            dS = Me.dSprtr(s, ur_text)
+        Public Function dS(Optional ur_text As String = "") As Strap
+            dS = Me
+            Me.pstbTEXT.Append(s).Append(ur_text)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dSNB(Optional ur_text As String = "") As Strap
+            dSNB = Me
+            If Me.HasText Then
+                Me.pstbTEXT.Append(s)
+            End If
+
+            Me.pstbTEXT.Append(ur_text)
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
@@ -657,6 +703,16 @@ Namespace Mx '2020m01d03
             dSprtr = Me
             Me.pstbTEXT.Append(ur_sprtr).Append(ur_text)
         End Function
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function dSprtrNB(ur_sprtr As String, ur_text As String) As Strap
+            dSprtrNB = Me
+            If Me.HasText Then
+                Me.pstbTEXT.Append(ur_sprtr)
+            End If
+
+            Me.pstbTEXT.Append(ur_text)
+        End Function 'dSprtrNB
 
         <System.Diagnostics.DebuggerHidden()>
         Public Function gCopy(ur_text As String) As Strap
@@ -863,7 +919,7 @@ Namespace Mx '2020m01d03
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
-        Public Overloads Function ToString(ur_hdr As Boolean, Optional ur_quoted As Boolean = False) As Strap
+        Public Overloads Function ToString(ur_hdr As Boolean, Optional ur_quoted As Boolean = True) As Strap
             Dim stpRET = New Strap
             ToString = stpRET
             If ur_hdr Then : For Each kvpCOL In Me.RefColNames.kvp : If kvpCOL.Indexb1 > 1 Then : stpRET.d(vbTab) : End If : stpRET.d(kvpCOL.v) : Next kvpCOL : stpRET.dLine() : End If
@@ -1022,369 +1078,577 @@ Namespace Mx '2020m01d03
         End Class 'glbl
     End Class 'Trow
 
-    Partial Public Class MxText 'Parse
-        Public Class enmCMD_RET
-            Inherits bitBASE
-            Public Shared eq As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-            Public Shared fslash As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-            Public Shared qs As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-            Public Shared qs_end As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-            Public Shared txt As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-            Public Shared unk As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-            Public Shared ws As enmCMD_RET = TRow(Of enmCMD_RET).glbl.NewBitBase()
-        End Class
+    Partial Public Class MxText
+        <System.Diagnostics.DebuggerHidden()>
+        Public Shared Function ParseCLine(ur_json_data As String, ur_notice_msg As Strap) As Objlist(Of cline_row_entry)
+            ParseCLine = prvCLINE.ParseCline(ur_json_data, ur_notice_msg)
+        End Function 'ParseCLine
 
-        Public Class Cmdline_UB(Of T As {New, bitBASE}, W As {New, bitBASE})
+        Public Class cline_row_entry
+            Public key As String
+            Public value As String
+
             <System.Diagnostics.DebuggerHidden()>
-            Public Shared Function CommandLine_UBParm(ur_ub_key As W, ur_ub_val As W, ur_source_text As String, ParamArray ur_default_field_list() As T) As sCMD_RET
-                CommandLine_UBParm = prv.CommandLine_UBParm(ur_ub_key, ur_ub_val, ur_source_text, ur_default_field_list)
+            Public Sub New(ur_key As String, ur_value As String)
+                Me.key = ur_key
+                Me.value = ur_value
+            End Sub
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Overloads Function ToString(ur_hdr As Boolean, Optional ur_quoted As Boolean = True) As Strap
+                Dim stpRET = New Strap
+                ToString = stpRET
+                If ur_hdr Then : stpRET.d("key").d(vbTab).d("value").dLine() : End If
+                If ur_quoted Then : stpRET.d(qs).d(Me.key.Replace(qs, qs & qs)).d(qs).d(vbTab).d(qs).d(Me.value.Replace(qs, qs & qs)).d(qs).dLine() : Else : stpRET.d(Me.key).d(vbTab).d(Me.value) : End If : stpRET.dLine()
             End Function
+        End Class 'cline_row_entry
 
-            Class sCMDLINE
-                Inherits Mx.Objlist(Of TRow(Of enmCMD_RET))
+        Private Class prvCLINE
+            Public Class enmCHR_TYPE
+                Inherits bitBASE
+                Public Shared ws As enmCHR_TYPE = TRow(Of enmCHR_TYPE).glbl.NewBitBase()
+                Public Shared key_sprtr As enmCHR_TYPE = TRow(Of enmCHR_TYPE).glbl.NewBitBase()
+                Public Shared val_sprtr As enmCHR_TYPE = TRow(Of enmCHR_TYPE).glbl.NewBitBase()
+                Public Shared string_delim As enmCHR_TYPE = TRow(Of enmCHR_TYPE).glbl.NewBitBase()
+                Public Shared string_chr As enmCHR_TYPE = TRow(Of enmCHR_TYPE).glbl.NewBitBase()
+            End Class 'enmCHR_TYPE
 
-                <System.Diagnostics.DebuggerHidden()>
-                Public Overloads Function ToString(ur_hdr As Boolean) As String
-                    Dim stpRET = Strapd() : For Each kvpREC In Me.kvp : stpRET.d(kvpREC.row.ToString((kvpREC.Indexb1 = 1) And ur_hdr)) : Next kvpREC : ToString = stpRET
-                End Function 'ToString
-                <System.Diagnostics.DebuggerHidden()>
-                Public Function ToCbrd(ur_hdr As Boolean) As Integer
-                    ToCbrd = Mx.glbl.gCboard.SetText(Me.ToString(ur_hdr))
-                End Function
-            End Class 'sCMDLINE
-
-            Class sCMD_RET
-                Public ttbUB_PARM As Objlist(Of TRow(Of W))
-                Public ttbCMD_PARM As sCMDLINE
+            Public Class enmCLINE_SCTN
+                Inherits bitBASE
+                Public Shared ws_prerow As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- space before first key-value pair '- -/key_e1=val_e1
+                Public Shared row_ws_preval_sprtr As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon key name and ws char, include ws chars until value open tag "=" '/key_e1- -=val_e1
+                Public Shared row_ws_preval As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon value open tag "=" and ws char, include ws chars until value characters '/key_e1=- -val_e1
+                '- upon value open tag "=" and ws char, include ws chars until value open qs '/key_e1=- -"val_e1"
+                Public Shared row_ws_newkey_sprtr As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon value characters and ws char, include ws chars until key open tag "/" '/key_e1=val_e1- -/key_e2=val_e2
+                '- upon value close qs and ws char, include ws chars until key open tag "/" '/key_e1="val_e1"- -/key_e2=val_e2
+                Public Shared row_key_no_qs As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- key name cannot be quoted '/-k-ey_e1=val_e1
+                Public Shared row_val_in_qs As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon value open qs, include char until value close qs '/key_e1=-"-val_e1"
+                Public Shared row_val_in_qs_esc As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon value qs escape character (qs), include next qs character '/key_e1="val_e1-"-"cont_e2"
+                '- upon value qs close character (qs), ws char starts a new key name '/key_e1="val_e1-"- /key_e2=val_e2
+                Public Shared row_val_no_qs As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- open value non-qs char, include chars until ws char '/key_e1=-2-345
+                Public Shared ignore_rem_data As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- error found, stop parsing
+                Public Shared ignore_unnamed_val_in_qs As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon quoted value without key name and value separator, include unquoted chars until val close qs '/key_e1=val_e1 -"-val_e2"
+                Public Shared ignore_unnamed_val_in_qs_esc As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon quoted qs, include next qs char '/key_e1=val_e1 "val_e2-"-"cont_e2"
+                '- upon quoted qs, ws char start a new key name '/key_e1=val_e1 "val_e2-"- /key_e3=val_e3
+                Public Shared ignore_unnamed_val_no_qs As enmCLINE_SCTN = TRow(Of enmCLINE_SCTN).glbl.NewBitBase()
+                '- upon value text without key name, include chars until next ws char '/key_e1=[-2-345,6789]
             End Class
 
-            Partial Private Class prv
-                <System.Diagnostics.DebuggerHidden()>
-                Public Shared Function CommandLine_UBParm(ur_ub_key As W, ur_ub_val As W, ur_source_text As String, ParamArray ur_default_field_list() As T) As sCMD_RET
-                    Dim objRET = New sCMD_RET
-                    CommandLine_UBParm = objRET
-                    objRET.ttbUB_PARM = New Objlist(Of TRow(Of W))
-                    objRET.ttbCMD_PARM = New sCMDLINE
-                    Dim rowCMD_PARM = New TRow(Of enmCMD_RET)
-                    objRET.ttbCMD_PARM.Add(rowCMD_PARM)
-                    Dim sdaDEFAULT_PARMNAME = New Sdata
-                    Dim sdaDEST_PARMS = TRow(Of T).glbl.RefNames
-                    For Each intUN In ur_default_field_list
-                        sdaDEFAULT_PARMNAME.d(intUN.name)
-                    Next
+            Public Class chr_type
+                Public group As enmCHR_TYPE
+                Public value As String
+            End Class
 
-                    Dim stpCOMPILE = Strapd()
-                    Dim intPREV_CHUNK = enmCMD_RET.ws
-                    Dim intCHUNK_C = enmCMD_RET.ws
-                    For CHRCTR = 0 To ur_source_text.Length - 1
-                        Dim chrC = ur_source_text(CHRCTR)
-                        intCHUNK_C = gChunkType(chrC)
-                        Dim intSPAN = 1
-                        For SPNCTR = CHRCTR + 1 To ur_source_text.Length - 1
-                            Dim chrS = ur_source_text(SPNCTR)
-                            Dim intSPAN_C = gChunkType(chrS)
-                            If intSPAN_C IsNot intCHUNK_C OrElse
-                              intSPAN_C Is enmCMD_RET.qs Then
-                                'Combine all chunks except for escaped quotes
-                                intSPAN = SPNCTR - CHRCTR
-                                Exit For
-                            End If
-
-                            If SPNCTR = ur_source_text.Length - 1 Then
-                                intSPAN = SPNCTR + 1 - CHRCTR
-                                Exit For
-                            End If
-                        Next SPNCTR
-
-                        Dim strCHUNK = ur_source_text.Substring(CHRCTR, intSPAN)
-                        If intPREV_CHUNK Is enmCMD_RET.ws Then
-                            'Have ws, skip compiled ws; wait for fslash or default parm
-                            If intCHUNK_C Is enmCMD_RET.fslash Then
-                                'skip compiled fslash
-                                intPREV_CHUNK = intCHUNK_C
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.qs Then
-                                'skip qs around quoted default parameter
-                                rowCMD_PARM.v(enmCMD_RET.fslash) = mt
-                                If sdaDEFAULT_PARMNAME.Count > 0 Then
-                                    rowCMD_PARM.v(enmCMD_RET.fslash) = sdaDEFAULT_PARMNAME.v_b1(1)
-                                    sdaDEFAULT_PARMNAME.RemoveAt(b0(1))
-                                End If
-
-                                intPREV_CHUNK = intCHUNK_C
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws Then
-                                'skip ws between parameters
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.eq OrElse
-                              intCHUNK_C Is enmCMD_RET.txt Then
-                                'compile unquoted default parameter
-                                rowCMD_PARM.v(enmCMD_RET.fslash) = mt
-                                If sdaDEFAULT_PARMNAME.Count > 0 Then
-                                    rowCMD_PARM.v(enmCMD_RET.fslash) = sdaDEFAULT_PARMNAME.v_b1(1)
-                                    sdaDEFAULT_PARMNAME.RemoveAt(b0(1))
-                                End If
-
-                                intPREV_CHUNK = enmCMD_RET.txt
-                                stpCOMPILE.Clear.d(strCHUNK)
-                            End If
-
-                        ElseIf intPREV_CHUNK Is enmCMD_RET.fslash Then
-                            'Have ws-fslash, compile txt parm name; wait for eq
-                            If intCHUNK_C Is enmCMD_RET.fslash Then
-                                stpCOMPILE.d(strCHUNK)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.qs Then
-                                'qs between parm name and eq is unk
-                                intPREV_CHUNK = enmCMD_RET.unk
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws OrElse
-                              intCHUNK_C Is enmCMD_RET.eq Then
-                                'skip compile qe
-                                rowCMD_PARM.v(enmCMD_RET.fslash) = stpCOMPILE.ToString
-                                stpCOMPILE.Clear()
-                                intPREV_CHUNK = enmCMD_RET.eq
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.txt Then
-                                'compile txt into parm name
-                                stpCOMPILE.d(strCHUNK)
-                            End If
-
-                        ElseIf intPREV_CHUNK Is enmCMD_RET.eq Then
-                            'Have ws-fslash-eq, skip compile; wait for txt
-                            If intCHUNK_C Is enmCMD_RET.fslash Then
-                                'flush parameter as "=true"; start new parameter
-                                stpCOMPILE.Clear.d("true")
-                                Dim objFLUSH = prv.Flush_Parameter(ur_ub_key, ur_ub_val, rowCMD_PARM, stpCOMPILE, intCHUNK_C, sdaDEST_PARMS, objRET)
-                                rowCMD_PARM = objFLUSH.rowCMD_PARM
-                                intPREV_CHUNK = objFLUSH.intPREV_CHUNK
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.qs Then
-                                'skip qs around quoted parameter value
-                                intPREV_CHUNK = intCHUNK_C
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws Then
-                                'keep ws in eq
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.eq Then
-                                'skip eq between paramater name and value
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.txt Then
-                                'store param name, compile unquoted parameter value
-                                stpCOMPILE.d(strCHUNK)
-                                intPREV_CHUNK = intCHUNK_C
-                            End If
-
-                        ElseIf intPREV_CHUNK Is enmCMD_RET.txt Then
-                            'Have ws-fslash-eq-txt, compile parm val; wait for ws
-                            If intCHUNK_C Is enmCMD_RET.fslash OrElse
-                              intCHUNK_C Is enmCMD_RET.qs Then
-                                'Keep fslash and qs in unquoted param value
-                                stpCOMPILE.d(strCHUNK)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws Then
-                                'flush parameter; start new parameter
-                                Dim objFLUSH = prv.Flush_Parameter(ur_ub_key, ur_ub_val, rowCMD_PARM, stpCOMPILE, intCHUNK_C, sdaDEST_PARMS, objRET)
-                                rowCMD_PARM = objFLUSH.rowCMD_PARM
-                                intPREV_CHUNK = objFLUSH.intPREV_CHUNK
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.eq Then
-                                'Keep eq in unquoted param value
-                                stpCOMPILE.d(strCHUNK)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.txt Then
-                                stpCOMPILE.d(strCHUNK)
-                            End If
-
-                        ElseIf intPREV_CHUNK Is enmCMD_RET.qs Then
-                            'Have ws-fslash-eq-qs, compile parm val; wait for qs_end
-                            If intCHUNK_C Is enmCMD_RET.fslash Then
-                                'Keep fslash in quoted param value
-                                stpCOMPILE.d(strCHUNK)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.qs Then
-                                'hold parameter; skip this qs and look for another escaped qs or flush the parameter
-                                intPREV_CHUNK = enmCMD_RET.qs_end
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws OrElse
-                              intCHUNK_C Is enmCMD_RET.eq OrElse
-                              intCHUNK_C Is enmCMD_RET.txt Then
-                                'Keep ws, eq and txt in quoted param value
-                                stpCOMPILE.d(strCHUNK)
-
-                            End If
-
-                        ElseIf intPREV_CHUNK Is enmCMD_RET.qs_end Then
-                            'Have ws-fslash-eq-qs-qsend, compile parm val without ending quote; wait for qs or ws
-                            If intCHUNK_C Is enmCMD_RET.fslash Then
-                                'qs_end then fslash without ws between is unk
-                                stpCOMPILE.d(strCHUNK)
-                                intPREV_CHUNK = enmCMD_RET.unk
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.qs Then
-                                'keep escaped qs
-                                stpCOMPILE.d(strCHUNK)
-                                intPREV_CHUNK = intCHUNK_C
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws Then
-                                'flush parameter; start new parameter
-                                Dim objFLUSH = prv.Flush_Parameter(ur_ub_key, ur_ub_val, rowCMD_PARM, stpCOMPILE, intCHUNK_C, sdaDEST_PARMS, objRET)
-                                rowCMD_PARM = objFLUSH.rowCMD_PARM
-                                intPREV_CHUNK = objFLUSH.intPREV_CHUNK
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.eq OrElse
-                              intCHUNK_C Is enmCMD_RET.txt Then
-                                'qs_end then ws or txt is unk
-                                stpCOMPILE.d(strCHUNK)
-                                intPREV_CHUNK = enmCMD_RET.unk
-
-                            End If
-
-                        ElseIf intPREV_CHUNK Is enmCMD_RET.unk Then
-                            'Have unk, skip compile; wait for ws
-                            If intCHUNK_C Is enmCMD_RET.fslash OrElse
-                              intCHUNK_C Is enmCMD_RET.qs Then
-                                stpCOMPILE.d(strCHUNK)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws Then
-                                'skip parameter; start new parameter
-                                rowCMD_PARM.v(enmCMD_RET.txt) = stpCOMPILE.ToString
-                                rowCMD_PARM = New TRow(Of enmCMD_RET)
-                                objRET.ttbCMD_PARM.Add(rowCMD_PARM)
-                                stpCOMPILE.Clear()
-                                intPREV_CHUNK = intCHUNK_C
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.eq OrElse
-                              intCHUNK_C Is enmCMD_RET.txt Then
-                                stpCOMPILE.d(strCHUNK)
-                            End If
-                        End If
-
-                        CHRCTR += intSPAN - 1
-
-                        If CHRCTR = ur_source_text.Length - 1 Then
-                            'On last entry
-                            If intCHUNK_C Is enmCMD_RET.fslash OrElse intCHUNK_C Is enmCMD_RET.eq Then
-                                'flush default parameter value
-                                stpCOMPILE.Clear.d("true")
-                                Call prv.Flush_Parameter(ur_ub_key, ur_ub_val, rowCMD_PARM, stpCOMPILE, intCHUNK_C, sdaDEST_PARMS, objRET)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.qs OrElse intCHUNK_C Is enmCMD_RET.txt Then
-                                'flush parameter
-                                Call prv.Flush_Parameter(ur_ub_key, ur_ub_val, rowCMD_PARM, stpCOMPILE, intCHUNK_C, sdaDEST_PARMS, objRET)
-
-                            ElseIf intCHUNK_C Is enmCMD_RET.ws Then
-                                'skip trailing ws
-                            End If
-                        End If
-                    Next CHRCTR
-                End Function 'CommandLine_Chunk
-
-                Private Class Flush_Ret
-                    Public rowCMD_PARM As TRow(Of enmCMD_RET)
-                    Public intPREV_CHUNK As enmCMD_RET
-                End Class
+            Public Class kvp_entry
+                Public key As Strap
+                Public value As Strap
 
                 <System.Diagnostics.DebuggerHidden()>
-                Private Shared Function Flush_Parameter(ur_ub_key As W, ur_ub_val As W, ur_cmdparm_row As TRow(Of enmCMD_RET), ur_parm_val As Strap, ur_new_prevchunk As enmCMD_RET, ur_refname_list As Sdata, ur_objret_arl As sCMD_RET) As Flush_Ret
-                    Dim objRET = New Flush_Ret
-                    Flush_Parameter = objRET
-                    objRET.rowCMD_PARM = New TRow(Of enmCMD_RET)
-                    ur_objret_arl.ttbCMD_PARM.Add(objRET.rowCMD_PARM)
-                    objRET.intPREV_CHUNK = ur_new_prevchunk
-                    'flush parameter
-                    ur_cmdparm_row.v(enmCMD_RET.txt) = ur_parm_val
-                    Dim intFOUND = ur_refname_list.IndexOf(ur_cmdparm_row.v(enmCMD_RET.fslash).ToLower)
-                    If intFOUND >= 0 Then
-                        With 1 : Dim sdaROW = New TRow(Of W)
-                            sdaROW.v(ur_ub_key) = ur_refname_list.v_enm(intFOUND)
-                            sdaROW.v(ur_ub_val) = ur_cmdparm_row.v(enmCMD_RET.txt)
-                            ur_objret_arl.ttbUB_PARM.Add(sdaROW)
-                        End With
-
-                        'Skip parameter if not found
-                    End If
-
-                    ur_parm_val.Clear()
-                End Function
+                Public Sub New()
+                    Me.key = Strapd()
+                    Me.value = Strapd()
+                End Sub
 
                 <System.Diagnostics.DebuggerHidden()>
-                Private Shared Function gChunkType(ur_char As Char) As enmCMD_RET
-                    If ur_char = vbCr OrElse
-                  ur_char = vbLf OrElse
-                  ur_char = " "c OrElse
-                  ur_char = vbTab Then
-                        gChunkType = enmCMD_RET.ws
+                Public Sub Clear()
+                    Me.key.Clear()
+                    Me.value.Clear()
+                End Sub
+            End Class 'kvp_entry
 
-                    ElseIf ur_char = "="c OrElse
-                  ur_char = ":"c Then
-                        gChunkType = enmCMD_RET.eq
+            Public Class line_pos
+                Public chr_pos As Integer
+                Public line_num As Integer
+                Public prev_chr As Char
 
-                    ElseIf ur_char = "/"c Then
-                        gChunkType = enmCMD_RET.fslash
+                <System.Diagnostics.DebuggerHidden()>
+                Public Sub New()
+                    Me.chr_pos = 0
+                    Me.line_num = 1
+                    Me.prev_chr = s(0)
+                End Sub
 
-                    ElseIf ur_char = """"c Then
-                        gChunkType = enmCMD_RET.qs
+                <System.Diagnostics.DebuggerHidden()>
+                Public Sub Adv(ur_chr As Char)
+                    If prev_chr = Chr(10) Then
+                        Me.chr_pos = 1
+                        Me.line_num += 1
 
                     Else
-                        gChunkType = enmCMD_RET.txt
+                        Me.chr_pos += 1
+                    End If 'ur_chr
+
+                    prev_chr = ur_chr
+                End Sub 'Adv
+            End Class 'line_pos
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function ParseCline(ur_cline_data As String, ur_notice_msg As Strap) As Objlist(Of cline_row_entry)
+                Dim retLIST = New Objlist(Of cline_row_entry)
+                ParseCline = retLIST
+                Dim CHRCTR = 0
+                Dim lnpCUR_OFFSET = New line_pos
+                Dim sdaIGNORE_STACK = New Sdata
+                Dim kvpCUR_COL = New kvp_entry
+                Dim chtCUR_ENTRY = New chr_type
+                Dim flgCUR_STATE = enmCLINE_SCTN.ws_prerow
+                Dim bolLAST_CHAR = False
+                Dim intUNNAMED_VALUE_SEQ = b0(1)
+                Dim chrCR = Chr(13)
+                Dim chrLF = Chr(10)
+                Dim chrQS = qs(0)
+                Dim chrSP = s(0)
+                Dim chrTAB = Chr(9)
+                Dim strLIT_UNHANDLED_CHAR_GROUP = "Unhandled char-group"
+                Dim strLIT_UNHANDLED_FILE_SECTION = "Unhandled file-section"
+
+                For Each chrENTRY In ur_cline_data
+                    chtCUR_ENTRY.value = chrENTRY
+                    CHRCTR += 1
+                    If CHRCTR = ur_cline_data.Length Then
+                        bolLAST_CHAR = True
                     End If
-                End Function 'gChunkType
-            End Class 'prv
-        End Class
-    End Class 'MxText-Parse
+
+                    lnpCUR_OFFSET.Adv(chrENTRY)
+                    If chrENTRY = chrSP OrElse
+                      chrENTRY = chrCR OrElse
+                      chrENTRY = chrLF OrElse
+                      chrENTRY = chrTAB Then 'whitespace
+                        chtCUR_ENTRY.group = enmCHR_TYPE.ws
+                    ElseIf chrENTRY = "/"c Then 'key_separator
+                        chtCUR_ENTRY.group = enmCHR_TYPE.key_sprtr
+                    ElseIf chrENTRY = "="c Then 'value_separator
+                        chtCUR_ENTRY.group = enmCHR_TYPE.val_sprtr
+                    ElseIf chrENTRY = chrQS Then 'string_delimiter
+                        chtCUR_ENTRY.group = enmCHR_TYPE.string_delim
+                    Else 'string_data_character
+                        chtCUR_ENTRY.group = enmCHR_TYPE.string_chr
+                    End If
+
+                    If flgCUR_STATE Is enmCLINE_SCTN.ws_prerow Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'continue
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr Then
+                            'key name must follow without whitespace or quotes
+                            flgCUR_STATE = enmCLINE_SCTN.row_key_no_qs
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_no_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_in_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_in_qs
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_ws_preval_sprtr Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'continue
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr Then
+                            'this key must have had a null value, start a new key
+                            flgCUR_STATE = enmCLINE_SCTN.row_key_no_qs
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'the quoted or unquoted value must follow after possible whitespace
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_preval
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'the whitespace is equivalent to a value separator, so this key has a quoted value
+                            flgCUR_STATE = enmCLINE_SCTN.row_val_in_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'the whitespace is equivalent to a value separator, so this key has an unquoted value
+                            flgCUR_STATE = enmCLINE_SCTN.row_val_no_qs
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_ws_preval Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'continue
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr Then
+                            'this key must have had a null value, start a new key
+                            flgCUR_STATE = enmCLINE_SCTN.row_key_no_qs
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'structural characters must be quoted, so this key must have had a null value
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_no_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'this key has a quoted value
+                            flgCUR_STATE = enmCLINE_SCTN.row_val_in_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'this key has an unquoted value
+                            flgCUR_STATE = enmCLINE_SCTN.row_val_no_qs
+                            kvpCUR_COL.value.d(chrENTRY)
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_ws_newkey_sprtr Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'continue
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr Then
+                            'key name must follow without whitespace or quotes
+                            flgCUR_STATE = enmCLINE_SCTN.row_key_no_qs
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_no_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_in_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_in_qs
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_key_no_qs Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'key name is followed by value open tag, possibly with whitespace
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_preval_sprtr
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr Then
+                            'this key must have had a null value, start a new key
+                            flgCUR_STATE = enmCLINE_SCTN.row_key_no_qs
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'key name is followed by value open tag
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_preval
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'no key separator tag, so skip unnamed value data
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_in_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            kvpCUR_COL.key.d(chrENTRY)
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_val_in_qs Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'structural characters contained in quoted value
+                            kvpCUR_COL.value.d(chrENTRY)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            flgCUR_STATE = enmCLINE_SCTN.row_val_in_qs_esc
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            kvpCUR_COL.value.d(chrENTRY)
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_val_in_qs_esc Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'whitespace means the quote was ending the quoted value
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_newkey_sprtr
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'structural characters are not valid escape codes
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            kvpCUR_COL.value.d(chrENTRY)
+                            flgCUR_STATE = enmCLINE_SCTN.row_val_in_qs
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'non-structural characters are not valid escape codes
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET)
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_val_no_qs Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'whitespace means the non-quoted value ended
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_newkey_sprtr
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'the non-quoted value must be followed by a space
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET)
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            kvpCUR_COL.value.d(chrENTRY)
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.ignore_unnamed_val_in_qs Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr Then
+                            'structural characters contained in quoted value
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim Then
+                            'end of quoted value
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_newkey_sprtr
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'continue
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.ignore_unnamed_val_in_qs_esc Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'quoted value ended
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_preval_sprtr
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            flgCUR_STATE = enmCLINE_SCTN.ignore_unnamed_val_in_qs
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    ElseIf flgCUR_STATE Is enmCLINE_SCTN.ignore_unnamed_val_no_qs Then
+                        If chtCUR_ENTRY.group Is enmCHR_TYPE.ws Then
+                            'the non-quoted value must be followed by a space
+                            flgCUR_STATE = enmCLINE_SCTN.row_ws_newkey_sprtr
+
+                        ElseIf chtCUR_ENTRY.group Is enmCHR_TYPE.key_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.val_sprtr OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.string_delim OrElse
+                          chtCUR_ENTRY.group Is enmCHR_TYPE.string_chr Then
+                            'continue
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_CHAR_GROUP)
+                        End If
+
+                    Else
+                        flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_FILE_SECTION)
+                    End If
+
+                    If bolLAST_CHAR Then
+                        If flgCUR_STATE Is enmCLINE_SCTN.ws_prerow OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.row_ws_preval_sprtr OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.row_ws_preval OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.row_ws_newkey_sprtr OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.row_key_no_qs Then
+                            'assume key has null value
+
+                        ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_val_in_qs Then
+                            'the quoted value did not complete by end of data
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET)
+
+                        ElseIf flgCUR_STATE Is enmCLINE_SCTN.row_val_in_qs_esc OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.row_val_no_qs Then
+                            Call prvCLINE.AssignKeyValue(retLIST, kvpCUR_COL)
+
+                        ElseIf flgCUR_STATE Is enmCLINE_SCTN.ignore_unnamed_val_in_qs OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.ignore_unnamed_val_in_qs_esc OrElse
+                          flgCUR_STATE Is enmCLINE_SCTN.ignore_unnamed_val_no_qs Then
+                            'no key name
+
+                        Else
+                            flgCUR_STATE = prvCLINE.AssignError(ur_notice_msg, flgCUR_STATE, chtCUR_ENTRY, lnpCUR_OFFSET, strLIT_UNHANDLED_FILE_SECTION)
+                        End If
+                    End If
+
+                    If flgCUR_STATE Is enmCLINE_SCTN.ignore_rem_data Then
+                        Exit For
+                    End If
+                Next chrENTRY
+            End Function 'ParseCLine
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function AssignError(ret_message As Strap, ur_section As enmCLINE_SCTN, ur_chr As chr_type, ur_line_pos As line_pos, Optional ur_error_type As String = "Invalid") As enmCLINE_SCTN
+                AssignError = enmCLINE_SCTN.ignore_rem_data
+                ret_message.d(ur_error_type).dS(ur_chr.group.name).dS("(").dS(ur_chr.value).dS(")").dS("inside of").dS(ur_section.name).dS("at position:").dS("line").dS(ur_line_pos.line_num.ToString).dS("character").dS(ur_line_pos.chr_pos.ToString)
+            End Function 'AssignError
+
+            <System.Diagnostics.DebuggerHidden()>
+            Public Shared Function AssignKeyValue(ur_list As Objlist(Of cline_row_entry), ur_kvp As kvp_entry) As Boolean
+                AssignKeyValue = False
+                If HasText(ur_kvp.key) OrElse
+                  HasText(ur_kvp.value) Then
+                    Dim trwNEW = New cline_row_entry(ur_kvp.key, ur_kvp.value)
+                    ur_list.Add(trwNEW)
+                End If
+
+                Call ur_kvp.Clear()
+            End Function 'AssignKeyValue
+        End Class 'prvCLINE
+    End Class 'MxText-CLine
 
     Partial Public Class MxText
         <System.Diagnostics.DebuggerHidden()>
-        Public Shared Function CSVSplit(ByVal ur_line As String, Optional ur_separator As String = ",") As Sdata
+        Public Shared Function CSVSplit(ByVal ur_line As String, Optional ur_separator As String = ",", Optional ur_text_escape As String = """") As Sdata
             Dim sdaCMP = New Sdata
             CSVSplit = sdaCMP
-            Dim objARRAY = ur_line.ToCharArray
-            Dim objSPRTR = Mid(ur_separator, 1, 1).ToCharArray()(0)
-            Dim objESCAPE_QUOTE = """"c
+            Dim chrSPRTR = Mid(ur_separator & ",", 1, 1)(0)
+            Dim chrQS = Mid(ur_text_escape & """", 1, 1)(0)
+            Dim intLEN = ur_line.Length
 
-            Const cstSTART = 0
-            Const cstESC = 1
-            Const cstQS = 2
-            Dim intPARSE_STATE = cstSTART
-            Dim intLEN = Len(ur_line) - 1
+            Const intGROUP_QS = 0
+            Const intGROUP_FIELD_SEPARATOR = 1
+            Const intGROUP_STRING_CHAR = 2
+            Const intSEC_TEXT = 1
+            '- upon field separator (,), include unquoted chars '"val_e1",-v-al_e2
+            Const intSEC_OPEN_QUOTE_OR_ESC = 2
+            '- upon text escape ("), a second text escape returns a quote character; other goes to quoted text '"val_e1-"-"cont_e1",val_e2
+            Const intSEC_QUOTED_TEXT = 3
+            '- upon text escape (") and char, include unquoted chars until text escape '-"-val_e1""cont_e1",val_e3
+            Const intSEC_CLOSE_QUOTE_OR_ESC = 4
+            '- upon text escape (") and char, include unquoted chars until text escape '"val_e1"-"-cont_e1",val_e3
+            Dim strLIT_UNHANDLED_CHAR_GROUP = "Unhandled char-group"
+            Dim strLIT_UNHANDLED_FILE_SECTION = "Unhandled file-section"
+
+            Dim CHRCTR = 0
+            Dim bolLAST_CHAR = False
             Dim stpFIELD As New Strap
-            For intIX = 0 To intLEN
-                Dim objCHR = objARRAY(intIX)
-                Select Case intPARSE_STATE
-                    Case cstESC
-                        stpFIELD.d(objCHR)
-                        intPARSE_STATE = cstQS
+            Dim intCHAR_GROUP = intGROUP_STRING_CHAR
+            Dim intFILE_SECTION = intSEC_TEXT
+            For Each chrENTRY In ur_line
+                CHRCTR += 1
+                If CHRCTR = intLEN Then
+                    bolLAST_CHAR = True
+                End If
 
-                    Case cstQS
-                        If objCHR = objESCAPE_QUOTE Then
-                            intPARSE_STATE = cstSTART
-                            Dim intNEXT_IX = intIX + 1
-                            If intNEXT_IX < intLEN Then
-                                If objARRAY(intNEXT_IX) = objESCAPE_QUOTE Then
-                                    intPARSE_STATE = cstESC
-                                End If 'intNEXT_IX
-                            End If 'intNEXT_IX
+                If chrENTRY = chrQS Then
+                    intCHAR_GROUP = intGROUP_QS
+                ElseIf chrENTRY = chrSPRTR Then
+                    intCHAR_GROUP = intGROUP_FIELD_SEPARATOR
+                Else
+                    intCHAR_GROUP = intGROUP_STRING_CHAR
+                End If
 
-                        Else 'objCHR
-                            stpFIELD.d(objCHR)
-                        End If 'objCHR
+                If intFILE_SECTION = intSEC_TEXT Then
+                    If intCHAR_GROUP = intGROUP_QS Then
+                        intFILE_SECTION = intSEC_OPEN_QUOTE_OR_ESC
 
-                    Case cstSTART
-                        If objCHR = objSPRTR Then
+                    ElseIf intCHAR_GROUP = intGROUP_FIELD_SEPARATOR Then
+                        intFILE_SECTION = intSEC_TEXT
+                        sdaCMP.d(stpFIELD.ToString)
+                        Call stpFIELD.Clear()
+
+                    ElseIf intCHAR_GROUP = intGROUP_STRING_CHAR Then
+                        stpFIELD.d(chrENTRY)
+
+                    Else
+                        Throw New System.Exception(strLIT_UNHANDLED_CHAR_GROUP)
+                    End If
+
+                ElseIf intFILE_SECTION = intSEC_OPEN_QUOTE_OR_ESC Then
+                    If intCHAR_GROUP = intGROUP_QS Then
+                        intFILE_SECTION = intSEC_TEXT
+                        stpFIELD.d(chrENTRY)
+
+                    ElseIf intCHAR_GROUP = intGROUP_FIELD_SEPARATOR OrElse
+                      intCHAR_GROUP = intGROUP_STRING_CHAR Then
+                        intFILE_SECTION = intSEC_QUOTED_TEXT
+                        stpFIELD.d(chrENTRY)
+
+                    Else
+                        Throw New System.Exception(strLIT_UNHANDLED_CHAR_GROUP)
+                    End If
+
+                ElseIf intFILE_SECTION = intSEC_QUOTED_TEXT Then
+                    If intCHAR_GROUP = intGROUP_QS Then
+                        intFILE_SECTION = intSEC_CLOSE_QUOTE_OR_ESC
+
+                    ElseIf intCHAR_GROUP = intGROUP_FIELD_SEPARATOR OrElse
+                      intCHAR_GROUP = intGROUP_STRING_CHAR Then
+                        stpFIELD.d(chrENTRY)
+
+                    Else
+                        Throw New System.Exception(strLIT_UNHANDLED_CHAR_GROUP)
+                    End If
+
+                ElseIf intFILE_SECTION = intSEC_CLOSE_QUOTE_OR_ESC Then
+                    If intCHAR_GROUP = intGROUP_QS Then
+                        intFILE_SECTION = intSEC_QUOTED_TEXT
+                        stpFIELD.d(chrENTRY)
+
+                    ElseIf intCHAR_GROUP = intGROUP_FIELD_SEPARATOR Then
+                        intFILE_SECTION = intSEC_TEXT
+                        sdaCMP.d(stpFIELD.ToString)
+                        Call stpFIELD.Clear()
+
+                    ElseIf intCHAR_GROUP = intGROUP_STRING_CHAR Then
+                        intFILE_SECTION = intSEC_TEXT
+                        sdaCMP.d(stpFIELD.ToString)
+                        Call stpFIELD.Clear()
+
+                    Else
+                        Throw New System.Exception(strLIT_UNHANDLED_CHAR_GROUP)
+                    End If
+
+                Else
+                    Throw New System.Exception(strLIT_UNHANDLED_FILE_SECTION)
+                End If
+
+                If bolLAST_CHAR Then
+                    If intFILE_SECTION = intSEC_TEXT OrElse
+                      intFILE_SECTION = intSEC_OPEN_QUOTE_OR_ESC OrElse
+                      intFILE_SECTION = intSEC_QUOTED_TEXT OrElse
+                      intFILE_SECTION = intSEC_CLOSE_QUOTE_OR_ESC Then
+                        If stpFIELD.HasText Then
                             sdaCMP.d(stpFIELD.ToString)
                             Call stpFIELD.Clear()
+                        End If
 
-                        ElseIf objCHR = objESCAPE_QUOTE Then
-                            intPARSE_STATE = cstQS
+                    Else
+                        Throw New System.Exception(strLIT_UNHANDLED_FILE_SECTION)
+                    End If
+                End If
 
-                        Else 'objCHR
-                            stpFIELD.d(objCHR)
-                        End If 'objCHR
-                End Select 'intPARSE_STATE
-            Next intIX
-
-            sdaCMP.d(stpFIELD)
+                'If intFILE_SECTION = intIGNORE_REM_DATA Then
+                '    Exit For
+                'End If
+            Next chrENTRY
         End Function 'CSVSplit
     End Class 'MxText-Csv
 
@@ -1512,6 +1776,13 @@ Namespace Mx '2020m01d03
                 gParentDir = New FileName(Me.ParentDir)
             End Function 'gParentDir
 
+            Public ReadOnly Property HasPath() As Boolean
+                <System.Diagnostics.DebuggerHidden()>
+                Get
+                    HasPath = HasText(Me.FilePath)
+                End Get
+            End Property 'HasPath
+
             Public Property Name() As String
                 <System.Diagnostics.DebuggerHidden()>
                 Get
@@ -1587,12 +1858,6 @@ Namespace Mx '2020m01d03
                     sdaPATH.Add(objFILE)
                 Next objFILE
             End Function 'PathList
-
-            <System.Diagnostics.DebuggerHidden()>
-            Public Function wAssemblyDir(ur_assembly_info As Microsoft.VisualBasic.ApplicationServices.AssemblyInfo) As FileName
-                wAssemblyDir = Me
-                Me.FilePath = ur_assembly_info.DirectoryPath.Replace("\bin\Debug", mt)
-            End Function 'wAssemblyDir
 
             <System.Diagnostics.DebuggerHidden()>
             Public Function wClear() As FileName
@@ -1803,14 +2068,16 @@ Namespace Mx '2020m01d03
 
     Public Class TablePKEnum(Of E As {New, bitBASE}, P As {New, bitBASE}, T As {New, TRow(Of E)})
         Private ttb As System.Collections.Generic.Dictionary(Of P, T)
-        Private PK As E
+        Public KeyList As Objlist(Of P)
+        Public PK As E
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub New(Optional ur_flag_populate_keys As Boolean = True)
             Me.ttb = New System.Collections.Generic.Dictionary(Of P, T)
             Me.PK = TRow(Of E).glbl.RefKeys.tr_b1(1)
+            Me.KeyList = TRow(Of P).glbl.RefKeys
             If ur_flag_populate_keys Then
-                For Each enmENTRY In TRow(Of P).glbl.RefKeys
+                For Each enmENTRY In Me.KeyList
                     Dim new_row = New T
                     new_row.v(Me.PK) = enmENTRY.name
                     Me.ttb.Add(enmENTRY, new_row)
@@ -1859,11 +2126,27 @@ Namespace Mx '2020m01d03
         End Function
 
         <System.Diagnostics.DebuggerHidden()>
+        Public Function KeySearch(ur_key_name As String) As Objlist(Of P)
+            KeySearch = TRow(Of P).glbl.RefKeySearch(ur_key_name)
+        End Function
+
+        <System.Diagnostics.DebuggerHidden()>
         Public Function PersistRead(ur_persist_path As String) As TablePKEnum(Of E, P, T)
             Dim ttbRET = New TablePKEnum(Of E, P, T)
             PersistRead = ttbRET
             For Each row In TRow(Of E).PersistRead(ur_persist_path)
-                Me.Ins(CType(row, T))
+                Dim strPK = row.v(Me.PK)
+                For Each enmENTRY In TRow(Of P).glbl.RefKeys
+                    If AreEqual(enmENTRY.name, strPK) Then
+                        Dim trwCOPY = New T
+                        For Each kvpENTRY In trwCOPY.kvp
+                            trwCOPY.v_b1(kvpENTRY.Indexb1) = row.v_b1(kvpENTRY.Indexb1)
+                        Next
+
+                        Me.ttb.Item(enmENTRY) = trwCOPY
+                        Exit For
+                    End If
+                Next enmENTRY
             Next
         End Function 'PersistRead
 
@@ -1921,23 +2204,12 @@ Namespace Mx '2020m01d03
             Call ret.Sort()
         End Function 'SelDistinct
 
-        <System.Diagnostics.DebuggerHidden()>
-        Public Function SelFirst() As T
-            If Me.ttb.Count = 0 Then
-                SelFirst = New T()
-            Else
-                SelFirst = Nothing
-                For Each entry In Me.ttb.Keys
-                    SelFirst = Me.ttb.Item(entry)
-                    Exit For
-                Next
-            End If
-        End Function 'SelFirst
-
-        <System.Diagnostics.DebuggerHidden()>
-        Public Function SelKey(ur_key As P) As T
-            SelKey = Me.ttb.Item(ur_key)
-        End Function 'SelKey
+        Public ReadOnly Property SelKey(ur_key As P) As T
+            <System.Diagnostics.DebuggerHidden()>
+            Get
+                SelKey = Me.ttb.Item(ur_key)
+            End Get
+        End Property
 
         <System.Diagnostics.DebuggerHidden()>
         Public Function SelNe(ur_col As E, ur_value As String) As TablePKEnum(Of E, P, T)
@@ -1966,9 +2238,9 @@ Namespace Mx '2020m01d03
         End Function 'UseKey
 
         <System.Diagnostics.DebuggerHidden()>
-        Public Overloads Function ToString(ur_hdr As Boolean) As String
+        Public Overloads Function ToString(ur_hdr As Boolean, Optional ur_quoted As Boolean = True) As String
             Dim stpRET = Strapd() : Dim intINDEX = 0 : For Each kvpREC In Me.ttb : intINDEX += 1
-                stpRET.d(kvpREC.Value.ToString((intINDEX = 1) And ur_hdr))
+                stpRET.d(kvpREC.Value.ToString((intINDEX = 1) And ur_hdr, ur_quoted))
             Next kvpREC : ToString = stpRET
         End Function 'ToString
 
@@ -1994,7 +2266,7 @@ Namespace Mx '2020m01d03
 
     Public Class TablePKStr(Of E As {New, bitBASE}, T As {New, TRow(Of E)})
         Private ttb As System.Collections.Generic.Dictionary(Of String, T)
-        Private PK As Objlist(Of E)
+        Public PK As Objlist(Of E)
 
         <System.Diagnostics.DebuggerHidden()>
         Public Sub New(ur_pk_count As Integer)
@@ -2034,6 +2306,41 @@ Namespace Mx '2020m01d03
             DelAll = Me
             Call Me.ttb.Clear()
         End Function 'DelAll
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function DelKey(ParamArray ur_key() As String) As TablePKStr(Of E, T)
+            DelKey = Me
+            Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_key)
+            Call Me.ttb.Remove(strPK_KEY_COMBINED)
+        End Function 'DelKey
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function Del(ur_row As T) As TablePKStr(Of E, T)
+            Del = Me
+            Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_row)
+            Call Me.ttb.Remove(strPK_KEY_COMBINED)
+        End Function 'DelKey
+
+        <System.Diagnostics.DebuggerHidden()>
+        Public Function Index_TableSplit(ur_key As E) As SdPair(Of Objlist(Of T))
+            Dim sdpRET = New SdPair(Of Objlist(Of T))
+            Index_TableSplit = sdpRET
+            Dim tblCHUNK As Objlist(Of T) = Nothing
+            For Each rowCHUNK In Me.ttb.Values
+                Dim strINDEX = rowCHUNK.v(ur_key)
+                Dim intFOUND = sdpRET.IndexOf(strINDEX)
+                If intFOUND < 0 Then
+                    tblCHUNK = New Objlist(Of T)
+                    sdpRET.d(strINDEX, tblCHUNK)
+                Else
+                    tblCHUNK = sdpRET.l_enm(intFOUND)
+                End If
+
+                tblCHUNK.Add(rowCHUNK)
+            Next rowCHUNK
+
+            Call sdpRET.Sort()
+        End Function 'Index_TableSplit
 
         <System.Diagnostics.DebuggerHidden()>
         Public Function Ins(ur_row As T) As T
@@ -2136,36 +2443,36 @@ Namespace Mx '2020m01d03
         End Function 'SelDistinct
 
         <System.Diagnostics.DebuggerHidden()>
-        Public Function SelFirst() As T
-            If Me.ttb.Count = 0 Then
-                SelFirst = New T
-            Else
-                SelFirst = Nothing
-                For Each entry In Me.ttb.Keys
-                    SelFirst = Me.ttb.Item(entry)
-                    Exit For
-                Next
-            End If
-        End Function 'SelFirst
+        Public Function SelTop1() As Objlist(Of T)
+            Dim lstRET = New Objlist(Of T)
+            For Each kvpENTRY In Me.ttb
+                lstRET.Add(kvpENTRY.Value)
+                Exit For
+            Next
 
-        <System.Diagnostics.DebuggerHidden()>
-        Public Function SelKey(ParamArray ur_key() As String) As T
-            Dim ret As T = Nothing
-            If ur_key.Length <> Me.PK.Count Then
-                Throw New System.Exception("SelKey requires all PK parameters: " & Me.PK.Count)
+            SelTop1 = lstRET
+        End Function 'SelTop1
 
-            Else
-                Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_key)
-                If Me.ttb.ContainsKey(strPK_KEY_COMBINED) Then
-                    ret = Me.ttb.Item(strPK_KEY_COMBINED)
+        Public ReadOnly Property SelKey(ParamArray ur_key() As String) As T
+            <System.Diagnostics.DebuggerHidden()>
+            Get
+                Dim ret As T = Nothing
+                If ur_key.Length <> Me.PK.Count Then
+                    Throw New System.Exception("SelKey requires all PK parameters: " & Me.PK.Count)
 
                 Else
-                    ret = New T
-                End If 'Me
-            End If 'ur_key
+                    Dim strPK_KEY_COMBINED = prv.Get_PKStr(Me, ur_key)
+                    If Me.ttb.ContainsKey(strPK_KEY_COMBINED) Then
+                        ret = Me.ttb.Item(strPK_KEY_COMBINED)
 
-            SelKey = ret
-        End Function 'SelKey
+                    Else
+                        ret = New T
+                    End If 'Me
+                End If 'ur_key
+
+                SelKey = ret
+            End Get
+        End Property 'SelKey
 
         <System.Diagnostics.DebuggerHidden()>
         Public Function SelNe(ur_col As E, ur_value As String) As TablePKStr(Of E, T)
@@ -2182,16 +2489,18 @@ Namespace Mx '2020m01d03
         Public Function SelOnKey(ParamArray ur_key() As String) As TablePKStr(Of E, T)
             Dim ret = Me
             For KEYCTR = 1 To Me.PK.Count
-                ret = ret.Sel(Me.PK.Item(b0(KEYCTR)), ur_key(b0(KEYCTR)))
-            Next
+                If ur_key.Length >= KEYCTR Then
+                    ret = ret.Sel(Me.PK.Item(b0(KEYCTR)), ur_key(b0(KEYCTR)))
+                End If
+            Next KEYCTR
 
             SelOnKey = ret
         End Function 'SelOnKey
 
         <System.Diagnostics.DebuggerHidden()>
-        Public Overloads Function ToString(ur_hdr As Boolean) As String
+        Public Overloads Function ToString(ur_hdr As Boolean, Optional ur_quoted As Boolean = True) As String
             Dim stpRET = Strapd() : Dim intINDEX = 0 : For Each kvpREC In Me.ttb : intINDEX += 1
-                stpRET.d(kvpREC.Value.ToString((intINDEX = 1) And ur_hdr))
+                stpRET.d(kvpREC.Value.ToString((intINDEX = 1) And ur_hdr, ur_quoted))
             Next kvpREC : ToString = stpRET
         End Function 'ToString
 
@@ -2233,7 +2542,7 @@ Namespace Mx '2020m01d03
 
                 Dim stpPK_KEY_COMBINED = Strapd()
                 For KEYCTR = 1 To intPK_KEYS
-                    If KEYCTR = 1 Then stpPK_KEY_COMBINED.d(vbTab)
+                    If KEYCTR > 1 Then stpPK_KEY_COMBINED.d(vbTab)
                     stpPK_KEY_COMBINED.d(ur_key(b0(KEYCTR)).ToUpper)
                 Next
 
@@ -2253,141 +2562,30 @@ Namespace Mx '2020m01d03
         End Class 'prv
     End Class 'TablePKStr
 
+    Public Class TablePKStrOne(Of E As {New, bitBASE}, P As {New, bitBASE}, T As {New, TRow(Of E)})
+        Inherits TablePKStr(Of E, T)
+        Public KeyList As Objlist(Of P)
 
-    Partial Public Class Have
-        Partial Private Class prv_sample
-            Private Class Have
-                Private Shared tblUserBowl As sUserBowl
+        <System.Diagnostics.DebuggerHidden()>
+        Public Sub New()
+            Call MyBase.New(1)
+            Me.KeyList = TRow(Of P).glbl.RefKeys
+        End Sub
 
-                <System.Diagnostics.DebuggerHidden()>
-                Private Shared Sub Connect()
-                    If Have.tblUserBowl Is Nothing Then
-                        Have.tblUserBowl = New sUserBowl
-                    End If 'sdaTCOL_NAME
-                End Sub 'Connect
+        Public Shadows ReadOnly Property SelKey(ur_key As P) As T
+            <System.Diagnostics.DebuggerHidden()>
+            Get
+                Dim retROW As T = Nothing
+                For Each trwENTRY In Me.SelOnKey(ur_key.name).SelAll
+                    retROW = trwENTRY
+                Next
 
-                Public Class enmUB
-                    Inherits bitBASE
-                    Public Shared bowl_name As enmUB = TRow(Of enmUB).glbl.NewBitBase()
-                    Public Shared contents As enmUB = TRow(Of enmUB).glbl.NewBitBase()
-                End Class
+                If retROW Is Nothing Then
+                    retROW = Me.InsKey(ur_key.name)
+                End If
 
-                Public Class enmUN
-                    Inherits bitBASE
-                    Public Shared app_folder As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared app_name As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared app_path As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared cmdline_audit As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared cmdline_orig As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared cmdline_table As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared extra_p1 As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared extra_p2 As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared in_subfolder As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared path As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                    Public Shared to_clipboard As enmUN = TRow(Of enmUN).glbl.NewBitBase()
-                End Class
-
-                'Public Shared Function UserBowl() As sUserBowl
-                '    Dim bolFIRST_INIT = (Have.tblUserBowl Is Nothing)
-                '    Call Have.Connect()
-                '    UserBowl = Have.tblUserBowl
-                '    If bolFIRST_INIT Then
-                '        Call Have.tblUserBowl.InsFrom_Application()
-                '        Have.tblUserBowl.InsKey(enmUN.cmdline_audit, "1")
-                '        Call Have.tblUserBowl.Cboard_CmdlineAudit()
-                '    End If
-                'End Function 'UserBowl
-
-                Public Class rUserBowl
-                    Inherits TRow(Of enmUB)
-
-                    <System.Diagnostics.DebuggerHidden()>
-                    Public Function vt(ur_enm As enmUB, ur_val As String) As rUserBowl
-                        vt = Me
-                        Me.v(ur_enm) = ur_val
-                    End Function
-
-                    'Public Shadows Function Link_Table(ur_child_table As Have.sReport_Detl, ParamArray ur_key_list() As bitRP) As sReport_Detl
-                    '    Dim tblRET = New sReport_Detl
-                    '    Link_Table = tblRET
-                    '    Dim sdpXLAT = New SdPair(Of bitRT)
-                    '    Dim stpKEY_BINDINGS = Strapd()
-                    '    For Each keyRP In ur_key_list
-                    '        stpKEY_BINDINGS.dS(keyRP.name)
-                    '        For Each keyRT In ur_child_table.SelFirst.RefColKeys
-                    '            If AreEqual(keyRT.name, keyRP.name) Then
-                    '                sdpXLAT.d(keyRP.name, keyRT)
-                    '            End If
-                    '        Next keyRT
-                    '    Next keyRP
-
-                    '    If sdpXLAT.Count <> ur_key_list.Length Then
-                    '        Throw New System.Exception("Key bindings not found for RT/RP join: " & stpKEY_BINDINGS.ToString)
-
-                    '    Else
-                    '        For Each trwJOIN In ur_child_table.SelAll
-                    '            Dim bolFOUND = True
-                    '            For Each keyRP In ur_key_list
-                    '                Dim keyRT = sdpXLAT.l(keyRP.name)
-                    '                If AreEqual(trwJOIN.v(keyRT), Me.v(keyRP)) = False Then
-                    '                    bolFOUND = False
-                    '                    Exit For
-                    '                End If
-                    '            Next keyRP
-
-                    '            If bolFOUND Then
-                    '                tblRET.Ins(trwJOIN)
-                    '            End If
-                    '        Next trwJOIN
-                    '    End If 'sdpXLAT
-                    'End Function 'Link_Table
-                End Class 'rUserBowl
-
-                Public Class sUserBowl
-                    Inherits TablePKEnum(Of enmUB, enmUN, rUserBowl)
-
-                    'Public Sub Cboard_CmdlineAudit()
-                    '    If HasText(Me.SelKey(enmUN.cmdline_audit).v(enmUB.contents)) Then
-                    '        Dim strAUDIT = Me.ToString(True)
-                    '        Dim ins_msg = Mx.Have.MessageBox.Ins(
-                    '            New Mx.Have.rMessageBox().
-                    '                vt(enmMB.title, Me.SelKey(enmUN.app_name).v(enmUB.contents)).
-                    '                vt(enmMB.text, strAUDIT),
-                    '            MsgBoxStyle.OkCancel
-                    '            )
-                    '        If ins_msg.vUserResponse = MsgBoxResult.Ok Then
-                    '            Mx.Have.Clipboard.Ins(
-                    '                New Mx.Have.rClipboard().
-                    '                vt(enmCB.text, strAUDIT)
-                    '                )
-                    '        End If
-                    '    End If
-                    'End Sub 'Cboard_CmdlineAudit
-
-                    'Public Function InsFrom_Application() As rUserBowl
-                    '    Dim ret = New rUserBowl
-                    '    InsFrom_Application = ret
-                    '    'Me.InsKey(enmUN.app_name, New MxText.FileName().d(Mx.Class1.SourcePath).FileGroup)
-                    '    'Me.InsKey(enmUN.app_path, Mx.Class1.SourcePath)
-                    '    'Me.InsKey(enmUN.app_folder, Mx.Class1.SourceFolder)
-
-                    '    Dim arlCMD_RET = MxText.Cmdline_UB(Of enmUN, enmUB).CommandLine_UBParm(enmUB.bowl_name, enmUB.contents, System.Environment.CommandLine)
-                    '    Me.InsKey(enmUN.cmdline_orig, qs & System.Environment.CommandLine.Replace(qs, qs & qs) & qs)
-                    '    Me.InsKey(enmUN.cmdline_table, qs & arlCMD_RET.ttbCMD_PARM.ToString(True).Replace(qs, qs & qs) & qs)
-                    '    For Each rowFOUND In arlCMD_RET.ttbUB_PARM
-                    '        Me.Ins(
-                    '            New Have.rUserBowl().
-                    '            vt(enmUB.bowl_name, rowFOUND.v(enmUB.bowl_name)).
-                    '            vt(enmUB.contents, rowFOUND.v(enmUB.contents))
-                    '            )
-                    '    Next
-                    'End Function 'InsFrom_Application
-
-                    'Public Function ToCbrd(ur_hdr As Boolean) As Integer
-                    '    ToCbrd = Mx.glbl.gCboard.SetText(Me.ToString(ur_hdr))
-                    'End Function
-                End Class 'sUserBowl
-            End Class 'Have
-        End Class 'prv_sample
-    End Class 'Have.prv_sample
+                SelKey = retROW
+            End Get
+        End Property 'SelKey
+    End Class 'TablePKStrOne
 End Namespace 'Mx
