@@ -2170,6 +2170,10 @@ Activities\How execute nameless function in JavaScript Code
 
 
 
+Activities\How export a group of cards as text using TiddlyWiki Code
+
+
+
 Activities\How export a set of cards using TiddlyWiki Advanced Search
 
 
@@ -4576,12 +4580,55 @@ How execute nameless function in JavaScript Code\Form e1\JavaScript Code
 
 
 
-How export a set of cards using TiddlyWiki Advanced Search\Form e1\Folder Structure
+How export a group of cards as text using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 """
-- Look for the downloaded .JSON file in the Downloads folder
-- Rename the file according to your tag name
-- You can drag the file onto a TiddlyWiki page to re-import the cards
+- [UrTemplate card]
+- tags = $:/tags/Exporter
+- field: description = Export as Code
+- field: extension = .codetxt
+"""
+
+```
+\define renderContent()
+<$list variable=cur_export_card filter="$(exportFilter)$">
+<hr>
+<h2><$link to=<<cur_export_card>> /></h2>
+<$list variable=cur_export_text filter="[<cur_export_card>get[text]]">
+<$codeblock code=<<cur_export_text>> />
+</$list><!--cur_export_text-->
+</$list><!--cur_export_card-->
+\end
+<<renderContent>>
+```
+
+"""
+- [Card menu, export tiddler sub-menu]
+- Note: There is an Export as Code option
+- Click option Export as Code -> Downloads file
+
+[UrCard.codetxt.html]
+- Note: You can remove the .hmtl extension, and rename the file with extension .code.txt
+
+Or use a button to specify a file name
+- [UrHardCodedTemplate card]
+- Make a copy of the UrTemplate card
+- Replace the "$(exportFilter)$" text with a standard filter
+
+- [New Card]
+"""
+
+```
+<$button>
+<$action-sendmessage $message="tm-download-file" $param="UrHardCodedTemplate" filename="UrCard.code.txt" />
+Export as Code
+</$button>
+```
+
+- Click button Export as Code -> Downloads file
+
+[UrCard.code.txt file]
+- Note: It contains the card's title and code as text
 
 
 
@@ -4592,8 +4639,18 @@ How export a set of cards using TiddlyWiki Advanced Search\Form e1\TiddlyWiki Ad
 - Click tab Filter -> Navigates tab
 - Filter = `[tag[UrTagName]]`
 - Note: The cards are listed
-- Click button Export Tiddlers (resembles arrow coming out of tray) -> Opens menu
-- Click option JSON -> Downloads file
+- * Click button Export Tiddlers (resembles arrow coming out of tray) -> Opens menu
+- * Click option JSON -> Downloads file
+
+
+
+
+How export a set of cards using TiddlyWiki Advanced Search\Form e2\Folder Structure
+
+"""
+- Look for the downloaded .JSON file in the Downloads folder
+- Rename the file according to your tag name
+- * You can drag the file onto a TiddlyWiki page to re-import the cards
 
 
 

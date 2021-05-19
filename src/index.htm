@@ -561,6 +561,8 @@ Error message and password prompt
 
 <li>Activities\How execute nameless function in JavaScript Code</li>
 
+<li>Activities\How export a group of cards as text using TiddlyWiki Code</li>
+
 <li>Activities\How export a set of cards using TiddlyWiki Advanced Search</li>
 
 <li>Activities\How export article entries from Instapaper.com Website</li>
@@ -947,9 +949,11 @@ Error message and password prompt
 
 <li>How execute nameless function in JavaScript Code\Form e1\JavaScript Code</li>
 
-<li>How export a set of cards using TiddlyWiki Advanced Search\Form e1\Folder Structure</li>
+<li>How export a group of cards as text using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
 
 <li>How export a set of cards using TiddlyWiki Advanced Search\Form e1\TiddlyWiki Advanced Search</li>
+
+<li>How export a set of cards using TiddlyWiki Advanced Search\Form e2\Folder Structure</li>
 
 <li>How export article entries from Instapaper.com Website\Form e1\Instapaper.com Website</li>
 
@@ -13093,7 +13097,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210512044558828" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20210307044348911" modified="20210518112855914" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210519102526124" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -13108,7 +13112,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210518112855915" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210519102526125" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -13374,6 +13378,9 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <pre></pre>
 </div>
 <div created="20210423054304614" modified="20210423054322058" tags="" title="Activities\How execute nameless function in JavaScript Code">
+<pre></pre>
+</div>
+<div created="20210519094949454" modified="20210519095030943" tags="" title="Activities\How export a group of cards as text using TiddlyWiki Code">
 <pre></pre>
 </div>
 <div created="20210427115911909" modified="20210427120010357" tags="" title="Activities\How export a set of cards using TiddlyWiki Advanced Search">
@@ -15477,20 +15484,70 @@ close
     )();
 </pre>
 </div>
-<div created="20210427120657573" modified="20210427121124068" tags="" title="How export a set of cards using TiddlyWiki Advanced Search\Form e1\Folder Structure">
+<div created="20210519095031744" modified="20210519101848704" tags="" title="How export a group of cards as text using TiddlyWiki Code\Form e1\TiddlyWiki Code">
 <pre>&quot;&quot;&quot;
-- Look for the downloaded .JSON file in the Downloads folder
-- Rename the file according to your tag name
-- You can drag the file onto a TiddlyWiki page to re-import the cards
+- [UrTemplate card]
+- tags = $:/tags/Exporter
+- field: description = Export as Code
+- field: extension = .codetxt
+&quot;&quot;&quot;
+
+```
+\define renderContent()
+&lt;$list variable=cur_export_card filter=&quot;$(exportFilter)$&quot;&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;$link to=&lt;&lt;cur_export_card&gt;&gt; /&gt;&lt;/h2&gt;
+&lt;$list variable=cur_export_text filter=&quot;[&lt;cur_export_card&gt;get[text]]&quot;&gt;
+&lt;$codeblock code=&lt;&lt;cur_export_text&gt;&gt; /&gt;
+&lt;/$list&gt;&lt;!--cur_export_text--&gt;
+&lt;/$list&gt;&lt;!--cur_export_card--&gt;
+\end
+&lt;&lt;renderContent&gt;&gt;
+```
+
+&quot;&quot;&quot;
+- [Card menu, export tiddler sub-menu]
+- Note: There is an Export as Code option
+- Click option Export as Code -&gt; Downloads file
+
+[UrCard.codetxt.html]
+- Note: You can remove the .hmtl extension, and rename the file with extension .code.txt
+
+Or use a button to specify a file name
+- [UrHardCodedTemplate card]
+- Make a copy of the UrTemplate card
+- Replace the &quot;$(exportFilter)$&quot; text with a standard filter
+
+- [New Card]
+&quot;&quot;&quot;
+
+```
+&lt;$button&gt;
+&lt;$action-sendmessage $message=&quot;tm-download-file&quot; $param=&quot;UrHardCodedTemplate&quot; filename=&quot;UrCard.code.txt&quot; /&gt;
+Export as Code
+&lt;/$button&gt;
+```
+
+- Click button Export as Code -&gt; Downloads file
+
+[UrCard.code.txt file]
+- Note: It contains the card's title and code as text
 </pre>
 </div>
-<div created="20210427120011056" modified="20210427120654128" tags="" title="How export a set of cards using TiddlyWiki Advanced Search\Form e1\TiddlyWiki Advanced Search">
+<div created="20210427120011056" modified="20210519102501938" tags="" title="How export a set of cards using TiddlyWiki Advanced Search\Form e1\TiddlyWiki Advanced Search">
 <pre>&quot;&quot;&quot;
 - Click tab Filter -&gt; Navigates tab
 - Filter = `[tag[UrTagName]]`
 - Note: The cards are listed
-- Click button Export Tiddlers (resembles arrow coming out of tray) -&gt; Opens menu
-- Click option JSON -&gt; Downloads file
+- * Click button Export Tiddlers (resembles arrow coming out of tray) -&gt; Opens menu
+- * Click option JSON -&gt; Downloads file
+</pre>
+</div>
+<div created="20210427120657573" modified="20210519102438786" tags="" title="How export a set of cards using TiddlyWiki Advanced Search\Form e2\Folder Structure">
+<pre>&quot;&quot;&quot;
+- Look for the downloaded .JSON file in the Downloads folder
+- Rename the file according to your tag name
+- * You can drag the file onto a TiddlyWiki page to re-import the cards
 </pre>
 </div>
 <div created="20210423052822973" modified="20210515075544952" tags="" title="How export article entries from Instapaper.com Website\Form e1\Instapaper.com Website">
