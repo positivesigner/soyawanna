@@ -2765,12 +2765,6 @@ Automation Scripting
 
 
 
-Documentation History
-
-<<glbl_article_list>>
-
-
-
 Draft of 'New Card'
 
 
@@ -10412,12 +10406,6 @@ End Using 'stmOUT_FILE
 
 
 INDEX
-
-
-
-Research Notes
-
-<<glbl_article_list>>
 
 
 
