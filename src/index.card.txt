@@ -1072,6 +1072,41 @@ $:/positivesigner/home-button/template Home Button
 
 
 
+$:/positivesigner/mcr glbl_check_list
+
+\define glbl_check_list()
+<$vars cur_card=<<currentTiddler>> >
+<<glbl_dt_ddd>>
+<$button>
+<$list variable=field_name filter="[<cur_card>fields[]prefix[chk_]]">
+<$action-setfield $field=<<field_name>> $value="" />
+</$list><!--field_name-->
+<$action-setfield match_date=<<cur_date>> />
+Clear all checkmarks
+</$button>
+<ol>
+<$list variable=card_prefix filter="[<cur_card>addsuffix[\]]">
+<$list variable=cur_entry filter="[prefix<card_prefix>sort[]]">
+<$list variable=filter_bslash_count filter="[<cur_entry>split[\]count[]match[2]]">
+<$list variable=disp_name filter="[<cur_entry>split[\]last[]]">
+<$list variable=chk_name filter="[<disp_name>addprefix[chk_]split[ ]join[_]split[/]join[_]lowercase[]]">
+<li>
+<$checkbox default="no" unchecked="no" checked="yes" tiddler=<<cur_card>> field=<<chk_name>> >
+<$link to=<<cur_entry>> ><<disp_name>></$link>
+</$checkbox>
+</li>
+</$list><!--chk_name-->
+</$list><!--disp_name-->
+</$list><!--filter_bslash_count-->
+</$list><!--cur_card-->
+</$list><!--card_prefix-->
+</ol>
+</$vars>
+\end
+
+
+
+
 $:/positivesigner/preview-button
 
 <!--2021m04d24-->
@@ -7480,14 +7515,14 @@ How make full-width textarea using TiddlyWiki\Form e1\TiddlyWiki Code
 
 """
 - [New card]
-- tag = $:/tags/Stylesheet
-- text = .cls_full_width { width:100%; }
+- * tag = $:/tags/Stylesheet
+- * text = .cls_full_width { width:100%; }
 
 - [New card]
 - widget = &lt;$edit-text
 - tiddler = UrCardPK
 - field = UrFieldName
-- class = cls_full_width
+- * class = cls_full_width
 - tag = textarea
 - autoHeight = no
 
