@@ -1075,6 +1075,7 @@ $:/positivesigner/home-button/template Home Button
 $:/positivesigner/mcr glbl_check_list
 
 \define glbl_check_list()
+<!--2021m05d20-->
 <$vars cur_card=<<currentTiddler>> >
 <<glbl_dt_ddd>>
 <$button>
@@ -1606,9 +1607,9 @@ $:/positivesigner/text-ref/mcr glbl_compare_lines
 $:/positivesigner/text-ref/mcr glbl_dt_ddd
 
 \define glbl_dt_ddd()
-<!--2021m04d24-->
+<!--2021m05d20 from 2021m04d24-->
 <div style="clear:right;float:right;background-color:aquamarine;"><<now "YYYYm0MMd0DD DDD pm0hh12\m0mm">></div>
-<$list filter="[<currentTiddler>split[Draft of ']join[]split[ ]first[]split[m]join[]split[d]join[]]">
+<$list filter="[<currentTiddler>split[Draft of ']join[]split[ ]first[]split[m]join[]split[\]join[]split[d]join[]]">
 <$view field="title" format="date" template="[UTC]DDD" />
 </$list>
 \end
