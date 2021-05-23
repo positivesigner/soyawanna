@@ -1,5 +1,11 @@
 
 
+$:/config/AutoSave
+
+no
+
+
+
 $:/config/MissingLinks
 
 no
@@ -2234,6 +2240,10 @@ Activities\How export html dom as TW html snippet using JavaScript Bookmarklet
 
 
 
+Activities\How export video metadata using FFProbe for Windows
+
+
+
 Activities\How extract captions text from video file using FFMpeg Windows
 
 
@@ -2582,7 +2592,11 @@ Activities\How share data between User profiles using Android file system
 
 
 
-Activities\How share files across Network using WebDav Server Android
+Activities\How share files across Network using WebDav Server BestDav Android
+
+
+
+Activities\How share files across Network using WebDav Server OliveTree Android
 
 
 
@@ -4890,6 +4904,27 @@ How export html dom as TW html snippet using JavaScript Bookmarklet\Form e1\Java
 
 ```
 avascript:newWindow=window.open("about:blank","newWindow");if(window.focus){;newWindow.document.documentElement.innerHTML='<html><head><title>Source of Page<\/title><\/head><body><pre>'+document.documentElement.outerHTML.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('&lt;html','&lt;div').replaceAll('&lt;\/html','&lt;\/div').replaceAll('&lt;body','&lt;div').replaceAll('&lt;\/body','&lt;\/div').replaceAll('position: absolute','position: relative').replaceAll('position: fixed','position: relative').replaceAll('position: flex','position: relative').replaceAll('>remove&lt;\/a>','&gt;&lt\/a&gt;').replaceAll('src="http','src_attr="http').replaceAll('src=\'http','src_attr=\'http')+'<\/pre><\/body><\/html>';newWindow.document.body.contentEditable = 'true'; newWindow.document.designMode='on';void(newWindow.focus());}
+
+
+
+How export video metadata using FFProbe for Windows\Form e1\Google Chrome Windows
+
+"""
+- * <<ext "FFBinaries Downloads">>
+- Download version for your operating system
+
+
+
+
+How export video metadata using FFProbe for Windows\Form e2\Windows CLI
+
+"""
+- * `ffprobe -show_format UrFilePath.ext` -> Output lines
+- Note: There may be several lines starting with `TAG:`
+- - `TAG:title=`
+- - `TAG:album=`
+- - `TAG:artist=`
+
 
 
 
@@ -8571,7 +8606,7 @@ When you change users on an Android device, the file:///sdcard/ folder is aliase
 
 
 
-How share files across Network using WebDav Server Android\Form e1\Google Play Store Android
+How share files across Network using WebDav Server BestDav Android\Form e1\Google Play Store Android
 
 """
 - * Install app WebDAV Server - BestDAV
@@ -8580,7 +8615,7 @@ How share files across Network using WebDav Server Android\Form e1\Google Play S
 
 
 
-How share files across Network using WebDav Server Android\Form e2\WebDav Server Android
+How share files across Network using WebDav Server BestDav Android\Form e2\WebDav Server Android
 
 """
 - [Main page, top bar]
@@ -8608,6 +8643,60 @@ How share files across Network using WebDav Server Android\Form e2\WebDav Server
 - To see the "internal" /sdcard folder on the android device,
 - - Click link "emulated" -> http://192.168.0.15:8080/emulated
 - - Edit the address to say http://192.168.0.15:8080/emulated/0
+
+[2021m05]
+- I was able to see the "/storage" and "/storage/enc_emulated" folders through the web browser, but no contents or sub-folders on a Galaxy Tab A7. I tried WebDav Server by The Olive Tree, and it let me access the local files through the web browser.
+
+
+
+How share files across Network using WebDav Server OliveTree Android\Form e1\Google Play Store Android
+
+"""
+- * Install app WebDAV Server by The Olive Tree
+- - Free or Pro edition
+
+
+
+
+How share files across Network using WebDav Server OliveTree Android\Form e2\WebDav Server Android
+
+"""
+- [Main page, top bar, right-side]
+- Click button Settings -> Navigates page
+
+- [Settings page]
+- Click button Home directory -> Opens dialog
+- Dialog: Home directory
+- Click option Root -> Closes dialog
+- Click android button Back -> Navigates page
+
+- [Main page]
+- If server is started,
+- - Click button Stop WebDAV server -> Stops server, refresh page
+
+- Click button Start Server -> Starts server, refresh page
+- Note: The WebDAV server available on address starts with "http:
+- - Sample = http://10.0.0.34:8080
+
+
+
+
+How share files across Network using WebDav Server OliveTree Android\Form e3\Google Chrome Windows
+
+"""
+- Address = http://10.0.0.34:8080/storage
+- Click link Get the file list -> Navigates page
+- Note: The directory shows the "external" SD Card name (if any) and "enc_emulated"
+- Note: One one device I used Address = http://10.0.0.34:8080/storage/emulated/0
+
+- Click on an html or video file, or navigate to a subdirectory
+
+
+
+How share files across Network using WebDav Server OliveTree Android\Form e4\Windows CLI
+
+"""
+- `dir \\10.0.0.34@8080\storage\emulated\0` -> lists files and folders
 
 
 
@@ -10489,6 +10578,14 @@ Excel VBA can change the currently loaded worksheet cells
 
 
 User Forms\FFMpeg Windows
+
+
+
+User Forms\FFProbe for Windows
+
+!!Overview
+
+FFProbe for Windows exports video metadata
 
 
 
