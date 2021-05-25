@@ -555,6 +555,8 @@ Error message and password prompt
 
 <li>Activities\How display card over sidebar using TiddlyWiki Code</li>
 
+<li>Activities\How display string data using JavaScript Code</li>
+
 <li>Activities\How download YouTube video using VLC for Windows</li>
 
 <li>Activities\How embed font file using TiddlyWiki Editor</li>
@@ -705,7 +707,11 @@ Error message and password prompt
 
 <li>Activities\How list links of prefixed cards using TiddlyWiki Code</li>
 
+<li>Activities\How list properties on an object using JavaScript Code</li>
+
 <li>Activities\How list recently changed cards using TiddlyWiki Code</li>
+
+<li>Activities\How list string array values using JavaScript Code</li>
 
 <li>Activities\How make full-width textarea using TiddlyWiki</li>
 
@@ -941,6 +947,8 @@ Error message and password prompt
 
 <li>How display card over sidebar using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
 
+<li>How display string data using JavaScript Code\Form e1\JavaScript Code</li>
+
 <li>How download YouTube video using VLC for Windows\Form e1\Google Chrome Windows</li>
 
 <li>How download YouTube video using VLC for Windows\Form e2\VLC for Windows</li>
@@ -1099,7 +1107,11 @@ Error message and password prompt
 
 <li>How list links of prefixed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
 
+<li>How list properties on an object using JavaScript Code\Form e1\JavaScript Code</li>
+
 <li>How list recently changed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code</li>
+
+<li>How list string array values using JavaScript Code\Form e1\JavaScript Code</li>
 
 <li>How make full-width textarea using TiddlyWiki\Form e1\TiddlyWiki Code</li>
 
@@ -13156,7 +13168,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210512044558828" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20210307044348911" modified="20210523114602959" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210525022238410" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -13171,13 +13183,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210523114602960" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210525022238410" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Automation Scripting]]" title="$:/StoryList">
+<div created="20210525022215633" list="[[Automation Scripting]] [[Activities\How clear all CSS formatting in html dom using JavaScript Bookmarklet]] [[How clear all CSS formatting in html dom using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet]]" modified="20210525022217524" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13421,6 +13433,9 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210423075548204" modified="20210423075551448" tags="" title="Activities\How display card over sidebar using TiddlyWiki Code">
 <pre></pre>
 </div>
+<div created="20210525004312161" modified="20210525004324318" tags="" title="Activities\How display string data using JavaScript Code">
+<pre></pre>
+</div>
 <div created="20210505213659666" modified="20210505213725764" tags="" title="Activities\How download YouTube video using VLC for Windows">
 <pre></pre>
 </div>
@@ -13646,7 +13661,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210427075846402" modified="20210427075900857" tags="" title="Activities\How list links of prefixed cards using TiddlyWiki Code">
 <pre></pre>
 </div>
+<div created="20210524230212877" modified="20210524230237555" tags="" title="Activities\How list properties on an object using JavaScript Code">
+<pre></pre>
+</div>
 <div created="20210427082716663" modified="20210427082734593" tags="" title="Activities\How list recently changed cards using TiddlyWiki Code">
+<pre></pre>
+</div>
+<div created="20210525003810327" modified="20210525003857911" tags="" title="Activities\How list string array values using JavaScript Code">
 <pre></pre>
 </div>
 <div created="20210515073529503" modified="20210515073610070" tags="" title="Activities\How make full-width textarea using TiddlyWiki">
@@ -14038,53 +14059,50 @@ SET ur_branch=
 rem Use GitHub Desktop to delete the branch
 </pre>
 </div>
-<div created="20210423071006002" modified="20210423071018849" tags="" title="How clear all CSS formatting in html dom using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet">
+<div created="20210423071006002" modified="20210525022226493" tags="" title="How clear all CSS formatting in html dom using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet">
 <pre>Clears all the CSS Class and Style attributes
 
 ```
-avascript:(function (global, factory) {
-  if (typeof define === &quot;function&quot; &amp;&amp; define.amd) {
-    define([&quot;module&quot;], factory);
-  } else if (typeof exports !== &quot;undefined&quot;) {
-    factory(module);
-  } else {
-    var mod = {
-      exports: {}
-    };
-    factory(mod);
-    global.clearAllCSS = mod.exports;
-  }
-})(this, function (module) {
-  &quot;use strict&quot;;
-
-  var each = Array.prototype.forEach;
-
-
-  function clearAllCSS(nest_level, cur_elt) {
-    var _context2;
-    if (!cur_elt) {
-        throw new Error(&quot;No element specified.&quot;);
-        }
-
-    var _context;
-    (_context = cur_elt.children, each).call(_context, function (child) {
-        clearAllCSS(nest_level+1, child);
-        });
-
-    while(cur_elt.attributes.length &gt; 0) {
-        cur_elt.removeAttribute(cur_elt.attributes[0].name);
-        }
-    }
-
-  module.exports = clearAllCSS;
-});
-document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-clearAllCSS(1, document.documentElement);
-if (document.head!=null){document.head.parentNode.removeChild(document.head)};
-document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;2&quot;) + &quot;00%&quot;;
-document.body.outerHTML=document.body.outerHTML;
-undefined;
+avascript:(
+	function() {
+		document.querySelectorAll('iframe,script,noscript').forEach(
+			function(element){
+				if (element!=null){
+					element.parentNode.removeChild(element)
+					}
+				}
+			);
+		if (document.head!=null){
+			document.head.parentNode.removeChild(document.head)
+			};
+		document.querySelectorAll('link').forEach(
+			function(element){
+				if (element!=null){
+					element.parentNode.removeChild(element)
+					}
+				}
+			);
+		document.documentElement.querySelectorAll('*').forEach(
+			function(element){
+				if (element!=null){
+					if(typeof element.attributes != 'undefined') {
+						while(element.attributes.length &gt; 0) {
+							let strATTR_NAME = element.attributes[0].name;
+							element.removeAttribute(strATTR_NAME);
+							}
+						}
+					}
+				}
+			);
+		document.body.innerHTML=document.body.innerHTML;
+		document.body.style.backgroundColor=&quot;tan&quot;;
+		document.body.style.color=&quot;black&quot;;
+		document.body.style.overflow=&quot;auto&quot;;
+		document.body.style.fontSize=prompt(&quot;Please enter font multiplier&quot;, &quot;3&quot;) + &quot;00%&quot;;
+		undefined;
+		}
+	)();
+```
 </pre>
 </div>
 <div created="20210423071102024" modified="20210423071123075" tags="" title="How clear all images in html dom using JavaScript Bookmarklet\Form e1\JavaScript Bookmarklet">
@@ -15375,6 +15393,28 @@ close
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/$list&gt;
+</pre>
+</div>
+<div created="20210525004324810" modified="20210525004544355" tags="" title="How display string data using JavaScript Code\Form e1\JavaScript Code">
+<pre>&quot;&quot;&quot;
+- `alert` function displays up to 999 characters
+- `naviator.clipboard.writeText` posts data to the Windows Clipboard
+&quot;&quot;&quot;
+
+```
+;(
+	function() {
+		let obaBODY = document;
+		let sdaPROP = Object.getOwnPropertyNames(obaBODY);
+		let strMESSAGE =
+			'Prop: '.concat(
+				sdaPROP.join('\n'.concat(' Prop: '))).concat('\n\n').concat(''
+			)
+		navigator.clipboard.writeText(strMESSAGE)
+		alert('Prop count: '.concat(sdaPROP.length));
+		}
+	)();
+```
 </pre>
 </div>
 <div created="20210505213919187" modified="20210505215003325" tags="" title="How download YouTube video using VLC for Windows\Form e1\Google Chrome Windows">
@@ -18242,9 +18282,77 @@ Reset
 &lt;/ol&gt;
 </pre>
 </div>
+<div created="20210524230237992" modified="20210525003740315" tags="" title="How list properties on an object using JavaScript Code\Form e1\JavaScript Code">
+<pre>&quot;&quot;&quot;
+- * Global function Object.getOwnPropertyNames() returns an object with &quot;length&quot; property and base-zero numbered properties up to &quot;length&quot; - 1
+&quot;&quot;&quot;
+
+```
+;(
+	function() {
+		navigator.clipboard.writeText(
+			Object.getOwnPropertyNames(document).join('\n')
+			);
+		alert(
+			Object.getOwnPropertyNames(document).length
+			);
+		}
+	)();
+```
+
+```
+;(
+	function() {
+		let obaBODY = document;
+		let sdaPROP = Object.getOwnPropertyNames(obaBODY);
+		let strPROTO_NAME = Object.prototype.toString.call(obaBODY)
+		let objPROTO = Object.getPrototypeOf(obaBODY)
+		let strPROTO_PARENT_NAME = Object.prototype.toString.call(objPROTO)
+		let sdaINHERIT_PROP = Object.getOwnPropertyNames(objPROTO);
+		let strMESSAGE =
+			'Type of: '.concat(typeof(obaBODY)).concat('\n\n').concat(
+			'Prototype name: ').concat(strPROTO_NAME).concat('\n\n').concat(
+			'Prop count: ').concat(sdaPROP.length).concat('\n\n').concat(
+			'Prop: ').concat(
+				sdaPROP.join('\n'.concat(' Prop: '))).concat('\n\n').concat(
+			'Prototype ').concat(strPROTO_NAME).concat(' Prop count: ').concat(sdaINHERIT_PROP.length).concat('\n\n').concat(
+			'Prototype ').concat(strPROTO_NAME).concat(' Prop: ').concat(
+				sdaINHERIT_PROP.join('\n'.concat(strPROTO_NAME).concat(' Prop: '))).concat('\n\n').concat(
+			'Prototype ').concat(strPROTO_NAME).concat(' Parent name: ').concat(strPROTO_PARENT_NAME).concat(''
+			)
+		navigator.clipboard.writeText(strMESSAGE)
+		alert('Prop count: '.concat(sdaPROP.length));
+		}
+	)();
+```
+</pre>
+</div>
 <div created="20210427082735092" modified="20210427082748026" tags="" title="How list recently changed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code">
 <pre>```
 &lt;&lt;timeline limit:30 format:&quot;YYYY-0MM-0DD&quot;&gt;&gt;
+</pre>
+</div>
+<div created="20210525003858483" modified="20210525004453507" tags="" title="How list string array values using JavaScript Code\Form e1\JavaScript Code">
+<pre>&quot;&quot;&quot;
+- * Use `\n` to append a new-line character
+- Any string literal can use the `concat` function to append characters
+- A string array can use the `join` function to return one concatenated string with the specified text inserted between each text entry
+&quot;&quot;&quot;
+
+```
+;(
+	function() {
+		let obaBODY = document;
+		let sdaPROP = Object.getOwnPropertyNames(obaBODY);
+		let strMESSAGE =
+			'Prop: '.concat(
+				sdaPROP.join('\n'.concat(' Prop: '))).concat('\n\n').concat(''
+			)
+		navigator.clipboard.writeText(strMESSAGE)
+		alert('Prop count: '.concat(sdaPROP.length));
+		}
+	)();
+```
 </pre>
 </div>
 <div created="20210515073610705" modified="20210519102620129" tags="" title="How make full-width textarea using TiddlyWiki\Form e1\TiddlyWiki Code">

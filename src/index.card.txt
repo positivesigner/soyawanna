@@ -2188,6 +2188,10 @@ Activities\How display card over sidebar using TiddlyWiki Code
 
 
 
+Activities\How display string data using JavaScript Code
+
+
+
 Activities\How download YouTube video using VLC for Windows
 
 
@@ -2488,7 +2492,15 @@ Activities\How list links of prefixed cards using TiddlyWiki Code
 
 
 
+Activities\How list properties on an object using JavaScript Code
+
+
+
 Activities\How list recently changed cards using TiddlyWiki Code
+
+
+
+Activities\How list string array values using JavaScript Code
 
 
 
@@ -2989,49 +3001,46 @@ How clear all CSS formatting in html dom using JavaScript Bookmarklet\Form e1\Ja
 Clears all the CSS Class and Style attributes
 
 ```
-avascript:(function (global, factory) {
-  if (typeof define === "function" && define.amd) {
-    define(["module"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(module);
-  } else {
-    var mod = {
-      exports: {}
-    };
-    factory(mod);
-    global.clearAllCSS = mod.exports;
-  }
-})(this, function (module) {
-  "use strict";
-
-  var each = Array.prototype.forEach;
-
-
-  function clearAllCSS(nest_level, cur_elt) {
-    var _context2;
-    if (!cur_elt) {
-        throw new Error("No element specified.");
-        }
-
-    var _context;
-    (_context = cur_elt.children, each).call(_context, function (child) {
-        clearAllCSS(nest_level+1, child);
-        });
-
-    while(cur_elt.attributes.length > 0) {
-        cur_elt.removeAttribute(cur_elt.attributes[0].name);
-        }
-    }
-
-  module.exports = clearAllCSS;
-});
-document.querySelectorAll('iframe,script,noscript').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-clearAllCSS(1, document.documentElement);
-if (document.head!=null){document.head.parentNode.removeChild(document.head)};
-document.querySelectorAll('link').forEach(function(element){if (element!=null){element.parentNode.removeChild(element)}});
-document.body.style.fontSize=prompt("Please enter font multiplier", "2") + "00%";
-document.body.outerHTML=document.body.outerHTML;
-undefined;
+avascript:(
+	function() {
+		document.querySelectorAll('iframe,script,noscript').forEach(
+			function(element){
+				if (element!=null){
+					element.parentNode.removeChild(element)
+					}
+				}
+			);
+		if (document.head!=null){
+			document.head.parentNode.removeChild(document.head)
+			};
+		document.querySelectorAll('link').forEach(
+			function(element){
+				if (element!=null){
+					element.parentNode.removeChild(element)
+					}
+				}
+			);
+		document.documentElement.querySelectorAll('*').forEach(
+			function(element){
+				if (element!=null){
+					if(typeof element.attributes != 'undefined') {
+						while(element.attributes.length > 0) {
+							let strATTR_NAME = element.attributes[0].name;
+							element.removeAttribute(strATTR_NAME);
+							}
+						}
+					}
+				}
+			);
+		document.body.innerHTML=document.body.innerHTML;
+		document.body.style.backgroundColor="tan";
+		document.body.style.color="black";
+		document.body.style.overflow="auto";
+		document.body.style.fontSize=prompt("Please enter font multiplier", "3") + "00%";
+		undefined;
+		}
+	)();
+```
 
 
 
@@ -4427,6 +4436,31 @@ close
 </div>
 </div>
 </$list>
+
+
+
+
+How display string data using JavaScript Code\Form e1\JavaScript Code
+
+"""
+- `alert` function displays up to 999 characters
+- `naviator.clipboard.writeText` posts data to the Windows Clipboard
+"""
+
+```
+;(
+	function() {
+		let obaBODY = document;
+		let sdaPROP = Object.getOwnPropertyNames(obaBODY);
+		let strMESSAGE =
+			'Prop: '.concat(
+				sdaPROP.join('\n'.concat(' Prop: '))).concat('\n\n').concat(''
+			)
+		navigator.clipboard.writeText(strMESSAGE)
+		alert('Prop count: '.concat(sdaPROP.length));
+		}
+	)();
+```
 
 
 
@@ -7533,10 +7567,84 @@ How list links of prefixed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 
 
+How list properties on an object using JavaScript Code\Form e1\JavaScript Code
+
+"""
+- * Global function Object.getOwnPropertyNames() returns an object with "length" property and base-zero numbered properties up to "length" - 1
+"""
+
+```
+;(
+	function() {
+		navigator.clipboard.writeText(
+			Object.getOwnPropertyNames(document).join('\n')
+			);
+		alert(
+			Object.getOwnPropertyNames(document).length
+			);
+		}
+	)();
+```
+
+```
+;(
+	function() {
+		let obaBODY = document;
+		let sdaPROP = Object.getOwnPropertyNames(obaBODY);
+		let strPROTO_NAME = Object.prototype.toString.call(obaBODY)
+		let objPROTO = Object.getPrototypeOf(obaBODY)
+		let strPROTO_PARENT_NAME = Object.prototype.toString.call(objPROTO)
+		let sdaINHERIT_PROP = Object.getOwnPropertyNames(objPROTO);
+		let strMESSAGE =
+			'Type of: '.concat(typeof(obaBODY)).concat('\n\n').concat(
+			'Prototype name: ').concat(strPROTO_NAME).concat('\n\n').concat(
+			'Prop count: ').concat(sdaPROP.length).concat('\n\n').concat(
+			'Prop: ').concat(
+				sdaPROP.join('\n'.concat(' Prop: '))).concat('\n\n').concat(
+			'Prototype ').concat(strPROTO_NAME).concat(' Prop count: ').concat(sdaINHERIT_PROP.length).concat('\n\n').concat(
+			'Prototype ').concat(strPROTO_NAME).concat(' Prop: ').concat(
+				sdaINHERIT_PROP.join('\n'.concat(strPROTO_NAME).concat(' Prop: '))).concat('\n\n').concat(
+			'Prototype ').concat(strPROTO_NAME).concat(' Parent name: ').concat(strPROTO_PARENT_NAME).concat(''
+			)
+		navigator.clipboard.writeText(strMESSAGE)
+		alert('Prop count: '.concat(sdaPROP.length));
+		}
+	)();
+```
+
+
+
+
 How list recently changed cards using TiddlyWiki Code\Form e1\TiddlyWiki Code
 
 ```
 <<timeline limit:30 format:"YYYY-0MM-0DD">>
+
+
+
+
+How list string array values using JavaScript Code\Form e1\JavaScript Code
+
+"""
+- * Use `\n` to append a new-line character
+- Any string literal can use the `concat` function to append characters
+- A string array can use the `join` function to return one concatenated string with the specified text inserted between each text entry
+"""
+
+```
+;(
+	function() {
+		let obaBODY = document;
+		let sdaPROP = Object.getOwnPropertyNames(obaBODY);
+		let strMESSAGE =
+			'Prop: '.concat(
+				sdaPROP.join('\n'.concat(' Prop: '))).concat('\n\n').concat(''
+			)
+		navigator.clipboard.writeText(strMESSAGE)
+		alert('Prop count: '.concat(sdaPROP.length));
+		}
+	)();
+```
 
 
 
