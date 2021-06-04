@@ -1,5 +1,5 @@
 rd  /s /q "C:\Temp\Chrome dev session"
-"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --incognito --user-data-dir="C://Temp//Chrome dev session" --allow-file-access-from-files "%~dp0ASL Bible.htm"
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --incognito --user-data-dir="C://Temp//Chrome dev session" --allow-file-access-from-files "%~dp0ASL Bible.html"
 rd  /s /q "C:\Temp\Chrome dev session"
 rem https://stackoverflow.com/questions/23256830/crossorigin-errors-when-loading-vtt-file
 rem The problem was that I was loading my html file in browser directly from disk so when it tries to access the vtt file then browser gets a feeling of cross origin request and hence the error.
