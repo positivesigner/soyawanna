@@ -12716,7 +12716,7 @@ Remove META tag from all cards
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201226094244599" modified="20210719165837964" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Search All Fields">
+<div created="20201226094244599" modified="20210721000508110" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Search All Fields">
 <pre>&lt;!--2021m04d24--&gt;
 &lt;$list variable=only_in_jsapp filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 &lt;$vars search_text_pk=&quot;$:/state/popup/SearchAllFields&quot;&gt;
@@ -12724,16 +12724,16 @@ Remove META tag from all cards
 &lt;$list variable=skip_system_pk filter=&quot;[&lt;search_text_pk&gt;addsuffix[-checkSkipSystem]]&quot;&gt;
 &lt;$edit-text tiddler=&lt;&lt;search_text_pk&gt;&gt; field=text default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;
 &lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&quot;text&quot; tiddler=&lt;&lt;show_code_pk&gt;&gt;&gt; Show Code&lt;/$checkbox&gt;
-&lt;$checkbox default=&quot;yes&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&quot;text&quot; tiddler=&lt;&lt;skip_system_pk&gt;&gt;&gt; Include System &lt;/$checkbox&gt;&lt;br&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; field=&quot;text&quot; tiddler=&lt;&lt;skip_system_pk&gt;&gt;&gt; Include System &lt;/$checkbox&gt;&lt;br&gt;
 &lt;br&gt;
 
 &lt;$list variable=cur_search_text filter=&quot;[&lt;search_text_pk&gt;get[text]split[ ]!match[]addprefix[(?=.*]addsuffix[*)]join[]addprefix[(?i)]]&quot;&gt;
 &lt;$list variable=cur_showcode_text filter=&quot;[&lt;show_code_pk&gt;get[text]else[no]]&quot;&gt;
-&lt;$list variable=cur_skipsystem_text filter=&quot;[&lt;skip_system_pk&gt;get[text]else[yes]match[yes]count[]]&quot;&gt;
+&lt;$list variable=cur_skipsystem_text filter=&quot;[&lt;skip_system_pk&gt;get[text]else[no]match[yes]count[]]&quot;&gt;
 
 &lt;!--Card titles--&gt;
 &lt;$list variable=cur_pk filter=&quot;[regexp&lt;cur_search_text&gt;sort[]]&quot;&gt;
-&lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_skipsystem_text&gt;] [&lt;cur_pk&gt;!is[system]count[]] +[sum[]match[1]]&quot;&gt;
+&lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_pk&gt;!prefix[$]count[]] [&lt;cur_pk&gt;prefix[$]count[]multiply&lt;cur_skipsystem_text&gt;] +[sum[]!match[0]]&quot;&gt;
 
 &lt;$link to=&lt;&lt;cur_pk&gt;&gt; /&gt;: title
 &lt;/$list&gt;&lt;!--found_skipsystem--&gt;
@@ -12741,7 +12741,7 @@ Remove META tag from all cards
 
 &lt;!--Card fields--&gt;
 &lt;$list variable=cur_pk filter=&quot;[!regexp&lt;cur_search_text&gt;sort[]]&quot;&gt;
-&lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_pk&gt;is[system]count[]multiply&lt;cur_skipsystem_text&gt;match[0]]&quot;&gt;
+&lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_pk&gt;!prefix[$]count[]] [&lt;cur_pk&gt;prefix[$]count[]multiply&lt;cur_skipsystem_text&gt;] +[sum[]!match[0]]&quot;&gt;
 &lt;$list variable=cur_field filter=&quot;[&lt;cur_pk&gt;fields[]]&quot;&gt;
 &lt;$list variable=found_field filter=&quot;[&lt;cur_pk&gt;get&lt;cur_field&gt;regexp&lt;cur_search_text&gt;]&quot;&gt;
 
@@ -12957,7 +12957,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210610011444815" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210719165841786" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210721000640760" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -12972,13 +12972,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210719165841786" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210721000640760" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210719165738997" list="[[Automation Scripting]] [[$:/positivesigner/text-ref/Recent Entries]] [[$:/positivesigner/text-ref/Search All Fields]]" modified="20210719165740481" title="$:/StoryList">
+<div list="[[Automation Scripting]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
