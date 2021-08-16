@@ -1,0 +1,48 @@
+ASL Letter A
+Positivesigner
+Positivesigner
+Aug 15 · 7 min read
+
+
+
+
+
+To know the alphabet is to feel in control. You have all the tools you need to copy down any word from any document. You literally have the whole language in your hands!
+This powerful feeling is tempered by the fact that you actually don’t know anything about the word other than its spelling in that document and its usage in that context. You would have to do research to find alternative spellings and uses, etymology and cultural influences, register and pronunciation, etc. Having a potentially agreed-upon spelling opens the door to all sorts of documents and recordings to get a fuller sense of how this word makes others feel.
+The other option is to ask around. “Hey, have you ever seen this word? What does it mean? How is it used? Where did it come from?” If the people you ask don’t have the time, history, or inclination to answer them, the answer will always be, “Just guess.”
+Because words aren’t really important in day-to-day life. If someone put letters in a sequence on a piece of paper, who cares? It doesn’t change what you’re having for lunch if you don’t understand their scribbles. You do not understand thousands of years of historical writings and thousands of books in contemporary foreign languages. Somehow you get to sleep at night.
+Curiosity bothers some more than others. Most people are curious about things that increase their wealth or status, their ability to influence others or control property. Curiosity about mathematics and languages is usually limited to computer programming and translation — both with the goal of charging money to their end users.
+I am curious about what makes languages flow. How they condense past stories into a concept and then combine those concepts into feelings. Words are never about stuff. They are always about how stuff has made you feel and your intention to have other people understand, perhaps desire, the same feeling.
+Describing the Manual Alphabet
+I do not know precisely where the ASL manual alphabet came from. Nobody does. There are documented lists and hints, but no definitive answers. The exact etymology is lost to history.
+I do like to guess. I do enjoy making up “fake etymologies” for words, explaining why they would have made sense to people in the past without any actual proof. The only value of this myth-making is that having stories about what we do is satisfying. It makes our lives feel less random and makes us feel more capable of controlling our environment. It is always wisest to use actual etymology as the basis for such stories. But fiction works in a pinch.
+In American Sign Language, the manual alphabet is used to spell “loan words.” Pretty much English words. It is the equivalent of using a typewriter in the air.
+There are 26 letters commonly taught for use with American English writing. There are upper-case and lower-case symbols for each letter. It appears that British Sign Language (BSL) uses handshapes based on the upper-case symbols, whereas French Sign Language (LSF) uses handshapes based on the lower-case symbols. ASL is a descendant of LSF, and started with the same manual alphabet hand shapes.
+
+Lower-case letter A
+A lower case letter A as taught to small children is a half-line height circle with an attached half-line height vertical line on its right side. To imitate such a shape with your stationary hand, ASL closes all the fingers into the palm and pulls the thumb up against the index finger’s base knuckle. Drawing an outline circle around the back of your left hand and a line for the thumb, you can imagine a lower-case letter A.
+
+Left-hand ASL letter A
+In actual use, ASL speakers do not need to be exact to get their meaning across. The first thing to go in accuracy is the thumb placement. Don’t be surprised to see the thumb floating wherever it wants to be for many handshapes. It is far easier to make the fingers extended, bent, and closed than to properly control the thumb in real time. In most cases, the context ensures there is no ambiguity as to what was meant.
+I can use images like the one above to represent the ASL manual alphabet symbol for the Latin alphabet lower-case letter A symbol. But then I would not be using an alphabet, and it would be very difficult to find everywhere I used the ASL letter A in my writings. I could just name the image file with English words, but then the label is using a second language to represent the the image’s meaning.
+I would prefer to repurpose the typewriter skills I know in a new way that helps me think in ASL. The original generic computer code for typing in English was called ASCII — American Standard Code for Information Interchange. Repurposing this ASCII code to make pictures out of letters and symbols is known as ASCII Art. Because what else are bored people going to use a computer for?
+About 90% of people are right-handed in most activities. This is why we write on paper from left-to-right today. It is less likely we will smear ink when pulling a pen across a page to the right than pushing across the page to the left. As usual, the 90% who are left handed don’t particularly care what the 10% who are left handed must do to contort their bodies to fit the majority standard.
+ASL speakers tend to use their dominant hand to do most of the action when signing, the right hand for right-handed people and the left hand for left-handed people. This sort of like an accent in ASL — easily understood but not noticeable when you get used to it.
+The ASL manual alphabet only requires one hand, and many ASL words only require the use of one hand. Their non-dominant hand can copy, mirror, or follow the lead of their dominant hand’s action. More often the non-dominant hand acts as a prop for the scene that the dominant hand is acting out. This “visual story” is condensed into an ASL word where the non-dominant hand is a stable base that the dominant hand can play on. Indeed, most ASL words can be made one-handed because the context is enough to understand where the imaginary base hand would be.
+I will describe ASL words using the phrases “dom-hand” and “base-hand” instead of the longer technical words “dominant hand” and “non-dominant hand.” Though my illustrations and ASCII Art will still be given from the perspective of a right-handed signer, there is no requirement that you actually use your right hand if you are left handed.
+Writing the Manual Alphabet
+
+Right-hand letter A
+I have chosen to represent ASL handshapes as sequences of five letters. Those letters are supposed to remind me of how the individual fingers of each handshape are positioned. This is neither 100% accurate nor very efficient, but a trade-off I have chosen. When incorporating these handshapes into ASL words, I will take off the redundant letters to make sight-reading easier.
+People at rest tend to have their fingers and thumb extended and spread apart. This is known as a “5” handshape in ASL, representing the number five.
+
+ASL number 5 handshapes, left and right hands,
+When looking at the back of your held-up hand, the extended fingers resemble a lowercase letter L — l. The space between the fingers resemble a lowercase letter U — u. The extended thumb looks like a lowercase letter J — j. I encode the dom-hand ASL number 5 as “jlulull”. The base-hand ASL number 5 would be the opposite: “llululj”.
+People who are tense tend to have their fists clenched tight. All the fingers are closed to the palm of the hand and their thumb is closed around the other fingers. This is the ASL letter S handshape.
+
+ASL letter S handshapes, left and right hands
+The back of the hand only shows each finger’s base knuckles sticking up, which resemble lowercase letter Ns — n. The thumb is curved around tightly, which resembles a lowercase letter C — c. I spell out the dom-hand ASL letter S handshape as “cnnnn” and the base-hand ASL letter S as “nnnnc”.
+
+ASL letter A handshapes, left and right hands
+The ASL letter A handshape has the thumb sticking slightly above the index finger’s base knuckle, resembling the stem of the lowercase letter R sticking up past the curved part. I spell dom-hand ASL letter S as “rnnnn” and base-hand S as “nnnnr”.
+For these three basic handshapes, I use “l” or “n” to represent the handshapes’ fingers and “j”, “c”, or “r” for the thumb. In future articles, I will continue describing my version of an ASL writing system that I call ASL Sign Jotting, or ASLSJ for short.
