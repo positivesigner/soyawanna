@@ -5,10 +5,10 @@ e2 - nnnnc - base-hand S
 e2 - cnnnn - dom-hand S
 e2 - nnnnr - base-hand A
 e2 - rnnnn - dom-hand A
-e3 - y - palm-facing base-side
+e3 - iy - palm-facing base-side
 e3 - p^ - base-hand move out
 e3 - q^ - dom-hand move out
-e3 - jn-y-q^ - thumbs-up
-e3 - nj-y jn-y-p^q^ - two-thumbs-up
-e3 - jlu-U-q^ - stop
+e3 - jnnnn-iy-q^ - thumbs-up
+e3 - pnnnnj-iy jnnnn-iy-p^q^ - two-thumbs-up
+e3 - jlulull-U-q^ - stop
 e4 - 
