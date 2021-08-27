@@ -329,6 +329,22 @@ Error message and password prompt
 
 <li>ASL Groups\cnnnn-A-qv^</li>
 
+<li>ASL Parameters</li>
+
+<li>ASL Parameters\cnnnn</li>
+
+<li>ASL Parameters\iy</li>
+
+<li>ASL Parameters\jlulull</li>
+
+<li>ASL Parameters\llululj</li>
+
+<li>ASL Parameters\nnnnc</li>
+
+<li>ASL Parameters\nnnnr</li>
+
+<li>ASL Parameters\rnnnn</li>
+
 <li>ASL Phrases</li>
 
 <li>ASL Phrases\jllll-WDiU-q&gt;-jnnnn</li>
@@ -347,11 +363,25 @@ Error message and password prompt
 
 <li>mcr asl_entry</li>
 
+<li>mcr asl_parameter</li>
+
 <li>mcr group_list</li>
+
+<li>mcr parameter_group</li>
+
+<li>Parameter Groups</li>
+
+<li>Parameter Groups\handshape</li>
+
+<li>Parameter Groups\palm direction</li>
 
 <li>template asl_entry</li>
 
+<li>template asl_parameter</li>
+
 <li>template group_list</li>
+
+<li>template parameter_group</li>
 
 </ul>
 </p>
@@ -11884,7 +11914,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210411091222320" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20210307044348911" modified="20210827105617035" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210827112857558" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -11899,7 +11929,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20210827105617035" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210827112857558" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
@@ -12027,6 +12057,30 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <pre></pre>
 </div>
 <div created="20210827092903813" modified="20210827092903813" title="ASL Groups\cnnnn-A-qv^">
+<pre></pre>
+</div>
+<div created="20210827105837268" modified="20210827105843207" tags="DOC" title="ASL Parameters">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div asl-parameter="cnnnn" created="20210827110758152" description="dom-hand S" group-hand="cnnnn" modified="20210827110831236" parameter-group="handshape" tags="" title="ASL Parameters\cnnnn">
+<pre></pre>
+</div>
+<div asl-parameter="iy" created="20210827111451619" description="dom-palm base-side" modified="20210827111552075" parameter-group="palm direction" tags="" title="ASL Parameters\iy">
+<pre></pre>
+</div>
+<div asl-parameter="jlulull" created="20210827110714363" description="dom-hand open-C" group-hand="clulull" modified="20210827110727040" parameter-group="handshape" tags="" title="ASL Parameters\jlulull">
+<pre></pre>
+</div>
+<div asl-parameter="llululj" created="20210827105844043" description="base-hand open-C" group-hand="clulull" modified="20210827110602213" parameter-group="handshape" tags="" title="ASL Parameters\llululj">
+<pre></pre>
+</div>
+<div asl-parameter="nnnnc" created="20210827110738608" description="base-hand S" group-hand="cnnnn" modified="20210827110751827" parameter-group="handshape" tags="" title="ASL Parameters\nnnnc">
+<pre></pre>
+</div>
+<div asl-parameter="nnnnr" created="20210827110839685" description="dom-hand A" group-hand="cnnnn" modified="20210827110851969" parameter-group="handshape" tags="" title="ASL Parameters\nnnnr">
+<pre></pre>
+</div>
+<div asl-parameter="rnnnn" created="20210827110811370" description="dom-hand A" group-hand="cnnnn" modified="20210827110822214" parameter-group="handshape" tags="" title="ASL Parameters\rnnnn">
 <pre></pre>
 </div>
 <div created="20201114085731300" modified="20210827014905178" tags="DOC" title="ASL Phrases">
@@ -12343,6 +12397,30 @@ cnnnn jlulull jllll jnnnn ynnnn
 \end
 </pre>
 </div>
+<div created="20210827110028207" modified="20210827112656403" tags="$:/tags/Macro MCR" title="mcr asl_parameter">
+<pre>\define asl_parameter(var_cur_card)
+&lt;$list variable=cur_desc filter=&quot;[&lt;cur_card&gt;get[description]]&quot;&gt; &lt;&lt;cur_desc&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_desc--&gt;
+&lt;$list variable=group_title filter=&quot;[&lt;cur_card&gt;get[parameter-group]]&quot;&gt;
+&lt;$list variable=group_card filter=&quot;[&lt;group_title&gt;addprefix[Parameter Groups\]]&quot;&gt;
+&lt;span style=&quot;margin-left:30px&quot;&gt;
+Parameter group: &lt;$link to=&lt;&lt;group_card&gt;&gt; &gt; &lt;&lt;group_title&gt;&gt;
+&lt;/$link&gt;&lt;!--group_card--&gt;
+&lt;/span&gt;
+&lt;/$list&gt;&lt;!--group_title--&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;$list variable=cur_group filter=&quot;[&lt;cur_card&gt;get[group-hand]]&quot;&gt; &lt;span style=&quot;margin-left:30px&quot;&gt; Group hand: &lt;&lt;cur_group&gt;&gt;
+&lt;/span&gt;
+&lt;/$list&gt;&lt;!--cur_group--&gt;
+&lt;$list variable=cur_group filter=&quot;[&lt;cur_card&gt;get[group-height]]&quot;&gt; &lt;span style=&quot;margin-left:30px&quot;&gt; Group height: &lt;&lt;cur_group&gt;&gt;
+&lt;/span&gt;
+&lt;/$list&gt;&lt;!--cur_group--&gt;
+&lt;$list variable=cur_group filter=&quot;[&lt;cur_card&gt;get[group-move]]&quot;&gt; &lt;span style=&quot;margin-left:30px&quot;&gt; Group move: &lt;&lt;cur_group&gt;&gt;
+&lt;/span&gt;
+&lt;/$list&gt;&lt;!--cur_group--&gt;
+\end
+</pre>
+</div>
 <div created="20210827062750289" modified="20210827104307520" tags="$:/tags/Macro MCR" title="mcr group_list">
 <pre>\define group_list(ur_count_flag, var_cur_card)
 &lt;$list variable=cur_group_set filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]]&quot;&gt;
@@ -12435,9 +12513,38 @@ Create Group card &lt;&lt;group_title&gt;&gt;
 \end
 </pre>
 </div>
+<div created="20210827111037092" modified="20210827112851319" tags="$:/tags/Macro MCR" title="mcr parameter_group">
+<pre>\define parameter_group(var_cur_card)
+&lt;$list variable=cur_title filter=&quot;[&lt;cur_card&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=parm_card filter=&quot;[prefix[ASL Parameters\]parameter-group&lt;cur_title&gt;sort[]]&quot;&gt;
+&lt;$list variable=parm_desc filter=&quot;[&lt;parm_card&gt;get[description]]&quot;&gt;
+&lt;$list variable=parm_title filter=&quot;[&lt;parm_card&gt;split[\]last[]]&quot;&gt;
+&lt;$link to=&lt;&lt;parm_card&gt;&gt; &gt; &lt;&lt;parm_title&gt;&gt; &lt;/$link&gt; - &lt;&lt;parm_desc&gt;&gt;&lt;br&gt;
+&lt;/$list&gt;&lt;!--parm_title--&gt;
+&lt;/$list&gt;&lt;!--parm_desc--&gt;
+&lt;/$list&gt;&lt;!--parm_card--&gt;
+&lt;/$list&gt;&lt;!--cur_title--&gt;
+\end
+</pre>
+</div>
+<div created="20210827110904615" modified="20210827112247166" tags="DOC" title="Parameter Groups">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20210827110924070" modified="20210827110937228" tags="" title="Parameter Groups\handshape">
+<pre></pre>
+</div>
+<div created="20210827111445127" modified="20210827111446981" tags="" title="Parameter Groups\palm direction">
+<pre></pre>
+</div>
 <div created="20210827055749515" modified="20210827071620894" tags="$:/tags/ViewTemplate MCR" title="template asl_entry">
 <pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[ASL Phrases\]]&quot;&gt;
 &lt;&lt;asl_entry&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20210827110005096" modified="20210827110022296" tags="$:/tags/ViewTemplate MCR" title="template asl_parameter">
+<pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[ASL Parameters\]]&quot;&gt;
+&lt;&lt;asl_parameter&gt;&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 </pre>
 </div>
@@ -12445,6 +12552,12 @@ Create Group card &lt;&lt;group_title&gt;&gt;
 <pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[ASL Groups\]]&quot;&gt;
 &lt;&lt;group_list 0&gt;&gt;
 &lt;/$list&gt;
+</pre>
+</div>
+<div created="20210827110951303" modified="20210827111030910" tags="$:/tags/ViewTemplate MCR" title="template parameter_group">
+<pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[Parameter Groups\]]&quot;&gt;
+&lt;&lt;parameter_group&gt;&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
 </pre>
 </div>
 

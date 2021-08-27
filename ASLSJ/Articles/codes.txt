@@ -5,7 +5,7 @@ e2 - nnnnc - base-hand S
 e2 - cnnnn - dom-hand S
 e2 - nnnnr - base-hand A
 e2 - rnnnn - dom-hand A
-e3 - iy - palm-facing base-side
+e3 - iy - base-palm base-side
 e3 - p^ - base-hand move out
 e3 - q^ - dom-hand move out
 e3 - jnnnn-iy-q^ - thumbs-up
