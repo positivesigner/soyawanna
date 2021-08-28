@@ -13,4 +13,5 @@ e3 - pnnnnj-iy jnnnn-iy-p^q^ - THUMBS-UP
 e3 - jlulull-U-q^ - STOP
 e4 - jnnnn-iy-q^ - THUMBS-UP
 e4 - jlulull-Wiy-q^q~ - FUTURE
-e4 - jlulull-Wiy-qv - LONG-AGO
+e4 - jlulull-Wiy-qv - PAST
+e4 - jlulull-Wiy-qvz - LONG-AGO

@@ -11869,7 +11869,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210411091222320" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>yes</pre>
 </div>
-<div created="20210307044348911" modified="20210828045729342" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210828050342010" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -11884,13 +11884,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20210828045729343" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210828050342010" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[ASL Rhymes]]" title="$:/StoryList">
+<div created="20210828045836382" list="[[ASL Rhymes]] [[ASL Phrases]]" modified="20210828050238672" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12014,8 +12014,24 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210827092903813" modified="20210827092903813" title="ASL Groups\cnnnn-A-qv^">
 <pre></pre>
 </div>
-<div created="20210827105837268" modified="20210827105843207" tags="DOC" title="ASL Parameters">
-<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+<div created="20210827105837268" modified="20210828050310641" tags="DOC" title="ASL Parameters">
+<pre>&lt;ol&gt;
+&lt;$list variable=card_prefix filter=&quot;[all[current]addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
+&lt;$list variable=parm_desc filter=&quot;[&lt;cur_card&gt;get[description]else[]]&quot;&gt;
+&lt;$list variable=parm_group filter=&quot;[&lt;cur_card&gt;get[parameter-group]else[]]&quot;&gt;
+&lt;li&gt;
+&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt; &lt;&lt;disp_name&gt;&gt;
+&lt;/$link&gt; - &lt;&lt;parm_desc&gt;&gt; ( &lt;&lt;parm_group&gt;&gt; )
+&lt;/li&gt;
+&lt;/$list&gt;&lt;!--parm_group--&gt;
+&lt;/$list&gt;&lt;!--parm_desc--&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
+&lt;/ol&gt;
+</pre>
 </div>
 <div asl-parameter="cnnnn" created="20210827110758152" description="dom-hand S" group-hand="cnnnn" modified="20210827110831236" parameter-group="handshape" tags="" title="ASL Parameters\cnnnn">
 <pre></pre>
