@@ -14,7 +14,7 @@ pnnnnj-piy jnnnn-iy-p^q^ (cnnnn A qv^) THUMBS-UP alt-one-hand=jnnnn-iy-q^
 handshape = 114
 hand height = 12
 body side = 2
-hand depth = 2
+body depth = 2
 dom-hand apart direction = 26
 palm direction = 12
 hand movement direction = 20
@@ -25,11 +25,11 @@ repetition direction = 16
 =hv - dom-hand below | dom-hand apart direction
 =q^ - dom-hand out | dom-hand apart direction
 =qv - dom-hand in | dom-hand apart direction
-A - away from right-side chest | hand height
-AE - away from chest | hand depth
-AK - away from left-side chest | body side
-AY - away from right-side chest | body side
-C - away from right-side chin | hand height
+A - chest-height | hand height
+AE - away from chest | body depth
+AK - left-side body | body side
+AY - right-side body | body side
+C - chin height | hand height
 CD - against right-side chin | hand height
 cfffn - letter-M | handshape
 cffnn - letter-N | handshape
@@ -52,7 +52,7 @@ cnnnf - bent-I | handshape
 cnnnl - letter-I | handshape
 cnnnn - letter-S | handshape
 ctlnn - letter-R | handshape
-D - against chest | hand depth
+D - against chest | body depth
 d^ - base-hand move up | hand movement direction
 dv - base-hand move down | hand movement direction
 fffrf - letter-E | handshape
@@ -197,7 +197,7 @@ Tqvx - touch in weaved | dom-hand apart direction
 Tqyc - touch right cupped | dom-hand apart direction
 TqyH - touch right against | dom-hand apart direction
 Tqyx - touch right weaved | dom-hand apart direction
-W - away from right-side forehead | hand height
+W - forehead height | hand height
 WD - against right-side forehead | hand height
 Y - away from elbow | hand height
 YD - against elbow | hand height
@@ -277,10 +277,10 @@ zqy - repeat dom-side | repetition direction
     Tq^= - touch out against, Tqv= - touch in against
 ~ -- hand movement direction (2)
     p~ - base-hand wiggle fingers, q~ - dom-hand wiggle fingers
-A -- hand height (1), hand depth (1), body side (2)
-    A - away from right-side chest, AE - away from chest, AK - away from left-side chest, AY - away from right-side chest
+A -- hand height (1), body depth (1), body side (2)
+    A - chest-height, AE - away from chest, AK - left-side body, AY - right-side body
 C -- hand height (6)
-    C - away from right-side chin, CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose
+    C - chin height, CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose
 c -- handshape (34), dom-hand apart direction (6)
     cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N, cfufuff - bent-4, cllll - letter-B, cllnn - letter-U,
     clnnl - L-I, clnnn - closed-L, clulnn - letter-V, clulull - number-4, clululn - letter-W, cnnnf - bent-I, cnnnl - letter-I, cnnnn - letter-S,
@@ -288,12 +288,12 @@ c -- handshape (34), dom-hand apart direction (6)
     plnnlc - base-L-I, plnnnc - base-letter-I, pnfffc - base-letter-M, pnlululc - base-letter-W, pnnffc - base-letter-N, pnnfufc - base-bent-V,
     pnnllc - base-letter-U, pnnltc - base-letter-R, pnnlulc - base-letter-V, pnnnfc - base-letter-X, pnnnlc - base-closed-L, pnnnnc - base-letter-S,
     Th^c - touch up cupped, Thvc - touch down cupped, Tq^c - touch out cupped, Tqkc - touch left cupped, Tqvc - touch in cupped, Tqyc - touch right cupped
-D -- hand height (6), hand depth (1), hand movement direction (4)
+D -- hand height (6), body depth (1), hand movement direction (4)
     CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose, D - against chest, KD - against base-side chest,
     pD - base-hand against body, qD - dom-hand against body, WD - against right-side forehead, YD - against elbow
 d -- hand movement direction (2), repetition direction (2)
     d^ - base-hand move up, dv - base-hand move down, zd^ - base-hand repeat up, zdv - base-hand repeat down
-E -- dom-hand apart direction (2), hand depth (1)
+E -- dom-hand apart direction (2), body depth (1)
 	AE - away from chest, HE - dom-hand only, TE - hands apart
 e -- hand movement direction (2), repetition direction (2)
     qe - dom-hand stays still, pe - base-hand stays still, ze - dom-hand move-once, zpe - base-hand move-once
@@ -325,7 +325,7 @@ j -- handshape (42)
     pnlululj - base-open-W, pnnffj - base-open-N; base-bent-open-U, pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnllj - base-open-U,
     pnnltj - base-open-R, pnnlulj - base-open-V, pnnnfj - base-open-X, pnnnlj - base-letter-L, pnnnnj - base-open-A, pUj - base-palm out, pyUj - base-palm out
 K -- hand height (3), body side (1)
-    AK - away from left-side chest, CKD - against mouth, CKh^D - against nose, KD - against base-side chest
+    AK - left-side body, CKD - against mouth, CKh^D - against nose, KD - against base-side chest
 k -- dom-hand apart direction (4), palm direction (2), hand movement direction (2), repetition direction
     Hqk - dom-hand base-side, ik - dom-palm dom-side, pik - base-palm base-side, pk - base-hand move base-side, qk - dom-hand move base-side,
     Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, zpk - base-hand repeat base-side, zqk - repeat base-side
@@ -399,11 +399,11 @@ v -- dom-hand apart direction (8), hand height (1), movement direction (4), repe
     Thv= - touch down against, Thvc - touch down cupped, Thvx - touch down weaved, Tqv= - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved,
     zdv - base-hand repeat down, zhv - repeat down, zpv - base-hand repeat down, zqv - repeat in
 W -- hand height (2)
-    W - away from right-side forehead, WD - against right-side forehead
+    W - forehead height, WD - against right-side forehead
 x -- dom-hand apart direction (6)
     Th^x - touch up weaved, Thvx - touch down weaved, Tq^x - touch out weaved, Tqkx - touch left weaved, Tqvx - touch in weaved, Tqyx - touch right weaved
 Y -- hand height (2), body side (1)
-    AY - away from right-side chest, Y - away from elbow, YD - against elbow
+    AY - right-side body, Y - away from elbow, YD - against elbow
 y -- dom-hand apart direction (4), palm direction (6), handshape (16), hand movement direction (2), repetition direction (2)
     Hqy - dom-hand dom-side, iUy - dom-palm up, iy - dom-palm base-side, jUy - dom-palm down, pffffy - base-letter-C, pffufufy - base-open-C,
     pfnnny - base-bent-Y, piy - base-palm dom-side, pllfly - base-bent-8, pnnffy - base-bent-N, pnnfufy - base-bent-3, pnnnfy - base-bent-X,
