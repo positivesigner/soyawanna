@@ -18,13 +18,9 @@ body depth = 2
 dom-hand apart direction = 26
 palm direction = 12
 hand movement direction = 20
-repetition direction = 16
+repetition direction = 18
 
 
-=h^ - dom-hand above | dom-hand apart direction
-=hv - dom-hand below | dom-hand apart direction
-=q^ - dom-hand out | dom-hand apart direction
-=qv - dom-hand in | dom-hand apart direction
 A - chest-height | hand height
 AE - away from chest | body depth
 AK - left-side body | body side
@@ -59,13 +55,17 @@ fffrf - letter-E | handshape
 frnnn - letter-T | handshape
 h^ - move up | hand movement direction
 HE - dom-hand only | dom-hand apart direction
+Hh^ - dom-hand above | dom-hand apart direction
+Hhv - dom-hand below | dom-hand apart direction
+Hq^ - dom-hand out | dom-hand apart direction
 Hqk - dom-hand base-side | dom-hand apart direction
+Hqv - dom-hand in | dom-hand apart direction
 Hqy - dom-hand dom-side | dom-hand apart direction
 hv - move down | hand movement direction
-ik - dom-palm dom-side | palm direction
+ik - dom-palm base-side | palm direction
 iU - dom-palm in | palm direction
 iUy - dom-palm up | palm direction
-iy - dom-palm base-side | palm direction
+iy - dom-palm dom-side | palm direction
 jffff - bent-open-B | handshape
 jfffn - bent-open-W | handshape
 jffnn - open-N; bent-open-U | handshape
@@ -107,8 +107,8 @@ pfnnfc - base-bent-L-I | handshape
 pfnnnc - base-bent-I | handshape
 pfnnny - base-bent-Y | handshape
 pfrfff - base-letter-E | handshape
-pik - base-palm base-side | palm direction
-piy - base-palm dom-side | palm direction
+pik - base-palm dom-side | palm direction
+piy - base-palm base-side | palm direction
 pk - base-hand move base-side | hand movement direction
 plfllj - base-open-7 | handshape
 plfrll - base-number-7 | handshape
@@ -179,20 +179,20 @@ rfufff - bent-F | handshape
 rllnn - flat-open-U | handshape
 rnnnn - letter-A | handshape
 TE - hands apart | dom-hand apart direction
-Th^= - touch up against | dom-hand apart direction
 Th^c - touch up cupped | dom-hand apart direction
+Th^H - touch up against | dom-hand apart direction
 Th^x - touch up weaved | dom-hand apart direction
-Thv= - touch down against | dom-hand apart direction
 Thvc - touch down cupped | dom-hand apart direction
+ThvH - touch down against | dom-hand apart direction
 Thvx - touch down weaved | dom-hand apart direction
-Tq^= - touch out against | dom-hand apart direction
 Tq^c - touch out cupped | dom-hand apart direction
+Tq^H - touch out against | dom-hand apart direction
 Tq^x - touch out weaved | dom-hand apart direction
 Tqkc - touch left cupped | dom-hand apart direction
 TqkH - touch left against | dom-hand apart direction
 Tqkx - touch left weaved | dom-hand apart direction
-Tqv= - touch in against | dom-hand apart direction
 Tqvc - touch in cupped | dom-hand apart direction
+TqvH - touch in against | dom-hand apart direction
 Tqvx - touch in weaved | dom-hand apart direction
 Tqyc - touch right cupped | dom-hand apart direction
 TqyH - touch right against | dom-hand apart direction
@@ -219,10 +219,12 @@ zp^ - base-hand repeat out | repetition direction
 zpe - base-hand move-once | repetition direction
 zpk - base-hand repeat base-side | repetition direction
 zpv - base-hand repeat down | repetition direction
+zpS - base-hand repeat mirrored | repetition direction
 zpy - base-hand repeat dom-side | repetition direction
 zq - dom-hand repeat | repetition direction
 zq^ - repeat out | repetition direction
 zqk - repeat base-side | repetition direction
+zqS - repeat mirrored | repetition direction
 zqv - repeat in | repetition direction
 zqy - repeat dom-side | repetition direction
 
@@ -269,150 +271,183 @@ zqy - repeat dom-side | repetition direction
 
 
 ^ -- dom-hand apart direction (8), hand height (3), hand movement direction (4), repetition direction (4)
-    =h^ - dom-hand above, =q^ - dom-hand out, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKh^D - against nose, d^ - base-hand move up, h^ - move up,
-    p^ - base-hand move out, q^ - dom-hand move out, Th^= - touch up against, Th^c - touch up cupped, Th^x - touch up weaved, Tq^= - touch out against,
-    Tq^c - touch out cupped, Tq^x - touch out weaved, zd^ - base-hand repeat up, zh^ - repeat up, zp^ - base-hand repeat out, zq^ - repeat out
-= -- dom-hand apart direction (8)
-    =h^ - dom-hand above, =hv - dom-hand below, =q^ - dom-hand out, =qv - dom-hand in, Th^= - touch up against, Thv= - touch down against,
-    Tq^= - touch out against, Tqv= - touch in against
+    Hh^ - dom-hand above, Hq^ - dom-hand out, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKh^D - against nose,
+    d^ - base-hand move up, h^ - move up, p^ - base-hand move out, q^ - dom-hand move out, Th^H - touch up against,
+    Th^c - touch up cupped, Th^x - touch up weaved, Tq^H - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved,
+    zd^ - base-hand repeat up, zh^ - repeat up, zp^ - base-hand repeat out, zq^ - repeat out
 ~ -- hand movement direction (2)
     p~ - base-hand wiggle fingers, q~ - dom-hand wiggle fingers
 A -- hand height (1), body depth (1), body side (2)
     A - chest-height, AE - away from chest, AK - left-side body, AY - right-side body
 C -- hand height (6)
-    C - chin height, CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose
+    C - chin height, CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth,
+    CKh^D - against nose
 c -- handshape (34), dom-hand apart direction (6)
-    cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N, cfufuff - bent-4, cllll - letter-B, cllnn - letter-U,
-    clnnl - L-I, clnnn - closed-L, clulnn - letter-V, clulull - number-4, clululn - letter-W, cnnnf - bent-I, cnnnl - letter-I, cnnnn - letter-S,
-    ctlnn - letter-R, pffufufc - base-bent-4, pfnnfc - base-bent-L-I, pfnnnc - base-bent-I, pllllc - base-letter-B, pllululc - base-number-4,
-    plnnlc - base-L-I, plnnnc - base-letter-I, pnfffc - base-letter-M, pnlululc - base-letter-W, pnnffc - base-letter-N, pnnfufc - base-bent-V,
-    pnnllc - base-letter-U, pnnltc - base-letter-R, pnnlulc - base-letter-V, pnnnfc - base-letter-X, pnnnlc - base-closed-L, pnnnnc - base-letter-S,
-    Th^c - touch up cupped, Thvc - touch down cupped, Tq^c - touch out cupped, Tqkc - touch left cupped, Tqvc - touch in cupped, Tqyc - touch right cupped
+    cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N,
+    cfufuff - bent-4, cllll - letter-B, cllnn - letter-U, clnnl - L-I, clnnn - closed-L,
+    clulnn - letter-V, clulull - number-4, clululn - letter-W, cnnnf - bent-I, cnnnl - letter-I,
+    cnnnn - letter-S, ctlnn - letter-R, pffufufc - base-bent-4, pfnnfc - base-bent-L-I, pfnnnc - base-bent-I,
+    pllllc - base-letter-B, pllululc - base-number-4, plnnlc - base-L-I, plnnnc - base-letter-I, pnfffc - base-letter-M,
+    pnlululc - base-letter-W, pnnffc - base-letter-N, pnnfufc - base-bent-V, pnnllc - base-letter-U, pnnltc - base-letter-R,
+    pnnlulc - base-letter-V, pnnnfc - base-letter-X, pnnnlc - base-closed-L, pnnnnc - base-letter-S, Th^c - touch up cupped,
+    Thvc - touch down cupped, Tq^c - touch out cupped, Tqkc - touch left cupped, Tqvc - touch in cupped, Tqyc - touch right cupped
 D -- hand height (6), body depth (1), hand movement direction (4)
-    CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose, D - against chest, KD - against base-side chest,
-    pD - base-hand against body, qD - dom-hand against body, WD - against right-side forehead, YD - against elbow
+    CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose,
+    D - against chest, KD - against base-side chest, pD - base-hand against body, qD - dom-hand against body, WD - against right-side forehead,
+    YD - against elbow
 d -- hand movement direction (2), repetition direction (2)
     d^ - base-hand move up, dv - base-hand move down, zd^ - base-hand repeat up, zdv - base-hand repeat down
 E -- dom-hand apart direction (2), body depth (1)
-	AE - away from chest, HE - dom-hand only, TE - hands apart
+    AE - away from chest, HE - dom-hand only, TE - hands apart
 e -- hand movement direction (2), repetition direction (2)
     qe - dom-hand stays still, pe - base-hand stays still, ze - dom-hand move-once, zpe - base-hand move-once
 f -- handshape (63)
-    cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N, cfufuff - bent-4, cnnnf - bent-I, fffrf - letter-E,
-    frnnn - letter-T, jffff - bent-open-B, jfffn - bent-open-W, jffnn - open-N; bent-open-U, jflll - open-F, jfnnn - bent-L, jlfll - open-8, jlfnn - open-K,
-    jllfl - open-7, jtfnn - bent-open-R, llrfl - number-7, lrfff - letter-D, lrfll - number-8, pffffj - base-bent-open-B, pffffr - base-letter-O,
-    pffffy - base-letter-C, pfffrl - base-letter-D, pfffufr - base-letter-F, pffufufc - base-bent-4, pffufufy - base-open-C, pfnnfc - base-bent-L-I,
-    pfnnnc - base-bent-I, pfnnny - base-bent-Y, pfrfff - base-letter-E, plfllj - base-open-7, plfrll - base-number-7, pllflj - base-open-8, pllfly - base-bent-8,
-    pllfrl - base-number-8, plllfj - base-open-F, plllfr - base-letter-F, pnfffc - base-letter-M, pnfffj - base-open-M, pnnffc - base-letter-N,
-    pnnffj - base-open-N; base-bent-open-U, pnnffr - base-closed-N, pnnffy - base-bent-N, pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnfufc - base-bent-V,
-    pnnfufy - base-bent-3, pnnnfc - base-letter-X, pnnnfj - base-open-X, pnnnfr - base-closed-X, pnnnfy - base-bent-X, pnnnrf - base-letter-T, rffff - letter-O,
-    rffnn - letter-N, rflll - letter-F, rfnnn - closed-X, rfufff - bent-F, yffff - letter-C, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3,
-    yfufuff - bent-open-C, ylfll - bent-8, ynnnf - bent-Y
-H -- dom-hand apart direction (5)
-    HE - dom-hand only, Hqk - dom-hand base-side, Hqy - dom-hand dom-side, TqkH - touch left against, TqyH - touch right against
+    cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N,
+    cfufuff - bent-4, cnnnf - bent-I, fffrf - letter-E, frnnn - letter-T, jffff - bent-open-B,
+    jfffn - bent-open-W, jffnn - open-N; bent-open-U, jflll - open-F, jfnnn - bent-L, jlfll - open-8,
+    jlfnn - open-K, jllfl - open-7, jtfnn - bent-open-R, llrfl - number-7, lrfff - letter-D,
+    lrfll - number-8, pffffj - base-bent-open-B, pffffr - base-letter-O, pffffy - base-letter-C, pfffrl - base-letter-D,
+    pfffufr - base-letter-F, pffufufc - base-bent-4, pffufufy - base-open-C, pfnnfc - base-bent-L-I, pfnnnc - base-bent-I,
+    pfnnny - base-bent-Y, pfrfff - base-letter-E, plfllj - base-open-7, plfrll - base-number-7, pllflj - base-open-8,
+    pllfly - base-bent-8, pllfrl - base-number-8, plllfj - base-open-F, plllfr - base-letter-F, pnfffc - base-letter-M,
+    pnfffj - base-open-M, pnnffc - base-letter-N, pnnffj - base-open-N; base-bent-open-U, pnnffr - base-closed-N,
+    pnnffy - base-bent-N, pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnfufc - base-bent-V, pnnfufy - base-bent-3,
+    pnnnfc - base-letter-X, pnnnfj - base-open-X, pnnnfr - base-closed-X, pnnnfy - base-bent-X, pnnnrf - base-letter-T,
+    rffff - letter-O, rffnn - letter-N, rflll - letter-F, rfnnn - closed-X, rfufff - bent-F,
+    yffff - letter-C, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3, yfufuff - bent-open-C,
+    ylfll - bent-8, ynnnf - bent-Y
+H -- dom-hand apart direction (13)
+    HE - dom-hand only, Hh^ - dom-hand above, Hhv - dom-hand below, Hq^ - dom-hand out, Hqk - dom-hand base-side,
+    Hqv - dom-hand in, Hqy - dom-hand dom-side, Th^H - touch up against, ThvH - touch down against, Tq^H - touch out against,
+    TqkH - touch left against, TqvH - touch in against, TqyH - touch right against
 h -- dom-hand apart direction (8), hand height (3), hand movement direction (2), repetition direction (2)
-    =h^ - dom-hand above, =hv - dom-hand below, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKh^D - against nose, h^ - move up, hv - move down,
-    Th^= - touch up against, Th^c - touch up cupped, Th^x - touch up weaved, Thv= - touch down against, Thvc - touch down cupped, Thvx - touch down weaved,
-    zh^ - repeat up, zhv - repeat down
+    Hh^ - dom-hand above, Hhv - dom-hand below, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKh^D - against nose,
+    h^ - move up, hv - move down, Th^H - touch up against, Th^c - touch up cupped, Th^x - touch up weaved,
+    ThvH - touch down against, Thvc - touch down cupped, Thvx - touch down weaved, zh^ - repeat up, zhv - repeat down
 i -- palm direction (8)
-    ik - dom-palm dom-side, iU - dom-palm in, iUy - dom-palm up, iy - dom-palm base-side, pik - base-palm base-side, piy - base-palm dom-side,
-    pUi - base-palm in, pyUi - base-palm up
+    ik - dom-palm base-side, iU - dom-palm in, iUy - dom-palm up, iy - dom-palm base-side, pik - base-palm dom-side,
+    piy - base-palm dom-side, pUi - base-palm in, pyUi - base-palm up
 j -- handshape (42)
-    jffff - bent-open-B, jfffn - bent-open-W, jffnn - open-N; bent-open-U, jflll - open-F, jfnnn - bent-L, jlfll - open-8, jlfnn - open-K, jllfl - open-7,
-    jllll - open-B, jllnn - open-U, jlnnl - open-L-Y, jlnnn - letter-L, jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W, jnnnl - letter-Y,
-    jnnnn - open-A, jtfnn - bent-open-R, jtlnn - open-R, jU - dom-palm out, jUy - dom-palm down, pffffj - base-bent-open-B, plfllj - base-open-7,
-    pllflj - base-open-8, plllfj - base-open-F, pllllj - base-open-B, pllululj - base-open-C, plnnlj - base-L-Y, plnnnj - base-letter-Y, pnfffj - base-open-M,
+    jffff - bent-open-B, jfffn - bent-open-W, jffnn - open-N; bent-open-U, jflll - open-F, jfnnn - bent-L,
+    jlfll - open-8, jlfnn - open-K, jllfl - open-7, jllll - open-B, jllnn - open-U,
+    jlnnl - open-L-Y, jlnnn - letter-L, jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W,
+    jnnnl - letter-Y, jnnnn - open-A, jtfnn - bent-open-R, jtlnn - open-R, jU - dom-palm out,
+    jUy - dom-palm down, pffffj - base-bent-open-B, plfllj - base-open-7, pllflj - base-open-8, plllfj - base-open-F,
+    pllllj - base-open-B, pllululj - base-open-C, plnnlj - base-L-Y, plnnnj - base-letter-Y, pnfffj - base-open-M,
     pnlululj - base-open-W, pnnffj - base-open-N; base-bent-open-U, pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnllj - base-open-U,
-    pnnltj - base-open-R, pnnlulj - base-open-V, pnnnfj - base-open-X, pnnnlj - base-letter-L, pnnnnj - base-open-A, pUj - base-palm out, pyUj - base-palm out
+    pnnltj - base-open-R, pnnlulj - base-open-V, pnnnfj - base-open-X, pnnnlj - base-letter-L, pnnnnj - base-open-A,
+    pUj - base-palm out, pyUj - base-palm out
 K -- hand height (3), body side (1)
     AK - left-side body, CKD - against mouth, CKh^D - against nose, KD - against base-side chest
 k -- dom-hand apart direction (4), palm direction (2), hand movement direction (2), repetition direction
-    Hqk - dom-hand base-side, ik - dom-palm dom-side, pik - base-palm base-side, pk - base-hand move base-side, qk - dom-hand move base-side,
+    Hqk - dom-hand base-side, ik - dom-palm base-side, pik - base-palm dom-side, pk - base-hand move base-side, qk - dom-hand move base-side,
     Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, zpk - base-hand repeat base-side, zqk - repeat base-side
 l -- handshape (58)
-    cllll - letter-B, cllnn - letter-U, clnnl - L-I, clnnn - closed-L, clulnn - letter-V, clulull - number-4, clululn - letter-W, cnnnl - letter-I,
-    ctlnn - letter-R, jflll - open-F, jlfll - open-8, jlfnn - open-K, jllfl - open-7, jllll - open-B, jllnn - open-U, jlnnl - open-L-Y, jlnnn - letter-L,
-    jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W, jnnnl - letter-Y, jtlnn - open-R, llrfl - number-7, lrfff - letter-D, lrfll - number-8,
-    lrtnn - letter-K, pfffrl - base-letter-D, plfllj - base-open-7, plfrll - base-number-7, pllflj - base-open-8, pllfly - base-bent-8, pllfrl - base-number-8,
-    plllfj - base-open-F, plllfr - base-letter-F, pllllc - base-letter-B, pllllj - base-open-B, pllululc - base-number-4, pllululj - base-open-C,
-    plnnlc - base-L-I, plnnlj - base-L-Y, plnnnc - base-letter-I, plnnnj - base-letter-Y, pnlululc - base-letter-W, pnlululj - base-open-W,
-    pnnflj - base-open-K, pnnllc - base-letter-U, pnnllj - base-open-U, pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R,
-    pnnlulc - base-letter-V, pnnlulj - base-open-V, pnnnlc - base-closed-L, pnnnlj - base-letter-L, pnntrl - base-letter-K, rflll - letter-F,
-    rllnn - flat-open-U, ylfll - bent-8
+    cllll - letter-B, cllnn - letter-U, clnnl - L-I, clnnn - closed-L, clulnn - letter-V,
+    clulull - number-4, clululn - letter-W, cnnnl - letter-I, ctlnn - letter-R, jflll - open-F,
+    jlfll - open-8, jlfnn - open-K, jllfl - open-7, jllll - open-B, jllnn - open-U,
+    jlnnl - open-L-Y, jlnnn - letter-L, jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W,
+    jnnnl - letter-Y, jtlnn - open-R, llrfl - number-7, lrfff - letter-D, lrfll - number-8,
+    lrtnn - letter-K, pfffrl - base-letter-D, plfllj - base-open-7, plfrll - base-number-7, pllflj - base-open-8,
+    pllfly - base-bent-8, pllfrl - base-number-8, plllfj - base-open-F, plllfr - base-letter-F, pllllc - base-letter-B,
+    pllllj - base-open-B, pllululc - base-number-4, pllululj - base-open-C, plnnlc - base-L-I, plnnlj - base-L-Y,
+    plnnnc - base-letter-I, plnnnj - base-letter-Y, pnlululc - base-letter-W, pnlululj - base-open-W, pnnflj - base-open-K,
+    pnnllc - base-letter-U, pnnllj - base-open-U, pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R,
+    pnnlulc - base-letter-V, pnnlulj - base-open-V, pnnnlc - base-closed-L, pnnnlj - base-letter-L, pnntrl - base-letter-K,
+    rflll - letter-F, rllnn - flat-open-U, ylfll - bent-8
 n -- handshape (76)
-    cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N, cllnn - letter-U, clnnl - L-I, clnnn - closed-L,
-    clulnn - letter-V, clululn - letter-W, cnnnf - bent-I, cnnnl - letter-I, cnnnn - letter-S, ctlnn - letter-R, frnnn - letter-T, jfffn - bent-open-W,
-    jffnn - open-N; bent-open-U, jfnnn - bent-L, jlfnn - open-K, jllnn - open-U, jlnnl - open-L-Y, jlnnn - letter-L, jlulnn - number-3; open-V,
-    jlululn - open-W, jnnnl - letter-Y, jnnnn - open-A, jtfnn - bent-open-R, jtlnn - open-R, lrtnn - letter-K, pfnnfc - base-bent-L-I, pfnnnc - base-bent-I,
-    pfnnny - base-bent-Y, plnnlc - base-L-I, plnnlj - base-L-Y, plnnnc - base-letter-I, plnnnj - base-letter-Y, pnfffc - base-letter-M, pnfffj - base-open-M,
-    pnlululc - base-letter-W, pnlululj - base-open-W, pnnffc - base-letter-N, pnnffj - base-open-N; base-bent-open-U, pnnffr - base-closed-N,
-    pnnffy - base-bent-N, pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnfufc - base-bent-V, pnnfufy - base-bent-3, pnnllc - base-letter-U,
-    pnnllj - base-open-U, pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R, pnnlulc - base-letter-V, pnnlulj - base-open-V,
-    pnnnfc - base-letter-X, pnnnfj - base-open-X, pnnnfr - base-closed-X, pnnnfy - base-bent-X, pnnnlc - base-closed-L, pnnnlj - base-letter-L,
-    pnnnnc - base-letter-S, pnnnnj - base-open-A, pnnnnr - base-letter-A, pnnnny - base-bent-A, pnnnrf - base-letter-T, pnntrl - base-letter-K,
-    rffnn - letter-N, rfnnn - closed-X, rllnn - flat-open-U, rnnnn - letter-A, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3,
-    ynnnf - bent-Y, ynnnn - bent-A
+    cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N,
+    cllnn - letter-U, clnnl - L-I, clnnn - closed-L, clulnn - letter-V, clululn - letter-W,
+    cnnnf - bent-I, cnnnl - letter-I, cnnnn - letter-S, ctlnn - letter-R, frnnn - letter-T,
+    jfffn - bent-open-W, jffnn - open-N; bent-open-U, jfnnn - bent-L, jlfnn - open-K, jllnn - open-U,
+    jlnnl - open-L-Y, jlnnn - letter-L, jlulnn - number-3; open-V, jlululn - open-W, jnnnl - letter-Y,
+    jnnnn - open-A, jtfnn - bent-open-R, jtlnn - open-R, lrtnn - letter-K, pfnnfc - base-bent-L-I,
+    pfnnnc - base-bent-I, pfnnny - base-bent-Y, plnnlc - base-L-I, plnnlj - base-L-Y, plnnnc - base-letter-I,
+    plnnnj - base-letter-Y, pnfffc - base-letter-M, pnfffj - base-open-M, pnlululc - base-letter-W, pnlululj - base-open-W,
+    pnnffc - base-letter-N, pnnffj - base-open-N; base-bent-open-U, pnnffr - base-closed-N, pnnffy - base-bent-N, pnnflj - base-open-K,
+    pnnftj - base-bent-open-R, pnnfufc - base-bent-V, pnnfufy - base-bent-3, pnnllc - base-letter-U, pnnllj - base-open-U,
+    pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R, pnnlulc - base-letter-V, pnnlulj - base-open-V,
+    pnnnfc - base-letter-X, pnnnfj - base-open-X, pnnnfr - base-closed-X, pnnnfy - base-bent-X, pnnnlc - base-closed-L,
+    pnnnlj - base-letter-L, pnnnnc - base-letter-S, pnnnnj - base-open-A, pnnnnr - base-letter-A, pnnnny - base-bent-A,
+    pnnnrf - base-letter-T, pnntrl - base-letter-K, rffnn - letter-N, rfnnn - closed-X, rllnn - flat-open-U,
+    rnnnn - letter-A, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3, ynnnf - bent-Y,
+    ynnnn - bent-A
 o -- hand movement direction (2)
     po - base-hand twist, qo - dom-hand twist
-p -- hand movement direction (6), handshape (57), palm direction (2), repetition direction (6)
-    p^ - base-hand move out, p~ - base-hand wiggle fingers, pD - base-hand against body, pe - base-hand stays still, pffffj - base-bent-open-B, pffffr - base-letter-O,
-    pffffy - base-letter-C, pfffrl - base-letter-D, pfffufr - base-letter-F, pffufufc - base-bent-4, pffufufy - base-open-C, pfnnfc - base-bent-L-I,
-    pfnnnc - base-bent-I, pfnnny - base-bent-Y, pfrfff - base-letter-E, pik - base-palm base-side, piy - base-palm dom-side, pk - base-hand move base-side,
-    plfllj - base-open-7, plfrll - base-number-7, pllflj - base-open-8, pllfly - base-bent-8, pllfrl - base-number-8, plllfj - base-open-F,
-    plllfr - base-letter-F, pllllc - base-letter-B, pllllj - base-open-B, pllululc - base-number-4, pllululj - base-open-C, plnnlc - base-L-I,
-    plnnlj - base-L-Y, plnnnc - base-letter-I, plnnnj - base-letter-Y, pnfffc - base-letter-M, pnfffj - base-open-M, pnlululc - base-letter-W,
-    pnlululj - base-open-W, pnnffc - base-letter-N, pnnffj - base-open-N; base-bent-open-U, pnnffr - base-closed-N, pnnffy - base-bent-N,
-    pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnfufc - base-bent-V, pnnfufy - base-bent-3, pnnllc - base-letter-U, pnnllj - base-open-U,
-    pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R, pnnlulc - base-letter-V, pnnlulj - base-open-V, pnnnfc - base-letter-X,
-    pnnnfj - base-open-X, pnnnfr - base-closed-X, pnnnfy - base-bent-X, pnnnlc - base-closed-L, pnnnlj - base-letter-L, pnnnnc - base-letter-S,
-    pnnnnj - base-open-A, pnnnnr - base-letter-A, pnnnny - base-bent-A, pnnnrf - base-letter-T, pnntrl - base-letter-K, po - base-hand twist,
-    pUi - base-palm in, pUj - base-palm out, pv - base-hand move in, py - base-hand move dom-side, pyUi - base-palm up, pyUj - base-palm out,
-    zp - base-hand repeat, zp^ - base-hand repeat out, zpe - base-hand move-once, zpk - base-hand repeat base-side, zpv - base-hand repeat down,
-	zpy - base-hand repeat dom-side
-q -- dom-hand apart direction (16), hand height (1), hand movement direction (8), repetition direction (5)
-    =q^ - dom-hand out, =qv - dom-hand in, Ch^qvD - against right-side ear, Hqk - dom-hand base-side, Hqy - dom-hand dom-side, q^ - dom-hand move out,
-    q~ - dom-hand wiggle fingers, qD - dom-hand against body, qe - dom-hand stays still, qk - dom-hand move base-side, qo - dom-hand twist, qv - dom-hand move in,
-    qy - dom-hand move dom-side, Tq^= - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved, Tqkc - touch left cupped,
-    TqkH - touch left against, Tqkx - touch left weaved, Tqv= - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved, Tqyc - touch right cupped,
-    TqyH - touch right against, Tqyx - touch right weaved, zq - dom-hand repeat, zq^ - repeat out, zqk - repeat base-side, zqv - repeat in, zqy - repeat dom-side
+p -- hand movement direction (6), handshape (57), palm direction (2), repetition direction (7)
+    p^ - base-hand move out, p~ - base-hand wiggle fingers, pD - base-hand against body, pe - base-hand stays still, pffffj - base-bent-open-B,
+    pffffr - base-letter-O, pffffy - base-letter-C, pfffrl - base-letter-D, pfffufr - base-letter-F, pffufufc - base-bent-4,
+    pffufufy - base-open-C, pfnnfc - base-bent-L-I, pfnnnc - base-bent-I, pfnnny - base-bent-Y, pfrfff - base-letter-E,
+    pik - base-palm dom-side, piy - base-palm dom-side, pk - base-hand move base-side, plfllj - base-open-7, plfrll - base-number-7,
+    pllflj - base-open-8, pllfly - base-bent-8, pllfrl - base-number-8, plllfj - base-open-F, plllfr - base-letter-F,
+    pllllc - base-letter-B, pllllj - base-open-B, pllululc - base-number-4, pllululj - base-open-C, plnnlc - base-L-I,
+    plnnlj - base-L-Y, plnnnc - base-letter-I, plnnnj - base-letter-Y, pnfffc - base-letter-M, pnfffj - base-open-M,
+    pnlululc - base-letter-W, pnlululj - base-open-W, pnnffc - base-letter-N, pnnffj - base-open-N; base-bent-open-U, pnnffr - base-closed-N,
+    pnnffy - base-bent-N, pnnflj - base-open-K, pnnftj - base-bent-open-R, pnnfufc - base-bent-V, pnnfufy - base-bent-3,
+    pnnllc - base-letter-U, pnnllj - base-open-U, pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R,
+    pnnlulc - base-letter-V, pnnlulj - base-open-V, pnnnfc - base-letter-X, pnnnfj - base-open-X, pnnnfr - base-closed-X,
+    pnnnfy - base-bent-X, pnnnlc - base-closed-L, pnnnlj - base-letter-L, pnnnnc - base-letter-S, pnnnnj - base-open-A,
+    pnnnnr - base-letter-A, pnnnny - base-bent-A, pnnnrf - base-letter-T, pnntrl - base-letter-K, po - base-hand twist,
+    zpS - base-hand repeat mirrored, pUi - base-palm in, pUj - base-palm out, pv - base-hand move in, py - base-hand move dom-side,
+	pyUi - base-palm up, pyUj - base-palm out, zp - base-hand repeat, zp^ - base-hand repeat out, zpe - base-hand move-once,
+	zpk - base-hand repeat base-side, zpv - base-hand repeat down, zpy - base-hand repeat dom-side
+q -- dom-hand apart direction (16), hand height (1), hand movement direction (8), repetition direction (6)
+    Hq^ - dom-hand out, Hqv - dom-hand in, Ch^qvD - against right-side ear, Hqk - dom-hand base-side, Hqy - dom-hand dom-side,
+    q^ - dom-hand move out, q~ - dom-hand wiggle fingers, qD - dom-hand against body, qe - dom-hand stays still, qk - dom-hand move base-side,
+    qo - dom-hand twist, qv - dom-hand move in, qy - dom-hand move dom-side, Tq^H - touch out against, Tq^c - touch out cupped,
+    Tq^x - touch out weaved, Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, TqvH - touch in against,
+    Tqvc - touch in cupped, Tqvx - touch in weaved, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved,
+    zq - dom-hand repeat, zq^ - repeat out, zqk - repeat base-side, zqS - repeat mirrored, zqv - repeat in,
+	zqy - repeat dom-side
 r -- handshape (26)
-    fffrf - letter-E, frnnn - letter-T, llrfl - number-7, lrfff - letter-D, lrfll - number-8, lrtnn - letter-K, pffffr - base-letter-O, pfffrl - base-letter-D,
-    pfffufr - base-letter-F, pfrfff - base-letter-E, plfrll - base-number-7, pllfrl - base-number-8, plllfr - base-letter-F, pnnffr - base-closed-N,
-    pnnllr - base-flat-open-U, pnnnfr - base-closed-X, pnnnnr - base-letter-A, pnnnrf - base-letter-T, pnntrl - base-letter-K, rffff - letter-O,
-    rffnn - letter-N, rflll - letter-F, rfnnn - closed-X, rfufff - bent-F, rllnn - flat-open-U, rnnnn - letter-A
+    fffrf - letter-E, frnnn - letter-T, llrfl - number-7, lrfff - letter-D, lrfll - number-8,
+    lrtnn - letter-K, pffffr - base-letter-O, pfffrl - base-letter-D, pfffufr - base-letter-F, pfrfff - base-letter-E,
+    plfrll - base-number-7, pllfrl - base-number-8, plllfr - base-letter-F, pnnffr - base-closed-N, pnnllr - base-flat-open-U,
+    pnnnfr - base-closed-X, pnnnnr - base-letter-A, pnnnrf - base-letter-T, pnntrl - base-letter-K, rffff - letter-O,
+    rffnn - letter-N, rflll - letter-F, rfnnn - closed-X, rfufff - bent-F, rllnn - flat-open-U,
+    rnnnn - letter-A
+S -- repetition direction (2)
+    zpS - base-hand repeat mirrored, zqS - repeat mirrored
 T -- dom-hand apart direction (19)
-    TE - hands apart, Th^= - touch up against, Th^c - touch up cupped, Th^x - touch up weaved, Thv= - touch down against, Thvc - touch down cupped, Thvx - touch down weaved,
-    Tq^= - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved, Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved,
-    Tqv= - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved
+    TE - hands apart, Th^H - touch up against, Th^c - touch up cupped, Th^x - touch up weaved, ThvH - touch down against,
+    Thvc - touch down cupped, Thvx - touch down weaved, Tq^H - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved,
+    Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, TqvH - touch in against, Tqvc - touch in cupped,
+    Tqvx - touch in weaved, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved
 t -- handshape (8)
-    ctlnn - letter-R, jtfnn - bent-open-R, jtlnn - open-R, lrtnn - letter-K, pnnftj - base-bent-open-R, pnnltc - base-letter-R, pnnltj - base-open-R,
-    pnntrl - base-letter-K
+    ctlnn - letter-R, jtfnn - bent-open-R, jtlnn - open-R, lrtnn - letter-K, pnnftj - base-bent-open-R,
+    pnnltc - base-letter-R, pnnltj - base-open-R, pnntrl - base-letter-K
 U -- palm direction (8)
-    iU - dom-palm in, iUy - dom-palm up, jU - dom-palm out, jUy - dom-palm down, pUi - base-palm in, pUj - base-palm out, pyUi - base-palm up, pyUj - base-palm out
+    iU - dom-palm in, iUy - dom-palm up, jU - dom-palm out, jUy - dom-palm down, pUi - base-palm in,
+    pUj - base-palm out, pyUi - base-palm up, pyUj - base-palm out
 u -- handshape (22)
-    cfufnn - bent-N, cfufuff - bent-4, clulnn - letter-V, clulull - number-4, clululn - letter-W, jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W,
-    pfffufr - base-letter-F, pffufufc - base-bent-4, pffufufy - base-open-C, pllululc - base-number-4, pllululj - base-open-C, pnlululc - base-letter-W,
-    pnlululj - base-open-W, pnnfufc - base-bent-V, pnnfufy - base-bent-3, pnnlulc - base-letter-V, pnnlulj - base-open-V, rfufff - bent-F,
+    cfufnn - bent-N, cfufuff - bent-4, clulnn - letter-V, clulull - number-4, clululn - letter-W,
+    jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W, pfffufr - base-letter-F, pffufufc - base-bent-4,
+    pffufufy - base-open-C, pllululc - base-number-4, pllululj - base-open-C, pnlululc - base-letter-W, pnlululj - base-open-W,
+    pnnfufc - base-bent-V, pnnfufy - base-bent-3, pnnlulc - base-letter-V, pnnlulj - base-open-V, rfufff - bent-F,
     yfufnn - bent-open-V; bent-3, yfufuff - bent-open-C
 v -- dom-hand apart direction (8), hand height (1), movement direction (4), repetition direction (4)
-    =hv - dom-hand below, =qv - dom-hand in, Ch^qvD - against right-side ear, dv - base-hand move down, hv - move down, pv - base-hand move in, qv - dom-hand move in,
-    Thv= - touch down against, Thvc - touch down cupped, Thvx - touch down weaved, Tqv= - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved,
-    zdv - base-hand repeat down, zhv - repeat down, zpv - base-hand repeat down, zqv - repeat in
+    Hhv - dom-hand below, Hqv - dom-hand in, Ch^qvD - against right-side ear, dv - base-hand move down, hv - move down,
+    pv - base-hand move in, qv - dom-hand move in, ThvH - touch down against, Thvc - touch down cupped, Thvx - touch down weaved,
+    TqvH - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved, zdv - base-hand repeat down, zhv - repeat down,
+    zpv - base-hand repeat down, zqv - repeat in
 W -- hand height (2)
     W - forehead height, WD - against right-side forehead
 x -- dom-hand apart direction (6)
-    Th^x - touch up weaved, Thvx - touch down weaved, Tq^x - touch out weaved, Tqkx - touch left weaved, Tqvx - touch in weaved, Tqyx - touch right weaved
+    Th^x - touch up weaved, Thvx - touch down weaved, Tq^x - touch out weaved, Tqkx - touch left weaved, Tqvx - touch in weaved,
+    Tqyx - touch right weaved
 Y -- hand height (2), body side (1)
     AY - right-side body, Y - away from elbow, YD - against elbow
 y -- dom-hand apart direction (4), palm direction (6), handshape (16), hand movement direction (2), repetition direction (2)
-    Hqy - dom-hand dom-side, iUy - dom-palm up, iy - dom-palm base-side, jUy - dom-palm down, pffffy - base-letter-C, pffufufy - base-open-C,
-    pfnnny - base-bent-Y, piy - base-palm dom-side, pllfly - base-bent-8, pnnffy - base-bent-N, pnnfufy - base-bent-3, pnnnfy - base-bent-X,
-    pnnnny - base-bent-A, py - base-hand move dom-side, pyUi - base-palm up, pyUj - base-palm out, qy - dom-hand move dom-side, Tqyc - touch right cupped,
-    TqyH - touch right against, Tqyx - touch right weaved, yffff - letter-C, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3,
-    yfufuff - bent-open-C, ylfll - bent-8, ynnnf - bent-Y, ynnnn - bent-A, zpy - base-hand repeat dom-side, zqy - repeat dom-side
-z -- repetition direction (16)
-    zd^ - base-hand repeat up, zdv - base-hand repeat down, ze - dom-hand move-once, zh^ - repeat up, zhv - repeat down, zp - base-hand repeat,
-	zp^ - base-hand repeat out, zpe - base-hand move-once, zpk - base-hand repeat base-side, zpv - base-hand repeat down, zpy - base-hand repeat dom-side, zq - dom-hand repeat,
-	zq^ - repeat out, zqk - repeat base-side, zqv - repeat in, zqy - repeat dom-side
+    Hqy - dom-hand dom-side, iUy - dom-palm up, iy - dom-palm base-side, jUy - dom-palm down, pffffy - base-letter-C,
+    pffufufy - base-open-C, pfnnny - base-bent-Y, piy - base-palm dom-side, pllfly - base-bent-8, pnnffy - base-bent-N,
+    pnnfufy - base-bent-3, pnnnfy - base-bent-X, pnnnny - base-bent-A, py - base-hand move dom-side, pyUi - base-palm up,
+    pyUj - base-palm out, qy - dom-hand move dom-side, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved,
+    yffff - letter-C, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3, yfufuff - bent-open-C,
+    ylfll - bent-8, ynnnf - bent-Y, ynnnn - bent-A, zpy - base-hand repeat dom-side, zqy - repeat dom-side
+z -- repetition direction (18)
+    zd^ - base-hand repeat up, zdv - base-hand repeat down, ze - dom-hand move-once, zh^ - repeat up, zhv - repeat down,
+    zp - base-hand repeat, zp^ - base-hand repeat out, zpe - base-hand move-once, zpk - base-hand repeat base-side, zpS - base-hand repeat mirrored, 
+	zpv - base-hand repeat down, zpy - base-hand repeat dom-side, zq - dom-hand repeat, zq^ - repeat out, zqk - repeat base-side,
+	zqS - repeat mirrored, zqv - repeat in, zqy - repeat dom-side
 
-* Unused letters: b, g, m, s
+* Unused letters: b, g, m
