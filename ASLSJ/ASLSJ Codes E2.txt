@@ -157,7 +157,7 @@ pmU - base-palm down | palm direction
 q^ - dom-hand move out | hand movement direction
 q~ - dom-hand wiggle fingers | hand movement direction
 qD - dom-hand against body | hand movement direction
-qe - dom-hand stays still
+qe - dom-hand stays still | hand movement direction
 qk - dom-hand move base-side | hand movement direction
 qo - dom-hand twist | hand movement direction
 qv - dom-hand move in | hand movement direction
@@ -171,28 +171,28 @@ rllnn - flat-open-U | handshape
 rlnnn - flat-open-L | handshape
 rnnnn - letter-A | handshape
 TE - hands apart | dom-hand apart direction
+Th^ - touch up against | dom-hand apart direction
 Th^c - touch up cupped | dom-hand apart direction
-Th^H - touch up against | dom-hand apart direction
 Th^x - touch up weaved | dom-hand apart direction
+Thv - touch down against | dom-hand apart direction
 Thvc - touch down cupped | dom-hand apart direction
-ThvH - touch down against | dom-hand apart direction
 Thvx - touch down weaved | dom-hand apart direction
+Tq^ - touch out against | dom-hand apart direction
 Tq^c - touch out cupped | dom-hand apart direction
-Tq^H - touch out against | dom-hand apart direction
 Tq^x - touch out weaved | dom-hand apart direction
+Tqk - touch left against | dom-hand apart direction
 Tqkc - touch left cupped | dom-hand apart direction
-TqkH - touch left against | dom-hand apart direction
 Tqkx - touch left weaved | dom-hand apart direction
+Tqv - touch in against | dom-hand apart direction
 Tqvc - touch in cupped | dom-hand apart direction
-TqvH - touch in against | dom-hand apart direction
 Tqvx - touch in weaved | dom-hand apart direction
+Tqy - touch dom-side against | dom-hand apart direction
 Tqyc - touch dom-side cupped | dom-hand apart direction
-TqyH - touch dom-side against | dom-hand apart direction
 Tqyx - touch dom-side weaved | dom-hand apart direction
 U - dom-palm out | palm direction
 Um - dom-palm down | palm direction
 W - forehead height | hand height
-WD - against right-side forehead | hand height
+WD - against dom-side forehead | hand height
 Y - away from elbow | hand height
 YD - against elbow | hand height
 yffff - letter-C | handshape
@@ -203,22 +203,23 @@ yfufuff - bent-number-5; bent-C | handshape
 ylfll - bent-8 | handshape
 ynnnf - bent-Y | handshape
 ynnnn - bent-A | handshape
+z - dom-hand repeat movement | repetition direction
 zd^ - base-hand repeat up | repetition direction
 zdv - base-hand repeat down | repetition direction
-ze - dom-hand move-once | repetition direction
+ze - dom-hand single-movement | repetition direction
 zh^ - repeat up | repetition direction
 zhv - repeat down | repetition direction
 zp - base-hand repeat | repetition direction
 zp^ - base-hand repeat out | repetition direction
-zpe - base-hand move-once | repetition direction
+zpe - base-hand single-movement | repetition direction
 zpk - base-hand repeat base-side | repetition direction
 zpv - base-hand repeat down | repetition direction
-zpS - base-hand repeat mirrored | repetition direction
+zpS - base-hand mirror movement | repetition direction
 zpy - base-hand repeat dom-side | repetition direction
-zq - dom-hand repeat | repetition direction
+zq - repeat movement | repetition direction
 zq^ - repeat out | repetition direction
 zqk - repeat base-side | repetition direction
-zqS - repeat mirrored | repetition direction
+zqS - repeat mirror movement | repetition direction
 zqv - repeat in | repetition direction
 zqy - repeat dom-side | repetition direction
 
@@ -265,16 +266,16 @@ zqy - repeat dom-side | repetition direction
 
 
 ^ -- dom-hand apart direction (8), hand height (3), hand movement direction (4), repetition direction (4)
-    Hh^ - dom-hand above, Hq^ - dom-hand out, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKh^D - against nose,
-    d^ - base-hand move up, h^ - move up, p^ - base-hand move out, q^ - dom-hand move out, Th^H - touch up against,
-    Th^c - touch up cupped, Th^x - touch up weaved, Tq^H - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved,
+    Hh^ - dom-hand above, Hq^ - dom-hand out, Ch^D - against dom-side eye, Ch^qvD - against dom-side ear, CKh^D - against nose,
+    d^ - base-hand move up, h^ - move up, p^ - base-hand move out, q^ - dom-hand move out, Th^ - touch up against,
+    Th^c - touch up cupped, Th^x - touch up weaved, Tq^ - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved,
     zd^ - base-hand repeat up, zh^ - repeat up, zp^ - base-hand repeat out, zq^ - repeat out
 ~ -- hand movement direction (2)
     p~ - base-hand wiggle fingers, q~ - dom-hand wiggle fingers
 A -- hand height (1), body depth (1), body side (2)
-    A - chest-height, AE - away from chest, AK - left-side body, AY - right-side body
+    A - chest-height, AE - away from chest, AK - left-side body, AY - dom-side body
 C -- hand height (6)
-    C - chin height, CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth,
+    C - chin height, CD - against dom-side chin, Ch^D - against dom-side eye, Ch^qvD - against dom-side ear, CKD - against mouth,
     CKh^D - against nose
 c -- handshape (34), dom-hand apart direction (6)
     cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N,
@@ -284,17 +285,17 @@ c -- handshape (34), dom-hand apart direction (6)
     pllllc - base-letter-B, pllululc - base-number-4, plnnlc - base-L-I, plnnnc - base-letter-I, pnfffc - base-letter-M,
     pnlululc - base-letter-W, pnnffc - base-letter-N, pnnfufc - base-bent-V, pnnllc - base-letter-U, pnnltc - base-letter-R,
     pnnlulc - base-letter-V, pnnnfc - base-letter-X, pnnnlc - base-closed-L, pnnnnc - base-letter-S, Th^c - touch up cupped,
-    Thvc - touch down cupped, Tq^c - touch out cupped, Tqkc - touch left cupped, Tqvc - touch in cupped, Tqyc - touch right cupped
+    Thvc - touch down cupped, Tq^c - touch out cupped, Tqkc - touch left cupped, Tqvc - touch in cupped, Tqyc - touch dom-side cupped
 D -- hand height (6), body depth (1), hand movement direction (4)
-    CD - against right-side chin, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKD - against mouth, CKh^D - against nose,
-    D - against chest, KD - against base-side chest, pD - base-hand against body, qD - dom-hand against body, WD - against right-side forehead,
+    CD - against dom-side chin, Ch^D - against dom-side eye, Ch^qvD - against dom-side ear, CKD - against mouth, CKh^D - against nose,
+    D - against chest, KD - against base-side chest, pD - base-hand against body, qD - dom-hand against body, WD - against dom-side forehead,
     YD - against elbow
 d -- hand movement direction (2), repetition direction (2)
     d^ - base-hand move up, dv - base-hand move down, zd^ - base-hand repeat up, zdv - base-hand repeat down
 E -- dom-hand apart direction (2), body depth (1)
     AE - away from chest, HE - dom-hand only, TE - hands apart
 e -- hand movement direction (2), repetition direction (2)
-    qe - dom-hand stays still, pe - base-hand stays still, ze - dom-hand move-once, zpe - base-hand move-once
+    qe - dom-hand stays still, pe - base-hand stays still, ze - dom-hand single-movement, zpe - base-hand single-movement
 f -- handshape (63)
     cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N,
     cfufuff - bent-4, cnnnf - bent-I, fffrf - letter-E, frnnn - letter-T, jffff - bent-open-B,
@@ -310,14 +311,13 @@ f -- handshape (63)
     rffff - letter-O, rffnn - letter-N, rflll - letter-F, rfnnn - closed-X, rfufff - bent-F,
     yffff - letter-C, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3, yfufuff - bent-open-C,
     ylfll - bent-8, ynnnf - bent-Y
-H -- dom-hand apart direction (13)
+H -- dom-hand apart direction (7)
     HE - dom-hand only, Hh^ - dom-hand above, Hhv - dom-hand below, Hq^ - dom-hand out, Hqk - dom-hand base-side,
-    Hqv - dom-hand in, Hqy - dom-hand dom-side, Th^H - touch up against, ThvH - touch down against, Tq^H - touch out against,
-    TqkH - touch left against, TqvH - touch in against, TqyH - touch right against
+    Hqv - dom-hand in, Hqy - dom-hand dom-side
 h -- dom-hand apart direction (8), hand height (3), hand movement direction (2), repetition direction (2)
-    Hh^ - dom-hand above, Hhv - dom-hand below, Ch^D - against right-side eye, Ch^qvD - against right-side ear, CKh^D - against nose,
-    h^ - move up, hv - move down, Th^H - touch up against, Th^c - touch up cupped, Th^x - touch up weaved,
-    ThvH - touch down against, Thvc - touch down cupped, Thvx - touch down weaved, zh^ - repeat up, zhv - repeat down
+    Hh^ - dom-hand above, Hhv - dom-hand below, Ch^D - against dom-side eye, Ch^qvD - against dom-side ear, CKh^D - against nose,
+    h^ - move up, hv - move down, Th^ - touch up against, Th^c - touch up cupped, Th^x - touch up weaved,
+    Thv - touch down against, Thvc - touch down cupped, Thvx - touch down weaved, zh^ - repeat up, zhv - repeat down
 i -- palm direction (8)
     ik - dom-palm base-side, iU - dom-palm in, iUm - dom-palm up, yi - dom-palm base-side, pik - base-palm base-side,
     pyi - base-palm dom-side, pUi - base-palm in, pmUi - base-palm up
@@ -334,7 +334,7 @@ K -- hand height (3), body side (1)
     AK - left-side body, CKD - against mouth, CKh^D - against nose, KD - against base-side chest
 k -- dom-hand apart direction (4), palm direction (2), hand movement direction (2), repetition direction
     Hqk - dom-hand base-side, ik - dom-palm base-side, pik - base-palm base-side, pk - base-hand move base-side, qk - dom-hand move base-side,
-    Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, zpk - base-hand repeat base-side, zqk - repeat base-side
+    Tqkc - touch left cupped, Tqk - touch left against, Tqkx - touch left weaved, zpk - base-hand repeat base-side, zqk - repeat base-side
 l -- handshape (60)
     cllll - letter-B, cllnn - letter-U, clnnl - L-I, clnnn - closed-L, clulnn - letter-V,
     clulull - number-4, clululn - letter-W, cnnnl - letter-I, ctlnn - letter-R, jflll - open-F,
@@ -385,13 +385,13 @@ p -- hand movement direction (6), handshape (58), palm direction (2), repetition
     pnnnlr - base-flat-open-L, pnnnnr - base-letter-A, pnnnny - base-bent-A, pnnnrf - base-letter-T, pnntrl - base-letter-K,
 	po - base-hand twist, zpS - base-hand repeat mirrored, pUi - base-palm in, pU - base-palm out, pv - base-hand move in,
 	py - base-hand move dom-side, pmUi - base-palm up, pmU - base-palm down, zp - base-hand repeat, zp^ - base-hand repeat out,
-	zpe - base-hand move-once, zpk - base-hand repeat base-side, zpv - base-hand repeat down, zpy - base-hand repeat dom-side
+	zpe - base-hand single-movement, zpk - base-hand repeat base-side, zpv - base-hand repeat down, zpy - base-hand repeat dom-side
 q -- dom-hand apart direction (16), hand height (1), hand movement direction (8), repetition direction (6)
-    Hq^ - dom-hand out, Hqv - dom-hand in, Ch^qvD - against right-side ear, Hqk - dom-hand base-side, Hqy - dom-hand dom-side,
+    Hq^ - dom-hand out, Hqv - dom-hand in, Ch^qvD - against dom-side ear, Hqk - dom-hand base-side, Hqy - dom-hand dom-side,
     q^ - dom-hand move out, q~ - dom-hand wiggle fingers, qD - dom-hand against body, qe - dom-hand stays still, qk - dom-hand move base-side,
-    qo - dom-hand twist, qv - dom-hand move in, qy - dom-hand move dom-side, Tq^H - touch out against, Tq^c - touch out cupped,
-    Tq^x - touch out weaved, Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, TqvH - touch in against,
-    Tqvc - touch in cupped, Tqvx - touch in weaved, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved,
+    qo - dom-hand twist, qv - dom-hand move in, qy - dom-hand move dom-side, Tq^ - touch out against, Tq^c - touch out cupped,
+    Tq^x - touch out weaved, Tqkc - touch left cupped, Tqk - touch left against, Tqkx - touch left weaved, Tqv - touch in against,
+    Tqvc - touch in cupped, Tqvx - touch in weaved, Tqyc - touch dom-side cupped, Tqy - touch dom-side against, Tqyx - touch dom-side weaved,
     zq - dom-hand repeat, zq^ - repeat out, zqk - repeat base-side, zqS - repeat mirrored, zqv - repeat in,
 	zqy - repeat dom-side
 r -- handshape (28)
@@ -404,10 +404,10 @@ r -- handshape (28)
 S -- repetition direction (2)
     zpS - base-hand repeat mirrored, zqS - repeat mirrored
 T -- dom-hand apart direction (19)
-    TE - hands apart, Th^H - touch up against, Th^c - touch up cupped, Th^x - touch up weaved, ThvH - touch down against,
-    Thvc - touch down cupped, Thvx - touch down weaved, Tq^H - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved,
-    Tqkc - touch left cupped, TqkH - touch left against, Tqkx - touch left weaved, TqvH - touch in against, Tqvc - touch in cupped,
-    Tqvx - touch in weaved, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved
+    TE - hands apart, Th^ - touch up against, Th^c - touch up cupped, Th^x - touch up weaved, Thv - touch down against,
+    Thvc - touch down cupped, Thvx - touch down weaved, Tq^ - touch out against, Tq^c - touch out cupped, Tq^x - touch out weaved,
+    Tqkc - touch left cupped, Tqk - touch left against, Tqkx - touch left weaved, Tqv - touch in against, Tqvc - touch in cupped,
+    Tqvx - touch in weaved, Tqyc - touch dom-side cupped, Tqy - touch dom-side against, Tqyx - touch dom-side weaved
 t -- handshape (8)
     ctlnn - letter-R, jtfnn - bent-open-R, jtlnn - open-R, lrtnn - letter-K, pnnftj - base-bent-open-R,
     pnnltc - base-letter-R, pnnltj - base-open-R, pnntrl - base-letter-K
@@ -421,28 +421,28 @@ u -- handshape (22)
     pnnfufc - base-bent-V, pnnfufy - base-bent-3, pnnlulc - base-letter-V, pnnlulj - base-open-V, rfufff - bent-F,
     yfufnn - bent-open-V; bent-3, yfufuff - bent-open-C
 v -- dom-hand apart direction (8), hand height (1), movement direction (4), repetition direction (4)
-    Hhv - dom-hand below, Hqv - dom-hand in, Ch^qvD - against right-side ear, dv - base-hand move down, hv - move down,
-    pv - base-hand move in, qv - dom-hand move in, ThvH - touch down against, Thvc - touch down cupped, Thvx - touch down weaved,
-    TqvH - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved, zdv - base-hand repeat down, zhv - repeat down,
+    Hhv - dom-hand below, Hqv - dom-hand in, Ch^qvD - against dom-side ear, dv - base-hand move down, hv - move down,
+    pv - base-hand move in, qv - dom-hand move in, Thv - touch down against, Thvc - touch down cupped, Thvx - touch down weaved,
+    Tqv - touch in against, Tqvc - touch in cupped, Tqvx - touch in weaved, zdv - base-hand repeat down, zhv - repeat down,
     zpv - base-hand repeat down, zqv - repeat in
 W -- hand height (2)
-    W - forehead height, WD - against right-side forehead
+    W - forehead height, WD - against dom-side forehead
 x -- dom-hand apart direction (6)
     Th^x - touch up weaved, Thvx - touch down weaved, Tq^x - touch out weaved, Tqkx - touch left weaved, Tqvx - touch in weaved,
-    Tqyx - touch right weaved
+    Tqyx - touch dom-side weaved
 Y -- hand height (2), body side (1)
-    AY - right-side body, Y - away from elbow, YD - against elbow
+    AY - dom-side body, Y - away from elbow, YD - against elbow
 y -- dom-hand apart direction (4), palm direction (4), handshape (16), hand movement direction (2), repetition direction (2)
     Hqy - dom-hand dom-side, yi - dom-palm base-side, pffffy - base-letter-C,
     pffufufy - base-open-C, pfnnny - base-bent-Y, pyi - base-palm dom-side, pllfly - base-bent-8, pnnffy - base-bent-N,
     pnnfufy - base-bent-3, pnnnfy - base-bent-X, pnnnny - base-bent-A, py - base-hand move dom-side, 
-    qy - dom-hand move dom-side, Tqyc - touch right cupped, TqyH - touch right against, Tqyx - touch right weaved,
+    qy - dom-hand move dom-side, Tqyc - touch dom-side cupped, Tqy - touch dom-side against, Tqyx - touch dom-side weaved,
     yffff - letter-C, yffnn - bent-N, yfnnn - bent-X, yfufnn - bent-open-V; bent-3, yfufuff - bent-open-C,
     ylfll - bent-8, ynnnf - bent-Y, ynnnn - bent-A, zpy - base-hand repeat dom-side, zqy - repeat dom-side
-z -- repetition direction (18)
-    zd^ - base-hand repeat up, zdv - base-hand repeat down, ze - dom-hand move-once, zh^ - repeat up, zhv - repeat down,
-    zp - base-hand repeat, zp^ - base-hand repeat out, zpe - base-hand move-once, zpk - base-hand repeat base-side, zpS - base-hand repeat mirrored, 
-	zpv - base-hand repeat down, zpy - base-hand repeat dom-side, zq - dom-hand repeat, zq^ - repeat out, zqk - repeat base-side,
-	zqS - repeat mirrored, zqv - repeat in, zqy - repeat dom-side
+z -- repetition direction (19)
+    z - dom-hand repeat movement, zd^ - base-hand repeat up, zdv - base-hand repeat down, ze - dom-hand single-movement, zh^ - repeat up,
+	zhv - repeat down, zp - base-hand repeat, zp^ - base-hand repeat out, zpe - base-hand single-movement, zpk - base-hand repeat base-side,
+	zpS - base-hand repeat mirrored, zpv - base-hand repeat down, zpy - base-hand repeat dom-side, zq - dom-hand repeat, zq^ - repeat out,
+	zqk - repeat base-side, zqS - repeat mirrored, zqv - repeat in, zqy - repeat dom-side
 
 * Unused letters: b, g
