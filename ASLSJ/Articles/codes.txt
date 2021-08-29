@@ -5,13 +5,14 @@ e2 - nnnnc - base-hand S
 e2 - cnnnn - dom-hand S
 e2 - nnnnr - base-hand A
 e2 - rnnnn - dom-hand A
-e3 - iy - dom-palm base-side
+e3 - ik - dom-palm base-side
+e3 - yi - base-palm dom-side
 e3 - p^ - base-hand move out
 e3 - q^ - dom-hand move out
-e3 - jnnnn-iy-q^ - THUMBS-UP
-e3 - pnnnnj-iy jnnnn-iy-p^q^ - THUMBS-UP
+e3 - jnnnn-ik-q^ - THUMBS-UP
+e3 - pnnnnj-yi jnnnn-ik-p^q^ - THUMBS-UP
 e3 - jlulull-U-q^ - STOP
-e4 - jnnnn-iy-q^ - THUMBS-UP
-e4 - jlulull-Wiy-q^q~ - FUTURE
-e4 - jlulull-Wiy-qv - PAST
-e4 - jlulull-Wiy-qvz - LONG-AGO
+e4 - jnnnn-ik-q^ - THUMBS-UP
+e4 - jlulull-Wik-q^q~ - FUTURE
+e4 - jlulull-Wik-qv - PAST
+e4 - jlulull-Wik-qvz - LONG-AGO
