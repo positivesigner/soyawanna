@@ -779,17 +779,25 @@ Error message and password prompt
 
 <li>ASL Phrases\jnnnn-ik-q^</li>
 
+<li>ASL Phrases\pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv</li>
+
 <li>ASL Phrases\pnnnnj-pyi jnnnn-ik-p^q^</li>
 
 <li>ASL Rhymes</li>
 
 <li>Data Entry</li>
 
+<li>Gloss References</li>
+
+<li>Gloss References\ASL-HS p369 SODA-POP - pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv</li>
+
 <li>INDEX</li>
 
 <li>mcr asl_data_entry</li>
 
 <li>mcr asl_entry</li>
+
+<li>mcr asl_literature</li>
 
 <li>mcr asl_parameter</li>
 
@@ -798,6 +806,8 @@ Error message and password prompt
 <li>mcr parameter_group</li>
 
 <li>mcr parameter_search</li>
+
+<li>mcr potential_gloss</li>
 
 <li>mcr word_relationship</li>
 
@@ -823,13 +833,23 @@ Error message and password prompt
 
 <li>Potential Glosses</li>
 
+<li>Potential Glosses\FORGET - jllll-WDiU-q&gt;-jnnnn</li>
+
+<li>Potential Glosses\SODA-POP - pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv</li>
+
+<li>Potential Glosses\STOP - jlulull-CU-q^</li>
+
 <li>template asl_entry</li>
+
+<li>template asl_literature</li>
 
 <li>template asl_parameter</li>
 
 <li>template group_list</li>
 
 <li>template parameter_group</li>
+
+<li>template potential_gloss</li>
 
 <li>template word_relationship</li>
 
@@ -12312,10 +12332,10 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090736888" modified="20210411090736888" title="$:/state/dropdown/keyboardshortcut/preview-card-286565879">
 <pre>open</pre>
 </div>
-<div created="20210411090905404" modified="20210828235808040" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
-<pre>yes</pre>
+<div created="20210411090905404" modified="20210829071726563" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
+<pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210829060037780" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210829083727973" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -12330,13 +12350,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20210829060037780" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210829083727973" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210829054524509" list="[[ASL Rhymes]] [[ASL Parameters]] [[ASL Parameters\q~]] [[ASL Parameters\qo]] [[ASL Parameters\zq]] [[Parameter Search]] [[mcr asl_data_entry]]" modified="20210829055006282" title="$:/StoryList">
+<div created="20210829060053024" list="[[ASL Rhymes]] [[ASL Phrases\pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv]] [[Potential Glosses\SODA-POP - pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv]] [[Gloss References\ASL-HS p369 SODA-POP - pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv]] [[mcr potential_gloss]]" modified="20210829083726699" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12466,22 +12486,24 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210827092903813" modified="20210827092903813" title="ASL Groups\cnnnn-A-qv^">
 <pre></pre>
 </div>
-<div created="20210828202723930" modified="20210829033526037" tags="DOC" title="ASL Literature">
+<div created="20210828202723930" modified="20210829082901782" tags="DOC" title="ASL Literature">
 <pre>&lt;ol&gt;
 &lt;$list variable=card_prefix filter=&quot;[all[current]addsuffix[\]]&quot;&gt;
 &lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
 &lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
+&lt;$list variable=lit_abbrv filter=&quot;[&lt;cur_card&gt;get[lit-abbrv]]&quot;&gt;
 &lt;li&gt;
 &lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt; &lt;&lt;disp_name&gt;&gt;
-&lt;/$link&gt;
+&lt;/$link&gt; - &lt;&lt;lit_abbrv&gt;&gt;
 &lt;/li&gt;
+&lt;/$list&gt;&lt;!--lit_abbrv--&gt;
 &lt;/$list&gt;&lt;!--disp_name--&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
 </pre>
 </div>
-<div created="20210828202731200" modified="20210829033459642" tags="" title="ASL Literature\The ASL Handshape Dictionary - Tennant, Brown, 1998">
+<div created="20210828202731200" lit-abbrv="ASL-HS" modified="20210829081242382" tags="" title="ASL Literature\The ASL Handshape Dictionary - Tennant, Brown, 1998">
 <pre></pre>
 </div>
 <div created="20210827105837268" modified="20210829040549158" tags="DOC" title="ASL Parameters">
@@ -13204,6 +13226,9 @@ ASL Word does not match Title: &lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt; &lt;&l
 <div asl-word="jnnnn-ik-q^" base-hand="-HE-" base-hand-move="-HE-" base-hand-repeat="-HE-" base-palm="-HE-" body-depth="-AE-" body-side="-AY-" created="20210827090629429" dom-hand="jnnnn" dom-hand-apart="-HE-" dom-hand-move="-q^-" dom-hand-repeat="-ze-" dom-hand-touch="" dom-palm="-ik-" english-gloss="THUMBS-UP" group-hand="cnnnn" group-height="A" group-move="qv^" hand-height="-A-" modified="20210829011000696" title="ASL Phrases\jnnnn-ik-q^">
 <pre></pre>
 </div>
+<div asl-word="pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv" base-hand="pnnnnc" base-hand-move="-pe-" base-hand-repeat="-zpe-" base-palm="-pyi-" body-depth="-AE-" body-side="-AY-" created="20210829071558405" dom-hand="jlfll jllll" dom-hand-apart="-Thv-" dom-hand-move="-h^-qv-" dom-hand-repeat="-ze-" dom-palm="-Um-" english-gloss="SODA-POP" group-hand="clululn" group-height="T" group-move="hv^" hand-height="-A-" modified="20210829073352019" title="ASL Phrases\pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv">
+<pre></pre>
+</div>
 <div asl-word="pnnnnj-pyi jnnnn-ik-p^q^" base-hand="pnnnnj" base-hand-move="-p^-" base-hand-repeat="-HE-" base-palm="-piy-" body-depth="-AE-" body-side="-AY-" created="20210827104358381" dom-hand="jnnnn" dom-hand-apart="-Hqy-" dom-hand-move="-q^-" dom-hand-repeat="-ze-" dom-hand-touch="" dom-palm="-ik-" english-gloss="THUMBS-UP" group-hand="cnnnn" group-height="A" group-move="qv^" hand-height="-A-" modified="20210829034938235" tags="" title="ASL Phrases\pnnnnj-pyi jnnnn-ik-p^q^">
 <pre></pre>
 </div>
@@ -13226,12 +13251,30 @@ ASL Word does not match Title: &lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt; &lt;&l
 &lt;/$list&gt;&lt;!--temp_word--&gt;
 &lt;/$vars&gt;&lt;!--temp_card--&gt;</pre>
 </div>
+<div created="20210829080827221" modified="20210829081024613" tags="DOC" title="Gloss References">
+<pre>&lt;ol&gt;
+&lt;$list variable=card_prefix filter=&quot;[all[current]addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
+&lt;li&gt;
+&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt; &lt;&lt;disp_name&gt;&gt;
+&lt;/$link&gt;
+&lt;/li&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
+&lt;/ol&gt;
+</pre>
+</div>
+<div asl-word="pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv" created="20210829080846551" english-gloss="SODA-POP" lit-abbrv="ASL-HS" modified="20210829081507354" page-time="p369" tags="" title="Gloss References\ASL-HS p369 SODA-POP - pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv">
+<pre></pre>
+</div>
 <div color="#423fde" created="20210424090522887" modified="20210424090546408" tags="$:/positivesigner/base-install" title="INDEX">
 <pre></pre>
 </div>
-<div created="20210828232953284" modified="20210829055950599" tags="$:/tags/Macro MCR" title="mcr asl_data_entry">
+<div created="20210828232953284" modified="20210829073638514" tags="$:/tags/Macro MCR" title="mcr asl_data_entry">
 <pre>\define asl_data_entry(var_sel_card)
-&lt;$list variable=sel_word filter=&quot;[&lt;sel_card&gt;get[asl-word]else[]]&quot;&gt;
+&lt;$list variable=sel_word filter=&quot;[&lt;sel_card&gt;get[asl-word]else&lt;sel_card&gt;split[\]last[]]&quot;&gt;
 &lt;$list variable=flag_data_entry_true filter=&quot;[all[current]match[Data Entry]]&quot;&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;temp_card&gt;&gt; field=text&gt;
 &lt;$list variable=opt_card filter=&quot;[prefix&lt;sel_card&gt;is[tiddler]]&quot; &gt;
@@ -13314,7 +13357,7 @@ Gloss: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; fiel
 &lt;/td&gt;
 &lt;td&gt;palm: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=base-palm default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=base-palm&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[palm direction]search-replace[ASL Parameters\],[]prefix[p]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[palm direction]search-replace[ASL Parameters\],[]prefix[p]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
@@ -13330,21 +13373,21 @@ Gloss: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; fiel
 &lt;/td&gt;
 &lt;td&gt;height: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=hand-height default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=hand-height&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[hand height]search-replace[ASL Parameters\],[]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[hand height]search-replace[ASL Parameters\],[]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
 &lt;/td&gt;
 &lt;td&gt;body-side: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=body-side default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=body-side&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[body side]search-replace[ASL Parameters\],[]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[body side]search-replace[ASL Parameters\],[]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
 &lt;/td&gt;
 &lt;td&gt;body-depth: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=body-depth default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=body-depth&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[body depth]search-replace[ASL Parameters\],[]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[body depth]search-replace[ASL Parameters\],[]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
@@ -13353,14 +13396,14 @@ Gloss: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; fiel
 &lt;/tr&gt;&lt;tr&gt;
 &lt;td&gt;Dom-Palm: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-palm default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-palm&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[palm direction]search-replace[ASL Parameters\],[]!prefix[p]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[palm direction]search-replace[ASL Parameters\],[]!prefix[p]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
 &lt;/td&gt;
 &lt;td&gt;apart: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-hand-apart default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-hand-apart&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[dom-hand apart direction]search-replace[ASL Parameters\],[]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[dom-hand apart direction]search-replace[ASL Parameters\],[]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
@@ -13373,28 +13416,28 @@ Gloss: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; fiel
 &lt;/tr&gt;&lt;tr&gt;
 &lt;td&gt;Move base: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=base-hand-move default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=base-hand-move&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[hand movement direction]search-replace[ASL Parameters\],[]!prefix[h]!prefix[q]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[hand movement direction]search-replace[ASL Parameters\],[]!prefix[h]!prefix[q]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
 &lt;/td&gt;
 &lt;td&gt;dom-hand: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-hand-move default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-hand-move&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[hand movement direction]search-replace[ASL Parameters\],[]!prefix[d]!prefix[p]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[hand movement direction]search-replace[ASL Parameters\],[]!prefix[d]!prefix[p]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
 &lt;/td&gt;
 &lt;td&gt;Repeat base: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=base-hand-repeat default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=base-hand-repeat&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[repetition direction]search-replace[ASL Parameters\],[]!prefix[ze]!prefix[zh]!prefix[zq]!match[z]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[repetition direction]search-replace[ASL Parameters\],[]!prefix[ze]!prefix[zh]!prefix[zq]!match[z]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
 &lt;/td&gt;
 &lt;td&gt;dom-hand: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-hand-repeat default=&quot;&quot; placeholder=&quot;[no text yet]&quot; autoHeight=yes tag=input/&gt;&lt;br&gt;
 &lt;$select tiddler=&lt;&lt;sel_card&gt;&gt; field=dom-hand-repeat&gt;
-&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[repetition direction]search-replace[ASL Parameters\],[]!prefix[zd]!prefix[zp]sort[]]&quot; &gt;
+&lt;$list variable=opt_card filter=&quot;[[]] [prefix[ASL Parameters\]parameter-group[repetition direction]search-replace[ASL Parameters\],[]!prefix[zd]!prefix[zp]addprefix[-]addsuffix[-]sort[]]&quot; &gt;
 &lt;option&gt; &lt;&lt;opt_card&gt;&gt; &lt;/option&gt;
 &lt;/$list&gt;&lt;!--opt_card--&gt;
 &lt;/$select&gt;
@@ -13406,7 +13449,7 @@ Gloss: &lt;/td&gt;&lt;td&gt;&lt;$edit-text tiddler=&lt;&lt;sel_card&gt;&gt; fiel
 \end
 </pre>
 </div>
-<div created="20210827064707573" modified="20210828233013633" tags="$:/tags/Macro MCR" title="mcr asl_entry">
+<div created="20210827064707573" modified="20210829083453465" tags="$:/tags/Macro MCR" title="mcr asl_entry">
 <pre>\define asl_entry(var_cur_card)
 &lt;$list variable=cur_title filter=&quot;[&lt;cur_card&gt;split[\]last[]]&quot;&gt;
 &lt;$list variable=entry_gloss filter=&quot;[&lt;cur_card&gt;get[english-gloss]]&quot;&gt;
@@ -13464,7 +13507,29 @@ Group: &lt;$link to=&lt;&lt;group_card&gt;&gt; &gt; &lt;&lt;group_title&gt;&gt;
 &lt;/$list&gt;&lt;!--rel_desc--&gt;
 &lt;/$list&gt;&lt;!--alt_word_two--&gt;
 &lt;/$list&gt;&lt;!--alt_word_one--&gt;
+
+Gloss References:&lt;br&gt;
+&lt;$list variable=gloss_card filter=&quot;[prefix[Potential Glosses\]asl-word&lt;cur_title&gt;sort[]]&quot;&gt;
+&lt;$list variable=eng_gloss filter=&quot;[&lt;gloss_card&gt;get[english-gloss]]&quot;&gt;
+&lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt; &lt;&lt;eng_gloss&gt;&gt; &lt;/$link&gt;
+&lt;/$list&gt;&lt;!--eng_gloss--&gt;
+&lt;/$list&gt;&lt;!--gloss_card--&gt;
 &lt;/$list&gt;&lt;!--cur_title--&gt;
+\end
+</pre>
+</div>
+<div created="20210829080937433" modified="20210829082945689" tags="$:/tags/Macro MCR" title="mcr asl_literature">
+<pre>\define asl_literature(var_cur_card)
+&lt;$list variable=cur_abbrv filter=&quot;[&lt;cur_card&gt;get[lit-abbrv]else[]]&quot;&gt;
+Abbreviation: &lt;&lt;cur_abbrv&gt;&gt; &lt;br&gt;
+&lt;br&gt;
+Gloss References:&lt;br&gt;
+&lt;$list variable=gloss_card filter=&quot;[prefix[Gloss References\]lit-abbrv&lt;cur_abbrv&gt;sort[]]&quot;&gt;
+&lt;$list variable=gloss_title filter=&quot;[&lt;gloss_card&gt;split[\]last[]]&quot;&gt;
+&lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt; &lt;&lt;gloss_title&gt;&gt; &lt;/$link&gt;
+&lt;/$list&gt;&lt;!--gloss_title--&gt;
+&lt;/$list&gt;&lt;!--gloss_card--&gt;
+&lt;/$list&gt;&lt;!--cur_abbrv--&gt;
 \end
 </pre>
 </div>
@@ -13695,6 +13760,29 @@ Clear all parameters
 \end
 </pre>
 </div>
+<div created="20210829080602172" modified="20210829083723005" tags="$:/tags/Macro MCR" title="mcr potential_gloss">
+<pre>\define potential_gloss(var_cur_card)
+&lt;$list variable=asl_word filter=&quot;[&lt;cur_card&gt;get[asl-word]]&quot;&gt;
+&lt;$list variable=word_card filter=&quot;[&lt;asl_word&gt;addprefix[ASL Phrases\]]&quot;&gt;
+&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt; &lt;&lt;asl_word&gt;&gt; &lt;/$link&gt;&lt;br&gt;
+&lt;br&gt;
+Glosse References:
+&lt;$list variable=eng_gloss filter=&quot;[&lt;cur_card&gt;get[english-gloss]]&quot;&gt;
+&lt;$list variable=gloss_ref filter=&quot;[prefix[Gloss References\]asl-word&lt;asl_word&gt;english-gloss&lt;eng_gloss&gt;]&quot;&gt;
+&lt;$list variable=ref_abbrv filter=&quot;[&lt;gloss_ref&gt;get[lit-abbrv]]&quot;&gt;
+&lt;$list variable=ref_page filter=&quot;[&lt;gloss_ref&gt;get[page-time]]&quot;&gt;
+&lt;$list variable=gloss_title filter=&quot;[&lt;ref_abbrv&gt;addsuffix[ ]addsuffix&lt;ref_page&gt;]&quot;&gt;
+
+&lt;$link to=&lt;&lt;gloss_ref&gt;&gt; &gt; &lt;&lt;gloss_title&gt;&gt; &lt;/$link&gt;
+&lt;/$list&gt;&lt;!--gloss_title--&gt;
+&lt;/$list&gt;&lt;!--ref_page--&gt;
+&lt;/$list&gt;&lt;!--ref_abbrv--&gt;
+&lt;/$list&gt;&lt;!--gloss_ref--&gt;
+&lt;/$list&gt;&lt;!--english_gloss--&gt;
+&lt;/$list&gt;&lt;!--asl_word--&gt;
+\end
+</pre>
+</div>
 <div created="20210828043146971" modified="20210828045034101" tags="$:/tags/Macro MCR" title="mcr word_relationship">
 <pre>\define word_relationship(var_cur_card)
 &lt;$list variable=word_title filter=&quot;[&lt;cur_card&gt;get[word-one]]&quot;&gt;
@@ -13750,7 +13838,7 @@ Clear all parameters
 
 &lt;&lt;parameter_search&gt;&gt;</pre>
 </div>
-<div created="20210828202854851" modified="20210828202902364" tags="DOC" title="Potential Glosses">
+<div created="20210828202854851" modified="20210829080449156" tags="DOC" title="Potential Glosses">
 <pre>&lt;ol&gt;
 &lt;$list variable=card_prefix filter=&quot;[all[current]addsuffix[\]]&quot;&gt;
 &lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
@@ -13767,12 +13855,62 @@ Clear all parameters
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
+
+
+&lt;$list variable=card_prefix filter=&quot;[all[current]addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;]&quot;&gt;
+&lt;$list variable=cur_title filter=&quot;[&lt;cur_card&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=asl_word filter=&quot;[&lt;cur_card&gt;get[asl-word]else[]]&quot;&gt;
+&lt;$list variable=eng_gloss filter=&quot;[&lt;cur_card&gt;get[english-gloss]else[]]&quot;&gt;
+&lt;$list variable=flag_title_match_false filter=&quot;[&lt;eng_gloss&gt;addsuffix[ - ]addsuffix&lt;asl_word&gt;!match&lt;cur_title&gt;]&quot;&gt;
+
+Potential Gloss fields do not match Title: &lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt; &lt;&lt;cur_title&gt;&gt; &lt;/$link&gt;
+&lt;/$list&gt;&lt;!--flag_title_match_false--&gt;
+&lt;/$list&gt;&lt;!--eng_gloss--&gt;
+&lt;/$list&gt;&lt;!--asl_word--&gt;
+&lt;/$list&gt;&lt;!--word_card--&gt;
+&lt;/$list&gt;&lt;!--cur_prefix--&gt;
+
+
+&lt;$list variable=card_prefix filter=&quot;[all[current]addsuffix[\]]&quot;&gt;
+&lt;$list variable=word_card filter=&quot;[prefix[ASL Phrases\]]&quot;&gt;
+&lt;$list variable=asl_word filter=&quot;[&lt;word_card&gt;get[asl-word]else[]]&quot;&gt;
+&lt;$list variable=eng_gloss filter=&quot;[&lt;word_card&gt;get[english-gloss]else[]]&quot;&gt;
+&lt;$list variable=gloss_card filter=&quot;[&lt;eng_gloss&gt;addsuffix[ - ]addsuffix&lt;asl_word&gt;addprefix&lt;card_prefix&gt;]&quot;&gt;
+&lt;$list variable=flag_base_gloss_missing filter=&quot;[prefix&lt;card_prefix&gt;english-gloss&lt;eng_gloss&gt;asl-word&lt;asl_word&gt;count[]match[0]]&quot;&gt;
+
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;gloss_card&gt;&gt; asl-word=&lt;&lt;asl_word&gt;&gt; english-gloss=&lt;&lt;eng_gloss&gt;&gt; /&gt;
+&lt;$action-navigate $to=&lt;&lt;gloss_card&gt;&gt; /&gt;
+Create record &lt;&lt;gloss_card&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--flag_base_gloss_missing--&gt;
+&lt;/$list&gt;&lt;!--gloss_card--&gt;
+&lt;/$list&gt;&lt;!--eng_gloss--&gt;
+&lt;/$list&gt;&lt;!--asl_word--&gt;
+&lt;/$list&gt;&lt;!--word_card--&gt;
+&lt;/$list&gt;&lt;!--cur_prefix--&gt;
 </pre>
+</div>
+<div asl-word="jllll-WDiU-q&gt;-jnnnn" created="20210829074213681" english-gloss="FORGET" modified="20210829082047634" tags="" title="Potential Glosses\FORGET - jllll-WDiU-q&gt;-jnnnn">
+<pre></pre>
+</div>
+<div asl-word="pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv" created="20210829081416682" english-gloss="SODA-POP" modified="20210829082207636" title="Potential Glosses\SODA-POP - pnnnnc-yi jlfll-UmThv-h^ pnnnnc-yi jllll-Um-Thv">
+<pre></pre>
+</div>
+<div asl-word="jlulull-CU-q^" created="20210829080450774" english-gloss="STOP" modified="20210829080450774" title="Potential Glosses\STOP - jlulull-CU-q^">
+<pre></pre>
 </div>
 <div created="20210827055749515" modified="20210827071620894" tags="$:/tags/ViewTemplate MCR" title="template asl_entry">
 <pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[ASL Phrases\]]&quot;&gt;
 &lt;&lt;asl_entry&gt;&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20210829080910141" modified="20210829080927836" tags="MCR $:/tags/ViewTemplate" title="template asl_literature">
+<pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[ASL Literature\]]&quot;&gt;
+&lt;&lt;asl_literature&gt;&gt;
+&lt;/$list&gt;
 </pre>
 </div>
 <div created="20210827110005096" modified="20210827110022296" tags="$:/tags/ViewTemplate MCR" title="template asl_parameter">
@@ -13791,6 +13929,12 @@ Clear all parameters
 <pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[Parameter Groups\]]&quot;&gt;
 &lt;&lt;parameter_group&gt;&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20210829080518557" modified="20210829082147521" tags="MCR $:/tags/ViewTemplate" title="template potential_gloss">
+<pre>&lt;$list variable=cur_card filter=&quot;[all[current]prefix[Potential Glosses\]]&quot;&gt;
+&lt;&lt;potential_gloss&gt;&gt;
+&lt;/$list&gt;
 </pre>
 </div>
 <div created="20210828043129141" modified="20210828043309357" tags="$:/tags/ViewTemplate MCR" title="template word_relationship">
