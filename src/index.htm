@@ -12247,14 +12247,15 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 </pre>
 </div>
-<div created="20200115095609017" modified="20210424083020933" tags="$:/tags/ViewTemplate $:/positivesigner/home-button" title="$:/positivesigner/home-button/template Home Button">
-<pre>&lt;!--2021m04d24--&gt;
+<div created="20200115095609017" modified="20210921222056965" tags="$:/tags/ViewTemplate $:/positivesigner/home-button" title="$:/positivesigner/home-button/template Home Button">
+<pre>&lt;!--2021m09d21--&gt;
 &lt;$list variable=on_twcard filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 &lt;div style=&quot;float:right;padding-left:30px;&quot;&gt;
 {{$:/core/ui/TopBar/menu}}
 &lt;/div&gt;
 
-&lt;div style=&quot;float:right&quot;&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt;&gt;
+&lt;div style=&quot;float:right;padding-left:30px;&quot;
+&gt;&lt;$button set=&quot;$:/state/sidebar&quot; setTo=&quot;no&quot; tooltip={{$:/language/Buttons/Home/Hint}} aria-label={{$:/language/Buttons/Home/Caption}} class=&lt;&lt;tv-config-toolbar-class&gt;&gt; &gt;
 &lt;span class=&quot;tc-dirty-indicator&quot;&gt;
 &lt;$list filter=&quot;[&lt;tv-config-toolbar-icons&gt;match[yes]]&quot;&gt;
 {{$:/core/images/home-button}}
@@ -12265,6 +12266,12 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 &lt;/span&gt;
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 &lt;/$button&gt;&lt;/div&gt;
+
+&lt;div style=&quot;float:right&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[all[current]]&quot;&gt;
+&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;^&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/div&gt;
 &lt;/$list&gt;&lt;!--on_twcard--&gt;</pre>
 </div>
 <div created="20210521032019905" modified="20210521044000007" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/mcr glbl_check_list">
@@ -12902,8 +12909,8 @@ Remove META tag from all cards
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201226094244599" modified="20210721000508110" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Search All Fields">
-<pre>&lt;!--2021m04d24--&gt;
+<div created="20201226094244599" modified="20210921223053827" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Search All Fields">
+<pre>&lt;!--2021m09d21--&gt;
 &lt;$list variable=only_in_jsapp filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 &lt;$vars search_text_pk=&quot;$:/state/popup/SearchAllFields&quot;&gt;
 &lt;$list variable=show_code_pk filter=&quot;[&lt;search_text_pk&gt;addsuffix[-checkShowCode]]&quot;&gt;
@@ -12918,7 +12925,7 @@ Remove META tag from all cards
 &lt;$list variable=cur_skipsystem_text filter=&quot;[&lt;skip_system_pk&gt;get[text]else[no]match[yes]count[]]&quot;&gt;
 
 &lt;!--Card titles--&gt;
-&lt;$list variable=cur_pk filter=&quot;[regexp&lt;cur_search_text&gt;sort[]]&quot;&gt;
+&lt;$list variable=cur_pk filter=&quot;[!prefix[$:/boot]regexp&lt;cur_search_text&gt;sort[]]&quot;&gt;
 &lt;$list variable=found_skipsystem filter=&quot;[&lt;cur_pk&gt;!prefix[$]count[]] [&lt;cur_pk&gt;prefix[$]count[]multiply&lt;cur_skipsystem_text&gt;] +[sum[]!match[0]]&quot;&gt;
 
 &lt;$link to=&lt;&lt;cur_pk&gt;&gt; /&gt;: title
@@ -13022,12 +13029,13 @@ Remove META tag from all cards
 <pre>&lt;!--2021m04d24e2--&gt;
 </pre>
 </div>
-<div created="20210421195030608" list-after="$:/core/ui/ViewTemplate/tags" modified="20210424090830686" tags="$:/tags/Macro $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/macro/Activity Details">
+<div created="20210421195030608" list-after="$:/core/ui/ViewTemplate/tags" modified="20210921222511968" tags="$:/tags/Macro $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/macro/Activity Details">
 <pre>\define btn_activity_details()
 &lt;!--2021m04d24e2--&gt;
 &lt;$list variable=detail_card filter=&quot;[[$(activity_prefix)$]addprefix[$:/state/popup/activity_details/]]&quot;&gt;
 &lt;!--&lt;&lt;activity_details &quot;How to activity title&quot;&gt;&gt;--&gt;
 &lt;$list variable=detail_macro_call filter=&quot;&quot;&quot;[[&lt;]addsuffix[&lt;]addsuffix[activity_details]addsuffix[ ]addsuffix[&quot;]addsuffix[$(activity_prefix)$]addsuffix[&quot;]addsuffix[&gt;]addsuffix[&gt;]]&quot;&quot;&quot;&gt;
+&lt;$list variable=in_twapp filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 @@margin-left:20em;
 &lt;$button&gt;
 &lt;$action-setfield $tiddler=&lt;&lt;detail_card&gt;&gt; $field=text $value=&lt;&lt;detail_macro_call&gt;&gt; /&gt;
@@ -13035,16 +13043,19 @@ Remove META tag from all cards
 Details --$(activity_prefix)$--
 &lt;/$button&gt;
 @@
+&lt;/$list&gt;&lt;!--in_twapp--&gt;
 &lt;/$list&gt;&lt;!--detail_macro_call--&gt;
 &lt;/$list&gt;&lt;!--detail_card--&gt;
 \end
 \define activity_details(ur_activity_prefix)
+&lt;$list variable=in_twapp filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 @@margin-left:20em;
 &lt;$button&gt;
 &lt;$action-navigate $to=&quot;Activities\$ur_activity_prefix$&quot; /&gt;
 Summary --$ur_activity_prefix$--
 &lt;/$button&gt;
 @@
+&lt;/$list&gt;&lt;!--in_twapp--&gt;
 
 &lt;$list variable=step_card filter=&quot;[prefix[$ur_activity_prefix$]]&quot;&gt;
 &lt;$list variable=step_seq filter=&quot;[&lt;step_card&gt;split[\]last[]]&quot;&gt;
@@ -13175,7 +13186,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210610011444815" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210904203932750" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210921223055010" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -13190,13 +13201,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210904203932750" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210921223055010" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[Automation Scripting]]" title="$:/StoryList">
+<div created="20210921222810963" list="[[Automation Scripting]] [[$:/positivesigner/text-ref/Recent Entries]] [[$:/positivesigner/text-ref/Search All Fields]]" modified="20210921222813470" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
