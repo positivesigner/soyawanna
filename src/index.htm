@@ -355,6 +355,8 @@ Error message and password prompt
 
 <li>$:/positivesigner/base-install/Remove Modules</li>
 
+<li>$:/positivesigner/base-install/stylesheet MediaNoPrint</li>
+
 <li>$:/positivesigner/base-install/template ExportAllCode</li>
 
 <li>$:/positivesigner/div-pop</li>
@@ -385,8 +387,6 @@ Error message and password prompt
 
 <li>$:/positivesigner/home-button/template Home Button</li>
 
-<li>$:/positivesigner/mcr glbl_check_list</li>
-
 <li>$:/positivesigner/preview-button</li>
 
 <li>$:/positivesigner/preview-button/keyboard action PreviewCard</li>
@@ -406,6 +406,8 @@ Error message and password prompt
 <li>$:/positivesigner/text-ref/keyboard action FontNormal</li>
 
 <li>$:/positivesigner/text-ref/mcr glbl_article_list</li>
+
+<li>$:/positivesigner/text-ref/mcr glbl_check_list</li>
 
 <li>$:/positivesigner/text-ref/mcr glbl_code_split</li>
 
@@ -11730,6 +11732,15 @@ Delete positivesigner modules
 &lt;&lt;useraction.review_positivesigner_modules&gt;&gt;
 </pre>
 </div>
+<div created="20210923145622278" modified="20210923145829966" tags="$:/tags/Stylesheet $:/positivesigner/base-install" title="$:/positivesigner/base-install/stylesheet MediaNoPrint">
+<pre>/*2021m09d23 from new*/
+@media print {
+    .no-print {
+        display: none;
+        }
+    }
+</pre>
+</div>
 <div created="20201226041128309" description="Export Code" extension="codetxt" modified="20210424082544498" tags="$:/tags/Exporter $:/positivesigner/base-install" title="$:/positivesigner/base-install/template ExportAllCode">
 <pre>\define renderContent()
 &lt;!--2021m04d24--&gt;
@@ -12247,9 +12258,10 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 &lt;$action-sendmessage $message=&quot;tm-home&quot;/&gt;
 </pre>
 </div>
-<div created="20200115095609017" modified="20210921222056965" tags="$:/tags/ViewTemplate $:/positivesigner/home-button" title="$:/positivesigner/home-button/template Home Button">
-<pre>&lt;!--2021m09d21--&gt;
+<div created="20200115095609017" modified="20210923145910951" tags="$:/tags/ViewTemplate $:/positivesigner/home-button" title="$:/positivesigner/home-button/template Home Button">
+<pre>&lt;!--2021m09d23 from 2021m09d21--&gt;
 &lt;$list variable=on_twcard filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
+@@.no-print
 &lt;div style=&quot;float:right;padding-left:30px;&quot;&gt;
 {{$:/core/ui/TopBar/menu}}
 &lt;/div&gt;
@@ -12272,40 +12284,8 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 &lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;^&lt;/$link&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/div&gt;
+@@
 &lt;/$list&gt;&lt;!--on_twcard--&gt;</pre>
-</div>
-<div created="20210521032019905" modified="20210521044000007" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/mcr glbl_check_list">
-<pre>\define glbl_check_list()
-&lt;!--2021m05d20--&gt;
-&lt;$vars cur_card=&lt;&lt;currentTiddler&gt;&gt; &gt;
-&lt;&lt;glbl_dt_ddd&gt;&gt;
-&lt;$button&gt;
-&lt;$list variable=field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[chk_]]&quot;&gt;
-&lt;$action-setfield $field=&lt;&lt;field_name&gt;&gt; $value=&quot;&quot; /&gt;
-&lt;/$list&gt;&lt;!--field_name--&gt;
-&lt;$action-setfield match_date=&lt;&lt;cur_date&gt;&gt; /&gt;
-Clear all checkmarks
-&lt;/$button&gt;
-&lt;ol&gt;
-&lt;$list variable=card_prefix filter=&quot;[&lt;cur_card&gt;addsuffix[\]]&quot;&gt;
-&lt;$list variable=cur_entry filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
-&lt;$list variable=filter_bslash_count filter=&quot;[&lt;cur_entry&gt;split[\]count[]match[2]]&quot;&gt;
-&lt;$list variable=disp_name filter=&quot;[&lt;cur_entry&gt;split[\]last[]]&quot;&gt;
-&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]split[ ]join[_]split[/]join[_]lowercase[]]&quot;&gt;
-&lt;li&gt;
-&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; tiddler=&lt;&lt;cur_card&gt;&gt; field=&lt;&lt;chk_name&gt;&gt; &gt;
-&lt;$link to=&lt;&lt;cur_entry&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
-&lt;/$checkbox&gt;
-&lt;/li&gt;
-&lt;/$list&gt;&lt;!--chk_name--&gt;
-&lt;/$list&gt;&lt;!--disp_name--&gt;
-&lt;/$list&gt;&lt;!--filter_bslash_count--&gt;
-&lt;/$list&gt;&lt;!--cur_card--&gt;
-&lt;/$list&gt;&lt;!--card_prefix--&gt;
-&lt;/ol&gt;
-&lt;/$vars&gt;
-\end
-</pre>
 </div>
 <div color="#423fde" created="20210411090352651" modified="20210424083335895" tags="$:/positivesigner/preview-button $:/positivesigner/tag" title="$:/positivesigner/preview-button">
 <pre>&lt;!--2021m04d24--&gt;
@@ -12334,8 +12314,8 @@ Clear all checkmarks
 &lt;/$list&gt;
 </pre>
 </div>
-<div color="#423fde" created="20210424083114040" modified="20210904202818547" tags="$:/positivesigner/base-install $:/positivesigner/gcmpr $:/positivesigner/home-button $:/positivesigner/text-ref $:/positivesigner/div-pop $:/positivesigner/preview-button $:/positivesigner/tag $:/positivesigner/user-guide $:/positivesigner/title-button" title="$:/positivesigner/tag">
-<pre>&lt;!--2021m09d04--&gt;
+<div color="#423fde" created="20210424083114040" modified="20210922070016534" tags="$:/positivesigner/base-install $:/positivesigner/gcmpr $:/positivesigner/home-button $:/positivesigner/text-ref $:/positivesigner/div-pop $:/positivesigner/preview-button $:/positivesigner/tag $:/positivesigner/user-guide $:/positivesigner/title-button" title="$:/positivesigner/tag">
+<pre>&lt;!--2021m09d04 from 2021m04d24e2--&gt;
 </pre>
 </div>
 <div color="#423fde" created="20210307035136466" modified="20210424083444631" tags="$:/positivesigner/text-ref $:/positivesigner/tag" title="$:/positivesigner/text-ref">
@@ -12416,8 +12396,8 @@ variable=cur_count filter=&quot;[!is[system]!has[tags]count[]]&quot;&gt;&lt;&lt;
 &lt;/$list&gt;&lt;!--found_index--&gt;
 </pre>
 </div>
-<div created="20200319102534436" modified="20210604050241865" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Font Size">
-<pre>&lt;!--2021m04d24--&gt;
+<div created="20200319102534436" modified="20210922070103179" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Font Size">
+<pre>&lt;!--2021m09d21 from 2021m04d24--&gt;
 &lt;$list variable=cur_entry filter=&quot;[all[tiddlers]!suffix[.js]!suffix[.css]!match[$:/core]!prefix[$:/config/]!prefix[$:/DefaultTiddlers]!prefix[$:/Import]!match[$:/isEncrypted]!prefix[$:/language/]!prefix[$:/theme]!prefix[$:/temp/]!prefix[$:/status/]!match[$:/StoryList]!match[$:/HistoryList]!match[$:/SiteTitle]!match[$:/SiteSubtitle]!prefix[$:/state/]count[]]&quot;&gt;
 Specific prefix filter: &lt;&lt;cur_entry&gt;&gt; cards
 &lt;/$list&gt;
@@ -12486,12 +12466,23 @@ Normal Font
 &lt;$action-setfield $tiddler=&quot;$:/themes/tiddlywiki/vanilla/metrics/bodylineheight&quot; text=&quot;24px&quot;/&gt;
 </pre>
 </div>
-<div created="20201120062240873" modified="20210424083858199" tags="$:/tags/Macro $:/positivesigner/text-ref" title="$:/positivesigner/text-ref/mcr glbl_article_list">
+<div created="20201120062240873" modified="20210922071754800" tags="$:/tags/Macro $:/positivesigner/text-ref" title="$:/positivesigner/text-ref/mcr glbl_article_list">
 <pre>\define glbl_article_list()
-&lt;!--2021m04d24--&gt;
+&lt;!--2021m09d21 from 2021m04d24--&gt;
 &lt;ol&gt;
 &lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
 &lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
+&lt;li&gt;&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;&lt;/li&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
+&lt;/ol&gt;
+\end
+\define glbl_article_list_an()
+&lt;ol&gt;
+&lt;$list variable=card_prefix filter=&quot;[&lt;currentTiddler&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[prefix&lt;card_prefix&gt;sortan[]]&quot;&gt;
 &lt;$list variable=disp_name filter=&quot;[&lt;cur_card&gt;split[\]butfirst[]join[\]]&quot;&gt;
 &lt;li&gt;&lt;$link to=&lt;&lt;cur_card&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;&lt;/li&gt;
 &lt;/$list&gt;&lt;!--disp_name--&gt;
@@ -12525,6 +12516,39 @@ Clear all checkmarks
 &lt;/li&gt;
 &lt;/$list&gt;&lt;!--chk_name--&gt;
 &lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+&lt;/$list&gt;&lt;!--card_prefix--&gt;
+&lt;/ol&gt;
+&lt;/$vars&gt;
+\end
+</pre>
+</div>
+<div created="20210521032019905" modified="20210922065741383" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/text-ref/mcr glbl_check_list">
+<pre>\define glbl_check_list()
+&lt;!--2021m09d21 from 2021m05d20--&gt;
+&lt;$vars cur_card=&lt;&lt;currentTiddler&gt;&gt; &gt;
+&lt;&lt;glbl_dt_ddd&gt;&gt;
+&lt;$button&gt;
+&lt;$list variable=field_name filter=&quot;[&lt;cur_card&gt;fields[]prefix[chk_]]&quot;&gt;
+&lt;$action-setfield $field=&lt;&lt;field_name&gt;&gt; $value=&quot;&quot; /&gt;
+&lt;/$list&gt;&lt;!--field_name--&gt;
+&lt;$action-setfield match_date=&lt;&lt;cur_date&gt;&gt; /&gt;
+Clear all checkmarks
+&lt;/$button&gt;
+&lt;ol&gt;
+&lt;$list variable=card_prefix filter=&quot;[&lt;cur_card&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=cur_entry filter=&quot;[prefix&lt;card_prefix&gt;sort[]]&quot;&gt;
+&lt;$list variable=filter_bslash_count filter=&quot;[&lt;cur_entry&gt;split[\]count[]match[2]]&quot;&gt;
+&lt;$list variable=disp_name filter=&quot;[&lt;cur_entry&gt;split[\]last[]]&quot;&gt;
+&lt;$list variable=chk_name filter=&quot;[&lt;disp_name&gt;addprefix[chk_]split[ ]join[_]split[/]join[_]lowercase[]]&quot;&gt;
+&lt;li&gt;
+&lt;$checkbox default=&quot;no&quot; unchecked=&quot;no&quot; checked=&quot;yes&quot; tiddler=&lt;&lt;cur_card&gt;&gt; field=&lt;&lt;chk_name&gt;&gt; &gt;
+&lt;$link to=&lt;&lt;cur_entry&gt;&gt; &gt;&lt;&lt;disp_name&gt;&gt;&lt;/$link&gt;
+&lt;/$checkbox&gt;
+&lt;/li&gt;
+&lt;/$list&gt;&lt;!--chk_name--&gt;
+&lt;/$list&gt;&lt;!--disp_name--&gt;
+&lt;/$list&gt;&lt;!--filter_bslash_count--&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 &lt;/$list&gt;&lt;!--card_prefix--&gt;
 &lt;/ol&gt;
@@ -12909,8 +12933,8 @@ Remove META tag from all cards
 &lt;/$list&gt;
 </pre>
 </div>
-<div created="20201226094244599" modified="20210921223053827" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Search All Fields">
-<pre>&lt;!--2021m09d21--&gt;
+<div created="20201226094244599" modified="20210922070146913" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Search All Fields">
+<pre>&lt;!--2021m09d21 from 2021m04d24--&gt;
 &lt;$list variable=only_in_jsapp filter=&quot;[&lt;tv-config-toolbar-icons&gt;!match[no]]&quot;&gt;
 &lt;$vars search_text_pk=&quot;$:/state/popup/SearchAllFields&quot;&gt;
 &lt;$list variable=show_code_pk filter=&quot;[&lt;search_text_pk&gt;addsuffix[-checkShowCode]]&quot;&gt;
@@ -13029,9 +13053,9 @@ Remove META tag from all cards
 <pre>&lt;!--2021m04d24e2--&gt;
 </pre>
 </div>
-<div created="20210421195030608" list-after="$:/core/ui/ViewTemplate/tags" modified="20210921222511968" tags="$:/tags/Macro $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/macro/Activity Details">
+<div created="20210421195030608" list-after="$:/core/ui/ViewTemplate/tags" modified="20210922070228839" tags="$:/tags/Macro $:/positivesigner/user-guide" title="$:/positivesigner/user-guide/macro/Activity Details">
 <pre>\define btn_activity_details()
-&lt;!--2021m04d24e2--&gt;
+&lt;!--2021m09d21 from 2021m04d24e2--&gt;
 &lt;$list variable=detail_card filter=&quot;[[$(activity_prefix)$]addprefix[$:/state/popup/activity_details/]]&quot;&gt;
 &lt;!--&lt;&lt;activity_details &quot;How to activity title&quot;&gt;&gt;--&gt;
 &lt;$list variable=detail_macro_call filter=&quot;&quot;&quot;[[&lt;]addsuffix[&lt;]addsuffix[activity_details]addsuffix[ ]addsuffix[&quot;]addsuffix[$(activity_prefix)$]addsuffix[&quot;]addsuffix[&gt;]addsuffix[&gt;]]&quot;&quot;&quot;&gt;
@@ -13186,7 +13210,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210610011444815" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210921223055010" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20210923145944167" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -13201,13 +13225,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210921223055010" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20210923145944167" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20210921222810963" list="[[Automation Scripting]] [[$:/positivesigner/text-ref/Recent Entries]] [[$:/positivesigner/text-ref/Search All Fields]]" modified="20210921222813470" title="$:/StoryList">
+<div list="[[Automation Scripting]]" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
