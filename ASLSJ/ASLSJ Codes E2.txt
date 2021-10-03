@@ -55,9 +55,8 @@ Hqv - dom-hand in | dom-hand apart direction
 Hqy - dom-hand dom-side | dom-hand apart direction
 hv - move down | hand movement direction
 ik - dom-palm base-side | palm direction
-iU - dom-palm in | palm direction
-iUm - dom-palm up | palm direction
-yi - dom-palm dom-side | palm direction
+iM - dom-palm in | palm direction
+iU - dom-palm up | palm direction
 jffff - bent-open-B | handshape
 jfffn - bent-open-W | handshape
 jffnn - open-N; bent-open-U | handshape
@@ -82,6 +81,8 @@ llrfl - number-7 | handshape
 lrfff - letter-D | handshape
 lrfll - number-8 | handshape
 lrtnn - letter-K | handshape
+M - dom-palm out | palm direction
+M - dom-palm down | palm direction
 p^ - base-hand move out | hand movement direction
 p~ - base-hand wiggle fingers | hand movement direction
 pD - base-hand against body | hand movement direction
@@ -98,7 +99,6 @@ pfnnnc - base-bent-I | handshape
 pfnnny - base-bent-Y | handshape
 pfrfff - base-letter-E | handshape
 pik - base-palm base-side | palm direction
-pyi - base-palm dom-side | palm direction
 pk - base-hand move base-side | hand movement direction
 plfllj - base-open-7 | handshape
 plfrll - base-number-7 | handshape
@@ -115,7 +115,8 @@ plnnlc - base-L-I | handshape
 plnnlj - base-L-Y | handshape
 plnnnc - base-letter-I | handshape
 plnnnj - base-letter-Y | handshape
-pmUi - base-palm up | palm direction
+pM - base-palm out | palm direction
+pMi - base-palm in | palm direction
 pnfffc - base-letter-M | handshape
 pnfffj - base-open-M | handshape
 pnlululc - base-letter-W | handshape
@@ -149,11 +150,11 @@ pnnnny - base-bent-A | handshape
 pnnnrf - base-letter-T | handshape
 pnntrl - base-letter-K | handshape
 po - base-hand twist | hand movement direction
-pU - base-palm out | palm direction
-pUi - base-palm in | palm direction
+pU - base-palm down | palm direction
+pUi - base-palm up | palm direction
 pv - base-hand move in | hand movement direction
 py - base-hand move dom-side | hand movement direction
-pmU - base-palm down | palm direction
+pyi - base-palm dom-side | palm direction
 q^ - dom-hand move out | hand movement direction
 q~ - dom-hand wiggle fingers | hand movement direction
 qD - dom-hand against body | hand movement direction
@@ -189,8 +190,6 @@ Tqvx - touch in weaved | dom-hand apart direction
 Tqy - touch dom-side against | dom-hand apart direction
 Tqyc - touch dom-side cupped | dom-hand apart direction
 Tqyx - touch dom-side weaved | dom-hand apart direction
-U - dom-palm out | palm direction
-Um - dom-palm down | palm direction
 W - forehead height | hand height
 WD - against dom-side forehead | hand height
 Y - away from elbow | hand height
@@ -200,6 +199,7 @@ yffnn - bent-N | handshape
 yfnnn - bent-X | handshape
 yfufnn - bent-open-V; bent-3 | handshape
 yfufuff - bent-number-5; bent-C | handshape
+yi - dom-palm dom-side | palm direction
 ylfll - bent-8 | handshape
 ynnnf - bent-Y | handshape
 ynnnn - bent-A | handshape
@@ -319,8 +319,8 @@ h -- dom-hand apart direction (8), hand height (3), hand movement direction (2),
     h^ - move up, hv - move down, Th^ - touch up against, Th^c - touch up cupped, Th^x - touch up weaved,
     Thv - touch down against, Thvc - touch down cupped, Thvx - touch down weaved, zh^ - repeat up, zhv - repeat down
 i -- palm direction (8)
-    ik - dom-palm base-side, iU - dom-palm in, iUm - dom-palm up, yi - dom-palm base-side, pik - base-palm base-side,
-    pyi - base-palm dom-side, pUi - base-palm in, pmUi - base-palm up
+    ik - dom-palm base-side, iM - dom-palm in, iU - dom-palm up, yi - dom-palm base-side, pik - base-palm base-side,
+    pyi - base-palm dom-side, pMi - base-palm in, pUi - base-palm up
 j -- handshape (38)
     jffff - bent-open-B, jfffn - bent-open-W, jffnn - open-N; bent-open-U, jflll - open-F, jfnnn - bent-L,
     jlfll - open-8, jlfnn - open-K, jllfl - open-7, jllll - open-B, jllnn - open-U,
@@ -348,8 +348,8 @@ l -- handshape (60)
     pnnllc - base-letter-U, pnnllj - base-open-U, pnnllr - base-flat-open-U, pnnltc - base-letter-R, pnnltj - base-open-R,
     pnnlulc - base-letter-V, pnnlulj - base-open-V, pnnnlc - base-closed-L, pnnnlj - base-letter-L, pnnnlr - base-flat-open-L,
 	pnntrl - base-letter-K, rflll - letter-F, rllnn - flat-open-U, rlnnn - flat-open-L, ylfll - bent-8
-m -- palm direction (3)
-    iUm - dom-palm up, Um - dom-palm down, pmUi - base-palm up, pmU - base-palm down
+m -- palm direction (4)
+    iM - dom-palm in, M - dom-palm out, pMi - base-palm in, pM - base-palm out
 n -- handshape (78)
     cfffn - letter-M, cffnn - letter-N, cfnnf - bent-I-Y, cfnnn - bent-closed-L, cfufnn - bent-N,
     cllnn - letter-U, clnnl - L-I, clnnn - closed-L, clulnn - letter-V, clululn - letter-W,
@@ -383,9 +383,9 @@ p -- hand movement direction (6), handshape (58), palm direction (2), repetition
     pnnlulc - base-letter-V, pnnlulj - base-open-V, pnnnfc - base-letter-X, pnnnfj - base-open-X, pnnnfr - base-closed-X,
     pnnnfy - base-bent-X, pnnnlc - base-closed-L, pnnnlj - base-letter-L, pnnnnc - base-letter-S, pnnnnj - base-open-A,
     pnnnlr - base-flat-open-L, pnnnnr - base-letter-A, pnnnny - base-bent-A, pnnnrf - base-letter-T, pnntrl - base-letter-K,
-	po - base-hand twist, zpS - base-hand repeat mirrored, pUi - base-palm in, pU - base-palm out, pv - base-hand move in,
-	py - base-hand move dom-side, pmUi - base-palm up, pmU - base-palm down, zp - base-hand repeat, zp^ - base-hand repeat out,
-	zpe - base-hand single-movement, zpk - base-hand repeat base-side, zpv - base-hand repeat down, zpy - base-hand repeat dom-side
+	po - base-hand twist, pMi - base-palm in, pM - base-palm out, pv - base-hand move in, py - base-hand move dom-side,
+	pUi - base-palm up, pU - base-palm down, zp - base-hand repeat, zp^ - base-hand repeat out, zpe - base-hand single-movement,
+	zpk - base-hand repeat base-side, zpS - base-hand repeat mirrored, zpv - base-hand repeat down, zpy - base-hand repeat dom-side
 q -- dom-hand apart direction (16), hand height (1), hand movement direction (8), repetition direction (6)
     Hq^ - dom-hand out, Hqv - dom-hand in, Ch^qvD - against dom-side ear, Hqk - dom-hand base-side, Hqy - dom-hand dom-side,
     q^ - dom-hand move out, q~ - dom-hand wiggle fingers, qD - dom-hand against body, qe - dom-hand stays still, qk - dom-hand move base-side,
@@ -412,8 +412,7 @@ t -- handshape (8)
     ctlnn - letter-R, jtfnn - bent-open-R, jtlnn - open-R, lrtnn - letter-K, pnnftj - base-bent-open-R,
     pnnltc - base-letter-R, pnnltj - base-open-R, pnntrl - base-letter-K
 U -- palm direction (8)
-    iU - dom-palm in, iUm - dom-palm up, U - dom-palm out, Um - dom-palm down, pUi - base-palm in,
-    pU - base-palm out, pmUi - base-palm up, pmU - base-palm down
+    iU - dom-palm up, U - dom-palm down, pUi - base-palm up, pU - base-palm down
 u -- handshape (22)
     cfufnn - bent-N, cfufuff - bent-4, clulnn - letter-V, clulull - number-4, clululn - letter-W,
     jlulnn - number-3; open-V, jlulull - open-C, jlululn - open-W, pfffufr - base-letter-F, pffufufc - base-bent-4,
@@ -445,4 +444,4 @@ z -- repetition direction (19)
 	zpS - base-hand repeat mirrored, zpv - base-hand repeat down, zpy - base-hand repeat dom-side, zq - dom-hand repeat, zq^ - repeat out,
 	zqk - repeat base-side, zqS - repeat mirrored, zqv - repeat in, zqy - repeat dom-side
 
-* Unused letters: b, g
+* Unused letters: b, B, g, G

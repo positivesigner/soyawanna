@@ -419,6 +419,8 @@ Error message and password prompt
 
 <li>$:/positivesigner/text-ref/mcr glbl_img</li>
 
+<li>$:/positivesigner/text-ref/mcr twrap</li>
+
 <li>$:/positivesigner/text-ref/Panel</li>
 
 <li>$:/positivesigner/text-ref/Recent Entries</li>
@@ -11621,13 +11623,7 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/config/Tiddlers/TitleLinks]]
-# [[$:/themes/tiddlywiki/vanilla/options/stickytitles]]
-# [[$:/positivesigner/tag]]
-# [[$:/positivesigner/title-button]]
-# [[$:/config/ShortcutInfo/title-card]]
-# [[$:/config/shortcuts/title-card]]
-# [[$:/positivesigner/title-button/keyboard action TitleCard]]</pre>
+# [[$:/positivesigner/text-ref/mcr twrap]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
@@ -12831,6 +12827,19 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;$link to=&quot;$:/img/$ur_image_pk$&quot;&gt;&lt;$image alt=&quot;$ur_image_pk$&quot; width=&quot;$ur_size$px&quot; source=&quot;$:/img/$ur_image_pk$&quot; /&gt;&lt;/$link&gt;
 \end</pre>
 </div>
+<div created="20211002222025410" modified="20211003004506081" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/text-ref/mcr twrap">
+<pre>\define twrap(ur_text, ur_col_count:1)
+&lt;$vars cur_text=&quot;&quot;&quot;$ur_text$&quot;&quot;&quot;&gt;
+&lt;div style=&quot;column-count:$ur_col_count$;&quot;&gt;
+&lt;$list variable=cur_line filter=&quot;[&lt;cur_text&gt;split[.
+]]&quot;&gt;
+&lt;div style=&quot;white-space:pre-wrap;text-indent:-1em;&quot;&gt;&lt;&lt;cur_line&gt;&gt;&lt;/div&gt;
+&lt;/$list&gt;&lt;!--cur_line--&gt;
+&lt;/div&gt;&lt;!--column-count--&gt;
+&lt;/$vars&gt;&lt;!--cur_text--&gt;
+\end
+</pre>
+</div>
 <div created="20210209091028689" modified="20210424084008165" tags="$:/positivesigner/text-ref" title="$:/positivesigner/text-ref/Panel">
 <pre>&lt;!--2021m04d24--&gt;
 * https://github.com/settings/tokens
@@ -13210,7 +13219,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20210610011444815" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20210923145944167" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211003004549293" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -13225,7 +13234,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20210923145944167" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211003004549294" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
