@@ -155,6 +155,8 @@ Error message and password prompt
 
 <li>$:/config/ShortcutInfo/home-tiddlers</li>
 
+<li>$:/config/ShortcutInfo/palette-dim</li>
+
 <li>$:/config/ShortcutInfo/preview-card</li>
 
 <li>$:/config/ShortcutInfo/save-all-changes</li>
@@ -166,6 +168,8 @@ Error message and password prompt
 <li>$:/config/shortcuts/font-normal</li>
 
 <li>$:/config/shortcuts/home-tiddlers</li>
+
+<li>$:/config/shortcuts/palette-dim</li>
 
 <li>$:/config/shortcuts/preview-card</li>
 
@@ -347,6 +351,10 @@ Error message and password prompt
 
 <li>$:/language/DefaultNewTiddlerTitle</li>
 
+<li>$:/palette</li>
+
+<li>$:/palettes/Vanilla-dim</li>
+
 <li>$:/positivesigner/base-install</li>
 
 <li>$:/positivesigner/base-install/currentCard</li>
@@ -387,7 +395,11 @@ Error message and password prompt
 
 <li>$:/positivesigner/home-button/template Home Button</li>
 
+<li>$:/positivesigner/palette-dim</li>
+
 <li>$:/positivesigner/preview-button</li>
+
+<li>$:/positivesigner/preview-button/keyboard action PaletteDim</li>
 
 <li>$:/positivesigner/preview-button/keyboard action PreviewCard</li>
 
@@ -459,9 +471,13 @@ Error message and password prompt
 
 <li>$:/state/advancedsearch/currentTab</li>
 
+<li>$:/state/dropdown/keyboardshortcut/palette-dim-286565879</li>
+
 <li>$:/state/dropdown/keyboardshortcut/preview-card-286565879</li>
 
 <li>$:/state/showeditpreview</li>
+
+<li>$:/state/ShowPaletteEditor</li>
 
 <li>$:/state/sidebar</li>
 
@@ -1464,6 +1480,9 @@ Error message and password prompt
 <div created="20200314145912234" modified="20210307033141318" tags="$:/positivesigner/home-button" title="$:/config/ShortcutInfo/home-tiddlers">
 <pre></pre>
 </div>
+<div created="20211003015356797" modified="20211003015412588" tags="$:/positivesigner/palette-dim" title="$:/config/ShortcutInfo/palette-dim">
+<pre></pre>
+</div>
 <div created="20210411090434671" modified="20210411090451446" tags="$:/positivesigner/preview-button" title="$:/config/ShortcutInfo/preview-card">
 <pre></pre>
 </div>
@@ -1481,6 +1500,9 @@ Error message and password prompt
 </div>
 <div created="20200314150022726" modified="20210307033157710" tags="$:/positivesigner/home-button" title="$:/config/shortcuts/home-tiddlers">
 <pre>alt-H</pre>
+</div>
+<div created="20211003015425563" modified="20211003015958520" tags="$:/positivesigner/palette-dim" title="$:/config/shortcuts/palette-dim">
+<pre>alt-C</pre>
 </div>
 <div created="20210411090507118" modified="20210411090745842" tags="$:/positivesigner/preview-button" title="$:/config/shortcuts/preview-card">
 <pre>alt-V</pre>
@@ -11623,13 +11645,150 @@ Error message and password prompt
 <div status="complete" title="$:/Import">
 <pre>The following tiddlers were imported:
 
-# [[$:/positivesigner/text-ref/mcr twrap]]</pre>
+# [[$:/positivesigner/base-install/keyboard action SaveAllChanges]]</pre>
 </div>
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
 <div created="20210108075708187" modified="20210307035431844" tags="$:/positivesigner/base-install" title="$:/language/DefaultNewTiddlerTitle">
 <pre>New Card</pre>
+</div>
+<div created="20211003010620704" modified="20211003022312608" tags="$:/positivesigner/palette-dim" title="$:/palette">
+<pre>$:/palettes/Vanilla</pre>
+</div>
+<div created="20211003010624951" description="Pale and unobtrusive" modified="20211003015006969" name="Vanilla" tags="$:/tags/Palette $:/positivesigner/palette-dim" title="$:/palettes/Vanilla-dim" type="application/x-tiddler-dictionary">
+<pre>alert-background: #ffe476
+alert-border: #b99e2f
+alert-highlight: #881122
+alert-muted-foreground: #b99e2f
+background: #b8b39c
+blockquote-bar: &lt;&lt;colour muted-foreground&gt;&gt;
+button-background: 
+button-foreground: 
+button-border: 
+code-background: #f7f7f9
+code-border: #e1e1e8
+code-foreground: #dd1144
+diff-delete-background: #ffc9c9
+diff-delete-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-equal-background: 
+diff-equal-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-insert-background: #aaefad
+diff-insert-foreground: &lt;&lt;colour foreground&gt;&gt;
+diff-invisible-background: 
+diff-invisible-foreground: &lt;&lt;colour muted-foreground&gt;&gt;
+dirty-indicator: #ff0000
+download-background: #34c734
+download-foreground: &lt;&lt;colour background&gt;&gt;
+dragger-background: &lt;&lt;colour foreground&gt;&gt;
+dragger-foreground: &lt;&lt;colour background&gt;&gt;
+dropdown-background: &lt;&lt;colour background&gt;&gt;
+dropdown-border: &lt;&lt;colour muted-foreground&gt;&gt;
+dropdown-tab-background-selected: #fff
+dropdown-tab-background: #ececec
+dropzone-background: rgba(0,200,0,0.7)
+external-link-background-hover: inherit
+external-link-background-visited: inherit
+external-link-background: inherit
+external-link-foreground-hover: inherit
+external-link-foreground-visited: #0000aa
+external-link-foreground: #0000ee
+foreground: #333333
+message-background: #ecf2ff
+message-border: #cfd6e6
+message-foreground: #547599
+modal-backdrop: &lt;&lt;colour foreground&gt;&gt;
+modal-background: &lt;&lt;colour background&gt;&gt;
+modal-border: #999999
+modal-footer-background: #f5f5f5
+modal-footer-border: #dddddd
+modal-header-border: #eeeeee
+muted-foreground: #bbb
+notification-background: #ffffdd
+notification-border: #999999
+page-background: #b8b39c
+pre-background: #b8b39c
+pre-border: #cccccc
+primary: #5778d8
+selection-background: 
+selection-foreground: 
+select-tag-background: 
+select-tag-foreground: 
+sidebar-button-foreground: &lt;&lt;colour foreground&gt;&gt;
+sidebar-controls-foreground-hover: #000000
+sidebar-controls-foreground: #aaaaaa
+sidebar-foreground-shadow: rgba(255,255,255, 0.8)
+sidebar-foreground: #acacac
+sidebar-muted-foreground-hover: #444444
+sidebar-muted-foreground: #c0c0c0
+sidebar-tab-background-selected: #f4f4f4
+sidebar-tab-background: #e0e0e0
+sidebar-tab-border-selected: &lt;&lt;colour tab-border-selected&gt;&gt;
+sidebar-tab-border: &lt;&lt;colour tab-border&gt;&gt;
+sidebar-tab-divider: #e4e4e4
+sidebar-tab-foreground-selected: 
+sidebar-tab-foreground: &lt;&lt;colour tab-foreground&gt;&gt;
+sidebar-tiddler-link-foreground-hover: #444444
+sidebar-tiddler-link-foreground: #999999
+site-title-foreground: &lt;&lt;colour tiddler-title-foreground&gt;&gt;
+static-alert-foreground: #aaaaaa
+tab-background-selected: #ffffff
+tab-background: #d8d8d8
+tab-border-selected: #d8d8d8
+tab-border: #cccccc
+tab-divider: #d8d8d8
+tab-foreground-selected: &lt;&lt;colour tab-foreground&gt;&gt;
+tab-foreground: #666666
+table-border: #dddddd
+table-footer-background: #a8a8a8
+table-header-background: #f0f0f0
+tag-background: #ec6
+tag-foreground: #ffffff
+tiddler-background: &lt;&lt;colour background&gt;&gt;
+tiddler-border: &lt;&lt;colour background&gt;&gt;
+tiddler-controls-foreground-hover: #888888
+tiddler-controls-foreground-selected: #444444
+tiddler-controls-foreground: #cccccc
+tiddler-editor-background: #b8b39c
+tiddler-editor-border-image: #ffffff
+tiddler-editor-border: #cccccc
+tiddler-editor-fields-even: #e0e8e0
+tiddler-editor-fields-odd: #f0f4f0
+tiddler-info-background: #f8f8f8
+tiddler-info-border: #dddddd
+tiddler-info-tab-background: #f8f8f8
+tiddler-link-background: &lt;&lt;colour background&gt;&gt;
+tiddler-link-foreground: &lt;&lt;colour primary&gt;&gt;
+tiddler-subtitle-foreground: #444444
+tiddler-title-foreground: #182955
+toolbar-new-button: 
+toolbar-options-button: 
+toolbar-save-button: 
+toolbar-info-button: 
+toolbar-edit-button: 
+toolbar-close-button: 
+toolbar-delete-button: 
+toolbar-cancel-button: 
+toolbar-done-button: 
+untagged-background: #999999
+very-muted-foreground: #888888
+wikilist-background: #e5e5e5
+wikilist-item: #fff
+wikilist-info: #000
+wikilist-title: #666
+wikilist-title-svg: &lt;&lt;colour wikilist-title&gt;&gt;
+wikilist-url: #aaa
+wikilist-button-open: #4fb82b
+wikilist-button-open-hover: green
+wikilist-button-reveal: #5778d8
+wikilist-button-reveal-hover: blue
+wikilist-button-remove: #d85778
+wikilist-button-remove-hover: red
+wikilist-toolbar-background: #d3d3d3
+wikilist-toolbar-foreground: #888
+wikilist-droplink-dragover: rgba(255,192,192,0.5)
+wikilist-button-background: #acacac
+wikilist-button-foreground: #000</pre>
 </div>
 <div color="#423fde" created="20210307033258386" modified="20210424083718838" tags="$:/positivesigner/base-install $:/positivesigner/tag" title="$:/positivesigner/base-install">
 <pre>&lt;!--2021m04d24--&gt;
@@ -11664,9 +11823,12 @@ Base-Install card group:
 \end
 </pre>
 </div>
-<div created="20201114070625406" key="((save-all-changes))" modified="20210601160506925" tags="$:/tags/KeyboardShortcut $:/positivesigner/base-install" title="$:/positivesigner/base-install/keyboard action SaveAllChanges">
+<div created="20201114070625406" key="((save-all-changes))" modified="20211003022844564" tags="$:/tags/KeyboardShortcut $:/positivesigner/base-install" title="$:/positivesigner/base-install/keyboard action SaveAllChanges">
 <pre>\define ExportSaveAll(ur_filename, ur_stamp, ur_save_wiki_extension, ur_save_export_html)
-&lt;!--2021m04d24--&gt;
+&lt;!--2021m10d02--&gt;
+&lt;$list filter=&quot;[[$:/palette]get[text]!match[$:/palettes/Vanilla]]&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&quot;$:/palettes/Vanilla&quot;/&gt;
+&lt;/$list&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
 &lt;$action-setfield $tiddler=&quot;$:/state/tab/sidebar--595412856&quot; text=&quot;$:/core/ui/SideBar/More&quot;/&gt;
@@ -11782,9 +11944,40 @@ Delete positivesigner modules
 &lt;/$button&gt;
 &lt;/$list&gt;</pre>
 </div>
-<div created="20200418110049404" modified="20210424082752560" tags="$:/tags/BelowStory $:/positivesigner/div-pop" title="$:/positivesigner/div-pop/DivPop glbl">
-<pre>&lt;!--2021m04d24--&gt;
+<div created="20200418110049404" modified="20211003022045449" tags="$:/tags/BelowStory $:/positivesigner/div-pop" title="$:/positivesigner/div-pop/DivPop glbl">
+<pre>&lt;!--2021m10d02--&gt;
 &lt;$list variable=cur_divpop_card filter=&quot;[{$:/state/popup/DivPopTitle}is[tiddler]]&quot;&gt;
+&lt;$list variable=cur_palette filter=&quot;[[$:/palette]get[text]match[$:/palettes/Vanilla-dim]]&quot;&gt;
+&lt;div style=&quot;
+position: fixed;
+top: 0px;
+right: 0px;
+width: 350px;
+border: 3px solid;
+background: #b8b39c;
+bottom: 0%;
+&quot;&gt;
+&lt;div style=&quot;overflow-y: scroll; height: 100%;&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/sidebar&quot; text=&quot;no&quot;/&gt;
+&lt;$action-setfield $tiddler=&quot;$:/state/popup/DivPopTitle&quot; text=&quot;&quot;/&gt;
+close
+&lt;/$button&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$reveal type=&quot;match&quot; state=&quot;$:/state/popup/$ur_pk$&quot; text=&quot;show&quot;&gt;&lt;$button set=&quot;$:/state/popup/$ur_pk$&quot; setTo=&quot;hide&quot;&gt;show&lt;/$button&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$link to=&lt;&lt;cur_divpop_card&gt;&gt; &gt;&lt;&lt;cur_divpop_card&gt;&gt;
+&lt;/$link&gt;
+&lt;$list variable=cur_text filter=&quot;[&lt;cur_divpop_card&gt;get[text]]&quot;&gt;
+&lt;$codeblock code=&lt;&lt;cur_text&gt;&gt; /&gt;&lt;/$list&gt;
+&lt;/$reveal&gt;
+&lt;$reveal type=&quot;nomatch&quot; state=&quot;$:/state/popup/$ur_pk$&quot; text=&quot;show&quot;&gt;&lt;$button set=&quot;$:/state/popup/$ur_pk$&quot; setTo=&quot;show&quot;&gt;code&lt;/$button&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;$link to=&lt;&lt;cur_divpop_card&gt;&gt; &gt;&lt;&lt;cur_divpop_card&gt;&gt;
+&lt;/$link&gt;
+&lt;$tiddler tiddler=&lt;&lt;cur_divpop_card&gt;&gt; &gt;
+&lt;$transclude mode=&quot;block&quot; /&gt;
+&lt;/$tiddler&gt;
+&lt;/$reveal&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/$list&gt;
+&lt;$list variable=cur_palette filter=&quot;[[$:/palette]get[text]!match[$:/palettes/Vanilla-dim]]&quot;&gt;
 &lt;div style=&quot;
 position: fixed;
 top: 0px;
@@ -11813,6 +12006,7 @@ close
 &lt;/$reveal&gt;
 &lt;/div&gt;
 &lt;/div&gt;
+&lt;/$list&gt;
 &lt;/$list&gt;
 </pre>
 </div>
@@ -12283,6 +12477,22 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 @@
 &lt;/$list&gt;&lt;!--on_twcard--&gt;</pre>
 </div>
+<div color="#423fde" created="20211003012855825" modified="20211003022259519" tags="$:/positivesigner/palette-dim $:/positivesigner/tag" title="$:/positivesigner/palette-dim">
+<pre>&lt;!--2021m10d02--&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&quot;$:/palettes/Vanilla&quot;/&gt;
+Set to Vanilla palette
+&lt;/$button&gt;
+&lt;$button style=&quot;margin-left:30px&quot;&gt;
+&lt;$action-setfield $tiddler=&quot;$:/palette&quot; text=&quot;$:/palettes/Vanilla-dim&quot;/&gt;
+Set to Vanilla-dim palette
+&lt;/$button&gt;
+
+background, page-background, pre-background, tiddler-editor-background = #b8b39c
+
+tiddler-subtitle-foreground = #444444
+</pre>
+</div>
 <div color="#423fde" created="20210411090352651" modified="20210424083335895" tags="$:/positivesigner/preview-button $:/positivesigner/tag" title="$:/positivesigner/preview-button">
 <pre>&lt;!--2021m04d24--&gt;
 &lt;$set name=cur_title filter=&lt;&lt;currentCard&gt;&gt; &gt;
@@ -12298,6 +12508,18 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 &lt;/$list&gt;&lt;!--filter_text--&gt;
 &lt;/$set&gt;&lt;!--cur_title--&gt;</pre>
 </div>
+<div created="20211003015614969" key="((palette-dim))" modified="20211003022310137" tags="$:/tags/KeyboardShortcut $:/positivesigner/palette-dim" title="$:/positivesigner/preview-button/keyboard action PaletteDim">
+<pre>&lt;!--2021m10d02--&gt;
+&lt;$list variable=cur_card filter=&quot;[[$:/palette]]&quot;&gt;
+&lt;$list variable=cur_val filter=&quot;[&lt;cur_card&gt;get[text]match[$:/palettes/Vanilla-dim]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;cur_card&gt;&gt; text=&quot;$:/palettes/Vanilla&quot;/&gt;
+&lt;/$list&gt;&lt;!--cur_val--&gt;
+&lt;$list variable=cur_val filter=&quot;[&lt;cur_card&gt;get[text]!match[$:/palettes/Vanilla-dim]]&quot;&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;cur_card&gt;&gt; text=&quot;$:/palettes/Vanilla-dim&quot;/&gt;
+&lt;/$list&gt;&lt;!--cur_val--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
 <div created="20210411090014261" key="((preview-card))" modified="20210424083034390" tags="$:/tags/KeyboardShortcut $:/positivesigner/preview-button" title="$:/positivesigner/preview-button/keyboard action PreviewCard">
 <pre>&lt;!--2021m04d24--&gt;
 &lt;$list variable=cur_card filter=&quot;[[$:/state/showeditpreview]]&quot;&gt;
@@ -12310,7 +12532,7 @@ temp_card_count: &lt;&lt;temp_card_count&gt;&gt;
 &lt;/$list&gt;
 </pre>
 </div>
-<div color="#423fde" created="20210424083114040" modified="20210922070016534" tags="$:/positivesigner/base-install $:/positivesigner/gcmpr $:/positivesigner/home-button $:/positivesigner/text-ref $:/positivesigner/div-pop $:/positivesigner/preview-button $:/positivesigner/tag $:/positivesigner/user-guide $:/positivesigner/title-button" title="$:/positivesigner/tag">
+<div color="#423fde" created="20210424083114040" modified="20211003014522514" tags="$:/positivesigner/base-install $:/positivesigner/gcmpr $:/positivesigner/home-button $:/positivesigner/text-ref $:/positivesigner/div-pop $:/positivesigner/preview-button $:/positivesigner/tag $:/positivesigner/user-guide $:/positivesigner/title-button $:/positivesigner/palette-dim" title="$:/positivesigner/tag">
 <pre>&lt;!--2021m09d04 from 2021m04d24e2--&gt;
 </pre>
 </div>
@@ -13213,28 +13435,34 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210427113710495" modified="20210427113710495" title="$:/state/advancedsearch/currentTab">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
-<div created="20210411090736888" modified="20210411090736888" title="$:/state/dropdown/keyboardshortcut/preview-card-286565879">
-<pre>open</pre>
+<div created="20211003015943737" modified="20211003020003133" title="$:/state/dropdown/keyboardshortcut/palette-dim-286565879">
+<pre>close</pre>
 </div>
-<div created="20210411090905404" modified="20210610011444815" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
+<div created="20210411090736888" modified="20211003015928258" title="$:/state/dropdown/keyboardshortcut/preview-card-286565879">
+<pre>close</pre>
+</div>
+<div created="20210411090905404" modified="20211003021029639" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211003004549293" title="$:/state/sidebar">
+<div created="20211003010622370" modified="20211003015216094" title="$:/state/ShowPaletteEditor">
+<pre>no</pre>
+</div>
+<div created="20210307044348911" modified="20211003022947528" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
 <pre>$:/core/ui/AdvancedSearch/Filter</pre>
 </div>
-<div created="20210307044725895" modified="20210307044725895" title="$:/state/tab--1963855381">
-<pre>$:/core/ui/ControlPanel/Toolbars</pre>
+<div created="20210307044725895" modified="20211003012842974" title="$:/state/tab--1963855381">
+<pre>$:/core/ui/ControlPanel/Palette</pre>
 </div>
-<div created="20210307044723150" modified="20210412174745302" title="$:/state/tab-1749438307">
-<pre>$:/core/ui/ControlPanel/Info</pre>
+<div created="20210307044723150" modified="20211003015911505" title="$:/state/tab-1749438307">
+<pre>$:/core/ui/ControlPanel/KeyboardShortcuts</pre>
 </div>
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20211003004549294" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211003022947528" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
