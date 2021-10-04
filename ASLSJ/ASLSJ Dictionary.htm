@@ -367,7 +367,11 @@ Error message and password prompt
 
 <li>ASLSJ Stories</li>
 
+<li>ASLSJ Stories\Clerc Books - The American Sign Language Handshape Dictionary - Copyright 1998 by Gallaudet University (Tennant, Brown)</li>
+
 <li>ASLSJ Stories\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;</li>
+
+<li>ASLSJ Stories\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello</li>
 
 <li>ASLSJ Words</li>
 
@@ -468,6 +472,8 @@ Error message and password prompt
 <li>ASLSJ Words\jlik-dvhv</li>
 
 <li>ASLSJ Words\jlik-q^h^</li>
+
+<li>ASLSJ Words\jlikTqk-q^zp</li>
 
 <li>ASLSJ Words\jliM-D</li>
 
@@ -823,15 +829,21 @@ Error message and password prompt
 
 <li>English Gloss\your</li>
 
+<li>English Gloss\zeal</li>
+
 <li>INDEX</li>
 
 <li>Story Translations</li>
 
 <li>Story Translations\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;</li>
 
+<li>Story Translations\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello</li>
+
 <li>Story Words</li>
 
 <li>Story Words\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;</li>
+
+<li>Story Words\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello</li>
 
 <li>Word Search</li>
 
@@ -13118,7 +13130,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20211004043124473" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211004182827328" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211004193202021" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -13133,13 +13145,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20211004182827328" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211004193202021" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211004182319327" list="[[ASLSJ Dictionary]] [[zASLSJ Codes]] [[zASLSJ Codes\word groups]]" modified="20211004182319327" title="$:/StoryList">
+<div created="20211004191754198" list="[[ASLSJ Dictionary]] [[ASLSJ Stories]] [[ASLSJ Stories\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello]] [[ASLSJ Stories\Clerc Books - The American Sign Language Handshape Dictionary - Copyright 1998 by Gallaudet University (Tennant, Brown)]]" modified="20211004191757000" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -13270,8 +13282,8 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 &lt;/$list&gt;&lt;!--cur_card--&gt;
 </pre>
 </div>
-<div created="20211004044520986" list-after="$:/core/ui/ViewTemplate/body" modified="20211004080727023" tags="$:/tags/ViewTemplate MCR" title="$:/this/template ASLSJ Word" type="">
-<pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_story_text=&quot;[get[text]search-replace:g[[],[]search-replace:g[lit_cbrkt],[]search-replace:g[lit_qs],[]search-replace:g[lit_qt],[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g[;],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]match[search_word]count[]!match[0]]&quot;&gt;
+<div created="20211004044520986" list-after="$:/core/ui/ViewTemplate/body" modified="20211004191645671" tags="$:/tags/ViewTemplate MCR" title="$:/this/template ASLSJ Word" type="">
+<pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_story_text=&quot;[get[text]search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g[;],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]match&lt;search_word&gt;count[]!match[0]]&quot;&gt;
 &lt;$list variable=word_card filter=&quot;[all[current]prefix[ASLSJ Words\]]&quot;&gt;
 &lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]]&quot;&gt;
 &lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
@@ -13291,14 +13303,16 @@ Used in stories:
 
 &lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
 &lt;$list variable=search_word filter=&quot;[&lt;story_word&gt;lowercase[]]&quot;&gt;
-&lt;$list variable=search_exp filter=&quot;[&lt;filter_story_text&gt;search-replace[lit_cbrkt],&lt;lit_cbrkt&gt;search-replace[lit_qs],&lt;lit_qs&gt;search-replace[lit_qt],&lt;lit_qt&gt;search-replace[search_word],&lt;search_word&gt;]&quot;&gt;
-&lt;$list variable=found_story filter=&quot;[prefix[ASLSJ Stories\]filter&lt;search_exp&gt;]&quot;&gt;
-&lt;$list variable=story_title filter=&quot;[&lt;found_story&gt;removeprefix[ASLSJ Stories\]]&quot;&gt;
+&lt;$list variable=story_card filter=&quot;[prefix[ASLSJ Stories\]]&quot;&gt;
+&lt;$list variable=story_text filter=&quot;[&lt;story_card&gt;get[text]]&quot;&gt;
+&lt;$list variable=flag_found_word filter=&quot;[&lt;story_text&gt;search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g[;],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]match&lt;search_word&gt;count[]!match[0]]&quot;&gt;
+&lt;$list variable=story_title filter=&quot;[&lt;story_card&gt;removeprefix[ASLSJ Stories\]]&quot;&gt;
 
 &lt;$link to=&lt;&lt;found_story&gt;&gt; &gt;&lt;&lt;story_title&gt;&gt;&lt;/$link&gt;
 &lt;/$list&gt;&lt;!--story_title--&gt;
-&lt;/$list&gt;&lt;!--found_story--&gt;
-&lt;/$list&gt;&lt;!--search_exp--&gt;
+&lt;/$list&gt;&lt;!--flag_found_word--&gt;
+&lt;/$list&gt;&lt;!--story_text--&gt;
+&lt;/$list&gt;&lt;!--story_card--&gt;
 &lt;/$list&gt;&lt;!--search_word--&gt;
 &lt;/$list&gt;&lt;!--story_word--&gt;
 &lt;/$list&gt;&lt;!--word_card--&gt;
@@ -13395,6 +13409,26 @@ Used in stories:
 <div created="20211004025258198" modified="20211004025428045" tags="DOC" title="ASLSJ Stories">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
+<div created="20211004191800852" modified="20211004193201184" tags="" title="ASLSJ Stories\Clerc Books - The American Sign Language Handshape Dictionary - Copyright 1998 by Gallaudet University (Tennant, Brown)">
+<pre>&quot;&quot;&quot;
+[28] rnM-qe jnM-qe clM-qe jlM-qe jfM-qe
+yfM-qe lrfM-qe fffrM-qe rflM-qe yflM-qe
+yfnik-qe cffnik-qe cnnlM-qe lrtnM-qe jlnM-qe
+yfnM-qe fffrnM-qe ffrnM-qe yffnM-qe rfM-qe
+rfnM-qe rfM-qe ctlnM-qe cnM-qe frnM-qe
+
+[29] cllnM-qe clulnM-qe cfufnM-qe clululnM-qe cfnM-qe
+jnnlM-qe jlnlM-qe clnlM-qe clnM-qe jlulnM-qe
+jfufnM-qe cluM-qe jluM-qe yfuM-qe lrflM-qe
+ylflM-qe
+
+[40] rnUohv-hvz rnWDik-hkv
+rnWiM-D rnCM-q^hv-qD
+rnCik-Dz rnCDM-hvz
+
+[41]
+</pre>
+</div>
 <div created="20211004025319068" modified="20211004180707650" tags="" title="ASLSJ Stories\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;">
 <pre>&quot;&quot;&quot;
 [0:00 LrtnCM-Dzhv] Q^ clWDU-qy.  JfM-qvqo jlDik-qk-iM ClnCM-Dzqv PljUi-yfnM-Thv-rfnz.  Q-hv JlDiU-hv q~Ken q~Davis, ClnCM-Dzqv PljUi-yfnM-Thv-rfnz.  Q-qy jliU-hv q~Sarah. Qy cfnikHh^-qvhvzp cffnik-Thvcz?
@@ -13427,6 +13461,11 @@ Used in stories:
 [LrtnCM-Dzhv] Q^ jliM-D jfCik-D--pljU-jfik-Thy yfuiU-pqv cfniM-D yfU-dkvhyv plj-cfnik-Tqk clulnCM-pqe-cfufn.  JluiU-pyqk?  JlM-qo-U jnik-q^ qe-^v.
 
 [CnCM-Dz] Qk jlCik-Tqkz.
+</pre>
+</div>
+<div created="20211004185458037" modified="20211004185815097" tags="" title="ASLSJ Stories\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello">
+<pre>&quot;&quot;&quot;
+jlikTqk-q^zp
 </pre>
 </div>
 <div created="20201114085731300" modified="20211004043636302" tags="DOC" title="ASLSJ Words">
@@ -13568,16 +13607,19 @@ Used in stories:
 <div created="20211004072853821" gloss="my-name-I-am" hand-group="cl" height-group="D" modified="20211004072922115" move-group="hv" tags="" title="ASLSJ Words\jlDiU-hv">
 <pre></pre>
 </div>
-<div created="20211004081249077" gloss="what-happened" hand-group="clfln" height-group="D" modified="20211004083943882" move-group="hv" tags="" title="ASLSJ Words\jlflDiM-d^h^">
+<div created="20211004081249077" gloss="what-happened" hand-group="clfl" height-group="D" modified="20211004185308989" move-group="hv" tags="" title="ASLSJ Words\jlflDiM-d^h^">
 <pre></pre>
 </div>
-<div created="20211004083831991" gloss="internet" hand-group="clfln" height-group="A" modified="20211004083908848" move-group="hv" tags="" title="ASLSJ Words\jlflU-hvzp">
+<div created="20211004083831991" gloss="internet" hand-group="clfl" height-group="A" modified="20211004185316097" move-group="hv" tags="" title="ASLSJ Words\jlflU-hvzp">
 <pre></pre>
 </div>
 <div created="20211004090450595" gloss="person" hand-group="cl" height-group="A" modified="20211004090524515" move-group="hv" tags="" title="ASLSJ Words\jlik-dvhv">
 <pre></pre>
 </div>
 <div created="20211004075954598" gloss="alright" hand-group="cl" height-group="A" modified="20211004080012306" move-group="hv" tags="" title="ASLSJ Words\jlik-q^h^">
+<pre></pre>
+</div>
+<div created="20211004185927955" gloss="zeal" hand-group="cl" height-group="T" modified="20211004191708115" move-group="qv" tags="" title="ASLSJ Words\jlikTqk-q^zp">
 <pre></pre>
 </div>
 <div created="20211004180113097" gloss="my" hand-group="cl" height-group="A" modified="20211004180138738" move-group="qv" tags="" title="ASLSJ Words\jliM-D">
@@ -14112,6 +14154,9 @@ Used in stories:
 <div created="20211004075714105" modified="20211004075717477" tags="" title="English Gloss\your">
 <pre></pre>
 </div>
+<div created="20211004185939894" modified="20211004185944187" tags="" title="English Gloss\zeal">
+<pre></pre>
+</div>
 <div color="#423fde" created="20210424090522887" modified="20210424090546408" tags="$:/positivesigner/base-install" title="INDEX">
 <pre></pre>
 </div>
@@ -14121,10 +14166,16 @@ Used in stories:
 <div created="20211004062608860" modified="20211004062743972" tags="" title="Story Translations\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;">
 <pre></pre>
 </div>
+<div created="20211004185533139" modified="20211004185840490" tags="" title="Story Translations\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello">
+<pre></pre>
+</div>
 <div created="20211004025434761" modified="20211004044321276" tags="DOC" title="Story Words">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
 <div created="20211004025443165" modified="20211004062238354" tags="" title="Story Words\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;">
+<pre></pre>
+</div>
+<div created="20211004185422864" modified="20211004185508256" tags="" title="Story Words\Random House - American Sign Language Dictionary - Copyright 1994 by Eliane Costello">
 <pre></pre>
 </div>
 <div created="20211004035108789" modified="20211004035127948" tags="DOC" title="Word Search">
@@ -14571,11 +14622,11 @@ zqy - repeat dom-side | repetition direction
 &lt;/$list&gt;&lt;!--code_text--&gt;
 </pre>
 </div>
-<div created="20211004182346701" modified="20211004182825076" tags="" title="zASLSJ Codes\word groups">
+<div created="20211004182346701" modified="20211004185247566" tags="" title="zASLSJ Codes\word groups">
 <pre>&quot;&quot;&quot;
 &lt;h2&gt;handshape&lt;/h2&gt;
 cl = four fingers extended
-cllln = three fingers extended
+clfl = three fingers extended
 clln = two fingers extended
 cln = one finger extended
 cn = no fingers extened
@@ -14585,8 +14636,8 @@ W = forehead
 C = chin
 D = on chest
 Y = elbow
-T = hands touching
-A = hands apart
+T = hands touching in front of chest
+A = hands apart in front of chest
 
 &lt;h2&gt;move&lt;/h2&gt;
 qk = move left/right
@@ -14596,7 +14647,7 @@ qo = rotate wrist
 qe = stay in place
 </pre>
 </div>
-<div created="20211004043558865" modified="20211004083931101" tags="DOC" title="zAudit References">
+<div created="20211004043558865" modified="20211004185303711" tags="DOC" title="zAudit References">
 <pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_story_text=&quot;[get[text]search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g[;],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]match[search_word]]&quot;&gt;
 &lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]sort[]]&quot;&gt;
 &lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
@@ -14632,7 +14683,7 @@ Unused in word glosses: &lt;$link to=&lt;&lt;gloss_card&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--flag_invalid_group--&gt;
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
-&lt;$list variable=flag_invalid_group filter=&quot;[&lt;word_card&gt;get[hand-group]else[]!match[cl]!match[clfln]!match[clln]!match[cln]!match[cn]!match[q]]&quot;&gt;
+&lt;$list variable=flag_invalid_group filter=&quot;[&lt;word_card&gt;get[hand-group]else[]!match[cl]!match[clfl]!match[clln]!match[cln]!match[cn]!match[q]]&quot;&gt;
 
 &lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; Invalid hand group: &lt;&lt;flag_invalid_group&gt;&gt;
 &lt;/$list&gt;&lt;!--flag_invalid_group--&gt;
