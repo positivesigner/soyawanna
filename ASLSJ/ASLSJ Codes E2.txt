@@ -1,7 +1,7 @@
 [Groups]
 - cl, cllln, clln, cln, cn
 - W, C, D, Y, T, A
-- qk, hv, qv, qo, q~
+- qk, hv, qv, qo, qe
 
 handshape = 114
 hand height = 12
