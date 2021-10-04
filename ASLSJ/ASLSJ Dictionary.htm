@@ -843,6 +843,26 @@ Error message and password prompt
 
 <li>Word Search\Move Groups</li>
 
+<li>zASLSJ Codes</li>
+
+<li>zASLSJ Codes\body depth</li>
+
+<li>zASLSJ Codes\body side</li>
+
+<li>zASLSJ Codes\dom-hand apart direction</li>
+
+<li>zASLSJ Codes\hand height</li>
+
+<li>zASLSJ Codes\hand movement direction</li>
+
+<li>zASLSJ Codes\handshape</li>
+
+<li>zASLSJ Codes\palm direction</li>
+
+<li>zASLSJ Codes\repetition direction</li>
+
+<li>zASLSJ Codes\word groups</li>
+
 <li>zAudit References</li>
 
 </ul>
@@ -13098,7 +13118,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20211004043124473" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211004181016277" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211004182827328" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -13113,13 +13133,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20211004181016277" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211004182827328" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211004174105570" list="[[ASLSJ Dictionary]] [[zAudit References]] [[ASLSJ Stories]]" modified="20211004180925783" title="$:/StoryList">
+<div created="20211004182319327" list="[[ASLSJ Dictionary]] [[zASLSJ Codes]] [[zASLSJ Codes\word groups]]" modified="20211004182319327" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -14254,6 +14274,326 @@ Used in stories:
 
 &lt;hr&gt;
 &lt;$list&gt;&lt;!--hd_group--&gt;
+</pre>
+</div>
+<div created="20211004181117278" modified="20211004181342321" tags="DOC" title="zASLSJ Codes">
+<pre>\define aslsj_code()
+A - chest-height | hand height
+AE - away from chest | body depth
+AK - left-side body | body side
+AY - dom-side body | body side
+C - chin height | hand height
+CD - against dom-side chin | hand height
+cfffn - letter-M | handshape
+cffnn - letter-N | handshape
+cfnnf - bent-I-Y | handshape
+cfnnn - bent-closed-L | handshape
+cfufnn - bent-N | handshape
+cfufuff - bent-4 | handshape
+Ch^D - against dom-side eye | hand height
+Ch^qvD - against dom-side ear | hand height
+CKD - against mouth | hand height
+CKh^D - against nose | hand height
+cllll - letter-B | handshape
+cllnn - letter-U | handshape
+clnnl - L-I | handshape
+clnnn - closed-L | handshape
+clulnn - letter-V | handshape
+clulull - number-4 | handshape
+clululn - letter-W | handshape
+cnnnf - bent-I | handshape
+cnnnl - letter-I | handshape
+cnnnn - letter-S | handshape
+ctlnn - letter-R | handshape
+D - against body | body depth
+d^ - base-hand move up | hand movement direction
+dv - base-hand move down | hand movement direction
+fffrf - letter-E | handshape
+frnnn - letter-T | handshape
+h^ - move up | hand movement direction
+HE - dom-hand only | dom-hand apart direction
+Hh^ - dom-hand above | dom-hand apart direction
+Hhv - dom-hand below | dom-hand apart direction
+Hq^ - dom-hand out | dom-hand apart direction
+Hqk - dom-hand base-side | dom-hand apart direction
+Hqv - dom-hand in | dom-hand apart direction
+Hqy - dom-hand dom-side | dom-hand apart direction
+hv - move down | hand movement direction
+ik - dom-palm base-side | palm direction
+iM - dom-palm in | palm direction
+iU - dom-palm up | palm direction
+jffff - bent-open-B | handshape
+jfffn - bent-open-W | handshape
+jffnn - open-N; bent-open-U | handshape
+jflll - open-F | handshape
+jfnnn - bent-L | handshape
+jlfll - open-8 | handshape
+jlfnn - open-K | handshape
+jllfl - open-7 | handshape
+jllll - open-B | handshape
+jllnn - open-U | handshape
+jlnnl - open-L-Y | handshape
+jlnnn - letter-L | handshape
+jlulnn - number-3; open-V | handshape
+jlulull - number-5; open-C | handshape
+jlululn - open-W | handshape
+jnnnl - letter-Y | handshape
+jnnnn - open-A | handshape
+jtfnn - bent-open-R | handshape
+jtlnn - open-R | handshape
+KD - against base-side body | hand height
+llrfl - number-7 | handshape
+lrfff - letter-D | handshape
+lrfll - number-8 | handshape
+lrtnn - letter-K | handshape
+M - dom-palm out | palm direction
+M - dom-palm down | palm direction
+p^ - base-hand move out | hand movement direction
+p~ - base-hand wiggle fingers | hand movement direction
+pD - base-hand against body | hand movement direction
+pe - base-hand stays still | hand movement direction
+pffffj - base-bent-open-B | handshape
+pffffr - base-letter-O | handshape
+pffffy - base-letter-C | handshape
+pfffrl - base-letter-D | handshape
+pfffufr - base-letter-F | handshape
+pffufufc - base-bent-4 | handshape
+pffufufy - base-bent-5; base-bent-C | handshape
+pfnnfc - base-bent-L-I | handshape
+pfnnnc - base-bent-I | handshape
+pfnnny - base-bent-Y | handshape
+pfrfff - base-letter-E | handshape
+pik - base-palm base-side | palm direction
+pk - base-hand move base-side | hand movement direction
+plfllj - base-open-7 | handshape
+plfrll - base-number-7 | handshape
+pllflj - base-open-8 | handshape
+pllfly - base-bent-8 | handshape
+pllfrl - base-number-8 | handshape
+plllfj - base-open-F | handshape
+plllfr - base-letter-F | handshape
+pllllc - base-letter-B | handshape
+pllllj - base-open-B | handshape
+pllululc - base-number-4 | handshape
+pllululj - base-number-5; base-open-C | handshape
+plnnlc - base-L-I | handshape
+plnnlj - base-L-Y | handshape
+plnnnc - base-letter-I | handshape
+plnnnj - base-letter-Y | handshape
+pM - base-palm out | palm direction
+pMi - base-palm in | palm direction
+pnfffc - base-letter-M | handshape
+pnfffj - base-open-M | handshape
+pnlululc - base-letter-W | handshape
+pnlululj - base-open-W | handshape
+pnnffc - base-letter-N | handshape
+pnnffj - base-open-N; base-bent-open-U | handshape
+pnnffr - base-closed-N | handshape
+pnnffy - base-bent-N | handshape
+pnnflj - base-open-K | handshape
+pnnftj - base-bent-open-R | handshape
+pnnfufc - base-bent-V | handshape
+pnnfufy - base-bent-3; base-bent-open-V | handshape
+pnnllc - base-letter-U | handshape
+pnnllj - base-open-U | handshape
+pnnllr - base-flat-open-U | handshape
+pnnltc - base-letter-R | handshape
+pnnltj - base-open-R | handshape
+pnnlulc - base-letter-V | handshape
+pnnlulj - base-open-V | handshape
+pnnnfc - base-letter-X | handshape
+pnnnfj - base-open-X | handshape
+pnnnfr - base-closed-X | handshape
+pnnnfy - base-bent-X | handshape
+pnnnlc - base-closed-L | handshape
+pnnnlj - base-letter-L | handshape
+pnnnlr - base-flat-open-L | handshape
+pnnnnc - base-letter-S | handshape
+pnnnnj - base-open-A | handshape
+pnnnnr - base-letter-A | handshape
+pnnnny - base-bent-A | handshape
+pnnnrf - base-letter-T | handshape
+pnntrl - base-letter-K | handshape
+po - base-hand twist | hand movement direction
+pU - base-palm down | palm direction
+pUi - base-palm up | palm direction
+pv - base-hand move in | hand movement direction
+py - base-hand move dom-side | hand movement direction
+pyi - base-palm dom-side | palm direction
+q^ - dom-hand move out | hand movement direction
+q~ - dom-hand wiggle fingers | hand movement direction
+qD - dom-hand against body | hand movement direction
+qe - dom-hand stays still | hand movement direction
+qk - dom-hand move base-side | hand movement direction
+qo - dom-hand twist | hand movement direction
+qv - dom-hand move in | hand movement direction
+qy - dom-hand move dom-side | hand movement direction
+rffff - letter-O | handshape
+rffnn - letter-N | handshape
+rflll - letter-F | handshape
+rfnnn - closed-X | handshape
+rfufff - bent-F | handshape
+rllnn - flat-open-U | handshape
+rlnnn - flat-open-L | handshape
+rnnnn - letter-A | handshape
+TE - hands apart | dom-hand apart direction
+Th^ - touch up against | dom-hand apart direction
+Th^c - touch up cupped | dom-hand apart direction
+Th^x - touch up weaved | dom-hand apart direction
+Thv - touch down against | dom-hand apart direction
+Thvc - touch down cupped | dom-hand apart direction
+Thvx - touch down weaved | dom-hand apart direction
+Tq^ - touch out against | dom-hand apart direction
+Tq^c - touch out cupped | dom-hand apart direction
+Tq^x - touch out weaved | dom-hand apart direction
+Tqk - touch left against | dom-hand apart direction
+Tqkc - touch left cupped | dom-hand apart direction
+Tqkx - touch left weaved | dom-hand apart direction
+Tqv - touch in against | dom-hand apart direction
+Tqvc - touch in cupped | dom-hand apart direction
+Tqvx - touch in weaved | dom-hand apart direction
+Tqy - touch dom-side against | dom-hand apart direction
+Tqyc - touch dom-side cupped | dom-hand apart direction
+Tqyx - touch dom-side weaved | dom-hand apart direction
+W - forehead height | hand height
+WD - against dom-side forehead | hand height
+Y - away from elbow | hand height
+YD - against elbow | hand height
+yffff - letter-C | handshape
+yffnn - bent-N | handshape
+yfnnn - bent-X | handshape
+yfufnn - bent-open-V; bent-3 | handshape
+yfufuff - bent-number-5; bent-C | handshape
+yi - dom-palm dom-side | palm direction
+ylfll - bent-8 | handshape
+ynnnf - bent-Y | handshape
+ynnnn - bent-A | handshape
+z - dom-hand repeat movement | repetition direction
+zd^ - base-hand repeat up | repetition direction
+zdv - base-hand repeat down | repetition direction
+ze - dom-hand single-movement | repetition direction
+zh^ - repeat up | repetition direction
+zhv - repeat down | repetition direction
+zp - base-hand repeat | repetition direction
+zp^ - base-hand repeat out | repetition direction
+zpe - base-hand single-movement | repetition direction
+zpk - base-hand repeat base-side | repetition direction
+zpv - base-hand repeat down | repetition direction
+zpS - base-hand mirror movement | repetition direction
+zpy - base-hand repeat dom-side | repetition direction
+zq - repeat movement | repetition direction
+zq^ - repeat out | repetition direction
+zqk - repeat base-side | repetition direction
+zqS - repeat mirror movement | repetition direction
+zqv - repeat in | repetition direction
+zqy - repeat dom-side | repetition direction
+\end
+&lt;&lt;glbl_article_list&gt;&gt;
+</pre>
+</div>
+<div created="20211004182212176" modified="20211004182219106" tags="" title="zASLSJ Codes\body depth">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| body depth]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182154167" modified="20211004182204029" tags="" title="zASLSJ Codes\body side">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| body side]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182227648" modified="20211004182233662" tags="" title="zASLSJ Codes\dom-hand apart direction">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| dom-hand apart direction]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182111333" modified="20211004182135628" tags="" title="zASLSJ Codes\hand height">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| hand height]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182252789" modified="20211004182258402" tags="" title="zASLSJ Codes\hand movement direction">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| hand movement direction]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004181139295" modified="20211004182143396" tags="" title="zASLSJ Codes\handshape">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| handshape]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182240212" modified="20211004182246217" tags="" title="zASLSJ Codes\palm direction">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| palm direction]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182304861" modified="20211004182310855" tags="" title="zASLSJ Codes\repetition direction">
+<pre>\import [[zASLSJ Codes]] 
+&quot;&quot;&quot;
+&lt;$vars code_text=&lt;&lt;aslsj_code&gt;&gt; &gt;
+&lt;$list variable=cur_code filter=&quot;[&lt;code_text&gt;splitregexp[\n]suffix[| repetition direction]sort[]]&quot;&gt;
+
+&lt;&lt;cur_code&gt;&gt;
+&lt;/$list&gt;&lt;!--code_text--&gt;
+</pre>
+</div>
+<div created="20211004182346701" modified="20211004182825076" tags="" title="zASLSJ Codes\word groups">
+<pre>&quot;&quot;&quot;
+&lt;h2&gt;handshape&lt;/h2&gt;
+cl = four fingers extended
+cllln = three fingers extended
+clln = two fingers extended
+cln = one finger extended
+cn = no fingers extened
+
+&lt;h2&gt;height&lt;/h2&gt;
+W = forehead
+C = chin
+D = on chest
+Y = elbow
+T = hands touching
+A = hands apart
+
+&lt;h2&gt;move&lt;/h2&gt;
+qk = move left/right
+hv = move up/down
+qv = move in/out
+qo = rotate wrist
+qe = stay in place
 </pre>
 </div>
 <div created="20211004043558865" modified="20211004083931101" tags="DOC" title="zAudit References">
