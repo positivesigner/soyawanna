@@ -361,6 +361,10 @@ Error message and password prompt
 
 <li>$:/this/template English Gloss</li>
 
+<li>$:/this/template Story Translate</li>
+
+<li>$:/this/template Story Words</li>
+
 <li>ASLSJ Dictionary</li>
 
 <li>ASLSJ Stories</li>
@@ -377,9 +381,21 @@ Error message and password prompt
 
 <li>ASLSJ Words\cfnikHh^-qvhvzp</li>
 
+<li>ASLSJ Words\cfniM-D</li>
+
+<li>ASLSJ Words\lrtnCM-Dzhv</li>
+
+<li>ASLSJ Words\q^</li>
+
 <li>English Gloss</li>
 
+<li>English Gloss\(look-audience)</li>
+
 <li>English Gloss\cool-great</li>
+
+<li>English Gloss\Ken-Davis</li>
+
+<li>English Gloss\me-I-am</li>
 
 <li>English Gloss\name</li>
 
@@ -388,6 +404,10 @@ Error message and password prompt
 <li>English Gloss\until-now</li>
 
 <li>INDEX</li>
+
+<li>Story Translations</li>
+
+<li>Story Translations\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;</li>
 
 <li>Story Words</li>
 
@@ -476,7 +496,7 @@ Error message and password prompt
 <div created="20201114120819491" modified="20210307040026909" tags="$:/positivesigner/text-ref" title="$:/config/TextEditor/EnableToolbar">
 <pre>no</pre>
 </div>
-<div created="20210904201057772" modified="20210904203856810" tags="$:/positivesigner/title-button" title="$:/config/Tiddlers/TitleLinks">
+<div created="20210904201057772" modified="20211004063136643" tags="$:/positivesigner/title-button" title="$:/config/Tiddlers/TitleLinks">
 <pre>no</pre>
 </div>
 <div created="20210215152122080" modified="20210307044926466" tags="$:/positivesigner/gcmpr" title="$:/config/ViewToolbarButtons/Visibility/$:/positivesigner/gcmpr/btn gcmpr card">
@@ -12669,7 +12689,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20211004043124473" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211004051943086" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211004071525598" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -12684,13 +12704,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20211004051943087" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211004071525598" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211004050812138" list="[[ASLSJ Dictionary]] [[Word Search]] [[Word Search\Move Groups]] [[Word Search\Hand Groups]] [[Word Search\Height Groups]]" modified="20211004051722708" title="$:/StoryList">
+<div created="20211004065911568" list="[[ASLSJ Dictionary]] [[Story Translations\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;]] [[English Gloss\Ken-Davis]] [[ASLSJ Words\lrtnCM-Dzhv]] [[$:/this/template Story Words]]" modified="20211004071359978" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -12805,30 +12825,32 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20201114120802874" modified="20210411025532488" tags="$:/positivesigner/div-pop" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
 </div>
-<div created="20210904200017308" modified="20210904203856811" tags="$:/positivesigner/title-button" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
+<div created="20210904200017308" modified="20211004063136644" tags="$:/positivesigner/title-button" title="$:/themes/tiddlywiki/vanilla/options/stickytitles">
 <pre>no</pre>
 </div>
-<div created="20211004043857327" modified="20211004044350244" tags="MCR $:/tags/Macro" title="$:/this/mcr glbl_translate">
+<div created="20211004043857327" modified="20211004055026182" tags="MCR $:/tags/Macro" title="$:/this/mcr glbl_translate">
 <pre>\define glbl_translate()
-&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot;&gt;
+&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_lowercase=&quot;[removeprefix[ASLSJ Words\]lowercase[]match[UrWord]]&quot;&gt;
 &lt;$list variable=cur_title filter=&quot;[all[current]]&quot;&gt;
 &lt;$list variable=cur_card filter=&quot;[&lt;cur_title&gt;get[draft.of]else&lt;cur_title&gt;]&quot;&gt;
 &lt;$list variable=story_card filter=&quot;[&lt;cur_card&gt;search-replace[Story Words\],[]addprefix[ASLSJ Stories\]]&quot;&gt;
 &lt;$list variable=story_text filter=&quot;[&lt;story_card&gt;get[text]]&quot;&gt;
-&lt;$list variable=story_word filter=&quot;[&lt;story_text&gt;search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]sort[]each:value[]!match[]]&quot;&gt;
-&lt;$list variable=word_card filter=&quot;[&lt;story_word&gt;addprefix[ASLSJ Words\]]&quot;&gt;
-&lt;$list variable=flag_missing_def filter=&quot;[&lt;word_card&gt;!has[title]]&quot;&gt;
-[&lt;&lt;story_word&gt;&gt;-word]
+&lt;$list variable=search_word filter=&quot;[&lt;story_text&gt;search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]sort[]each:value[]!match[]]&quot;&gt;
+&lt;$list variable=search_exp filter=&quot;[&lt;filter_lowercase&gt;search-replace[UrWord],&lt;search_word&gt;]&quot;&gt;
+&lt;$list variable=flag_missing_def filter=&quot;[prefix[ASLSJ Words\]subfilter&lt;search_exp&gt;count[]match[0]]&quot;&gt;
+[&lt;&lt;search_word&gt;&gt;-word]
 &lt;/$list&gt;&lt;!--flag_missing_def--&gt;
-&lt;$list variable=flag_found_def filter=&quot;[&lt;word_card&gt;has[title]]&quot;&gt;
+&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]filter&lt;search_exp&gt;]&quot;&gt;
+&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
 &lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]else[]]&quot;&gt;
 &lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
 &lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; ( &lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt;&lt;&lt;word_gloss&gt;&gt;&lt;/$link&gt; )
-&lt;/$list&gt;&lt;!--flag_found_def--&gt;
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
-&lt;/$list&gt;&lt;!--word_card--&gt;
 &lt;/$list&gt;&lt;!--story_word--&gt;
+&lt;/$list&gt;&lt;!--word_card--&gt;
+&lt;/$list&gt;&lt;!--search_exp--&gt;
+&lt;/$list&gt;&lt;!--search_word--&gt;
 &lt;/$list&gt;&lt;!--story_text--&gt;
 &lt;/$list&gt;&lt;!--story_card--&gt;
 &lt;/$list&gt;&lt;!--cur_card--&gt;
@@ -12837,8 +12859,9 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 \end
 </pre>
 </div>
-<div created="20211004044520986" modified="20211004045007474" tags="$:/tags/ViewTemplate MCR" title="$:/this/template ASLSJ Word">
-<pre>&lt;$list variable=word_card filter=&quot;[all[current]prefix[ASLSJ Words\]]&quot;&gt;
+<div created="20211004044520986" list-after="$:/core/ui/ViewTemplate/body" modified="20211004063729618" tags="$:/tags/ViewTemplate MCR" title="$:/this/template ASLSJ Word" type="">
+<pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_story_text=&quot;[get[text]search-replace:g[[],[]search-replace:g[lit_cbrkt],[]search-replace:g[lit_qs],[]search-replace:g[lit_qt],[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]match[search_word]count[]!match[0]]&quot;&gt;
+&lt;$list variable=word_card filter=&quot;[all[current]prefix[ASLSJ Words\]]&quot;&gt;
 &lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]]&quot;&gt;
 &lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
 
@@ -12851,10 +12874,26 @@ Height Group: {{!!height-group}}
 Move Group: {{!!move-group}}
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
+
+&lt;hr&gt;
+Used in stories:
+
+&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
+&lt;$list variable=search_word filter=&quot;[&lt;story_word&gt;lowercase[]]&quot;&gt;
+&lt;$list variable=search_exp filter=&quot;[&lt;filter_story_text&gt;search-replace[lit_cbrkt],&lt;lit_cbrkt&gt;search-replace[lit_qs],&lt;lit_qs&gt;search-replace[lit_qt],&lt;lit_qt&gt;search-replace[search_word],&lt;search_word&gt;]&quot;&gt;
+&lt;$list variable=found_story filter=&quot;[prefix[ASLSJ Stories\]filter&lt;search_exp&gt;]&quot;&gt;
+&lt;$list variable=story_title filter=&quot;[&lt;found_story&gt;removeprefix[ASLSJ Stories\]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;found_story&gt;&gt; &gt;&lt;&lt;story_title&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--story_title--&gt;
+&lt;/$list&gt;&lt;!--found_story--&gt;
+&lt;/$list&gt;&lt;!--search_exp--&gt;
+&lt;/$list&gt;&lt;!--search_word--&gt;
+&lt;/$list&gt;&lt;!--story_word--&gt;
 &lt;/$list&gt;&lt;!--word_card--&gt;
 </pre>
 </div>
-<div created="20211004044856339" modified="20211004045315925" tags="$:/tags/ViewTemplate MCR" title="$:/this/template English Gloss">
+<div created="20211004044856339" list-after="$:/core/ui/ViewTemplate/body" modified="20211004061527676" tags="$:/tags/ViewTemplate MCR" title="$:/this/template English Gloss">
 <pre>&lt;$list variable=gloss_card filter=&quot;[all[current]prefix[English Gloss\]]&quot;&gt;
 &lt;$list variable=word_gloss filter=&quot;[&lt;gloss_card&gt;removeprefix[English Gloss\]]&quot;&gt;
 &lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]gloss&lt;word_gloss&gt;sort[]]&quot;&gt;
@@ -12864,6 +12903,64 @@ Move Group: {{!!move-group}}
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
+</pre>
+</div>
+<div created="20211004060614537" list-after="$:/core/ui/ViewTemplate/body" modified="20211004062812299" tags="$:/tags/ViewTemplate MCR" title="$:/this/template Story Translate">
+<pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_lowercase=&quot;[removeprefix[ASLSJ Words\]lowercase[]match[UrWord]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[all[current]prefix[Story Translations\]]&quot;&gt;
+&lt;$list variable=story_card filter=&quot;[&lt;cur_card&gt;removeprefix[Story Translations\]addprefix[ASLSJ Stories\]]&quot;&gt;
+&lt;$list variable=story_text filter=&quot;[&lt;story_card&gt;get[text]]&quot;&gt;
+&lt;$list variable=search_word filter=&quot;[&lt;story_text&gt;search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ \n ]split[ ]lowercase[]!match[]]&quot;&gt;
+&lt;$list variable=found_lf filter=&quot;[&lt;search_word&gt;match[\n]]&quot;&gt;
+&lt;br&gt;
+&lt;/$list&gt;&lt;!--found_lf--&gt;
+&lt;$list variable=non_lf filter=&quot;[&lt;search_word&gt;!match[\n]]&quot;&gt;
+&lt;$list variable=search_exp filter=&quot;[&lt;filter_lowercase&gt;search-replace[UrWord],&lt;search_word&gt;]&quot;&gt;
+&lt;$list variable=flag_missing_def filter=&quot;[prefix[ASLSJ Words\]subfilter&lt;search_exp&gt;count[]match[0]]&quot;&gt;
+[&lt;&lt;search_word&gt;&gt;-word]
+&lt;/$list&gt;&lt;!--flag_missing_def--&gt;
+&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]filter&lt;search_exp&gt;]&quot;&gt;
+&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
+&lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]else[]]&quot;&gt;
+&lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
+&lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt;&lt;&lt;word_gloss&gt;&gt;&lt;/$link&gt;
+&lt;/$list&gt;&lt;!--gloss_card--&gt;
+&lt;/$list&gt;&lt;!--word_gloss--&gt;
+&lt;/$list&gt;&lt;!--story_word--&gt;
+&lt;/$list&gt;&lt;!--word_card--&gt;
+&lt;/$list&gt;&lt;!--search_exp--&gt;
+&lt;/$list&gt;&lt;!--non_lf--&gt;
+&lt;/$list&gt;&lt;!--search_word--&gt;
+&lt;/$list&gt;&lt;!--story_text--&gt;
+&lt;/$list&gt;&lt;!--story_card--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+</pre>
+</div>
+<div created="20211004062125227" list-after="$:/core/ui/ViewTemplate/body" modified="20211004071520495" tags="$:/tags/ViewTemplate MCR" title="$:/this/template Story Words">
+<pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_lowercase=&quot;[removeprefix[ASLSJ Words\]lowercase[]match[UrWord]]&quot;&gt;
+&lt;$list variable=cur_card filter=&quot;[all[current]prefix[Story Words\]]&quot;&gt;
+&lt;$list variable=story_card filter=&quot;[&lt;cur_card&gt;removeprefix[Story Words\]addprefix[ASLSJ Stories\]]&quot;&gt;
+&lt;$list variable=story_text filter=&quot;[&lt;story_card&gt;get[text]]&quot;&gt;
+&lt;$list variable=cur_word filter=&quot;[&lt;story_text&gt;search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]sort[]each:value[]!match[]]&quot;&gt;
+&lt;$list variable=search_word filter=&quot;[&lt;cur_word&gt;lowercase[]]&quot;&gt;
+&lt;$list variable=search_exp filter=&quot;[&lt;filter_lowercase&gt;search-replace[UrWord],&lt;search_word&gt;]&quot;&gt;
+&lt;$list variable=flag_missing_def filter=&quot;[prefix[ASLSJ Words\]subfilter&lt;search_exp&gt;count[]match[0]]&quot;&gt;
+[&lt;&lt;cur_word&gt;&gt;-word]
+&lt;/$list&gt;&lt;!--flag_missing_def--&gt;
+&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]filter&lt;search_exp&gt;]&quot;&gt;
+&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
+&lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]else[]]&quot;&gt;
+&lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
+&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; ( &lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt;&lt;&lt;word_gloss&gt;&gt;&lt;/$link&gt; )
+&lt;/$list&gt;&lt;!--gloss_card--&gt;
+&lt;/$list&gt;&lt;!--word_gloss--&gt;
+&lt;/$list&gt;&lt;!--story_word--&gt;
+&lt;/$list&gt;&lt;!--word_card--&gt;
+&lt;/$list&gt;&lt;!--search_exp--&gt;
+&lt;/$list&gt;&lt;!--search_word--&gt;
+&lt;/$list&gt;&lt;!--story_text--&gt;
+&lt;/$list&gt;&lt;!--story_card--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
 </pre>
 </div>
 <div created="20201114051300267" modified="20211004043447456" tags="INDEX" title="ASLSJ Dictionary">
@@ -12904,7 +13001,7 @@ Move Group: {{!!move-group}}
 <pre>&lt;&lt;glbl_article_list&gt;&gt;
 </pre>
 </div>
-<div created="20211004031348241" gloss="name" hand-group="clln" height-group="T" modified="20211004034413176" move-group="hv" tags="" title="ASLSJ Words\cffnik-Thvcz">
+<div created="20211004031348241" gloss="name" hand-group="clln" height-group="T" modified="20211004071113362" move-group="hv" tags="" title="ASLSJ Words\cffnik-Thvcz">
 <pre></pre>
 </div>
 <div created="20211004034639667" gloss="cool-great" hand-group="cln" height-group="C" modified="20211004051237297" move-group="qo" tags="" title="ASLSJ Words\cfnCik-qo-iM">
@@ -12916,11 +13013,29 @@ Move Group: {{!!move-group}}
 <div created="20211004035016575" gloss="sign-name" hand-group="cln" height-group="A" modified="20211004035049545" move-group="hv" tags="" title="ASLSJ Words\cfnikHh^-qvhvzp">
 <pre></pre>
 </div>
+<div created="20211004052235589" gloss="me-I-am" hand-group="cln" height-group="D" modified="20211004052336377" move-group="qv" tags="" title="ASLSJ Words\cfniM-D">
+<pre></pre>
+</div>
+<div created="20211004061803447" gloss="Ken-Davis" hand-group="clln" height-group="C" modified="20211004061902410" move-group="hv" tags="" title="ASLSJ Words\lrtnCM-Dzhv">
+<pre></pre>
+</div>
+<div created="20211004071204876" gloss="(look-audience)" hand-group="q" height-group="A" modified="20211004071231938" move-group="q~" tags="" title="ASLSJ Words\q^">
+<pre></pre>
+</div>
 <div created="20211004034556677" modified="20211004043623874" tags="DOC" title="English Gloss">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;
 </pre>
 </div>
+<div created="20211004071133331" modified="20211004071200588" tags="" title="English Gloss\(look-audience)">
+<pre></pre>
+</div>
 <div created="20211004034807184" modified="20211004034819954" tags="" title="English Gloss\cool-great">
+<pre></pre>
+</div>
+<div created="20211004061941925" modified="20211004061957606" tags="" title="English Gloss\Ken-Davis">
+<pre></pre>
+</div>
+<div created="20211004052340525" modified="20211004052346322" tags="" title="English Gloss\me-I-am">
 <pre></pre>
 </div>
 <div created="20211004031522349" modified="20211004034437668" tags="" title="English Gloss\name">
@@ -12935,11 +13050,17 @@ Move Group: {{!!move-group}}
 <div color="#423fde" created="20210424090522887" modified="20210424090546408" tags="$:/positivesigner/base-install" title="INDEX">
 <pre></pre>
 </div>
+<div created="20211004062622857" modified="20211004062738793" tags="DOC" title="Story Translations">
+<pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
+</div>
+<div created="20211004062608860" modified="20211004062743972" tags="" title="Story Translations\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;">
+<pre></pre>
+</div>
 <div created="20211004025434761" modified="20211004044321276" tags="DOC" title="Story Words">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20211004025443165" modified="20211004044324594" tags="" title="Story Words\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;">
-<pre>&lt;&lt;glbl_translate&gt;&gt;</pre>
+<div created="20211004025443165" modified="20211004062238354" tags="" title="Story Words\Deaf Newspaper - An Interview with Sarah Davis - &quot;Meet a Deaf Person&quot;">
+<pre></pre>
 </div>
 <div created="20211004035108789" modified="20211004035127948" tags="DOC" title="Word Search">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
@@ -13090,17 +13211,22 @@ Move Group: {{!!move-group}}
 &lt;$list&gt;&lt;!--hd_group--&gt;
 </pre>
 </div>
-<div created="20211004043558865" modified="20211004044134080" tags="DOC" title="zAudit References">
-<pre>&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]sort[]]&quot;&gt;
+<div created="20211004043558865" modified="20211004071253500" tags="DOC" title="zAudit References">
+<pre>&lt;$vars lit_cbrkt=&quot;]&quot; lit_qs='&quot;' lit_qt=&quot;'&quot; filter_story_text=&quot;[get[text]search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]lowercase[]match[search_word]]&quot;&gt;
+&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]sort[]]&quot;&gt;
 &lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
-&lt;$list variable=flag_missing_story filter=&quot;[prefix[ASLSJ Stories\]get[text]search-replace:g[[],[]search-replace:g&lt;lit_cbrkt&gt;,[]search-replace:g&lt;lit_qs&gt;,[]search-replace:g&lt;lit_qt&gt;,[]search-replace:g[.],[]search-replace:g[,],[]search-replace:g[!],[]search-replace:g[?],[]search-replace:g[:],[]search-replace:g:regexp[\d],[]search-replace:g:regexp[\n],[ ]split[ ]match&lt;story_word&gt;count[]match[0]]&quot;&gt;
+&lt;$list variable=search_word filter=&quot;[&lt;story_word&gt;lowercase[]]&quot;&gt;
+&lt;$list variable=search_exp filter=&quot;[&lt;filter_story_text&gt;search-replace[search_word],&lt;search_word&gt;]&quot;&gt;
+&lt;$list variable=flag_missing_story filter=&quot;[prefix[ASLSJ Stories\]subfilter&lt;search_exp&gt;count[]match[0]]&quot;&gt;
 
 Unused in stories: &lt;$link to=&lt;&lt;word_card&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--flag_missing_story--&gt;
+&lt;/$list&gt;&lt;!--search_exp--&gt;
+&lt;/$list&gt;&lt;!--search_word--&gt;
 &lt;/$list&gt;&lt;!--story_word--&gt;
 &lt;/$list&gt;&lt;!--word_card--&gt;
 
----
+&lt;hr&gt;
 &lt;$list variable=gloss_card filter=&quot;[prefix[English Gloss\]]&quot;&gt;
 &lt;$list variable=word_gloss filter=&quot;[&lt;gloss_card&gt;removeprefix[English Gloss\]]&quot;&gt;
 &lt;$list variable=flag_missing_word filter=&quot;[prefix[ASLSJ Words]gloss&lt;word_gloss&gt;count[]match[0]]&quot;&gt;
@@ -13109,6 +13235,31 @@ Unused in word glosses: &lt;$link to=&lt;&lt;gloss_card&gt;&gt; /&gt;
 &lt;/$list&gt;&lt;!--flag_missing_word--&gt;
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
+
+&lt;hr&gt;
+&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]sort[]]&quot;&gt;
+&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
+&lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]else[]]&quot;&gt;
+&lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
+&lt;$list variable=flag_invalid_group filter=&quot;[&lt;gloss_card&gt;!has[title]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; Invalid gloss: &lt;&lt;word_gloss&gt;&gt;
+&lt;/$list&gt;&lt;!--flag_invalid_group--&gt;
+&lt;/$list&gt;&lt;!--gloss_card--&gt;
+&lt;/$list&gt;&lt;!--word_gloss--&gt;
+&lt;$list variable=flag_invalid_group filter=&quot;[&lt;word_card&gt;get[hand-group]else[]!match[cl]!match[cllln]!match[clln]!match[cln]!match[cn]!match[q]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; Invalid hand group: &lt;&lt;flag_invalid_group&gt;&gt;
+&lt;/$list&gt;&lt;!--flag_invalid_group--&gt;
+&lt;$list variable=flag_invalid_group filter=&quot;[&lt;word_card&gt;get[height-group]else[]!match[W]!match[C]!match[D]!match[Y]!match[T]!match[A]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; Invalid height group: &lt;&lt;flag_invalid_group&gt;&gt;
+&lt;/$list&gt;&lt;!--flag_invalid_group--&gt;
+&lt;$list variable=flag_invalid_group filter=&quot;[&lt;word_card&gt;get[move-group]else[]!match[qk]!match[hv]!match[qv]!match[qo]!match[q~]]&quot;&gt;
+
+&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; Invalid move group: &lt;&lt;flag_invalid_group&gt;&gt;
+&lt;/$list&gt;&lt;!--flag_invalid_group--&gt;
+&lt;/$list&gt;&lt;!--word_card--&gt;
 </pre>
 </div>
 
