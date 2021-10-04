@@ -1,5 +1,5 @@
 [Groups]
-- clulull, clululn, clulnn, clnnn, cnnnn
+- cl, cllln, clln, cln, cn
 - W, C, D, Y, T, A
 - qk, hv, qv, qo, q~
 
