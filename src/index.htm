@@ -13537,10 +13537,11 @@ Rem to browse: &lt;$list filter=&quot;[{$ur_temp_remcounter_pk$}]&quot;&gt;&lt;/
 &lt;$link to=&quot;$:/img/$ur_image_pk$&quot;&gt;&lt;$image alt=&quot;$ur_image_pk$&quot; width=&quot;$ur_size$px&quot; source=&quot;$:/img/$ur_image_pk$&quot; /&gt;&lt;/$link&gt;
 \end</pre>
 </div>
-<div created="20211002222025410" modified="20211003004506081" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/text-ref/mcr twrap">
+<div created="20211002222025410" modified="20211007013345665" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/text-ref/mcr twrap">
 <pre>\define twrap(ur_text, ur_col_count:1)
+&lt;!--2021m10d06--&gt;
 &lt;$vars cur_text=&quot;&quot;&quot;$ur_text$&quot;&quot;&quot;&gt;
-&lt;div style=&quot;column-count:$ur_col_count$;&quot;&gt;
+&lt;div style=&quot;column-count:$ur_col_count$;margin-left:1em&quot;&gt;
 &lt;$list variable=cur_line filter=&quot;[&lt;cur_text&gt;split[.
 ]]&quot;&gt;
 &lt;div style=&quot;white-space:pre-wrap;text-indent:-1em;&quot;&gt;&lt;&lt;cur_line&gt;&gt;&lt;/div&gt;
@@ -13935,7 +13936,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20211003010622370" modified="20211003015216094" title="$:/state/ShowPaletteEditor">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211004021338000" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211007013347601" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -13950,13 +13951,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20211004021338001" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211007013347601" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211004020902105" list="[[Automation Scripting]] INDEX $:/positivesigner/base-install $:/positivesigner/text-ref [[$:/positivesigner/text-ref/mcr DynamicTables]]" modified="20211004021325287" title="$:/StoryList">
+<div created="20211007013308539" list="[[Automation Scripting]] INDEX $:/positivesigner/tag [[$:/positivesigner/text-ref/mcr twrap]]" modified="20211007013318799" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
