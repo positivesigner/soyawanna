@@ -13546,7 +13546,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20211004043124473" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211009114836658" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211009122039655" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -13561,13 +13561,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20211009114836659" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211009122039655" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211009113459888" list="[[Word Search\Gloss Spelling]]" modified="20211009113459888" title="$:/StoryList">
+<div created="20211009115326164" list="[[ASLSJ Dictionary]] [[Word Search]] [[Word Search\Height Groups]]" modified="20211009121822806" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -15374,10 +15374,59 @@ Clear filter
 &lt;/$list&gt;&lt;!--cur_group--&gt;
 </pre>
 </div>
-<div created="20211004035130963" modified="20211004051659117" tags="" title="Word Search\Hand Groups">
-<pre>&lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]get[hand-group]sort[]each:value[]]&quot;&gt;
+<div created="20211004035130963" modified="20211009121923625" tags="" title="Word Search\Hand Groups">
+<pre>&lt;$vars filter_card=&quot;$:/state/popup/HandGroups&quot;&gt;
+&lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]get[hand-group]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&lt;&lt;hd_group&gt;&gt; /&gt;
+&lt;&lt;hd_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--hd_group--&gt;
+
+&lt;$list variable=filter_hd filter=&quot;[&lt;filter_card&gt;get[hd]!match[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&quot;&quot; /&gt;
+Clear
+&lt;/$button&gt;
+&lt;br&gt;
+&lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;filter_hd&gt;get[move-group]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&lt;&lt;mv_group&gt;&gt; /&gt;
+&lt;&lt;mv_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--mv_group--&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&quot;&quot; /&gt;
+Clear
+&lt;/$button&gt;
+&lt;br&gt;
+&lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;filter_hd&gt;get[height-group]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&lt;&lt;ht_group&gt;&gt; /&gt;
+&lt;&lt;ht_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--ht_group--&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&quot;&quot; /&gt;
+Clear
+&lt;/$button&gt;
+&lt;br&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&quot;&quot; /&gt;
+Clear filter
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--filter_hd--&gt;
+
+&lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]get[hand-group]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_hd filter=&quot;[&lt;filter_card&gt;get[hd]else&lt;hd_group&gt;match&lt;hd_group&gt;]&quot;&gt;
 &lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;get[move-group]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_mv filter=&quot;[&lt;filter_card&gt;get[mv]else&lt;mv_group&gt;match&lt;mv_group&gt;]&quot;&gt;
 &lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;move-group&lt;mv_group&gt;get[height-group]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_ht filter=&quot;[&lt;filter_card&gt;get[ht]else&lt;ht_group&gt;match&lt;ht_group&gt;]&quot;&gt;
 
 &lt;h2&gt;&lt;&lt;hd_group&gt;&gt;-&lt;&lt;mv_group&gt;&gt;-&lt;&lt;ht_group&gt;&gt;&lt;/h2&gt;
 
@@ -15391,35 +15440,69 @@ Clear filter
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
 &lt;/$list&gt;&lt;!--story_word--&gt;
 &lt;/$list&gt;&lt;!--word_card--&gt;
+&lt;/$list&gt;&lt;!--filter_ht--&gt;
 &lt;/$list&gt;&lt;!--ht_group--&gt;
+&lt;/$list&gt;&lt;!--filter_mv--&gt;
 &lt;/$list&gt;&lt;!--mv_group--&gt;
-
-&lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;get[height-group]sort[]each:value[]]&quot;&gt;
-&lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;height-group&lt;ht_group&gt;get[move-group]sort[]each:value[]]&quot;&gt;
-
-&lt;h2&gt;&lt;&lt;hd_group&gt;&gt;-&lt;&lt;ht_group&gt;&gt;-&lt;&lt;mv_group&gt;&gt;&lt;/h2&gt;
-
-&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;height-group&lt;ht_group&gt;move-group&lt;mv_group&gt;sort[]]&quot;&gt;
-&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
-&lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]]&quot;&gt;
-&lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
-
-&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; ( &lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt;&lt;&lt;word_gloss&gt;&gt;&lt;/$link&gt; )
-&lt;/$list&gt;&lt;!--gloss_card--&gt;
-&lt;/$list&gt;&lt;!--word_gloss--&gt;
-&lt;/$list&gt;&lt;!--story_word--&gt;
-&lt;/$list&gt;&lt;!--word_card--&gt;
-&lt;/$list&gt;&lt;!--mv_group--&gt;
-&lt;/$list&gt;&lt;!--ht_group--&gt;
 
 &lt;hr&gt;
-&lt;$list&gt;&lt;!--hd_group--&gt;
+&lt;/$list&gt;&lt;!--filter_hd--&gt;
+&lt;/$list&gt;&lt;!--hd_group--&gt;
 </pre>
 </div>
-<div created="20211004035854155" modified="20211004051617859" tags="" title="Word Search\Height Groups">
-<pre>&lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]get[height-group]sort[]each:value[]]&quot;&gt;
+<div created="20211004035854155" modified="20211009122010756" tags="" title="Word Search\Height Groups">
+<pre>&lt;$vars filter_card=&quot;$:/state/popup/HandGroups&quot;&gt;
+&lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]get[height-group]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&lt;&lt;ht_group&gt;&gt; /&gt;
+&lt;&lt;ht_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--ht_group--&gt;
+
+&lt;$list variable=filter_ht filter=&quot;[&lt;filter_card&gt;get[ht]!match[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&quot;&quot; /&gt;
+Clear
+&lt;/$button&gt;
+&lt;br&gt;
+&lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]height-group&lt;filter_ht&gt;get[move-group]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&lt;&lt;mv_group&gt;&gt; /&gt;
+&lt;&lt;mv_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--mv_group--&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&quot;&quot; /&gt;
+Clear
+&lt;/$button&gt;
+&lt;br&gt;
+&lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]height-group&lt;filter_ht&gt;get[hand-group]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&lt;&lt;hd_group&gt;&gt; /&gt;
+&lt;&lt;hd_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--hd_group--&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&quot;&quot; /&gt;
+Clear
+&lt;/$button&gt;
+&lt;br&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; hd=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; mv=&quot;&quot; /&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; ht=&quot;&quot; /&gt;
+Clear filter
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--filter_ht--&gt;
+
+&lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]get[height-group]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_ht filter=&quot;[&lt;filter_card&gt;get[ht]else&lt;ht_group&gt;match&lt;ht_group&gt;]&quot;&gt;
 &lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]height-group&lt;ht_group&gt;get[move-group]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_mv filter=&quot;[&lt;filter_card&gt;get[mv]else&lt;mv_group&gt;match&lt;mv_group&gt;]&quot;&gt;
 &lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]height-group&lt;ht_group&gt;move-group&lt;mv_group&gt;get[hand-group]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_hd filter=&quot;[&lt;filter_card&gt;get[hd]else&lt;hd_group&gt;match&lt;hd_group&gt;]&quot;&gt;
 
 &lt;h2&gt;&lt;&lt;ht_group&gt;&gt;-&lt;&lt;mv_group&gt;&gt;-&lt;&lt;hd_group&gt;&gt;&lt;/h2&gt;
 
@@ -15433,32 +15516,17 @@ Clear filter
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
 &lt;/$list&gt;&lt;!--story_word--&gt;
 &lt;/$list&gt;&lt;!--word_card--&gt;
-&lt;/$list&gt;&lt;!--ht_group--&gt;
+&lt;/$list&gt;&lt;!--filter_hd--&gt;
+&lt;/$list&gt;&lt;!--hd_group--&gt;
+&lt;/$list&gt;&lt;!--filter_mv--&gt;
 &lt;/$list&gt;&lt;!--mv_group--&gt;
-
-&lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]height-group&lt;ht_group&gt;get[hand-group]sort[]each:value[]]&quot;&gt;
-&lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;height-group&lt;ht_group&gt;get[move-group]sort[]each:value[]]&quot;&gt;
-
-&lt;h2&gt;&lt;&lt;ht_group&gt;&gt;-&lt;&lt;hd_group&gt;&gt;-&lt;&lt;mv_group&gt;&gt;&lt;/h2&gt;
-
-&lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]hand-group&lt;hd_group&gt;height-group&lt;ht_group&gt;move-group&lt;mv_group&gt;sort[]]&quot;&gt;
-&lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
-&lt;$list variable=word_gloss filter=&quot;[&lt;word_card&gt;get[gloss]]&quot;&gt;
-&lt;$list variable=gloss_card filter=&quot;[&lt;word_gloss&gt;addprefix[English Gloss\]]&quot;&gt;
-
-&lt;$link to=&lt;&lt;word_card&gt;&gt; &gt;&lt;&lt;story_word&gt;&gt;&lt;/$link&gt; ( &lt;$link to=&lt;&lt;gloss_card&gt;&gt; &gt;&lt;&lt;word_gloss&gt;&gt;&lt;/$link&gt; )
-&lt;/$list&gt;&lt;!--gloss_card--&gt;
-&lt;/$list&gt;&lt;!--word_gloss--&gt;
-&lt;/$list&gt;&lt;!--story_word--&gt;
-&lt;/$list&gt;&lt;!--word_card--&gt;
-&lt;/$list&gt;&lt;!--mv_group--&gt;
-&lt;/$list&gt;&lt;!--ht_group--&gt;
 
 &lt;hr&gt;
-&lt;$list&gt;&lt;!--hd_group--&gt;
+&lt;/$list&gt;&lt;!--filter_ht--&gt;
+&lt;/$list&gt;&lt;!--ht_group--&gt;
 </pre>
 </div>
-<div created="20211004040003523" modified="20211004051905208" tags="" title="Word Search\Move Groups">
+<div created="20211004040003523" modified="20211009115350026" tags="" title="Word Search\Move Groups">
 <pre>&lt;$list variable=mv_group filter=&quot;[prefix[ASLSJ Words\]get[move-group]sort[]each:value[]]&quot;&gt;
 &lt;$list variable=ht_group filter=&quot;[prefix[ASLSJ Words\]move-group&lt;mv_group&gt;get[height-group]sort[]each:value[]]&quot;&gt;
 &lt;$list variable=hd_group filter=&quot;[prefix[ASLSJ Words\]move-group&lt;mv_group&gt;height-group&lt;ht_group&gt;get[hand-group]sort[]each:value[]]&quot;&gt;
@@ -15497,7 +15565,7 @@ Clear filter
 &lt;/$list&gt;&lt;!--mv_group--&gt;
 
 &lt;hr&gt;
-&lt;$list&gt;&lt;!--hd_group--&gt;
+&lt;/$list&gt;&lt;!--hd_group--&gt;
 </pre>
 </div>
 <div created="20211004181117278" modified="20211004181342321" tags="DOC" title="zASLSJ Codes">
