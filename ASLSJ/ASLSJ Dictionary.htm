@@ -13546,7 +13546,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210411090905404" modified="20211004043124473" tags="$:/positivesigner/preview-button" title="$:/state/showeditpreview">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211009112219707" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211009114836658" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210519102243361" modified="20210519102243361" title="$:/state/tab--1498284803">
@@ -13561,13 +13561,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210411032805480" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/Tags</pre>
 </div>
-<div created="20210307044348912" modified="20211009112219707" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211009114836659" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211004191754198" list="[[ASLSJ Dictionary]] [[zAudit References]] [[Story Translations\Clerc Books - The American Sign Language Handshape Dictionary - Copyright 1998 by Gallaudet University (Tennant, Brown)]]" modified="20211009111812140" title="$:/StoryList">
+<div created="20211009113459888" list="[[Word Search\Gloss Spelling]]" modified="20211009113459888" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -15338,13 +15338,28 @@ female
 <div created="20211004035108789" modified="20211004035127948" tags="DOC" title="Word Search">
 <pre>&lt;&lt;glbl_article_list&gt;&gt;</pre>
 </div>
-<div created="20211004040037750" modified="20211004082735983" tags="" title="Word Search\Gloss Spelling">
-<pre>&lt;$vars filter_letter_first=&quot;([a-zA-Z])[a-zA-Z]*-&quot;&gt;
-&lt;$list variable=cur_group filter=&quot;[[(]] [prefix[ASLSJ Words\]get[gloss]!prefix[(]search-replace:g[-],[]search-replace:g['],[]join[-]addsuffix[-]splitregexp&lt;filter_letter_first&gt;!match[]sort[]each:value[]]&quot;&gt;
+<div created="20211004040037750" modified="20211009114834055" tags="" title="Word Search\Gloss Spelling">
+<pre>&lt;$vars filter_letter_first=&quot;([a-zA-Z])[a-zA-Z]*-&quot; filter_card=&quot;$:/state/popup/GlossSpelling&quot;&gt;
+&lt;$list variable=cur_group filter=&quot;[[(]] [prefix[ASLSJ Words\]get[gloss]!prefix[(]!prefix[handshape]search-replace:g[-],[]search-replace:g['],[]join[-]addsuffix[-]splitregexp&lt;filter_letter_first&gt;!match[]lowercase[]sort[]each:value[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; text=&lt;&lt;cur_group&gt;&gt; /&gt;
+&lt;&lt;cur_group&gt;&gt;
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--cur_group--&gt;
+&lt;br&gt;
+&lt;$list variable=filter_group filter=&quot;[&lt;filter_card&gt;get[text]!match[]]&quot;&gt;
+&lt;$button&gt;
+&lt;$action-setfield $tiddler=&lt;&lt;filter_card&gt;&gt; text=&quot;&quot; /&gt;
+Clear filter
+&lt;/$button&gt;
+&lt;/$list&gt;&lt;!--filter_group--&gt;
+
+&lt;$list variable=cur_group filter=&quot;[[(]] [prefix[ASLSJ Words\]get[gloss]!prefix[(]!prefix[handshape]search-replace:g[-],[]search-replace:g['],[]join[-]addsuffix[-]splitregexp&lt;filter_letter_first&gt;!match[]lowercase[]sort[]each:value[]]&quot;&gt;
+&lt;$list variable=filter_group  filter=&quot;[&lt;filter_card&gt;get[text]else&lt;cur_group&gt;match&lt;cur_group&gt;]&quot;&gt;
 
 &lt;h2&gt;&lt;&lt;cur_group&gt;&gt;&lt;/h2&gt;
-&lt;$list variable=prefix_text filter=&quot;[[English Gloss\]addsuffix&lt;cur_group&gt;]&quot;&gt;
-&lt;$list variable=gloss_card filter=&quot;[prefix&lt;prefix_text&gt;sort[]]&quot;&gt;
+&lt;$list variable=gloss_card filter=&quot;[prefix[English Gloss\]sort[]]&quot;&gt;
+&lt;$list variable=filter_prefix filter=&quot;[&lt;gloss_card&gt;split[\]butfirst[]first[]split[]first[]lowercase[]match&lt;cur_group&gt;]&quot;&gt;
 &lt;$list variable=word_gloss filter=&quot;[&lt;gloss_card&gt;removeprefix[English Gloss\]]&quot;&gt;
 &lt;$list variable=word_card filter=&quot;[prefix[ASLSJ Words\]gloss&lt;word_gloss&gt;]&quot;&gt;
 &lt;$list variable=story_word filter=&quot;[&lt;word_card&gt;removeprefix[ASLSJ Words\]]&quot;&gt;
@@ -15353,9 +15368,10 @@ female
 &lt;/$list&gt;&lt;!--story_word--&gt;
 &lt;/$list&gt;&lt;!--word_card--&gt;
 &lt;/$list&gt;&lt;!--word_gloss--&gt;
+&lt;/$list&gt;&lt;!--filter_prefix--&gt;
 &lt;/$list&gt;&lt;!--gloss_card--&gt;
-&lt;/$list&gt;&lt;!--prefix_text--&gt;
-&lt;$list&gt;&lt;!--cur_group--&gt;
+&lt;/$list&gt;&lt;!--filter_group--&gt;
+&lt;/$list&gt;&lt;!--cur_group--&gt;
 </pre>
 </div>
 <div created="20211004035130963" modified="20211004051659117" tags="" title="Word Search\Hand Groups">
