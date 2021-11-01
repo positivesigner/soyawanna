@@ -1,15 +1,5 @@
 namespace Mx
 {
-    //public class enmE1 : bitbase
-        //public static enmE1 rec_type { get; set; } = new enmE1();
-    //public static class ttb
-        //public static bitbase<enmE1>.table_row e1 { get; set; } = new bitbase<enmE1>.table_row();
-    //ttb.e1.Persist_Read(UrTSVFilePath);
-    //var new_row = ttb.e1.add_row();
-    //new_row[enmE1.rec_type] = UrText;
-    //var str_ttbE1 = ttb.e1.Format_Table(true);
-    //ttb.e1.Persist_Write(UrTSVFilePath);
-
     public class bitbase
     {
         public string pname { get; set; }
@@ -174,6 +164,58 @@ namespace Mx
                     this.Add(entry, "");
                 }
             }
+            public T[] CompileColumnArray(params T[] ur_col_list)
+            {
+                return ur_col_list;
+            }
+
+            public DecimalEnum dec
+            {
+                get
+                {
+                    return new DecimalEnum(this);
+                }
+            }
+            public class DecimalEnum
+            {
+                public row_enum parent_row;
+                public DecimalEnum(row_enum ur_parent_row)
+                {
+                    this.parent_row = ur_parent_row;
+                }
+
+                public decimal this[T ur_key]
+                {
+                    get
+                    {
+                        return parent_row.GetDecimal(ur_key);
+                    }
+                }
+            }
+            public DateEnum date
+            {
+                get
+                {
+                    return new DateEnum(this);
+                }
+            }
+
+            public class DateEnum
+            {
+                public row_enum parent_row;
+                public DateEnum(row_enum ur_parent_row)
+                {
+                    this.parent_row = ur_parent_row;
+                }
+
+                public System.DateTime this[T ur_key]
+                {
+                    get
+                    {
+                        return parent_row.GetDate(ur_key);
+                    }
+                }
+            }
             [System.Diagnostics.DebuggerStepThrough]
             public string Format_Table(bool ur_hdr, bool ur_quoted = true)
             {
@@ -242,6 +284,25 @@ namespace Mx
 
                 ur_stp.AppendLine();
             }
+            public decimal GetDecimal(T ur_col)
+            {
+                var s_qty = this[ur_col];
+                decimal d_qty = 0;
+                decimal.TryParse(s_qty, out d_qty);
+                return d_qty;
+            }
+            public System.DateTime GetDate(T ur_col)
+            {
+                var s_date = this[ur_col];
+                if (string.IsNullOrWhiteSpace(s_date) == false && s_date.Contains("-") == false && s_date.Contains("/") == false)
+                {
+                    s_date = $"{s_date.Substring(0, 4)}-{s_date.Substring(4, 2)}-{s_date.Substring(6, s_date.Length - 6)}";
+                }
+
+                var date_val = System.DateTime.MinValue;
+                System.DateTime.TryParse(s_date, out date_val);
+                return date_val;
+            }
             [System.Diagnostics.DebuggerStepThrough]
             public System.Collections.Generic.List<T> RefKeys()
             {
@@ -260,17 +321,58 @@ namespace Mx
 
         public class table_row : System.Collections.Generic.List<bitbase<T>.row_enum>
         {
+            public table_row()
+            {
+                bitbase<T>.populate_bitbase();
+            }
             [System.Diagnostics.DebuggerStepThrough]
-            public bitbase<T>.row_enum add_row()
+            public row_enum add_row()
             {
                 var ret_row = new row_enum();
                 this.Add(ret_row);
                 return ret_row;
             }
-            [System.Diagnostics.DebuggerStepThrough]
-            public bitbase<T>.table_row Filter(T ur_col, string ur_text)
+
+            public T[] CompileColumnArray(params T[] ur_col_list)
             {
-                var ret_table = new bitbase<T>.table_row();
+                return ur_col_list;
+            }
+
+            public System.Collections.Generic.List<string> CompileFilterStrings(T[] ur_col_list, string ur_string_format, System.Collections.Generic.Dictionary<row_enum, table_row> ur_collection)
+            {
+                var ret_list = new System.Collections.Generic.List<string>();
+                var filter_text = new System.Text.StringBuilder();
+                foreach (var entry in ur_collection.Keys)
+                {
+                    var col_values = new System.Collections.Generic.List<string>();
+                    foreach (var col_entry in ur_col_list)
+                    {
+                        col_values.Add(entry[col_entry].Replace("'", "''"));
+                    }
+
+                    if (filter_text.Length > 0)
+                    {
+                        filter_text.Append(" OR ");
+                    }
+                    filter_text.Append("(").Append(string.Format(ur_string_format, col_values.ToArray())).Append(")");
+                    if (filter_text.Length > 3000)
+                    {
+                        ret_list.Add(filter_text.ToString());
+                        filter_text.Clear();
+                    }
+                }
+
+                if (filter_text.Length > 0)
+                {
+                    ret_list.Add(filter_text.ToString());
+                }
+
+                return ret_list;
+            }
+            [System.Diagnostics.DebuggerStepThrough]
+            public table_row Filter(T ur_col, string ur_text)
+            {
+                var ret_table = new table_row();
                 foreach (var row_entry in this)
                 {
                     if (string.Equals(row_entry[ur_col], ur_text))
@@ -281,10 +383,49 @@ namespace Mx
 
                 return ret_table;
             }
-            [System.Diagnostics.DebuggerStepThrough]
-            public bitbase<T>.table_row FilterOne(T ur_col, string ur_text)
+            public System.Collections.Generic.Dictionary<row_enum, table_row> FilterDistinct(T[] ur_col_list)
             {
-                var ret_table = new bitbase<T>.table_row();
+                var ret_table = new System.Collections.Generic.Dictionary<row_enum, table_row>();
+                var track_unique = new System.Collections.Generic.Dictionary<string, row_enum>();
+                foreach (var row_entry in this)
+                {
+                    var key_row = new row_enum();
+                    foreach (var col_entry in ur_col_list)
+                    {
+                        key_row[col_entry] = row_entry[col_entry];
+                    }
+
+                    var str_keyrow = key_row.Format_Table(false);
+                    if (track_unique.ContainsKey(str_keyrow) == false)
+                    {
+                        track_unique.Add(str_keyrow, key_row);
+                        ret_table.Add(key_row, new table_row());
+                    }
+                    else
+                    {
+                        key_row = track_unique[str_keyrow];
+                    }
+
+                    ret_table[key_row].Add(row_entry);
+                }
+
+                return ret_table;
+            }
+            public table_row FilterFirst()
+            {
+                var ret_table = new table_row();
+                foreach (var row_entry in this)
+                {
+                    ret_table.Add(row_entry);
+                    break;
+                }
+
+                return ret_table;
+            }
+            [System.Diagnostics.DebuggerStepThrough]
+            public table_row FilterOne(T ur_col, string ur_text)
+            {
+                var ret_table = new table_row();
                 foreach (var row_entry in this)
                 {
                     if (string.Equals(row_entry[ur_col], ur_text))
@@ -296,10 +437,36 @@ namespace Mx
 
                 return ret_table;
             }
-            [System.Diagnostics.DebuggerStepThrough]
-            public bitbase<T>.row_enum FilterOne(T ur_col, string ur_text, System.Text.StringBuilder ur_notice_message)
+            public row_enum FirstRow()
             {
-                var ret_row = new bitbase<T>.row_enum();
+                row_enum ret_row = new row_enum();
+                foreach (var row_entry in this)
+                {
+                    ret_row = row_entry;
+                    break;
+                }
+
+                return ret_row;
+            }
+
+            public row_enum FirstRow(T ur_col, string ur_text)
+            {
+                var ret_row = new row_enum();
+                foreach (var row_entry in this)
+                {
+                    if (string.Equals(row_entry[ur_col], ur_text))
+                    {
+                        ret_row = row_entry;
+                        break;
+                    }
+                }
+
+                return ret_row;
+            }
+            [System.Diagnostics.DebuggerStepThrough]
+            public row_enum FirstRow(T ur_col, string ur_text, System.Text.StringBuilder ur_notice_message)
+            {
+                var ret_row = new row_enum();
                 var found_row = false;
                 foreach (var row_entry in this)
                 {
@@ -333,6 +500,56 @@ namespace Mx
                     ur_ret.Append(this[ROWSEQ].Format_Table((ROWSEQ == 0) && ur_hdr, ur_quoted));
                 }
             }
+            public System.Collections.Generic.SortedDictionary<string, table_row> GroupByCol(T ur_col)
+            {
+                var ret_table = new System.Collections.Generic.SortedDictionary<string, table_row>();
+                foreach (var row_entry in this)
+                {
+                    var key_val = row_entry[ur_col];
+                    if (ret_table.ContainsKey(key_val) == false)
+                    {
+                        ret_table.Add(key_val, new table_row());
+                    }
+
+                    ret_table[key_val].Add(row_entry);
+                }
+
+                return ret_table;
+            }
+            public System.Collections.Generic.SortedDictionary<System.DateTime, table_row> GroupByDate(T ur_col)
+            {
+                var ret_table = new System.Collections.Generic.SortedDictionary<System.DateTime, table_row>();
+                foreach (var row_entry in this)
+                {
+                    var key_val = row_entry.GetDate(ur_col);
+                    if (ret_table.ContainsKey(key_val) == false)
+                    {
+                        ret_table.Add(key_val, new table_row());
+                    }
+
+                    ret_table[key_val].Add(row_entry);
+                }
+
+                return ret_table;
+            }
+
+            public System.Collections.Generic.SortedDictionary<decimal, table_row> GroupByDecimal(T ur_col)
+            {
+                var ret_table = new System.Collections.Generic.SortedDictionary<decimal, table_row>();
+                foreach (var row_entry in this)
+                {
+                    var key_val = row_entry.GetDecimal(ur_col);
+                    if (ret_table.ContainsKey(key_val) == false)
+                    {
+                        ret_table.Add(key_val, new table_row());
+                    }
+
+                    ret_table[key_val].Add(row_entry);
+                }
+
+                return ret_table;
+            }
+
             [System.Diagnostics.DebuggerStepThrough]
             public void Persist_Read(string ur_persist_path, bool ur_flag_overwrite_rows = true)
             {
@@ -366,7 +583,7 @@ namespace Mx
                             }
                             else
                             {
-                                var new_row = new bitbase<T>.row_enum();
+                                var new_row = new row_enum();
                                 if (cur_line.StartsWith("\n"))
                                 {
                                     cur_line = cur_line.Substring("\n".Length);
@@ -379,7 +596,7 @@ namespace Mx
                                     foreach (var entry in bitbase.CSV_Split(cur_line, '\t'))
                                     {
                                         T found_key = null;
-                                        foreach (var cur_key in bitbase<T>.RefKeys())
+                                        foreach (var cur_key in this.RefKeys())
                                         {
                                             if (cur_key.pname == entry)
                                             {
@@ -440,6 +657,27 @@ namespace Mx
             public System.Collections.Generic.List<T> RefKeys()
             {
                 return bitbase<T>.RefKeys();
+            }
+            public decimal SumAsDecimal(T ur_col)
+            {
+                decimal ret_val = 0;
+                foreach (var row_entry in this)
+                {
+                    ret_val += row_entry.GetDecimal(ur_col);
+                }
+
+                return ret_val;
+            }
+        }
+
+
+        public class Trbase<W> where W : T, new()
+        {
+            public static W NewBitBase()
+            {
+                var objRET = new W();
+                bitbase<T>.populate_bitbase();
+                return objRET;
             }
         }
     }
