@@ -429,6 +429,8 @@ Error message and password prompt
 
 <li>$:/positivesigner/text-ref/mcr glbl_article_list</li>
 
+<li>$:/positivesigner/text-ref/mcr glbl_article_open_all</li>
+
 <li>$:/positivesigner/text-ref/mcr glbl_check_list</li>
 
 <li>$:/positivesigner/text-ref/mcr glbl_code_split</li>
@@ -13294,6 +13296,22 @@ Clear all checkmarks
 \end
 </pre>
 </div>
+<div created="20211123204150623" modified="20211123204229060" tags="$:/tags/Macro $:/positivesigner/text-ref" title="$:/positivesigner/text-ref/mcr glbl_article_open_all">
+<pre>\define glbl_article_open_all()
+&lt;!--2021m11d23--&gt;
+&lt;$button&gt;
+&lt;$list variable=cur_card filter=&quot;[all[current]]&quot;&gt;
+&lt;$list variable=artcl_search filter=&quot;[&lt;cur_card&gt;addsuffix[\]]&quot;&gt;
+&lt;$list variable=artcl_card filter=&quot;[prefix&lt;artcl_search&gt;!sort[]]&quot;&gt;
+&lt;$action-navigate $to=&lt;&lt;artcl_card&gt;&gt;/&gt;
+&lt;/$list&gt;&lt;!--artcl_search--&gt;
+&lt;/$list&gt;&lt;!--artcl_card--&gt;
+&lt;/$list&gt;&lt;!--cur_card--&gt;
+Open all
+&lt;/$button&gt;
+\end
+</pre>
+</div>
 <div created="20210521032019905" modified="20210922065741383" tags="$:/positivesigner/text-ref $:/tags/Macro" title="$:/positivesigner/text-ref/mcr glbl_check_list">
 <pre>\define glbl_check_list()
 &lt;!--2021m09d21 from 2021m05d20--&gt;
@@ -14025,7 +14043,7 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20211003010622370" modified="20211003015216094" title="$:/state/ShowPaletteEditor">
 <pre>no</pre>
 </div>
-<div created="20210307044348911" modified="20211121044704282" title="$:/state/sidebar">
+<div created="20210307044348911" modified="20211123204237897" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
 <div created="20210427113710496" modified="20210427113710496" title="$:/state/tab--1498284803">
@@ -14040,13 +14058,13 @@ variable=activity_prevcount filter=&quot;[suffix&lt;userform_suffix&gt;!match&lt
 <div created="20210307045410888" modified="20210420205457623" title="$:/state/tab/moresidebar-1850697562">
 <pre>$:/core/ui/MoreSideBar/System</pre>
 </div>
-<div created="20210307044348912" modified="20211121044704282" title="$:/state/tab/sidebar--595412856">
+<div created="20210307044348912" modified="20211123204237897" title="$:/state/tab/sidebar--595412856">
 <pre>$:/core/ui/SideBar/More</pre>
 </div>
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div created="20211121044324848" list="[[Automation Scripting]] [[Activities\How pull Git Repository changes using Pocket Git Android]] [[How pull Git Repository changes using Pocket Git Android\Form e1\Pocket Git Android]]" modified="20211121044613495" title="$:/StoryList">
+<div created="20211123204234729" list="[[Automation Scripting]] [[User Forms]]" modified="20211123204234729" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
