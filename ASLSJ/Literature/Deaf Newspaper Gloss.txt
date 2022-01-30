@@ -1,0 +1,30 @@
+[0:00 2C-2D-Ken] Q^ 4W-hello.  4A-Welcome 4D-our 1C-Deaf 1TS-Newspaper.  Q-hv 4D-I-am q~Ken q~Davis, 1C-Deaf 1TS-Newspaper.  Q-qy 4A-This-is q~Sarah. Qy 1A-Sign 2T-name?
+
+[SC-Sarah] Qk SC-Sarah.
+
+[2C-2D-Ken] Q^ SC-Sarah.  Qy SC-Age... SW1-understand?
+
+[SC-Sarah] Qk SA1-Eleven.
+
+[2C-2D-Ken] Q^ SA1-Eleven!  Q-qy 1A-She 1D-I 1T-discuss 1T-about 4A-her 1T-friends 4T-at 4T-school.  4A-Alright, SA-that's-great!
+
+
+[0:24 2C-2D-Ken] Q^ 1D-I q-qy 1A-go 4A-her 4T-school 2C-visiting.  1A-Happened 4A-her 1T-friends 1C-come-meet-me; h^ 4A-shaking-hands; hv 4A-shaking-many-hands.  Q^ 1D-what's-up?  1D-I'm 1W-perplexed.  Qy 4A-What-do-you-think?
+
+[SC-Sarah] Qk 4W-Forgot 4A-what 1C-say!
+
+[1:00 SC-Sarah] Qk 4W-Because 1D-I 1C-tell q-qy 1A-them 1-that qk 1A-you q~were 1C-famous.  4AS-And 1A-that 1A-you 4D-have 1A-like q-qy q~news 4T-on 3A-computer.  Qk 4AS-And q-qy 1A-they 1W-think 1A-that q~was 1C-cool 4AS-and 4A-want qk 2C-see 1A-you.
+
+[1:15 2C-2D-Ken] Q^ 1A-I-see.  1D-I 1C-famous.  Q?  1D-I ST-work q~news 1D-until-now 4T-easy SA-ten ST-years.  Q-qy 4A-her 1T-friends 1W-think 1D-I 1C-famous?  1D-I 4DS-accept.
+
+[1:26 2C-2D-Ken] Q^ 4T-Anyway, 1D-I 1C-true ST-impressed q-qy 4A-her 1T-friends q-qk 2W-2A-honored 1C-meet 1C-Deaf 4A-person.  ST-most q-qk 1A-them 2C-kids 4A-scared 1T-meet 1C-Deaf, 1T-but q-qy 1A-she q-qk ST-help q-qy 4A-her 1T-friends 4A-introduce.  SD-Proud q-qy 4A-her 4W-father 1C-Deaf.  Qy 1T-right, SA-that's-great?
+
+[SC-Sarah] H^ q?  Qk 2AS-no qe-ky.
+
+[1:47 2C-2D-Ken] Q^ q~So, 4CS-guess ST1-ALL 1W-for 1A-now.  Q-qy 4C-Thanks-to-her 1W-for 4A-her 1T-time ST-with 1D-us.  4A-Next 4A-person 4W-will 1C-interview q~soon.  4A-Alright, SA-that's-great!
+
+[1:55 SC-Sarah] Qk 4A-What 1A-happened 1T-to, "Q^ 4A-bye SA-great qe-^v."  Qk q?
+
+[2C-2D-Ken] Q^ 4D-My 4C-4T-daughter 4A-wants 1D-me 4A-do 1T-this 2C-saying.  4A-What-is-it?  4A-bye SA-great qe-^v.
+
+[SC-Sarah] Qk 4C-applause.
