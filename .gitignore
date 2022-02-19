@@ -1,3 +1,4 @@
 debug.log
 *.exe
 *log.tsv
+~lock*.*#
