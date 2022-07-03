@@ -2606,6 +2606,10 @@ DOC
 
 
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Activities%5CHow%20compile%20a%20C%23%20program%20using%20Windows%20Command%20Line">How compile a C# program using Windows Command Line</a></li>
+
+
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Activities%5CHow%20compile%20exe%20program%20using%20DotNet%20Core%20Compiler">How compile exe program using DotNet Core Compiler</a></li>
 
 
@@ -3962,6 +3966,40 @@ DOC
 
 </p><p>
 <p>[<a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20compile%20.Net%20code%20using%20VB.Net%20Code%5CForm%20e1%5CVB.Net%20Code">VB.Net Code</a> step]</p>
+
+</p>
+
+
+
+
+</div>
+</a><a name="Activities\How compile a C# program using Windows Command Line">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="Activities\How compile a C# program using Windows Command Line"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">Activities\How compile a C# program using Windows Command Line</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>3rd July 2022 at 12:28am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+
+
+
+<div class="tc-tiddler-body tc-reveal"></div>
+
+
+<p>
+
+
+
+
+</p><p>
+<p>[<a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20compile%20a%20C%23%20program%20using%20Windows%20Command%20Line%5CForm%20e1%5CWindows%20Command%20Line">Windows Command Line</a> step]</p>
 
 </p>
 
@@ -10991,6 +11029,227 @@ Comment text
         End Function 'zRunCode
     End Class 'glblExeCompile
 </code></pre></div>
+
+
+
+
+
+
+
+
+
+</div>
+</a><a name="How compile a C# program using Windows Command Line\Form e1\Windows Command Line">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="How compile a C# program using Windows Command Line\Form e1\Windows Command Line"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">How compile a C# program using Windows Command Line\Form e1\Windows Command Line</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>3rd July 2022 at 12:45am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+
+<p>
+
+
+
+
+</p><p></p><p>
+[<a class="tc-tiddlylink tc-tiddlylink-resolves" href="#User%20Forms%5CWindows%20Command%20Line">Windows Command Line</a> form]
+</p>
+
+
+
+<div class="tc-tiddler-body tc-reveal"><p><a class="tc-tiddlylink-external" href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textbox?view=windowsdesktop-6.0" rel="noopener noreferrer" target="_blank">https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textbox?view=windowsdesktop-6.0</a><br><br>In a hard-drive folder<br>- UrCSFilePath = %HOMEPATH%\Downloads\UrProgram.cs<br>- UrCMDFilePath = %HOMEPATH%\Downloads\UrProgramCompile.cmd<br>- UrEXEFilePath = %HOMEPATH%\Downloads\UrProgram.exe<br><br>[Notepad]<br>- [New text file]<br>- Paste in program text<br><br>Command-line program:<br></p><pre><code>public class Program{public static void Main(string [] args){System.Console.WriteLine("UrText");}}</code></pre><p>Windows program:<br></p><pre><code>public class MyForm : System.Windows.Forms.Form
+{
+    public MyForm()
+    {
+		this.Text = "C# Program";
+		var txtINPUT = new System.Windows.Forms.TextBox();
+		txtINPUT.Name = "txtINPUT";
+		this.Controls.Add(txtINPUT);
+		txtINPUT.BringToFront();
+		txtINPUT.Dock = System.Windows.Forms.DockStyle.Fill;
+		txtINPUT.Multiline = true;
+		txtINPUT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+		txtINPUT.Text = "UrText";
+		//System.Windows.Forms.MessageBox.Show("UrText");
+		//this.Close();
+    }
+
+    public static void Main()
+    {
+        System.Windows.Forms.Application.Run(new MyForm());
+    }
+}</code></pre><p>- Save file as UrCSFilePath<br><br><br>[Command Line prompt]<br>- Execute command:<br></p><pre><code>dir /s /b %WINDIR%\csc.exe</code></pre><p>- Note: Output line like:<br></p><pre><code>c:\windows\Microsoft.NET\Framework64\v4.0.30319</code></pre><p>- UrFramework64Path = the found folder<br>- Copy UrFramework64Path to the Windows clipboard<br><br><br>[Notepad]<br>- [New text file]<br>- Paste in program<br><br>Compile command-line program:<br></p><pre><code>del UrNewEXEFilePath
+UrFramework64Path\csc.exe /target:exe /out:UrNewEXEFilePath UrUrCSFilePath
+start "" UrNewEXEFilePath</code></pre><p>Compile Windows program:<br></p><pre><code>del UrNewEXEFilePath
+UrFramework64Path\csc.exe /target:winexe /out:UrNewEXEFilePath UrUrCSFilePath
+start "" UrNewEXEFilePath</code></pre><p>- Save file as UrCMDFilePath<br><br><br>[Command Line prompt]<br>- Execute command: UrCMDFilePath<br>- Note: If command-line program, UrText is printed on a line of the console window<br>- Note: If Windows program, UrText is in a Windows Form textbox<br><br><br><br>Make a windows program to compile a source code file:<br><br>[CSNetScript.cmd]<br></p><pre><code>del CSNetScript.exe
+UrFramework64Path\csc.exe /target:winexe /out:CSNetScript.exe CSNetScript.cs
+start "" CSNetScript.exe</code></pre><p>[CSNetScript.cs]<br></p><pre><code>public class MyForm : System.Windows.Forms.Form
+{
+    public MyForm()
+    {
+		this.Text = "CSNetScript";
+		var txtINPUT = new System.Windows.Forms.TextBox();
+		txtINPUT.Name = "txtINPUT";
+		this.Controls.Add(txtINPUT);
+		txtINPUT.BringToFront();
+		txtINPUT.Dock = System.Windows.Forms.DockStyle.Fill;
+		txtINPUT.Multiline = true;
+		txtINPUT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+		var notice_msg = "";
+	    
+		try
+		{
+			var search_subdirs = System.IO.SearchOption.AllDirectories;
+			var search_folder = System.IO.SearchOption.TopDirectoryOnly;
+			var app_filepath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+			var app_folder = System.IO.Path.GetDirectoryName(app_filepath);
+			var win_dir = System.Environment.ExpandEnvironmentVariables(@"%WINDIR%\Microsoft.NET\Framework64");
+			var env_parms = System.Environment.GetCommandLineArgs();
+			var utf8_format = new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier:false,throwOnInvalidBytes:true);
+			var sourcecode_filepath = "";
+			var newexe_filepath = "";
+			var csc_path = "";
+			var csc_notice_msg = "";
+			try
+			{
+				foreach (var entry in System.IO.Directory.GetFiles(win_dir, "csc.exe", search_subdirs))
+				{
+					csc_path = entry;
+				};
+			} catch (System.Exception ex_skip) {}
+			
+			if (csc_path == "")
+			{
+				notice_msg = "CSC path not found in %WINDIR%";
+			}
+			
+			if (notice_msg == "")
+			{
+			    var parm_seq_b1 = 0;
+				if (env_parms.Length &gt; 1)
+				{
+					foreach (var entry in env_parms)
+					{
+						parm_seq_b1 += 1;
+						sourcecode_filepath = entry;
+						if (parm_seq_b1 == 2)
+						{
+							break;
+						}
+					}
+				}
+				
+				if (sourcecode_filepath == "")
+				{
+					notice_msg = "Please pass in a source code file";
+					var apptext_content =
+@"";
+					if (string.IsNullOrWhiteSpace(apptext_content) == false)
+					{
+						var appfile_basegroup = System.IO.Path.GetFileNameWithoutExtension(app_filepath);
+						var apptext_filepath = System.IO.Path.Combine(app_folder, appfile_basegroup + ".txt");
+						var file_exists = false;
+						try
+						{
+							file_exists = System.IO.File.Exists(apptext_filepath);
+						} catch (System.Exception ex_skip) {}
+						
+						if (file_exists == false)
+						{
+							System.IO.File.WriteAllText(
+								apptext_filepath,
+								apptext_content,
+								utf8_format);
+						}
+					}
+				}
+			}
+				
+			if (notice_msg == "")
+			{
+				var parent_folder = System.IO.Path.GetDirectoryName(sourcecode_filepath);
+				var file_basegroup = System.IO.Path.GetFileNameWithoutExtension(sourcecode_filepath);
+				newexe_filepath = System.IO.Path.Combine(parent_folder, file_basegroup + ".exe");
+				var file_exists = false;
+				try
+				{
+					file_exists = System.IO.File.Exists(newexe_filepath);
+				} catch (System.Exception ex_skip) {}
+				
+				if (file_exists)
+				{
+					System.IO.File.Delete(newexe_filepath);
+				}
+				
+				//write out .cmd
+				//del %HOMEPATH%\Downloads\csc.exe
+				//System.Diagnostics.Process.Start( csc_path /target:winexe /out:app_folder\csc.exe sourcecode_filepath
+				var csc_args = "/target:winexe /out:" + newexe_filepath+ " " + sourcecode_filepath;
+				var startInfo = new System.Diagnostics.ProcessStartInfo();
+				startInfo.FileName = csc_path;
+				startInfo.Arguments = csc_args;
+				startInfo.RedirectStandardOutput = true;
+				startInfo.RedirectStandardError = true;
+				startInfo.UseShellExecute = false;
+				startInfo.CreateNoWindow = true;
+
+				var processTemp = new System.Diagnostics.Process();
+				processTemp.StartInfo = startInfo;
+				processTemp.EnableRaisingEvents = true;
+				try
+				{
+					processTemp.Start();
+					processTemp.WaitForExit();
+					csc_notice_msg = processTemp.StandardError.ReadToEnd();
+					if (csc_notice_msg == "")
+					{
+						csc_notice_msg = processTemp.StandardOutput.ReadToEnd();
+					}
+				} catch (System.Exception e) {throw;}
+				
+				file_exists = false;
+				try
+				{
+					file_exists = System.IO.File.Exists(newexe_filepath);
+				} catch (System.Exception ex_skip) {}
+				
+				if (file_exists == false)
+				{
+					notice_msg = csc_notice_msg;
+				}
+			}
+			
+			if (notice_msg == "")
+			{
+				//notice_msg = csc_notice_msg + System.Environment.NewLine + newexe_filepath;
+				System.Diagnostics.Process.Start(newexe_filepath);
+				this.Close();
+			}
+		}
+		catch (System.Exception ex)
+		{
+		    notice_msg = ex.Message;
+		}
+		
+		txtINPUT.Text = notice_msg;
+		//System.Windows.Forms.MessageBox.Show("UrText");
+		//this.Close();
+    }
+
+    public static void Main()
+    {
+        System.Windows.Forms.Application.Run(new MyForm());
+    }
+}</code></pre><p></p></div>
 
 
 
@@ -22621,6 +22880,10 @@ DOC
 
 
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#User%20Forms%5CWindows%20Command%20Line">Windows Command Line</a></li>
+
+
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#User%20Forms%5CWindows%20Settings">Windows Settings</a></li>
 
 
@@ -24830,6 +25093,40 @@ DOC
 <p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20hide%20errors%20from%20user%20output%20using%20Windows%20CLI%5CForm%20e1%5CWindows%20CLI">How hide errors from user output using Windows CLI</a> </p>
 
 <p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20share%20files%20across%20Network%20using%20WebDav%20Server%20OliveTree%20Android%5CForm%20e4%5CWindows%20CLI">How share files across Network using WebDav Server OliveTree Android</a> </p>
+
+
+</p></blockquote>
+</p>
+
+
+
+
+
+
+
+</div>
+</a><a name="User Forms\Windows Command Line">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="User Forms\Windows Command Line"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">User Forms\Windows Command Line</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>3rd July 2022 at 12:27am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+
+
+
+<div class="tc-tiddler-body tc-reveal"></div>
+
+<p><blockquote class="tc-quote"><p>
+
+<p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20compile%20a%20C%23%20program%20using%20Windows%20Command%20Line%5CForm%20e1%5CWindows%20Command%20Line">How compile a C# program using Windows Command Line</a> </p>
 
 
 </p></blockquote>
