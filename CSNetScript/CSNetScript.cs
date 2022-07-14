@@ -10,7 +10,11 @@ public class MyForm : System.Windows.Forms.Form
 		txtINPUT.Dock = System.Windows.Forms.DockStyle.Fill;
 		txtINPUT.Multiline = true;
 		txtINPUT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-		var notice_msg = "";
+		var crlf = "\r\n";
+		var mt = "";
+		var qs = "\"";
+		var s = " ";
+		var notice_msg = mt;
 	    
 		try
 		{
@@ -21,11 +25,11 @@ public class MyForm : System.Windows.Forms.Form
 			var win_dir = System.Environment.ExpandEnvironmentVariables(@"%WINDIR%\Microsoft.NET\Framework64");
 			var env_parms = System.Environment.GetCommandLineArgs();
 			var utf8_format = new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier:false,throwOnInvalidBytes:true);
-			var sourcecode_filepath = "";
+			var sourcecode_filepath = mt;
 			var sourcecode_filelist = new System.Collections.Generic.List<string>();
-			var newexe_filepath = "";
-			var csc_path = "";
-			var csc_notice_msg = "";
+			var newexe_filepath = mt;
+			var csc_path = mt;
+			var csc_notice_msg = mt;
 			try
 			{
 				foreach (var entry in System.IO.Directory.GetFiles(win_dir, "csc.exe", search_subdirs))
@@ -34,12 +38,12 @@ public class MyForm : System.Windows.Forms.Form
 				};
 			} catch (System.Exception ex_skip) {}
 			
-			if (csc_path == "")
+			if (csc_path == mt)
 			{
 				notice_msg = "CSC path not found in %WINDIR%";
 			}
 			
-			if (notice_msg == "")
+			if (notice_msg == mt)
 			{
 			    var parm_seq_b1 = 0;
 				if (env_parms.Length > 1)
@@ -58,9 +62,9 @@ public class MyForm : System.Windows.Forms.Form
 					}
 				}
 				
-				if (sourcecode_filepath == "")
+				if (sourcecode_filepath == mt)
 				{
-					notice_msg = "Please pass in a source code file\r\n";
+					notice_msg = "Please pass in a source code file" + crlf;
 					notice_msg += "csc_path: " + csc_path;
 					var apptext_content =
 @"https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.textbox?view=windowsdesktop-6.0
@@ -177,7 +181,11 @@ public class MyForm : System.Windows.Forms.Form
 		txtINPUT.Dock = System.Windows.Forms.DockStyle.Fill;
 		txtINPUT.Multiline = true;
 		txtINPUT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-		var notice_msg = """";
+		var crlf = ""\r\n"";
+		var mt = """";
+		var qs = ""\"""";
+		var s = "" "";
+		var notice_msg = mt;
 	    
 		try
 		{
@@ -188,11 +196,11 @@ public class MyForm : System.Windows.Forms.Form
 			var win_dir = System.Environment.ExpandEnvironmentVariables(@""%WINDIR%\Microsoft.NET\Framework64"");
 			var env_parms = System.Environment.GetCommandLineArgs();
 			var utf8_format = new System.Text.UTF8Encoding(encoderShouldEmitUTF8Identifier:false,throwOnInvalidBytes:true);
-			var sourcecode_filepath = """";
+			var sourcecode_filepath = mt;
 			var sourcecode_filelist = new System.Collections.Generic.List<string>();
-			var newexe_filepath = """";
-			var csc_path = """";
-			var csc_notice_msg = """";
+			var newexe_filepath = mt;
+			var csc_path = mt;
+			var csc_notice_msg = mt;
 			try
 			{
 				foreach (var entry in System.IO.Directory.GetFiles(win_dir, ""csc.exe"", search_subdirs))
@@ -201,12 +209,12 @@ public class MyForm : System.Windows.Forms.Form
 				};
 			} catch (System.Exception ex_skip) {}
 			
-			if (csc_path == """")
+			if (csc_path == mt)
 			{
 				notice_msg = ""CSC path not found in %WINDIR%"";
 			}
 			
-			if (notice_msg == """")
+			if (notice_msg == mt)
 			{
 			    var parm_seq_b1 = 0;
 				if (env_parms.Length > 1)
@@ -225,9 +233,9 @@ public class MyForm : System.Windows.Forms.Form
 					}
 				}
 				
-				if (sourcecode_filepath == """")
+				if (sourcecode_filepath == mt)
 				{
-					notice_msg = ""Please pass in a source code file\r\n"";
+					notice_msg = ""Please pass in a source code file"" + crlf;
 					notice_msg += ""csc_path: "" + csc_path;
 					var apptext_content =
 @"""";
@@ -252,7 +260,7 @@ public class MyForm : System.Windows.Forms.Form
 				}
 			}
 				
-			if (notice_msg == """")
+			if (notice_msg == mt)
 			{
 				foreach (var entry in sourcecode_filelist)
 				{
@@ -264,12 +272,12 @@ public class MyForm : System.Windows.Forms.Form
 					
 					if (file_exists == false)
 					{
-						notice_msg += ""filename not found: "" + entry + ""\r\n"";
+						notice_msg += ""filename not found: "" + entry + crlf;
 					}
 				}
 			}
 				
-			if (notice_msg == """")
+			if (notice_msg == mt)
 			{
 				var parent_folder = System.IO.Path.GetDirectoryName(sourcecode_filepath);
 				var file_basegroup = System.IO.Path.GetFileNameWithoutExtension(sourcecode_filepath);
@@ -288,10 +296,10 @@ public class MyForm : System.Windows.Forms.Form
 				//write out .cmd
 				//del %HOMEPATH%\Downloads\csc.exe
 				//System.Diagnostics.Process.Start( csc_path /target:winexe /out:app_folder\csc.exe sourcecode_filepath
-				var sourcecode_fileargs = """";
+				var sourcecode_fileargs = mt;
 				foreach (var entry in sourcecode_filelist)
 				{
-				    sourcecode_fileargs += "" "" + '\""' + entry + '\""';
+				    sourcecode_fileargs += s + qs + entry + qs;
 				}
 				
 				var csc_args = ""/target:winexe /out:"" + newexe_filepath + sourcecode_fileargs;
@@ -311,7 +319,7 @@ public class MyForm : System.Windows.Forms.Form
 					processTemp.Start();
 					processTemp.WaitForExit();
 					csc_notice_msg = processTemp.StandardError.ReadToEnd();
-					if (csc_notice_msg == """")
+					if (csc_notice_msg == mt)
 					{
 						csc_notice_msg = processTemp.StandardOutput.ReadToEnd();
 					}
@@ -325,11 +333,11 @@ public class MyForm : System.Windows.Forms.Form
 				
 				if (file_exists == false)
 				{
-					notice_msg = csc_notice_msg + ""\r\n"" + csc_args;
+					notice_msg = csc_notice_msg + crlf + csc_args;
 				}
 			}
 			
-			if (notice_msg == """")
+			if (notice_msg == mt)
 			{
 				//notice_msg = csc_notice_msg + System.Environment.NewLine + newexe_filepath;
 				System.Diagnostics.Process.Start(newexe_filepath);
@@ -374,7 +382,7 @@ public class MyForm : System.Windows.Forms.Form
 				}
 			}
 				
-			if (notice_msg == "")
+			if (notice_msg == mt)
 			{
 				foreach (var entry in sourcecode_filelist)
 				{
@@ -386,12 +394,12 @@ public class MyForm : System.Windows.Forms.Form
 					
 					if (file_exists == false)
 					{
-						notice_msg += "filename not found: " + entry + "\r\n";
+						notice_msg += "filename not found: " + entry + crlf;
 					}
 				}
 			}
 				
-			if (notice_msg == "")
+			if (notice_msg == mt)
 			{
 				var parent_folder = System.IO.Path.GetDirectoryName(sourcecode_filepath);
 				var file_basegroup = System.IO.Path.GetFileNameWithoutExtension(sourcecode_filepath);
@@ -410,10 +418,10 @@ public class MyForm : System.Windows.Forms.Form
 				//write out .cmd
 				//del %HOMEPATH%\Downloads\csc.exe
 				//System.Diagnostics.Process.Start( csc_path /target:winexe /out:app_folder\csc.exe sourcecode_filepath
-				var sourcecode_fileargs = "";
+				var sourcecode_fileargs = mt;
 				foreach (var entry in sourcecode_filelist)
 				{
-				    sourcecode_fileargs += " " + '\"' + entry + '\"';
+				    sourcecode_fileargs += s + qs + entry + qs;
 				}
 				
 				var csc_args = "/target:winexe /out:" + newexe_filepath + sourcecode_fileargs;
@@ -433,7 +441,7 @@ public class MyForm : System.Windows.Forms.Form
 					processTemp.Start();
 					processTemp.WaitForExit();
 					csc_notice_msg = processTemp.StandardError.ReadToEnd();
-					if (csc_notice_msg == "")
+					if (csc_notice_msg == mt)
 					{
 						csc_notice_msg = processTemp.StandardOutput.ReadToEnd();
 					}
@@ -447,11 +455,11 @@ public class MyForm : System.Windows.Forms.Form
 				
 				if (file_exists == false)
 				{
-					notice_msg = csc_notice_msg + "\r\n" + csc_args;
+					notice_msg = csc_notice_msg + crlf + csc_args;
 				}
 			}
 			
-			if (notice_msg == "")
+			if (notice_msg == mt)
 			{
 				//notice_msg = csc_notice_msg + System.Environment.NewLine + newexe_filepath;
 				System.Diagnostics.Process.Start(newexe_filepath);
