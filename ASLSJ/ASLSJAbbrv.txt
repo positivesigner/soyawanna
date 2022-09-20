@@ -1,0 +1,218 @@
+b - base hand handshape or base hand palm facing
+- i means unused base hand handshape and rotation (ignore base hand)
+
+0 - all fingers touching thumb or palm (O, E, baby-C, S, A)
+1 - 1 finger straight and remaining bent or touching thumb or palm (D/L, open-L, I, Y),
+    or 1 finger bent and remaining touching palm (X/G/Q/J/T/Z, open-X)
+2 - 2 fingers straight and remaining bent or touching thumb or palm (V, 3, U, open-U, R, open-R),
+    or 2 fingers bent and remaining touching palm (N/H, open-N, K/P, open-K)
+3 - 3 fingers straight and remaining bent or touching thumb or palm (W, open-W, F/8/7/6, open-F/8/7/6),
+    or 3 fingers bent and remaining touching palm (M, open-M)
+4 - 4 fingers straight and remaining bent or touching thumb or palm (B, open-B, 5, open-5),
+    or 4 fingers bent and remaining touching palm (C, bent-B)
+
+handshape list
+- A = rn, B = cl, C = ef, D = cln, E = fffr
+- - open-A = jn, open-B = jl, open-C = jf
+- - bent-A = en, bent-B = jf
+
+- F = rfl, G = efn, H = cffn, I = cnnl, J = cnnf
+- - open-F = jfl
+- - bent-I = cnnf
+
+- K = lrt, L = jln, M = cfffn, N = cffn, O = rf
+- - open-M = jfffn, open-N = jffn
+- - bent-L = jfn, bent-M = efffn, bent-N = effn
+
+- P = lrt, Q = efn, R = ctl, S = cn, T = frt
+- - open-R = jtl
+
+- U = clln, V = cluln, W = clull, X = cfn, Y = jnnl
+- - open-U = jlln, open-V = jluln, open-W = jlull, open-X = jfn
+- - bent-V = efufn, bent-X = efn, bent-Y = ennf
+
+- Z = cfn
+
+- 1 = cln, 2 = cluln, 3 = jluln, 4 = clu, 5 = jlu
+- - bent-4 = cfu, bent-5 = jfu
+
+- 6 = lullrf, 7 = llrfl, 8 = lrfl, 9 cfl, 0 = rf
+
+
+
+handshape suffix
+- c wrapped closed to palm or around the knuckles of closed finger(s)
+- e = thumb bent forward, not touching fingers
+- r = thumb bent forward, touching f finger
+- - touching knuckle if followed by t
+- - thumb pointing up, against side of hand if followed by n or l
+
+- j = thumb extended to side of hand
+- l = finger extended up
+- f = finger bent at knuckle (x and bent-L are treated as equivalent)
+- t = finger bent and touching
+- - thumb touching knuckle if following r
+- - finger wrapped in front of next finger if followed by l
+- i = fingers togethr (default for l and f)
+- u = finger spread apart from next finger
+
+- n = finger closed to palm
+- ending finger shape is repeated for remaining fingers
+
+
+hand block rotation (H,Hr,M,Mr,Y,Yr) - palm facing direction
+thumb-side pointing direction (k,kr,v,vr,q,qr) - pitch, spin, or roll hand to pointing thumb at second direction
+
+H - palm facing across body
+- - Hq = thumb out, fingers/knuckles down
+- - Hvr = thumb up, fingers/knuckles out
+- - Hqr = thumb in, fingers/knuckles up
+- - Hv = thumb down, fingers/knuckles in
+
+Hr - palm facing away from body
+- - Hrqr = thumb in, fingers/knuckles down
+- - Hrv = thumb down, fingers/knuckles out
+- - Hrq = thumb out, fingers/knuckles up
+- - Hrvr = thumb up, fingers/knuckles in
+
+M - palm facing out
+- - Mv = thumb down, fingers/knuckles left
+- - Mk = thumb left, fingers/knuckles up
+- - Mvr = thumb up, fingers/knuckles right
+- - Mkr = thumb right, fingers/knuckles down
+
+Mr - palm facing down
+- - Mrqr = thumb in, fingers/knuckles left
+- - Mrk = thumb left, fingers/knuckles out
+- - Mrq = thumb out, fingers/knuckles right
+- - Mrkr = thumb right, fingers/knuckles in
+
+Y - palm facing in or up, fingers/knuckles up
+- - Yv = thumb down, fingers/knuckles right
+- - Yk = thumb left, fingers/knuckles down
+- - Yvr = thumb up, fingers/knuckles left
+- - Ykr = thumb right, fingers/knuckles up
+
+Yr - palm facing up
+- - Yrk = thumb left, fingers/knuckles in
+- - Yrq = thumb out, fingers/knuckles left
+- - Yrkr = thumb right, fingers/knuckles out
+- - Yrqr = thumb in, fingers/knuckles right
+
+suffix b with (H,Hr,M,Mr,Y,Yr) - base hand palm facing, if different
+
+
+hand block separation
+T and direction (k,kr,v,vr,q,qr) - dominant hand touches base-hand (itself, kick, stop)
+- unmarked or e suffix - hands not wrapped or enmeshed
+
+Tc and direction (k,kr,v,vr,q,qr) - dominant hand wrapped into base-hand (hot dog, marry)
+Tcr and direction (k,kr,v,vr,q,qr) - dominant hand wrapped around base-hand (dollar, chair)
+Tm and direction (k,kr,v,vr,q,qr) - dominant hand extended fingers enmeshed with base-hand extended fingers (football, ticket)
+U and direction (k,kr,v,vr,q,qr) - both hands stay apart (person, sign language)
+- missing or Ui = one-handed sign (ingnore hand spacing)
+
+
+location height and side
+W - forehead height (think, forget)
+- - Wi or unmarked (with r) = right side
+
+Wr - forehead centered
+C - chin / eyes / ears / nose height (old, sweet, Deaf, see, mouse)
+- - Ci or unmarked (with r) = right side
+
+Cr - chin centered
+A - chest height (default)
+- - Ai or unmarked (with r) = right side
+
+Ar - chest centered
+
+J - base-hand elbow / forearm (cracker, music)
+- - Ji or unmarked (with r) = at elbow
+
+Jr - upper forearm
+
+offset directions (k,kr,v,vr,q,qr) - base location offset directions
+
+location depth
+D - on body (my, know)
+E - away from body (default)
+
+
+hand block movement
+P - dominant-hand only (default)
+- P only has one hand, so it cannot be marked with T or U
+
+R - dominant-hand moves, base-hand stays still (chop, read, culture, worse, scared) (default for T)
+F - both hands move (person, proceed) (default for U)
+H - both hands move in opposite directions
+S - dominant-hand moves, base-hand echoes movement, each hand taking on the other hand's palm facing direction
+- - (example words: sign-language, mix, control, friend)
+
+k,ke - hands move left
+kr - hands move right
+v,ve - hands move down
+vr - hands move up
+q,qe - hands move out
+qr - hands move in
+a - hands stay while wrist rotates
+e - hands and wrist stay while fingers bend
+w suffix - wiggle fingers
+i suffix - no movement
+
+lr suffix and direction (k,kr,v,vr,q,qr) - angle movement between two directions
+
+g suffix and second hand block movement (P,R,F,H) - curved or circular movement
+- HkrgFvr = hands curve out to side, then up
+- HkrgFq = hands curve out to side, then forward
+
+
+
+movement repetition
+Z - action repeated along a path
+- followed by PRFHS
+- S has an implied Z echo movement with the base hand
+- if not followed by direction (k,kr,v,vr,q,qr), repeat last movement
+- Zi means no repetition (ignore repetition)
+
+focus direction
+N and direction (k,kr,v,vr,q) - looking at audience box section
+lr suffix and horizontal/vertical direction (k,kr,v,vr) - angle focus direction
+g suffix and horizontal/vertical direction (k,kr,v,vr) - look away from focus
+hyphenated means stand to a side and then look at second direction
+- Nq-kr means focus audience's attention toward the kr location
+- Nkr-q means the kr located person is looking at the recent speaker
+- Nq? means pause signing, looking at the audience and considering what to say next
+- Nq-nkr means looking away (nkr) from something in front of the audience (Nq)
+Nav = head nod yes
+Nak = head shake no
+Nd = tongue sticking out for next word
+
+
+loan words
+n- prefix = fingerspelling word(s)
+
+
+recent changes:
+- Q -> N
+- Y -> J
+- H -> F
+- p -> Q -> b
+- add starting or ending E/D and U/T instead of just choosing one
+- r suffix = opposite direction / offset
+- g -> lr suffix = additional location offset, like chin C, chin centered Cr, nose Crgvr
+- g suffix = additional rotation, like palm-out m, palm-down mr, palm-in knuckles down mrgv
+- g -> lr suffix = additional movement angle, like move out q, move right kr, move out and right qlrkr
+- T-c suffix, T-m suffix
+- thumb bent y -> e
+- focus direction Q -> N
+- finger spelling Q~ -> N~
+- add Ii for ignore base hand, i suffix for default suffix or ignore parameter
+- e -> w finger wiggle
+- x -> e finger bend
+- palm 2nd direction = thumb-side pointing direction
+
+remaining characters:
+-  o
+- LO
+- 1 0 ^- numbers resemble letters above, so probably won't use
