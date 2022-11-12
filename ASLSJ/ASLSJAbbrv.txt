@@ -118,7 +118,8 @@ W - forehead height (think, forget)
 - - Wi or unmarked (with r) = right side
 
 Wr - forehead centered
-C - chin / eyes / ears / nose height (old, sweet, Deaf, see, mouse)
+Q - eyes / ears / nose height (see, listen, mouse)
+C - chin / jaw / throat height (sweet, Deaf, frog)
 - - Ci or unmarked (with r) = right side
 
 Cr - chin centered
@@ -184,9 +185,15 @@ hyphenated means stand to a side and then look at second direction
 - Nkr-q means the kr located person is looking at the recent speaker
 - Nq? means pause signing, looking at the audience and considering what to say next
 - Nq-nkr means looking away (nkr) from something in front of the audience (Nq)
-Nav = head nod yes
-Nak = head shake no
-Nd = tongue sticking out for next word
+Nw-v = eyebrows down
+Nw-vr = eyebrows up
+Nw-vz = head nod yes
+Nw-kz = head shake no
+Nc-lz = tongue sticking out for next word
+Nc-q = puckered lips
+Nc-qr = disgusted
+Nc-k = scared
+Na-vr = shoulder shrug 
 
 
 loan words
