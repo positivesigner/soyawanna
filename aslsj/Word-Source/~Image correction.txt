@@ -1,0 +1,9 @@
+Color correction shift-g
+- Brightness -40
+- Contrast -8
+- Gamma 2.00
+- Saturation 170
+
+Resize to 50%
+
+Cut image to fit 450x300
