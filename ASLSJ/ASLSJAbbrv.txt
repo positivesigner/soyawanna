@@ -118,20 +118,23 @@ W - forehead height (think, forget)
 - - Wi or unmarked (with r) = right side
 
 Wr - forehead centered
-Q - eyes / ears / nose height (see, listen, mouse)
+
+Q - eyes / ears (see, listen)
+Qk - nose height (mouse)
+
 C - chin / jaw / throat height (sweet, Deaf, frog)
 - - Ci or unmarked (with r) = right side
 
-Cr - chin centered
+Ck - chin centered
 A - chest height (default)
 - - Ai or unmarked (with r) = right side
 
-Ar - chest centered
+Ak - chest centered
 
 J - base-hand elbow / forearm (cracker, music)
 - - Ji or unmarked (with r) = at elbow
 
-Jr - upper forearm
+Jvr - upper forearm
 
 offset directions (k,kr,v,vr,q,qr) - base location offset directions
 
