@@ -2954,6 +2954,10 @@ DOC
 
 
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Activities%5CHow%20format%20USB%20Drive%20to%20FAT32%20using%20Windows%20DiskPart%20command">How format USB Drive to FAT32 using Windows DiskPart command</a></li>
+
+
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#Activities%5CHow%20format%20wikitext%20with%20hard%20line-breaks%20using%20TiddlyWiki%20Code">How format wikitext with hard line-breaks using TiddlyWiki Code</a></li>
 
 
@@ -6961,6 +6965,40 @@ DOC
 
 </p><p>
 <p>[<a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20format%20text%20using%20SQLite%20Code%5CForm%20e1%5CSQLite%20Code">SQLite Code</a> step]</p>
+
+</p>
+
+
+
+
+</div>
+</a><a name="Activities\How format USB Drive to FAT32 using Windows DiskPart command">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="Activities\How format USB Drive to FAT32 using Windows DiskPart command"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">Activities\How format USB Drive to FAT32 using Windows DiskPart command</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>18th December 2022 at 12:31am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+
+
+
+<div class="tc-tiddler-body tc-reveal"></div>
+
+
+<p>
+
+
+
+
+</p><p>
+<p>[<a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20format%20USB%20Drive%20to%20FAT32%20using%20Windows%20DiskPart%20command%5CForm%20e1%5CWindows%20DiskPart%20command">Windows DiskPart command</a> step]</p><p>- * Start the Windows Command Line program <code>DiskPart</code> -&gt; Opens a new window</p><p>- * Use the <code>List Disk</code> and <code>Select Disk UrDiskNumber</code> commands to choose the USB Drive</p><p>- * Use the <code>Clean</code> command to erase all partitions on the USB Drive</p><p>- * Use the <code>Create Partition Primary Size=32000</code>, <code>Active</code>, and <code>Format Fs=fat32 Unit=64k Quick</code> commands to create a new FAT32 partition</p><p>- * Use the Exit command to close the DiskPart window</p>
 
 </p>
 
@@ -16393,6 +16431,50 @@ ORDER BY name;</code></pre><p>
 
 
 </div>
+</a><a name="How format USB Drive to FAT32 using Windows DiskPart command\Form e1\Windows DiskPart command">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="How format USB Drive to FAT32 using Windows DiskPart command\Form e1\Windows DiskPart command"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">How format USB Drive to FAT32 using Windows DiskPart command\Form e1\Windows DiskPart command</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>18th December 2022 at 5:22pm</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+
+<p>
+
+
+
+
+</p><p></p><p>
+[<a class="tc-tiddlylink tc-tiddlylink-resolves" href="#User%20Forms%5CWindows%20DiskPart%20command">Windows DiskPart command</a> form]
+</p>
+
+
+
+<div class="tc-tiddler-body tc-reveal"><p>- * Start the Windows Command Line program <code>DiskPart</code> -&gt; Opens a new window<br>- * Use the <code>List Disk</code> and <code>Select Disk UrDiskNumber</code> commands to choose the USB Drive<br>- * Use the <code>Clean</code> command to erase all partitions on the USB Drive<br>- * Use the <code>Create Partition Primary Size=32000</code>, <code>Active</code>, and <code>Format Fs=fat32 Unit=64k Quick</code> commands to create a new FAT32 partition<br>- * Use the Exit command to close the DiskPart window<br></p><pre><code>list disk
+select disk X*
+clean
+create partition primary
+format fs=fat32 unit=64k
+list partition
+active
+exit</code></pre></div>
+
+
+
+
+
+
+
+
+
+</div>
 </a><a name="How format wikitext with hard line-breaks using TiddlyWiki Code\Form e1\TiddlyWiki Code">
 <div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="How format wikitext with hard line-breaks using TiddlyWiki Code\Form e1\TiddlyWiki Code"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
 <button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
@@ -22884,6 +22966,10 @@ DOC
 
 
 
+<li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#User%20Forms%5CWindows%20DiskPart%20command">Windows DiskPart command</a></li>
+
+
+
 <li><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#User%20Forms%5CWindows%20Settings">Windows Settings</a></li>
 
 
@@ -25127,6 +25213,40 @@ DOC
 <p><blockquote class="tc-quote"><p>
 
 <p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20compile%20a%20C%23%20program%20using%20Windows%20Command%20Line%5CForm%20e1%5CWindows%20Command%20Line">How compile a C# program using Windows Command Line</a> </p>
+
+
+</p></blockquote>
+</p>
+
+
+
+
+
+
+
+</div>
+</a><a name="User Forms\Windows DiskPart command">
+<div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists " data-tags="" data-tiddler-title="User Forms\Windows DiskPart command"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><button aria-expanded="false" aria-label="more" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="More actions"></button><div class=" tc-reveal" hidden="true"></div><button aria-label="edit" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="Edit this tiddler"></button><button aria-label="close" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="Close this tiddler"></button>
+<button class="tc-btn-invisible tc-btn-%24%3A%2Fpositivesigner%2Fdiv-pop%2FDivPop%20btn">
+
+
+
+
+
+</button>
+</span><span><span class="tc-tiddler-title-icon" style="fill:;"></span><h2 class="tc-title">User Forms\Windows DiskPart command</h2></span></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href="#"></a>18th December 2022 at 12:31am</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"></div>
+</div>
+
+
+
+
+<div class="tc-tiddler-body tc-reveal"></div>
+
+<p><blockquote class="tc-quote"><p>
+
+<p><a class="tc-tiddlylink tc-tiddlylink-resolves" href="#How%20format%20USB%20Drive%20to%20FAT32%20using%20Windows%20DiskPart%20command%5CForm%20e1%5CWindows%20DiskPart%20command">How format USB Drive to FAT32 using Windows DiskPart command</a> </p>
 
 
 </p></blockquote>
