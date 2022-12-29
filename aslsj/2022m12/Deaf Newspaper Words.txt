@@ -1,0 +1,38 @@
+Signing space:
+
+Nk = to left
+Nkr = to right
+Nq = to audience
+Nq-v = audience to myself
+Nq-kr = audience to right
+
+
+Word list:
+
+bjlPcfn-bYrkPHvrTcv-Fqz = discuss
+bjlPjf-bPMrkUvr-v-Tv = at
+bjlPyfn-bYrkPMkUvr-v-Tvz = newspaper
+bPcln-bHvrPMkUkr-Sk-Tck = friend
+bPcff-HvrUvr-v-Tcvz = name
+bPcfn-HvrTk-vrgq = about
+bPcfn-HvrUvr-Sqrv = sign language
+bPjl-bYrkPMrkUvr-v-Tvz = school
+cfnYvrAE-qr-D = me
+clnHvr-q = she
+ClnMkCE-qrD-zvCqr = Deaf
+cnHvrCvD-vz = age
+CnMkCqrE-k-Dz = Sarah Davis sign name (abbrv. CnCDz)
+cnYvr-vrgq = rooting for you!
+jfMkAE-qv-HqAD = welcome
+jlHqrAD-k-Yrq = our
+jlHvr-vr-Hqr = alright
+jlMk-q = her
+jlMkWD-qr = hello
+jlYrqAD-v = I am
+jlYrkr-v = this is
+LrtHqrCE-qr-Dzv-AD = Ken Davis sign name (abbrv. LrtCDzA)
+n-Davis = Davis name
+n-Ken = Ken name
+n-Sarah = Sarah name
+rfnYkrWD-e-clnz = understand
+rfnYkr-e-clnz = eleven
