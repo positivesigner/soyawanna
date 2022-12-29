@@ -11,7 +11,7 @@ b - base hand handshape or base hand palm facing
 4 - 4 fingers straight and remaining bent or touching thumb or palm (B, open-B, 5, open-5),
     or 4 fingers bent and remaining touching palm (C, bent-B)
 
-handshape list
+(hs) handshape list
 - A (Ai) = in, B (Bc) = cl, C (Cg) = gf, D (Dc) = cln, E (Er) = fffr
 - - open-A (Aj) = jn, open-B (Bj) = jl, open-C (Cj) = jf
 - - bent-A (Ag) = gn, bent-B (Bf) = jf
@@ -58,7 +58,7 @@ handshape suffix
 - ending finger shape is repeated for remaining fingers
 
 
-palm facing direction (k,y,v,l,q,e) - assumes fingers pointed forward below chin, or fingers pointing up above chest
+(pf) palm facing direction (k,y,v,l,q,e) - assumes fingers pointed forward below chin, or fingers pointing up above chest
 extended-fingers pointing direction (k,kr,v,vr,q,qr) - pitch, spin, or roll hand to pointing (real or imagined) extended fingers at second direction
 
 k - palm facing left
@@ -83,7 +83,7 @@ prefix p - right hand palm facing
 prefix b - left hand palm facing
 
 
-hand block separation
+(bt) hand separation
 bt and direction (k,y,v,l,q,e) - left hand touches on side of right hand extended fingers (itself, kick, stop)
 - unmarked or i suffix - hands not wrapped or enmeshed
 
@@ -95,7 +95,7 @@ bu and direction (k,y,v,l,q,e) - left hand away from direction side of right han
 - missing or bux = one-handed sign (ignore hand spacing)
 
 
-location height and side
+(bd) body location height and side
 W - forehead height (think, forget)
 - Wy or unmarked - right side of forehead
 - Wi - center of forehead
@@ -142,7 +142,7 @@ D - on body (my, know)
 E - away from body (default)
 
 
-hand block movement
+(mv) hand movements
 R - dominant-hand moves, base-hand stays still (chop, read, culture)
 F - both hands move in the same or opposite directions (person, proceed, cold, scared)
 S - dominant-hand moves, base-hand echoes movement, each hand taking on the other hand's palm facing direction
@@ -174,13 +174,15 @@ Z - action repeated along a path
 - if Zi or unmarked - repeat last movement
 - Zx means no repetition (ignore repetition)
 
-movement style
+
+(ms) movement style
 G - movement speed
 - Gi or unmarked - move at normal speed (default for verbs)
 - Gl - move quickly (default for nouns)
 - Gv - move slowly
 
-focus direction
+
+(fo) focus direction
 A, -, and direction (k,y,v,l,q) - speaking directly to audience or character
 N, -, and direction (k,y,v,l,q) - speaking to audience but motion toward second character
 - unmarked or a suffix
@@ -202,7 +204,8 @@ Noo = eyes wide open
 Nox = eyes shut
 Nh-l = shoulder shrug 
 
-loan words
+
+(lw) loan words
 u- prefix = fingerspelling word(s)
 
 
