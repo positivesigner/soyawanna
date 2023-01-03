@@ -1,47 +1,4 @@
-b - base hand handshape or base hand palm facing
-- i means unused base hand handshape and rotation (ignore base hand)
-
-0 - all fingers touching thumb or palm (O, E, baby-C, S, A)
-1 - 1 finger straight and remaining bent or touching thumb or palm (D/L, open-L, I, Y),
-    or 1 finger bent and remaining touching palm (X/G/Q/J/T/Z, open-X)
-2 - 2 fingers straight and remaining bent or touching thumb or palm (V, 3, U, open-U, R, open-R),
-    or 2 fingers bent and remaining touching palm (N/H, open-N, K/P, open-K)
-3 - 3 fingers straight and remaining bent or touching thumb or palm (W, open-W, F/8/7/6, open-F/8/7/6),
-    or 3 fingers bent and remaining touching palm (M, open-M)
-4 - 4 fingers straight and remaining bent or touching thumb or palm (B, open-B, 5, open-5),
-    or 4 fingers bent and remaining touching palm (C, bent-B)
-
-(hs) handshape list
-- A (Ai) = in, B (Bc) = cl, C (Cg) = gf, D (Dc) = cln, E (Er) = fffr
-- - open-A (Aj) = jn, open-B (Bj) = jl, open-C (Cj) = jf
-- - bent-A (Ag) = gn, bent-B (Bf) = jf
-- - grasp-B (Bg) = gf
-
-- F (Fr) = rfl, G (Gg) = efn, H (Hc) = cffn, I (Ic) = cnnl, J (Ic) = cnnl
-- - open-F (Fj) = jfl
-- - bent-I (If) = cnnf
-
-- K (Ki) = lit, L (Lj) = jln, M (Mc) = cfffn, N (Nc) = cffn, O (Or) = rf
-- - open-M (Mj) = jfffn, open-N (Nj) = jffn
-- - bent-L (Lf) = jfn, grasp-M (Mg) = gfffn, grasp-N (Ng) = gffn
-
-- P (Pi) = lif, Q (Qg) = gfn, R (Rc) = ctl, S (Sc) = cn, T (Ti) = fin
-- - open-R (Rj) = jtl
-
-- U (Uc) = clln, V (Vc) = cluln, W (Wc) = clull, X (Xc) = cfn, Y (Yj) = jnnl
-- - open-U (Uj) = jlln, open-V (Vj) = jluln, open-W (Wj) = jlull, open-X (Xj) = jfn
-- - grasp-V (Vg) = gfufn, grasp-X (Xg) = gfn, grasp-Y (Yg) = gnnf
-
-- Z (Zc) = cfn
-
-- 1 (1c) = cln, 2 (2c) = cluln, 3 (3j) = jluln, 4 (4c) = clu, 5 (5j) = jlu
-- - bent-4 (4f) = cfu, bent-5 (5f) = jfu
-
-- 6 (6r) = lullrf, 7 (7r) = llrfl, 8 (8r) = lrfl, 9 (9r) rfl, 0 (0r) = rf
-
-
-
-handshape suffix
+handshape construction
 - c wrapped closed to palm or around the knuckles of closed finger(s)
 - g = thumb bent forward, not touching fingers
 - r = thumb bent forward, touching f finger
@@ -56,6 +13,38 @@ handshape suffix
 
 - n = finger closed to palm
 - ending finger shape is repeated for remaining fingers
+
+
+(hs) handshape list
+- A (Ai) = in, B (Bc) = cl, C (Cg) = gf, D (Dc) = cln, E (Er) = fffr
+- - open-A (Aj) = jn, open-B (Bj) = jl, open-C (Cj) = jf
+- - bent-A (Ag) = gn, bent-B (Bf) = jf
+- - grasp-B (Bg) = gf
+
+- F (Fr) = rfl, G (Gg) = efn, H (Hc) = cffn, I (Ic) = cnnl, J (Ic) = cnnl
+- - open-F (Fj) = jfl
+- - grasp-F (Fg) = gfl
+- - bent-I (If) = cnnf
+
+- K (Ki) = lit, L (Lj) = jln, M (Mc) = cfffn, N (Nc) = cffn, O (Or) = rf
+- - open-M (Mj) = jfffn, open-N (Nj) = jffn
+- - bent-L (Lf) = jfn, grasp-M (Mg) = gfffn, grasp-N (Ng) = gffn
+- - L-I (Ljlnl) = jlnl
+
+- P (Pi) = lif, Q (Qg) = gfn, R (Rc) = ctl, S (Sc) = cn, T (Ti) = fin
+- - open-R (Rj) = jtl
+
+- U (Uc) = clln, V (Vc) = cluln, W (Wc) = clull, X (Xc) = cfn, Y (Yj) = jnnl
+- - open-U (Uj) = jlln, open-V (Vj) = jluln, open-W (Wj) = jlull, open-X (Xj) = jfn
+- - grasp-V (Vg) = gfufn, grasp-X (Xg) = gfn, grasp-Y (Yg) = gnnf
+
+- Z (Zc) = cfn
+
+- 1 (Lc) = cln, 2 (Vc) = cluln, 3 (Vj) = jluln, 4 (4c) = clu, 5 (5j) = jlu
+- - bent-4 (4f) = cfu, bent-5 (5f) = jfu
+- - 1-I (Lclnl) = clnl, bent 1-I (Lcfnf) = cfnf
+
+- 6 (6r) = lullrf, 7 (7r) = llrfl, 8 (8r) = lrfl, 9 (9r) rfl, 0 (0r) = rf
 
 
 (pf) palm facing direction (k,y,v,l,q,e) - assumes fingers pointed forward below chin, or fingers pointing up above chest
@@ -91,6 +80,8 @@ btc and direction (k,y,v,l,q,e) - left hand captures right hand extended fingers
 ptc and direction (k,y,v,l,q,e) - right hand captures left hand extended fingers (dollar, chair)
 btm and direction (k,y,v,l,q,e) - left hand extended fingers enmeshed with right hand extended fingers (football, through)
 ptm and direction (k,y,v,l,q,e) - right hand extended fingers enmeshed with left hand extended fingers (wrench, ticket)
+btju - left hand in crook of right forearm (football, through)
+btjv - left hand touch bottom of right elbow (football, through)
 bu and direction (k,y,v,l,q,e) - left hand away from direction side of right hand (person, sign language)
 - missing or bux = one-handed sign (ignore hand spacing)
 
@@ -133,7 +124,7 @@ Hu - stomach height (default)
 
 J - base-hand elbow / forearm (cracker, music)
 - Jq or unmarked - at elbow
-- Ji - in crook of arm
+- Ju - in crook of arm
 - Jl - above left forearm
 
 
@@ -182,28 +173,51 @@ G - movement speed
 - Gv - move slowly
 
 
+(nm) non-manual gestures
+N - body gesture
+- unmarked or a suffix + direction = head movement
+- Nvl = head nod yes
+- Nky = head shake no
+- Nq - pause signing, eyebrows raised and considering what to say next
+- Ne - pull head back surprised / scared
+
+Nw + direction = eyebrow direction
+- Nw-v = eyebrows down
+- Nw-l = eyebrows up
+
+Nc + direction = mouth part direction
+- Nc-l = tongue sticking out
+- Nc-q = puckered lips
+- Nc-e = lips pulled back, teeth clenched
+- Nc-k = disgusted sneer left-side lip pulled up, teeth clenched, nose wrinkled
+- Nc-v = scared
+
+No + direction = eyelid direction
+- Noo = eyes wide open
+- Nox = eyes shut
+- Nox-y = eyes shut looking away from current character scared / disgusted
+
+Nh + direction = shoulder direction
+- Nh-l = shoulder shrug
+- Nh-v = shoulders slumped tired / relaxed
+
+
 (fo) focus direction
 A, -, and direction (k,y,v,l,q) - speaking directly to audience or character
 N, -, and direction (k,y,v,l,q) - speaking to audience but motion toward second character
-- unmarked or a suffix
-- Nvl = head nod yes
-- Nky = head shake no
-- Nq? means pause signing, looking at the audience and considering what to say next
-- Nq-y means looking away to right from currently focused character
-
 d suffix and direction (k,y,v,l,q) - angle focus direction
 - N-y means focus audience's attention toward the character on right
 - N-q means the current A-* character is speaking to their audience
 Nw-v = eyebrows down
 Nw-l = eyebrows up
-Nc-l = tongue sticking out for next word
+Nc-l = tongue sticking out
 Nc-q = puckered lips
-Nc-e = disgusted
+Nc-e = disgusted lips pulled back, tongue out between teeth, nose wrinkled
+Nc-k = sneer left-side lip pulled up, nose wrinkled
 Nc-v = scared
 Noo = eyes wide open
 Nox = eyes shut
-Nh-l = shoulder shrug 
-
+Nh-l = shoulder shrug
 
 (lw) loan words
 u- prefix = fingerspelling word(s)
@@ -216,6 +230,7 @@ letter usage:
 - (bd) = body location section
 - (mv) = movement / repetion section
 - (ms) = movement style section
+- (nm) = non-manual gestures
 - (fo) = focus section
 - (lw) = loan words
 
@@ -241,7 +256,7 @@ f - (hs) bend finger, (bd) above common height, (mv) bend fingers
 g - (hs) thumb bent forward, (mv) curved movement
 h - (fo) shoulders up/down
 i - (hs) thumb up, (bt) flush touch, (bd) center / crook of arm, (mv) no movement / repeat last movement, (ms) move at normal speed
-j - (hs) thumb out
+j - (hs) thumb out, (bt) elbow
 k - (pf) palm left, (bt) left side, (bd) left side, (mv) move left, (fo) look left
 l - (hs) finger extended, (pf) palm facing up, (bt) top side, (bd) above forearm, (mv) move up, (ms) move quickly, (fo) look up
 m - (bt) meshed fingers
@@ -251,7 +266,7 @@ p - (hs) right hand, (pf) right hand, (bt) right hand
 q - (pf) palm facing out, (bt) outer side, (bd) forward, (mv) move out, (fo) look forward / questioning look
 r - (hs) thumb touch finger
 t - (hs) finger wrap in front of next finger
-u - (hs) fingers apart, (bt) hands apart, (bd) below common height, loan word
+u - (hs) fingers apart, (bt) hands apart / crook of forearm, (bd) below common height, loan word
 v - (pf) palm facing down, (bt) under side, (mv) move down, (ms) move slowly, (fo) look down / inward
 w - (mv) wiggle fingers movement, (fo) eyebrows down/up
 x - (bt) feature not used flag, (mv) no repetition, (fo) eyes shut
@@ -263,4 +278,4 @@ remaining characters:
 - _B______I_KLM_OPQ__TUV_XY_
 - __________________s_____yz
 
-recent changes:
+
