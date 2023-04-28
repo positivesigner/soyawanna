@@ -71,6 +71,9 @@ l - palm facing up
 prefix p - right hand palm facing
 prefix b - left hand palm facing
 
+d - diagonal tilt
+- - qldk = palm out, fingers up tilted left
+
 
 (bt) hand separation
 bt and direction (k,y,v,l,q,e) - left hand touches on side of right hand extended fingers (itself, kick, stop)
@@ -89,18 +92,22 @@ bu and direction (k,y,v,l,q,e) - left hand away from direction side of right han
 (bd) body location height and side
 W - forehead height (think, forget)
 - Wy or unmarked - right side of forehead
+- WLP - right from forehead
 - Wi - center of forehead
 - Wk - left side of forehead
 
 A - eyes / ears (see, listen)
 - Ay or unmarked - right side of eyes
+- ALP - right from ear
 - Ai - at nose (mouse)
 - Ak - left side of eyes
 
-C - chin / jaw (sweet, Deaf)
-- Cy or unmarked - right side of chin
-- Ci - center of chin
-- Ck - left side of chin
+C - mouth / cheek (sweet, Deaf)
+- Cy or unmarked - right side of mouth
+- CLP - right from mouth
+- Ci - center of mouth
+- Cie - inside mouth
+- Ck - left side of mouth
 
 Cu - throat (frog, thirsty)
 - Cuy or unmarked - right side of throat
@@ -109,16 +116,19 @@ Cu - throat (frog, thirsty)
 
 Hf - shoulder height (default)
 - Hfy or unmarked - right shoulder
+- HfLP - right from shoulder
 - Hfi - between shoulders
 - Hfk - left shoulder
 
 H - chest height (default)
 - Hy or unmarked - right side of chest
+- HLP - right from chest
 - Hi - center of chest
 - Hk - left side of chest
 
 Hu - stomach height (default)
 - Huy or unmarked - right side of stomach
+- HuLP - right from stomach
 - Hui - center of stomach
 - Huk - left side of stomach
 
@@ -174,28 +184,28 @@ G - movement speed
 
 
 (nm) non-manual gestures
-N - body gesture
+NW - head gesture
 - unmarked or a suffix + direction = head movement
-- Nvl = head nod yes
-- Nky = head shake no
-- Nq - pause signing, eyebrows raised and considering what to say next
-- Ne - pull head back surprised / scared
+- NW-vl = head nod yes
+- NW-ky = head shake no
+- Nf-q - pause signing, eyebrows raised and considering what to say next
+- NW-e - pull head back surprised / scared
 
-Nw + direction = eyebrow direction
-- Nw-v = eyebrows down
-- Nw-l = eyebrows up
+NAf + direction = eyebrow direction
+- NAf-v = eyebrows down
+- NAf-l = eyebrows up
 
-Nc + direction = mouth part direction
-- Nc-l = tongue sticking out
-- Nc-q = puckered lips
-- Nc-e = lips pulled back, teeth clenched
-- Nc-k = disgusted sneer left-side lip pulled up, teeth clenched, nose wrinkled
-- Nc-v = scared
+NA + direction = eyelid location
+- NA-o = eyes wide open
+- NA-x = eyes shut
+- NA-x-NW-y = eyes shut looking away from current character scared / disgusted
 
-No + direction = eyelid direction
-- Noo = eyes wide open
-- Nox = eyes shut
-- Nox-y = eyes shut looking away from current character scared / disgusted
+NC + direction = mouth part direction
+- NC-l = tongue sticking out
+- NC-q = lips puckered out
+- NC-e = gross look, lips pulled back, tongue out between teeth, nose wrinkled
+- NC-k = disgusted sneer, left-side lip pulled up, teeth clenched, nose wrinkled
+- NC-v = scared, mouth wide open
 
 Nh + direction = shoulder direction
 - Nh-l = shoulder shrug
@@ -208,16 +218,6 @@ N, -, and direction (k,y,v,l,q) - speaking to audience but motion toward second 
 d suffix and direction (k,y,v,l,q) - angle focus direction
 - N-y means focus audience's attention toward the character on right
 - N-q means the current A-* character is speaking to their audience
-Nw-v = eyebrows down
-Nw-l = eyebrows up
-Nc-l = tongue sticking out
-Nc-q = puckered lips
-Nc-e = disgusted lips pulled back, tongue out between teeth, nose wrinkled
-Nc-k = sneer left-side lip pulled up, nose wrinkled
-Nc-v = scared
-Noo = eyes wide open
-Nox = eyes shut
-Nh-l = shoulder shrug
 
 (lw) loan words
 u- prefix = fingerspelling word(s)
@@ -242,7 +242,9 @@ F - (mv) both hands move
 G - (ms) movement style
 H - (bd) chest height
 J - (bd) left elbow / forearm
+L - (bd) at D body depth, but not touching body
 N - (fo) character attention / nod head yes / shake head no / questioning look
+P - (db) right from L body depth
 R - (mv) one hand moves
 S - (mv) LH follows RH
 W - (bd) forehead height
@@ -250,7 +252,7 @@ Z - (mv) movement repetion
 a - (hs) fingers together, (fo) character attention
 b - (hs) left hand, (pf) left hand, (bt) left hand
 c - (hs) thumb wrapped around closed fingers, (bt) captures, (fo) tongue / lips / teeth
-d - (mv) angle direction
+d - (pf) diagonal tilt, (mv) angle direction
 e - (pf) palm facing in, (bt) inner side, (mv) move in
 f - (hs) bend finger, (bd) above common height, (mv) bend fingers
 g - (hs) thumb bent forward, (mv) curved movement
@@ -275,7 +277,5 @@ y - (pf) palm facing right, (bt) right side, (bd) right side, (mv) move right, (
 
 
 remaining characters:
-- _B______I_KLM_OPQ__TUV_XY_
-- __________________s_____yz
-
-
+- _B______I_K_M_O_Q__TUV_XY_
+- __________________s______z
