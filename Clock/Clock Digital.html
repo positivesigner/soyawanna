@@ -1,0 +1,41 @@
+<html><body>
+<div id="clock"
+    style="font-size:20em;text-align:right"
+>Clock</div>
+<script>
+const timeElement = document.getElementById("clock");
+
+function updateTime() {
+    const now = new Date();
+    let hours = now.getHours();
+	let am_pm = "am";
+	if (hours == 0)
+	{
+	    hours = 12;
+	}
+	if (hours > 11)
+	{
+	    am_pm = "pm";
+		if (hours > 12)
+		{
+		    hours -= 12;
+		}
+	}
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+	let date_part = now.toDateString();
+	date_part = date_part.substring(0, date_part.length - 5);
+    // Format the string with leading zeroes
+    const clockStr = `${hours.toString()}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}${am_pm}` + '<br>' +
+	    date_part;
+
+    timeElement.innerHTML = clockStr;
+
+    // Set a timeout for one minute
+    setTimeout(updateTime, 10000);
+}
+
+updateTime();
+</script>
+</body></html>
