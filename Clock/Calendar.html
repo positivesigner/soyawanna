@@ -307,7 +307,7 @@ function updateTime() {
 	let date_part = now.toDateString();
 	date_part = date_part.substring(0, date_part.length - 5);
     // Format the string with leading zeroes
-    const clockStr = `<a href="index.html">${date_part}</a> &nbsp; &nbsp; ${hours.toString()}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}${am_pm}`;
+    const clockStr = `<a href="Schedule.html">${date_part}</a> &nbsp; &nbsp; ${hours.toString()}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}${am_pm}`;
 
     timeElement.innerHTML = clockStr;
 
