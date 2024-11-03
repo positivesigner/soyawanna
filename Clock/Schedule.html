@@ -12,76 +12,106 @@ th, td {
 <table style="font-family: Arial, Helvetica, sans-serif;font-size:2em;width: 100%;">
 <thead style="font-size:0.5em;">
 <tr><th><a href="Calendar.html">Date</a></th><th><a href="index.html">Time</a></th><th>Task</th><th>Notes</th><th>Recurrence</th>
-</thead><tbody style="height: 3em !important; overflow-y: scroll;">
+</thead><tbody id="tscTask" style="height: 3em !important; overflow-y: scroll;">
 
 
-<tr><td c=date>tasks</td><td c=time></td><td c=task>9-volt batteries</td><td c=notes>Bi-Mart</td><td c=recur>Sun</td>
-<tr><td c=date>tasks</td><td c=time></td><td c=task>Clean CPAP</td><td c=notes></td><td c=recur>Sat</td>
-<tr><td c=date>tasks</td><td c=time></td><td c=task>Order Covid Tests</td><td c=notes>For G'ma Stone</td><td c=recur>Sun</td>
-<tr><td c=date>tasks</td><td c=time></td><td c=task>Clean cars</td><td c=notes></td><td c=recur>Sun</td>
-<tr><td c=date>m10d02 Wed</td><td c=time>a09m00</td><td c=task>Call camera store</td><td c=notes>m09d24d said would try to<br> get a delivery estimate</td><td c=recur></td>
-<tr><td c=date>m10d03 Thu</td><td c=time>p04m30</td><td c=task>Rankin mtg</td><td c=notes>Coburg Road</td><td c=recur></td>
-<tr><td c=date>m10d03 Thu</td><td c=time>p07m00</td><td c=task>KH Meeting</td><td c=notes>15min travel</td><td c=recur>Thursdays</td>
-<tr><td c=date>m10d04 Fri</td><td c=time>a09m30</td><td c=task>Visit Aunt Joyce</td><td c=notes>Pick up puzzles from mom</td><td c=recur></td>
-<tr><td c=date>m10d04 Fri</td><td c=time>Cancel</td><td c=task>Bruce study</td><td c=notes>Not available</td><td c=recur>Fridays</td>
-<tr><td c=date>m10d06 Sun</td><td c=time>p01m00</td><td c=task>KH Meeting</td><td c=notes>15min travel</td><td c=recur></td>
-
+<!--
 <tr><td style="height:2em"><b>Week d07</b></td></tr>
-<tr><td c=date>tasks</td><td c=time></td><td c=task>Food shopping</td><td c=notes></td><td c=recur>Sun</td>
-<tr><td c=date>m10d11 Fri</td><td c=time>p03m20</td><td c=task>Bruce study</td><td c=notes>in person, 20min travel</td><td c=recur>Fridays</td>
-
-<tr><td style="height:2em"><b>Week d14</b></td></tr>
-<tr><td c=date>m10d14 Mon</td><td c=time>p04m00</td><td c=task>Leland mtg</td><td c=notes>Video call</td><td c=recur>2-weeks</td>
-<tr><td c=date>m10d17 Thu</td><td c=time>a09m00</td><td c=task>Anna social security</td><td c=notes></td><td c=recur></td>
-<tr><td c=date>tasks</td><td c=time></td><td c=task>Bills</td><td c=notes></td><td c=recur>d20</td>
 <tr><td c=date>tasks</td><td c=time></td><td c=task>Anna rent</td><td c=notes></td><td c=recur>d20</td>
-
-<tr><td style="height:2em"><b>Week d21</b></td></tr>
-<tr><td c=date>m10d21 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-
-<tr><td style="height:2em"><b>Week d28</b></td></tr>
-<tr><td c=date>m10d28 Mon</td><td c=time>p04m00</td><td c=task>Leland mtg</td><td c=notes>Video call</td><td c=recur>2-weeks</td>
-
-<tr><td style="height:2em"><b>Week d04</b></td></tr>
-<tr><td c=date>m11d04 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-
-<tr><td style="height:2em"><b>Week d11</b></td></tr>
-<tr><td c=date>m11d11 Mon</td><td c=time>p04m00</td><td c=task>Leland mtg</td><td c=notes>Video call</td><td c=recur>2-weeks</td>
-
-<tr><td style="height:2em"><b>Week d18</b></td></tr>
-<tr><td c=date>m11d18 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-
-<tr><td style="height:2em"><b>Week d25</b></td></tr>
-<tr><td c=date>m11d25 Mon</td><td c=time>p04m00</td><td c=task>Leland mtg</td><td c=notes>Video call</td><td c=recur>2-weeks</td>
-
-<tr><td style="height:2em"><b>Week d02</b></td></tr>
-<tr><td c=date>m12d02 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-
-<tr><td style="height:2em"><b>Week d09</b></td></tr>
-<tr><td c=date>m12d09 Mon</td><td c=time>p04m00</td><td c=task>Leland mtg</td><td c=notes>Video call</td><td c=recur>2-weeks</td>
-
-<tr><td style="height:2em"><b>Week d16</b></td></tr>
-<tr><td c=date>m12d16 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-
-<tr><td style="height:2em"><b>Week d23</b></td></tr><tr><td c=date>m12d23 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-<tr><td c=date>m12d23 Mon</td><td c=time>p04m00</td><td c=task>Leland mtg</td><td c=notes>Video call</td><td c=recur>2-weeks</td>
-
-<tr><td style="height:2em"><b>Week</b></td></tr>
-<tr><td c=date>m12d30 Mon</td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-<tr><td c=date>m01d05 Sun</td><td c=time>a10m00</td><td c=task>New KH Meeting Time</td><td c=notes></td><td c=recur>January</td>
-
-<tr><td style="height:2em"><b>Week d06</b></td></tr>
-<tr><td c=date>tasks</td><td c=time></td><td c=task>Schedule Eye Doctor</td><td c=notes></td><td c=recur>Yearly</td>
-
-<tr><td style="height:2em"><b>Month m03</b></td></tr>
-<tr><td c=date>tasks</td><td c=time>Print insurance cards</td><td c=task></td><td c=notes></td><td c=recur>March,Sept</td>
-
-
-<tr><td style="height:2em"></td></tr>
-
-<tr><td c=date></td><td c=time></td><td c=task></td><td c=notes></td><td c=recur></td>
-
+-->
 
 </tbody></table>
 </div>
+<script>
+try
+{
+  var task_list =
+/*format*/'\t'+/*date*/'\t'+/*time*/'\t'+/*task*/'Print insurance cards\t'+/*notes*/'\t'+/*recur*/'March,Sept'+'\n' +
+/*format*/'\t'+/*date*/'\t'+/*time*/'\t'+/*task*/'Clean CPAP\t'+/*notes*/'\t'+/*recur*/'Sat'+'\n' +
+/*format*/'\t'+/*date*/'m11m03u\t'+/*time*/'p01m00\t'+/*task*/'KH Meeting\t'+/*notes*/'15min travel\t'+/*recur*/'Sun'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d04a\t'+/*time*/'m11\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m11d07h\t'+/*time*/'p07m00\t'+/*task*/'KH Meeting\t'+/*notes*/'15 min travel\t'+/*recur*/'Thu'+'\n' +
+/*format*/'\t'+/*date*/'m11d08r\t'+/*time*/'p01m00\t'+/*task*/'Ask Bruce if study\t'+/*notes*/'25 min travel\t'+/*recur*/'Fri'+'\n' +
+/*format*/'\t'+/*date*/'\t'+/*time*/'\t'+/*task*/'Food shopping list\t'+/*notes*/'\t'+/*recur*/'Sat'+'\n' +
+/*format*/'\t'+/*date*/'\t'+/*time*/'\t'+/*task*/'Clean cars\t'+/*notes*/'\t'+/*recur*/'Sun'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d11a\t'+/*time*/'m11\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m11d11a\t'+/*time*/'p04m00\t'+/*task*/'Leland mtg\t'+/*notes*/'Video call\t'+/*recur*/'2-weeks'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d18a\t'+/*time*/'m11\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m11d20e\t'+/*time*/'\t'+/*task*/'Pay bills\t'+/*notes*/'\t'+/*recur*/'d20'+'\n' +
+/*format*/'\t'+/*date*/'m11d20e\t'+/*time*/'\t'+/*task*/'Anna rent\t'+/*notes*/'\t'+/*recur*/'d20'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d25a\t'+/*time*/'m11\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m11d25a\t'+/*time*/'p04m00\t'+/*task*/'Leland mtg\t'+/*notes*/'Video call\t'+/*recur*/'2-weeks'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d02a\t'+/*time*/'m12\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m12d02a\t'+/*time*/'\t'+/*task*/'Schedule Eye Doctor\t'+/*notes*/'\t'+/*recur*/'Yearly'+'\n' +
+/*format*/'\t'+/*date*/'m12d02a\t'+/*time*/'\t'+/*task*/'Email dr. Rankin\t'+/*notes*/'Biopsy results\t'+/*recur*/''+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d09a\t'+/*time*/'m12\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m12d09a\t'+/*time*/'p04m00\t'+/*task*/'Leland mtg\t'+/*notes*/'Video call\t'+/*recur*/'2-weeks'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d16a\t'+/*time*/'m12\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d23a\t'+/*time*/'m12\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+/*format*/'\t'+/*date*/'m12d23a\t'+/*time*/'p04m00\t'+/*task*/'Leland mtg\t'+/*notes*/'Video call\t'+/*recur*/'2-weeks'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d30a\t'+/*time*/'m12\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+
+/*format*/'\t'+/*date*/'m01d05u\t'+/*time*/'a10m00\t'+/*task*/'New KH Meeting Time\t'+/*notes*/'\t'+/*recur*/'January'+'\n' +
+
+/*format*/'b\t'+/*date*/'Week d06a\t'+/*time*/'m01\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+
+
+/*format*/'\t'+/*date*/'\t'+/*time*/'\t'+/*task*/'\t'+/*notes*/'\t'+/*recur*/''+'\n' +
+'';
+  var tbdy = document.getElementById('tscTask');
+  var column_list = ('date\t'+'time\t'+'task\t'+'notes\t'+'recur').split('\t');
+  var row_list = task_list.split('\n');
+  for (var row_seq = 0; row_seq < row_list.length; row_seq++)
+  {
+    var row_text = row_list[row_seq];
+    if (row_text.length > 0)
+    {
+      var field_list = row_text.split('\t');
+      var nrow = document.createElement('TR');
+      tbdy.appendChild(nrow);      
+      var td = document.createElement('TD');
+      nrow.appendChild(td);
+      if (field_list.length != column_list.length + 1)
+      {
+          td.innerHTML = 'field count error: ' + field_list.length.toString() + ' ln' + row_seq.toString();
+      }
+      else
+      {
+        for (var col_seq = 0; col_seq < column_list.length; col_seq++)
+        {
+          var disp_text = field_list[col_seq + 1].trim()
+          td = document.createElement('TD');
+          nrow.appendChild(td);
+          td.innerHTML = disp_text;
+          if (col_seq == 0)
+          {
+            var col_format = field_list[0].trim();
+            if (col_format == 'b')
+            {
+              td.setAttribute('style', 'height:2.5em;font-weight: bold;');
+            }
+            else if (col_format.length > 0)
+            {
+              td.innerHTML = 'style flag error: (' + col_format + ') ln' + row_seq.toString();
+            }
+          }
+        }
+      }
+    }
+  }
+}
+catch (ex)
+{
+  alert(ex);
+}
+</script>
 </body></html>
